@@ -1,0 +1,132 @@
+<!doctype html>
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Groovy DSL from real life exemple</title>
+    <meta name="author" content="Corinne Krych, Sebastien Blanc" />
+
+</head>
+
+<body >
+
+  
+  <div class="editor" id="editor">import org.codehaus.groovy.control.CompilerConfiguration
+
+abstract class SurveyScript2 extends Script {
+ def answerMap
+
+ def ask(question) {
+     [assign : { to ->
+ 	 [:].withDefault {assignment ->
+ 	 println "I will affect the answer of '$question' to $assignment"
+ 	 //binding.currentQuestion = question
+ 	 }
+ 	 }]
+ }
+ def send = {String question -> println question }
+
+ def propertyMissing(String name) {
+ 	name
+ }
+}
+
+
+
+def compilerConfiguration = new CompilerConfiguration()
+compilerConfiguration.scriptBaseClass = SurveyScript2.class.name
+
+def binding = new Binding()
+
+// Configure the GroovyShell.
+def shell = new GroovyShell(this.class.classLoader, binding, compilerConfiguration)
+
+///////////////////////
+def surveyDSL = '''
+
+ask "what is your name?" assign to name
+
+'''
+//////////////////////
+// Run DSL script.
+shell.evaluate surveyDSL
+//println binding.currentQuestion</div>
+<div id="result" >turlututu</div>
+
+
+
+
+  <style type="text/css" media="screen">
+    .editor { 
+        overflow: hidden;
+        padding:0px;
+        position: relative;
+        width:1024px;
+        height:700px;
+        line-height: 25px;
+        font-size: 20px;
+		text-shadow: 0 0px 0px #000;
+    }
+  </style>    
+<script src="js/ace-uncompressed-noconflict.js" type="text/javascript" charset="utf-8"></script>
+<script>
+window.onload = function() {
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/clouds");
+    editor.getSession().setMode("ace/mode/groovy");
+
+    var commands = editor.commands;
+
+    commands.addCommand({
+      name: "save",
+      bindKey: {
+      win: "Ctrl-S",
+      mac: "Command-S",
+      sender: "editor"
+      },
+      exec: function() {
+      var value = editor.getSession().getValue();
+      value = value.replace(/\n/g,"%0D").replace(/\r/g,""); 
+      submitForm(value);
+      }
+    });
+    var editor2 = ace.edit("editor2");
+    editor2.setTheme("ace/theme/clouds");
+    editor2.getSession().setMode("ace/mode/groovy");
+     
+};
+function submitForm(content)
+{ 
+    var xhr; 
+    try {  
+    	xhr = new XMLHttpRequest();  
+    } catch (e3) {  
+    	xhr = false;   
+    }
+ 
+    xhr.onreadystatechange  = function() { 
+       if(xhr.readyState  == 4) {
+    	var result;
+        if(xhr.status  == 200) {
+        	result = eval('(' + xhr.responseText + ')'); 
+        } else {  
+        	result = "Error code " + xhr.status;
+        }
+        updateDivResult(result);
+       }
+    }; 
+   var url = "http://localhost:8080/GiveAtry/console/execute" + "?content=" + content;
+   xhr.open( "POST", url,  true); 
+   xhr.send(null);    
+} 
+
+function updateDivResult(result) {
+	result = result.result.replace(/%0D/g,"/n")
+	document.getElementById('result').innerHTML = result;
+}
+</script>
+
+</body>
+</html>
+

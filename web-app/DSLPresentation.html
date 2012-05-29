@@ -1,0 +1,378 @@
+<!doctype html>
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Building a Groovy DSL</title>
+    <meta name="description" content="...." />
+    <meta name="author" content="Corinne Krych, Sebastien Blanc" />
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    <link href="css/prez.css" rel="stylesheet" />
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div class="step" data-x="0" data-y="0" data-scale="30">
+        <!-- TODO : Learn how to use css -->
+        <img style="float:left;width:500px" alt="" src="images/rivierargug.png">
+        <div style="float:right;width:320px">
+          <span class="try bigger">Building a Groovy DSL</span><br/>
+          <h1>{demo}</h1><br/>
+          <div class="personal-name">Corinne Krych</div>
+          <div class="personal-name">Sebastien Blanc</div><br/>
+          <div class="general" >Riviera GUG</div>
+        </div>
+    </div>  
+
+    <div id="title" class="step" data-x="-7500" data-y="-3400" data-scale="3">
+        <span class="try">Building a Groovy</span>
+        <h1>&nbsp;&nbsp;DSL<sup>*</sup></h1>
+        <!-- TODO : Learn how to use css -->
+        <span class="footnote">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>*</sup> &nbsp;based on a real life project</span><br/>
+        <span class="footnote">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Corinne Krych</span>
+        <span class="footnote">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sebastien Blanc</span>
+    </div>
+
+    <div class="step" data-x="250" data-y="-2200" >
+        <h1>Ladies first : Corinne</h1><br/>
+        <p class="general quote-author">@corinnekrych</p>
+        <p class="general quote-author">corinnekrych@gmail.com</p>
+        <p class="general quote-author">https://github.com/corinnekrych</p>
+    </div> 
+
+    <div class="step" data-x="-250" data-y="-80">
+        <p>Sebastien : my geek friend</p><br/>
+        <p class="general quote-author">@sebi2706</p>
+        <p class="general quote-author">scm.blanc@gmail.com</p>
+        <p class="general quote-author">hhttps://github.com/sebastienblanc</p>
+        <img style="float:right;width:320px" alt="" src="images/sebi.jpg">
+    </div> 
+
+    <div class="step big" data-x="1200" data-y="-80">
+        WHAT IS A <b>DSL</b>?
+    </div> 
+    
+    <div class="step quote" data-x="1200" data-y="170" >
+        <blockquote><strong>Domain-specific language</strong> (noun): a computer programming language of limited expressiveness focused on a particular domain</blockquote>
+        <div class="general quote-author">- Martin Fowler</div>
+    </div>  
+    
+     <div class="step" style="font-size:16px;text-align:justify" data-x="800" data-y="420" data-scale="0.2" data-rotate="-90">
+        <!--img alt="" src="images/mat.jpeg"-->
+        <pre>
+        10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101 10000110 10000000 
+        11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000 00000000 00010100
+        00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101 10000110 10000000 
+        10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101 10000110 10000000 
+        11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000 00000000 00010100
+        00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101 10000110 10000000 
+        10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101 10000110 10000000 
+        11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000 00000000 00010100
+        00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101 10000110 10000000 
+        10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101 10000110 10000000 
+        11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000 00000000 00010100
+        00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101 10000110 10000000 
+        10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101 10000110 10000000 
+        11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000 00000000 00010100
+        00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101 10000110 10000000 
+        10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101 10000110 10000000 
+        11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000 00000000 00010100
+        00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101 10000110 10000000 
+        </pre>
+    </div> 
+    
+    <div class="step code general" data-x="1200" data-y="420" data-rotate="-90" data-scale="0.2">
+		<span class="code-color">SELECT</span> Bride 
+		<span class="code-color">FROM</span> SingleWomen 
+		<span class="code-color">WHERE</span> FatherInLaw = 'Millionaire' 
+		<span class="code-color">AND</span> Count(Car) > 20 
+		
+		<span class="code-color">SELECT</span> Cash, Car, BankBalance 
+		<span class="code-color">FROM</span> FatherInLaw 
+		
+		<span class="code-color">UPDATE</span> MyBankAccout 
+		<span class="code-color">SET</span> MyBal = MyBal + FatherInLawBal 
+		
+		<span class="code-color">INSERT INTO</span> MyCarShed 
+		<span class="code-color">VALUES</span>('BMW') 
+    </div> 
+
+    <div id="tiny"  class="step" data-x="1600" data-y="420" data-rotate="-90" data-scale="0.2">
+    	<!-- http://openclipart.org/detail/164749/cube-of-rubik-by-sprint-->
+    	<img alt="" style="width:350px" src="images/cube_of_rubik_1.png"><br/>
+		<pre >R2 U F B' R2 F' B U R2</pre>
+		<pre style="font-size:16px" class="quote">
+		Terminology
+			F = front face 
+			B = back face
+			R = right face
+			L = left face
+			U = up face
+			D = down face
+			A letter by itself means turn that face 90 degrees clockwise (eg. F).
+			A letter followed by an apostrophe means turn that face 90 degrees anti-clockwise (eg. F').
+		
+		 </pre>
+    </div> 
+     
+    <div class="step" data-x="0" data-y="1200">
+        <span class="blur">Boundaries are blurry</span>
+    </div> 
+    
+    <div class="step" data-x="0" data-y="1300">
+        prepare salade for lunch
+    </div> 
+    
+   <div class="step" data-x="0" data-y="1400">
+        ['hamburger', 'ice cream'].each{eat it}
+    </div> 
+    
+   <div class="step" data-x="0" data-y="1500">
+        lunch.willBe 50.minutes.from.now
+    </div>     
+    
+    <div class="step big" style="width: 1800px;text-align: center;" data-x="-3500" data-y="-6000" data-scale="3"> 
+        External vs Internal DSL
+    </div>
+    
+    <div class="step quote" style="text-align: left;" data-x="-4800" data-y="-5500" data-scale="2.0"  >
+        <blockquote><strong>External DSL</strong>: Own custom syntax => Full parser to process them.</blockquote>
+    </div>  
+    <div class="step" data-x="-4800" data-y="-5000" data-scale="2.0"  >
+        sample external dsl
+    </div>  
+    <div class="step quote" data-x="-2200" data-y="-5500" data-scale="2.0" >
+        <blockquote><strong>Internal DSL</strong>: Runnable code => Limitation in syntax?</blockquote>
+    </div> 
+    <div class="step" data-x="-2200" data-y="-5000" data-scale="2.0"  >
+        sample internal dsl
+    </div>  
+    
+    <div class="step big" data-x="-3500" data-y="-4500" data-scale="3"> 
+        Why using DSL?
+        <!-- ex of code full of boiler plate, zoom big on domain expert words -->
+    </div>
+    
+    <div class="step quote" data-x="-3800" data-y="-3500" data-scale="3" >
+        TO DO find example reg => less verbose
+        unix command
+    </div> 
+    
+    <div class="step quote" data-x="-2700" data-y="-3500" data-scale="3" >
+        unix command
+    </div>     
+    
+    <div class="step" data-x="7200" data-y="1400"> 
+        Spock
+    </div>
+    <div class="step" data-x="8100" data-y="1400"> 
+        Cucumber
+    </div>
+    <div class="step" data-x="9000" data-y="1400"> 
+        Jasmine
+    </div>
+    
+    <div class="step" data-x="9900" data-y="1400"> 
+        Why Groovy?
+        <!-- TO DO find stamp:  -->
+    </div>
+    
+    <div class="step" data-x="10100" data-y="1400"> 
+        Survey International Inc.
+        <!-- TO DO find female/male toilet sign  -->
+    </div>
+    
+    <div class="step" data-x="11000" data-y="1400"> 
+        Client Needs
+        <!-- TO DO draw a picture?  -->
+    </div>
+    
+    <div class="step" data-x="11910" data-y="1050" data-scale = "0.4"> 
+        Step1 : GroovyShell
+    </div>
+    
+    <div class="step slide" id="editor1" data-x="11900" data-y="1400" data-scale = "1">
+// Configure the GroovyShell.
+def shell = new GroovyShell()
+
+///////////////////////
+def surveyDSL = '''
+
+
+
+'''
+//////////////////////
+// Run DSL script.
+def result = shell.evaluate surveyDSL
+
+
+
+
+
+
+
+
+
+/*def ask(question) {
+    println question
+}
+ask "what is your name?"*/
+    </div>  
+ 
+    <pre class="step slide code general" id="output1" data-x="12600" data-y="1500" data-scale = "0.4">
+    </pre>
+    
+    <div class="step" data-x="13310" data-y="1400"> 
+        to remove boiler plate: scriptBaseClass
+    </div>
+    
+<div class="step slide" id="editor2" data-x="13300" data-y="1400" data-scale = "1">
+import org.codehaus.groovy.control.CompilerConfiguration
+
+// TODO
+// Configure the GroovyShell.
+def shell = new GroovyShell()
+
+///////////////////////
+def surveyDSL = '''
+//def ask(question) {
+//    println question
+//}
+ask "what is your name?"
+'''
+//////////////////////
+// Run DSL script.
+shell.evaluate surveyDSL
+
+
+
+
+
+
+/* abstract class SurveyScript1 extends Script {
+  def ask(question) {println question }
+}
+
+def compilerConfiguration = new CompilerConfiguration()
+compilerConfiguration.scriptBaseClass = SurveyScript1.class.name
+
+// Configure the GroovyShell.
+def shell = new GroovyShell(this.class.classLoader, new Binding(), compilerConfiguration) */
+
+    </div>  
+ 
+    <pre class="step slide code general" id="output2" data-x="14000" data-y="1500" data-scale = "0.4">
+    </pre>  
+    
+     <div class="step quote" data-x="14700" data-y="800"> 
+        Command chaining
+        <blockquote><strong>Method chaining is a common technique for invoking multiple method calls in object-oriented programming languages. Each method returns an object (possibly the current object itself), allowing the calls to be chained together in a single statement.</blockquote>
+        <div class="general quote-author">- wikipedia</div>   
+    </div>  
+
+    <div class="step slide" id="editor3" data-x="14700" data-y="1400" data-scale = "1">
+import org.codehaus.groovy.control.CompilerConfiguration
+
+abstract class SurveyScript extends Script {
+
+  //TODO refactor ask
+
+  def propertyMissing(def propertyName) {
+    propertyName
+  }
+}
+
+
+
+def compilerConfiguration = new CompilerConfiguration()
+compilerConfiguration.scriptBaseClass = SurveyScript.class.name
+
+def binding = new Binding()
+
+// Configure the GroovyShell.
+def shell = new GroovyShell(this.class.classLoader, binding, compilerConfiguration)
+
+///////////////////////
+def surveyDSL = '''
+
+ask "what is your name?" into name
+
+//def script = ask("what is your name?")
+//script.into(name)
+
+ask "what is your birthdate?" into date
+
+// TODO print questions, answers
+
+
+'''
+
+
+
+
+
+
+//TODO refactor ask
+/*
+  def i = 1;
+  def map = [:]
+
+  def ask(question) {
+    map["question$i"] = question
+    return this
+  }
+
+  def into(variable) {
+    map["variable$i"] = variable
+    i++
+  }
+*/  
+  
+  
+  // TODO print questions, answers
+/*  
+    println map
+  } 
+*/
+    </div>  
+ 
+    <pre class="step slide code general" id="output3" data-x="15300" data-y="1500" data-scale = "0.4">
+    </pre>  
+    
+    <div class="step " data-x="16000" data-y="800"> 
+        Command chaining
+        <pre>
+          method1 arg1 method2 arg2 -----------> method1(arg1).method2(arg2)
+          method1 arg1, arg2 method2 arg3 ---->method1 (arg1, arg2).method2(arg3)
+          method1
+        </pre>
+    </div> 
+    
+    <div class="step slide" id="editor4" data-x="16000" data-y="1400" data-scale = "1">
+ask "what is your name?" assign into name
+ask "what is your birthdate?" assign into date
+    </div>  
+ 
+    <div class="step slide code general"  data-x="16700" data-y="1500" data-scale = "0.4">
+      <div id="output4"></div>
+        <input type="text" id="answer"/>
+        <button id='submitButton' type="submit" name="submit">Submit</button>
+    </div>   
+      
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/ace-uncompressed-noconflict.js"></script>
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
+

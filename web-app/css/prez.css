@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+
+	.general {
+		font-size : 35px;
+	}
+  #editor1, #editor2, #editor3, #editor4, #editor5 { 
+        overflow: hidden;
+        padding:0px;
+        position: absolute;
+        width:800px;
+        height:600px;
+        line-height: 35px;
+        font-size: 30px;
+		    text-shadow: 0 0px 0px #000;
+    }
+    .code {
+    	font-family: monospace;
+    	white-space: pre-line;
+    }
+    .code-color {
+    	color: blue;
+    }
+    .personal-name {
+    	font-size:25px;
+    	font-style:italic;
+    }
+    .quote {
+    	text-align:justify;
+    	font-size:45px;
+    	font-style:italic;
+    	font-family:'Open Sans',sans-serif";
+    }
+    .bigger {
+    	font-size: 55px;
+    }
+    .blur {
+    	font-size:75px;
+    	color: rgba(255, 255, 255, 0);
+    	text-shadow: 0 0 5px #000;
+    }
+    .quote-author {
+    	style="text-align:right;
+    	font-weight:600;
+    }
