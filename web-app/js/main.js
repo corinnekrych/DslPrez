@@ -78,7 +78,8 @@ window.onload = function() {
     
 };
 function submitForm(input, output) { 
-//var url = "http://giveatry.cloudfoundry.com/console/execute?=";
+
+    //var url = "http://dslprez.cloudfoundry.com/console/execute?=";
 	var url = "http://localhost:8080/DslPrez/console/execute?="; 
 	$.post(url, {content : input}, function(data) {
 		var value = "";
@@ -93,6 +94,7 @@ function submitForm(input, output) {
 } 
 
 function submitDSLForm(scriptContent, output) { 
+	//var url = "http://dslprez.cloudfoundry.com/dslConsole/execute?=";
 	var url = "http://localhost:8080/DslPrez/dslConsole/execute?="; 
 	$.post(url, {content : scriptContent}, function(data) {
 		var value = "";

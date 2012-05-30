@@ -59,11 +59,11 @@
     <div class="step big" data-x="1200" data-y="-80">
         WHAT IS A <b>DSL</b>?
     </div> 
-    
+
     <div class="step quote" data-x="1200" data-y="170" >
         <blockquote><strong>Domain-specific language</strong> (noun): a computer programming language of limited expressiveness focused on a particular domain</blockquote>
         <div class="general quote-author">- Martin Fowler</div>
-    </div>  
+    </div> 
     
      <div class="step" style="font-size:16px;text-align:justify" data-x="800" data-y="420" data-scale="0.2" data-rotate="-90">
         <!--img alt="" src="images/mat.jpeg"-->
@@ -139,29 +139,64 @@
         lunch.willBe 50.minutes.from.now
     </div>     
     
-    <div class="step big" style="width: 1800px;text-align: center;" data-x="-3500" data-y="-6000" data-scale="3"> 
+    <div class="step big" style="width: 1800px;text-align: center;" data-x="-11000" data-y="-7200" data-rotate="45" data-scale="3">
+    <!--div class="step big" style="width: 1800px;text-align: center;" data-x="-3500" data-y="-6000" data-scale="3"--> 
         External vs Internal DSL
     </div>
     
-    <div class="step quote" style="text-align: left;" data-x="-4800" data-y="-5500" data-scale="2.0"  >
-        <blockquote><strong>External DSL</strong>: Own custom syntax => Full parser to process them.</blockquote>
+    <div class="step quote" style="text-align: left;" data-x="-11500" data-y="-6200" data-rotate="45" data-scale="0.5"  >
+        <img alt="" src="images/pix.jpeg">
     </div>  
     <div class="step" data-x="-4800" data-y="-5000" data-scale="2.0"  >
-        sample external dsl
+    <!-- http://www.thegeekstuff.com/2009/03/15-practical-unix-grep-command-examples/ 
+    http://www.thegeekstuff.com/2011/01/advanced-regular-expressions-in-grep-command-with-10-examples-%E2%80%93-part-ii/-->
+$ grep "lines.*empty" demo_file
+Two lines above this line is empty.
     </div>  
     <div class="step quote" data-x="-2200" data-y="-5500" data-scale="2.0" >
-        <blockquote><strong>Internal DSL</strong>: Runnable code => Limitation in syntax?</blockquote>
+      <!-- http://icons.mysitemyway.com/gallery/post/glossy-black-icons-alphanumeric/ -->
+      <!-- img alt="" src="images/bracket-curley.png"-->
+      <div style="font-size:500px">{}  ;)</div>
     </div> 
     <div class="step" data-x="-2200" data-y="-5000" data-scale="2.0"  >
-        sample internal dsl
+class HelloSpock extends spock.lang.Specification {
+    def "length of Spock's and his friends' names"() {
+        expect:
+        name.size() == length
+
+        where:
+        name     | length
+        "Spock"  | 5
+        "Kirk"   | 4
+        "Scotty" | 6
+    }
+} 
     </div>  
     
     <div class="step big" data-x="-3500" data-y="-4500" data-scale="3"> 
         Why using DSL?
+ <br><br>    
+<pre class="preCode">
+[condition][]There is an Account that {constraints} 
+= Account({constraints} )
+
+[condition][]has {field} equal to {value}
+={field} == {value}
+
+[condition][]and has {field} equal to {value}
+=, {field} == {value}
+</pre>
+<br>
+<pre class="general">
+There is an Account that has owner equal to null 
+and has balance equal to 100
+<br>
+</pre>
         <!-- ex of code full of boiler plate, zoom big on domain expert words -->
+        <!-- http://www.packtpub.com/article/human-readable-rules-with-drools-jboss-rules-part1 -->
     </div>
     
-    <div class="step quote" data-x="-3800" data-y="-3500" data-scale="3" >
+    <!--div class="step quote" data-x="-3800" data-y="-3500" data-scale="3" >
         TO DO find example reg => less verbose
         unix command
     </div> 
@@ -178,7 +213,7 @@
     </div>
     <div class="step" data-x="9000" data-y="1400"> 
         Jasmine
-    </div>
+    </div-->
     
     <div class="step" data-x="9900" data-y="1400"> 
         Why Groovy?
@@ -194,11 +229,7 @@
         Client Needs
         <!-- TO DO draw a picture?  -->
     </div>
-    
-    <div class="step" data-x="11910" data-y="1050" data-scale = "0.4"> 
-        Step1 : GroovyShell
-    </div>
-    
+       
     <div class="step slide" id="editor1" data-x="11900" data-y="1400" data-scale = "1">
 // Configure the GroovyShell.
 def shell = new GroovyShell()
@@ -229,10 +260,6 @@ ask "what is your name?"*/
  
     <pre class="step slide code general" id="output1" data-x="12600" data-y="1500" data-scale = "0.4">
     </pre>
-    
-    <div class="step" data-x="13310" data-y="1400"> 
-        to remove boiler plate: scriptBaseClass
-    </div>
     
 <div class="step slide" id="editor2" data-x="13300" data-y="1400" data-scale = "1">
 import org.codehaus.groovy.control.CompilerConfiguration
