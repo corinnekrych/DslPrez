@@ -15,8 +15,8 @@
         overflow: hidden;
         padding:0px;
         position: absolute;
-        width:800px;
-        height:600px;
+        width:1200px;
+        height:700px;
         line-height: 35px;
         font-size: 30px;
 		    text-shadow: 0 0px 0px #000;
@@ -39,7 +39,10 @@
     	font-family:'Open Sans',sans-serif";
     }
     .bigger {
-    	font-size: 55px;
+      font-size: 55px;
+    }
+    .smaller {
+      font-size: 35px;
     }
     .blur {
     	font-size:75px;

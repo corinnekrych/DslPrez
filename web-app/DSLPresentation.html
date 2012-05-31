@@ -299,9 +299,12 @@ def shell = new GroovyShell(this.class.classLoader, new Binding(), compilerConfi
     <pre class="step slide code general" id="output2" data-x="14000" data-y="1500" data-scale = "0.4">
     </pre>  
     
-     <div class="step quote" data-x="14700" data-y="800"> 
+    <div class="step big" data-x="14700" data-y="450">
         Command chaining
-        <blockquote><strong>Method chaining is a common technique for invoking multiple method calls in object-oriented programming languages. Each method returns an object (possibly the current object itself), allowing the calls to be chained together in a single statement.</blockquote>
+    </div> 
+
+     <div class="step quote" data-x="14700" data-y="770"> 
+        <blockquote><strong>Method chaining</strong> is a common technique for invoking multiple method calls in object-oriented programming languages. Each method returns an object (possibly the current object itself), allowing the calls to be chained together in a single statement.</blockquote>
         <div class="general quote-author">- wikipedia</div>   
     </div>  
 
@@ -376,9 +379,9 @@ ask "what is your birthdate?" into date
     
     <div class="step " data-x="16000" data-y="800"> 
         Command chaining
-        <pre>
-          method1 arg1 method2 arg2 -----------> method1(arg1).method2(arg2)
-          method1 arg1, arg2 method2 arg3 ---->method1 (arg1, arg2).method2(arg3)
+        <pre class="smaller">
+          method1 arg1 method2 arg2 --> method1(arg1).method2(arg2)
+          method1 arg1, arg2 method2 arg3 -->method1 (arg1, arg2).method2(arg3)
           method1
         </pre>
     </div> 
