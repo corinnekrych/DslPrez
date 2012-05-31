@@ -33,9 +33,73 @@ window.onload = function() {
       },
       exec: function() {
         var value = editor2.getSession().getValue();
+        value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
         submitForm(value, "#output2");
       }
     });
+
+    commands2.addCommand({
+        name: "step1",
+        bindKey: {
+        win: "1",
+        mac: "1",
+        sender: "editor2"
+      },
+      exec: function() {
+        var value = "abstract class SurveyScript extends Script {\n" +
+	                "  def ask  = {String question -> println question }\n" +
+                    "}";
+        editor2.gotoLine(1);
+        editor2.insert(value);
+      }
+    });   
+    
+    commands2.addCommand({
+        name: "step2",
+        bindKey: {
+        win: "2",
+        mac: "2",
+        sender: "editor2"
+      },
+      exec: function() {
+        editor2.gotoLine(9);
+        editor2.removeLines();
+        editor2.removeLines();
+        editor2.removeLines();
+      }
+    }); 
+    
+    commands2.addCommand({
+        name: "step3",
+        bindKey: {
+        win: "3",
+        mac: "3",
+        sender: "editor2"
+      },
+      exec: function() {
+        var value = "def compilerConfiguration = new CompilerConfiguration()\n" +
+                    "compilerConfiguration.scriptBaseClass = SurveyScript.class.name\n" +
+                    "def binding = new Binding()\n";
+        editor2.gotoLine(5);
+        editor2.insert(value);
+      }
+    });     
+    
+    commands2.addCommand({
+        name: "step4",
+        bindKey: {
+        win: "4",
+        mac: "4",
+        sender: "editor2"
+      },
+      exec: function() {
+    	editor2.gotoLine(8);
+    	editor2.removeLines();
+        var value = "def shell = new GroovyShell(this.class.classLoader, binding, compilerConfiguration)\n"
+        editor2.gotoLine(8);
+        editor2.insert(value);
+      }
+    });   
     
     var editor3 = ace.edit("editor3");
     editor3.setTheme("ace/theme/clouds");

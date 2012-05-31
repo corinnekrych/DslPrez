@@ -252,33 +252,32 @@ def result = shell.evaluate surveyDSL
 
 
 
-/*def ask(question) {
+/*
+def ask(question) {
     println question
 }
-ask "what is your name?"*/
+ask "what is your name?"
+*/
     </div>  
  
     <pre class="step slide code general" id="output1" data-x="12600" data-y="1500" data-scale = "0.4">
     </pre>
     
 <div class="step slide" id="editor2" data-x="13300" data-y="1400" data-scale = "1">
-import org.codehaus.groovy.control.CompilerConfiguration
-
-// TODO
 // Configure the GroovyShell.
 def shell = new GroovyShell()
 
 ///////////////////////
 def surveyDSL = '''
-//def ask(question) {
-//    println question
-//}
+def ask(question) {
+    println question
+}
 ask "what is your name?"
+
 '''
 //////////////////////
 // Run DSL script.
-shell.evaluate surveyDSL
-
+def result = shell.evaluate surveyDSL
 
 
 
