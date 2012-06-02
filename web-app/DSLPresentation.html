@@ -185,32 +185,33 @@ and has balance equal to 100
         <!-- http://www.packtpub.com/article/human-readable-rules-with-drools-jboss-rules-part1 -->
     </div>
     
-    <div class="step" data-x="-200" data-y="600"> 
+    <div class="step" style="font-size:20px;" data-x="-200" data-y="600"> 
         Why Groovy?
         
-        <div id="syntax_sugar">syntax sugar</div>
-less ponctuation ; optional optional ()
-<br/>
-scripting 
-Binding
-no getter setter 
-map
-named parameters
-closure
-GString ‘ and “, '''
-public visibility
-return statement optional
-groovy truth
-operator overloading
-GroovyMarkup: builder pattern 
-method pointer
-runtime transformation MOP: 
-  Expando, Categories
-  methodMissing
-command chaining
-compile time transformation
-  AST transformation
-  CST transformation
+        <div id="whygroovy">
+<a rel="7">syntax sugar</a>
+<a rel="8">less ponctuation ; optional optional ()</a>
+<a rel="15">scripting </a>
+<a rel="7">Binding</a>
+<a rel="22">no getter setter</a> 
+<a rel="7">map</a>
+<a rel="7">named parameters</a>
+<a rel="6">closure</a>
+<a rel="7">GString ‘ and “, '''</a>
+<a rel="7">public visibility</a>
+<a rel="3">return statement optional</a>
+<a rel="7">groovy truth</a>
+<a rel="7">operator overloading</a>
+<a rel="4">GroovyMarkup: builder pattern</a> 
+<a rel="7">method pointer</a>
+<a rel="11">runtime transformation MOP:</a> 
+  <a rel="7">Expando, Categories</a>
+  <a rel="7">methodMissing</a>
+<a rel="12">command chaining</a>
+<a rel="7">compile time transformation</a>
+  <a rel="7">AST transformation</a>
+  <a rel="7">CST transformation</a>
+  </div>
     </div>
     
     <div class="step" data-x="-1500" data-y="-800"> 
@@ -354,7 +355,7 @@ shell.evaluate surveyDSL
 
   def into(variable) {
     map["variable$i"] = variable
-    i++
+    i++impress
   }
 
   def propertyMissing(def propertyName) {
@@ -398,15 +399,51 @@ shell.evaluate surveyDSL
         </pre>
     </div>  
     
-    <div class="step slide" id="editor5" data-x="19100" data-y="1400" data-scale = "1">
+    <div class="step slide" id="editor5" data-x="19100" data-y="1400" data-scale = "1">def configuration = new CompilerConfiguration()
+configuration.scriptBaseClass = SurveyScript.class.name
+
+def binding = new Binding()
+def shell = new GroovyShell(this.class.classLoader, binding, configuration)
+
+shell.evaluate  '''
+ask "what is your name?" assign into name
+ask "what is your birthdate?" assign into date
+'''
+
+abstract class SurveyScript extends Script {
+
+  def counter = 1;
+  def inputs = [:]
+  def variables = [:]
+  def questions = [:]
+  def SurveyScript() {
+    inputs.put("counter", counter)
+    inputs.put("variables",variables)
+    inputs.put("questions",questions)
+  }
+  def ask(question) {
+    [assign : { into ->
+        [:].withDefault {variable ->
+          inputs.variables["$inputs.counter"] = variable
+          inputs.questions["$inputs.counter"] = question
+          println inputs
+          inputs.counter++
+        }
+      }]
+  }
+
+  def propertyMissing(def propertyName) {
+    propertyName
+  }
+}
     </div>  
     <pre class="step slide code general" id="output5" data-x="19900" data-y="1500" data-scale = "0.4">
     </pre>     
     
-    <pre class="step" data-x="20700" data-y="1500" data-scale = "2">
+    <pre class="step" data-x="21500" data-y="1500" data-scale = "2">
     Special Thanks
     Fabrice Matrat
-    Tiago Frenandez
+    Tiago Fernandez
     
     Done with :
     Ace Editor
@@ -430,6 +467,7 @@ shell.evaluate surveyDSL
 <script src="js/main.js"></script>
 <script src="js/ace-uncompressed-noconflict.js"></script>
 <script src="js/impress.js"></script>
+<script src="js/jcloud.js"></script>
 <script>impress().init();</script>
 
 </body>

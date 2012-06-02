@@ -326,7 +326,20 @@ window.onload = function() {
 		},
 		exec : function() {
 			var value = editor5.getSession().getValue();
-			value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
+			value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
+			+"import org.codehaus.groovy.ast.*\n"
+			+"import org.codehaus.groovy.ast.expr.*\n"
+			+"import org.codehaus.groovy.ast.stmt.*\n"
+			+"import org.codehaus.groovy.classgen.GeneratorContext\n"
+			+"import org.codehaus.groovy.control.CompilationFailedException\n"
+			+"import org.codehaus.groovy.control.CompilePhase\n"
+			+"import org.codehaus.groovy.control.CompilerConfiguration\n"
+			+"import org.codehaus.groovy.control.SourceUnit\n"
+			+"import org.codehaus.groovy.control.customizers.*\n"
+			+"import org.codehaus.groovy.ast.builder.AstBuilder\n"
+			+"import org.codehaus.groovy.syntax.Token\n"
+			+"import org.codehaus.groovy.syntax.Types\n"
+			+"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n" + value;
 			submitForm(value, "#output5");
 		}
 	});
@@ -339,15 +352,127 @@ window.onload = function() {
 			sender : "editor5"
 		},
 		exec : function() {
-			editor5.gotoLine(31);
+			editor5.gotoLine(14);
 			editor5.removeLines();
 			editor5.removeLines();
-			var value = "ask \"what is your name?\" assign into name\nask \"what is your birthdate?\" assign into date\n"
+			editor5.removeLines();
+			editor5.removeLines();
+			editor5.removeLines();
+			editor5.removeLines();
+			editor5.removeLines();
+			editor5.removeLines();
+			editor5.removeLines();
+			editor5.gotoLine(5);
+			var value = "def counter = 1;\n" +
+						"def inputs = [:]\n" +
+						"def variables = [:]\n" +
+						"def questions = [:]\n" +
+						"inputs.put(\"counter\", counter)\n" +
+						"inputs.put(\"variables\",variables)\n" +
+						"inputs.put(\"questions\",questions)\n" +
+						"binding.setVariable(\"inputs\", inputs);\n\n";
 			editor5.insert(value);
 		}
 	});
 
-
+	commands5.addCommand({
+		name : "step2",
+		bindKey : {
+			win : "2",
+			mac : "2",
+			sender : "editor5"
+		},
+		exec : function() {
+			editor5.gotoLine(15);
+			var value = "shell.evaluate  '''\n" +
+						"ask \"what is your name?\" assign into name\n" +
+						"ask \"what is your birthdate?\" assign into date\n" +
+						"'''\n";
+						
+			editor5.insert(value);
+		}
+	});
+	
+	commands5.addCommand({
+		name : "step3",
+		bindKey : {
+			win : "3",
+			mac : "3",
+			sender : "editor5"
+		},
+		exec : function() {
+			editor5.gotoLine(2);
+			var value = "configuration.addCompilationCustomizers(new MyCustomizer())\n";
+			editor5.insert(value);
+		}
+	});	
+	
+	commands5.addCommand({
+		name : "step4",
+		bindKey : {
+			win : "4",
+			mac : "4",
+			sender : "editor5"
+		},
+		exec : function() {
+			editor5.gotoLine(25);
+			var value = "public class MyCustomizer extends CompilationCustomizer {\n" +
+"  def methodCalls = []\n\n" +
+"  public MyCustomizer() {\n" +
+"    super(CompilePhase.CONVERSION);\n" +
+"  }\n\n" +
+"  @Override\n" +
+"  public void call(final SourceUnit source, final GeneratorContext context, final ClassNode classNode) throws CompilationFailedException {\n" +
+"    def ast = source.getAST();\n" +
+"    def myClassNode\n" +
+"    BlockStatement runBlock\n" +
+"    ast.classes.each {\n" +
+"      myClassNode = it\n" +
+"      it.methods.each {\n" +
+"        if(it.code instanceof BlockStatement && it.name==\"run\"){\n" +
+"          runBlock = it.code\n" +
+"          runBlock.statements.each { methodCalls << it }\n" +
+"          runBlock = new BlockStatement()\n" +
+"          def dispatcherCall = new MethodCallExpression(\n" +
+"              new VariableExpression(\"this\"),\n" +
+"              new ConstantExpression(\"dispatch\"),\n" +
+"              new ArgumentListExpression([]))\n" +
+"          runBlock.addStatement(new ReturnStatement(dispatcherCall))\n" +
+"          it.code=runBlock\n" +
+"        }\n" +
+"      }\n\n" +
+"      //let's create the methods\n" +
+"      def step = 0\n" +
+"      methodCalls.each{\n" +
+"        BlockStatement methodCodeBlock = new BlockStatement()\n" +
+"        methodCodeBlock.addStatement(it)\n" +
+"        myClassNode.addMethod(\"doStep_\" + step, 1, null,[] as Parameter[], [] as ClassNode[],\n" +
+"        methodCodeBlock)\n" +
+"        step++\n" +
+"      }\n" +
+"      runBlock = new BlockStatement()\n" +
+"    }\n" +
+"  }\n" +
+"}\n";
+			editor5.insert(value);
+		}
+	});	
+	
+	commands5.addCommand({
+		name : "step5",
+		bindKey : {
+			win : "5",
+			mac : "5",
+			sender : "editor5"
+		},
+		exec : function() {
+			editor5.gotoLine(83);
+			var value = "\n  void dispatch() {\n" +
+"    this.class.getMethod(\"doStep_$inputs.counter\").invoke(this)\n" +
+"  }\n";
+			editor5.insert(value);
+		}
+	});	
 }
 	
 function submitForm(input, output) {
@@ -362,7 +487,14 @@ function submitForm(input, output) {
 			value = data.result;
 		} else {
 			value = data.stacktrace;
-		}
+		}$.fn.tagcloud.defaults = {
+				  size: {start: 14, end: 18, unit: 'pt'},
+				  color: {start: '#cde', end: '#f52'}
+				};
+
+				$(function () {
+				  $('#whatever a').tagcloud();
+				});
 		$(output).text(value);
 		impress().next();
 	});
@@ -414,3 +546,12 @@ $('#submitButton').bind('click', function() {
 		$("#output4").text(inputs.questions[inputs.counter - 1]);
 	});
 });
+
+$.fn.tagcloud.defaults = {
+		  size: {start: 14, end: 18, unit: 'pt'},
+		  color: {start: '#cde', end: '#f52'}
+		};
+
+		$(function () {
+		  $('#whygroovy a').tagcloud();
+		});
