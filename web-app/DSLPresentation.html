@@ -136,12 +136,14 @@
     <div class="step quote" style="text-align: left;" data-x="-10400" data-y="2200" data-scale="0.5"  >
         <img alt="" src="images/pix.jpeg">
     </div>  
-    <div class="step" data-x="-10400" data-y="2400" data-scale="0.5"  >
-    <!-- http://www.thegeekstuff.com/2009/03/15-practical-unix-grep-command-examples/ 
-    http://www.thegeekstuff.com/2011/01/advanced-regular-expressions-in-grep-command-with-10-examples-%E2%80%93-part-ii/-->
-$ grep "lines.*empty" demo_file
-Two lines above this line is empty.
-    </div>  
+    <pre class="step code smaller" style="width:1100px" data-x="-10400" data-y="2400" data-scale="0.5"  >
+$ echo “ls -l” | at midnight
+warning: commands will be executed using /bin/sh
+job 1 at Mon Jun  4 00:00:00 2012
+    
+$ seq -f '4/%g' 1 2 99999 | paste -sd-+ | bc -l
+3.14157265358979523735
+    </pre>  
     <div class="step quote" data-x="-9600" data-y="2200" data-scale="0.5" >
       <!-- http://icons.mysitemyway.com/gallery/post/glossy-black-icons-alphanumeric/ -->
       <!-- img alt="" src="images/bracket-curley.png"-->
@@ -185,39 +187,41 @@ and has balance equal to 100
         <!-- http://www.packtpub.com/article/human-readable-rules-with-drools-jboss-rules-part1 -->
     </div>
     
-    <div class="step" style="font-size:20px;" data-x="-200" data-y="600"> 
-        Why Groovy?
+    <div class="step big" style="width:1200px"data-x="-200" data-y="600"> 
+        Why <b>Groovy</b>?
         
-        <div id="whygroovy">
-<a rel="7">syntax sugar</a>
-<a rel="8">less ponctuation ; optional optional ()</a>
-<a rel="15">scripting </a>
-<a rel="7">Binding</a>
-<a rel="22">no getter setter</a> 
-<a rel="7">map</a>
-<a rel="7">named parameters</a>
-<a rel="6">closure</a>
-<a rel="7">GString ‘ and “, '''</a>
-<a rel="7">public visibility</a>
-<a rel="3">return statement optional</a>
-<a rel="7">groovy truth</a>
-<a rel="7">operator overloading</a>
-<a rel="4">GroovyMarkup: builder pattern</a> 
-<a rel="7">method pointer</a>
-<a rel="11">runtime transformation MOP:</a> 
-  <a rel="7">Expando, Categories</a>
-  <a rel="7">methodMissing</a>
-<a rel="12">command chaining</a>
-<a rel="7">compile time transformation</a>
-  <a rel="7">AST transformation</a>
-  <a rel="7">CST transformation</a>
+<div id="wordcloud" style="height:650px;width:1100px;">	
+<span data-weight="9">syntax sugar</span>
+<span data-weight="7">less punctuation: optional semicolon, parentheses</span>
+<span data-weight="5">scripting </span>
+<span data-weight="7">binding</span>
+<span data-weight="10">no getter setter</span> 
+<span data-weight="7">map</span>
+<span data-weight="8">named parameters</span>
+<span data-weight="6">closure</span>
+<span data-weight="4">GString</span>
+<span data-weight="3">public visibility</span>
+<span data-weight="3">return statement optional</span>
+<span data-weight="7">groovy truth</span>
+<span data-weight="11">operator overloading</span>
+<span data-weight="4">GroovyMarkup</span> 
+<span data-weight="7">method pointer</span>
+<span data-weight="11">runtime transformation</span> 
+<span data-weight="9">MOP</span> 
+  <span data-weight="7">Expando</span>
+  <span data-weight="7">Categories</span>
+  <span data-weight="7">methodMissing</span>
+<span data-weight="12">command chaining</span>
+<span data-weight="7">compile time transformation</span>
+  <span data-weight="7">AST transformation</span>
+  <span data-weight="7">CST transformation</span>
   </div>
     </div>
     
     <div class="step" data-x="-1500" data-y="-800"> 
         <img style="width:800px" src="images/surveylogo.png">
-        <img style="width:100px;float: left;" src="images/nerd.png">
-        <img style="width:100px;float: right;" src="images/legobusinesswoman.png">
+        <img style="width:100px;float: left;padding-left: 200px;padding-top: 100px;" src="images/nerd.png">
+        <img style="width:100px;float: right;padding-right: 200px;padding-top: 100px;" src="images/legobusinesswoman.png">
     </div>
     
     <div class="step" data-x="400" data-y="-3200"> 
@@ -225,7 +229,7 @@ and has balance equal to 100
         <img style="width:800px" src="images/ClientNeeds.png">
     </div>
        
-    <div class="step slide" id="editor1" data-x="11900" data-y="1400" data-scale = "1">
+    <div class="step" id="editor1" data-x="15000" data-y="1400" data-scale = "1">
 // Configure the GroovyShell.
 def shell = new GroovyShell()
 
@@ -255,10 +259,10 @@ ask "what is your name?"
 */
     </div>  
  
-    <pre class="step slide code general" id="output1" data-x="12700" data-y="1500" data-scale = "0.4">
+    <pre class="step slide code general" id="output1" data-x="15800" data-y="1500" data-scale = "0.4">
     </pre>
     
-<div class="step slide" id="editor2" data-x="13500" data-y="1400" data-scale = "1">
+<div class="step slide" id="editor2" data-x="16600" data-y="1400" data-scale = "1">
 // Configure the GroovyShell.
 def shell = new GroovyShell()
 
@@ -292,19 +296,19 @@ def shell = new GroovyShell(this.class.classLoader, new Binding(), compilerConfi
 
     </div>  
  
-    <pre class="step slide code general" id="output2" data-x="14300" data-y="1500" data-scale = "0.4">
+    <pre class="step slide code general" id="output2" data-x="17400" data-y="1500" data-scale = "0.4">
     </pre>  
     
-    <div class="step big" data-x="15100" data-y="450">
+    <div class="step big" data-x="18200" data-y="450">
         Command chaining
     </div> 
 
-     <div class="step quote" data-x="15100" data-y="770"> 
-        <blockquote><strong>Method chaining</strong> is a common technique for invoking multiple method calls in object-oriented programming languages. Each method returns an object (possibly the current object itself), allowing the calls to be chained together in a single statement.</blockquote>
-        <div class="general quote-author">- wikipedia</div>   
+     <div class="step quote" data-x="18200" data-y="670"> 
+        <blockquote style="font-size:25px;font-style:italic"><strong>Method chaining</strong> is a common technique for invoking multiple method calls in object-oriented programming languages. Each method returns an object (possibly the current object itself), allowing the calls to be chained together in a single statement.</blockquote>
+        <div class="general quote-author">- wikipedia</div>  
     </div>  
 
-    <div class="step slide" id="editor3" data-x="15100" data-y="1400" data-scale = "1">abstract class SurveyScript extends Script {
+    <div class="step slide" id="editor3" data-x="18200" data-y="1400" data-scale = "1">abstract class SurveyScript extends Script {
   def ask(question) {  
     println question  
   }
@@ -327,23 +331,35 @@ ask "what is your name?"
 shell.evaluate surveyDSL
     </div>  
  
-    <pre class="step slide code general" id="output3" data-x="15900" data-y="1500" data-scale = "0.4">
+    <pre class="step slide code general" id="output3" data-x="19000" data-y="1500" data-scale = "0.4">
     </pre>  
+       
     
-    <div class="step " data-x="16700" data-y="800"> 
-        Command chaining
-        <pre class="smaller" style="text-align:left;">
-  method1 arg1 method2 arg2 --> method1(arg1).method2(arg2)
-  method1 arg1, arg2 method2 arg3 -->method1 (arg1, arg2).method2(arg3)
-  method1
-  
-  also used map
-  
-  with tricks like silent word or withdefault deal with odd numbers
-        </pre>
+    <div class="step " data-x="19800" data-y="400"> 
+    Command Chaining Examples
+    </div>
+    <div class="step " data-x="19800" data-y="450" data-scale="1.2"> 
+        <div style="width:1200px;font-size:30px;text-align:left;">
+          <div>method1 arg1 method2 arg2       => method1(arg1).method2(arg2);</div> 
+        </div>
     </div> 
-    
-    <div class="step slide" id="editor4" data-x="16700" data-y="1400" data-scale = "1">abstract class SurveyScript extends Script {
+     <div class="step " data-x="19800" data-y="500" data-scale="1.2">   
+         <div style="width:1200px;font-size:30px;text-align:left;">
+          <div>method1 arg1, arg2 method2 arg3 => method1(arg1, arg2).method2(arg3);</div>
+        </div>
+     </div> 
+     <div class="step " data-x="19800" data-y="550" data-scale="1.2">   
+         <div style="width:1200px;font-size:30px;text-align:left;">
+          <div>method1 arg1, k1: v1, arg2, k2: v2 => method1(arg1, [k1: v1], arg2, [k2:v2]);</div>
+        </div>
+     </div>  
+     <div class="step " data-x="19800" data-y="600" data-scale="1.2">   
+         <div style="width:1200px;font-size:30px;text-align:left;">
+          <div>method1 arg1 method2 arg3 return1 => method1(arg1).method2(args3).return1;</div>
+        </div>
+     </div>            
+     
+    <div class="step slide" id="editor4" data-x="19800" data-y="1400" data-scale = "1">abstract class SurveyScript extends Script {
 
   def i = 1;
   def map = [:]
@@ -382,24 +398,14 @@ println map
 // Run DSL script.
 shell.evaluate surveyDSL
     </div>  
-    <pre class="step slide code general" id="output4" data-x="17500" data-y="1500" data-scale = "0.4">
+    <pre class="step slide code general" id="output4" data-x="20600" data-y="1500" data-scale = "0.4">
     </pre>  
   
-    <div class="step " data-x="18300" data-y="800"> 
-        User Transformation
-        <pre class="smaller" style="text-align:left;">
-
-        </pre>
+     <div class="step quote" data-x="21400" data-y="550"> 
+		<img style="width:500px" src="images/dslsequence.png">
     </div>  
-    
-     <div class="step " data-x="18500" data-y="1000" data-scale="0.2"> 
-        User Transformation1
-        <pre class="smaller" style="text-align:left;">
 
-        </pre>
-    </div>  
-    
-    <div class="step slide" id="editor5" data-x="19100" data-y="1400" data-scale = "1">def configuration = new CompilerConfiguration()
+    <div class="step slide" id="editor5" data-x="21400" data-y="1400" data-scale = "1">def configuration = new CompilerConfiguration()
 configuration.scriptBaseClass = SurveyScript.class.name
 
 def binding = new Binding()
@@ -437,18 +443,48 @@ abstract class SurveyScript extends Script {
   }
 }
     </div>  
-    <pre class="step slide code general" id="output5" data-x="19900" data-y="1500" data-scale = "0.4">
+    <pre class="step slide code general" id="output5" data-x="22200" data-y="1500" data-scale = "0.4">
     </pre>     
     
-    <pre class="step" data-x="21500" data-y="1500" data-scale = "2">
-    Special Thanks
-    Fabrice Matrat
-    Tiago Fernandez
+    <div id="editor6" class="step" data-x="23000" data-y="1500" data-scale = "1">
+    </div>
     
-    Done with :
-    Ace Editor
-    Impress.js    
-    </pre>  
+    <!-- id:1, action:run, controller:survey
+         id:1, lastAssignement:name, counter:1, answer:jjjjj, answerMap:{}, action:run, controller:survey -->
+    <div  class="step slide code" style="width:1100px;font-size: 25px;" id="output6" data-x="23840" data-y="1500" data-scale = "0.4">
+    <pre id="scriptContent"></pre>
+    <div class="surveystart" id="displayQuestion"></div>
+    <input class="surveystart" id="answer"></input>
+    <button class="surveystart" id="submitButton" name="Run">Next</button>
+    </div>
+    
+    <div class="step" data-x="-1700" data-y="500" data-scale = "1.5">
+    <div style="float:left;width:500px;">
+	    <div style="font-size:30px;font-weight:bold">Like the presentation format?</div> 
+	    <div id="technologies" style="font-size:30px;"></div>
+	        
+	    <div style="font-size:30px;font-weight:bold">Curious about code?</div>
+	    <a href="https://github.com/corinnekrych/DslPrez" style="font-size:20px;">https://github.com/corinnekrych/DslPrez</a>
+	
+	    <div style="font-size:30px;font-weight:bold">Want to play with it?</div>
+	    <a href='http://dslprez.cloudfoundry.com/DSLPresentation.html' style="font-size:20px;">http://dslprez.cloudfoundry.com/DSLPresentation.html</a>
+	    <a href='http://surveyinc.cloudfoundry.com/' style="font-size:20px;">http://surveyinc.cloudfoundry.com/</a>
+    </div>
+    
+    <div style="float:right;width:300px;">    
+	    <div style="font-size:30px;font-weight:bold">Special Thanks</div>
+	    <div style="font-size:20px;">Fabrice Matrat</div>
+	    <div style="font-size:20px;">Tiago Fernandez </div> 
+	       
+	    <div style="font-size:30px;font-weight:bold">References</div>
+	    <div style="font-size:20px;">Domain-Specific Languages</div>
+	    <div style="font-size:20px;font-style:italic">Martin Fowler, with Rebecca Parsons</div>
+	    <div style="font-size:20px;">Groovy for Domain-Specific Languages  </div>
+	    <div style="font-size:20px;font-style:italic">Fergal Dearle</div>
+	    <div style="font-size:20px;">Groovy in Action</div>
+	    <div style="font-size:20px;font-style:italic">Guillaume Laforge, Paul King, Jon Skeet </div>
+    </div>
+    </div> 
  
       
     <div class="step" data-x="0" data-y="0" data-scale="30">
@@ -456,18 +492,19 @@ abstract class SurveyScript extends Script {
         <img style="float:left;width:500px" alt="" src="images/rivierargug.png">
         <div style="float:right;width:320px">
           <span class="try bigger">Building a Groovy DSL</span><br/>
-          <h1>{demo}</h1><br/>
+          <h1>{with user interaction}</h1><br/>
           <div class="personal-name">Corinne Krych</div>
-          <div class="personal-name">Sebastien Blanc</div><br/>
+          <div class="personal-name">Sébastien Blanc</div><br/>
           <div class="general" >Riviera GUG</div>
         </div>
     </div>  
 
 <script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jcloud.js"></script>
+<script src="js/jquery.airport-1.1.source.js"></script>
 <script src="js/main.js"></script>
 <script src="js/ace-uncompressed-noconflict.js"></script>
 <script src="js/impress.js"></script>
-<script src="js/jcloud.js"></script>
 <script>impress().init();</script>
 
 </body>

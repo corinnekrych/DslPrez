@@ -468,16 +468,78 @@ window.onload = function() {
 		exec : function() {
 			editor5.gotoLine(83);
 			var value = "\n  void dispatch() {\n" +
-"    this.class.getMethod(\"doStep_$inputs.counter\").invoke(this)\n" +
-"  }\n";
-			editor5.insert(value);
+			"    this.class.getMethod(\"doStep_$inputs.counter\").invoke(this)\n" +
+			"  }\n";
+		    editor5.insert(value);
 		}
-	});	
+	});
+	
+	
+	var editor6 = ace.edit("editor6");
+	editor6.setTheme("ace/theme/clouds");
+	editor6.getSession().setMode("ace/mode/groovy");
+
+	var commands6 = editor6.commands;
+
+	commands6.addCommand({
+		name : "save6",
+		bindKey : {
+			win : "Ctrl-S",
+			mac : "Command-S",
+			sender : "editor6"
+		},
+		exec : function() {
+			var value = editor6.getSession().getValue();
+			var title = $('#titleCreate').val();			
+			submitCreateForm(title, value, "#output6");
+		}
+	});
+	
+	commands6.addCommand({
+		name : "step",
+		bindKey : {
+			win : "1",
+			mac : "1",
+			sender : "editor6"
+		},
+		exec : function() {
+			var value = editor6.getSession().getValue();
+			var value = "ask \"Tell us about yourself?\" assign to presentation\n" +
+"ask \"What will you be speaking about at GR8Conf?\" assign to talkContent\n" +
+"ask \"How did you get started with Groovy?\" assign to groovyStart\n" +
+"ask \"What other sessions would you attend at GR8Conf?\" assign to session\n" +
+"ask \"What else can you tell the reader?\" assign to message\n"; 
+			editor6.insert(value);
+		}
+	});
+	
+	
+
 }
 	
+function submitCreateForm(title, input, output) {
+	var url = "http://localhost:8080/DslPrez/survey/create?=";
+	//var url = "http://dslprez.cloudfoundry.com/DslPrez/survey/create?=";
+	$.post(url, {
+		title:"myScript", content:input
+	},function (data) {
+		$("#displayQuestion").removeData();
+		$('.displayAnswer').remove();
+		$(".surveystart").show();
+		$("#displayQuestion").data('scriptId',data.id);
+		$("#displayQuestion").data('scriptContent',data.content);
+		$('#scriptContent').text(data.content)
+		$('#submitButton').click();
+	});
+}
+
+
+
+
+		
 function submitForm(input, output) {
 
-	// var url = "http://dslprez.cloudfoundry.com/console/execute?=";
+	//var url = "http://dslprez.cloudfoundry.com/console/execute?=";
 	var url = "http://localhost:8080/DslPrez/console/execute?=";
 	$.post(url, {
 		content : input
@@ -487,71 +549,62 @@ function submitForm(input, output) {
 			value = data.result;
 		} else {
 			value = data.stacktrace;
-		}$.fn.tagcloud.defaults = {
-				  size: {start: 14, end: 18, unit: 'pt'},
-				  color: {start: '#cde', end: '#f52'}
-				};
-
-				$(function () {
-				  $('#whatever a').tagcloud();
-				});
+		}
 		$(output).text(value);
 		impress().next();
 	});
 }
 
-function submitDSLForm(scriptContent, output) {
-	// var url = "http://dslprez.cloudfoundry.com/dslConsole/execute?=";
-	var url = "http://localhost:8080/DslPrez/dslConsole/execute?=";
-	$.post(url, {
-		content : scriptContent
-	}, function(data) {
-		var value = "";
-		var inputs = {}
-
-		if (data.stacktrace === "" || data.stacktrace.buffer !== undefined) {
-			value = data.result;
-			inputs = data.inputs;
-
-		} else {
-			value = data.stacktrace;
-		}
-		$(output).text(inputs.questions[inputs.counter - 1]);
-		$("#output4").data('inputs', inputs);
-		$("#output4").data('scriptContent', scriptContent);
-		impress().next();
-	});
-}
+// id:1, action:run, controller:survey
+// id:1, lastAssignement:name, counter:1, answer:jjjjj, answerMap:{}, action:run, controller:survey -->
 
 $('#submitButton').bind('click', function() {
 	var answer = $('#answer').val();
-	var inputs = $("#output4").data('inputs');
-	inputs.answers[inputs.counter - 1] = answer;
-	var scriptContent = $("#output4").data('scriptContent');
-
-	var url = "http://localhost:8080/DslPrez/dslConsole/execute?=";
+	$('#answer').val('');
+	var answerMap = $("#displayQuestion").data('answerMap');
+	var scriptId = $("#displayQuestion").data('scriptId');
+	var counter = $("#displayQuestion").data('counter');
+	var lastAssignement = $("#displayQuestion").data('lastAssignement');
+	if (answerMap)
+	  answerMap[lastAssignement] = answer;
+	var stringAnswerMap = JSON.stringify(answerMap)
+	var url = "http://localhost:8080/DslPrez/survey/run?=";
+	//var url = "http://dslprez.cloudfoundry.com/survey/run?=";
+	
 	$.post(url, {
-		content : scriptContent,
-		inputs : inputs
+		scriptId:scriptId, lastAssignement:lastAssignement, counter:counter, answer:answer, answerMap:stringAnswerMap
 	}, function(data) {
-		var value = "";
-		var inputs = {}
-		if (data.stacktrace === "" || data.stacktrace.buffer !== undefined) {
-			value = data.result;
-			inputs = data.inputs;
 
+		var answerMap = data.answerMap;
+		var counter= data.counter;
+		var lastAssignement = data.lastAssignement;
+		$("#displayQuestion").data('answerMap',answerMap);
+		$("#displayQuestion").data('counter',counter);
+		$("#displayQuestion").data('lastAssignement',lastAssignement);
+		if(data.finished==true) {
+			var index = 1;
+			$(".surveystart").hide();
+			for (answer in answerMap) {
+				var output6Value = '<div class="displayAnswer">For variable ' + answer +', answer is '+answerMap[answer] +'</div>';
+			  $("#output6").append(output6Value);
+			  index++;
+			}
 		} else {
-			value = data.stacktrace;
+			$("#displayQuestion").text(data.question);
 		}
-		$("#output4").text(inputs.questions[inputs.counter - 1]);
 	});
 });
 
-$.fn.tagcloud.defaults = {
-		  size: {start: 14, end: 18, unit: 'pt'},
-		  color: {start: '#cde', end: '#f52'}
-		};
+var settings = {
+        "size" : {
+            "grid" : 8
+        },
+        "options" : {
+            "color" : "random-dark",
+            "printMultiplier" : 3
+        },
+        "shape" : "square"
+    }
+$("#wordcloud").awesomeCloud( settings );
 
-		$(function () {
-		  $('#whygroovy a').tagcloud();
-		});
+$("#technologies").airport([ 'impress.js', 'grails', 'Ace editor', 'jQuery' ]);

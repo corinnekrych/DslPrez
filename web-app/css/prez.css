@@ -5,13 +5,13 @@
 
 .preCode {
     font-family: Courier,'Courier New',sans-serif;
-    font-size:35px;
+    font-size:33px;
 }
 /********************************************************************** */
 	.general {
 		font-size : 35px;
 	}
-  #editor1, #editor2, #editor3, #editor4, #editor5 { 
+  #editor1, #editor2, #editor3, #editor4, #editor5, #editor6 { 
         overflow: hidden;
         padding:0px;
         position: absolute;
@@ -42,7 +42,7 @@
       font-size: 55px;
     }
     .smaller {
-      font-size: 30px;
+      font-size: 35px;
     }
     .blur {
     	font-size:75px;
