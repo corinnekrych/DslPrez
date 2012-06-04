@@ -50,7 +50,7 @@ window.onload = function() {
 		},
 		exec : function() {
 			var value = "abstract class SurveyScript extends Script {\n"
-					+ "  def ask  = {String question -> println question }\n"
+					+ "  def ask  = {question -> println question }\n"
 					+ "}";
 			editor2.gotoLine(1);
 			editor2.insert(value);
@@ -257,7 +257,7 @@ window.onload = function() {
 			editor4.gotoLine(31);
 			editor4.removeLines();
 			editor4.removeLines();
-			var value = "ask \"what is your name?\" assign into name\nask \"what is your birthdate?\" assign into date\n"
+			var value = "ask \"what is your name?\" assign to name\nask \"what is your birthdate?\" assign to date\n"
 			editor4.insert(value);
 		}
 	});
@@ -275,7 +275,7 @@ window.onload = function() {
 			editor4.removeLines();
 			editor4.removeLines();
 			editor4.removeLines();
-			var value = "  def assign(into) {\n  }\n"
+			var value = "  def assign(to) {\n  }\n"
 			editor4.insert(value);
 		}
 	});
@@ -289,7 +289,7 @@ window.onload = function() {
 		},
 		exec : function() {
 			editor4.gotoLine(12);
-			var value = "    [:].withDefault { variable ->\n      map[\"variable$j\"] = variable\n      j++\n    }\n";
+			var value = "    [:].withDefault { }\n";
 			editor4.insert(value);
 		}
 	});
@@ -302,6 +302,10 @@ window.onload = function() {
 			sender : "editor4"
 		},
 		exec : function() {
+			editor4.gotoLine(12);
+			editor4.removeLines();
+			var value = "    [:].withDefault { variable ->\n      map[\"variable$j\"] = variable\n      j++\n    }\n";
+			editor4.insert(value);
 			editor4.gotoLine(4);
 			var value = "  def j = 1\n"
 			editor4.insert(value);
@@ -352,29 +356,12 @@ window.onload = function() {
 			sender : "editor5"
 		},
 		exec : function() {
-			editor5.gotoLine(14);
-			editor5.removeLines();
-			editor5.removeLines();
-			editor5.removeLines();
-			editor5.removeLines();
-			editor5.removeLines();
-			editor5.removeLines();
-			editor5.removeLines();
-			editor5.removeLines();
-			editor5.removeLines();
 			editor5.gotoLine(5);
-			var value = "def counter = 1;\n" +
-						"def inputs = [:]\n" +
-						"def variables = [:]\n" +
-						"def questions = [:]\n" +
-						"inputs.put(\"counter\", counter)\n" +
-						"inputs.put(\"variables\",variables)\n" +
-						"inputs.put(\"questions\",questions)\n" +
-						"binding.setVariable(\"inputs\", inputs);\n\n";
+			var value = "binding.setVariable(\"whichMeal\", \"What would you like to have for lunch?\")\n"
 			editor5.insert(value);
 		}
 	});
-
+	
 	commands5.addCommand({
 		name : "step2",
 		bindKey : {
@@ -383,102 +370,16 @@ window.onload = function() {
 			sender : "editor5"
 		},
 		exec : function() {
-			editor5.gotoLine(15);
-			var value = "shell.evaluate  '''\n" +
-						"ask \"what is your name?\" assign into name\n" +
-						"ask \"what is your birthdate?\" assign into date\n" +
-						"'''\n";
-						
+			editor5.gotoLine(12);
+			var value = "ask whichMeal assign into meal\n"
 			editor5.insert(value);
 		}
 	});
-	
-	commands5.addCommand({
-		name : "step3",
-		bindKey : {
-			win : "3",
-			mac : "3",
-			sender : "editor5"
-		},
-		exec : function() {
-			editor5.gotoLine(2);
-			var value = "configuration.addCompilationCustomizers(new MyCustomizer())\n";
-			editor5.insert(value);
-		}
-	});	
-	
-	commands5.addCommand({
-		name : "step4",
-		bindKey : {
-			win : "4",
-			mac : "4",
-			sender : "editor5"
-		},
-		exec : function() {
-			editor5.gotoLine(25);
-			var value = "public class MyCustomizer extends CompilationCustomizer {\n" +
-"  def methodCalls = []\n\n" +
-"  public MyCustomizer() {\n" +
-"    super(CompilePhase.CONVERSION);\n" +
-"  }\n\n" +
-"  @Override\n" +
-"  public void call(final SourceUnit source, final GeneratorContext context, final ClassNode classNode) throws CompilationFailedException {\n" +
-"    def ast = source.getAST();\n" +
-"    def myClassNode\n" +
-"    BlockStatement runBlock\n" +
-"    ast.classes.each {\n" +
-"      myClassNode = it\n" +
-"      it.methods.each {\n" +
-"        if(it.code instanceof BlockStatement && it.name==\"run\"){\n" +
-"          runBlock = it.code\n" +
-"          runBlock.statements.each { methodCalls << it }\n" +
-"          runBlock = new BlockStatement()\n" +
-"          def dispatcherCall = new MethodCallExpression(\n" +
-"              new VariableExpression(\"this\"),\n" +
-"              new ConstantExpression(\"dispatch\"),\n" +
-"              new ArgumentListExpression([]))\n" +
-"          runBlock.addStatement(new ReturnStatement(dispatcherCall))\n" +
-"          it.code=runBlock\n" +
-"        }\n" +
-"      }\n\n" +
-"      //let's create the methods\n" +
-"      def step = 0\n" +
-"      methodCalls.each{\n" +
-"        BlockStatement methodCodeBlock = new BlockStatement()\n" +
-"        methodCodeBlock.addStatement(it)\n" +
-"        myClassNode.addMethod(\"doStep_\" + step, 1, null,[] as Parameter[], [] as ClassNode[],\n" +
-"        methodCodeBlock)\n" +
-"        step++\n" +
-"      }\n" +
-"      runBlock = new BlockStatement()\n" +
-"    }\n" +
-"  }\n" +
-"}\n";
-			editor5.insert(value);
-		}
-	});	
-	
-	commands5.addCommand({
-		name : "step5",
-		bindKey : {
-			win : "5",
-			mac : "5",
-			sender : "editor5"
-		},
-		exec : function() {
-			editor5.gotoLine(83);
-			var value = "\n  void dispatch() {\n" +
-			"    this.class.getMethod(\"doStep_$inputs.counter\").invoke(this)\n" +
-			"  }\n";
-		    editor5.insert(value);
-		}
-	});
-	
-	
+
 	var editor6 = ace.edit("editor6");
 	editor6.setTheme("ace/theme/clouds");
 	editor6.getSession().setMode("ace/mode/groovy");
-
+	
 	var commands6 = editor6.commands;
 
 	commands6.addCommand({
@@ -490,26 +391,59 @@ window.onload = function() {
 		},
 		exec : function() {
 			var value = editor6.getSession().getValue();
+			value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
+			+"import org.codehaus.groovy.ast.*\n"
+			+"import org.codehaus.groovy.ast.expr.*\n"
+			+"import org.codehaus.groovy.ast.stmt.*\n"
+			+"import org.codehaus.groovy.classgen.GeneratorContext\n"
+			+"import org.codehaus.groovy.control.CompilationFailedException\n"
+			+"import org.codehaus.groovy.control.CompilePhase\n"
+			+"import org.codehaus.groovy.control.CompilerConfiguration\n"
+			+"import org.codehaus.groovy.control.SourceUnit\n"
+			+"import org.codehaus.groovy.control.customizers.*\n"
+			+"import org.codehaus.groovy.ast.builder.AstBuilder\n"
+			+"import org.codehaus.groovy.syntax.Token\n"
+			+"import org.codehaus.groovy.syntax.Types\n"
+			+"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n" + value;
+			submitForm(value, "#output6");
+		}
+	});
+
+	var editor7 = ace.edit("editor7");
+	editor7.setTheme("ace/theme/clouds");
+	editor7.getSession().setMode("ace/mode/groovy");
+
+	var commands7 = editor7.commands;
+
+	commands7.addCommand({
+		name : "save7",
+		bindKey : {
+			win : "Ctrl-S",
+			mac : "Command-S",
+			sender : "editor7"
+		},
+		exec : function() {
+			var value = editor7.getSession().getValue();
 			var title = $('#titleCreate').val();			
-			submitCreateForm(title, value, "#output6");
+			submitCreateForm(title, value, "#output7");
 		}
 	});
 	
-	commands6.addCommand({
+	commands7.addCommand({
 		name : "step",
 		bindKey : {
 			win : "1",
 			mac : "1",
-			sender : "editor6"
+			sender : "editor7"
 		},
 		exec : function() {
-			var value = editor6.getSession().getValue();
+			var value = editor7.getSession().getValue();
 			var value = "ask \"Tell us about yourself?\" assign to presentation\n" +
 "ask \"What will you be speaking about at GR8Conf?\" assign to talkContent\n" +
 "ask \"How did you get started with Groovy?\" assign to groovyStart\n" +
 "ask \"What other sessions would you attend at GR8Conf?\" assign to session\n" +
 "ask \"What else can you tell the reader?\" assign to message\n"; 
-			editor6.insert(value);
+			editor7.insert(value);
 		}
 	});
 	
@@ -519,7 +453,7 @@ window.onload = function() {
 	
 function submitCreateForm(title, input, output) {
 	var url = "http://localhost:8080/DslPrez/survey/create?=";
-	//var url = "http://dslprez.cloudfoundry.com/DslPrez/survey/create?=";
+	//var url = "http://dslprez.cloudfoundry.com/survey/create?=";
 	$.post(url, {
 		title:"myScript", content:input
 	},function (data) {
@@ -538,7 +472,6 @@ function submitCreateForm(title, input, output) {
 
 		
 function submitForm(input, output) {
-
 	//var url = "http://dslprez.cloudfoundry.com/console/execute?=";
 	var url = "http://localhost:8080/DslPrez/console/execute?=";
 	$.post(url, {
@@ -585,8 +518,8 @@ $('#submitButton').bind('click', function() {
 			var index = 1;
 			$(".surveystart").hide();
 			for (answer in answerMap) {
-				var output6Value = '<div class="displayAnswer">For variable ' + answer +', answer is '+answerMap[answer] +'</div>';
-			  $("#output6").append(output6Value);
+				var output7Value = '<div class="displayAnswer">For variable ' + answer +', answer is '+answerMap[answer] +'</div>';
+			  $("#output7").append(output7Value);
 			  index++;
 			}
 		} else {

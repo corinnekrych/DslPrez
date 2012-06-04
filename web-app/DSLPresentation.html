@@ -118,11 +118,11 @@
     </div> 
     
     <div class="step" data-x="0" data-y="1300">
-        prepare salade for lunch
+        prepare meal for lunch
     </div> 
     
    <div class="step" data-x="0" data-y="1400">
-        ['hamburger', 'ice cream'].each{eat it}
+        ['hamburger', 'salad'].each{cook it}
     </div> 
     
    <div class="step" data-x="0" data-y="1500">
@@ -277,23 +277,6 @@ ask "what is your name?"
 //////////////////////
 // Run DSL script.
 def result = shell.evaluate surveyDSL
-
-
-
-
-
-/*
-abstract class SurveyScript1 extends Script {
-  def ask(question) {println question }
-}
-
-def compilerConfiguration = new CompilerConfiguration()
-compilerConfiguration.scriptBaseClass = SurveyScript1.class.name
-
-// Configure the GroovyShell.
-def shell = new GroovyShell(this.class.classLoader, new Binding(), compilerConfiguration) 
-*/
-
     </div>  
  
     <pre class="step slide code general" id="output2" data-x="17400" data-y="1500" data-scale = "0.4">
@@ -340,7 +323,7 @@ shell.evaluate surveyDSL
     </div>
     <div class="step " data-x="19800" data-y="450" data-scale="1.2"> 
         <div style="width:1200px;font-size:30px;text-align:left;">
-          <div>method1 arg1 method2 arg2       => method1(arg1).method2(arg2);</div> 
+          <div>ask question into var       => ask(question).into(variable);</div> 
         </div>
     </div> 
      <div class="step " data-x="19800" data-y="500" data-scale="1.2">   
@@ -352,16 +335,17 @@ shell.evaluate surveyDSL
          <div style="width:1200px;font-size:30px;text-align:left;">
           <div>method1 arg1, k1: v1, arg2, k2: v2 => method1(arg1, [k1: v1], arg2, [k2:v2]);</div>
         </div>
-     </div>  
-     <div class="step " data-x="19800" data-y="600" data-scale="1.2">   
+     </div>   
+     <div class="step " data-x="19800" data-y="650" data-scale="1.2"> 
          <div style="width:1200px;font-size:30px;text-align:left;">
-          <div>method1 arg1 method2 arg3 return1 => method1(arg1).method2(args3).return1;</div>
+          <div>ask "question" assign to variable => ask("question").assign(to).variable;</div>
+          <div>withDefault method wrapper that intercepts all calls to get(key) assigning a default value</div>
+          <div>silent word technique for 'to'</div>
         </div>
-     </div>            
-     
+     </div>              
     <div class="step slide" id="editor4" data-x="19800" data-y="1400" data-scale = "1">abstract class SurveyScript extends Script {
 
-  def i = 1;
+  def i = 1
   def map = [:]
 
   def ask(question) {
@@ -371,7 +355,7 @@ shell.evaluate surveyDSL
 
   def into(variable) {
     map["variable$i"] = variable
-    i++impress
+    i++
   }
 
   def propertyMissing(def propertyName) {
@@ -405,34 +389,77 @@ shell.evaluate surveyDSL
 		<img style="width:500px" src="images/dslsequence.png">
     </div>  
 
-    <div class="step slide" id="editor5" data-x="21400" data-y="1400" data-scale = "1">def configuration = new CompilerConfiguration()
-configuration.scriptBaseClass = SurveyScript.class.name
+    <div class="step slide" id="editor5" data-x="21400" data-y="1400" data-scale = "1">def compilerConfiguration = new CompilerConfiguration()
+compilerConfiguration.scriptBaseClass = SurveyScript.class.name
 
 def binding = new Binding()
-def shell = new GroovyShell(this.class.classLoader, binding, configuration)
 
-shell.evaluate  '''
+// Configure the GroovyShell.
+def shell = new GroovyShell(this.class.classLoader, binding, compilerConfiguration)
+
+///////////////////////
+def surveyDSL = '''
 ask "what is your name?" assign into name
 ask "what is your birthdate?" assign into date
+println map
 '''
+//////////////////////
+// Run DSL script.
+shell.evaluate surveyDSL
 
 abstract class SurveyScript extends Script {
-
-  def counter = 1;
-  def inputs = [:]
-  def variables = [:]
-  def questions = [:]
-  def SurveyScript() {
-    inputs.put("counter", counter)
-    inputs.put("variables",variables)
-    inputs.put("questions",questions)
+  
+    def i = 1;
+    def map = [:]
+    def ask(question) {
+      [assign : { into ->
+          [:].withDefault {variable ->
+            map["question$i"] = question
+            map["variable$i"] = variable
+            i++
+          }
+        }]
+    }
+  
+    def propertyMissing(def propertyName) {
+      propertyName
+    }
   }
+
+    </div>  
+    <pre class="step slide code general" id="output5" data-x="22200" data-y="1500" data-scale = "0.4">
+    </pre>    
+    
+    <div class="step slide" id="editor6" data-x="23000" data-y="1400" data-scale = "1">def configuration = new CompilerConfiguration()
+configuration.addCompilationCustomizers(new MyCustomizer())
+configuration.scriptBaseClass = DSLBaseScript.name
+
+def binding = new Binding()
+def inputs = [:]
+def variables = [:]
+inputs.put("counter", 1)
+inputs.put("variables",variables)
+binding.setVariable("inputs", inputs);
+def shell = new GroovyShell(this.class.classLoader, binding, configuration)
+
+//first evaluate should run only ask
+shell.evaluate """
+ask "what is your name?" assign into name
+ask "what is your birthdate?" assign into date
+"""
+//second evaluate should run only ask2
+shell.evaluate """
+ask "what is your name?" assign into name
+ask "what is your birthdate?" assign into date
+"""
+
+abstract class DSLBaseScript extends Script {
+
   def ask(question) {
     [assign : { into ->
         [:].withDefault {variable ->
           inputs.variables["$inputs.counter"] = variable
-          inputs.questions["$inputs.counter"] = question
-          println inputs
+          println "ask called $inputs.counter and $inputs.variables"
           inputs.counter++
         }
       }]
@@ -441,17 +468,67 @@ abstract class SurveyScript extends Script {
   def propertyMissing(def propertyName) {
     propertyName
   }
+
+  void dispatch() {
+    this.class.getMethod("doStep_$inputs.counter").invoke(this)
+  }
+}
+public class MyCustomizer extends CompilationCustomizer {
+  def methodCalls = []
+
+
+  public MyCustomizer() {
+    super(CompilePhase.CONVERSION);
+  }
+
+  @Override
+  public void call(final SourceUnit source, final GeneratorContext context, final ClassNode classNode) throws CompilationFailedException {
+    def ast = source.getAST();
+    def myClassNode
+    BlockStatement runBlock
+    ast.classes.each {
+      myClassNode = it
+      it.methods.each {
+        if(it.code instanceof BlockStatement && it.name=="run"){
+
+          runBlock = it.code
+          runBlock.statements.each { 
+            methodCalls << it
+          }
+          runBlock = new BlockStatement()
+          
+          def dispatcherCall = new MethodCallExpression(
+              new VariableExpression("this"),
+              new ConstantExpression("dispatch"),
+              new ArgumentListExpression([]))
+          runBlock.addStatement(new ReturnStatement(dispatcherCall))
+          it.code=runBlock
+
+        }
+      }
+
+      //let's create the methods
+      def step = 0
+      methodCalls.each{
+        BlockStatement methodCodeBlock = new BlockStatement()
+        methodCodeBlock.addStatement(it)
+        myClassNode.addMethod("doStep_" + step, 1, null,[] as Parameter[],[] as ClassNode[],
+        methodCodeBlock)
+        step++
+      }
+      runBlock = new BlockStatement()
+    }
+  }
 }
     </div>  
-    <pre class="step slide code general" id="output5" data-x="22200" data-y="1500" data-scale = "0.4">
-    </pre>     
+    <pre class="step slide code general" id="output6" data-x="23800" data-y="1500" data-scale = "0.4">
+    </pre>      
     
-    <div id="editor6" class="step" data-x="23000" data-y="1500" data-scale = "1">
-    </div>
+    <div id="editor7" class="step" data-x="24600" data-y="1400" data-scale = "1"></div>
     
     <!-- id:1, action:run, controller:survey
          id:1, lastAssignement:name, counter:1, answer:jjjjj, answerMap:{}, action:run, controller:survey -->
-    <div  class="step slide code" style="width:1100px;font-size: 25px;" id="output6" data-x="23840" data-y="1500" data-scale = "0.4">
+    <div  class="step slide code" style="width:1100px;font-size: 25px;" id="output7" data-x="25440" data-y="1500" data-scale = "0.4">
     <pre id="scriptContent"></pre>
     <div class="surveystart" id="displayQuestion"></div>
     <input class="surveystart" id="answer"></input>
