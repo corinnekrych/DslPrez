@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <title>Building a Groovy DSL</title>
     <meta name="description" content="...." />
-    <meta name="author" content="Corinne Krych, Sebastien Blanc" />
+    <meta name="author" content="Corinne Krych, Fabrice Matrat" />
     <link href="css/impress-demo.css" rel="stylesheet" />
     <link href="css/prez.css" rel="stylesheet" />
 </head>
@@ -39,10 +39,10 @@
     </div> 
 
     <div class="step" data-x="-250" data-y="-80">
-        <p>Sébastien : my geek friend</p><br/>
-        <p class="general quote-author">@sebi2706</p>
-        <p class="general quote-author">scm.blanc@gmail.com</p>
-        <p class="general quote-author">https://github.com/sebastienblanc</p>
+        <p>Fabrice Matrat</p><br/>
+        <p class="general quote-author">@fabricematrat</p>
+        <p class="general quote-author">fabricematrat@gmail.com</p>
+        <p class="general quote-author">https://github.com/fabricematrat</p>
         <img style="float:right;width:320px" alt="" src="images/sebi.jpg">
     </div> 
 
@@ -149,7 +149,7 @@ $ seq -f '4/%g' 1 2 99999 | paste -sd-+ | bc -l
       <!-- img alt="" src="images/bracket-curley.png"-->
       <div style="font-size:200px">{}  ;)</div>
     </div> 
-    <pre class="step slide" style="width:800px" data-x="-9600" data-y="2500" data-scale="0.5"  >
+    <pre class="step slide" style="width:800px" data-x="-9600" data-y="2500" data-scale="0.5">
 <span style="color:#AF956F;">class</span> HelloSpock <span style="color:#AF956F;">extends</span> spock.lang.Specification {
     <span style="color:#AF956F;">def</span> <span style="color:#5D90CD;">"length of Spock's and his friends' names"</span>() {
         expect:
@@ -166,8 +166,8 @@ $ seq -f '4/%g' 1 2 99999 | paste -sd-+ | bc -l
     
     <div class="step big" data-x="-3500" data-y="-4500" data-scale="1.5"> 
         Why using DSL?
- <br><br>    
-<pre class="preCode">
+        <br/><br/>
+        <pre class="preCode">
 [condition][]There is an Account that {constraints} 
 = Account({constraints} )
 
@@ -176,46 +176,46 @@ $ seq -f '4/%g' 1 2 99999 | paste -sd-+ | bc -l
 
 [condition][]and has {field} equal to {value}
 =, {field} == {value}
-</pre>
-<br>
-<pre class="general">
+        </pre>
+        <br/>
+        <pre class="general">
 There is an Account that has owner equal to null 
 and has balance equal to 100
-<br>
-</pre>
+            <br/>
+        </pre>
         <!-- ex of code full of boiler plate, zoom big on domain expert words -->
         <!-- http://www.packtpub.com/article/human-readable-rules-with-drools-jboss-rules-part1 -->
     </div>
     
-    <div class="step big" style="width:1200px"data-x="-200" data-y="600"> 
+    <div class="step big" style="width:90%" data-x="-200" data-y="600">
         Why <b>Groovy</b>?
         
-<div id="wordcloud" style="height:650px;width:1100px;">	
-<span data-weight="9">syntax sugar</span>
-<span data-weight="7">less punctuation: optional semicolon, parentheses</span>
-<span data-weight="5">scripting </span>
-<span data-weight="7">binding</span>
-<span data-weight="10">no getter setter</span> 
-<span data-weight="7">map</span>
-<span data-weight="8">named parameters</span>
-<span data-weight="6">closure</span>
-<span data-weight="4">GString</span>
-<span data-weight="3">public visibility</span>
-<span data-weight="3">return statement optional</span>
-<span data-weight="7">groovy truth</span>
-<span data-weight="11">operator overloading</span>
-<span data-weight="4">GroovyMarkup</span> 
-<span data-weight="7">method pointer</span>
-<span data-weight="11">runtime transformation</span> 
-<span data-weight="9">MOP</span> 
-  <span data-weight="7">Expando</span>
-  <span data-weight="7">Categories</span>
-  <span data-weight="7">methodMissing</span>
-<span data-weight="12">command chaining</span>
-<span data-weight="7">compile time transformation</span>
-  <span data-weight="7">AST transformation</span>
-  <span data-weight="7">CST transformation</span>
-  </div>
+        <div id="wordcloud" style="height:60%;width:90%;">
+            <span data-weight="9">syntax sugar</span>
+            <span data-weight="7">less punctuation: optional semicolon, parentheses</span>
+            <span data-weight="5">scripting </span>
+            <span data-weight="7">binding</span>
+            <span data-weight="10">no getter setter</span>
+            <span data-weight="7">map</span>
+            <span data-weight="8">named parameters</span>
+            <span data-weight="6">closure</span>
+            <span data-weight="4">GString</span>
+            <span data-weight="3">public visibility</span>
+            <span data-weight="3">return statement optional</span>
+            <span data-weight="7">groovy truth</span>
+            <span data-weight="11">operator overloading</span>
+            <span data-weight="4">GroovyMarkup</span>
+            <span data-weight="7">method pointer</span>
+            <span data-weight="11">runtime transformation</span>
+            <span data-weight="9">MOP</span>
+            <span data-weight="7">Expando</span>
+            <span data-weight="7">Categories</span>
+            <span data-weight="7">methodMissing</span>
+            <span data-weight="12">command chaining</span>
+            <span data-weight="7">compile time transformation</span>
+            <span data-weight="7">AST transformation</span>
+            <span data-weight="7">CST transformation</span>
+        </div>
     </div>
     
     <div class="step" data-x="-1500" data-y="-800"> 
@@ -571,10 +571,11 @@ public class MyCustomizer extends CompilationCustomizer {
           <span class="try bigger">Building a Groovy DSL</span><br/>
           <h1>{with user interaction}</h1><br/>
           <div class="personal-name">Corinne Krych</div>
-          <div class="personal-name">Sébastien Blanc</div><br/>
+          <div class="personal-name">Fabrice Matrat</div><br/>
           <div class="general" >Riviera GUG</div>
         </div>
-    </div>  
+    </div>
+</div>
 
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/jcloud.js"></script>

@@ -1,7 +1,6 @@
 window.onload = function() {
-		  
-	
-	var editor1 = ace.edit("editor1");
+
+    var editor1 = ace.edit("editor1");
 	editor1.setTheme("ace/theme/clouds");
 	editor1.getSession().setMode("ace/mode/groovy");
 
@@ -100,7 +99,7 @@ window.onload = function() {
 				exec : function() {
 					editor2.gotoLine(8);
 					editor2.removeLines();
-					var value = "def shell = new GroovyShell(this.class.classLoader, binding, compilerConfiguration)\n"
+					var value = "def shell = new GroovyShell(this.class.classLoader, binding, compilerConfiguration)\n";
 					editor2.gotoLine(8);
 					editor2.insert(value);
 				}
@@ -219,7 +218,7 @@ window.onload = function() {
 					+ "    propertyName\n" + "  }\n";
 			editor3.insert(value);
 			editor3.gotoLine(29);
-			var value = "println map\n";
+			value = "println map\n";
 			editor3.insert(value);
 			editor3.scrollToRow(1);
 			editor3.setHighlightActiveLine(true);
@@ -357,7 +356,7 @@ window.onload = function() {
 		},
 		exec : function() {
 			editor5.gotoLine(5);
-			var value = "binding.setVariable(\"whichMeal\", \"What would you like to have for lunch?\")\n"
+			var value = "binding.setVariable(\"whichMeal\", \"What would you like to have for lunch?\")\n";
 			editor5.insert(value);
 		}
 	});
@@ -371,7 +370,7 @@ window.onload = function() {
 		},
 		exec : function() {
 			editor5.gotoLine(12);
-			var value = "ask whichMeal assign into meal\n"
+			var value = "ask whichMeal assign into meal\n";
 			editor5.insert(value);
 		}
 	});
@@ -437,7 +436,7 @@ window.onload = function() {
 			sender : "editor7"
 		},
 		exec : function() {
-			var value = editor7.getSession().getValue();
+			//var value = editor7.getSession().getValue();
 			var value = "ask \"Tell us about yourself?\" assign to presentation\n" +
 "ask \"What will you be speaking about at GR8Conf?\" assign to talkContent\n" +
 "ask \"How did you get started with Groovy?\" assign to groovyStart\n" +
@@ -449,7 +448,7 @@ window.onload = function() {
 	
 	
 
-}
+};
 	
 function submitCreateForm(title, input, output) {
 	var url = "http://localhost:8080/DslPrez/survey/create?=";
@@ -500,7 +499,7 @@ $('#submitButton').bind('click', function() {
 	var lastAssignement = $("#displayQuestion").data('lastAssignement');
 	if (answerMap)
 	  answerMap[lastAssignement] = answer;
-	var stringAnswerMap = JSON.stringify(answerMap)
+	var stringAnswerMap = JSON.stringify(answerMap);
 	var url = "http://localhost:8080/DslPrez/survey/run?=";
 	//var url = "http://dslprez.cloudfoundry.com/survey/run?=";
 	
@@ -537,7 +536,47 @@ var settings = {
             "printMultiplier" : 3
         },
         "shape" : "square"
-    }
+    };
 $("#wordcloud").awesomeCloud( settings );
 
 $("#technologies").airport([ 'impress.js', 'grails', 'Ace editor', 'jQuery' ]);
+
+
+function resizeAce1() {
+    return $('#editor1').height($(window).height()*0.8);
+}
+function resizeAce2() {
+    return $('#editor2').height($(window).height()*0.8);
+}
+function resizeAce3() {
+    return $('#editor3').height($(window).height()*0.8);
+}
+function resizeAce4() {
+    return $('#editor4').height($(window).height()*0.8);
+}
+function resizeAce5() {
+    return $('#editor5').height($(window).height()*0.8);
+}
+function resizeAce6() {
+    return $('#editor6').height($(window).height()*0.8);
+}
+function resizeAce7() {
+    return $('#editor7').height($(window).height()*0.8);
+}
+//listen for changes
+$(window).resize(resizeAce1);
+$(window).resize(resizeAce2);
+$(window).resize(resizeAce3);
+$(window).resize(resizeAce4);
+$(window).resize(resizeAce5);
+$(window).resize(resizeAce6);
+$(window).resize(resizeAce7);
+//set initially
+resizeAce7();
+resizeAce6();
+resizeAce5();
+resizeAce4();
+resizeAce3();
+resizeAce2();
+resizeAce1();
+
