@@ -18,9 +18,15 @@ def shell = new GroovyShell(this.class.classLoader, binding, configuration)
 shell.evaluate """
 ask "what is your name?" assign into name
 ask "what is your birthdate?" assign into date
+when true, {
+  ask "what is your meal?" assign into meal
+}
 """
 //second evaluate should run only ask2
 shell.evaluate """
 ask "what is your name?" assign into name
 ask "what is your birthdate?" assign into date
+when true, {
+  ask "what is your meal?" assign into meal
+}
 """
