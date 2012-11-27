@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="1" hostname="corinne-mbp.local" id="0" name="ConsoleTests" package="dslprez" tests="1" time="0.321" timestamp="2012-11-27T20:22:19">
+      <properties />
+
+      <testcase classname="dslprez.ConsoleTests" name="testSomething" time="0.303">
+          <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at dslprez.ConsoleTests.testSomething(ConsoleTests.groovy:15)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+</testsuites>

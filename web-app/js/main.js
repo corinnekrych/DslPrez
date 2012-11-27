@@ -445,8 +445,8 @@ window.onload = function() {
 			editor7.insert(value);
 		}
 	});
-	
-	
+
+
 
 };
 	
