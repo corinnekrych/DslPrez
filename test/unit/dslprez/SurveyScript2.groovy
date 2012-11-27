@@ -19,6 +19,12 @@ abstract class SurveyScript2 extends Script {
         }]
     }
 
+    def when(Boolean exp, Closure closure) {
+        if(exp) {
+            closure()
+        }
+    }
+
     def propertyMissing(def propertyName) {
         propertyName
     }

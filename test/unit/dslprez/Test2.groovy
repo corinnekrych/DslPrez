@@ -3,7 +3,7 @@ package dslprez
 import org.codehaus.groovy.control.CompilerConfiguration
 
 def configuration = new CompilerConfiguration()
-configuration.addCompilationCustomizers(new MyCustomizer())
+configuration.addCompilationCustomizers(new MyCustomizer2())
 configuration.scriptBaseClass = SurveyScript2.name
 
 def binding = new Binding()
