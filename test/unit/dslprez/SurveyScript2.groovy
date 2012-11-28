@@ -22,7 +22,12 @@ abstract class SurveyScript2 extends Script {
     def when(Boolean exp, Closure closure) {
         if(exp) {
             closure()
+            println "inside ${exp}"
+        }  else {
+            inputs.counter++
         }
+        println "outside ${exp}"
+        //println "--> $inputs.counter and $inputs.variables"
     }
 
     def propertyMissing(def propertyName) {

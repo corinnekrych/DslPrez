@@ -56,6 +56,8 @@ public class MyCustomizer2 extends CompilationCustomizer {
 
                 BlockStatement methodCodeBlock = new BlockStatement()
                 methodCodeBlock.addStatement(it)
+                println it
+
                 myClassNode.addMethod("doStep_" + step, 1, null, [] as Parameter[], [] as ClassNode[],
                         methodCodeBlock)
                 step++

@@ -17,6 +17,17 @@ abstract class SurveyBaseScript extends Script {
 			}]
 	}
 
+    def when(Boolean exp, Closure closure) {
+        if(exp) {
+            closure()
+            println "inside ${exp}"
+        }  else {
+            __inputs.counter++
+        }
+        println "outside ${exp}"
+        //println "--> $inputs.counter and $inputs.variables"
+    }
+
 	def propertyMissing(String name) {
 		return __inputs.answerMap[name]
 	}
@@ -34,13 +45,20 @@ abstract class SurveyBaseScript extends Script {
 
 			__inputs.counter=0
 		}
-		try {
-			def methodToInvoke  = this.class.getMethod("doStep_${__inputs.counter}")
-			methodToInvoke.invoke(this)
-		}
-		catch(NoSuchMethodException exp){
-			__inputs.finished = true
-		}
+        invokeMethod()
 	}
+
+    def invokeMethod() {
+        try {
+            def methodToInvoke  = this.class.getMethod("doStep_${__inputs.counter}")
+            methodToInvoke.invoke(this)
+            if (!__inputs.question) {
+                invokeMethod()
+            }
+        }
+        catch(NoSuchMethodException exp){
+            __inputs.finished = true
+        }
+    }
 }
 
