@@ -1,6 +1,7 @@
-import groovy.lang.Script;
+package dslprez.language
+
 import org.codehaus.groovy.control.CompilerConfiguration
-import dslprez.SurveyScript
+import dslprez.language.SurveyScript
 
 def compilerConfiguration = new CompilerConfiguration()
 compilerConfiguration.scriptBaseClass = SurveyScript.class.name

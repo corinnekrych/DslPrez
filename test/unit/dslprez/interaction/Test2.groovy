@@ -1,6 +1,8 @@
-package dslprez
+package dslprez.interaction
 
 import org.codehaus.groovy.control.CompilerConfiguration
+import dslprez.interaction.SurveyScript2
+import dslprez.interaction.MyCustomizer2
 
 def configuration = new CompilerConfiguration()
 configuration.addCompilationCustomizers(new MyCustomizer2())

@@ -1,4 +1,4 @@
-package dslprez;
+package dslprez.interaction;
 
 
 import org.codehaus.groovy.ast.ClassNode

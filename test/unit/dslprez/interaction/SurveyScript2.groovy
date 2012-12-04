@@ -1,4 +1,4 @@
-package dslprez
+package dslprez.interaction
 
 /**
  * Created with IntelliJ IDEA.
