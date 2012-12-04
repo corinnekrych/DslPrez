@@ -15,7 +15,7 @@ import static org.objectweb.asm.Opcodes.ACC_PUBLIC
 
 public class MyCustomizer extends CompilationCustomizer {
 def methodCalls = []
- 
+
 
     public MyCustomizer() {
         super(CompilePhase.CONVERSION);
@@ -25,12 +25,12 @@ def methodCalls = []
     public void call(final SourceUnit source, final GeneratorContext context, final ClassNode classNode) throws CompilationFailedException {
         def ast = source.getAST();
 		def myClassNode
-		BlockStatement runBlock  
+		BlockStatement runBlock
         ast.classes.each {
         myClassNode = it
     		it.methods.each {
                 if(it.code instanceof BlockStatement && it.name=="run"){
-				
+
                 	runBlock = it.code
 					runBlock.statements.each {
 							methodCalls << it
@@ -44,23 +44,23 @@ def methodCalls = []
 				          )
 				    runBlock.addStatement(new ReturnStatement(dispatcherCall))
 				    it.code=runBlock
-				
+
 				}
 			}
-			
+
 			//let's create the methods
 			def step = 0
 			methodCalls.each{
-				
+
 				BlockStatement methodCodeBlock = new BlockStatement()
 				methodCodeBlock.addStatement(it)
  			 myClassNode.addMethod("doStep_"+step,1,null,[]as Parameter[],[]as ClassNode[],
 		          methodCodeBlock)
-		      step++   
+		      step++
 		}
 			runBlock = new BlockStatement()
 }
 
-	
+
 }
 }

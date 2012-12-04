@@ -27,7 +27,6 @@ abstract class SurveyScript2 extends Script {
             inputs.counter++
         }
         println "outside ${exp}"
-        //println "--> $inputs.counter and $inputs.variables"
     }
 
     def propertyMissing(def propertyName) {
