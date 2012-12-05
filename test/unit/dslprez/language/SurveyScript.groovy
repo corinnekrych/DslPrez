@@ -1,4 +1,4 @@
-package dslprez
+package dslprez.language
 
 /**
  * Created with IntelliJ IDEA.

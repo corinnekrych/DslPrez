@@ -399,8 +399,8 @@ def shell = new GroovyShell(this.class.classLoader, binding, compilerConfigurati
 
 ///////////////////////
 def surveyDSL = '''
-ask "what is your name?" assign into name
-ask "what is your birthdate?" assign into date
+ask "what is your name?" assign to name
+ask "what is your birthdate?" assign to date
 println map
 '''
 //////////////////////
@@ -412,7 +412,7 @@ abstract class SurveyScript extends Script {
     def i = 1;
     def map = [:]
     def ask(question) {
-      [assign : { into ->
+      [assign : { to ->
           [:].withDefault {variable ->
             map["question$i"] = question
             map["variable$i"] = variable
@@ -432,7 +432,7 @@ abstract class SurveyScript extends Script {
     
     <div class="step slide" id="editor6" data-x="23000" data-y="1400" data-scale = "1">def configuration = new CompilerConfiguration()
 configuration.addCompilationCustomizers(new MyCustomizer())
-configuration.scriptBaseClass = DSLBaseScript.name
+configuration.scriptBaseClass = SurveyBaseScript.name
 
 def binding = new Binding()
 def inputs = [:]
@@ -453,7 +453,7 @@ ask "what is your name?" assign into name
 ask "what is your birthdate?" assign into date
 """
 
-abstract class DSLBaseScript extends Script {
+abstract class SurveyBaseScript extends Script {
 
   def ask(question) {
     [assign : { into ->

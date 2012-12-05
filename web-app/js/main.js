@@ -370,7 +370,7 @@ window.onload = function() {
 		},
 		exec : function() {
 			editor5.gotoLine(12);
-			var value = "ask whichMeal assign into meal\n";
+			var value = "ask whichMeal assign to meal\n";
 			editor5.insert(value);
 		}
 	});
