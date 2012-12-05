@@ -49,7 +49,7 @@ window.onload = function() {
 		},
 		exec : function() {
 			var value = "abstract class SurveyScript extends Script {\n"
-					+ "  def ask  = {question -> println question }\n"
+					+ "  def ask  = {question -> println \"question: $question\" }\n"
 					+ "}";
 			editor2.gotoLine(1);
 			editor2.insert(value);
@@ -215,10 +215,10 @@ window.onload = function() {
 		exec : function() {
 			editor3.gotoLine(12);
 			var value = "  def propertyMissing(def propertyName) {\n"
-					+ "    propertyName\n" + "  }\n";
+					+ "    propertyName\n" + "  }\n  def display(Map mapToDisplay) {\n    mapToDisplay.eachWithIndex { key, value, index ->\n      println \"$key: $value\"\n      if (index % 2) {\n        println \"______________________________________\\n\"\n      }\n    }\n  }\n";
 			editor3.insert(value);
-			editor3.gotoLine(29);
-			value = "println map\n";
+			editor3.gotoLine(37);
+			value = "display map\n";
 			editor3.insert(value);
 			editor3.scrollToRow(1);
 			editor3.setHighlightActiveLine(true);
@@ -253,7 +253,7 @@ window.onload = function() {
 			sender : "editor4"
 		},
 		exec : function() {
-			editor4.gotoLine(31);
+			editor4.gotoLine(40);
 			editor4.removeLines();
 			editor4.removeLines();
 			var value = "ask \"what is your name?\" assign to name\nask \"what is your birthdate?\" assign to date\n"
@@ -459,8 +459,8 @@ function submitCreateForm(title, input, output) {
 		$("#displayQuestion").removeData();
 		$('.displayAnswer').remove();
 		$(".surveystart").show();
-		$("#displayQuestion").data('scriptId',data.id);
-		$("#displayQuestion").data('scriptContent',data.content);
+		$("#displayQuestion").data('scriptId', data.id);
+		$("#displayQuestion").data('scriptContent', data.content);
 		$('#scriptContent').text(data.content)
 		$('#submitButton').click();
 	});
@@ -487,39 +487,37 @@ function submitForm(input, output) {
 	});
 }
 
-// id:1, action:run, controller:survey
-// id:1, lastAssignement:name, counter:1, answer:jjjjj, answerMap:{}, action:run, controller:survey -->
-
 $('#submitButton').bind('click', function() {
 	var answer = $('#answer').val();
 	$('#answer').val('');
 	var answerMap = $("#displayQuestion").data('answerMap');
+    var question = $("#displayQuestion").data('question');
 	var scriptId = $("#displayQuestion").data('scriptId');
 	var counter = $("#displayQuestion").data('counter');
 	var lastAssignement = $("#displayQuestion").data('lastAssignement');
 	if (answerMap)
-	  answerMap[lastAssignement] = answer;
+	  answerMap[counter] = {answer:answer};
 	var stringAnswerMap = JSON.stringify(answerMap);
 	var url = "http://localhost:8080/DslPrez/survey/run?=";
 	//var url = "http://dslprez.cloudfoundry.com/survey/run?=";
 	
 	$.post(url, {
-		scriptId:scriptId, lastAssignement:lastAssignement, counter:counter, answer:answer, answerMap:stringAnswerMap
+		scriptId:scriptId, question: question, lastAssignement:lastAssignement, counter:counter, answer:answer, answerMap:stringAnswerMap
 	}, function(data) {
 
 		var answerMap = data.answerMap;
-		var counter= data.counter;
-		var lastAssignement = data.lastAssignement;
-		$("#displayQuestion").data('answerMap',answerMap);
-		$("#displayQuestion").data('counter',counter);
-		$("#displayQuestion").data('lastAssignement',lastAssignement);
+		var counter = data.counter;
+        var question = data.question;
+        var lastAssignement = data.lastAssignement;
+		$("#displayQuestion").data('answerMap', answerMap);
+        $("#displayQuestion").data('question', question);
+		$("#displayQuestion").data('counter', counter);
+		$("#displayQuestion").data('lastAssignement', lastAssignement);
 		if(data.finished==true) {
-			var index = 1;
 			$(".surveystart").hide();
-			for (answer in answerMap) {
-				var output7Value = '<div class="displayAnswer">For variable ' + answer +', answer is '+answerMap[answer] +'</div>';
+            for(var index = 1; index <= counter;index++)  {
+				var output7Value = '<div class="displayAnswer">' + answerMap[index].question + ' ' + answerMap[index].answer + '</div>';
 			  $("#output7").append(output7Value);
-			  index++;
 			}
 		} else {
 			$("#displayQuestion").text(data.question);

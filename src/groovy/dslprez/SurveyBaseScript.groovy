@@ -5,12 +5,11 @@ import groovy.json.JsonSlurper;
 import groovy.lang.Script
 
 abstract class SurveyBaseScript extends Script {
-	def answerMap
 	def ask(question) {
 		[assign : { to ->
 				[:].withDefault {assignment ->
 					__inputs.question = question
-					__inputs.lastAssignement=assignment
+					__inputs.lastAssignement = assignment
 					__inputs.counter++
 			
 				}
@@ -29,7 +28,7 @@ abstract class SurveyBaseScript extends Script {
     }
 
 	def propertyMissing(String name) {
-		return __inputs.answerMap[name]
+		name
 	}
 
 	//entry point method each time the script is called
@@ -38,13 +37,14 @@ abstract class SurveyBaseScript extends Script {
 		if(!__inputs.answerMap){
 			__inputs.answerMap = [:]
 		}
-		if (__inputs.answer) {
-			__inputs.answerMap[__inputs.lastAssignement] = __inputs.answer
-		}
-		if(!__inputs.counter){
+        if(!__inputs.counter){
+            __inputs.counter=0
+        }
 
-			__inputs.counter=0
-		}
+    	//__inputs.answerMap[__inputs.lastAssignement] = __inputs.answer
+        __inputs.answerMap[__inputs.counter] = [variable:__inputs.lastAssignement, question:__inputs.question, answer:__inputs.answer]
+
+
         invokeMethod()
 	}
 
