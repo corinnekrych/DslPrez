@@ -1,11 +1,6 @@
 package dslprez
 
-import grails.converters.JSON;
-import groovy.json.JsonSlurper;
-import groovy.lang.Script
-
 abstract class SurveyBaseScript extends Script {
-	def answerMap
 	def ask(question) {
 		[assign : { to ->
 				[:].withDefault {assignment ->
@@ -24,12 +19,10 @@ abstract class SurveyBaseScript extends Script {
         }  else {
             __inputs.counter++
         }
-        println "outside ${exp}"
-        //println "--> $inputs.counter and $inputs.variables"
     }
 
 	def propertyMissing(String name) {
-		return __inputs.answerMap[name]
+        name
 	}
 
 	//entry point method each time the script is called
@@ -37,12 +30,10 @@ abstract class SurveyBaseScript extends Script {
 
 		if(!__inputs.answerMap){
 			__inputs.answerMap = [:]
-		}
-		if (__inputs.answer) {
+		} else {
 			__inputs.answerMap[__inputs.lastAssignement] = __inputs.answer
 		}
 		if(!__inputs.counter){
-
 			__inputs.counter=0
 		}
         invokeMethod()

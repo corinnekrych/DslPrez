@@ -59,34 +59,20 @@ class SurveyController {
 	}
 
 	def run() {
-		println "in the inputs" + params
-    def survey = Survey.get(params.scriptId)
+        def survey = Survey.get(params.scriptId)
 		def binding = new Binding()
 		binding.setVariable("__inputs", params)
 		def myBinding = binding.getVariable("__inputs")
-    def toto = params
-    println "binding answer map" + myBinding.answerMap
 		if(params.answerMap){
 			myBinding.answerMap = JSON.parse(params.answerMap)
 		}
-		println "answer map" + myBinding.answerMap
 		def compilerConfig = new CompilerConfiguration()
-		println "bindings before eval" + binding.__inputs
 		compilerConfig.scriptBaseClass = SurveyBaseScript.name
 		compilerConfig.addCompilationCustomizers(new SurveyCustomizer())
 
 		def groovyShell = new GroovyShell(new GroovyClassLoader(),binding,compilerConfig)
 		groovyShell.evaluate(survey.content)
-		println "binding after eval" + binding.__inputs
-		if(binding.__inputs.finished){
-			//render(view:"finished",model:[inputs:binding.__inputs])
-      render binding.__inputs as JSON
-		}
-		else {
-			
-			//render(view:"run",model:[inputs:binding.__inputs])
-      render binding.__inputs as JSON
-		}
+        render binding.__inputs as JSON
 	}
 
 	def edit() {
