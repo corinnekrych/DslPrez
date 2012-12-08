@@ -27,8 +27,7 @@
         <!-- TODO : Learn how to use css -->
         <span class="footnote">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>*</sup> &nbsp;based on a real life project</span><br/>
         <span class="footnote">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Corinne Krych</span>
-        <span class="footnote">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sébastien Blanc</span>
-        <ul><li style="text-align:center;"><img style="width:250px" src="images/gr8.png"></li></ul>
+        <span class="footnote">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fabrice Matrat</span>
     </div>
 
     <div class="step" data-x="250" data-y="-2200" >
@@ -43,7 +42,6 @@
         <p class="general quote-author">@fabricematrat</p>
         <p class="general quote-author">fabricematrat@gmail.com</p>
         <p class="general quote-author">https://github.com/fabricematrat</p>
-        <img style="float:right;width:320px" alt="" src="images/sebi.jpg">
     </div> 
 
     <div class="step big" data-x="1200" data-y="-80">
@@ -56,7 +54,6 @@
     </div> 
     
      <div class="step" style="font-size:16px;text-align:justify" data-x="800" data-y="480" data-scale="0.2" data-rotate="-90">
-        <!--img alt="" src="images/mat.jpeg"-->
         <pre>
         10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101 10000110 10000000 
         11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000 00000000 00010100
@@ -118,15 +115,15 @@
     </div> 
     
     <div class="step" data-x="0" data-y="1300">
-        prepare meal for lunch
+        prepare tea for dinner
     </div> 
     
    <div class="step" data-x="0" data-y="1400">
-        ['hamburger', 'salad'].each{cook it}
+        ['scone', 'clotted cream'].each{eat it}
     </div> 
     
    <div class="step" data-x="0" data-y="1500">
-        lunch.willBe 50.minutes.from.now
+        teatime.willBe 45.minutes.from.now
     </div>     
     
     <div class="step big" style="width: 1800px;text-align: center;" data-x="-10000" data-y="2000" data-scale="1.3">
@@ -136,20 +133,8 @@
     <div class="step quote" style="text-align: left;" data-x="-10400" data-y="2200" data-scale="0.5"  >
         <img alt="" src="images/pix.jpeg">
     </div>  
-    <pre class="step code smaller" style="width:1100px" data-x="-10400" data-y="2400" data-scale="0.5"  >
-$ echo “ls -l” | at midnight
-warning: commands will be executed using /bin/sh
-job 1 at Mon Jun  4 00:00:00 2012
-    
-$ seq -f '4/%g' 1 2 99999 | paste -sd-+ | bc -l
-3.14157265358979523735
-    </pre>  
-    <div class="step quote" data-x="-9600" data-y="2200" data-scale="0.5" >
-      <!-- http://icons.mysitemyway.com/gallery/post/glossy-black-icons-alphanumeric/ -->
-      <!-- img alt="" src="images/bracket-curley.png"-->
-      <div style="font-size:200px">{}  ;)</div>
-    </div> 
-    <pre class="step slide" style="width:800px" data-x="-9600" data-y="2500" data-scale="0.5">
+
+    <pre class="step slide" style="width:800px" data-x="-9600" data-y="2250" data-scale="0.5">
 <span style="color:#AF956F;">class</span> HelloSpock <span style="color:#AF956F;">extends</span> spock.lang.Specification {
     <span style="color:#AF956F;">def</span> <span style="color:#5D90CD;">"length of Spock's and his friends' names"</span>() {
         expect:
@@ -164,35 +149,35 @@ $ seq -f '4/%g' 1 2 99999 | paste -sd-+ | bc -l
 } 
     </pre>  
     
-    <div class="step big" data-x="-3500" data-y="-4500" data-scale="1.5"> 
-        Why using DSL?
-        <br/><br/>
-        <pre class="preCode">
-[condition][]There is an Account that {constraints} 
-= Account({constraints} )
+    <!--<div class="step big" data-x="-3500" data-y="-4500" data-scale="1.5"> -->
+        <!--Why using DSL?-->
+        <!--<br/><br/>-->
+        <!--<pre class="preCode">-->
+<!--[condition][]There is an Account that {constraints} -->
+<!--= Account({constraints} )-->
 
-[condition][]has {field} equal to {value}
-={field} == {value}
+<!--[condition][]has {field} equal to {value}-->
+<!--={field} == {value}-->
 
-[condition][]and has {field} equal to {value}
-=, {field} == {value}
-        </pre>
-        <br/>
-        <pre class="general">
-There is an Account that has owner equal to null 
-and has balance equal to 100
-            <br/>
-        </pre>
-        <!-- ex of code full of boiler plate, zoom big on domain expert words -->
-        <!-- http://www.packtpub.com/article/human-readable-rules-with-drools-jboss-rules-part1 -->
-    </div>
+<!--[condition][]and has {field} equal to {value}-->
+<!--=, {field} == {value}-->
+        <!--</pre>-->
+        <!--<br/>-->
+        <!--<pre class="general">-->
+<!--There is an Account that has owner equal to null -->
+<!--and has balance equal to 100-->
+            <!--<br/>-->
+        <!--</pre>-->
+        <!--&lt;!&ndash; ex of code full of boiler plate, zoom big on domain expert words &ndash;&gt;-->
+        <!--&lt;!&ndash; http://www.packtpub.com/article/human-readable-rules-with-drools-jboss-rules-part1 &ndash;&gt;-->
+    <!--</div>-->
     
-    <div class="step big" style="width:90%" data-x="-200" data-y="600">
+    <div class="step"  data-x="-200" data-y="200">
         Why <b>Groovy</b>?
         
-        <div id="wordcloud" style="height:60%;width:90%;">
+        <div id="wordcloud" >
             <span data-weight="9">syntax sugar</span>
-            <span data-weight="7">less punctuation: optional semicolon, parentheses</span>
+            <span data-weight="7">less punctuation</span>
             <span data-weight="5">scripting </span>
             <span data-weight="7">binding</span>
             <span data-weight="10">no getter setter</span>
@@ -603,7 +588,9 @@ public class MyCustomizer extends CompilationCustomizer {
 <script src="js/main.js"></script>
 <script src="js/ace-uncompressed-noconflict.js"></script>
 <script src="js/impress.js"></script>
-<script>impress().init();</script>
+<script>
+
+    impress().init();</script>
 
 </body>
 </html>

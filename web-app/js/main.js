@@ -535,9 +535,30 @@ var settings = {
             "color" : "random-dark",
             "printMultiplier" : 3
         },
-        "shape" : "square"
+        "shape" : "circle"
     };
+
 $("#wordcloud").awesomeCloud( settings );
+
+//// At each step
+//document.getElementById("impress").addEventListener( "impress:stepenter", function (event) {
+//
+//    var step = event.target;
+//
+//    var settings = {
+//        "size" : {
+//            "grid" : 8
+//        },
+//        "options" : {
+//            "color" : "random-light",
+//            "printMultiplier" : 3
+//        },
+//        "shape" : "circle"
+//    }
+//    $("#wordcloud").awesomeCloud( settings );
+//
+//}, false);
+
 
 $("#technologies").airport([ 'impress.js', 'grails', 'Ace editor', 'jQuery' ]);
 
