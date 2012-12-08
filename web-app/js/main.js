@@ -516,8 +516,10 @@ $('#submitButton').bind('click', function() {
 		if(data.finished==true) {
 			$(".surveystart").hide();
             for(var index = 1; index <= counter;index++)  {
-				var output7Value = '<div class="displayAnswer">' + answerMap[index].question + ' ' + answerMap[index].answer + '</div>';
-			  $("#output7").append(output7Value);
+                if (answerMap[index]) {
+				    var output7Value = '<div class="displayAnswer">' + answerMap[index].question + ' ' + answerMap[index].answer + '</div>';
+			        $("#output7").append(output7Value);
+                }
 			}
 		} else {
 			$("#displayQuestion").text(data.question);

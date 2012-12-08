@@ -1,17 +1,16 @@
 package dslprez
 
-import grails.converters.JSON;
-import groovy.json.JsonSlurper;
-import groovy.lang.Script
-
 abstract class SurveyBaseScript extends Script {
+
+    //def invokeNext = "CONTINUE"
+
 	def ask(question) {
 		[assign : { to ->
 				[:].withDefault {assignment ->
 					__inputs.question = question
 					__inputs.lastAssignement = assignment
 					__inputs.counter++
-			
+                    __inputs.invokeNext = "STOP"
 				}
 			}]
 	}
@@ -19,16 +18,13 @@ abstract class SurveyBaseScript extends Script {
     def when(Boolean exp, Closure closure) {
         if(exp) {
             closure()
-            println "inside ${exp}"
         }  else {
             __inputs.counter++
         }
-        println "outside ${exp}"
-        //println "--> $inputs.counter and $inputs.variables"
     }
 
 	def propertyMissing(String name) {
-		name
+        name
 	}
 
 	//entry point method each time the script is called
@@ -41,10 +37,8 @@ abstract class SurveyBaseScript extends Script {
             __inputs.counter=0
         }
 
-    	//__inputs.answerMap[__inputs.lastAssignement] = __inputs.answer
         __inputs.answerMap[__inputs.counter] = [variable:__inputs.lastAssignement, question:__inputs.question, answer:__inputs.answer]
-
-
+        __inputs.invokeNext = "CONTINUE"
         invokeMethod()
 	}
 
@@ -52,7 +46,7 @@ abstract class SurveyBaseScript extends Script {
         try {
             def methodToInvoke  = this.class.getMethod("doStep_${__inputs.counter}")
             methodToInvoke.invoke(this)
-            if (!__inputs.question) {
+            if (__inputs.invokeNext == "CONTINUE") {
                 invokeMethod()
             }
         }
