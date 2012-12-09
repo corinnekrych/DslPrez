@@ -695,15 +695,17 @@ public class SurveyCustomizer extends CompilationCustomizer {
     <pre class="step slide code general" id="output7" data-x="25400" data-y="1500" data-scale = "0.4">
     </pre>
 
-    <div id="editor8" class="step slide" data-x="26200" data-y="1400" data-scale = "1">ask "Tell us about yourself?" assign to yourself
-ask "Why did you come to Groovy&Grails eXchange?" assign to why
-ask "Is this Groovy DSL a great talk? (yes/no)" assign to dsl
+    <div id="editor8" class="step slide" data-x="26200" data-y="1400" data-scale = "1">ask "What's your name?" assign to name
+ask name + ", why did you come to GGX?" assign to why
+ask "Is this Groovy DSL a great talk?" assign to dsl
 when (dsl == "yes") {
   ask "What about a mobile talk next time?" assign to mobile
+  when (mobile == yes) {
+    ask "With the 3.musket33rs ?" assign to us
+  }
 }
 ask "Would you come back?" assign to comeback
     </div>
-
     <div  class="step slide code" style="width:900px;font-size: 25px;" id="output8" data-x="27040" data-y="1500" data-scale = "0.4">
     <pre id="scriptContent"></pre>
     <div class="surveystart" id="displayQuestion"></div>
