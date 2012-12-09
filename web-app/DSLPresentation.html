@@ -28,21 +28,41 @@
         <span class="footnote">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>*</sup> &nbsp;based on a real life project</span><br/>
         <span class="footnote">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Corinne Krych</span>
         <span class="footnote">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fabrice Matrat</span>
+        <div style="font-size:15px">to run this presentation: be full screen (F11) and better in FireFox</div>
+        <div style="font-size:15px">next: page down key, previous: page up key (fn up, fn down on Mac)</div>
+        <div style="font-size:15px">to submit the editor code to cloud foundry: ctrl S (command S on Mac)</div>
+        <div style="font-size:15px">be careful using 1,2,3... it makes code snippet appears in the editor(focus must be inside editor)</div>
+        <div></div>
+        <img style="width:80%" src="images/ggx.jpg"/>
     </div>
 
-    <div class="step" data-x="250" data-y="-2200" >
+    <div class="step" data-x="250" data-y="-2200" id="corinne" style="text-align: center;">
         <h1>Ladies first : Corinne</h1><br/>
+        <img width="30%" src="images/corinne_krych.png"/><br/>
+
         <p class="general quote-author">@corinnekrych</p>
         <p class="general quote-author">corinnekrych@gmail.com</p>
         <p class="general quote-author">https://github.com/corinnekrych</p>
     </div> 
 
-    <div class="step" data-x="-250" data-y="-80">
+    <div class="step" data-x="-250" data-y="-300" id="fabrice" data-scale="0.2" style="text-align: center;">
         <p>Fabrice Matrat</p><br/>
+        <img width="30%" src="images/fabrice_matrat.png"/><br/>
         <p class="general quote-author">@fabricematrat</p>
         <p class="general quote-author">fabricematrat@gmail.com</p>
         <p class="general quote-author">https://github.com/fabricematrat</p>
-    </div> 
+
+    </div>
+
+
+    <div class="step" data-x="-1200" data-y="-200" id="seco" data-scale="0.2">
+        <p>Amadeus Selling Platform Connect</p><br/>
+    </div>
+
+
+    <div class="step" data-x="-900" data-y="-200" id="productivity" data-scale="0.2">
+        <p>Productivity Suite</p><br/>
+    </div>
 
     <div class="step big" data-x="1200" data-y="-80">
         WHAT IS A <b>DSL</b>?
@@ -94,8 +114,8 @@
 
     <div id="tiny"  class="step" data-x="1600" data-y="480" data-rotate="-90" data-scale="0.2">
     	<!-- http://openclipart.org/detail/164749/cube-of-rubik-by-sprint-->
-    	<img alt="" style="width:350px" src="images/cube_of_rubik_1.png"><br/>
-		<pre >R2 U F B' R2 F' B U R2</pre>
+    	<img alt="" style="width:70%" src="images/cube_of_rubik_1.png"><br/>
+		<pre >RR U F B' RR F' B U RR</pre>
 		<pre style="font-size:16px" class="quote">
 		Terminology
 			F = front face 
@@ -202,47 +222,18 @@
             <span data-weight="7">CST transformation</span>
         </div>
     </div>
-    
-    <div class="step" data-x="-1500" data-y="-800"> 
-        <img style="width:800px" src="images/surveylogo.png">
-        <img style="width:100px;float: left;padding-left: 200px;padding-top: 100px;" src="images/nerd.png">
-        <img style="width:100px;float: right;padding-right: 200px;padding-top: 100px;" src="images/legobusinesswoman.png">
-    </div>
-    
-    <div class="step" data-x="400" data-y="-3200"> 
-        Client Needs
-        <img style="width:800px" src="images/ClientNeeds.png">
-    </div>
-       
-    <div class="step" id="editor1" data-x="15000" data-y="1400" data-scale = "1">
+
+    <div class="step" id="editor1"  data-x="15000" data-y="1400" data-scale = "1">
 // Configure the GroovyShell.
 def shell = new GroovyShell()
 
 ///////////////////////
 def surveyDSL = '''
-
-
-
 '''
 //////////////////////
 // Run DSL script.
 def result = shell.evaluate surveyDSL
-
-
-
-
-
-
-
-
-
-/*
-def ask(question) {
-    println "question: $question"
-}
-ask "what is your name?"
-*/
-    </div>  
+    </div>
  
     <pre class="step slide code general" id="output1" data-x="15800" data-y="1500" data-scale = "0.4">
     </pre>
@@ -277,19 +268,17 @@ def result = shell.evaluate surveyDSL
     </div>  
 
     <div class="step slide" id="editor3" data-x="18200" data-y="1400" data-scale = "1">abstract class SurveyScript extends Script {
-  def ask(question) {  
+  def ask(question) {
     println "question: $question"
   }
 }
-
-def compilerConfiguration = new CompilerConfiguration()
-compilerConfiguration.scriptBaseClass = SurveyScript.class.name
-
+def compilerConfig = new CompilerConfiguration()
+compilerConfig.scriptBaseClass = SurveyScript.class.name
 def binding = new Binding()
-
 // Configure the GroovyShell.
-def shell = new GroovyShell(this.class.classLoader, binding, compilerConfiguration)
-
+def shell = new GroovyShell(this.class.classLoader,
+                            binding,
+                            compilerConfig)
 ///////////////////////
 def surveyDSL = '''
 ask "what is your name?"
@@ -304,28 +293,19 @@ shell.evaluate surveyDSL
        
     
     <div class="step " data-x="19800" data-y="400"> 
-    Command Chaining Examples
+    Back to command chaining
     </div>
-    <div class="step " data-x="19800" data-y="450" data-scale="1.2"> 
-        <div style="width:1200px;font-size:30px;text-align:left;">
-          <div>ask question into var       => ask(question).into(variable);</div> 
+    <div class="step " data-x="19800" data-y="500" data-scale="1.2">
+        <div style="width:100%;font-size:30px;text-align:left;">
+          <div style="color:grey">ask question into var</div>
+          <div>=> ask(question).into(variable);</div>
         </div>
     </div> 
-     <div class="step " data-x="19800" data-y="500" data-scale="1.2">   
-         <div style="width:1200px;font-size:30px;text-align:left;">
-          <div>method1 arg1, arg2 method2 arg3 => method1(arg1, arg2).method2(arg3);</div>
-        </div>
-     </div> 
-     <div class="step " data-x="19800" data-y="550" data-scale="1.2">   
-         <div style="width:1200px;font-size:30px;text-align:left;">
-          <div>method1 arg1, k1: v1, arg2, k2: v2 => method1(arg1, [k1: v1], arg2, [k2:v2]);</div>
-        </div>
-     </div>   
+
      <div class="step " data-x="19800" data-y="650" data-scale="1.2"> 
-         <div style="width:1200px;font-size:30px;text-align:left;">
-          <div>ask "question" assign to variable => ask("question").assign(to).variable;</div>
-          <div>withDefault method wrapper that intercepts all calls to get(key) assigning a default value</div>
-          <div>silent word technique for 'to'</div>
+         <div style="width:100%;font-size:30px;text-align:left;">
+          <div  style="color:grey">ask "question" assign to variable</div>
+          <div>=> ask("question").assign(to).variable;</div>
         </div>
      </div>              
     <div class="step slide" id="editor4" data-x="19800" data-y="1400" data-scale = "1">abstract class SurveyScript extends Script {
@@ -357,20 +337,21 @@ shell.evaluate surveyDSL
   }
 }
 
-def compilerConfiguration = new CompilerConfiguration()
-compilerConfiguration.scriptBaseClass = SurveyScript.class.name
+def compilerConfig = new CompilerConfiguration()
+compilerConfig.scriptBaseClass = SurveyScript.class.name
 
 def binding = new Binding()
 
 // Configure the GroovyShell.
-def shell = new GroovyShell(this.class.classLoader, binding, compilerConfiguration)
+def shell = new GroovyShell(this.class.classLoader,
+                            binding,
+                            compilerConfig)
 
 ///////////////////////
 def surveyDSL = '''
 ask "what is your name?" into name
 ask "what is your birthdate?" into date
 display map
-
 '''
 //////////////////////
 // Run DSL script.
@@ -383,13 +364,13 @@ shell.evaluate surveyDSL
 		<img style="width:500px" src="images/dslsequence.png">
     </div>  
 
-    <div class="step slide" id="editor5" data-x="21400" data-y="1400" data-scale = "1">def compilerConfiguration = new CompilerConfiguration()
-compilerConfiguration.scriptBaseClass = SurveyScript.class.name
-
+    <div class="step slide" id="editor5" data-x="21400" data-y="1400" data-scale = "1">def compilerConfig = new CompilerConfiguration()
+compilerConfig.scriptBaseClass = SurveyScript.class.name
 def binding = new Binding()
-
 // Configure the GroovyShell.
-def shell = new GroovyShell(this.class.classLoader, binding, compilerConfiguration)
+def shell = new GroovyShell(this.class.classLoader,
+                            binding,
+                            compilerConfig)
 
 ///////////////////////
 def surveyDSL = '''
@@ -402,9 +383,10 @@ display map
 shell.evaluate surveyDSL
 
 abstract class SurveyScript extends Script {
-  
+
     def i = 1;
     def map = [:]
+
     def ask(question) {
       [assign : { to ->
           [:].withDefault {variable ->
@@ -419,8 +401,6 @@ abstract class SurveyScript extends Script {
       propertyName
     }
 
-
-
     def display(Map mapToDisplay) {
         mapToDisplay.eachWithIndex { key, value, index ->
             println "$key: $value"
@@ -433,107 +413,298 @@ abstract class SurveyScript extends Script {
 
     </div>  
     <pre class="step slide code general" id="output5" data-x="22200" data-y="1500" data-scale = "0.4">
-    </pre>    
-    
-    <div class="step slide" id="editor6" data-x="23000" data-y="1400" data-scale = "1">def configuration = new CompilerConfiguration()
-configuration.addCompilationCustomizers(new MyCustomizer())
-configuration.scriptBaseClass = SurveyBaseScript.name
+    </pre>
 
+    <div class="step slide" id="editor6" data-x="23000" data-y="1400" data-scale = "1">def getShell(binding) {
+  def config = new CompilerConfiguration()
+  config.addCompilationCustomizers(new SurveyCustomizer())
+  config.scriptBaseClass = SurveyScript.name
+  new GroovyShell(this.class.classLoader,
+                  binding,
+                  config)
+}
 def binding = new Binding()
 def inputs = [:]
-def variables = [:]
-inputs.put("counter", 1)
-inputs.put("variables",variables)
-binding.setVariable("inputs", inputs);
-def shell = new GroovyShell(this.class.classLoader, binding, configuration)
-
-//first evaluate should run only ask
-shell.evaluate """
-ask "what is your name?" assign into name
-ask "what is your birthdate?" assign into date
+binding.setVariable("inputs", inputs)
+def script = """
+ask "what's your name?" assign to name
+ask "First time in GGX?" assign to ggx
 """
-//second evaluate should run only ask2
-shell.evaluate """
-ask "what is your name?" assign into name
-ask "what is your birthdate?" assign into date
-"""
+//first evaluate should run only the first ask
+getShell(binding).evaluate script
+//second evaluate should run only the second ask2
+getShell(binding).evaluate script
 
-abstract class SurveyBaseScript extends Script {
 
+abstract class SurveyScript extends Script {
   def ask(question) {
-    [assign : { into ->
-        [:].withDefault {variable ->
-          inputs.variables["$inputs.counter"] = variable
-          println "ask called\n --> with counter: $inputs.counter \n--> stored variables: $inputs.variables"
-          if (inputs.counter % 2) {
-            println "______________________________________\n"
-          }
-          inputs.counter++
-        }
-      }]
+    [assign : { to ->
+      [:].withDefault {assignment ->
+        inputs.question = question
+        inputs.lastAssignment = assignment
+        println "ask called\n --> counter: $inputs.counter \n" +
+                "--> question: $question\n" +
+                "--> variables: $inputs.lastAssignment\n" +
+                "______________________________________\n"
+        inputs.counter++
+      }
+    }]
   }
 
-  def propertyMissing(def propertyName) {
-    propertyName
+  def propertyMissing(String name) {
+    name
   }
 
+  //entry point method each time the script is called
   void dispatch() {
-    this.class.getMethod("doStep_$inputs.counter").invoke(this)
+    if(!inputs.answerMap){
+      inputs.answerMap = [:]
+    }
+    if(!inputs.counter){
+      inputs.counter=0
+    }
+    inputs.answerMap[inputs.counter] =
+        [variable:inputs.lastAssignment,
+         question:inputs.question,
+         answer:inputs.answer]
+    invokeMethod()
+  }
+
+  def invokeMethod() {
+    try {
+      def method =
+        this.class.getMethod("doStep_${inputs.counter}")
+      method.invoke(this)
+    }
+    catch(NoSuchMethodException exp){
+      inputs.finished = true
+    }
   }
 }
-public class MyCustomizer extends CompilationCustomizer {
-  def methodCalls = []
 
+public class SurveyCustomizer extends CompilationCustomizer {
+  def step = 0
 
-  public MyCustomizer() {
+  public SurveyCustomizer() {
     super(CompilePhase.CONVERSION);
   }
 
   @Override
-  public void call(final SourceUnit source, final GeneratorContext context, final ClassNode classNode) throws CompilationFailedException {
+  public void call(final SourceUnit source,
+                   final GeneratorContext context,
+                   final ClassNode classNode)
+      throws CompilationFailedException {
+    def methodCalls = []
     def ast = source.getAST();
-    def myClassNode
-    BlockStatement runBlock
     ast.classes.each {
-      myClassNode = it
+      def myClassNode = it
       it.methods.each {
-        if(it.code instanceof BlockStatement && it.name=="run"){
-
-          runBlock = it.code
-          runBlock.statements.each { 
+        if (it.code instanceof BlockStatement
+              && it.name == "run") {
+          it.code.statements.each {
             methodCalls << it
           }
-          runBlock = new BlockStatement()
-          
-          def dispatcherCall = new MethodCallExpression(
-              new VariableExpression("this"),
-              new ConstantExpression("dispatch"),
-              new ArgumentListExpression([]))
-          runBlock.addStatement(new ReturnStatement(dispatcherCall))
-          it.code=runBlock
-
+          def result = new AstBuilder().buildFromCode {
+            this.dispatch()
+          }
+          it.code = result[0];
         }
       }
-
-      //let's create the methods
-      def step = 0
-      methodCalls.each{
-        BlockStatement methodCodeBlock = new BlockStatement()
-        methodCodeBlock.addStatement(it)
-        myClassNode.addMethod("doStep_" + step, 1, null,[] as Parameter[],[] as ClassNode[],
-        methodCodeBlock)
-        step++
+      methodCalls.each {
+        addStatement(it, myClassNode)
       }
-      runBlock = new BlockStatement()
+    }
+  }
+
+  private def addStatement(ExpressionStatement exprStmt,
+                           myClassNode) {
+    BlockStatement methodCodeBlock = new BlockStatement()
+    methodCodeBlock.addStatement(exprStmt)
+    myClassNode.addMethod("doStep_" + step,
+                          1,
+                          null,
+                          [] as Parameter[],
+                          [] as ClassNode[],
+                          methodCodeBlock)
+    step++
+  }
+}
+    </div>
+    <pre class="step slide code general" id="output6" data-x="23800" data-y="1500" data-scale = "0.4">
+    </pre>
+
+    <div class="step slide" id="editor7" data-x="24600" data-y="1400" data-scale = "1">def getShell(binding) {
+  def config = new CompilerConfiguration()
+  config.addCompilationCustomizers(new SurveyCustomizer())
+  config.scriptBaseClass = SurveyScript.name
+  new GroovyShell(this.class.classLoader,
+                  binding,
+                  config)
+}
+def binding = new Binding()
+def inputs = [:]
+binding.setVariable("inputs", inputs);
+def script = """
+ask "First time in GGX?" assign to ggx
+when (false) {
+  ask "Are you DSL addicted?" assign to dsl
+}
+"""
+//first evaluate should run only the first ask
+getShell(binding).evaluate script
+//second evaluate should run only the second ask2
+getShell(binding).evaluate script
+
+
+abstract class SurveyScript extends Script {
+  def ask(question) {
+    [assign : { to ->
+      [:].withDefault {assignment ->
+        inputs.question = question
+        inputs.lastAssignment = assignment
+        println "ask called\n --> with counter: $inputs.counter \n" +
+                "--> question: $inputs.question\n" +
+                "--> stored variables: $inputs.lastAssignment\n" +
+                "______________________________________\n"
+        inputs.counter++
+        invokeNext = Boolean.FALSE
+      }
+    }]
+  }
+
+  def when(Boolean exp, Closure closure) {
+    if(exp) {
+      closure()
+    }  else {
+      inputs.counter++
+    }
+  }
+
+  def propertyMissing(String name) {
+    name
+  }
+
+  //entry point method each time the script is called
+  void dispatch() {
+
+    if(!inputs.answerMap){
+      inputs.answerMap = [:]
+    }
+    if(!inputs.counter){
+      inputs.counter=0
+    }
+    inputs.answerMap[inputs.counter] = [variable:inputs.lastAssignment,
+                                        question:inputs.question,
+                                        answer:inputs.answer]
+    invokeMethod()
+  }
+
+  def invokeMethod() {
+    try {
+      def methodToInvoke  = this.class.getMethod("doStep_${inputs.counter}")
+      methodToInvoke.invoke(this)
+      if (invokeNext) {
+        invokeMethod()
+      }
+    }
+    catch(NoSuchMethodException exp){
+      inputs.finished = true
     }
   }
 }
+
+public class SurveyCustomizer extends CompilationCustomizer {
+  def step = 0
+
+  public SurveyCustomizer() {
+    super(CompilePhase.CONVERSION);
+  }
+
+  @Override
+  public void call(final SourceUnit source,
+                   final GeneratorContext context,
+                   final ClassNode classNode)
+        throws CompilationFailedException {
+    def methodCalls = []
+    def ast = source.getAST();
+    ast.classes.each {
+      def myClassNode = it
+      it.methods.each {
+        if (it.code instanceof BlockStatement && it.name == "run") {
+          it.code.statements.each {
+            methodCalls << it
+          }
+          def result = new AstBuilder().buildFromCode {
+            this.dispatch()
+          }
+          it.code = result[0];
+        }
+      }
+      methodCalls.each {
+        def booleans = []
+        addStatement(it, myClassNode, booleans)
+      }
+    }
+  }
+
+  private def addStatement(ExpressionStatement exprStmt, myClassNode, booleans) {
+    if (exprStmt.expression.hasProperty("method")) {
+      booleans << exprStmt.expression.arguments.expressions[0]
+      def whenClosure = exprStmt.expression.arguments.expressions[1]
+      whenClosure.code.statements.each {
+        addStatement(it, myClassNode, booleans)
+      }
+      if (booleans.size > 0) {
+        booleans.remove(booleans.size-1)
+      }
+    } else {
+      BlockStatement methodCodeBlock = new BlockStatement()
+      if (booleans.size > 0) {
+        def newWhenExpression = getWhenExpression(exprStmt, booleans)
+        methodCodeBlock.addStatement(newWhenExpression)
+      } else {
+        methodCodeBlock.addStatement(exprStmt)
+      }
+      myClassNode.addMethod("doStep_" + step,
+                            1,
+                            null,
+                            [] as Parameter[],
+                            [] as ClassNode[],
+                            methodCodeBlock)
+      step++
+    }
+    step
+  }
+
+  private ExpressionStatement getWhenExpression(ExpressionStatement exprStmt, booleans) {
+    BlockStatement block = new BlockStatement()
+    block.addStatement(exprStmt)
+    ClosureExpression closureExpression = new ClosureExpression(null, block)
+
+    Expression binaryExpr = booleans[0];
+    for (def i = 0; i < booleans.size - 1; i++) {
+      binaryExpr = new BinaryExpression(binaryExpr, Token.newSymbol("&&", 0, 0), booleans[i + 1])
+    }
+    new ExpressionStatement(new MethodCallExpression(
+      new VariableExpression("this"),
+      new ConstantExpression("when"),
+      new ArgumentListExpression([binaryExpr, closureExpression])))
+  }
+}
     </div>  
-    <pre class="step slide code general" id="output6" data-x="23800" data-y="1500" data-scale = "0.4">
-    </pre>      
-    
-    <div id="editor7" class="step" data-x="24600" data-y="1400" data-scale = "1"></div>
-    <div  class="step slide code" style="width:1100px;font-size: 25px;" id="output7" data-x="25440" data-y="1500" data-scale = "0.4">
+    <pre class="step slide code general" id="output7" data-x="25400" data-y="1500" data-scale = "0.4">
+    </pre>
+
+    <div id="editor8" class="step slide" data-x="26200" data-y="1400" data-scale = "1">ask "Tell us about yourself?" assign to yourself
+ask "Why did you come to Groovy&Grails eXchange?" assign to why
+ask "Is this Groovy DSL a great talk? (yes/no)" assign to dsl
+when (dsl == "yes") {
+  ask "What about a mobile talk next time?" assign to mobile
+}
+ask "Would you come back?" assign to comeback
+    </div>
+
+    <div  class="step slide code" style="width:900px;font-size: 25px;" id="output8" data-x="27040" data-y="1500" data-scale = "0.4">
     <pre id="scriptContent"></pre>
     <div class="surveystart" id="displayQuestion"></div>
     <input class="surveystart" id="answer"></input>

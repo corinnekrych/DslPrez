@@ -19,7 +19,25 @@ window.onload = function() {
 		}
 	});
 
-	var editor2 = ace.edit("editor2");
+    commands1.addCommand({
+        name : "step1",
+        bindKey : {
+            win : "1",
+            mac : "1",
+            sender : "editor1"
+        },
+        exec : function() {
+
+            var value = "def ask(question) {\n"
+            +"    println \"question: $question\"\n"
+            +"}\n"
+            +"ask \"what is your name?\"\n";
+            editor1.gotoLine(7);
+            editor1.insert(value);
+        }
+    });
+
+    var editor2 = ace.edit("editor2");
 	editor2.setTheme("ace/theme/clouds");
 	editor2.getSession().setMode("ace/mode/groovy");
 
@@ -49,7 +67,7 @@ window.onload = function() {
 		},
 		exec : function() {
 			var value = "abstract class SurveyScript extends Script {\n"
-					+ "  def ask  = {question -> println \"question: $question\" }\n"
+					+ "  def ask = {question -> println \"question: $question\" }\n"
 					+ "}";
 			editor2.gotoLine(1);
 			editor2.insert(value);
@@ -80,8 +98,8 @@ window.onload = function() {
 					sender : "editor2"
 				},
 				exec : function() {
-					var value = "def compilerConfiguration = new CompilerConfiguration()\n"
-							+ "compilerConfiguration.scriptBaseClass = SurveyScript.class.name\n"
+					var value = "def compilerConfig = new CompilerConfiguration()\n"
+							+ "compilerConfig.scriptBaseClass = SurveyScript.class.name\n"
 							+ "def binding = new Binding()\n";
 					editor2.gotoLine(5);
 					editor2.insert(value);
@@ -99,7 +117,10 @@ window.onload = function() {
 				exec : function() {
 					editor2.gotoLine(8);
 					editor2.removeLines();
-					var value = "def shell = new GroovyShell(this.class.classLoader, binding, compilerConfiguration)\n";
+					var value = "" +
+                    "def shell = new GroovyShell(this.class.classLoader,\n" +
+                    "                            binding,\n" +
+                    "                            compilerConfig)\n";
 					editor2.gotoLine(8);
 					editor2.insert(value);
 				}
@@ -136,7 +157,7 @@ window.onload = function() {
 		exec : function() {
 			var value = "ask \"what is your name?\" into name\n"
 					+ "ask \"what is your birthdate?\" into date\n";
-			editor3.gotoLine(17);
+			editor3.gotoLine(15);
 			editor3.removeLines();
 			editor3.insert(value);
 		}
@@ -215,13 +236,14 @@ window.onload = function() {
 		exec : function() {
 			editor3.gotoLine(12);
 			var value = "  def propertyMissing(def propertyName) {\n"
-					+ "    propertyName\n" + "  }\n  def display(Map mapToDisplay) {\n    mapToDisplay.eachWithIndex { key, value, index ->\n      println \"$key: $value\"\n      if (index % 2) {\n        println \"______________________________________\\n\"\n      }\n    }\n  }\n";
+					+ "    propertyName\n" + "  }\n  def display(Map mapToDisplay) {\n    mapToDisplay.eachWithIndex { key, value, index ->\n      println \"$key: $value\"\n      if (index % 2) { println \"______________________\\n\" }\n    }\n  }\n";
 			editor3.insert(value);
-			editor3.gotoLine(37);
+			editor3.gotoLine(33);
 			value = "display map\n";
 			editor3.insert(value);
-			editor3.scrollToRow(1);
-			editor3.setHighlightActiveLine(true);
+            editor3.gotoLine(1);
+            editor3.scrollToLine();
+            editor3.setHighlightActiveLine(true);
 		}
 	});
 
@@ -231,7 +253,7 @@ window.onload = function() {
 	
 	var commands4 = editor4.commands;
 
-	commands4.addCommand({
+    commands4.addCommand({
 		name : "save4",
 		bindKey : {
 			win : "Ctrl-S",
@@ -241,7 +263,7 @@ window.onload = function() {
 		exec : function() {
 			var value = editor4.getSession().getValue();
 			value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-			submitForm(value, "#output4");
+            submitForm(value, "#output4");
 		}
 	});
 
@@ -253,7 +275,7 @@ window.onload = function() {
 			sender : "editor4"
 		},
 		exec : function() {
-			editor4.gotoLine(40);
+			editor4.gotoLine(42);
 			editor4.removeLines();
 			editor4.removeLines();
 			var value = "ask \"what is your name?\" assign to name\nask \"what is your birthdate?\" assign to date\n"
@@ -275,8 +297,11 @@ window.onload = function() {
 			editor4.removeLines();
 			editor4.removeLines();
 			var value = "  def assign(to) {\n  }\n"
-			editor4.insert(value);
-		}
+            editor4.insert(value);
+            editor4.gotoLine(1);
+            editor4.scrollToLine();
+            editor4.setHighlightActiveLine(true);
+        }
 	});
 	
 	commands4.addCommand({
@@ -311,6 +336,9 @@ window.onload = function() {
 			editor4.gotoLine(9);
 			var value = "    i++\n"
 			editor4.insert(value);
+            editor4.gotoLine(15);
+            editor4.scrollToLine();
+            editor4.setHighlightActiveLine(true);
 		}
 	});
 	
@@ -375,78 +403,91 @@ window.onload = function() {
 		}
 	});
 
-	var editor6 = ace.edit("editor6");
-	editor6.setTheme("ace/theme/clouds");
-	editor6.getSession().setMode("ace/mode/groovy");
-	
-	var commands6 = editor6.commands;
+    var editor6 = ace.edit("editor6");
+    editor6.setTheme("ace/theme/clouds");
+    editor6.getSession().setMode("ace/mode/groovy");
 
-	commands6.addCommand({
-		name : "save6",
+    var commands6 = editor6.commands;
+
+    commands6.addCommand({
+        name : "save6",
+        bindKey : {
+            win : "Ctrl-S",
+            mac : "Command-S",
+            sender : "editor6"
+        },
+        exec : function() {
+            var value = editor6.getSession().getValue();
+            value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
+                +"import org.codehaus.groovy.ast.*\n"
+                +"import org.codehaus.groovy.ast.expr.*\n"
+                +"import org.codehaus.groovy.ast.stmt.*\n"
+                +"import org.codehaus.groovy.classgen.GeneratorContext\n"
+                +"import org.codehaus.groovy.control.CompilationFailedException\n"
+                +"import org.codehaus.groovy.control.CompilePhase\n"
+                +"import org.codehaus.groovy.control.CompilerConfiguration\n"
+                +"import org.codehaus.groovy.control.SourceUnit\n"
+                +"import org.codehaus.groovy.control.customizers.*\n"
+                +"import org.codehaus.groovy.ast.builder.AstBuilder\n"
+                +"import org.codehaus.groovy.syntax.Token\n"
+                +"import org.codehaus.groovy.syntax.Types\n"
+                +"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n" + value;
+            submitForm(value, "#output6");
+        }
+    });
+
+    var editor7 = ace.edit("editor7");
+    editor7.setTheme("ace/theme/clouds");
+    editor7.getSession().setMode("ace/mode/groovy");
+
+    var commands7 = editor7.commands;
+
+    commands7.addCommand({
+        name : "save7",
+        bindKey : {
+            win : "Ctrl-S",
+            mac : "Command-S",
+            sender : "editor7"
+        },
+        exec : function() {
+            var value = editor7.getSession().getValue();
+            value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
+                +"import org.codehaus.groovy.ast.*\n"
+                +"import org.codehaus.groovy.ast.expr.*\n"
+                +"import org.codehaus.groovy.ast.stmt.*\n"
+                +"import org.codehaus.groovy.classgen.GeneratorContext\n"
+                +"import org.codehaus.groovy.control.CompilationFailedException\n"
+                +"import org.codehaus.groovy.control.CompilePhase\n"
+                +"import org.codehaus.groovy.control.CompilerConfiguration\n"
+                +"import org.codehaus.groovy.control.SourceUnit\n"
+                +"import org.codehaus.groovy.control.customizers.*\n"
+                +"import org.codehaus.groovy.ast.builder.AstBuilder\n"
+                +"import org.codehaus.groovy.syntax.Token\n"
+                +"import org.codehaus.groovy.syntax.Types\n"
+                +"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n" + value;
+            submitForm(value, "#output7");
+        }
+    });
+
+    var editor8 = ace.edit("editor8");
+	editor8.setTheme("ace/theme/clouds");
+	editor8.getSession().setMode("ace/mode/groovy");
+
+	var commands8 = editor8.commands;
+
+	commands8.addCommand({
+		name : "save8",
 		bindKey : {
 			win : "Ctrl-S",
 			mac : "Command-S",
-			sender : "editor6"
+			sender : "editor8"
 		},
 		exec : function() {
-			var value = editor6.getSession().getValue();
-			value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
-			+"import org.codehaus.groovy.ast.*\n"
-			+"import org.codehaus.groovy.ast.expr.*\n"
-			+"import org.codehaus.groovy.ast.stmt.*\n"
-			+"import org.codehaus.groovy.classgen.GeneratorContext\n"
-			+"import org.codehaus.groovy.control.CompilationFailedException\n"
-			+"import org.codehaus.groovy.control.CompilePhase\n"
-			+"import org.codehaus.groovy.control.CompilerConfiguration\n"
-			+"import org.codehaus.groovy.control.SourceUnit\n"
-			+"import org.codehaus.groovy.control.customizers.*\n"
-			+"import org.codehaus.groovy.ast.builder.AstBuilder\n"
-			+"import org.codehaus.groovy.syntax.Token\n"
-			+"import org.codehaus.groovy.syntax.Types\n"
-			+"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n" + value;
-			submitForm(value, "#output6");
-		}
-	});
-
-	var editor7 = ace.edit("editor7");
-	editor7.setTheme("ace/theme/clouds");
-	editor7.getSession().setMode("ace/mode/groovy");
-
-	var commands7 = editor7.commands;
-
-	commands7.addCommand({
-		name : "save7",
-		bindKey : {
-			win : "Ctrl-S",
-			mac : "Command-S",
-			sender : "editor7"
-		},
-		exec : function() {
-			var value = editor7.getSession().getValue();
+			var value = editor8.getSession().getValue();
 			var title = $('#titleCreate').val();			
-			submitCreateForm(title, value, "#output7");
+			submitCreateForm(title, value, "#output8");
 		}
 	});
-	
-	commands7.addCommand({
-		name : "step",
-		bindKey : {
-			win : "1",
-			mac : "1",
-			sender : "editor7"
-		},
-		exec : function() {
-			//var value = editor7.getSession().getValue();
-			var value = "ask \"Tell us about yourself?\" assign to presentation\n" +
-"ask \"What will you be speaking about at GR8Conf?\" assign to talkContent\n" +
-"ask \"How did you get started with Groovy?\" assign to groovyStart\n" +
-"ask \"What other sessions would you attend at GR8Conf?\" assign to session\n" +
-"ask \"What else can you tell the reader?\" assign to message\n"; 
-			editor7.insert(value);
-		}
-	});
-
-
 
 };
 	
@@ -494,31 +535,31 @@ $('#submitButton').bind('click', function() {
     var question = $("#displayQuestion").data('question');
 	var scriptId = $("#displayQuestion").data('scriptId');
 	var counter = $("#displayQuestion").data('counter');
-	var lastAssignement = $("#displayQuestion").data('lastAssignement');
+	var lastAssignment = $("#displayQuestion").data('lastAssignment');
 	if (answerMap)
-	  answerMap[counter] = {answer:answer};
+	  answerMap[counter] = {variable: lastAssignment, question: question, answer:answer};
 	var stringAnswerMap = JSON.stringify(answerMap);
 	var url = "http://localhost:8080/DslPrez/survey/run?=";
 	//var url = "http://dslprez.cloudfoundry.com/survey/run?=";
 	
 	$.post(url, {
-		scriptId:scriptId, question: question, lastAssignement:lastAssignement, counter:counter, answer:answer, answerMap:stringAnswerMap
+		scriptId:scriptId, question: question, lastAssignment:lastAssignment, counter:counter, answer:answer, answerMap:stringAnswerMap
 	}, function(data) {
 
 		var answerMap = data.answerMap;
 		var counter = data.counter;
         var question = data.question;
-        var lastAssignement = data.lastAssignement;
+        var lastAssignment = data.lastAssignment;
 		$("#displayQuestion").data('answerMap', answerMap);
         $("#displayQuestion").data('question', question);
 		$("#displayQuestion").data('counter', counter);
-		$("#displayQuestion").data('lastAssignement', lastAssignement);
+		$("#displayQuestion").data('lastAssignment', lastAssignment);
 		if(data.finished==true) {
 			$(".surveystart").hide();
             for(var index = 1; index <= counter;index++)  {
                 if (answerMap[index]) {
-				    var output7Value = '<div class="displayAnswer">' + answerMap[index].question + ' ' + answerMap[index].answer + '</div>';
-			        $("#output7").append(output7Value);
+				    var output8Value = '<div class="displayAnswer">' + answerMap[index].question + ' ' + answerMap[index].answer + '</div>';
+			        $("#output8").append(output8Value);
                 }
 			}
 		} else {
@@ -584,6 +625,9 @@ function resizeAce6() {
 function resizeAce7() {
     return $('#editor7').height($(window).height()*0.8);
 }
+function resizeAce8() {
+    return $('#editor8').height($(window).height()*0.8);
+}
 //listen for changes
 $(window).resize(resizeAce1);
 $(window).resize(resizeAce2);
@@ -592,7 +636,9 @@ $(window).resize(resizeAce4);
 $(window).resize(resizeAce5);
 $(window).resize(resizeAce6);
 $(window).resize(resizeAce7);
+$(window).resize(resizeAce8);
 //set initially
+resizeAce8();
 resizeAce7();
 resizeAce6();
 resizeAce5();

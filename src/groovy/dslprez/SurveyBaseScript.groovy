@@ -2,15 +2,13 @@ package dslprez
 
 abstract class SurveyBaseScript extends Script {
 
-    //def invokeNext = "CONTINUE"
-
 	def ask(question) {
 		[assign : { to ->
 				[:].withDefault {assignment ->
-					__inputs.question = question
-					__inputs.lastAssignement = assignment
-					__inputs.counter++
-                    __inputs.invokeNext = "STOP"
+					inputs.question = question
+					inputs.lastAssignment = assignment
+					inputs.counter++
+                    invokeNext = Boolean.FALSE
 				}
 			}]
 	}
@@ -19,7 +17,7 @@ abstract class SurveyBaseScript extends Script {
         if(exp) {
             closure()
         }  else {
-            __inputs.counter++
+            inputs.counter++
         }
     }
 
@@ -30,28 +28,27 @@ abstract class SurveyBaseScript extends Script {
 	//entry point method each time the script is called
 	void dispatch() {
 
-		if(!__inputs.answerMap){
-			__inputs.answerMap = [:]
+		if(!inputs.answerMap){
+			inputs.answerMap = [:]
 		}
-        if(!__inputs.counter){
-            __inputs.counter=0
+        if(!inputs.counter){
+            inputs.counter=0
         }
 
-        __inputs.answerMap[__inputs.counter] = [variable:__inputs.lastAssignement, question:__inputs.question, answer:__inputs.answer]
-        __inputs.invokeNext = "CONTINUE"
+        inputs.answerMap[inputs.counter] = [variable:inputs.lastAssignment, question:inputs.question, answer:inputs.answer]
         invokeMethod()
 	}
 
     def invokeMethod() {
         try {
-            def methodToInvoke  = this.class.getMethod("doStep_${__inputs.counter}")
+            def methodToInvoke  = this.class.getMethod("doStep_${inputs.counter}")
             methodToInvoke.invoke(this)
-            if (__inputs.invokeNext == "CONTINUE") {
+            if (invokeNext) {
                 invokeMethod()
             }
         }
         catch(NoSuchMethodException exp){
-            __inputs.finished = true
+            inputs.finished = true
         }
     }
 }

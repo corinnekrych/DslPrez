@@ -3,6 +3,7 @@ package dslprez
 import grails.converters.JSON
 import org.codehaus.groovy.control.CompilerConfiguration
 import org.springframework.dao.DataIntegrityViolationException
+import org.codehaus.groovy.grails.web.json.JSONObject
 
 class SurveyController {
 
@@ -54,17 +55,20 @@ class SurveyController {
     }
 
     def run() {
-        println "in the inputs" + params
         def survey = Survey.get(params.scriptId)
-        println "scriptId" + params.scriptId
-        def binding = new Binding()
-        binding.setVariable("__inputs", params)
+
+        def binding = new Binding("inputs": params, "invokeNext": Boolean.TRUE)
 
         // Get the history which goes back and forth
         if (params.answerMap) {
-            binding.__inputs.answerMap = JSON.parse(params.answerMap)
+            binding.inputs.answerMap = JSON.parse(params.answerMap)
+            binding.inputs.answerMap.each { key, value->
+                if (key != "0") {
+                    binding.setVariable(value.get("variable"), value.get("answer"))
+                }
+            }
         }
-        println "BEFORE answer map" + binding.__inputs.answerMap
+
         def compilerConfig = new CompilerConfiguration()
 
         compilerConfig.scriptBaseClass = SurveyBaseScript.name
@@ -72,9 +76,8 @@ class SurveyController {
 
         def groovyShell = new GroovyShell(new GroovyClassLoader(), binding, compilerConfig)
         groovyShell.evaluate(survey.content)
-        println "AFTER binding after eval" + binding.__inputs
 
-        render binding.__inputs as JSON
+        render binding.inputs as JSON
     }
 
     def edit() {

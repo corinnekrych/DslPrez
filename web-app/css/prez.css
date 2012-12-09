@@ -11,11 +11,11 @@
 	.general {
 		font-size : 35px;
 	}
-  #editor1, #editor2, #editor3, #editor4, #editor5, #editor6, #editor7 { 
+  #editor1, #editor2, #editor3, #editor4, #editor5, #editor6, #editor7, #editor8 {
         overflow: hidden;
         padding:0px;
         position: absolute;
-        width:1200px;
+        width:950px;
         height:700px;
         line-height: 35px;
         font-size: 30px;
