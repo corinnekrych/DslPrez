@@ -562,6 +562,7 @@ $('#submitButton').bind('click', function() {
 			        $("#output8bis").append(output8Value);
                 }
 			}
+            impress().next();
 		} else {
 			$("#displayQuestion").text(data.question);
 		}
