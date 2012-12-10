@@ -54,14 +54,33 @@
 
     </div>
 
+    <div class="step big" data-x="-1200" data-y="-380" id="seco" data-scale="1">
+        <p>Amadeus Selling</p> <p>Platform Connect</p>
+    </div>
 
-    <div class="step" data-x="-1200" data-y="-200" id="seco" data-scale="0.2">
-        <p>Amadeus Selling Platform Connect</p><br/>
+    <div class="step" data-x="-1200" data-y="-330" id="seco1" data-scale="0.02">
+        <img src="images/bookingfile.png" width="110%"/>
+    </div>
+
+    <div class="step" data-x="-1165" data-y="-330" id="seco2" data-scale="0.01">
+        <img src="images/cryptic.png" width="110%"/>
     </div>
 
 
-    <div class="step" data-x="-900" data-y="-200" id="productivity" data-scale="0.2">
+    <div class="step big" data-x="-1300" data-y="-200" id="productivity" data-scale="0.2">
         <p>Productivity Suite</p><br/>
+    </div>
+
+    <div class="step" data-x="-1365" data-y="-180" id="seco3" data-scale="0.04">
+        <img src="images/smk.PNG" width="100%"/>
+    </div>
+
+    <div class="step" data-x="-1315" data-y="-180" id="seco4" data-scale="0.04">
+        <img src="images/simple_editor.png" width="110%"/>
+    </div>
+
+    <div class="step" data-x="-1265" data-y="-180" id="seco5" data-scale="0.04">
+        <img src="images/advanced_editor2.png" width="110%"/>
     </div>
 
     <div class="step big" data-x="1200" data-y="-80">
@@ -415,6 +434,11 @@ abstract class SurveyScript extends Script {
     <pre class="step slide code general" id="output5" data-x="22200" data-y="1500" data-scale = "0.4">
     </pre>
 
+    <div class="step slide" id="ast_ask" data-x="23000" data-y="600"  data-scale = "1">
+        User Interaction with AST
+        <img src="images/ask.png" width="100%"/>
+    </div>
+
     <div class="step slide" id="editor6" data-x="23000" data-y="1400" data-scale = "1">def getShell(binding) {
   def config = new CompilerConfiguration()
   config.addCompilationCustomizers(new SurveyCustomizer())
@@ -532,6 +556,11 @@ public class SurveyCustomizer extends CompilationCustomizer {
     </div>
     <pre class="step slide code general" id="output6" data-x="23800" data-y="1500" data-scale = "0.4">
     </pre>
+
+    <div class="step slide" id="ast_when" data-x="24600" data-y="600" data-scale = "1">
+        Conditional User Interaction with AST
+        <img src="images/when.png" width="100%"/>
+    </div>
 
     <div class="step slide" id="editor7" data-x="24600" data-y="1400" data-scale = "1">def getShell(binding) {
   def config = new CompilerConfiguration()
