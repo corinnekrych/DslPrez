@@ -570,11 +570,15 @@ $('#submitButton').bind('click', function() {
 
 var settings = {
         "size" : {
-            "grid" : 8
+            "grid" : 22,
+            "factor" : 0, // font resize factor, 0 means automatic
+            "normalize" : true // reduces outliers for more attractive output
         },
         "options" : {
             "color" : "random-dark",
-            "printMultiplier" : 3
+            "printMultiplier" : 3,
+            "rotationRatio" : 0.2, // 0 is all horizontal, 1 is all vertical
+            "printMultiplier" : 4 // set to 3 for nice printer output; higher numbers take longer
         },
         "shape" : "circle"
     };
