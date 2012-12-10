@@ -559,7 +559,7 @@ $('#submitButton').bind('click', function() {
             for(var index = 1; index <= counter;index++)  {
                 if (answerMap[index]) {
 				    var output8Value = '<div class="displayAnswer">' + answerMap[index].question + ' ' + answerMap[index].answer + '</div>';
-			        $("#output8").append(output8Value);
+			        $("#output8bis").append(output8Value);
                 }
 			}
 		} else {
