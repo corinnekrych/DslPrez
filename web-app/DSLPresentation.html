@@ -729,7 +729,7 @@ ask name + ", why did you come to GGX?" assign to why
 ask "Is this Groovy DSL a great talk?" assign to dsl
 when (dsl == "yes") {
   ask "What about a mobile talk next time?" assign to mobile
-  when (mobile == yes) {
+  when (mobile == "yes") {
     ask "With the 3.musket33rs ?" assign to us
   }
 }
