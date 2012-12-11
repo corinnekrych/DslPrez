@@ -570,9 +570,9 @@ public class SurveyCustomizer extends CompilationCustomizer {
                   binding,
                   config)
 }
-def binding = new Binding()
 def inputs = [:]
-binding.setVariable("inputs", inputs);
+def binding = new Binding("inputs": inputs,
+  "invokeNext": Boolean.TRUE);
 def script = """
 ask "First time in GGX?" assign to ggx
 when (false) {
@@ -712,7 +712,8 @@ public class SurveyCustomizer extends CompilationCustomizer {
 
     Expression binaryExpr = booleans[0];
     for (def i = 0; i < booleans.size - 1; i++) {
-      binaryExpr = new BinaryExpression(binaryExpr, Token.newSymbol("&&", 0, 0), booleans[i + 1])
+      binaryExpr = new BinaryExpression(binaryExpr,
+        Token.newSymbol("&&", 0, 0), booleans[i + 1])
     }
     new ExpressionStatement(new MethodCallExpression(
       new VariableExpression("this"),
