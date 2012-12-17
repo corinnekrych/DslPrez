@@ -14,15 +14,6 @@
     <link rel="stylesheet" href="css/night.css">
 
     <style type="text/css">
-    /*.CodeMirror {*/
-    /*border: 1px solid #eee;*/
-    /*height: auto;*/
-    /*}*/
-    /*.CodeMirror-scroll {*/
-    /*overflow-y: hidden;*/
-    /*overflow-x: auto;*/
-    /*}*/
-
     .CodeMirror-fullscreen {
         display: block;
         position: absolute;
@@ -30,62 +21,6 @@
         width: 100%;
         z-index: 9999;
     }
-
-html, body {
-
-            height: 100%;
-
-        }
-
-        footer {
-
-            color: #666;
-
-            background: #222;
-
-            padding: 17px 0 18px 0;
-
-            border-top: 1px solid #000;
-
-        }
-
-        footer a {
-
-            color: #999;
-
-        }
-
-        footer a:hover {
-
-            color: #efefef;
-
-        }
-
-        .wrapper {
-
-            min-height: 100%;
-
-            height: auto !important;
-
-            height: 100%;
-
-            margin: 0 auto -63px;
-
-        }
-
-        .push {
-
-            height: 63px;
-
-        }
-
-            /* not required for sticky footer; just pushes hero down a bit */
-
-        .wrapper > .container {
-
-            padding-top: 60px;
-
-        }
 
     </style>
     <!-- Le styles -->
@@ -148,68 +83,56 @@ html, body {
 </div>
 <div class="container-fluid">
     <div class="row-fluid">
-            <div class="span12">
-                <p>Some Title</p>
-                    <form><textarea id="code" name="code">
-                        //Pattern for groovy script
-                        def p = ~/.*\.groovy/
-                        new File( 'd:\\scripts' ).eachFileMatch(p) {f ->
-                        // imports list
-                        def imports = []
-                        f.eachLine {
-                        // condition to detect an import instruction
-                        ln -> if ( ln =~ '^import .*' ) {
-                        imports << "${ln - 'import '}"
-                        }
-                        }
-                        // print thmen
-                        if ( ! imports.empty ) {
-                        println f
-                        imports.each{ println "   $it" }
-                        }
-                        }
+        <div class="span12">
+            <p>Some Title</p>
+            <textarea id="code" name="code">
+//Pattern for groovy script
+def p = ~/.*\.groovy/
+new File( 'd:\\scripts' ).eachFileMatch(p) {f ->
+// imports list
+def imports = []
+f.eachLine {
+// condition to detect an import instruction
+ln -> if ( ln =~ '^import .*' ) {
+imports << "${ln - 'import '}"
+}
+}
+// print thmen
+if ( ! imports.empty ) {
+println f
+imports.each{ println "   $it" }
+}
+}
 
-                        /* Coin changer demo code from http://groovy.codehaus.org */
+/* Coin changer demo code from http://groovy.codehaus.org */
 
-                        enum UsCoin {
-                        quarter(25), dime(10), nickel(5), penny(1)
-                        UsCoin(v) { value = v }
-                        final value
-                        }
+enum UsCoin {
+quarter(25), dime(10), nickel(5), penny(1)
+UsCoin(v) { value = v }
+final value
+}
 
-                        enum OzzieCoin {
-                        fifty(50), twenty(20), ten(10), five(5)
-                        OzzieCoin(v) { value = v }
-                        final value
-                        }
+enum OzzieCoin {
+fifty(50), twenty(20), ten(10), five(5)
+OzzieCoin(v) { value = v }
+final value
+}
 
-                        def plural(word, count) {
-                        if (count == 1) return word
-                        word[-1] == 'y' ? word[0..-2] + "ies" : word + "s"
-                        }
+def plural(word, count) {
+if (count == 1) return word
+word[-1] == 'y' ? word[0..-2] + "ies" : word + "s"
+}
 
-                        def change(currency, amount) {
-                        currency.values().inject([]){ list, coin ->
-                        int count = amount / coin.value
-                        amount = amount % coin.value
-                        list += "$count ${plural(coin.toString(), count)}"
-                        }
-                        }
-                    </textarea></form>
-            </div>
-    </div>
-
-
-    <footer>
-
-        <div class="container">
-            <div class="progress">
-                <div class="bar" style="width: 69%">
-                </div>
-            </div>
+def change(currency, amount) {
+currency.values().inject([]){ list, coin ->
+int count = amount / coin.value
+amount = amount % coin.value
+list += "$count ${plural(coin.toString(), count)}"
+}
+}
+            </textarea>
         </div>
-
-    </footer>
+    </div>
 </div>
 
 
@@ -222,7 +145,6 @@ html, body {
 <script src="js/bootstrap.js">
 </script>
 <script>
-
     function isFullScreen(cm) {
         return /\bCodeMirror-fullscreen\b/.test(cm.getWrapperElement().className);
     }
@@ -263,10 +185,6 @@ html, body {
             }
         }
     });
-
-
-
-
 </script>
 
 
