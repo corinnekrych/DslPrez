@@ -1,3 +1,5 @@
+// CodeMirror version 3.0
+//
 // CodeMirror is the only global var we claim
 window.CodeMirror = (function() {
   "use strict";
@@ -24,12 +26,6 @@ window.CodeMirror = (function() {
   // This is woefully incomplete. Suggestions for alternative methods welcome.
   var mobile = ios || /Android|webOS|BlackBerry|Opera Mini|IEMobile/i.test(navigator.userAgent);
   var mac = ios || /Mac/.test(navigator.platform);
-  var windows = /windows/i.test(navigator.platform);
-
-  var opera_version = opera && navigator.userAgent.match(/Version\/(\d*\.\d*)/);
-  if (opera_version) opera_version = Number(opera_version[1]);
-  // Some browsers use the wrong event properties to signal cmd/ctrl on OS X
-  var flipCtrlCmd = mac && (qtwebkit || opera && (opera_version == null || opera_version < 12.11));
 
   // Optimize some code when these features are not used
   var sawReadOnlySpans = false, sawCollapsedSpans = false;
@@ -84,8 +80,7 @@ window.CodeMirror = (function() {
   function makeDisplay(place) {
     var d = {};
     var input = d.input = elt("textarea", null, null, "position: absolute; padding: 0; width: 1px; height: 1em; outline: none;");
-    if (!webkit) input.setAttribute("wrap", "off");
-    input.setAttribute("autocorrect", "off"); input.setAttribute("autocapitalize", "off");
+    input.setAttribute("wrap", "off"); input.setAttribute("autocorrect", "off"); input.setAttribute("autocapitalize", "off");
     // Wraps and hides input textarea
     d.inputDiv = elt("div", [input], null, "overflow: hidden; position: relative; width: 3px; height: 0px;");
     // The actual fake scrollbars.
@@ -1126,9 +1121,6 @@ window.CodeMirror = (function() {
       var width = measureChar(cm, view.maxLine, view.maxLine.text.length).right;
       display.sizer.style.minWidth = (width + 3 + scrollerCutOff) + "px";
       view.maxLineChanged = false;
-      var maxScrollLeft = Math.max(0, display.sizer.offsetLeft + display.sizer.offsetWidth - display.scroller.clientWidth);
-      if (maxScrollLeft < view.scrollLeft)
-        setScrollLeft(cm, Math.min(display.scroller.scrollLeft, maxScrollLeft), true);
     }
     var newScrollPos, updated;
     if (op.selectionChanged) {
@@ -1573,7 +1565,6 @@ window.CodeMirror = (function() {
   }
   function setScrollLeft(cm, val, isScroller) {
     if (isScroller ? val == cm.view.scrollLeft : Math.abs(cm.view.scrollLeft - val) < 2) return;
-    val = Math.min(val, cm.display.scroller.scrollWidth - cm.display.scroller.clientWidth);
     cm.view.scrollLeft = val;
     alignHorizontally(cm);
     if (cm.display.scroller.scrollLeft != val) cm.display.scroller.scrollLeft = val;
@@ -1706,6 +1697,7 @@ window.CodeMirror = (function() {
     }, 50);
 
     var name = keyNames[e_prop(e, "keyCode")], handled = false;
+    var flipCtrlCmd = mac && (opera || qtwebkit);
     if (name == null || e.altGraphKey) return false;
     if (e_prop(e, "altKey")) name = "Alt-" + name;
     if (e_prop(e, flipCtrlCmd ? "metaKey" : "ctrlKey")) name = "Ctrl-" + name;
@@ -2671,8 +2663,7 @@ window.CodeMirror = (function() {
     // Stuff used by commands, probably not much use to outside code.
     moveH: operation(null, function(dir, unit) {
       var sel = this.view.sel, pos = dir < 0 ? sel.from : sel.to;
-      if (sel.shift || sel.extend || posEq(sel.from, sel.to))
-        pos = findPosH(this, dir, unit, this.options.rtlMoveVisually);
+      if (sel.shift || sel.extend || posEq(sel.from, sel.to)) pos = findPosH(this, dir, unit, true);
       extendSelection(this, pos, pos, dir);
     }),
 
@@ -2804,7 +2795,6 @@ window.CodeMirror = (function() {
     updateDisplay(cm, true);
   }, true);
   option("electricChars", true);
-  option("rtlMoveVisually", !windows);
 
   option("theme", "default", function(cm) {
     themeChanged(cm);
@@ -3554,14 +3544,6 @@ window.CodeMirror = (function() {
       st[pos++] = curText; st[pos++] = curStyle;
     }
     if (stream.pos > 5000) { st[pos++] = line.text.slice(stream.pos); st[pos++] = null; }
-    // Webkit seems to refuse to render text nodes longer than 57444 characters
-    if (webkit) for (var i = 0; i < st.length; i += 2) {
-      if (st[i].length < 50000) continue;
-      st.splice(i + 2, 0, st[i].slice(1000), st[i+1]);
-      st[i] = st[i].slice(0, 1000);
-      pos += 2;
-    }
-
     if (pos != st.length) { st.length = pos; changed = true; }
     return changed;
   }
@@ -4318,7 +4300,7 @@ window.CodeMirror = (function() {
     if (!order) return f(from, to, "ltr");
     for (var i = 0; i < order.length; ++i) {
       var part = order[i];
-      if (part.from < to && part.to > from || from == to && part.to == from)
+      if (part.from < to && part.to > from)
         f(Math.max(part.from, from), Math.min(part.to, to), part.level == 1 ? "rtl" : "ltr");
     }
   }
@@ -4436,20 +4418,24 @@ window.CodeMirror = (function() {
 
     var bidiRE = /[\u0590-\u05f4\u0600-\u06ff\u0700-\u08ac]/;
     var isNeutral = /[stwN]/, isStrong = /[LRr]/, countsAsLeft = /[Lb1n]/, countsAsNum = /[1n]/;
-    // Browsers seem to always treat the boundaries of block elements as being L.
-    var outerType = "L";
 
     return function charOrdering(str) {
       if (!bidiRE.test(str)) return false;
-      var len = str.length, types = [];
-      for (var i = 0, type; i < len; ++i)
+      var len = str.length, types = [], startType = null;
+      for (var i = 0, type; i < len; ++i) {
         types.push(type = charType(str.charCodeAt(i)));
+        if (startType == null) {
+          if (type == "L") startType = "L";
+          else if (type == "R" || type == "r") startType = "R";
+        }
+      }
+      if (startType == null) startType = "L";
 
       // W1. Examine each non-spacing mark (NSM) in the level run, and
       // change the type of the NSM to the type of the previous
       // character. If the NSM is at the start of the level run, it will
       // get the type of sor.
-      for (var i = 0, prev = outerType; i < len; ++i) {
+      for (var i = 0, prev = startType; i < len; ++i) {
         var type = types[i];
         if (type == "m") types[i] = prev;
         else prev = type;
@@ -4460,7 +4446,7 @@ window.CodeMirror = (function() {
       // AL is found, change the type of the European number to Arabic
       // number.
       // W3. Change all ALs to R.
-      for (var i = 0, cur = outerType; i < len; ++i) {
+      for (var i = 0, cur = startType; i < len; ++i) {
         var type = types[i];
         if (type == "1" && cur == "r") types[i] = "n";
         else if (isStrong.test(type)) { cur = type; if (type == "r") types[i] = "R"; }
@@ -4495,7 +4481,7 @@ window.CodeMirror = (function() {
       // W7. Search backwards from each instance of a European number
       // until the first strong type (R, L, or sor) is found. If an L is
       // found, then change the type of the European number to L.
-      for (var i = 0, cur = outerType; i < len; ++i) {
+      for (var i = 0, cur = startType; i < len; ++i) {
         var type = types[i];
         if (cur == "L" && type == "1") types[i] = "L";
         else if (isStrong.test(type)) cur = type;
@@ -4510,8 +4496,8 @@ window.CodeMirror = (function() {
       for (var i = 0; i < len; ++i) {
         if (isNeutral.test(types[i])) {
           for (var end = i + 1; end < len && isNeutral.test(types[end]); ++end) {}
-          var before = (i ? types[i-1] : outerType) == "L";
-          var after = (end < len - 1 ? types[end] : outerType) == "L";
+          var before = (i ? types[i-1] : startType) == "L";
+          var after = (end < len - 1 ? types[end] : startType) == "L";
           var replace = before || after ? "L" : "R";
           for (var j = i; j < end; ++j) types[j] = replace;
           i = end - 1;
@@ -4561,7 +4547,7 @@ window.CodeMirror = (function() {
 
   // THE END
 
-  CodeMirror.version = "3.0 +";
+  CodeMirror.version = "3.0";
 
   return CodeMirror;
 })();
