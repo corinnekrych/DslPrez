@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 2
 
 
 
-var serverUrl = "http://localhost:8080/DslPrez";
-//var serverUrl = "http://dslprez.cloudfoundry.com";
+//var serverUrl = "http://localhost:8080/DslPrez";
+var serverUrl = "http://dslprez.cloudfoundry.com";
 
 function submitForm(input, output) {
     var url = serverUrl + "/console/execute?=";
@@ -64,8 +64,6 @@ function submitForm(input, output) {
         $('#next').click();
     });
 }
-
-
 
 var editor1 = new dslPrez.editor("editor1");
 function editor1Key1() {
@@ -125,7 +123,7 @@ var keymap2 = {
     "Cmd-S" :editor2Send,
     "1": editor2Key1,
     "2": editor2Key2,
-    "3": editor2Key4,
+    "3": editor2Key3,
     "4": editor2Key4
 };
 
@@ -145,12 +143,13 @@ function editor3Key1() {
     editor3.replaceRange(value, {line: 14, ch: 0});
 }
 function editor3Key2() {
+    editor3.removeLine(2);
     var value = "    return this\n";
-    editor3.replaceRange(value, {line: 3, ch: 0});
+    editor3.replaceRange(value, {line: 2, ch: 0});
 }
 function editor3Key3() {
     var value = "  def into(variable) {\n" + "  }\n";
-    editor3.replaceRange(value, {line: 5, ch: 0});
+    editor3.replaceRange(value, {line: 4, ch: 0});
 }
 function editor3Key4() {
     var value = "  def map = [:]\n";
@@ -160,9 +159,9 @@ function editor3Key5() {
     var value = "  def i = 1;\n";
     editor3.replaceRange(value, {line: 1, ch: 0});
     value = "    map[\"question$i\"] = question\n";
-    editor3.replaceRange(value, {line: 5, ch: 0});
+    editor3.replaceRange(value, {line: 4, ch: 0});
     value = "    map[\"variable$i\"] = variable\n    i++\n";
-    editor3.replaceRange(value, {line: 9, ch: 0});
+    editor3.replaceRange(value, {line: 8, ch: 0});
 }
 function editor3Key6() {
     var value = "  def propertyMissing(def propertyName) {\n"
@@ -174,9 +173,9 @@ function editor3Key6() {
         + "      if (index % 2) { println \"______________________\\n\" }\n"
         + "    }\n"
         + "  }\n";
-    editor3.replaceRange(value, {line: 12, ch: 0});
+    editor3.replaceRange(value, {line: 11, ch: 0});
     value = "display map\n";
-    editor3.replaceRange(value, {line: 33, ch: 0});
+    editor3.replaceRange(value, {line: 32, ch: 0});
 }
 
 var keymap3 = {

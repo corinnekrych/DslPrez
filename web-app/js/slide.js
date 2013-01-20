@@ -157,21 +157,34 @@ var showSlide = function(index) {
 };
 
 var showCloud = function() {
-    var settings = {
-        "size" : {
-            "grid" : 22,
-            "factor" : 0, // font resize factor, 0 means automatic
-            "normalize" : true // reduces outliers for more attractive output
-        },
-        "options" : {
-            "color" : "random-dark",
-            "rotationRatio" : 0.2, // 0 is all horizontal, 1 is all vertical
-            "printMultiplier" : 4 // set to 3 for nice printer output; higher numbers take longer
-        },
-        "shape" : "circle"
-    };
-
-    $('#wordcloud').awesomeCloud( settings );
+    var word_array = [
+        {text: "syntax sugar", weight: 9},
+        {text: "less punctuation", weight: 7},
+        {text: "scripting", weight: 5},
+        {text: "binding", weight: 7},
+        {text: "no getter setter", weight: 1},
+        {text: "map", weight: 7},
+        {text: "named parameters", weight: 8},
+        {text: "closure", weight: 6},
+        {text: "GString", weight: 4},
+        {text: "public visibility", weight: 2},
+        {text: "return statement optional", weight: 3},
+        {text: "groovy truth", weight: 7},
+        {text: "operator overloading", weight: 1},
+        {text: "GroovyMarkup", weight: 4},
+        {text: "method pointer", weight: 6},
+        {text: "runtime transformation", weight: 1},
+        {text: "MOP", weight: 9},
+        {text: "Expando", weight: 8},
+        {text: "Categories", weight: 7},
+        {text: "methodMissing", weight: 8},
+        {text: "command chaining", weight: 1},
+        {text: "compile time transformation", weight: 7},
+        {text: "AST transformation", weight: 10},
+        {text: "CST transformation", weight: 5}
+    ];
+    $("#wordcloud").empty();
+    $("#wordcloud").jQCloud(word_array);
 };
 
 showSlide(0);
