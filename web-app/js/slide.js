@@ -75,6 +75,9 @@ var showSlide = function(index) {
     $(slides[index]).slideDown(600, function(){
         if ($(slides[index]).attr('title') === "Groovy") {
             showCloud();
+        } else if ($(slides[index]).children()[0].type === "textarea") {
+            window[$(slides[index]).children()[0].id].refresh();
+            window[$(slides[index]).children()[0].id].focus();
         }
     });
     var previous;
@@ -89,6 +92,7 @@ var showSlide = function(index) {
     } else {
         next = index + 1;
     }
+
     var newPrevious = $(slides[previous]).attr('title');
     $('#previous-title').empty().append(newPrevious);
     var newNext = $(slides[next]).attr('title');

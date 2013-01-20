@@ -38,6 +38,7 @@ dslPrez.editor = function (location) {
     var resizeForSlide = function() {
         var wrap = editor.getWrapperElement();
         wrap.style.height = winHeight() + "px";
+        editor.refresh();
     };
 
 

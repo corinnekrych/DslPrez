@@ -5,161 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Groovy DSL.</title>
-    <meta name="description" content="The powr of Groovy for DSL and USer Interaction in this presentration">
+    <title>Groovy DSL</title>
+    <meta name="description" content="The power of Groovy for DSL and User Interaction in this presentation">
     <meta name="author" content="Corinne Krych, Sebastien Blanc, Fabrice Matrat">
-
     <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
-
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/grails.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/grails.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/grails.png">
     <link rel="apple-touch-icon-precomposed" href="img/grails.png">
-
-    <script type="text/javascript" src="js/iscroll.js"></script>
-
     <link rel="stylesheet" href="css/codemirror.css">
     <link rel="stylesheet" href="css/eclipse.css">
-    <script src="js/codemirror.js"></script>
-    <script src="js/groovy.js"></script>
-    <script src="js/groovy.js"></script>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
-
-
-    <style type="text/css" media="all">
-
-        .CodeMirror {
-            border: 2px solid #eee;
-            width: 90%;
-            height: 95%;
-            margin-left: 5%;
-        }
-        .CodeMirror-scroll {
-            overflow-y: hidden;
-            overflow-x: auto;
-        }
-
-        body,ul,li {
-            font-family: 'PT Serif', georgia, serif;
-            padding:0;
-            margin:0;
-            border:0;
-            text-align: center;
-        }
-
-        body {
-            font-family: 'PT Serif', georgia, serif;
-            background: #ededeb url("img/bg.png") repeat 0 0;
-            font-size:12px;
-            -webkit-user-select:none;
-            -webkit-text-size-adjust:none;
-            font-family:helvetica;
-        }
-
-        #header {
-            font-family: 'PT Serif', georgia, serif;
-            position:absolute; z-index:2;
-            top:0; left:0;
-            width:100%;
-            height:45px;
-            line-height:45px;
-            background-color: #3b4145;
-            background-image: -moz-linear-gradient(top, #41484c, #31373a);
-            background-image: -ms-linear-gradient(top, #41484c, #31373a);
-            background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#41484c), to(#31373a));
-            background-image: -webkit-linear-gradient(top, #41484c, #31373a);
-            background-image: -o-linear-gradient(top, #41484c, #31373a);
-            background-image: linear-gradient(top, #41484c, #31373a);
-            background-repeat: repeat-x;
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#41484c', endColorstr='#31373a', GradientType=0);
-            font-size:20px;
-            text-align:center;
-        }
-
-        #header a {
-            font-family: 'PT Serif', georgia, serif;
-            color:#f3f3f3;
-            text-decoration:none;
-            font-weight:bold;
-            text-shadow:0 -1px 0 rgba(0,0,0,0.5);
-            width:100%;
-            text-align:center;
-        }
-
-
-        #footer {
-            font-family: 'PT Serif', georgia, serif;
-            position:absolute; z-index:2;
-            bottom:0; left:0;
-            width:100%;
-            height:48px;
-            background-color: #3b4145;
-            background-image: -moz-linear-gradient(top, #41484c, #31373a);
-            background-image: -ms-linear-gradient(top, #41484c, #31373a);
-            background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#41484c), to(#31373a));
-            background-image: -webkit-linear-gradient(top, #41484c, #31373a);
-            background-image: -o-linear-gradient(top, #41484c, #31373a);
-            background-image: linear-gradient(top, #41484c, #31373a);
-            background-repeat: repeat-x;
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#41484c', endColorstr='#31373a', GradientType=0);
-            border-top:1px solid #444;
-            text-align:center;
-        }
-
-
-        #footer a {
-            color:#f3f3f3;
-            text-decoration:none;
-            font-weight:bold;
-            text-shadow:0 -1px 0 rgba(0,0,0,0.5);
-            width:100%;
-            text-align:center;
-        }
-
-        #wrapper {
-            font-family: 'PT Serif', georgia, serif;
-            position:absolute; z-index:1;
-            top:50px; bottom:48px; left:0;
-            width:100%;
-            overflow:auto;
-        }
-
-        .CodeMirror {
-            border: 1px solid #eee;
-            height: auto;
-        }
-        .CodeMirror-scroll {
-            overflow-y: hidden;
-            overflow-x: auto;
-        }
-
-        .code {
-            font-size: 16px;
-            font-family: monospace;
-            white-space: pre-line;
-            text-align: left;
-        }
-        .output {
-            font-size: 25px;
-            font-family: monospace;
-            white-space: pre-line;
-            text-align: left;
-        }
-        .code-color {
-            color: blue;
-        }
-
-        .blur {
-            font-size:75px;
-            color: rgba(255, 255, 255, 0);
-            text-shadow: 0 0 5px #000;
-        }
-
-    </style>
+    <link href="css/prez.css" media="all" rel="stylesheet">
 </head>
 <body>
-
 <div id="header" >
     <div style="float:left">
         <a href="http://groovy.codehaus.org">
@@ -420,7 +280,7 @@
         <hr>
         <div class="jumbotron">
             <!-- http://openclipart.org/detail/164749/cube-of-rubik-by-sprint-->
-            <img style="width:20%" src="img/cube_of_rubik_1.png"><br/>
+            <img style="width:15%" src="img/cube_of_rubik_1.png"><br/>
         </div>
         <hr>
         <div class="row-fluid marketing">
@@ -497,16 +357,16 @@
                 <h1>Internal</h1>
                 <pre style="text-align: left;white-space: pre;font-size: 16px">
 <b style="color:#AF956F;">class</b> HelloSpock <b style="color:#AF956F;">extends</b> spock.lang.Specification {
-    <b style="color:#AF956F;">def</b> <b style="color:#5D90CD;">"length of Spock's and his friends' names"</b>() {
-        expect:
-        name.size() == length
+  <b style="color:#AF956F;">def</b> <b style="color:#5D90CD;">"length of Spock's and his friends' names"</b>() {
+    expect:
+    name.size() == length
 
-        where:
-        name     | length
-        <b style="color:#5D90CD;">"Spock"</b>  | <b style="color:#46A609;">5</b>
-        <b style="color:#5D90CD;">"Kirk"</b>   | <b style="color:#46A609;">4</b>
-        <b style="color:#5D90CD;">"Scotty"</b> | <b style="color:#46A609;">6</b>
-    }
+    where:
+    name     | length
+    <b style="color:#5D90CD;">"Spock"</b>  | <b style="color:#46A609;">5</b>
+    <b style="color:#5D90CD;">"Kirk"</b>   | <b style="color:#46A609;">4</b>
+    <b style="color:#5D90CD;">"Scotty"</b> | <b style="color:#46A609;">6</b>
+  }
 }
                 </pre>
             </div>
@@ -551,7 +411,7 @@
 </li>
 
 
-<li class="slide" style="text-align: left" title="titi2">
+<li class="slide" style="text-align: left" title="Simple (Press 1)">
     <textarea id="editor1" name="editor1">
 // Configure the GroovyShell.
 def shell = new GroovyShell()
@@ -582,7 +442,7 @@ def result = shell.evaluate surveyDSL
     </div>
 </li>
 
-<li class="slide" style="text-align: left" title="editor2">
+<li class="slide" style="text-align: left" title="? (Press 1..4)">
     <textarea id="editor2" name="editor2">
 // Configure the GroovyShell.
 def shell = new GroovyShell()
@@ -640,7 +500,7 @@ def result = shell.evaluate surveyDSL
     </div>
 </li>
 
-<li class="slide" style="text-align: left" title="editor3">
+<li class="slide" style="text-align: left" title="? (Press 1..6))">
     <textarea id="editor3" name="editor3">
 abstract class SurveyScript extends Script {
   def ask(question) {
@@ -716,7 +576,7 @@ shell.evaluate surveyDSL
     </div>
 </li>
 
-<li class="slide" style="text-align: left" title="editor4">
+<li class="slide" style="text-align: left" title="? (Press 1..4)">
     <textarea id="editor4" name="editor4">
 abstract class SurveyScript extends Script {
   def i = 1
@@ -793,7 +653,7 @@ shell.evaluate surveyDSL
     </div>
 </li>
 
-<li class="slide" style="text-align: left" title="editor5">
+<li class="slide" style="text-align: left" title="? (Press 1..2)">
     <textarea id="editor5" name="editor5">
 def compilerConfig = new CompilerConfiguration()
 compilerConfig.scriptBaseClass = SurveyScript.class.name
@@ -884,7 +744,7 @@ def inputs = [:]
 binding.setVariable("inputs", inputs)
 def script = """
 ask "what's your name?" assign to name
-ask "First time in GGX?" assign to ggx
+ask "First time in Greach?" assign to greach
 """
 //first evaluate should run only the first ask
 getShell(binding).evaluate script
@@ -1028,7 +888,7 @@ def inputs = [:]
 def binding = new Binding("inputs": inputs,
                           "invokeNext": Boolean.TRUE)
 def script = """
-  ask "First time in GGX?" assign to ggx
+  ask "First time in Greach?" assign to greach
   when (false) {
     ask "Are you DSL addicted?" assign to dsl
   }
@@ -1130,7 +990,9 @@ public class SurveyCustomizer extends CompilationCustomizer {
     }
   }
 
-  private def addStatement(ExpressionStatement exprStmt, myClassNode, booleans) {
+  private def addStatement(ExpressionStatement exprStmt,
+                           myClassNode,
+                           booleans) {
     if (exprStmt.expression.hasProperty("method")) {
       booleans << exprStmt.expression.arguments.expressions[0]
       def whenClosure = exprStmt.expression.arguments.expressions[1]
@@ -1159,7 +1021,8 @@ public class SurveyCustomizer extends CompilationCustomizer {
     step
   }
 
-  private ExpressionStatement getWhenExpression(ExpressionStatement exprStmt, booleans) {
+  private ExpressionStatement getWhenExpression(ExpressionStatement exprStmt,
+                                                booleans) {
     BlockStatement block = new BlockStatement()
     block.addStatement(exprStmt)
     ClosureExpression closureExpression = new ClosureExpression(null, block)
@@ -1172,7 +1035,8 @@ public class SurveyCustomizer extends CompilationCustomizer {
     new ExpressionStatement(new MethodCallExpression(
                             new VariableExpression("this"),
                             new ConstantExpression("when"),
-                            new ArgumentListExpression([binaryExpr, closureExpression])))
+                            new ArgumentListExpression([binaryExpr,
+                                                        closureExpression])))
   }
 }
     </textarea>
@@ -1310,8 +1174,10 @@ ask "Would you come back?" assign to comeback
     </div>
 </div>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script src="js/codemirror.js"></script>
+<script src="js/groovy.js"></script>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -1319,389 +1185,11 @@ ask "Would you come back?" assign to comeback
 </script>
 <![endif]-->
 <script src="js/bootstrap.js"></script>
-
-
 <script src="js/editor.js"></script>
-<script>
-function submitForm(input, output) {
-    //var url = "http://dslprez.cloudfoundry.com/console/execute?=";
-    var url = "http://localhost:8080/DslPrez/console/execute?=";
-    $.post(url, {
-        content : input
-    }, function(data) {
-        var value = "";
-        if (data.stacktrace === "" || data.stacktrace.buffer !== undefined) {
-            value = data.result;
-        } else {
-            value = data.stacktrace;
-        }
-        $(output).text(value);
-        $('#next').click();
-    });
-}
-
-
-
-    var editor1 = new dslPrez.editor("editor1");
-    var keymap = {
-        "1" : function() {
-            var value = "def ask(question) {\n"
-                    +"    println \"question: $question\"\n"
-                    +"}\n"
-                    +"ask \"what is your name?\"\n";
-            editor1.replaceRange(value, {line: 5, ch: 0});
-        },
-        "Ctrl-S" : function() {
-            var value = editor1.getValue();
-            submitForm(value, "#output1");
-        }
-    };
-    editor1.addKeyMap(keymap);
-    editor1.focus();
-
-    var editor2 = new dslPrez.editor("editor2");
-    var keymap2 = {
-        "Ctrl-S" :function() {
-            var value = editor2.getValue();
-            value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-            submitForm(value, "#output2");
-        },
-        "1": function() {
-            var value = "abstract class SurveyScript extends Script {\n"
-                + "  def ask = {question -> println \"question: $question\" }\n"
-                + "}\n";
-            editor2.replaceRange(value, {line: 1, ch: 0});
-        },
-        "2": function() {
-            editor2.removeLine(8);
-            editor2.removeLine(8);
-            editor2.removeLine(8);
-        },
-        "3": function() {
-            var value = "def compilerConfig = new CompilerConfiguration()\n"
-                + "compilerConfig.scriptBaseClass = SurveyScript.class.name\n"
-                + "def binding = new Binding()\n";
-            editor2.removeLine(5);
-            editor2.replaceRange(value, {line: 4, ch: 0});
-        },
-        "4": function() {
-            editor2.removeLine(7);
-            var value = "" +
-                    "def shell = new GroovyShell(this.class.classLoader,\n" +
-                    "                            binding,\n" +
-                    "                            compilerConfig)\n";
-            editor2.replaceRange(value, {line: 7, ch: 0});
-        }
-    };
-
-    editor2.addKeyMap(keymap2);
-    editor2.focus();
-
-    var editor3 = new dslPrez.editor("editor3");
-    var keymap3 = {
-        "Ctrl-S": function() {
-            var value = editor3.getValue();
-            value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-            submitForm(value, "#output3");
-        },
-        "1": function() {
-            var value = "ask \"what is your name?\" into name\n"
-                    + "ask \"what is your birthdate?\" into date\n";
-            editor3.removeLine(14);
-            editor3.replaceRange(value, {line: 14, ch: 0});
-        },
-        "2": function() {
-            var value = "    return this\n";
-            editor3.replaceRange(value, {line: 3, ch: 0});
-        },
-        "3": function() {
-            var value = "  def into(variable) {\n" + "  }\n";
-            editor3.replaceRange(value, {line: 5, ch: 0});
-        },
-        "4": function() {
-            var value = "  def map = [:]\n";
-            editor3.replaceRange(value, {line: 1, ch: 0});
-        },
-        "5": function() {
-            var value = "  def i = 1;\n";
-            editor3.replaceRange(value, {line: 1, ch: 0});
-            editor3.removeLine(5);
-            value = "    map[\"question$i\"] = question\n";
-            editor3.replaceRange(value, {line: 4, ch: 0});
-            value = "    map[\"variable$i\"] = variable\n    i++\n";
-            editor3.replaceRange(value, {line: 8, ch: 0});
-        },
-        "6": function() {
-            var value = "  def propertyMissing(def propertyName) {\n"
-                    + "    propertyName\n" + "  }\n  def display(Map mapToDisplay) {\n"
-                    + "    mapToDisplay.eachWithIndex { key, value, index ->\n"
-                    + "      println \"$key: $value\"\n"
-                    + "      if (index % 2) { println \"______________________\\n\""
-                    + "  }\n"
-                    + "    }\n"
-                    +"  }\n";
-            editor3.replaceRange(value, {line: 11, ch: 0});
-            value = "display map\n";
-            editor3.replaceRange(value, {line: 32, ch: 0});
-        }
-    };
-    editor3.addKeyMap(keymap3);
-    editor3.focus();
-
-    var editor4 = new dslPrez.editor("editor4");
-    var keymap4 = {
-        "Ctrl-S": function() {
-            var value = editor4.getValue();
-            value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-            submitForm(value, "#output4");
-        },
-        "1": function() {
-            editor4.removeLine(40);
-            editor4.removeLine(40);
-            var value = "ask \"what is your name?\" assign to name\nask \"what is your birthdate?\" assign to date\n";
-            editor4.replaceRange(value, {line: 40, ch: 0});
-        },
-        "2": function() {
-            editor4.removeLine(9);
-            editor4.removeLine(9);
-            editor4.removeLine(9);
-            editor4.removeLine(9);
-            var value = "  def assign(to) {\n  }\n";
-            editor4.replaceRange(value, {line: 9, ch: 0});
-        },
-        "3": function() {
-            var value = "    [:].withDefault { }\n";
-            editor4.replaceRange(value, {line: 10, ch: 0});
-        },
-        "4": function() {
-            editor4.removeLine(10);
-            var value = "    [:].withDefault { variable ->\n      map[\"variable$j\"] = variable\n      j++\n    }\n";
-            editor4.replaceRange(value, {line: 10, ch: 0});
-            value = "  def j = 1\n";
-            editor4.replaceRange(value, {line: 2, ch: 0});
-            value = "    i++\n";
-            editor4.replaceRange(value, {line: 7, ch: 0});
-        }
-    };
-
-    editor4.addKeyMap(keymap4);
-
-
-    var editor5 = new dslPrez.editor("editor5");
-    var keymap5 = {
-        "Ctrl-S": function() {
-            var value = editor5.getValue();
-            value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
-                    +"import org.codehaus.groovy.ast.*\n"
-                    +"import org.codehaus.groovy.ast.expr.*\n"
-                    +"import org.codehaus.groovy.ast.stmt.*\n"
-                    +"import org.codehaus.groovy.classgen.GeneratorContext\n"
-                    +"import org.codehaus.groovy.control.CompilationFailedException\n"
-                    +"import org.codehaus.groovy.control.CompilePhase\n"
-                    +"import org.codehaus.groovy.control.CompilerConfiguration\n"
-                    +"import org.codehaus.groovy.control.SourceUnit\n"
-                    +"import org.codehaus.groovy.control.customizers.*\n"
-                    +"import org.codehaus.groovy.ast.builder.AstBuilder\n"
-                    +"import org.codehaus.groovy.syntax.Token\n"
-                    +"import org.codehaus.groovy.syntax.Types\n"
-                    +"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n" + value;
-            submitForm(value, "#output5");
-        },
-        "1": function() {
-            var value = "binding.setVariable(\"whichMeal\", \"What would you like to have for lunch?\")\n";
-            editor5.replaceRange(value, {line: 4, ch: 0});
-        },
-        "2": function() {
-            var value = "ask whichMeal assign to meal\n";
-            editor5.replaceRange(value, {line: 11, ch: 0});
-        }
-    };
-
-    editor5.addKeyMap(keymap5);
-
-    var editor6 = new dslPrez.editor("editor6");
-    var keymap6 = {
-        "Ctrl-S": function() {
-            var value = editor6.getValue();
-            value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
-                    +"import org.codehaus.groovy.ast.*\n"
-                    +"import org.codehaus.groovy.ast.expr.*\n"
-                    +"import org.codehaus.groovy.ast.stmt.*\n"
-                    +"import org.codehaus.groovy.classgen.GeneratorContext\n"
-                    +"import org.codehaus.groovy.control.CompilationFailedException\n"
-                    +"import org.codehaus.groovy.control.CompilePhase\n"
-                    +"import org.codehaus.groovy.control.CompilerConfiguration\n"
-                    +"import org.codehaus.groovy.control.SourceUnit\n"
-                    +"import org.codehaus.groovy.control.customizers.*\n"
-                    +"import org.codehaus.groovy.ast.builder.AstBuilder\n"
-                    +"import org.codehaus.groovy.syntax.Token\n"
-                    +"import org.codehaus.groovy.syntax.Types\n"
-                    +"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n" + value;
-            submitForm(value, "#output6");
-        }
-    };
-
-    editor6.addKeyMap(keymap6);
-
-
-    var editor7 = new dslPrez.editor("editor7");
-    var keymap7 = {
-        "Ctrl-S": function() {
-            var value = editor7.getValue();
-            value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
-                    +"import org.codehaus.groovy.ast.*\n"
-                    +"import org.codehaus.groovy.ast.expr.*\n"
-                    +"import org.codehaus.groovy.ast.stmt.*\n"
-                    +"import org.codehaus.groovy.classgen.GeneratorContext\n"
-                    +"import org.codehaus.groovy.control.CompilationFailedException\n"
-                    +"import org.codehaus.groovy.control.CompilePhase\n"
-                    +"import org.codehaus.groovy.control.CompilerConfiguration\n"
-                    +"import org.codehaus.groovy.control.SourceUnit\n"
-                    +"import org.codehaus.groovy.control.customizers.*\n"
-                    +"import org.codehaus.groovy.ast.builder.AstBuilder\n"
-                    +"import org.codehaus.groovy.syntax.Token\n"
-                    +"import org.codehaus.groovy.syntax.Types\n"
-                    +"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n" + value;
-            submitForm(value, "#output7");
-        }
-    };
-
-    editor7.addKeyMap(keymap7);
-
-    var editor8 = new dslPrez.editor("editor8");
-    var keymap8 = {
-        "Ctrl-S": function() {
-            var value = editor8.getValue();
-            var title = $('#titleCreate').val();
-            submitCreateForm(title, value, "#output8");
-        }
-    };
-
-    editor8.addKeyMap(keymap8);
-
-    function submitCreateForm(title, input, output) {
-        var url = "http://localhost:8080/DslPrez/survey/create?=";
-        //var url = "http://dslprez.cloudfoundry.com/survey/create?=";
-        $.post(url, {
-            title:"myScript", content:input
-        },function (data) {
-            $("#displayQuestion").removeData();
-            $('.displayAnswer').remove();
-            $(".surveystart").show();
-            $("#displayQuestion").data('scriptId', data.id);
-            $("#displayQuestion").data('scriptContent', data.content);
-            $('#scriptContent').text(data.content);
-            $('#submitButton').click();
-            $('#next').click();
-        });
-    }
-
-$('#submitButton').bind('click', function() {
-    var answer = $('#answer').val();
-    $('#answer').val('');
-    var answerMap = $("#displayQuestion").data('answerMap');
-    var question = $("#displayQuestion").data('question');
-    var scriptId = $("#displayQuestion").data('scriptId');
-    var counter = $("#displayQuestion").data('counter');
-    var lastAssignment = $("#displayQuestion").data('lastAssignment');
-    if (answerMap)
-        answerMap[counter] = {variable: lastAssignment, question: question, answer:answer};
-    var stringAnswerMap = JSON.stringify(answerMap);
-    var url = "http://localhost:8080/DslPrez/survey/run?=";
-    //var url = "http://dslprez.cloudfoundry.com/survey/run?=";
-
-    $.post(url, {
-        scriptId:scriptId, question: question, lastAssignment:lastAssignment, counter:counter, answer:answer, answerMap:stringAnswerMap
-    }, function(data) {
-
-        var answerMap = data.answerMap;
-        var counter = data.counter;
-        var question = data.question;
-        var lastAssignment = data.lastAssignment;
-        $("#displayQuestion").data('answerMap', answerMap);
-        $("#displayQuestion").data('question', question);
-        $("#displayQuestion").data('counter', counter);
-        $("#displayQuestion").data('lastAssignment', lastAssignment);
-        if(data.finished==true) {
-            $(".surveystart").hide();
-            for(var index = 1; index <= counter;index++)  {
-                if (answerMap[index]) {
-                    var output8Value = '<div class="displayAnswer">' + answerMap[index].question + ' ' + answerMap[index].answer + '</div>';
-                    $("#output8bis").append(output8Value);
-                }
-            }
-            $('#next').click();
-        } else {
-            $("#displayQuestion").text(data.question);
-        }
-    });
-});
-
-
-
-</script>
-
-<script src="js/jcloud.js"></script>
-
-
 <script src="js/jquery.airport-1.1.source.js"></script>
-
-<script type="text/javascript">
-    $("#technologies").airport([ 'Twitter Bootstrap', 'iScroll', 'jCloud', 'jQuery-airport', 'grails', 'Code Mirror', 'jQuery' ]);
-</script>
-
-
+<script src="js/jcloud.js"></script>
+<script src="js/prez.js"></script>
 <script src="js/slide.js"></script>
-
-<script type="text/javascript">
-
-    var myScroll;
-    function loaded() {
-        myScroll = new iScroll('wrapper', {});
-        myScroll.options.onBeforeScrollStart = function(e) {
-            var target = e.target;
-
-            while (target.nodeType != 1) target = target.parentNode;
-            if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA'){
-                e.preventDefault();
-            }
-        }
-    }
-
-    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-
-    /* * * * * * * *
-     *
-     * Use this for high compatibility (iDevice + Android)
-     *
-     */
-    document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
-    /*
-     * * * * * * * */
-
-
-    /* * * * * * * *
-     *
-     * Use this for iDevice only
-     *
-     */
-    //document.addEventListener('DOMContentLoaded', loaded, false);
-    /*
-     * * * * * * * */
-
-
-    /* * * * * * * *
-     *
-     * Use this if nothing else works
-     *
-     */
-    //window.addEventListener('load', setTimeout(function () { loaded(); }, 200), false);
-    /*
-     * * * * * * * */
-
-</script>
-
-
 
 </body>
 </html>
