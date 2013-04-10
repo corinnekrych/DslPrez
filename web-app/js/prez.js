@@ -65,7 +65,27 @@ function submitForm(input, output) {
     });
 }
 
-var editor1 = new dslPrez.editor("editor1");
+editor0 = new dslPrez.editor("editor0");
+function editor0Key1() {
+    var value = "def ask(question) {\n"
+        + "    println \"question: $question\"\n"
+        + "}\n"
+        + "ask \"what is your name?\"\n";
+    editor0.replaceRange(value, {line:5, ch:0});
+}
+function editor0Send() {
+    var value = editor0.getValue();
+    submitForm(value, "#output0");
+}
+var keymap = {
+    "1" : editor0Key1,
+    "Ctrl-S" : editor0Send,
+    "Cmd-S" : editor0Send
+};
+editor0.addKeyMap(keymap);
+
+
+editor1 = new dslPrez.editor("editor1");
 function editor1Key1() {
     var value = "def ask(question) {\n"
         + "    println \"question: $question\"\n"
@@ -86,7 +106,7 @@ editor1.addKeyMap(keymap);
 
 
 
-var editor2 = new dslPrez.editor("editor2");
+editor2 = new dslPrez.editor("editor2");
 function editor2Key1() {
     var value = "abstract class SurveyScript extends Script {\n"
         + "  def ask = {question -> println \"question: $question\" }\n"
@@ -129,7 +149,7 @@ var keymap2 = {
 
 editor2.addKeyMap(keymap2);
 
-var editor3 = new dslPrez.editor("editor3");
+editor3 = new dslPrez.editor("editor3");
 
 function editor3Send() {
     var value = editor3.getValue();
@@ -190,7 +210,7 @@ var keymap3 = {
 };
 editor3.addKeyMap(keymap3);
 
-var editor4 = new dslPrez.editor("editor4");
+editor4 = new dslPrez.editor("editor4");
 
 function editor4Send() {
     var value = editor4.getValue();
@@ -237,7 +257,7 @@ var keymap4 = {
 editor4.addKeyMap(keymap4);
 
 
-var editor5 = new dslPrez.editor("editor5");
+editor5 = new dslPrez.editor("editor5");
 
 function editor5Send() {
     var value = editor5.getValue();
@@ -275,7 +295,7 @@ var keymap5 = {
 
 editor5.addKeyMap(keymap5);
 
-var editor6 = new dslPrez.editor("editor6");
+editor6 = new dslPrez.editor("editor6");
 
 function editor6Send() {
     var value = editor6.getValue();
@@ -303,7 +323,7 @@ var keymap6 = {
 
 editor6.addKeyMap(keymap6);
 
-var editor7 = new dslPrez.editor("editor7");
+editor7 = new dslPrez.editor("editor7");
 
 function editor7Send() {
     var value = editor7.getValue();
@@ -331,7 +351,7 @@ var keymap7 = {
 
 editor7.addKeyMap(keymap7);
 
-var editor8 = new dslPrez.editor("editor8");
+editor8 = new dslPrez.editor("editor8");
 
 function editor8Send() {
     var value = editor8.getValue();
@@ -345,12 +365,6 @@ var keymap8 = {
 };
 
 editor8.addKeyMap(keymap8);
-
-document.getElementById("editor8").addEventListener("touchstart", function(e)
-{
-    e.preventDefault();
-    alert('test2');
-});
 
 function submitCreateForm(title, input, output) {
     var url = serverUrl + "/survey/create?=";

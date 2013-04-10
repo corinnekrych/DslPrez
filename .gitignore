@@ -19,6 +19,7 @@ target-eclipse
 .settings
 
 .DS_Store
+*/.DS_Store
 
 
 
