@@ -15,9 +15,9 @@ Where it comes from?
 Writing an embedded Groovy DSL for end users which can read as plain English. What a crazy idea!
 
 The starting point was when working in Amadeus, on a language aimed a Travel Agent. 
-Business requiremrent was: I want somthing simple, some thing I can understand. 
+Business requiremrent was: **I want something simple, something I can understand.** 
 
-That when I fell in love with Groovy. 
+That's when I fell in love with Groovy. 
 DSL are so elegant and powerfull.
 
 Corinne.
