@@ -62,16 +62,21 @@
         </div>
         <hr>
 
-        <div class="jumbotron">
-            <p>to run this presentation: be full screen (F11)</p>
-            <p>to submit the editor code to cloud foundry: ctrl S (command S on Mac)</p>
-            <p>be careful using 1,2,3... it makes code snippet appears in the editor</p>
-        </div>
+        <div class="row-fluid marketing">
+            <div class="span6">
+                <h3 style="text-align: right;">RivieraGUG</h3>
+                <p style="text-align: right;font-size: 20px"> meets with </p>
+                <h3 style="text-align: right;">Riviera Scala Clojure</h3>
+                <div class="jumbotron" style="text-align: right;">
+                    <p>to run this presentation: be full screen (F11)</p>
+                    <p>to submit the editor code to cloud foundry: ctrl S (command S on Mac)</p>
+                    <p>be careful using 1,2,3... it makes code snippet appears in the editor</p>
+                </div>
+            </div>
 
-        <hr>
-
-        <div class="jumbotron">
-            <p style="background:url(img/header-back.png);height:107px"><img src="img/logo-greach-2013.png"/></p>
+            <div class="span4">
+                <img src="img/rivierargug.png"/>
+            </div>
         </div>
 
     </div>
@@ -329,31 +334,23 @@
 
 <li class="slide" title="Script (Press 1)">
     <div class="container-narrow">
-        <hr>
         <div class="jumbotron">
             <h1>Syntax sugar: let's play striptease!</h1><br/>
-            <!--<iframe width="0" height="0" src="http://www.youtube.com/embed/4b04jq7NB1s" frameborder="0" allowfullscreen></iframe>-->
+            <div id="whateverID"><iframe width="0" height="0" frameborder="0" title="YouTube video player" type="text/html" src="http://www.youtube.com/embed/4b04jq7NB1s?enablejsapi=1"></iframe></div>
         </div>
-        <hr>
         <div style="text-align: left" class="row-fluid marketing">
             <textarea id="editor0" name="editor0">
 public class Person {
     private String name;
     private int age;
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-    public Person(int age) {
-        this.age = age;
+    public Person() {
     }
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public String toString() {
+        return  "Hello I'm " + name + " and I'm " + age + " years old";
     }
     public int getAge() {
         return age;
@@ -361,18 +358,18 @@ public class Person {
     public void setAge(int age) {
         this.age = age;
     }
-    public int getName() {
+    public String getName() {
         return name;
     }
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 }
 // In your main method
-Person sebastien = new Person()
+Person sebastien = new Person();
 sebastien.setName("Sebi");
 sebastien.setAge(34);
-System.out.println("Hello, I am " + sebastien.getName() + " and I am " + sebastien.getAge() + " years old");
+System.out.println(sebastien);
             </textarea>
         </div>
     </div>
