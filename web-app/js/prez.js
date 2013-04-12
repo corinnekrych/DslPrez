@@ -187,6 +187,25 @@ var keymap = {
 editor0.addKeyMap(keymap);
 
 
+editor01 = new dslPrez.editor("editor01");
+function editor01Key1() {
+    var value = "def ask(question) {\n"
+        + "    println \"question: $question\"\n"
+        + "}\n"
+        + "ask \"what is your name?\"\n";
+    editor01.replaceRange(value, {line:5, ch:0});
+}
+function editor01Send() {
+    var value = editor01.getValue();
+    submitForm(value, "#output01");
+}
+var keymap = {
+    "1" : editor01Key1,
+    "Ctrl-S" : editor01Send,
+    "Cmd-S" : editor01Send
+};
+editor01.addKeyMap(keymap);
+
 editor1 = new dslPrez.editor("editor1");
 function editor1Key1() {
     var value = "def ask(question) {\n"
