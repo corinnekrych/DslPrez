@@ -186,26 +186,108 @@ var keymap = {
 };
 editor0.addKeyMap(keymap);
 
-
-editor01 = new dslPrez.editor("editor01");
+//-------------------------------------------------------------------------------------------------------
+// Editor: List mage easy
+//-------------------------------------------------------------------------------------------------------
+editor01 = new dslPrez.halfEditor("editor01");
 function editor01Key1() {
-    var value = "def ask(question) {\n"
-        + "    println \"question: $question\"\n"
-        + "}\n"
-        + "ask \"what is your name?\"\n";
-    editor01.replaceRange(value, {line:5, ch:0});
+    var value = 'println "\\n==> Range"\ndef range = 5..8\nprintln range.size()\nprintln range.get(2)\n';
+    editor01.replaceRange('\n', {line:editor01.lineCount(), ch:0});
+    editor01.replaceRange(value, {line:editor01.lineCount(), ch:0});
+}
+function editor01Key2() {
+    var value = 'println "\\n==> *. operator"\ndef words = ["a", "few", "words"]*.size()\nprintln words\n';
+    editor01.replaceRange('\n', {line:editor01.lineCount(), ch:0});
+    editor01.replaceRange(value, {line:editor01.lineCount() + 1, ch:0});
+}
+function editor01Key3() {
+    var value = 'println "\\n==> Collection Methods: findAll"\nwords = ["ant", "buffalo", "cat", "dinosaur"]\nprintln words.findAll{ w -> w.size() > 4 } == ["buffalo", "dinosaur"]\n';
+    editor01.replaceRange('\n', {line:editor01.lineCount(), ch:0});
+    editor01.replaceRange(value, {line:editor01.lineCount() + 1, ch:0});
+}
+function editor01Key4() {
+    var value = 'println "\\n==> Collection Methods: collect"\nprintln words.collect{ it[0] } == ["a", "b", "c", "d"]\n';
+    editor01.replaceRange('\n', {line:editor01.lineCount(), ch:0});
+    editor01.replaceRange(value, {line:editor01.lineCount() + 1, ch:0});
+}
+function submitFormWithoutNext(input, output) {
+    var url = serverUrl + "/console/execute?=";
+    $.post(url, {
+        content : input
+    }, function(data) {
+        var value = "";
+        if (data.stacktrace === "" || data.stacktrace.buffer !== undefined) {
+            value = data.result;
+        } else {
+            value = data.stacktrace;
+        }
+        $(output).text(value);
+    });
 }
 function editor01Send() {
     var value = editor01.getValue();
-    submitForm(value, "#output01");
+    submitFormWithoutNext(value, "#output01");
 }
 var keymap = {
     "1" : editor01Key1,
+    "2" : editor01Key2,
+    "3" : editor01Key3,
+    "4" : editor01Key4,
     "Ctrl-S" : editor01Send,
     "Cmd-S" : editor01Send
 };
 editor01.addKeyMap(keymap);
 
+//-------------------------------------------------------------------------------------------------------
+// Editor: Map made easy
+//-------------------------------------------------------------------------------------------------------
+editor02 = new dslPrez.halfEditor("editor02");
+function editor02Key1() {
+    var value = 'println "\\n==> Collection method: findAll"\ndef found = map.findAll {it.value=="cheese" }\nprintln found\nfound = map.findAll {key, value -> value == "cheese" }\nprintln found\n';
+    editor02.replaceRange('\n', {line:editor02.lineCount(), ch:0});
+    editor02.replaceRange(value, {line:editor02.lineCount(), ch:0});
+}
+function editor02Key2() {
+    var value = 'println "\\n==> Collection method: every/any"\nfound = map.every{ it.value.size() > 1 }\nprintln found\nfound = map.any{ it.key.size() == 1 }\nprintln found\n';
+    editor02.replaceRange('\n', {line:editor02.lineCount(), ch:0});
+    editor02.replaceRange(value, {line:editor02.lineCount() + 1, ch:0});
+}
+function editor02Key3() {
+    var value = 'println "\\n==> Collection method: sort"\ndef m = [sort: "asc", name: "test", paginate: true, max: 100]\ndef expectedKeys = ["max", "name", "paginate", "sort"]\nprintln expectedKeys == m.sort()*.key\nprintln expectedKeys == m.sort( { k1, k2 -> k1 <=> k2 } as Comparator )*.key\n';
+    editor02.replaceRange('\n', {line:editor02.lineCount(), ch:0});
+    editor02.replaceRange(value, {line:editor02.lineCount() + 1, ch:0});
+}
+
+function submitFormWithoutNext(input, output) {
+    var url = serverUrl + "/console/execute?=";
+    $.post(url, {
+        content : input
+    }, function(data) {
+        var value = "";
+        if (data.stacktrace === "" || data.stacktrace.buffer !== undefined) {
+            value = data.result;
+        } else {
+            value = data.stacktrace;
+        }
+        $(output).text(value);
+    });
+}
+function editor02Send() {
+    var value = editor02.getValue();
+    submitFormWithoutNext(value, "#output02");
+}
+var keymap = {
+    "1" : editor02Key1,
+    "2" : editor02Key2,
+    "3" : editor02Key3,
+    "Ctrl-S" : editor02Send,
+    "Cmd-S" : editor02Send
+};
+editor02.addKeyMap(keymap);
+
+//-------------------------------------------------------------------------------------------------------
+// Editor: Script
+//-------------------------------------------------------------------------------------------------------
 editor1 = new dslPrez.editor("editor1");
 function editor1Key1() {
     var value = "def ask(question) {\n"

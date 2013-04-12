@@ -392,6 +392,26 @@ System.out.println(sebastien);
     </div>
 </li>
 
+<li class="slide" title="List">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <h1>List made easy</h1>
+        </div>
+        <div style="text-align: left" class="row-fluid marketing">
+            <textarea height="150px" id="editor01" name="editor01">
+println "==> List"
+def list = [5, 6, 7, 8]
+println list.get(2)
+println list[2]
+</textarea>
+            <hr>
+            <pre class="output" id="output01">
+            </pre>
+        </div>
+    </div>
+</li>
+
 <li class="slide" title="Map">
     <div class="container-narrow">
         <hr>
@@ -399,30 +419,19 @@ System.out.println(sebastien);
             <h1>Map made easy</h1>
         </div>
         <div style="text-align: left" class="row-fluid marketing">
-            <textarea id="editor01" name="editor0">
-println "==> List"
-def list = [5, 6, 7, 8]
-println "list.get(2) is \t\t" + list.get(2)
-println "list[2] is \t\t" + list[2]
-
-            </textarea>
-        </div>
-    </div>
-</li>
-
-<li class="slide" style="text-align: left" title="output">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="output" id="output01">
-                </pre>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
+            <textarea height="150px" id="editor02" name="editor02">
+println "==> Map"
+def map =[:]
+println map.size()
+map = [name:"Gromit", likes:"cheese", id:"1234"]
+println map.get("name")
+println map["name"]
+println map.'name'
+println map.name
+</textarea>
+            <hr>
+            <pre class="output" id="output02">
+            </pre>
         </div>
     </div>
 </li>
