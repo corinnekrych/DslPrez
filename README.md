@@ -22,9 +22,7 @@ From business point of view, requiremrent is:
 
 Digging how I can quickly design a languge that fit reavel agent, I discover Groovy.
 
-That's when I fell in love with Groovy. 
-DSL are so elegant and powerfull.
-
+That's when I fell in love with Groovy. DSL are so elegant and powerfull.
 With this presentation I want to share with you our journey into the world of DSL coding.
 
 Corinne.
