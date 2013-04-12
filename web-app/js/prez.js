@@ -84,18 +84,6 @@ function editor0Key1() {
     editor0.replaceRange(value, {line:0, ch:0});
 }
 
-//var ytplayer = null;
-//
-//function onYouTubePlayerReady(playerId) {
-//    ytplayer = document.getElementById("ytplayer");
-//}
-//
-//function onPlay() {
-//    if (ytplayer) {
-//        ytplayer.playVideo();
-//    }
-//}
-
 function callPlayer(frame_id, func, args) {
     if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
     var iframe = document.getElementById(frame_id);
@@ -201,12 +189,12 @@ function editor01Key2() {
     editor01.replaceRange(value, {line:editor01.lineCount() + 1, ch:0});
 }
 function editor01Key3() {
-    var value = 'println "\\n==> Collection Methods: findAll"\nwords = ["ant", "buffalo", "cat", "dinosaur"]\nprintln words.findAll{ w -> w.size() > 4 } == ["buffalo", "dinosaur"]\n';
+    var value = 'println "\\n==> Collection Methods: findAll"\nwords = ["ant", "buffalo", "cat", "dinosaur"]\nprintln words.findAll{ w -> w.size() > 4 }\n';
     editor01.replaceRange('\n', {line:editor01.lineCount(), ch:0});
     editor01.replaceRange(value, {line:editor01.lineCount() + 1, ch:0});
 }
 function editor01Key4() {
-    var value = 'println "\\n==> Collection Methods: collect"\nprintln words.collect{ it[0] } == ["a", "b", "c", "d"]\n';
+    var value = 'println "\\n==> Collection Methods: collect"\nprintln words.collect{ it[0] }\n';
     editor01.replaceRange('\n', {line:editor01.lineCount(), ch:0});
     editor01.replaceRange(value, {line:editor01.lineCount() + 1, ch:0});
 }
@@ -253,7 +241,7 @@ function editor02Key2() {
     editor02.replaceRange(value, {line:editor02.lineCount() + 1, ch:0});
 }
 function editor02Key3() {
-    var value = 'println "\\n==> Collection method: sort"\ndef m = [sort: "asc", name: "test", paginate: true, max: 100]\ndef expectedKeys = ["max", "name", "paginate", "sort"]\nprintln expectedKeys == m.sort()*.key\nprintln expectedKeys == m.sort( { k1, k2 -> k1 <=> k2 } as Comparator )*.key\n';
+    var value = 'println "\\n==> Collection method: sort"\ndef m = [sort: "asc", name: "test", paginate: true, max: 100]\nprintln m.sort()*.key\nprintln m.sort( { k1, k2 -> k1 <=> k2 } as Comparator )*.key\n';
     editor02.replaceRange('\n', {line:editor02.lineCount(), ch:0});
     editor02.replaceRange(value, {line:editor02.lineCount() + 1, ch:0});
 }
@@ -286,6 +274,84 @@ var keymap = {
 editor02.addKeyMap(keymap);
 
 //-------------------------------------------------------------------------------------------------------
+// Editor: MOP
+//-------------------------------------------------------------------------------------------------------
+editor03 = new dslPrez.halfEditor("editor03");
+
+function editor03Key1() {
+    var value = 'println "\\n==> ExpandoMetaClass: adding dynamic behaviour to existing class"\nInteger.metaClass.getCm= {->\n    println "here"\n}\n1.cm\n';
+    editor03.replaceRange('\n', {line:editor03.lineCount(), ch:0});
+    editor03.replaceRange(value, {line:editor03.lineCount() + 1, ch:0});
+}
+function editor03Key2() {
+    for (var i = 0; i < 25; i++) {
+        editor03.removeLine(0);
+    }
+    var value = "println \"==> invokeMethod + ExpandoMetaClass\"\n" +
+        "class Stuff {\n" +
+        "    def invokeMe() { \"foo\" }\n" +
+        "}\n"+
+        "Stuff.metaClass.invokeMethod = { String name, args ->\n" +
+        "    def metaMethod = Stuff.metaClass.getMetaMethod(name, args)\n" +
+        "    def result\n" +
+        "    println name + \" \" + metaMethod\n" +
+        "    if(metaMethod) {\n" +
+        "        result = metaMethod.invoke(delegate,args)\n" +
+        "    } else {\n" +
+        "        result = \"bar\"\n" +
+        "    }\n" +
+        "    result\n" +
+        "}\n\n" +
+        "def stf = new Stuff()\n" +
+        "println stf.invokeMe()\n" +
+        "println stf.doStuff()\n";
+    editor03.replaceRange(value, {line:editor03.lineCount(), ch:0});
+}
+function editor03Key3() {
+    for (var i = 0; i < 20; i++) {
+        editor03.removeLine(0);
+    }
+    var value = "println \"==> method/property\"\n" +
+        "class Foo {\n" +
+        "    def storage = [:]\n" +
+        "    def propertyMissing(String name, value) { storage[name] = value }\n" +
+        "    def propertyMissing(String name) { storage[name] }\n" +
+        "}\n" +
+        "def f = new Foo()\n" +
+        "f.foo = \"bar\"\n" +
+        "println f.foo";
+    editor03.replaceRange(value, {line:0, ch:0});
+}
+
+
+function submitFormWithoutNext(input, output) {
+    var url = serverUrl + "/console/execute?=";
+    $.post(url, {
+        content : input
+    }, function(data) {
+        var value = "";
+        if (data.stacktrace === "" || data.stacktrace.buffer !== undefined) {
+            value = data.result;
+        } else {
+            value = data.stacktrace;
+        }
+        $(output).text(value);
+    });
+}
+function editor03Send() {
+    var value = editor03.getValue();
+    submitFormWithoutNext(value, "#output03");
+}
+var keymap = {
+    "1" : editor03Key1,
+    "2" : editor03Key2,
+    "3" : editor03Key3,
+    "Ctrl-S" : editor03Send,
+    "Cmd-S" : editor03Send
+};
+editor03.addKeyMap(keymap);
+
+//-------------------------------------------------------------------------------------------------------
 // Editor: Script
 //-------------------------------------------------------------------------------------------------------
 editor1 = new dslPrez.editor("editor1");
@@ -308,7 +374,9 @@ var keymap = {
 editor1.addKeyMap(keymap);
 
 
-
+//-------------------------------------------------------------------------------------------------------
+// Editor: Inheritance
+//-------------------------------------------------------------------------------------------------------
 editor2 = new dslPrez.editor("editor2");
 function editor2Key1() {
 
@@ -353,6 +421,9 @@ var keymap2 = {
 
 editor2.addKeyMap(keymap2);
 
+//-------------------------------------------------------------------------------------------------------
+// Editor: Command chaining
+//-------------------------------------------------------------------------------------------------------
 editor3 = new dslPrez.editor("editor3");
 
 function editor3Send() {
@@ -414,6 +485,9 @@ var keymap3 = {
 };
 editor3.addKeyMap(keymap3);
 
+//-------------------------------------------------------------------------------------------------------
+// Editor: Silent word
+//-------------------------------------------------------------------------------------------------------
 editor4 = new dslPrez.editor("editor4");
 
 function editor4Send() {
@@ -460,7 +534,9 @@ var keymap4 = {
 
 editor4.addKeyMap(keymap4);
 
-
+//-------------------------------------------------------------------------------------------------------
+// Editor: Binding
+//-------------------------------------------------------------------------------------------------------
 editor5 = new dslPrez.editor("editor5");
 
 function editor5Send() {
@@ -499,6 +575,9 @@ var keymap5 = {
 
 editor5.addKeyMap(keymap5);
 
+//-------------------------------------------------------------------------------------------------------
+// Editor: AST for ask
+//-------------------------------------------------------------------------------------------------------
 editor6 = new dslPrez.editor("editor6");
 
 function editor6Send() {
@@ -527,6 +606,9 @@ var keymap6 = {
 
 editor6.addKeyMap(keymap6);
 
+//-------------------------------------------------------------------------------------------------------
+// Editor: AST for when
+//-------------------------------------------------------------------------------------------------------
 editor7 = new dslPrez.editor("editor7");
 
 function editor7Send() {
@@ -555,6 +637,9 @@ var keymap7 = {
 
 editor7.addKeyMap(keymap7);
 
+//-------------------------------------------------------------------------------------------------------
+// Editor: Survey
+//-------------------------------------------------------------------------------------------------------
 editor8 = new dslPrez.editor("editor8");
 
 function editor8Send() {

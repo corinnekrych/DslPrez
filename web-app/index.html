@@ -392,7 +392,7 @@ System.out.println(sebastien);
     </div>
 </li>
 
-<li class="slide" title="List">
+<li class="slide" title="List (Press 1..4)">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -412,7 +412,7 @@ println list[2]
     </div>
 </li>
 
-<li class="slide" title="Map">
+<li class="slide" title="Map (Press 1..3)">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -436,16 +436,25 @@ println map.name
     </div>
 </li>
 
-<li class="slide" title="Dynamic groove">
+<li class="slide" title="Dynamic groove (Press 1..3)">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
             <h1>MOP: let's get the dynamic groove</h1>
         </div>
-        <hr>
-        <div class="row-fluid marketing">
-
+        <div style="text-align: left" class="row-fluid marketing">
+            <textarea height="150px" id="editor03" name="editor03">
+println "==> Expandos 'a la' JavaScript"
+def player = new Expando()
+player.name = "Dierk"
+player.greeting = { "Hello, my name is $name" }
+println player.greeting()
+</textarea>
+            <hr>
+            <pre class="output" id="output03">
+            </pre>
         </div>
+    </div>
     </div>
 </li>
 
