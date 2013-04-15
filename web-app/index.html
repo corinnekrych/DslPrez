@@ -455,7 +455,6 @@ println player.greeting()
             </pre>
         </div>
     </div>
-    </div>
 </li>
 
 <li class="slide" title="AST transform">
@@ -465,8 +464,14 @@ println player.greeting()
             <h1>AST transform: Great power</h1>
         </div>
         <hr>
-        <div class="row-fluid marketing">
-
+        <div style="padding-left: 15%"class="row-fluid marketing">
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; hook into the <b>compilation process</b> to modify AST</p>
+            <p style="line-height: 150%;font-size: 35px; text-align: left">&nbsp;&nbsp; before it is turned into bytecode.</p>
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; powerful flexibility at the language level,</p>
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp;&nbsp;without a runtime performance penalty<p>
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; can be used:
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &nbsp; &#8594; either with standard annotation
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &nbsp; &#8594; or implement your own
         </div>
     </div>
 </li>
@@ -478,13 +483,18 @@ println player.greeting()
             <h1>Scripting</h1>
         </div>
         <hr>
-        <div class="row-fluid marketing">
-
+        <div style="padding-left: 15%"class="row-fluid marketing">
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; native support for scripting: </p>
+            <p style="line-height: 150%;font-size: 25px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp; <b>new GroovyShell().evaluate(content)</b></p>
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; JSR223</p>
+            <p style="line-height: 150%;font-size: 25px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp; ScriptEngineManager factory = new ScriptEngineManager();</p>
+            <p style="line-height: 150%;font-size: 25px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp; ScriptEngine engine = factory.getEngineByName("groovy");</p>
+            <p style="line-height: 150%;font-size: 25px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp; engine.eval(content))</p>
         </div>
     </div>
 </li>
 
-<li class="slide" title="Type check">
+<li class="slide" title="Type Check">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
