@@ -175,7 +175,7 @@ var keymap = {
 editor0.addKeyMap(keymap);
 
 //-------------------------------------------------------------------------------------------------------
-// Editor: List mage easy
+// Editor: List made easy
 //-------------------------------------------------------------------------------------------------------
 editor01 = new dslPrez.halfEditor("editor01");
 function editor01Key1() {
@@ -279,7 +279,7 @@ editor02.addKeyMap(keymap);
 editor03 = new dslPrez.halfEditor("editor03");
 
 function editor03Key1() {
-    var value = 'println "\\n==> ExpandoMetaClass: adding dynamic behaviour to existing class"\nInteger.metaClass.getCm= {->\n    println "here"\n}\n1.cm\n';
+    var value = 'println "\\n==> ExpandoMetaClass: adding dynamic behaviour to existing class"\nInteger.metaClass.getKm= {->\n    println "here"\n}\n1.km\n';
     editor03.replaceRange('\n', {line:editor03.lineCount(), ch:0});
     editor03.replaceRange(value, {line:editor03.lineCount() + 1, ch:0});
 }

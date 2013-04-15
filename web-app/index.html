@@ -446,7 +446,7 @@ println map.name
             <textarea height="150px" id="editor03" name="editor03">
 println "==> Expandos 'a la' JavaScript"
 def player = new Expando()
-player.name = "Dierk"
+player.name = "Corinne"
 player.greeting = { "Hello, my name is $name" }
 println player.greeting()
 </textarea>
@@ -494,18 +494,18 @@ println player.greeting()
     </div>
 </li>
 
-<li class="slide" title="Type Check">
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <h1>Type check your script</h1>
-        </div>
-        <hr>
-        <div class="row-fluid marketing">
+<!--<li class="slide" title="Type Check">-->
+    <!--<div class="container-narrow">-->
+        <!--<hr>-->
+        <!--<div class="jumbotron">-->
+            <!--<h1>Type check your script</h1>-->
+        <!--</div>-->
+        <!--<hr>-->
+        <!--<div class="row-fluid marketing">-->
 
-        </div>
-    </div>
-</li>
+        <!--</div>-->
+    <!--</div>-->
+<!--</li>-->
 
 <li class="slide" style="text-align: left" title="Script (Press 1)">
     <textarea id="editor1" name="editor1">
@@ -1158,15 +1158,18 @@ public class SurveyCustomizer extends CompilationCustomizer {
 <li class="slide" style="text-align: left" title="Demo">
     <textarea id="editor8" name="editor8">
 ask "What's your name?" assign to name
-ask name + ", why did you come to Greach?" assign to why
-ask "Is this Groovy DSL a great talk?" assign to dsl
-when (dsl == "yes") {
-  ask "HTML5 Hands-on this afternoon?" assign to html5
-  when (html5 == "yes") {
-    ask "With the 3musket33rs ?" assign to us
+ask name + ", do you like Groovy?" assign to groovy
+ask "Do you like Scala?" assign to scala
+when (scala == "yes" && groovy == "yes") {
+  ask "Do your know JavaScript?" assign to javascript
+  when (javascript == "no") {
+    ask "Do you want to be wild and learn it?" assign to javascript
+  }
+  when (javascript == "yes") {
+    ask "Polyglot for sure, isn't it?" assign to javascript
   }
 }
-ask "Would you come back?" assign to comeback
+ask "Do you want to join us at Green King?" assign to comeback
     </textarea>
 </li>
 
@@ -1237,7 +1240,7 @@ ask "Would you come back?" assign to comeback
             </div>
             <div class="span5">
                 <div style="line-height: 150%;font-size:30px;font-weight:bold">Special Thanks</div>
-                <div style="line-height: 150%;font-size:20px;">Fabrice Matrat</div>
+                <div style="line-height: 150%;font-size:20px;">Sebastien Blanc</div>
                 <div style="line-height: 150%;font-size:30px;font-weight:bold">References</div>
                 <div style="line-height: 150%;font-size:20px;">Domain-Specific Languages</div>
                 <div style="line-height: 150%;font-size:20px;font-style:italic">Martin Fowler, with Rebecca Parsons</div>
