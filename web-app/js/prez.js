@@ -681,7 +681,7 @@ function submitCreateForm(title, input, output) {
         $(".surveystart").show();
         $("#displayQuestion").data('scriptId', data.id);
         $("#displayQuestion").data('scriptContent', data.content);
-        $('#scriptContent').text(data.content);
+        //$('#scriptContent').text(data.content);
         $('#submitButton').click();
         $('#next').click();
     });
