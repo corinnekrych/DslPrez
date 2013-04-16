@@ -179,23 +179,31 @@ editor0.addKeyMap(keymap);
 //-------------------------------------------------------------------------------------------------------
 editor01 = new dslPrez.halfEditor("editor01");
 function editor01Key1() {
-    var value = 'println "\\n==> Range"\ndef range = 5..8\nprintln range.size()\nprintln range.get(2)\n';
-    editor01.replaceRange('\n', {line:editor01.lineCount(), ch:0});
+    var value = 'println "==> Range"\ndef range = 5..8\nprintln range.size()\nprintln range.get(2)\n';
+    for (var i = 0; i < 25; i++) {
+        editor01.removeLine(0);
+    }
     editor01.replaceRange(value, {line:editor01.lineCount(), ch:0});
 }
 function editor01Key2() {
-    var value = 'println "\\n==> *. operator"\ndef words = ["a", "few", "words"]*.size()\nprintln words\n';
-    editor01.replaceRange('\n', {line:editor01.lineCount(), ch:0});
+    for (var i = 0; i < 25; i++) {
+        editor01.removeLine(0);
+    }
+    var value = 'println "==> *. operator"\ndef words = ["a", "few", "words"]*.size()\nprintln words\n';
     editor01.replaceRange(value, {line:editor01.lineCount() + 1, ch:0});
 }
 function editor01Key3() {
-    var value = 'println "\\n==> Collection Methods: findAll"\nwords = ["ant", "buffalo", "cat", "dinosaur"]\nprintln words.findAll{ w -> w.size() > 4 }\n';
-    editor01.replaceRange('\n', {line:editor01.lineCount(), ch:0});
+    for (var i = 0; i < 25; i++) {
+        editor01.removeLine(0);
+    }
+    var value = 'println "==> Collection Methods: findAll"\ndef words = ["ant", "buffalo", "cat", "dinosaur"]\nprintln words.findAll{ w -> w.size() > 4 }\n';
     editor01.replaceRange(value, {line:editor01.lineCount() + 1, ch:0});
 }
 function editor01Key4() {
-    var value = 'println "\\n==> Collection Methods: collect"\nprintln words.collect{ it[0] }\n';
-    editor01.replaceRange('\n', {line:editor01.lineCount(), ch:0});
+    for (var i = 0; i < 25; i++) {
+        editor01.removeLine(0);
+    }
+    var value = 'println "==> Collection Methods: collect"\ndef words = ["ant", "buffalo", "cat", "dinosaur"]\nprintln words.collect{ it[0] }\n';
     editor01.replaceRange(value, {line:editor01.lineCount() + 1, ch:0});
 }
 function submitFormWithoutNext(input, output) {
@@ -231,18 +239,24 @@ editor01.addKeyMap(keymap);
 //-------------------------------------------------------------------------------------------------------
 editor02 = new dslPrez.halfEditor("editor02");
 function editor02Key1() {
-    var value = 'println "\\n==> Collection method: findAll"\ndef found = map.findAll {it.value=="cheese" }\nprintln found\nfound = map.findAll {key, value -> value == "cheese" }\nprintln found\n';
-    editor02.replaceRange('\n', {line:editor02.lineCount(), ch:0});
+    var value = 'println "==> Collection method: findAll"\ndef map = [name:"Gromit", likes:"cheese", id:"1234"]\ndef found = map.findAll {it.value=="cheese" }\nprintln found\nfound = map.findAll {key, value -> value == "cheese" }\nprintln found\n';
+    for (var i = 0; i < 25; i++) {
+        editor02.removeLine(0);
+    }
     editor02.replaceRange(value, {line:editor02.lineCount(), ch:0});
 }
 function editor02Key2() {
-    var value = 'println "\\n==> Collection method: every/any"\nfound = map.every{ it.value.size() > 1 }\nprintln found\nfound = map.any{ it.key.size() == 1 }\nprintln found\n';
-    editor02.replaceRange('\n', {line:editor02.lineCount(), ch:0});
+    var value = 'println "==> Collection method: every/any"\ndef map = [name:"Gromit", likes:"cheese", id:"1234"]\ndef found = map.every{ it.value.size() > 1 }\nprintln found\nfound = map.any{ it.key.size() == 1 }\nprintln found\n';
+    for (var i = 0; i < 25; i++) {
+        editor02.removeLine(0);
+    }
     editor02.replaceRange(value, {line:editor02.lineCount() + 1, ch:0});
 }
 function editor02Key3() {
-    var value = 'println "\\n==> Collection method: sort"\ndef m = [sort: "asc", name: "test", paginate: true, max: 100]\nprintln m.sort()*.key\nprintln m.sort( { k1, k2 -> k1 <=> k2 } as Comparator )*.key\n';
-    editor02.replaceRange('\n', {line:editor02.lineCount(), ch:0});
+    var value = 'println "==> Collection method: sort"\ndef m = [sort: "asc", name: "test", paginate: true, max: 100]\nprintln m.sort()*.key\nprintln m.sort( { k1, k2 -> k1 <=> k2 } as Comparator )*.key\n';
+    for (var i = 0; i < 25; i++) {
+        editor02.removeLine(0);
+    }
     editor02.replaceRange(value, {line:editor02.lineCount() + 1, ch:0});
 }
 
@@ -279,8 +293,10 @@ editor02.addKeyMap(keymap);
 editor03 = new dslPrez.halfEditor("editor03");
 
 function editor03Key1() {
-    var value = 'println "\\n==> ExpandoMetaClass: adding dynamic behaviour to existing class"\nInteger.metaClass.getKm= {->\n    println "here"\n}\n1.km\n';
-    editor03.replaceRange('\n', {line:editor03.lineCount(), ch:0});
+    var value = 'println "==> ExpandoMetaClass: adding dynamic behaviour to existing class"\nInteger.metaClass.getKm= {->\n    println "here"\n}\n1.km\n';
+    for (var i = 0; i < 25; i++) {
+        editor03.removeLine(0);
+    }
     editor03.replaceRange(value, {line:editor03.lineCount() + 1, ch:0});
 }
 function editor03Key2() {

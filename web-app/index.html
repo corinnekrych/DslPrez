@@ -465,13 +465,30 @@ println player.greeting()
         </div>
         <hr>
         <div style="padding-left: 15%"class="row-fluid marketing">
-            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; hook into the <b>compilation process</b> to modify AST</p>
-            <p style="line-height: 150%;font-size: 35px; text-align: left">&nbsp;&nbsp; before it is turned into bytecode.</p>
-            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; powerful flexibility at the language level,</p>
-            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp;&nbsp;without a runtime performance penalty<p>
-            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; can be used:
-            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &nbsp; &#8594; either with standard annotation
-            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &nbsp; &#8594; or implement your own
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; hook into the <b>compilation process</b> </p>
+            <p style="line-height: 150%;font-size: 20px; text-align: left">&nbsp;&nbsp; to modify AST before it is turned into bytecode.</p>
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; flexibility without <b>runtime performance penalty</b></p>
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; can be used:</p>
+            <p style="line-height: 150%;font-size: 20px; text-align: left"> &nbsp; &nbsp; &#8594; either with standard annotation like: </p>
+            <p style="line-height: 150%;font-size: 20px; text-align: left"> &nbsp; &nbsp; &nbsp; &nbsp; &#x2022; <a href="http://www.jroller.com/melix/entry/upcoming_groovy_goodness_automatic_thread">@ThreadInterrupt and co.</a> </p>
+            <p style="line-height: 150%;font-size: 20px; text-align: left"> &nbsp; &nbsp; &nbsp; &nbsp; &#x2022; <a href="http://groovy.codehaus.org/Type+checking+extensions">@TypeChecked + extension: error handling in your DSL</a> </p>
+            <p style="line-height: 150%;font-size: 20px; text-align: left"> &nbsp; &nbsp; &nbsp; &nbsp; &#x2022; <a href="http://groovy.codehaus.org/Scalify">@Scalify</a> </p>
+            <p style="line-height: 150%;font-size: 20px; text-align: left"> &nbsp; &nbsp; &#8594; or implement your own: </p>
+            <p style="line-height: 150%;font-size: 20px; text-align: left"> &nbsp; &nbsp; &nbsp; &nbsp; &#x2022; <a href="http://www.jroller.com/melix/entry/customizing_groovy_compilation_process">SecureASTCustomizer</a> </p>
+            <!-- http://kohsuke.org/2012/04/27/groovy-secureastcustomizer-is-harmful/-->
+        </div>
+    </div>
+</li>
+
+<li class="slide" title="AST phases">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <h1>9 phases of AST transform</h1>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <img width="97%" src="img/9phases.png">
         </div>
     </div>
 </li>
@@ -484,9 +501,9 @@ println player.greeting()
         </div>
         <hr>
         <div style="padding-left: 15%"class="row-fluid marketing">
-            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; native support for scripting: </p>
-            <p style="line-height: 150%;font-size: 25px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp; <b>new GroovyShell().evaluate(content)</b></p>
-            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; JSR223</p>
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; <b>native support</b> for scripting: </p>
+            <p style="line-height: 150%;font-size: 25px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp; new GroovyShell().evaluate(content)</p>
+            <p style="line-height: 150%;font-size: 35px; text-align: left"> &nbsp; &#x2022; <b>standard support</b> JSR223:</p>
             <p style="line-height: 150%;font-size: 25px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp; ScriptEngineManager factory = new ScriptEngineManager();</p>
             <p style="line-height: 150%;font-size: 25px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp; ScriptEngine engine = factory.getEngineByName("groovy");</p>
             <p style="line-height: 150%;font-size: 25px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp; engine.eval(content))</p>
