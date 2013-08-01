@@ -4,7 +4,7 @@ import grails.converters.JSON
 import org.codehaus.groovy.control.CompilerConfiguration
 import org.springframework.dao.DataIntegrityViolationException
 import org.codehaus.groovy.grails.web.json.JSONObject
-
+import groovy.transform.TypeChecked
 class SurveyController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -78,6 +78,42 @@ class SurveyController {
         groovyShell.evaluate(survey.content)
 
         render binding.inputs as JSON
+    }
+
+    def runTurtle() {
+
+        def turtle = new dslprez.Turtle(new Position(1, 1, Direction.left))
+        def compilerConfig = new CompilerConfiguration()
+
+        compilerConfig.addCompilationCustomizers(
+                new org.codehaus.groovy.control.customizers.ASTTransformationCustomizer(
+                        groovy.transform.TypeChecked, extensions:['TurtleExtension.groovy']))
+
+        def binding = new Binding([turtle: turtle,
+                move: turtle.&move,
+                left: Direction.left,
+                right: Direction.right,
+                up: Direction.up,
+                down: Direction.down])
+        def shell = new GroovyShell(this.class.classLoader,
+                binding,
+                compilerConfig)
+
+        def gameDSL = '''
+turtle1
+turtleee
+2
+        '''
+
+        shell.evaluate gameDSL
+        def builder = new groovy.json.JsonBuilder()
+        List turtleSteps =  ((Turtle)binding["turtle"]).steps
+        builder {
+            steps turtleSteps
+        }
+        println builder
+        render builder as JSON
+
     }
 
     def edit() {

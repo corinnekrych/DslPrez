@@ -119,6 +119,11 @@ body {
     color: blue;
 }
 
+.highlight {
+    background: #e8f2ff;
+}
+
+
 .blur {
     font-size:75px;
     color: rgba(255, 255, 255, 0);

@@ -7,7 +7,7 @@ import dslprez.Result
 class ConsoleController {
 
 	def execute() {
-		def console = new Console(params);
+		def console = new Console(content:params.content);
 
 		def encoding = 'UTF-8'
 		def stream = new ByteArrayOutputStream()
@@ -24,8 +24,8 @@ class ConsoleController {
 		System.setOut(printStream)
 		System.setErr(printStream)
 		try {
-			result = new GroovyShell(this.class.classLoader, aBinding).evaluate(console.content)
-		} catch (groovy.lang.GroovyRuntimeException e) {
+			result = new GroovyShell(this.class.classLoader, aBinding).evaluate(params.content)
+		} catch (Throwable e) {
 			stacktrace = e.message - 'startup failed:\nScript1.groovy: '
 		} finally {
 			System.setOut(originalOut)
@@ -34,6 +34,9 @@ class ConsoleController {
 
 		def resultObject = new Result()
 		resultObject.result = stream.toString(encoding)
+        //println "resultobject: $resultObject.result"
+        resultObject.shellResult = result
+        //println "shellresult: $resultObject.shellResult"
 		resultObject.stacktrace = stacktrace
 		
 		// to avoid grails bringing 404 error

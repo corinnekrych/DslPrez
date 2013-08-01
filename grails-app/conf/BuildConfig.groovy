@@ -34,10 +34,11 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.16'
+        runtime 'postgresql:postgresql:9.1-901-1.jdbc4'
     }
 
     plugins {
-        runtime ":hibernate:$grailsVersion"
+        //runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.7.1"
         //runtime ":resources:1.1.6"
 
@@ -46,6 +47,16 @@ grails.project.dependency.resolution = {
         //runtime ":cached-resources:1.0"
         //runtime ":yui-minify-resources:0.1.4"
 
-        build ":tomcat:$grailsVersion"
+        //build ":tomcat:$grailsVersion"
+
+        compile ':heroku:1.0.1'
+        compile ':cloud-support:1.0.8'
+        compile ':webxml:1.4.1'
+
+        // plugins for the build system only
+        build ':tomcat:7.0.39'
+        // plugins needed at runtime but not for compilation
+        runtime ':hibernate:3.6.10.M3'
     }
 }
+

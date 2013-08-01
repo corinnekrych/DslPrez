@@ -486,7 +486,7 @@ window.CodeMirror = (function() {
         updateLineHeight(node.lineObj, height);
     }
     display.viewOffset = heightAtLine(cm, getLine(doc, from));
-    // Position the mover div to align with the current virtual scroll position
+    // dslprez.Position the mover div to align with the current virtual scroll position
     display.mover.style.top = display.viewOffset + "px";
     return true;
   }
