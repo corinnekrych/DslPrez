@@ -846,9 +846,9 @@ editor8.scrollIntoView({line:80, ch:0});
 var editor9 = new dslPrez.editor("editor9");
 function editor9TurtleSend() {
     var value = editor9.getValue();
-    value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    value += "import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;\nimport groovy.transform.TypeChecked\n";
-    value += "import groovy.transform.TimedInterrupt\n";
+    //value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
+    //value += "import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;\nimport groovy.transform.TypeChecked\n";
+    //value += "import groovy.transform.TimedInterrupt\n";
     submitTurtleForm(value, "#output9", 'canvas9');
 }
 

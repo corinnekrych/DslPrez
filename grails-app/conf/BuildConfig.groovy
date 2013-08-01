@@ -35,6 +35,12 @@ grails.project.dependency.resolution = {
 
         // runtime 'mysql:mysql-connector-java:5.1.16'
         runtime 'postgresql:postgresql:9.1-901-1.jdbc4'
+ 
+        runtime 'org.scala-lang:scala-compiler:2.11.0-M4'
+        runtime 'org.scala-lang:scala-library:2.11.0-M4'
+        runtime 'scalainterpreter:scalainterpreter:1.0'
+        runtime 'net.liftweb:lift-json_2.10:2.5.1'
+        runtime 'postgresql:postgresql:9.1-901-1.jdbc4'
     }
 
     plugins {
