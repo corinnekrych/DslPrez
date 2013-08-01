@@ -10,6 +10,8 @@ This presentation was given in:
 
 - RivieraGUG April 2013 with [Corinne Krych](http://corinnekrych.github.io/) and [Fabrice Matrat](http://fabricematrat.github.io/)    
 
+- Gr8ConfUS July 2013 with [Corinne Krych](http://corinnekrych.github.io/) and [Fabrice Matrat](http://fabricematrat.github.io/)    
+
 Where it comes from?
 ====================
 Writing an embedded Groovy DSL for end users which can read as plain English. What a crazy idea!
