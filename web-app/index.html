@@ -44,20 +44,22 @@
         <hr>
 
         <div class="jumbotron" style="font-family: fantasy">
-            <h1>Groovy DSL for kids</h1>
+            <h1>Embedded DSL:<br/><br/> Groovy and Scala Fair Duel</h1>
         </div>
 
         <hr>
         <div class="row-fluid marketing">
-            <div class="span6">
-                <p><img width="20%" src="img/corinne_krych.png"/></p>
+            <div class="span2">&nbsp;</div>
+            <div class="span4">
+                <p><img width="35%" src="img/corinne_krych.png"/></p>
                 <h4>Corinne Krych</h4>
             </div>
 
-            <div class="span6">
-                <p><img width="20%" src="img/fabrice.png"/></p>
-                <h4>Fabrice Matrat</h4>
+            <div class="span4">
+                <p><img width="35%" src="img/freeBSD.png"/></p>
+                <h4>Pascal Cohen</h4>
             </div>
+            <div class="span2">&nbsp;</div>
         </div>
         <hr>
 
@@ -68,7 +70,7 @@
         </div>
         <hr>
         <div>
-            <p style=""><img width="30%" src="img/gr8uslogo_with_tagline.png"/></p>
+            <p style=""><img width="15%" src="img/j1.png"/></p>
         </div>
 
         <canvas id="animationcanvas" width="1000" height="1000" ></canvas>
@@ -237,35 +239,35 @@
     </div>
 </li>
 
-<li class="slide" title="Fabrice">
+<li class="slide" title="Pascal">
     <div class="container-narrow">
         <hr>
 
         <div class="jumbotron">
-            <h1>Fabrice : my geek husband</h1><br/>
-            <img width="20%" src="img/fabrice.png"/><br/>
+            <h1>Pascal : my geek friend</h1><br/>
+            <img width="20%" src="img/freeBSD.png"/><br/>
         </div>
 
         <hr>
 
         <div class="row-fluid marketing">
             <div class="span4">
-                <a href="https://twitter.com/fabricematrat"><img src="img/twitter.png" /></a>
-                <h4>@fabricematrat</h4>
+                <a href="https://twitter.com/PascalCohen"><img src="img/twitter.png" /></a>
+                <h4>@PascalCohen</h4>
             </div>
             <div class="span4">
-                <a href="https://github.com/fabricematrat"><img src="img/github.png"/></a>
-                <h4>https://github.com/fabricematrat</h4>
+                <a href="https://github.com/pascohent"><img src="img/github.png"/></a>
+                <h4>https://github.com/pascohen</h4>
             </div>
             <div class="span4">
-                <a href="mailto:fabricematrat@gmail.com"><img width="24px" src="img/gmail.png" ></a>
-                <h4>fabricematrat@gmail.com</h4>
+                <a href="mailto:pascohen@gmail.com"><img width="24px" src="img/gmail.png" ></a>
+                <h4>pascohen@gmail.com</h4>
             </div>
         </div>
         <br/>
         <div style="width: 100%">
             <div style="float:left;text-align:right;display:inline-block;width: 30%">
-                <img src="img/3musket33rs.jpeg" width="50%"/>
+                <img src="img/a.png" width="50%"/>
             </div>
             <div style="float:left;text-align:right;display:inline-block;width: 10%">
                 &nbsp;
@@ -274,7 +276,7 @@
                 <img src="img/rivierargug.png" width="50%"/>
             </div>
             <div style="float: left; font-size: 25px; text-align: left; display: inline-block; width: 30%">
-                <img src="img/js-sophia-small.png" width="50%"/>
+                <img src="img/Lambda.svg" width="50%"/>
             </div>
         </div>
     </div>
@@ -430,6 +432,27 @@
     </div>
 </li>
 
+<li class="slide" title="Limited vs Expressiveness">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <h1>Limited or expressive?</h1><br/>
+        </div>
+        <hr>
+
+        <div class="row-fluid marketing">
+        <div class="span2">
+        </div>
+        <div class="span8">
+        <p style="line-height: 150%;font-size: 30px" >a language offering <strong>expressive power</strong> focused on a particular problem domain, such as a specific class of applications or application aspect</p>
+        <h3>- Czarnecki Krzysztof </h3>
+        </div>
+        <div class="span2">
+        </div>
+        </div>
+    </div>
+</li>
+
 <li class="slide" title="Boundaries">
     <div class="container-narrow">
         <hr>
@@ -538,22 +561,85 @@ ask "What's is your name?" assign to name
     </div>
 </li>
 
+
+<li class="slide" title="Script">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <h1>Script</h1><br/>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span4">
+                <h3>Groovy with Grails</h3>
+                <p></p>
+            </div>
+            <div class="span4">
+                <h3>Scala with Grails</h3>
+                <p>// Two next steps necessary only inside Grails/Groovy
+                    val env = new Settings()
+                    env.usejavacp.value = true</p>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
 <!------------------------------------------------------------------->
-<!-- 1. Script
+<!-- Groovy1. Script
 <!-- step 1 define base class
 <!-- step 2 remove move definition in script
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="First Script" press="Press 1..2">
     <textarea id="editor1" name="editor1">
-// Configure the GroovyShell.
-def shell = new GroovyShell()
+        // Configure the GroovyShell.
+        def shell = new GroovyShell()
 
-///////////////////////
-def gameDSL = '''
-'''
-//////////////////////
-// Run DSL script.
-def result = shell.evaluate gameDSL</textarea>
+        ///////////////////////
+        def gameDSL = '''
+        '''
+        //////////////////////
+        // Run DSL script.
+        def result = shell.evaluate gameDSL</textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="output" id="output1">
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!------------------------------------------------------------------->
+<!-- Scala1. Script
+<!-- step 1 define base class
+<!-- step 2 remove move definition in script
+<!------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="First Script" press="Press 1..2">
+    <textarea id="editor1" name="editor1"> import scala.tools.nsc._
+
+// Two next steps necessary only inside Grails/Groovy
+val env = new Settings()
+env.usejavacp.value = true
+
+val interpreter=new scala.tools.nsc.Interpreter(env)
+
+val dsl = ""
+
+val result = interpreter.eval(dsl)</textarea>
 </li>
 
 <li class="slide" style="text-align: left" title="">
