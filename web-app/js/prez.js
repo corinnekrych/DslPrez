@@ -48,10 +48,11 @@ document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 2
 var serverUrl = "http://localhost:8080/DslPrez";
 //var serverUrl = "http://dslprez.cloudfoundry.com";
 //var serverUrl = "http://vast-escarpment-3640.herokuapp.com";
-function submitForm(input, output) {
+function submitForm(input, output, lang) {
     var url = serverUrl + "/console/execute?=";
     $.post(url, {
-        content : input
+        content: input,
+        lang: lang
     }, function(data) {
         var value = "";
         if (data.stacktrace === "" || data.stacktrace.buffer !== undefined) {
@@ -63,6 +64,15 @@ function submitForm(input, output) {
         $('#next').click();
     });
 }
+
+function submitFormToGroovyConsole(input, output) {
+  submitForm(input, output, "groovy");
+}
+
+function submitFormToScalaConsole(input, output) {
+    submitForm(input, output, "scala");
+}
+
 //------------------------------------------------------------------->
 // 1. Base Class
 // step 1 define move method
@@ -82,7 +92,7 @@ function editor1Key1() {
 }
 function editor1Send() {
     var value = editor1.getValue();
-    submitForm(value, "#output1");
+    submitFormToGroovyConsole(value, "#output1");
 }
 
 function editor1Key2() {
@@ -182,7 +192,7 @@ function editor2Key6() {
 function editor2Send() {
     var value = editor2.getValue();
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    submitForm(value, "#output2");
+    submitFormToGroovyConsole(value, "#output2");
 }
 var keymap2 = {
     "Ctrl-S" :editor2Send,
@@ -197,11 +207,12 @@ var keymap2 = {
 
 editor2.addKeyMap(keymap2);
 
-function submitTurtleForm(input, output, canvasId) {
+function submitTurtleForm(input, output, canvasId, lang) {
     var url = serverUrl + "/console/execute?=";
     var draw;
     $.post(url, {
-        content : input
+        content : input,
+        lang: lang
     }, function(data) {
         var value = "";
         var outputValue = "";
@@ -240,6 +251,14 @@ function submitTurtleForm(input, output, canvasId) {
     });
 }
 
+function submitTurtleFormToGroovyConsole(input, output, canvasId) {
+  submitTurtleForm(input, output, "groovy");
+}
+
+function submitTurtleFormToScalaConsole(input, output, canvasId) {
+    submitTurtleForm(input, output, "scala");
+}
+
 //------------------------------------------------------------------->
 // 3. Binding
 // step 1 introduce right in binding
@@ -249,7 +268,7 @@ var editor3 = new dslPrez.editor("editor3");
 function editor3Send() {
     var value = editor3.getValue();
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    submitForm(value, "#output3");
+    submitFormToGroovyConsole(value, "#output3");
 }
 
 function editor3Key1() {
@@ -290,7 +309,7 @@ var editor4 = new dslPrez.editor("editor4");
 function editor4Send() {
     var value = editor4.getValue();
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    submitForm(value, "#output4");
+    submitFormToGroovyConsole(value, "#output4");
 }
  function editor4Key1() {
 var value = "class Position {\n" +
@@ -433,12 +452,12 @@ var editor5 = new dslPrez.editor("editor5");
 function editor5Send() {
     var value = editor5.getValue();
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    submitForm(value, "#output5");
+    submitFormToGroovyConsole(value, "#output5");
 }
 function editor5TurtleSend() {
     var value = editor5.getValue();
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    submitTurtleForm(value, "#output5", 'canvas5');
+    submitTurtleFormToGroovyConsole(value, "#output5", 'canvas5');
 }
 
 function editor5Key1() {
@@ -515,12 +534,12 @@ editor5.addKeyMap(keymap5);
 
 
 //-------------------------------------------------------------------
-//6. Command chaining odd number
+//6. Command chaining
 //step 1: highlight dsl syntax
 //step 2: move left by 2
 //step 3: add by method
 //step 4: highlight steps.add from turtle move
-//step 5: remove steps.add from turtle mve
+//step 5: remove steps.add from turtle move
 //step 6: add steps.add to turtle by
 //step 7: change new Position to add direction
 //------------------------------------------------------------------->
@@ -528,7 +547,7 @@ var editor6 = new dslPrez.editor("editor6");
 function editor6TurtleSend() {
     var value = editor6.getValue();
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    submitTurtleForm(value, "#output6", 'canvas6');
+    submitTurtleFormToGroovyConsole(value, "#output6", 'canvas6');
 }
 
 
@@ -607,17 +626,14 @@ editor6.addKeyMap(keymap6);
 //6b. Command chaining odd number
 //step 1: highlight dsl syntax
 //step 2: move left by 2 steps
-//step 3: add by method
-//step 4: highlight steps.add from turtle move
-//step 5: remove steps.add from turtle mve
-//step 6: add steps.add to turtle by
-//step 7: change new Position to add direction
+//step 3: highlight by method
+//step 4: change by to return map with silent word: steps/step
 //------------------------------------------------------------------->
 var editor6b = new dslPrez.editor("editor6b");
 function editor6bTurtleSend() {
     var value = editor6b.getValue();
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    submitTurtleForm(value, "#output6b", 'canvas6b');
+    submitTurtleFormToGroovyConsole(value, "#output6b", 'canvas6b');
 }
 
 function editor6bKey1() {
@@ -694,7 +710,7 @@ var editor7 = new dslPrez.editor("editor7");
 function editor7TurtleSend() {
     var value = editor7.getValue();
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    submitTurtleForm(value, "#output7", 'canvas7');
+    submitTurtleFormToGroovyConsole(value, "#output7", 'canvas7');
 }
 
 function editor7Key1() {
@@ -799,7 +815,7 @@ function editor8TurtleSend() {
     var value = editor8.getValue();
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
     value += "import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;\nimport groovy.transform.TypeChecked\n";
-    submitTurtleForm(value, "#output8", 'canvas8');
+    submitTurtleFormToGroovyConsole(value, "#output8", 'canvas8');
 }
 
 function editor8Key1() {
@@ -846,10 +862,10 @@ editor8.scrollIntoView({line:80, ch:0});
 var editor9 = new dslPrez.editor("editor9");
 function editor9TurtleSend() {
     var value = editor9.getValue();
-    //value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    //value += "import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;\nimport groovy.transform.TypeChecked\n";
-    //value += "import groovy.transform.TimedInterrupt\n";
-    submitTurtleForm(value, "#output9", 'canvas9');
+    value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
+    value += "import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;\nimport groovy.transform.TypeChecked\n";
+    value += "import groovy.transform.TimedInterrupt\n";
+    submitTurtleFormToGroovyConsole(value, "#output9", 'canvas9');
 }
 
 function editor9Key1() {
@@ -922,7 +938,7 @@ function editor10TurtleSend() {
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
     value += "import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;\nimport groovy.transform.TypeChecked\n";
     value += "import groovy.transform.TimedInterrupt;\nimport org.codehaus.groovy.control.customizers.SecureASTCustomizer\n"
-    submitTurtleForm(value, "#output10", 'canvas10');
+    submitTurtleFormToGroovyConsole(value, "#output10", 'canvas10');
 }
 
 function editor10Key1() {
@@ -989,7 +1005,7 @@ var editor11 = new dslPrez.editor("editor11");
 function editor11Send() {
     var value = editor11.getValue();
     value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    submitForm(value, "#output11");
+    submitFormToGroovyConsole(value, "#output11");
 }
 
 function editor11Key1() {
@@ -1093,7 +1109,7 @@ function editor12Send() {
         +"import org.codehaus.groovy.syntax.Token\n"
         +"import org.codehaus.groovy.syntax.Types\n"
         +"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n" + value;
-    submitForm(value, "#output12");
+    submitFormToGroovyConsole(value, "#output12");
 }
 var keymap12 = {
     "Ctrl-S": editor12Send,

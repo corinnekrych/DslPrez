@@ -9,7 +9,7 @@ class ConsoleController {
 
   def execute() {
     //TODO depending on the receieved params.lang value target right interpreter
-    def lang = "scala" //params.lang
+    def lang = params.lang
 
     if (lang == "scala") executeScala()
     else if (lang == "groovy") executeGroovy()
@@ -24,7 +24,6 @@ class ConsoleController {
 
     def result = ""
     def stacktrace = new StringWriter()
-    def errWriter = new PrintWriter(stacktrace)
     def aBinding = new Binding([out: printStream])
 
     def originalOut = System.out
@@ -35,18 +34,16 @@ class ConsoleController {
 
     try {
       result = new GroovyShell(this.class.classLoader, aBinding).evaluate(params.content)
-    } catch (groovy.lang.GroovyRuntimeException e) {
-	stacktrace = e.message - 'startup failed:\nScript1.groovy: '
+    } catch (Throwable e) {
+	  stacktrace = e.message - 'startup failed:\nScript1.groovy: '
     } finally {
-	System.setOut(originalOut)
-	System.setErr(originalErr)
+	  System.setOut(originalOut)
+	  System.setErr(originalErr)
     }
 
     def resultObject = new Result()
     resultObject.result = stream.toString(encoding)
-    //println "resultobject: $resultObject.result"
     resultObject.shellResult = result
-    //println "shellresult: $resultObject.shellResult"
     resultObject.stacktrace = stacktrace
 		
     // to avoid grails bringing 404 error
