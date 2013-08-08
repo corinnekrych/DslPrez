@@ -8,7 +8,6 @@ import dslprez.scala.eval.Evaluator
 class ConsoleController {
 
   def execute() {
-    //TODO depending on the receieved params.lang value target right interpreter
     def lang = params.lang
 
     if (lang == "scala") executeScala()
@@ -34,7 +33,7 @@ class ConsoleController {
 
     try {
       result = new GroovyShell(this.class.classLoader, aBinding).evaluate(params.content)
-    } catch (Throwable e) {
+    } catch (groovy.lang.GroovyRuntimeException e) {
 	  stacktrace = e.message - 'startup failed:\nScript1.groovy: '
     } finally {
 	  System.setOut(originalOut)
@@ -53,7 +52,7 @@ class ConsoleController {
    def executeScala() {
    // Ugly search how to do better
    def cp = System.getProperty("java.class.path")
-   cp = "lib/scaladsl.jar:lib/scalainterpreter.jar:lib/scala-reflect.jar:lib/scala-compiler.jar:lib/scala-library.jar:lib/lift-json.jar:target/classes:"+cp
+   cp = "lib/scaladsl.jar:lib/scalainterpreter.jar:lib/scala-reflect.jar:lib/scala-compiler.jar:lib/scala-library.jar:lib/plugins/continuations.jar:lib/plugins/scalacompilerplugin.jar:lib/lift-json.jar:target/classes:"+cp
 
    System.setProperty("java.class.path",cp)
      	

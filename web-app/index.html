@@ -593,17 +593,17 @@ ask "What's is your name?" assign to name
 <!-- step 1 define base class
 <!-- step 2 remove move definition in script
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="First Script" press="Press 1..2">
-    <textarea id="editor1" name="editor1">
-        // Configure the GroovyShell.
-        def shell = new GroovyShell()
+<li class="slide" style="text-align: left" title="Groovy Script" press="Press 1..2">
+    <textarea id="editorGroovy1" name="editorGroovy1">
+// Configure the GroovyShell.
+def shell = new GroovyShell()
 
-        ///////////////////////
-        def gameDSL = '''
-        '''
-        //////////////////////
-        // Run DSL script.
-        def result = shell.evaluate gameDSL</textarea>
+///////////////////////
+def gameDSL = '''
+'''
+//////////////////////
+// Run DSL script.
+def result = shell.evaluate gameDSL</textarea>
 </li>
 
 <li class="slide" style="text-align: left" title="">
@@ -613,7 +613,7 @@ ask "What's is your name?" assign to name
             </div>
             <div class="span8">
                 <hr>
-                <pre class="output" id="output1">
+                <pre class="output" id="outputGroovy1">
                 </pre>
                 <hr>
             </div>
@@ -628,8 +628,8 @@ ask "What's is your name?" assign to name
 <!-- step 1 define base class
 <!-- step 2 remove move definition in script
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="First Script" press="Press 1..2">
-    <textarea id="editor1" name="editor1"> import scala.tools.nsc._
+<li class="slide" style="text-align: left" title="Scala Script" press="Press 1..2">
+    <textarea id="editorScala1" name="editorScala1"> import scala.tools.nsc._
 
 // Two next steps necessary only inside Grails/Groovy
 val env = new Settings()
@@ -649,7 +649,7 @@ val result = interpreter.eval(dsl)</textarea>
             </div>
             <div class="span8">
                 <hr>
-                <pre class="output" id="output1">
+                <pre class="output" id="outputScala1">
                 </pre>
                 <hr>
             </div>
@@ -667,7 +667,7 @@ val result = interpreter.eval(dsl)</textarea>
 <!-- step 4 inject it in groovy shell
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Base class" press="Press 1..5">
-    <textarea id="editor2" name="editor2">
+    <textarea id="editorGroovy2" name="editorGroovy2">
 // Configure the GroovyShell.
 def shell = new GroovyShell()
 
@@ -693,7 +693,7 @@ def result = shell.evaluate gameDSL
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="output2">
+                <pre class="code" id="outputGroovy2">
                 </pre>
                 <hr>
             </div>
@@ -709,7 +709,7 @@ def result = shell.evaluate gameDSL
 <!-- step 2 ad move right command
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Binding" press="Press 1..2">
-    <textarea id="editor3" name="editor3">
+    <textarea id="editorGroovy3" name="editorGroovy3">
 // Configure the GroovyShell.
 abstract class GameScript extends Script {
   def move = {direction -> println "moving $direction" }
@@ -738,7 +738,7 @@ def result = shell.evaluate gameDSL
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="output3">
+                <pre class="code" id="outputGroovy3">
                 </pre>
                 <hr>
             </div>
@@ -757,7 +757,7 @@ def result = shell.evaluate gameDSL
 <!-- step5 replace inheritance by binding
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Add Turtle class" press="Press 1..8">
-    <textarea id="editor4" name="editor4">
+    <textarea id="editorGroovy4" name="editorGroovy4">
 // Configure the GroovyShell.
 abstract class GameScript extends Script {
   def move = {direction -> println "moving $direction" }
@@ -787,7 +787,7 @@ def result = shell.evaluate gameDSL
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="output4">
+                <pre class="code" id="outputGroovy4">
                 </pre>
                 <hr>
             </div>
@@ -806,7 +806,7 @@ def result = shell.evaluate gameDSL
 <!-- cmd-S for text output cmd-D for canvas output
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Building JSON for HTML5 display" press="Press 1..7">
-    <textarea id="editor5" name="editor5">
+    <textarea id="editorGroovy5" name="editorGroovy5">
 class Position {
   int x
   int y
@@ -902,9 +902,9 @@ shell.evaluate gameDSL
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="output5">
+                <pre class="code" id="outputGroovy5">
                 </pre>
-                <canvas id="canvas5" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy5" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -971,7 +971,7 @@ step 6: add steps.add to turtle by
 step 7: change new Position to add direction
 ------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Command Chaining" press="Press 1..7">
-    <textarea id="editor6" name="editor6">
+    <textarea id="editorGroovy6" name="editorGroovy6">
 class Position {
   int x
   int y
@@ -1077,9 +1077,9 @@ builder.toString()
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="output6">
+                <pre class="code" id="outputGroovy6">
                 </pre>
-                <canvas id="canvas6" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy6" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1243,9 +1243,9 @@ builder.toString()
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="output6b">
+                <pre class="code" id="outputGroovy6b">
                 </pre>
-                <canvas id="canvas6b" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy6b" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1265,7 +1265,7 @@ step6: highlight class StepCategory
 step7: replace with @Category annotation
 ------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Adding behavior to Integer" press="Press 1..7">
-    <textarea id="editor7" name="editor7">
+    <textarea id="editorGroovy7" name="editorGroovy7">
 class Position {
   int x
   int y
@@ -1377,9 +1377,9 @@ builder.toString()
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="output7">
+                <pre class="code" id="outputGroovy7">
                 </pre>
-                <canvas id="canvas7" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy7" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1394,7 +1394,7 @@ step 1: highlight compiler
 step 2: add typechecked ext
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="TypeChecked" press="Press 1..2">
-    <textarea id="editor8" name="editor8">
+    <textarea id="editorGroovy8" name="editorGroovy8">
 class Position {
     int x
     int y
@@ -1510,9 +1510,9 @@ builder.toString()
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="output8">
+                <pre class="code" id="outputGroovy8">
                 </pre>
-                <canvas id="canvas8" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy8" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1530,7 +1530,7 @@ step4: add TimeInterrupt
 ------------------------------------------------------------------->
 
 <li class="slide" style="text-align: left" title="Franklin wants to turn around" press="Press 1..4">
-    <textarea id="editor9" name="editor9">
+    <textarea id="editorGroovy9" name="editorGroovy9">
 class Position {
     int x
     int y
@@ -1650,9 +1650,9 @@ builder.toString()
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="output9">
+                <pre class="code" id="outputGroovy9">
                 </pre>
-                <canvas id="canvas9" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy9" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
                 </pre>
                 <hr>
             </div>
@@ -1671,7 +1671,7 @@ step 3: add SecureASTCustomizer
 ------------------------------------------------------------------->
 
 <li class="slide" style="text-align: left" title="Franklin wants to play with fire" press="Press 1..3">
-    <textarea id="editor10" name="editor10">
+    <textarea id="editorGroovy10" name="editorGroovy10">
 class Position {
     int x
     int y
@@ -1792,9 +1792,9 @@ builder.toString()
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="output10">
+                <pre class="code" id="outputGroovy10">
                 </pre>
-                <canvas id="canvas10" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy10" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
                 </pre>
                 <hr>
             </div>
@@ -1815,7 +1815,7 @@ step5: add display map in DSL
 ------------------------------------------------------------------->
 
 <li class="slide" style="text-align: left" title="Franklin wants to ask" press="Press 1..5">
-    <textarea id="editor11" name="editor9">
+    <textarea id="editorGroovy11" name="editorGroovy11">
 abstract class GameScript extends Script {
 
 
@@ -1843,7 +1843,7 @@ shell.evaluate surveyDSL
             </div>
             <div class="span8">
                 <hr>
-                <pre class="output" id="output11">
+                <pre class="output" id="outputGroovy11">
                 </pre>
                 <hr>
             </div>
@@ -1866,7 +1866,7 @@ shell.evaluate surveyDSL
 <!------------------------------------------------------------------->
 
 <li class="slide" style="text-align: left" title="AST Tranformation" press="">
-    <textarea id="editor12" name="editor12">
+    <textarea id="editorGroovy12" name="editorGroovy12">
 def getShell(binding) {
   def config = new CompilerConfiguration()
   config.addCompilationCustomizers(new SurveyCustomizer())
@@ -1991,7 +1991,7 @@ public class SurveyCustomizer extends CompilationCustomizer {
             </div>
             <div class="span8">
                 <hr>
-                <pre class="output" id="output12">
+                <pre class="output" id="outputGroovy12">
                 </pre>
                 <hr>
             </div>
