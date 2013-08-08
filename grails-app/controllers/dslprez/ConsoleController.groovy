@@ -33,7 +33,7 @@ class ConsoleController {
 
     try {
       result = new GroovyShell(this.class.classLoader, aBinding).evaluate(params.content)
-    } catch (groovy.lang.GroovyRuntimeException e) {
+    } catch (Exception e) {
 	  stacktrace = e.message - 'startup failed:\nScript1.groovy: '
     } finally {
 	  System.setOut(originalOut)
@@ -52,9 +52,9 @@ class ConsoleController {
    def executeScala() {
    // Ugly search how to do better
    def cp = System.getProperty("java.class.path")
-   cp = "lib/scaladsl.jar:lib/scalainterpreter.jar:lib/scala-reflect.jar:lib/scala-compiler.jar:lib/scala-library.jar:lib/plugins/continuations.jar:lib/plugins/scalacompilerplugin.jar:lib/lift-json.jar:target/classes:"+cp
+   cp = "lib/scaladsl.jar:lib/scalainterpreter.jar:lib/scala-reflect.jar:lib/scala-compiler.jar:lib/scala-library.jar:lib/lift-json.jar:target/classes:"+cp
 
-   System.setProperty("java.class.path",cp)
+   System.setProperty("java.class.path", cp)
      	
     def encoding = 'UTF-8'
     def stream = new ByteArrayOutputStream()
@@ -65,7 +65,7 @@ class ConsoleController {
     
     def evaluator
     try {
-      evaluator = new Evaluator(printStream).withContinuations().withPluginsDir("lib/plugins")
+      evaluator = new Evaluator(printStream).WithContinuations().withPluginsDir("lib/plugins")
       result = evaluator.eval(params.content)
     } catch (Exception e) {
       stacktrace = e.message
