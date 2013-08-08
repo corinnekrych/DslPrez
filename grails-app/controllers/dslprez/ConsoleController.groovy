@@ -3,7 +3,10 @@ package dslprez
 import grails.converters.JSON
 import dslprez.Result
 import dslprez.scala.eval.Evaluator
-
+import dslprez.Turtle
+import dslprez.up
+import dslprez.Direction
+import dslprez.Position
 
 class ConsoleController {
 
@@ -66,6 +69,16 @@ class ConsoleController {
     def evaluator
     try {
       evaluator = new Evaluator(printStream).withContinuations().withPluginsDir("lib/plugins")
+
+
+      // Example for the game use bind and import
+      //def turtle = new Turtle(new Position(0,0,up as Direction))
+      //evaluator.addImport("dslprez._")      
+      //println("Turtle is $turtle ==========") 
+      //evaluator.bind("I","dslprez.Turtle",turtle)
+      //End
+ 
+
       result = evaluator.eval(params.content)
     } catch (Exception e) {
       stacktrace = e.message
