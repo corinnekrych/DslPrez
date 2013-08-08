@@ -3,10 +3,10 @@ package dslprez
 import grails.converters.JSON
 import dslprez.Result
 import dslprez.scala.eval.Evaluator
-import dslprez.Turtle
-import dslprez.up
-import dslprez.Direction
-import dslprez.Position
+//import dslprez.Turtle
+//import dslprez.up
+//import dslprez.Direction
+//import dslprez.Position
 
 class ConsoleController {
 
