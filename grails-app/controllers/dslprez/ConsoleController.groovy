@@ -65,7 +65,7 @@ class ConsoleController {
     
     def evaluator
     try {
-      evaluator = new Evaluator(printStream).WithContinuations().withPluginsDir("lib/plugins")
+      evaluator = new Evaluator(printStream).withContinuations().withPluginsDir("lib/plugins")
       result = evaluator.eval(params.content)
     } catch (Exception e) {
       stacktrace = e.message
