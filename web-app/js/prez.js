@@ -84,6 +84,7 @@ function editorGroovy1Key1() {
         + "    println \"moving $direction\"\n"
         + "}\n"
         + "move \"left\"\n";
+    editorGroovy1.removeLine(5);
     editorGroovy1.replaceRange(value, {line:5, ch:0});
     editorGroovy1.addLineClass(5, "background", "highlight");
     editorGroovy1.addLineClass(6, "background", "highlight");
@@ -127,12 +128,21 @@ editorGroovy1.addKeyMap(keymap);
 //------------------------------------------------------------------->
 var editorScala1 = new dslPrez.editor("editorScala1");
 function editorScala1Key1() {
-    var value = "";
-//    editorGroovy1.replaceRange(value, {line:5, ch:0});
-//    editorGroovy1.addLineClass(5, "background", "highlight");
-//    editorGroovy1.addLineClass(6, "background", "highlight");
-//    editorGroovy1.addLineClass(7, "background", "highlight");
-//    editorGroovy1.addLineClass(8, "background", "highlight");
+    var value = 'val dsl = """  \n' +
+'object move {\n' +
+'   def to(direction:String) = {\n' +
+'      println(s"Moving $direction")\n' +
+'   }\n' +
+'}\n' +
+'val left = "left"\n'+
+'move to left // Converts into move.to(left)\n'+
+'""" ';
+    editorScala1.removeLine(10);
+
+    editorScala1.replaceRange(value, {line:10, ch:0});
+    for(var i = 10; i <20 ; i++) {
+        editorScala1.addLineClass(i, "background", "highlight");
+    }
 }
 function editorScala1Send() {
     var value = editorScala1.getValue();
@@ -140,32 +150,23 @@ function editorScala1Send() {
 }
 
 function editorScala1Key2() {
-//    editorScala1.removeLineClass(5, "background", "highlight");
-//    editorScala1.removeLineClass(6, "background", "highlight");
-//    editorScala1.removeLineClass(7, "background", "highlight");
+// TODO: I move left
+}
+//function editorScala1Key3() {
 //    editorScala1.removeLineClass(8, "background", "highlight");
-//    var value = "def left = \"left\"\n";
-//    editorScala1.replaceRange(value, {line:8, ch:0});
-//    editorScala1.removeLine(9);
-//    value = "move left\n";
-//    editorScala1.replaceRange(value, {line:9, ch:0});
-//    editorScala1.addLineClass(8, "background", "highlight");
-}
-function editorScala1Key3() {
-    editorScala1.removeLineClass(8, "background", "highlight");
-}
+//}
 
 var keymap = {
     "1" : editorScala1Key1,
-    "2" : editorScala1Key2,
-    "3" : editorScala1Key3,
+//    "2" : editorScala1Key2,
+//    "3" : editorScala1Key3,
     "Ctrl-S" : editorScala1Send,
     "Cmd-S" : editorScala1Send
 };
 editorScala1.addKeyMap(keymap);
 
 //------------------------------------------------------------------->
-// 2. Base Class
+// Groovy2. Base Class
 // step 1 define base class
 // step 2 remove move definition in script
 // step 3 introduce compilerConfiguration

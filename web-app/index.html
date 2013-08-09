@@ -566,21 +566,40 @@ ask "What's is your name?" assign to name
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
-            <h1>Script</h1><br/>
+            <h1>To start with: <br/>How to run Script?</h1><br/>
         </div>
         <hr>
         <div class="row-fluid marketing">
             <div class="span2">
             </div>
             <div class="span4">
-                <h3>Groovy with Grails</h3>
-                <p></p>
+                <h3>Groovy</h3>
+<pre class="code">def shell = new GroovyShell()
+</pre>
             </div>
+            <p>Each script is an object inheriting from Script base class</p>
             <div class="span4">
+                <h3>Scala with Grails</h3>
+                <pre class="code">object HelloWorld2 extends Application {
+  println("Hello, world!")
+}
+</pre>
                 <h3>Scala with Grails</h3>
                 <p>// Two next steps necessary only inside Grails/Groovy
                     val env = new Settings()
                     env.usejavacp.value = true</p>
+            </div>
+            <!-- http://scabl.blogspot.fr/2013/05/scripting-with-scala-and-sbt.html -->
+            <div class="span2">
+            </div>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <h3>JSR 223</h3>
+                <p>on its way tos td scripting usage.....</p>
             </div>
             <div class="span2">
             </div>
@@ -600,6 +619,7 @@ def shell = new GroovyShell()
 
 ///////////////////////
 def gameDSL = '''
+    println "I run a Groovy script"
 '''
 //////////////////////
 // Run DSL script.
@@ -629,15 +649,18 @@ def result = shell.evaluate gameDSL</textarea>
 <!-- step 2 remove move definition in script
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Scala Script" press="Press 1..2">
-    <textarea id="editorScala1" name="editorScala1"> import scala.tools.nsc._
+    <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc._
+import scala.tools.nsc.interpreter._
 
 // Two next steps necessary only inside Grails/Groovy
 val env = new Settings()
 env.usejavacp.value = true
 
-val interpreter=new scala.tools.nsc.Interpreter(env)
+val interpreter = new IMain(env)
 
-val dsl = ""
+val dsl = """
+  println("I run a Scala script")
+"""
 
 val result = interpreter.eval(dsl)</textarea>
 </li>
@@ -656,6 +679,45 @@ val result = interpreter.eval(dsl)</textarea>
             <div class="span2">
             </div>
         </div>
+    </div>
+</li>
+
+
+<li class="slide" title="Script">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <h1>How to write plain English with ( , ; ?<br/>Syntax Sugar</h1><br/>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <div class="span12">
+                <img src="img/sugar.jpg" width="80%"/>
+            </div>
+        </div>
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span4">
+                <h3>Groovy</h3>
+<pre class="code"> move(left)
+move left
+</pre>
+
+            <p>remove ;</p>
+            <p>remove () when one parameter etc...</p>
+            </div>
+            <div class="span4">
+                <h3>Scala</h3>
+                <p>explain move.to(left) etc...</p>
+                <!-- interesting article
+                http://docs.codehaus.org/display/GroovyJSR/GEP+3+-+Command+Expression+based+DSL
+                -->
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+        <hr>
     </div>
 </li>
 
