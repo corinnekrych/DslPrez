@@ -3,6 +3,10 @@ package dslprez
 import grails.converters.JSON
 import dslprez.Result
 import dslprez.scala.eval.Evaluator
+
+// editor2
+//import dslprez.steps.editor2.Turtle
+
 //import dslprez.Turtle
 //import dslprez.up
 //import dslprez.Direction
@@ -78,7 +82,12 @@ class ConsoleController {
       //evaluator.bind("I","dslprez.Turtle",turtle)
       //End
  
-
+      // editor2
+      //def turtle = new Turtle()
+      //evaluator.bind("I","dslprez.steps.editor2.Turtle",turtle)
+      //evaluator.bind("left","String","left")
+      // End editor2
+      
       result = evaluator.eval(params.content)
     } catch (Exception e) {
       stacktrace = e.message

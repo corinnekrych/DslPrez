@@ -35,6 +35,8 @@ object move {
    }
 }
 val left = "left"
+
+//Here starts the DSL
 move to left // Converts into move.to(left)
 """
 
