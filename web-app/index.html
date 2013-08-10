@@ -329,7 +329,7 @@
             </div>
             <div class="span2">
             </div>
-        </div>
+        </div-->
         <!--<div class="row-fluid marketing">-->
             <!--<div class="span2">-->
             <!--</div>-->
@@ -612,7 +612,7 @@ ask "What's is your name?" assign to name
 <!-- step 1 define base class
 <!-- step 2 remove move definition in script
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Groovy Script" press="Press 1..2">
+<li class="slide" style="text-align: left" title="Groovy Script" press="1 2">
     <textarea id="editorGroovy1" name="editorGroovy1">
 // Configure the GroovyShell.
 def shell = new GroovyShell()
@@ -1194,7 +1194,7 @@ step 3: highlight by method
 step 4: change by method to return map
 ------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Odd Command Chaining" press="Press 1..4">
-    <textarea id="editor6b" name="editor6">
+    <textarea id="editorGroovy6b" name="editorGroovy6b">
 class Position {
   int x
   int y
@@ -2116,26 +2116,17 @@ public class SurveyCustomizer extends CompilationCustomizer {
             <table><tr><td style="vertical-align:middle;"><img  src="img/previous.png" style="height:40px"/></td><td id="previous-title"> Previous</td></tr></table>
         </a>
     </div>
-
-    <!--<div style="float:left;">-->
-        <!--<a id="run">-->
-            <!--<table><tr><td style="vertical-align:middle;"><img  src="img/grails4.png" style="height:40px"/></td></tr></table>-->
-        <!--</a>-->
-    <!--</div>-->
-
-
     <div style="display: inline-block; margin:0 auto;">
         <a id="currentPress" style="font-size:20px;"></a>
     </div>
     <div style="float:right;">
         <a id="next">
-            <table><tr><td id="next-title" style="vertical-align: middle; ">Next</td><td><img src="img/next.png" style="height:40px"/></td></tr></table>
+            <table><tr><td id="count"></td><td id="next-title" style="vertical-align: middle; ">Next</td><td><img src="img/next.png" style="height:40px"/></td></tr></table>
         </a>
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/iscroll.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/codemirror.js"></script>
 <script src="js/groovy.js"></script>
 
@@ -2149,7 +2140,7 @@ public class SurveyCustomizer extends CompilationCustomizer {
 <script src="js/jquery.airport-1.1.source.js"></script>
 <script src="js/jqcloud-1.0.2.min.js"></script>
 <script src="js/prez.js"></script>
-<script src="js/slide.js"></script>
 <script src="js/ktDraw.js"></script>
+<script src="js/slide.js"></script>
 </body>
 </html>

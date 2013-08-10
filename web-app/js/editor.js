@@ -9,10 +9,12 @@ inEditor = false;
 
 var dslPrez = dslPrez || {};
 
-dslPrez.editor = function (location) {
+dslPrez.editor = function (location, content) {
+
     var that = {};
 
     var inside = false;
+    var currentPress = null;
 
 
     var editor = CodeMirror.fromTextArea(document.getElementById(location), {
@@ -20,6 +22,9 @@ dslPrez.editor = function (location) {
         theme: "eclipse",
         mode: "text/x-groovy"
     });
+    if (content) {
+        editor.setValue(content);
+    }
 
     editor.on("focus", function() {
         inside = true;
@@ -29,6 +34,37 @@ dslPrez.editor = function (location) {
         inside = false;
         inEditor = false;
     });
+
+
+    editor.currentPress = function(current, size) {
+        if (currentPress == null) {
+            if (current != 1) {
+                return false;
+            }
+        }
+
+        if (current != 0) {
+            if (current != currentPress + 1 ) {
+                return false;
+            }
+        }
+
+        currentPress = current;
+
+        var content = '';
+        for (var i = 1; i <= size ; i++) {
+            if (i==current) {
+                content += '<span class="round">';
+            } else {
+                content += '<span> ';
+            }
+            content += i;
+            content += '</span>';
+        };
+        $('#currentPress').empty().append(content);
+
+        return true;
+    }
 
 
     var winHeight = function () {

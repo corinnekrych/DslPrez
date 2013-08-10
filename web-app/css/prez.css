@@ -130,3 +130,20 @@ body {
     text-shadow: 0 0 5px #000;
 }
 
+.round {
+    -webkit-border-radius: 999px;
+    -moz-border-radius: 999px;
+    border-radius: 999px;
+    behavior: url(PIE.htc);
+
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+
+    background: #fff;
+    border: 2px solid #666;
+    color: #666;
+    text-align: center;
+
+    font: 24px Arial, sans-serif
+}

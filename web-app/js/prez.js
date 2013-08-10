@@ -1,50 +1,3 @@
-var myScroll;
-function loaded() {
-    myScroll = new iScroll('wrapper', {zoom: true});
-    myScroll.options.onBeforeScrollStart = function(e) {
-        var target = e.target;
-
-        while (target.nodeType != 1) target = target.parentNode;
-        if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA'){
-            e.preventDefault();
-            return true;
-        }
-    }
-}
-
-document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-
-/* * * * * * * *
- *
- * Use this for high compatibility (iDevice + Android)
- *
- */
-document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
-/*
- * * * * * * * */
-
-
-/* * * * * * * *
- *
- * Use this for iDevice only
- *
- */
-//document.addEventListener('DOMContentLoaded', loaded, false);
-/*
- * * * * * * * */
-
-
-/* * * * * * * *
- *
- * Use this if nothing else works
- *
- */
-//window.addEventListener('load', setTimeout(function () { loaded(); }, 200), false);
-/*
- * * * * * * * */
-
-
-
 var serverUrl = "http://localhost:8080/DslPrez";
 //var serverUrl = "http://dslprez.cloudfoundry.com";
 //var serverUrl = "http://vast-escarpment-3640.herokuapp.com";
@@ -78,18 +31,35 @@ function submitFormToScalaConsole(input, output) {
 // step 1 define move method
 // step 2 define left
 //------------------------------------------------------------------->
-var editorGroovy1 = new dslPrez.editor("editorGroovy1");
+var content = "// Configure the GroovyShell.\n"
+    + "def shell = new GroovyShell()\n\n"
+    + "///////////////////////\n"
+    + "def gameDSL = \'\'\'\n"
+    + "    println \"I run a Groovy script\"\n"
+    + "\'\'\'\n"
+    + "//////////////////////\n"
+    + "// Run DSL script.\n"
+    + "def result = shell.evaluate gameDSL\n\n\n"
+
+var editorGroovy1 = new dslPrez.editor("editorGroovy1", content);
+function editorGroovy1Key0() {
+    editorGroovy1.currentPress(0,2);
+    editorGroovy1.setValue(content);
+}
+
 function editorGroovy1Key1() {
-    var value = "def move(direction) {\n"
-        + "    println \"moving $direction\"\n"
-        + "}\n"
-        + "move \"left\"\n";
-    editorGroovy1.removeLine(5);
-    editorGroovy1.replaceRange(value, {line:5, ch:0});
-    editorGroovy1.addLineClass(5, "background", "highlight");
-    editorGroovy1.addLineClass(6, "background", "highlight");
-    editorGroovy1.addLineClass(7, "background", "highlight");
-    editorGroovy1.addLineClass(8, "background", "highlight");
+    if (editorGroovy1.currentPress(1,2)) {
+        var value = "def move(direction) {\n"
+            + "    println \"moving $direction\"\n"
+            + "}\n"
+            + "move \"left\"\n";
+        editorGroovy1.removeLine(5);
+        editorGroovy1.replaceRange(value, {line:5, ch:0});
+        editorGroovy1.addLineClass(5, "background", "highlight");
+        editorGroovy1.addLineClass(6, "background", "highlight");
+        editorGroovy1.addLineClass(7, "background", "highlight");
+        editorGroovy1.addLineClass(8, "background", "highlight");
+    }
 }
 function editorGroovy1Send() {
     var value = editorGroovy1.getValue();
@@ -97,22 +67,27 @@ function editorGroovy1Send() {
 }
 
 function editorGroovy1Key2() {
-    editorGroovy1.removeLineClass(5, "background", "highlight");
-    editorGroovy1.removeLineClass(6, "background", "highlight");
-    editorGroovy1.removeLineClass(7, "background", "highlight");
-    editorGroovy1.removeLineClass(8, "background", "highlight");
-    var value = "def left = \"left\"\n";
-    editorGroovy1.replaceRange(value, {line:8, ch:0});
-    editorGroovy1.removeLine(9);
-    value = "move left\n";
-    editorGroovy1.replaceRange(value, {line:9, ch:0});
-    editorGroovy1.addLineClass(8, "background", "highlight");
+    if (editorGroovy1.currentPress(2,2)) {
+        editorGroovy1.removeLineClass(5, "background", "highlight");
+        editorGroovy1.removeLineClass(6, "background", "highlight");
+        editorGroovy1.removeLineClass(7, "background", "highlight");
+        editorGroovy1.removeLineClass(8, "background", "highlight");
+        var value = "def left = \"left\"\n";
+        editorGroovy1.replaceRange(value, {line:8, ch:0});
+        editorGroovy1.removeLine(9);
+        value = "move left\n";
+        editorGroovy1.replaceRange(value, {line:9, ch:0});
+        editorGroovy1.addLineClass(8, "background", "highlight");
+    }
 }
 function editorGroovy1Key3() {
-    editorGroovy1.removeLineClass(8, "background", "highlight");
+    if (editorGroovy1.currentPress(3,2)) {
+        editorGroovy1.removeLineClass(8, "background", "highlight");
+    }
 }
 
 var keymap = {
+    "0" : editorGroovy1Key0,
     "1" : editorGroovy1Key1,
     "2" : editorGroovy1Key2,
     "3" : editorGroovy1Key3,
