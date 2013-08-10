@@ -520,7 +520,7 @@
         </div>
     </div>
 </li>
-<li class="slide" title="Groovy">
+<li class="slide" title="Groovy" timing="7000">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span8" style="height:600px;width:100%;" id="wordcloud">
@@ -2116,12 +2116,12 @@ public class SurveyCustomizer extends CompilationCustomizer {
             <table><tr><td style="vertical-align:middle;"><img  src="img/previous.png" style="height:40px"/></td><td id="previous-title"> Previous</td></tr></table>
         </a>
     </div>
-    <div style="display: inline-block; margin:0 auto;">
+    <div style="display: inline-block; margin:0 auto;position:relative;top:10px;">
         <a id="currentPress" style="font-size:20px;"></a>
     </div>
     <div style="float:right;">
         <a id="next">
-            <table><tr><td id="count"></td><td id="next-title" style="vertical-align: middle; ">Next</td><td><img src="img/next.png" style="height:40px"/></td></tr></table>
+            <table><tr><td id="next-title" style="vertical-align: middle; ">Next</td><td id="count"></td><td><img src="img/next.png" style="height:40px"/></td></tr></table>
         </a>
     </div>
 </div>
@@ -2142,5 +2142,49 @@ public class SurveyCustomizer extends CompilationCustomizer {
 <script src="js/prez.js"></script>
 <script src="js/ktDraw.js"></script>
 <script src="js/slide.js"></script>
+
+<script>
+
+    var showCloud = function() {
+        var word_array = [
+            {text: "syntax sugar", weight: 9},
+            {text: "less punctuation", weight: 7},
+            {text: "scripting", weight: 5},
+            {text: "binding", weight: 7},
+            {text: "no getter setter", weight: 1},
+            {text: "map", weight: 7},
+            {text: "named parameters", weight: 8},
+            {text: "closure", weight: 6},
+            {text: "GString", weight: 4},
+            {text: "public visibility", weight: 2},
+            {text: "return statement optional", weight: 3},
+            {text: "groovy truth", weight: 7},
+            {text: "operator overloading", weight: 1},
+            {text: "GroovyMarkup", weight: 4},
+            {text: "method pointer", weight: 6},
+            {text: "runtime transformation", weight: 1},
+            {text: "MOP", weight: 9},
+            {text: "Expando", weight: 8},
+            {text: "Categories", weight: 7},
+            {text: "methodMissing", weight: 8},
+            {text: "command chaining", weight: 1},
+            {text: "compile time transformation", weight: 7},
+            {text: "AST transformation", weight: 10},
+            {text: "CST transformation", weight: 5},
+            {text: "TypeChecked DSL", weight: 10}
+        ];
+        $("#wordcloud").empty();
+        $("#wordcloud").jQCloud(word_array);
+    };
+
+    var slide = new dslPrez.Slide();
+    slide.enter("Groovy", showCloud);
+    slide.start({
+        progressbar: true,
+        duration: 10,
+        progressPrecision: 5
+    });
+</script>
+
 </body>
 </html>

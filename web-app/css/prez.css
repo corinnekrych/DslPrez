@@ -136,9 +136,9 @@ body {
     border-radius: 999px;
     behavior: url(PIE.htc);
 
-    width: 36px;
-    height: 36px;
-    padding: 8px;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
 
     background: #fff;
     border: 2px solid #666;
@@ -146,4 +146,16 @@ body {
     text-align: center;
 
     font: 24px Arial, sans-serif
+}
+
+.progress-container {
+    width:200px;
+    height:5px;
+    border:1px solid black;
+}
+
+.progress-container > .progress {
+    width:0%;
+    background:green;
+    height:5px;
 }
