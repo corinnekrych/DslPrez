@@ -608,7 +608,7 @@ ask "What's is your name?" assign to name
 <!-- step 1 define base class
 <!-- step 2 remove move definition in script
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Groovy Script" press="1 2">
+<li class="slide" style="text-align: left" title="Groovy Script" press="1 2 3 4">
     <textarea id="editorGroovy1" name="editorGroovy1">
 // Configure the GroovyShell.
 def shell = new GroovyShell()
@@ -644,7 +644,7 @@ def result = shell.evaluate gameDSL</textarea>
 <!-- step 1 define base class
 <!-- step 2 remove move definition in script
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Scala Script" press="Press 1..2">
+<li class="slide" style="text-align: left" title="Scala Script" press="1 2 3">
     <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc._
 import scala.tools.nsc.interpreter._
 
@@ -689,11 +689,6 @@ background-position:center;"  >
         </div>
         <hr>
         <div class="row-fluid marketing">
-            <div class="span12">
-                <img src="img/sugar.jpg" width="80%"/>
-            </div>
-        </div>
-        <div class="row-fluid marketing">
             <div class="span2">
             </div>
             <div class="span4">
@@ -720,13 +715,13 @@ move left
 </li>
 
 <!------------------------------------------------------------------->
-<!-- 2. Base Class
+<!-- Groovy2. Base Class
 <!-- step 1 define base class
 <!-- step 2 remove move definition in script
 <!-- step 3 introduce compilerConfiguration
 <!-- step 4 inject it in groovy shell
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Base class" press="Press 1..5">
+<li class="slide" style="text-align: left" title="Base class" press="1 2 3 4 5">
     <textarea id="editorGroovy2" name="editorGroovy2">
     </textarea>
 </li>
@@ -748,14 +743,42 @@ move left
     </div>
 </li>
 
-<!------------------------------------------------------------------->
-<!-- 3. Binding
-<!-- step 1 introduce right in binding
-<!-- step 2 ad move right command
-<!------------------------------------------------------------------->
+<!-------------------------------------------------------------------
+Scala2. Binding for Scala
+step 1 add binding
+step 2 highlight val left="left"
+step 3 remove line
+------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="Binding in Scala" press="1 2 3">
+    <textarea id="editorScala2" name="editorScala2">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Output binding for Scala">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala2">
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+
+<!-------------------------------------------------------------------
+Groovy3. Binding
+step 1 introduce right in binding
+step 2 ad move right command
+------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Binding in Groovy" press="1 2">
     <textarea id="editorGroovy3" name="editorGroovy3">
-
     </textarea>
 </li>
 
@@ -812,7 +835,7 @@ step 7 remove def left in GameScript
 Scala4. Structure my code
 
 ------------------------------------------------------------------>
-<li class="slide" style="text-align: left" title="Add Turtle in Scala" press="1 2">
+<li class="slide" style="text-align: left" title="Add Turtle in Scala" press="-">
     <textarea id="editorScala4" name="editorScala4">
     </textarea>
 </li>
@@ -869,7 +892,7 @@ Scala4. Structure my code
 Scala5. Structure my code
 
 ------------------------------------------------------------------>
-<li class="slide" style="text-align: left" title="Build JSON in Scala" press="1 2">
+<li class="slide" style="text-align: left" title="Build JSON in Scala" press="-">
     <textarea id="editorScala5" name="editorScala5">
     </textarea>
 </li>
@@ -2124,7 +2147,7 @@ public class SurveyCustomizer extends CompilationCustomizer {
     slide.enter("Run Scala Script", showScalaDuke, removeScalaDuke);
 
     slide.enter("Base class", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output base class in Groovy", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Output base class for Groovy", showGroovyDuke, removeGroovyDuke);
     slide.enter("Binding in Scala", showScalaDuke, removeScalaDuke);
     slide.enter("Output binding for Scala", showScalaDuke, removeScalaDuke);
 

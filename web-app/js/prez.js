@@ -750,22 +750,10 @@ function editorScala4Key0() {
     editorScala4.setValue(content);
 }
 
-
-function editorScala4Key1() {
-    if (editorScala4.currentPress(1, 2)) {
-        var value = "\n";
-        editorScala4.replaceRange(value, {line: 0, ch: 0});
-        for(var i = 0; i <14 ; i++) {
-            editorScala4.addLineClass(i, "background", "highlight");
-        }
-    }
-}
-
 var keymap4 = {
     "Ctrl-S" :editorScala4Send,
     "Cmd-S" :editorScala4Send,
-    "0": editorScala4Key0,
-    "1": editorScala4Key1
+    "0": editorScala4Key0
 };
 editorScala4.addKeyMap(keymap4);
 
