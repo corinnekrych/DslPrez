@@ -97,7 +97,7 @@ dslPrez.Slide = function () {
 
         $(slides[index]).addClass('showSlide');
         $(slides[index]).attr('indexSlide', index);
-        if (comingFrom >= 0 && callEnter[$(slides[comingFrom]).attr('title')] != null) {
+        if (comingFrom >= 0 && callExit[$(slides[comingFrom]).attr('title')] != undefined) {
             callExit[$(slides[comingFrom]).attr('title')]();
         }
         if (callEnter[$(slides[index]).attr('title')] != null) {

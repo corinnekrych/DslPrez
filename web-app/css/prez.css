@@ -5,6 +5,7 @@ html, body { height: 100%; }
     width: 90%;
     height: 95%;
     margin-left: 5%;
+    font-size: 190%;
 }
 .CodeMirror-scroll {
     overflow-y: hidden;
@@ -94,15 +95,6 @@ body {
     top:50px; bottom:48px; left:0;
     width:100%;
     overflow:auto;
-}
-
-.CodeMirror {
-    border: 1px solid #eee;
-    height: auto;
-}
-.CodeMirror-scroll {
-    overflow-y: hidden;
-    overflow-x: auto;
 }
 
 .code {
