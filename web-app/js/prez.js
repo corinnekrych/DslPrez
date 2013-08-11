@@ -984,7 +984,7 @@ var editorScala5 = new dslPrez.editor("editorScala5", content);
 
 function editorScala5Send() {
     var value = editorScala5.getValue();
-    submitFormToScalaConsole(value, "#outputScala5");
+    submitTurtleFormToScalaConsole(value, "#outputScala5");
 }
 
 function editorScala5Key0() {
