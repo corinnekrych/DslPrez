@@ -26,207 +26,6 @@ function submitFormToScalaConsole(input, output) {
     submitForm(input, output, "scala");
 }
 
-//------------------------------------------------------------------->
-// Groovy1. Base Class
-// step 1 define move method
-// step 2 define left
-//------------------------------------------------------------------->
-var content = "// Configure the GroovyShell.\n"
-    + "def shell = new GroovyShell()\n\n"
-    + "///////////////////////\n"
-    + "def gameDSL = \'\'\'\n"
-    + "    println \"I run a Groovy script\"\n"
-    + "\'\'\'\n"
-    + "//////////////////////\n"
-    + "// Run DSL script.\n"
-    + "def result = shell.evaluate gameDSL\n\n\n"
-
-var editorGroovy1 = new dslPrez.editor("editorGroovy1", content);
-function editorGroovy1Key0() {
-    editorGroovy1.currentPress(0,2);
-    editorGroovy1.setValue(content);
-}
-
-function editorGroovy1Key1() {
-    if (editorGroovy1.currentPress(1,2)) {
-        var value = "def move(direction) {\n"
-            + "    println \"moving $direction\"\n"
-            + "}\n"
-            + "move \"left\"\n";
-        editorGroovy1.removeLine(5);
-        editorGroovy1.replaceRange(value, {line:5, ch:0});
-        editorGroovy1.addLineClass(5, "background", "highlight");
-        editorGroovy1.addLineClass(6, "background", "highlight");
-        editorGroovy1.addLineClass(7, "background", "highlight");
-        editorGroovy1.addLineClass(8, "background", "highlight");
-    }
-}
-function editorGroovy1Send() {
-    var value = editorGroovy1.getValue();
-    submitFormToGroovyConsole(value, "#outputGroovy1");
-}
-
-function editorGroovy1Key2() {
-    if (editorGroovy1.currentPress(2,2)) {
-        editorGroovy1.removeLineClass(5, "background", "highlight");
-        editorGroovy1.removeLineClass(6, "background", "highlight");
-        editorGroovy1.removeLineClass(7, "background", "highlight");
-        editorGroovy1.removeLineClass(8, "background", "highlight");
-        var value = "def left = \"left\"\n";
-        editorGroovy1.replaceRange(value, {line:8, ch:0});
-        editorGroovy1.removeLine(9);
-        value = "move left\n";
-        editorGroovy1.replaceRange(value, {line:9, ch:0});
-        editorGroovy1.addLineClass(8, "background", "highlight");
-    }
-}
-function editorGroovy1Key3() {
-    if (editorGroovy1.currentPress(3,2)) {
-        editorGroovy1.removeLineClass(8, "background", "highlight");
-    }
-}
-
-var keymap = {
-    "0" : editorGroovy1Key0,
-    "1" : editorGroovy1Key1,
-    "2" : editorGroovy1Key2,
-    "3" : editorGroovy1Key3,
-    "Ctrl-S" : editorGroovy1Send,
-    "Cmd-S" : editorGroovy1Send
-};
-editorGroovy1.addKeyMap(keymap);
-
-//------------------------------------------------------------------->
-// Scala1. Base Class
-// step 1 define move method
-// step 2 define left
-//------------------------------------------------------------------->
-var editorScala1 = new dslPrez.editor("editorScala1");
-function editorScala1Key1() {
-    var value = 'val dsl = """  \n' +
-'object move {\n' +
-'   def to(direction:String) = {\n' +
-'      println(s"Moving $direction")\n' +
-'   }\n' +
-'}\n' +
-'val left = "left"\n'+
-'move to left // Converts into move.to(left)\n'+
-'""" ';
-    editorScala1.removeLine(10);
-
-    editorScala1.replaceRange(value, {line:10, ch:0});
-    for(var i = 10; i <20 ; i++) {
-        editorScala1.addLineClass(i, "background", "highlight");
-    }
-}
-function editorScala1Send() {
-    var value = editorScala1.getValue();
-    submitFormToScalaConsole(value, "#outputScala1");
-}
-
-function editorScala1Key2() {
-// TODO: I move left
-}
-//function editorScala1Key3() {
-//    editorScala1.removeLineClass(8, "background", "highlight");
-//}
-
-var keymap = {
-    "1" : editorScala1Key1,
-//    "2" : editorScala1Key2,
-//    "3" : editorScala1Key3,
-    "Ctrl-S" : editorScala1Send,
-    "Cmd-S" : editorScala1Send
-};
-editorScala1.addKeyMap(keymap);
-
-//------------------------------------------------------------------->
-// Groovy2. Base Class
-// step 1 define base class
-// step 2 remove move definition in script
-// step 3 introduce compilerConfiguration
-// step 4 inject it in groovy shell
-//------------------------------------------------------------------->
-var editorGroovy2 = new dslPrez.editor("editorGroovy2");
-function editorGroovy2Key1() {
-    var value = "abstract class GameScript extends Script {\n"
-        + "  def move = {direction -> println \"moving $direction\" }\n"
-        + "  def left = \"left\"\n"
-        + "}\n";
-    editorGroovy2.replaceRange(value, {line: 1, ch: 0});
-    editorGroovy2.addLineClass(1, "background", "highlight");
-    editorGroovy2.addLineClass(2, "background", "highlight");
-    editorGroovy2.addLineClass(3, "background", "highlight");
-    editorGroovy2.addLineClass(4, "background", "highlight");
-}
-function editorGroovy2Key2() {
-    editorGroovy2.removeLineClass(1, "background", "highlight");
-    editorGroovy2.removeLineClass(2, "background", "highlight");
-    editorGroovy2.removeLineClass(3, "background", "highlight");
-    editorGroovy2.removeLineClass(4, "background", "highlight");
-    editorGroovy2.addLineClass(9, "background", "highlight");
-    editorGroovy2.addLineClass(10, "background", "highlight");
-    editorGroovy2.addLineClass(11, "background", "highlight");
-    editorGroovy2.addLineClass(12, "background", "highlight");
-}
-function editorGroovy2Key3() {
-    editorGroovy2.removeLineClass(9, "background", "highlight");
-    editorGroovy2.removeLineClass(10, "background", "highlight");
-    editorGroovy2.removeLineClass(11, "background", "highlight");
-    editorGroovy2.removeLineClass(10, "background", "highlight");
-    editorGroovy2.removeLine(9);
-    editorGroovy2.removeLine(9);
-    editorGroovy2.removeLine(9);
-    editorGroovy2.removeLine(9);
-}
-function editorGroovy2Key4() {
-    var value = "def compilerConfig = new CompilerConfiguration()\n"
-        + "compilerConfig.scriptBaseClass = GameScript.class.name\n"
-        + "def binding = new Binding()\n";
-    editorGroovy2.removeLine(6);
-    editorGroovy2.replaceRange(value, {line: 5, ch: 0});
-    editorGroovy2.addLineClass(5, "background", "highlight");
-    editorGroovy2.addLineClass(6, "background", "highlight");
-    editorGroovy2.addLineClass(7, "background", "highlight");
-}
-function editorGroovy2Key5() {
-    editorGroovy2.removeLineClass(5, "background", "highlight");
-    editorGroovy2.removeLineClass(6, "background", "highlight");
-    editorGroovy2.removeLineClass(7, "background", "highlight");
-    editorGroovy2.removeLine(8);
-    var value = "" +
-        "def shell = new GroovyShell(this.class.classLoader,\n" +
-        "                            binding,\n" +
-        "                            compilerConfig)\n";
-    editorGroovy2.replaceRange(value, {line: 8, ch: 0});
-    editorGroovy2.addLineClass(8, "background", "highlight");
-    editorGroovy2.addLineClass(9, "background", "highlight");
-    editorGroovy2.addLineClass(10, "background", "highlight");
-}
-function editorGroovy2Key6() {
-    editorGroovy2.removeLineClass(8, "background", "highlight");
-    editorGroovy2.removeLineClass(9, "background", "highlight");
-    editorGroovy2.removeLineClass(10, "background", "highlight");
-}
-
-function editorGroovy2Send() {
-    var value = editorGroovy2.getValue();
-    value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
-    submitFormToGroovyConsole(value, "#outputGroovy2");
-}
-var keymap2 = {
-    "Ctrl-S" :editorGroovy2Send,
-    "Cmd-S" :editorGroovy2Send,
-    "1": editorGroovy2Key1,
-    "2": editorGroovy2Key2,
-    "3": editorGroovy2Key3,
-    "4": editorGroovy2Key4,
-    "5": editorGroovy2Key5,
-    "6": editorGroovy2Key6
-};
-
-editorGroovy2.addKeyMap(keymap2);
-
 function submitTurtleForm(input, output, canvasId, lang) {
     var url = serverUrl + "/console/execute?=";
     var draw;
@@ -244,8 +43,8 @@ function submitTurtleForm(input, output, canvasId, lang) {
                 gridLineWidth: 2,
                 stepDuration: 1000,
                 images: {
-                     franklin: 'turtle1.png',
-                     emily: 'turtle1.png'
+                    franklin: 'turtle1.png',
+                    emily: 'turtle1.png'
                 },
                 player: "franklin"
             };
@@ -272,12 +71,395 @@ function submitTurtleForm(input, output, canvasId, lang) {
 }
 
 function submitTurtleFormToGroovyConsole(input, output, canvasId) {
-  submitTurtleForm(input, output, "groovy");
+    submitTurtleForm(input, output, "groovy");
 }
 
 function submitTurtleFormToScalaConsole(input, output, canvasId) {
     submitTurtleForm(input, output, "scala");
 }
+
+//------------------------------------------------------------------->
+// Groovy1. Script
+// step 1 define move method
+// step 2 define left
+// step 3 replace shell by ScriptEngineMgr from jsr 223
+// step 4 replace by engine.eval
+//------------------------------------------------------------------->
+var content = "// Configure the GroovyShell.\n"
+    + "def shell = new GroovyShell()\n\n"
+    + "///////////////////////\n"
+    + "def gameDSL = \'\'\'\n"
+    + "    println \"I run a Groovy script\"\n"
+    + "\'\'\'\n"
+    + "//////////////////////\n"
+    + "// Run DSL script.\n"
+    + "def result = shell.evaluate gameDSL\n\n\n"
+
+var editorGroovy1 = new dslPrez.editor("editorGroovy1", content);
+function editorGroovy1Key0() {
+    editorGroovy1.currentPress(0, 4);
+    editorGroovy1.setValue(content);
+}
+
+function editorGroovy1Key1() {
+    if (editorGroovy1.currentPress(1, 4)) {
+        var value = "def move(direction) {\n"
+            + "    println \"moving $direction\"\n"
+            + "}\n"
+            + "move \"left\"\n";
+        editorGroovy1.removeLine(5);
+        editorGroovy1.replaceRange(value, {line:5, ch:0});
+        editorGroovy1.addLineClass(5, "background", "highlight");
+        editorGroovy1.addLineClass(6, "background", "highlight");
+        editorGroovy1.addLineClass(7, "background", "highlight");
+        editorGroovy1.addLineClass(8, "background", "highlight");
+    }
+}
+function editorGroovy1Send() {
+    var value = editorGroovy1.getValue();
+    submitFormToGroovyConsole(value, "#outputGroovy1");
+}
+
+function editorGroovy1Key2() {
+    if (editorGroovy1.currentPress(2, 4)) {
+        editorGroovy1.removeLineClass(5, "background", "highlight");
+        editorGroovy1.removeLineClass(6, "background", "highlight");
+        editorGroovy1.removeLineClass(7, "background", "highlight");
+        editorGroovy1.removeLineClass(8, "background", "highlight");
+        var value = "def left = \"left\"\n";
+        editorGroovy1.replaceRange(value, {line:8, ch:0});
+        editorGroovy1.removeLine(9);
+        value = "move left\n";
+        editorGroovy1.replaceRange(value, {line:9, ch:0});
+        editorGroovy1.addLineClass(8, "background", "highlight");
+    }
+}
+function editorGroovy1Key3() {
+    if (editorGroovy1.currentPress(3, 4)) {
+        editorGroovy1.removeLineClass(8, "background", "highlight");
+        var value = "def engine = new javax.script.ScriptEngineManager()\n                 .getEngineByName(\"groovy\")"
+        editorGroovy1.replaceRange(value, {line:1, ch:0}, {line:1}) ;
+        editorGroovy1.addLineClass(1, "background", "highlight");
+    }
+}
+
+function editorGroovy1Key4() {
+    if (editorGroovy1.currentPress(4, 4)) {
+        editorGroovy1.removeLineClass(1, "background", "highlight");
+        var value = "def result = engine.eval gameDSL"
+        editorGroovy1.replaceRange(value, {line:14, ch:0}, {line: 14}) ;
+        editorGroovy1.addLineClass(14, "background", "highlight");
+    }
+}
+
+function editorGroovy1Key5() {
+    if (editorGroovy1.currentPress(5, 4)) {
+        editorGroovy1.removeLineClass(14, "background", "highlight");
+    }
+}
+
+var keymap = {
+    "0" : editorGroovy1Key0,
+    "1" : editorGroovy1Key1,
+    "2" : editorGroovy1Key2,
+    "3" : editorGroovy1Key3,
+    "4" : editorGroovy1Key4,
+    "5" : editorGroovy1Key5,
+    "Ctrl-S" : editorGroovy1Send,
+    "Cmd-S" : editorGroovy1Send
+};
+editorGroovy1.addKeyMap(keymap);
+
+//------------------------------------------------------------------->
+// Scala1. Script
+// step 1 define move method and move to left
+// step 2 replace with ScriptEngineManager
+// step 3 replace engine.eval
+//------------------------------------------------------------------->
+var content = "import scala.tools.nsc._\n"
+    + "import scala.tools.nsc.interpreter._\n\n"
+    + "// Two next steps necessary only inside Grails/Groovy\n"
+    + "val env = new Settings()\n"
+    + "env.usejavacp.value = true\n\n"
+    + "val interpreter = new IMain(env)\n\n"
+    + "val gameDSL = \"\"\"\n"
+    + "    println(\"I run a Scala script\")\n"
+    + "\"\"\"\n"
+    + "//////////////////////\n"
+    + "// Run DSL script.\n"
+    + "val result = interpreter.eval(gameDSL)\n\n\n";
+
+var editorScala1 = new dslPrez.editor("editorScala1", content);
+
+function editorScala1Send() {
+    var value = editorScala1.getValue();
+    submitFormToScalaConsole(value, "#outputScala1");
+}
+
+function editorScala1Key0() {
+    editorScala1.currentPress(0, 3);
+    editorScala1.setValue(content);
+}
+
+function editorScala1Key1() {
+    if (editorScala1.currentPress(1, 3)) {
+        var value = 'val gameDSL = """  \n'
+            + 'object move {\n'
+            + '   def to(direction:String) = {\n'
+            + '      println(s"Moving $direction")\n'
+            + '   }\n'
+            + '}\n'
+            + 'val left = "left"\n'
+            + 'move to left // Converts into move.to(left)\n'
+            + '""" ';
+
+        editorScala1.replaceRange(value, {line:9, ch:0}, {line:11});
+        for(var i = 9; i <18 ; i++) {
+            editorScala1.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorScala1Key2() {
+    if (editorScala1.currentPress(2, 3)) {
+        for(var i = 9; i <18 ; i++) {
+            editorScala1.removeLineClass(i, "background", "highlight");
+        }
+        editorScala1.replaceRange("import javax.script.ScriptEngineManager", {line:0, ch:0}, {line:0});
+        var value = "// Two next steps necessary only inside Grails/Groovy\n"
+                    + "val engine = new ScriptEngineManager().getEngineByName(\"scala\")\n"
+                    + "val settings = engine.asInstanceOf[IMain].settings\n"
+                    + "settings.usejavacp.value = true\n";
+        editorScala1.replaceRange(value, {line:3, ch:0}, {line:8});
+        for(var i = 3; i <8 ; i++) {
+            editorScala1.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorScala1Key3() {
+    if (editorScala1.currentPress(3, 3)) {
+        for(var i = 3; i <8 ; i++) {
+            editorScala1.removeLineClass(i, "background", "highlight");
+        }
+        editorScala1.replaceRange("import javax.script.ScriptEngineManager", {line:0, ch:0}, {line:0});
+        editorScala1.replaceRange("engine.eval(gameDSL)", {line:19, ch:0}, {line:19});
+        editorScala1.addLineClass(19, "background", "highlight");
+    }
+}
+
+function editorScala1Key4() {
+    if (editorScala1.currentPress(4, 3)) {
+        editorScala1.removeLineClass(19, "background", "highlight");
+    }
+}
+
+var keymap = {
+    "0" : editorScala1Key0,
+    "1" : editorScala1Key1,
+    "2" : editorScala1Key2,
+    "3" : editorScala1Key3,
+    "4" : editorScala1Key4,
+    "Ctrl-S" : editorScala1Send,
+    "Cmd-S" : editorScala1Send
+};
+editorScala1.addKeyMap(keymap);
+
+//------------------------------------------------------------------->
+// Groovy2. Base Class
+// step 1 define base class
+// step 2 highlight move method
+// step 3 remove move definition in script
+// step 4 introduce compilerConfiguration
+// step 5 inject it in groovy shell
+//------------------------------------------------------------------->
+var content = "// Configure the GroovyShell.\n"
+            + "def shell = new GroovyShell()\n\n"
+            + "///////////////////////\n"
+            + "def gameDSL = '''\n"
+            + "def move(direction) {\n"
+            + "    println \"moving $direction\"\n"
+            + "}\n"
+            + "def left = \"left\"\n"
+            + "move left\n\n"
+            + "'''\n"
+            + "//////////////////////\n"
+            + "// Run DSL script.\n"
+            + "def result = shell.evaluate gameDSL\n";
+
+var editorGroovy2 = new dslPrez.editor("editorGroovy2", content);
+
+function editorGroovy2Key1() {
+    if (editorGroovy2.currentPress(1, 5)) {
+        var value = "abstract class GameScript extends Script {\n"
+            + "  def move = {direction -> println \"moving $direction\" }\n"
+            + "  def left = \"left\"\n"
+            + "}\n";
+        editorGroovy2.replaceRange(value, {line: 1, ch: 0});
+        editorGroovy2.addLineClass(1, "background", "highlight");
+        editorGroovy2.addLineClass(2, "background", "highlight");
+        editorGroovy2.addLineClass(3, "background", "highlight");
+        editorGroovy2.addLineClass(4, "background", "highlight");
+    }
+}
+function editorGroovy2Key2() {
+    if (editorGroovy2.currentPress(2, 5)) {
+        editorGroovy2.removeLineClass(1, "background", "highlight");
+        editorGroovy2.removeLineClass(2, "background", "highlight");
+        editorGroovy2.removeLineClass(3, "background", "highlight");
+        editorGroovy2.removeLineClass(4, "background", "highlight");
+        editorGroovy2.addLineClass(9, "background", "highlight");
+        editorGroovy2.addLineClass(10, "background", "highlight");
+        editorGroovy2.addLineClass(11, "background", "highlight");
+        editorGroovy2.addLineClass(12, "background", "highlight");
+    }
+}
+function editorGroovy2Key3() {
+    if (editorGroovy2.currentPress(3, 5)) {
+        editorGroovy2.removeLineClass(9, "background", "highlight");
+        editorGroovy2.removeLineClass(10, "background", "highlight");
+        editorGroovy2.removeLineClass(11, "background", "highlight");
+        editorGroovy2.removeLineClass(10, "background", "highlight");
+        editorGroovy2.removeLine(9);
+        editorGroovy2.removeLine(9);
+        editorGroovy2.removeLine(9);
+        editorGroovy2.removeLine(9);
+    }
+}
+function editorGroovy2Key4() {
+    if (editorGroovy2.currentPress(4, 5)) {
+        var value = "def compilerConfig = new CompilerConfiguration()\n"
+            + "compilerConfig.scriptBaseClass = GameScript.class.name\n"
+            + "def binding = new Binding()\n";
+        editorGroovy2.removeLine(6);
+        editorGroovy2.replaceRange(value, {line: 5, ch: 0});
+        editorGroovy2.addLineClass(5, "background", "highlight");
+        editorGroovy2.addLineClass(6, "background", "highlight");
+        editorGroovy2.addLineClass(7, "background", "highlight");
+    }
+}
+function editorGroovy2Key5() {
+    if (editorGroovy2.currentPress(5, 5)) {
+        editorGroovy2.removeLineClass(5, "background", "highlight");
+        editorGroovy2.removeLineClass(6, "background", "highlight");
+        editorGroovy2.removeLineClass(7, "background", "highlight");
+        editorGroovy2.removeLine(8);
+        var value = "" +
+            "def shell = new GroovyShell(this.class.classLoader,\n" +
+            "                            binding,\n" +
+            "                            compilerConfig)\n";
+        editorGroovy2.replaceRange(value, {line: 8, ch: 0});
+        editorGroovy2.addLineClass(8, "background", "highlight");
+        editorGroovy2.addLineClass(9, "background", "highlight");
+        editorGroovy2.addLineClass(10, "background", "highlight");
+    }
+}
+function editorGroovy2Key6() {
+    if (editorGroovy2.currentPress(6, 5)) {
+        editorGroovy2.removeLineClass(8, "background", "highlight");
+        editorGroovy2.removeLineClass(9, "background", "highlight");
+        editorGroovy2.removeLineClass(10, "background", "highlight");
+    }
+}
+
+function editorGroovy2Send() {
+    var value = editorGroovy2.getValue();
+    value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
+    submitFormToGroovyConsole(value, "#outputGroovy2");
+}
+var keymap2 = {
+    "Ctrl-S" :editorGroovy2Send,
+    "Cmd-S" :editorGroovy2Send,
+    "1": editorGroovy2Key1,
+    "2": editorGroovy2Key2,
+    "3": editorGroovy2Key3,
+    "4": editorGroovy2Key4,
+    "5": editorGroovy2Key5,
+    "6": editorGroovy2Key6
+};
+
+editorGroovy2.addKeyMap(keymap2);
+
+//------------------------------------------------------------------->
+// Scala2. Binding for Scala
+// step 1 add binding
+// step 2 highlight val left="left"
+// step 3 remove line
+//------------------------------------------------------------------->
+var content = "import javax.script._\n"
+            + "import scala.tools.nsc.interpreter._\n\n"
+            + "val engine = new ScriptEngineManager().getEngineByName(\"scala\")\n"
+            + "val settings = engine.asInstanceOf[IMain].settings\n"
+            + "settings.usejavacp.value = true \n\n"
+            + "val gameDSL = \"\"\"\n"
+            + "object move {\n"
+            + "    def to(direction:Object) = {\n"
+            + "        println(s\"Moving $direction\")\n"
+            + "    }\n"
+            + "}\n"
+            + "val left = \"left\"\n"
+            + "move to left // Converts into move.to(left)\n"
+            + "\"\"\"\n"
+            + "//////////////////////\n"
+            + "// Run DSL script.\n"
+            + "engine.eval(gameDSL)\n\n\n";
+
+var editorScala2 = new dslPrez.editor("editorScala2", content);
+
+function editorScala2Send() {
+    var value = editorScala2.getValue();
+    submitFormToScalaConsole(value, "#outputScala2");
+}
+
+function editorScala2Key0() {
+    editorScala2.currentPress(0, 3);
+    editorScala2.setValue(content);
+}
+
+function editorScala2Key1() {
+    if (editorScala2.currentPress(1, 3)) {
+        var value = '\nval binding = engine.getBindings(ScriptContext.ENGINE_SCOPE)\n'
+                    + 'binding.put("left", "left")\n';
+
+        editorScala2.replaceRange(value, {line:6, ch:0});
+        for(var i = 7; i <9 ; i++) {
+            editorScala2.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorScala2Key2() {
+    if (editorScala2.currentPress(2, 3)) {
+        for(var i = 7; i <9 ; i++) {
+            editorScala2.removeLineClass(i, "background", "highlight");
+        }
+        editorScala2.addLineClass(16, "background", "highlight");
+    }
+}
+
+function editorScala2Key3() {
+    if (editorScala2.currentPress(3, 3)) {
+        editorScala2.replaceRange("", {line:16, ch:0}, {line:16});
+        editorScala2.addLineClass(16, "background", "highlight");
+    }
+}
+
+function editorScala2Key4() {
+    if (editorScala2.currentPress(4, 3)) {
+        editorScala2.removeLineClass(16, "background", "highlight");
+    }
+}
+
+var keymap = {
+    "0" : editorScala2Key0,
+    "1" : editorScala2Key1,
+    "2" : editorScala2Key2,
+    "3" : editorScala2Key3,
+    "4" : editorScala2Key4,
+    "Ctrl-S" : editorScala2Send,
+    "Cmd-S" : editorScala2Send
+};
+editorScala2.addKeyMap(keymap);
 
 //------------------------------------------------------------------->
 // 3. Binding

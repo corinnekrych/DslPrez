@@ -607,23 +607,16 @@ ask "What's is your name?" assign to name
     </div>
 </li>
 
-<!------------------------------------------------------------------->
-<!-- Groovy1. Script
-<!-- step 1 define base class
-<!-- step 2 remove move definition in script
-<!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Groovy Script" press="1 2">
+<!-------------------------------------------------------------------
+Groovy1. Script
+step 1 define move method
+step 2 define left
+step 3 replace shell by ScriptEngineMgr from jsr 223
+step 4 replace by engine.eval
+------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="Groovy Script" press= "1 2 3 4">
     <textarea id="editorGroovy1" name="editorGroovy1">
-// Configure the GroovyShell.
-def shell = new GroovyShell()
-
-///////////////////////
-def gameDSL = '''
-    println "I run a Groovy script"
-'''
-//////////////////////
-// Run DSL script.
-def result = shell.evaluate gameDSL</textarea>
+    </textarea>
 </li>
 
 <li class="slide" style="text-align: left" title="Run Groovy Script">
@@ -643,26 +636,15 @@ def result = shell.evaluate gameDSL</textarea>
     </div>
 </li>
 
-<!------------------------------------------------------------------->
-<!-- Scala1. Script
-<!-- step 1 define base class
-<!-- step 2 remove move definition in script
-<!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Scala Script" press="Press 1..2">
-    <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc._
-import scala.tools.nsc.interpreter._
-
-// Two next steps necessary only inside Grails/Groovy
-val env = new Settings()
-env.usejavacp.value = true
-
-val interpreter = new IMain(env)
-
-val dsl = """
-  println("I run a Scala script")
-"""
-
-val result = interpreter.eval(dsl)</textarea>
+<!---------------------------------------------------------------------
+Scala1. Script
+step 1 define move method and move to left
+step 2 replace with ScriptEngineManager
+step 3 replace engine.eval
+------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="Scala Script" press="1 2 3">
+    <textarea id="editorScala1" name="editorScala1">
+    </textarea>
 </li>
 
 <li class="slide" style="text-align: left" title="Run Scala Script">
@@ -683,18 +665,15 @@ val result = interpreter.eval(dsl)</textarea>
 </li>
 
 
-<li class="slide" title="Script">
+<li class="slide" title="Script" style="background-image:url('img/sugar.jpg');
+background-repeat:no-repeat;background-attachment:fixed;
+background-position:center;"  >
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
-            <h1>How to write plain English with ( , ; ?<br/>Syntax Sugar</h1><br/>
+            <h1>Syntax Sugar</h1><br/>
         </div>
         <hr>
-        <div class="row-fluid marketing">
-            <div class="span12">
-                <img src="img/sugar.jpg" width="80%"/>
-            </div>
-        </div>
         <div class="row-fluid marketing">
             <div class="span2">
             </div>
@@ -716,35 +695,21 @@ move left
             </div>
             <div class="span2">
             </div>
-        </div>
+        </div>  <br/> <br/><br/><br/><br/>  <br/><br/><br/>
         <hr>
     </div>
 </li>
 
-<!------------------------------------------------------------------->
-<!-- 2. Base Class
-<!-- step 1 define base class
-<!-- step 2 remove move definition in script
-<!-- step 3 introduce compilerConfiguration
-<!-- step 4 inject it in groovy shell
-<!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Base class" press="Press 1..5">
+<!------------------------------------------------------------------
+Groovy2. Base Class
+step 1 define base class
+step 2 highlight move method
+step 3 remove move definition in script
+step 4 introduce compilerConfiguration
+step 5 inject it in groovy shell
+------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="Base class" press="1 2 3 4 5">
     <textarea id="editorGroovy2" name="editorGroovy2">
-// Configure the GroovyShell.
-def shell = new GroovyShell()
-
-///////////////////////
-def gameDSL = '''
-def move(direction) {
-  println "moving $direction"
-}
-def left = "left"
-move left
-
-'''
-//////////////////////
-// Run DSL script.
-def result = shell.evaluate gameDSL
     </textarea>
 </li>
 
@@ -765,8 +730,36 @@ def result = shell.evaluate gameDSL
     </div>
 </li>
 
+<!-------------------------------------------------------------------
+Scala2. Binding for Scala
+step 1 add binding
+step 2 highlight val left="left"
+step 3 remove line
+------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="Binding in Scala" press="1 2 3">
+    <textarea id="editorScala2" name="editorScala2">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala2">
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
 <!------------------------------------------------------------------->
-<!-- 3. Binding
+<!-- Groovy3. Binding
 <!-- step 1 introduce right in binding
 <!-- step 2 ad move right command
 <!------------------------------------------------------------------->
@@ -2203,8 +2196,8 @@ public class SurveyCustomizer extends CompilationCustomizer {
 
     slide.start({
         progressbar: true,
-        duration: 10,
-        progressPrecision: 5
+        duration: 7200, // 2h
+        progressPrecision: 5  // 5%
     });
 </script>
 
