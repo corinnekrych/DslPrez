@@ -108,9 +108,11 @@ dslPrez.Slide = function () {
             callEnter[$(slides[index]).attr('title')]();
         }
         $(slides[index]).slideDown(slideTime, function(){
-            if ($(slides[index]).children()[0].type === 'textarea' && !isTouchDevice) {
+            if ($(slides[index]).children()[0].type === 'textarea' ) {
                 window[$(slides[index]).children()[0].id].refresh();
-                window[$(slides[index]).children()[0].id].focus();
+                if(!isTouchDevice) {
+                    window[$(slides[index]).children()[0].id].focus();
+                }
             }
         });
         var previous;
