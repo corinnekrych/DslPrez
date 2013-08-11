@@ -963,7 +963,7 @@ Scala5. Structure my code
 </li>
 
 <!-------------------------------------------------------------------
-6. Command chaining odd number
+Groovy6. Command chaining odd number
 step 1: highlight dsl syntax
 step 2: move left by 2
 step 3: add by method
@@ -972,107 +972,13 @@ step 5: remove steps.add from turtle mve
 step 6: add steps.add to turtle by
 step 7: change new Position to add direction
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Command Chaining" press="Press 1..7">
+<li class="slide" style="text-align: left" title="Command Chaining Groovy" press="1 2 3 4 5 6 7">
     <textarea id="editorGroovy6" name="editorGroovy6">
-class Position {
-  int x
-  int y
-  Direction direction
-  Position left() {
-     new Position(x, y, Direction.left);
-  }
-  Position right() {
-    new Position(x, y, Direction.right);
-  }
-  Position up() {
-    new Position(x , y, Direction.up);
-  }
-  Position down() {
-    new Position(x , y, Direction.down);
-  }
-  def Position(moveX, moveY, myDirection) {
-    x = moveX
-    y = moveY
-    direction = myDirection
-  }
-  Position move(Integer step) {
-    Position newPosition
-    if(direction == Direction.left) {
-      newPosition = new Position(x - step, y, direction)
-    } else if(direction == Direction.right) {
-      newPosition = new Position(x + step, y, direction)
-    } else if(direction == Direction.up) {
-      newPosition = new Position(x, y + step, direction)
-    } else if(direction == Direction.down) {
-      newPosition = new Position(x, y - step, direction)
-    }
-  }
-}
-
-class Turtle {
-   def currentPosition
-   def steps = []
-   Turtle(Position start) {
-      currentPosition = start
-      steps.add(start)
-   }
-
-   Turtle move(Direction dir) {
-      Position newPosition
-      if (dir == Direction.left) {
-        newPosition = currentPosition.left()
-      } else if (dir == Direction.right) {
-        newPosition = currentPosition.right()
-      } else if (dir == Direction.up) {
-        newPosition = currentPosition.up()
-      } else if (dir == Direction.down) {
-        newPosition = currentPosition.down()
-      }
-      currentPosition = newPosition
-      steps.add(newPosition)
-      this
-   }
-
-}
-enum Direction {
-  left, right, up, down
-}
-
-
-def turtle = new Turtle(new Position(1, 1))
-def compilerConfig = new CompilerConfiguration()
-def binding = new Binding([turtle: turtle,
-  						   move: turtle.&move,
-                           left: Direction.left,
-                           right: Direction.right,
-                           up: Direction.up,
-                           down: Direction.down])
-def shell = new GroovyShell(this.class.classLoader,
-        binding,
-        compilerConfig)
-///////////////////////
-def gameDSL = '''
-2.times {
-  move right
-  move up
-}
-'''
-//////////////////////
-// Run DSL script.
-// result contains turtle object
-// with all steps
-shell.evaluate gameDSL
-def builder = new groovy.json.JsonBuilder()
-builder {
-   steps binding["turtle"].steps
-}
-println builder
-builder.toString()
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="">
+<li class="slide" style="text-align: left" title="Out chaining Groovy">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1081,7 +987,7 @@ builder.toString()
                 <hr>
                 <pre class="code" id="outputGroovy6">
                 </pre>
-                <canvas id="canvasGroovy6" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy6" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1126,119 +1032,21 @@ builder.toString()
         </div>
     </div>
 </li>
+
 <!-------------------------------------------------------------------
-6b. Command chaining odd number
+Groovy6b. Command chaining odd number
 step 1: highlight dsl syntax
 step 2: move left by 2 steps
 step 3: highlight by method
 step 4: change by method to return map
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Odd Command Chaining" press="Press 1..4">
+<li class="slide" style="text-align: left" title="Odd Chaining" press="1 2 3 4">
     <textarea id="editorGroovy6b" name="editorGroovy6b">
-class Position {
-  int x
-  int y
-  Direction direction
-  Position left() {
-     new Position(x, y, Direction.left);
-  }
-  Position right() {
-    new Position(x, y, Direction.right);
-  }
-  Position up() {
-    new Position(x , y, Direction.up);
-  }
-  Position down() {
-    new Position(x , y, Direction.down);
-  }
-  def Position(moveX, moveY, myDirection) {
-    x = moveX
-    y = moveY
-    direction = myDirection
-  }
-  Position move(Integer step) {
-    Position newPosition
-    if(direction == Direction.left) {
-      newPosition = new Position(x - step, y, direction)
-    } else if(direction == Direction.right) {
-      newPosition = new Position(x + step, y, direction)
-    } else if(direction == Direction.up) {
-      newPosition = new Position(x, y + step, direction)
-    } else if(direction == Direction.down) {
-      newPosition = new Position(x, y - step, direction)
-    }
-  }
-}
-
-class Turtle {
-   def currentPosition
-   def steps = []
-   Turtle(Position start) {
-      currentPosition = start
-      steps.add(start)
-   }
-
-   Turtle move(Direction dir) {
-      Position newPosition
-      if (dir == Direction.left) {
-        newPosition = currentPosition.left()
-      } else if (dir == Direction.right) {
-        newPosition = currentPosition.right()
-      } else if (dir == Direction.up) {
-        newPosition = currentPosition.up()
-      } else if (dir == Direction.down) {
-        newPosition = currentPosition.down()
-      }
-      currentPosition = newPosition
-      this
-   }
-
-  Turtle by (Integer step) {
-    Position newPosition = currentPosition.move(step)
-    steps.add(newPosition)
-    currentPosition = newPosition
-    steps.add(newPosition)
-    this
-  }
-}
-enum Direction {
-  left, right, up, down
-}
-
-def turtle = new Turtle(new Position(1, 1, Direction.left))
-def compilerConfig = new CompilerConfiguration()
-def binding = new Binding([turtle: turtle,
-  						   move: turtle.&move,
-                           left: Direction.left,
-                           right: Direction.right,
-                           up: Direction.up,
-                           down: Direction.down])
-def shell = new GroovyShell(this.class.classLoader,
-        binding,
-        compilerConfig)
-///////////////////////
-def gameDSL = '''
-2.times {
-    move right by 2
-    move up by 1
-}
-'''
-//////////////////////
-// Run DSL script.
-// result contains turtle object
-// with all steps
-shell.evaluate gameDSL
-def builder = new groovy.json.JsonBuilder()
-builder {
-   steps binding["turtle"].steps
-}
-println builder
-builder.toString()
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="">
+<li class="slide" style="text-align: left" title="Out odd chaining Groovy">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1247,7 +1055,7 @@ builder.toString()
                 <hr>
                 <pre class="code" id="outputGroovy6b">
                 </pre>
-                <canvas id="canvasGroovy6b" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy6b" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1257,7 +1065,7 @@ builder.toString()
 </li>
 
 <!-------------------------------------------------------------------
-7. Adding behavior to Integer
+Groovy7. Adding behavior to Integer
 step1: highlight dsl
 step2: move left by 2.steps
 step3: add class StepCategory
@@ -1266,113 +1074,13 @@ step5: modify shell.eval with use()
 step6: highlight class StepCategory
 step7: replace with @Category annotation
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Adding behavior to Integer" press="Press 1..7">
+<li class="slide" style="text-align: left" title="Adding behavior to Integer" press="1 2 3 4 5 6 7">
     <textarea id="editorGroovy7" name="editorGroovy7">
-class Position {
-  int x
-  int y
-  Direction direction
-  Position left() {
-     new Position(x, y, Direction.left);
-  }
-  Position right() {
-    new Position(x, y, Direction.right);
-  }
-  Position up() {
-    new Position(x , y, Direction.up);
-  }
-  Position down() {
-    new Position(x , y, Direction.down);
-  }
-  def Position(moveX, moveY, myDirection) {
-    x = moveX
-    y = moveY
-    direction = myDirection
-  }
-  Position move(Integer step) {
-    Position newPosition
-    if(direction == Direction.left) {
-      newPosition = new Position(x - step, y, direction)
-    } else if(direction == Direction.right) {
-      newPosition = new Position(x + step, y, direction)
-    } else if(direction == Direction.up) {
-      newPosition = new Position(x, y + step, direction)
-    } else if(direction == Direction.down) {
-      newPosition = new Position(x, y - step, direction)
-    }
-  }
-}
-
-class Turtle {
-  def currentPosition
-  def steps = []
-  Turtle(Position start) {
-    currentPosition = start
-    steps.add(start)
-  }
-
-  Turtle move(Direction dir) {
-    Position newPosition
-    if (dir == Direction.left) {
-      newPosition = currentPosition.left()
-    } else if (dir == Direction.right) {
-      newPosition = currentPosition.right()
-    } else if (dir == Direction.up) {
-      newPosition = currentPosition.up()
-    } else if (dir == Direction.down) {
-      newPosition = currentPosition.down()
-    }
-    currentPosition = newPosition
-    this
-  }
-
-  Turtle by (Integer step) {
-    Position newPosition = currentPosition.move(step)
-    steps.add(newPosition)
-    currentPosition = newPosition
-    this
-  }
-}
-enum Direction {
-  left, right, up, down
-}
-
-
-def turtle = new Turtle(new Position(1, 1, Direction.left))
-def compilerConfig = new CompilerConfiguration()
-def binding = new Binding([turtle: turtle,
-  						   move: turtle.&move,
-                           left: Direction.left,
-                           right: Direction.right,
-                           up: Direction.up,
-                           down: Direction.down])
-def shell = new GroovyShell(this.class.classLoader,
-        binding,
-        compilerConfig)
-///////////////////////
-def gameDSL = '''
-2.times {
-  move right by 2
-  move up by 1
-}
-'''
-//////////////////////
-// Run DSL script.
-// result contains turtle object
-// with all steps
-shell.evaluate gameDSL
-def builder = new groovy.json.JsonBuilder()
-builder {
-   steps binding["turtle"].steps
-}
-println builder
-builder.toString()
-
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="">
+<li class="slide" style="text-align: left" title="Output Integer behaviour">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1381,7 +1089,7 @@ builder.toString()
                 <hr>
                 <pre class="code" id="outputGroovy7">
                 </pre>
-                <canvas id="canvasGroovy7" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy7" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1391,121 +1099,17 @@ builder.toString()
 </li>
 
 <!-------------------------------------------------------------------
-8. TypeChecked
+Groovy8. TypeChecked
 step 1: highlight compiler
 step 2: add typechecked ext
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="TypeChecked" press="Press 1..2">
+<li class="slide" style="text-align: left" title="TypeChecked" press="1 2">
     <textarea id="editorGroovy8" name="editorGroovy8">
-class Position {
-    int x
-    int y
-    Direction direction
-    Position left() {
-        new Position(x, y, Direction.left);
-    }
-    Position right() {
-        new Position(x, y, Direction.right);
-    }
-    Position up() {
-        new Position(x , y, Direction.up);
-    }
-    Position down() {
-        new Position(x , y, Direction.down);
-    }
-    def Position(moveX, moveY, myDirection) {
-        x = moveX
-        y = moveY
-        direction = myDirection
-    }
-    Position move(Integer step) {
-        Position newPosition
-        if(direction == Direction.left) {
-            newPosition = new Position(x - step, y, direction)
-        } else if(direction == Direction.right) {
-            newPosition = new Position(x + step, y, direction)
-        } else if(direction == Direction.up) {
-            newPosition = new Position(x, y + step, direction)
-        } else if(direction == Direction.down) {
-            newPosition = new Position(x, y - step, direction)
-        }
-    }
-}
-
-class Turtle {
-    def currentPosition
-    def steps = []
-    Turtle(Position start) {
-        currentPosition = start
-        steps.add(start)
-    }
-
-    Turtle move(Direction dir) {
-        Position newPosition
-        if (dir == Direction.left) {
-            newPosition = currentPosition.left()
-        } else if (dir == Direction.right) {
-            newPosition = currentPosition.right()
-        } else if (dir == Direction.up) {
-            newPosition = currentPosition.up()
-        } else if (dir == Direction.down) {
-            newPosition = currentPosition.down()
-        }
-        currentPosition = newPosition
-        this
-    }
-
-    Turtle by (Integer step) {
-        Position newPosition = currentPosition.move(step)
-        steps.add(newPosition)
-        currentPosition = newPosition
-        this
-    }
-}
-
-enum Direction {
-    left, right, up, down
-}
-
-
-def turtle = new Turtle(new Position(1, 1, Direction.left))
-
-def binding = new Binding([turtle: turtle,
-    move: turtle.&move,
-    left: Direction.left,
-    right: Direction.right,
-    up: Direction.up,
-    down: Direction.down])
-
-def compilerConfig = new CompilerConfiguration()
-
-def shell = new GroovyShell(this.class.classLoader,
-    binding,
-    compilerConfig)
-///////////////////////
-def gameDSL = '''
-moooooooooove right by 2
-move up by 3
-'''
-//////////////////////
-// Run DSL script.
-// result contains turtle object
-// with all steps
-shell.evaluate gameDSL
-
-def builder = new groovy.json.JsonBuilder()
-builder {
-    steps binding["turtle"].steps
-}
-println builder
-builder.toString()
-
-
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="">
+<li class="slide" style="text-align: left" title="Output TypeChecked">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1514,7 +1118,7 @@ builder.toString()
                 <hr>
                 <pre class="code" id="outputGroovy8">
                 </pre>
-                <canvas id="canvasGroovy8" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy8" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1524,128 +1128,19 @@ builder.toString()
 </li>
 
 <!-------------------------------------------------------------------
-9. Turn around
+Groovy9. Turn around
 step1: highlight dsl
 step2: modify dsl with infinite loop
 step3: highlight ASTTransformationCustomizer
 step4: add TimeInterrupt
 ------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Franklin wants to turn around" press="Press 1..4">
+<li class="slide" style="text-align: left" title="Franklin wants to turn around" press="1 2 3 4">
     <textarea id="editorGroovy9" name="editorGroovy9">
-class Position {
-    int x
-    int y
-    Direction direction
-    Position left() {
-        new Position(x, y, Direction.left);
-    }
-    Position right() {
-        new Position(x, y, Direction.right);
-    }
-    Position up() {
-        new Position(x , y, Direction.up);
-    }
-    Position down() {
-        new Position(x , y, Direction.down);
-    }
-    def Position(moveX, moveY, myDirection) {
-        x = moveX
-        y = moveY
-        direction = myDirection
-    }
-    Position move(Integer step) {
-        Position newPosition
-        if(direction == Direction.left) {
-            newPosition = new Position(x - step, y, direction)
-        } else if(direction == Direction.right) {
-            newPosition = new Position(x + step, y, direction)
-        } else if(direction == Direction.up) {
-            newPosition = new Position(x, y + step, direction)
-        } else if(direction == Direction.down) {
-            newPosition = new Position(x, y - step, direction)
-        }
-    }
-}
-
-class Turtle {
-    def currentPosition
-    def steps = []
-    Turtle(Position start) {
-        currentPosition = start
-        steps.add(start)
-    }
-
-    Turtle move(Direction dir) {
-        Position newPosition
-        if (dir == Direction.left) {
-            newPosition = currentPosition.left()
-        } else if (dir == Direction.right) {
-            newPosition = currentPosition.right()
-        } else if (dir == Direction.up) {
-            newPosition = currentPosition.up()
-        } else if (dir == Direction.down) {
-            newPosition = currentPosition.down()
-        }
-        currentPosition = newPosition
-        this
-    }
-
-    Turtle by (Integer step) {
-        Position newPosition = currentPosition.move(step)
-        steps.add(newPosition)
-        currentPosition = newPosition
-        this
-    }
-}
-
-enum Direction {
-    left, right, up, down
-}
-
-
-def turtle = new Turtle(new Position(1, 1, Direction.left))
-
-def binding = new Binding([turtle: turtle,
-    move: turtle.&move,
-    left: Direction.left,
-    right: Direction.right,
-    up: Direction.up,
-    down: Direction.down])
-
-def compilerConfig = new CompilerConfiguration()
-
-compilerConfig.addCompilationCustomizers(
-    new ASTTransformationCustomizer(TypeChecked, extensions:['TurtleExtension.groovy']))
-
-def shell = new GroovyShell(this.class.classLoader,
-    binding,
-    compilerConfig)
-///////////////////////
-def gameDSL = '''
-
-    move right by 2
-    move up by 2
-    move right by 2
-    move up by 2
-
-'''
-//////////////////////
-// Run DSL script.
-// result contains turtle object
-// with all steps
-shell.evaluate gameDSL
-
-def builder = new groovy.json.JsonBuilder()
-builder {
-    steps binding["turtle"].steps
-}
-println builder
-builder.toString()
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="">
+<li class="slide" style="text-align: left" title="Turn around Groovy">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1654,7 +1149,7 @@ builder.toString()
                 <hr>
                 <pre class="code" id="outputGroovy9">
                 </pre>
-                <canvas id="canvasGroovy9" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy9" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 </pre>
                 <hr>
             </div>
@@ -1666,128 +1161,18 @@ builder.toString()
 
 
 <!-------------------------------------------------------------------
-10. Sneaky
+Groovy10. Sneaky
 step 1: highlight dsl
 step 2: add system.exit
 step 3: add SecureASTCustomizer
 ------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Franklin wants to play with fire" press="Press 1..3">
+<li class="slide" style="text-align: left" title="Franklin wants to play with fire" press="1 2 3">
     <textarea id="editorGroovy10" name="editorGroovy10">
-class Position {
-    int x
-    int y
-    Direction direction
-    Position left() {
-        new Position(x, y, Direction.left);
-    }
-    Position right() {
-        new Position(x, y, Direction.right);
-    }
-    Position up() {
-        new Position(x , y, Direction.up);
-    }
-    Position down() {
-        new Position(x , y, Direction.down);
-    }
-    def Position(moveX, moveY, myDirection) {
-        x = moveX
-        y = moveY
-        direction = myDirection
-    }
-    Position move(Integer step) {
-        Position newPosition
-        if(direction == Direction.left) {
-            newPosition = new Position(x - step, y, direction)
-        } else if(direction == Direction.right) {
-            newPosition = new Position(x + step, y, direction)
-        } else if(direction == Direction.up) {
-            newPosition = new Position(x, y + step, direction)
-        } else if(direction == Direction.down) {
-            newPosition = new Position(x, y - step, direction)
-        }
-    }
-}
-
-class Turtle {
-    def currentPosition
-    def steps = []
-    Turtle(Position start) {
-        currentPosition = start
-        steps.add(start)
-    }
-
-    Turtle move(Direction dir) {
-        Position newPosition
-        if (dir == Direction.left) {
-            newPosition = currentPosition.left()
-        } else if (dir == Direction.right) {
-            newPosition = currentPosition.right()
-        } else if (dir == Direction.up) {
-            newPosition = currentPosition.up()
-        } else if (dir == Direction.down) {
-            newPosition = currentPosition.down()
-        }
-        currentPosition = newPosition
-        this
-    }
-
-    Turtle by (Integer step) {
-        Position newPosition = currentPosition.move(step)
-        steps.add(newPosition)
-        currentPosition = newPosition
-        this
-    }
-}
-
-enum Direction {
-    left, right, up, down
-}
-
-
-def turtle = new Turtle(new Position(1, 1, Direction.left))
-
-def binding = new Binding([turtle: turtle,
-    move: turtle.&move,
-    left: Direction.left,
-    right: Direction.right,
-    up: Direction.up,
-    down: Direction.down])
-
-def compilerConfig = new CompilerConfiguration()
-
-def tc = new ASTTransformationCustomizer(TypeChecked, extensions:['TurtleExtension.groovy'])
-def ti = new ASTTransformationCustomizer([value:5L], TimedInterrupt)
-
-compilerConfig.addCompilationCustomizers(tc, ti)
-
-def shell = new GroovyShell(this.class.classLoader,
-    binding,
-    compilerConfig)
-///////////////////////
-def gameDSL = '''
-    move right by 2
-    move up by 2
-    move left by 2
-    move down by 2
-
-'''
-//////////////////////
-// Run DSL script.
-// result contains turtle object
-// with all steps
-shell.evaluate gameDSL
-
-def builder = new groovy.json.JsonBuilder()
-builder {
-    steps binding["turtle"].steps
-}
-println builder
-builder.toString()
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="">
+<li class="slide" style="text-align: left" title="Fire in Groovy">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1796,7 +1181,7 @@ builder.toString()
                 <hr>
                 <pre class="code" id="outputGroovy10">
                 </pre>
-                <canvas id="canvasGroovy10" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasGroovy10" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 </pre>
                 <hr>
             </div>
@@ -1808,7 +1193,7 @@ builder.toString()
 
 
 <!-------------------------------------------------------------------
-11.ask
+Groovy11.ask
 step1: insert DSL ask
 step2: add ask method
 step3: add propertyMissingMethod
@@ -1816,29 +1201,12 @@ step4: add display map method
 step5: add display map in DSL
 ------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Franklin wants to ask" press="Press 1..5">
+<li class="slide" style="text-align: left" title="Franklin wants to ask" press="1 2 3 4 5">
     <textarea id="editorGroovy11" name="editorGroovy11">
-abstract class GameScript extends Script {
-
-
-}
-def compilerConfig = new CompilerConfiguration()
-compilerConfig.scriptBaseClass = GameScript.class.name
-def binding = new Binding()
-def shell = new GroovyShell(this.class.classLoader,
-                            binding,
-                            compilerConfig)
-///////////////////////
-def surveyDSL = '''
-
-'''
-//////////////////////
-// Run DSL script.
-shell.evaluate surveyDSL
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="">
+<li class="slide" style="text-align: left" title="Ask in Groovy">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1864,129 +1232,15 @@ shell.evaluate surveyDSL
 </li>
 
 <!------------------------------------------------------------------->
-<!-- 12. AST for user transform
+<!-- Groovy12. AST for user transform
 <!------------------------------------------------------------------->
 
 <li class="slide" style="text-align: left" title="AST Tranformation" press="">
     <textarea id="editorGroovy12" name="editorGroovy12">
-def getShell(binding) {
-  def config = new CompilerConfiguration()
-  config.addCompilationCustomizers(new SurveyCustomizer())
-  config.scriptBaseClass = SurveyScript.name
-  new GroovyShell(this.class.classLoader,
-                  binding,
-                  config)
-}
-def binding = new Binding()
-def inputs = [:]
-binding.setVariable("inputs", inputs)
-def script = """
-ask "what's your name?" assign to name
-ask "what's your birthday?" assign to date
-"""
-//first evaluate should run only the first ask
-getShell(binding).evaluate script
-//second evaluate should run only the second ask2
-getShell(binding).evaluate script
-
-
-abstract class SurveyScript extends Script {
-  def ask(question) {
-    [assign : { to ->
-      [:].withDefault {assignment ->
-        inputs.question = question
-        inputs.lastAssignment = assignment
-        println "ask called\n --> counter: $inputs.counter \n" +
-        "--> question: $question\n" +
-        "--> variables: $inputs.lastAssignment\n" +
-        "______________________________________\n"
-        inputs.counter++
-      }
-    }]
-  }
-
-  def propertyMissing(String name) {
-    name
-  }
-
-  //entry point method each time the script is called
-  void dispatch() {
-    if(!inputs.answerMap){
-      inputs.answerMap = [:]
-    }
-    if(!inputs.counter){
-      inputs.counter=0
-    }
-    inputs.answerMap[inputs.counter] =
-      [variable:inputs.lastAssignment,
-       question:inputs.question,
-       answer:inputs.answer]
-    invokeMethod()
-  }
-
-  def invokeMethod() {
-    try {
-      def method =
-      this.class.getMethod("doStep_${inputs.counter}")
-      method.invoke(this)
-    }
-    catch(NoSuchMethodException exp){
-      inputs.finished = true
-    }
-  }
-}
-
-public class SurveyCustomizer extends CompilationCustomizer {
-  def step = 0
-
-  public SurveyCustomizer() {
-    super(CompilePhase.CONVERSION);
-  }
-
-  @Override
-  public void call(final SourceUnit source,
-                   final GeneratorContext context,
-                   final ClassNode classNode)
-    throws CompilationFailedException {
-    def methodCalls = []
-    def ast = source.getAST();
-    ast.classes.each {
-      def myClassNode = it
-      it.methods.each {
-        if (it.code instanceof BlockStatement
-          && it.name == "run") {
-          it.code.statements.each {
-            methodCalls << it
-          }
-          def result = new AstBuilder().buildFromCode {
-            this.dispatch()
-          }
-          it.code = result[0];
-        }
-      }
-      methodCalls.each {
-        addStatement(it, myClassNode)
-      }
-    }
-  }
-
-  private def addStatement(ExpressionStatement exprStmt,
-                           myClassNode) {
-    BlockStatement methodCodeBlock = new BlockStatement()
-    methodCodeBlock.addStatement(exprStmt)
-    myClassNode.addMethod("doStep_" + step,
-                          1,
-                          null,
-                          [] as Parameter[],
-                          [] as ClassNode[],
-                          methodCodeBlock)
-    step++
-  }
-}
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="">
+<li class="slide" style="text-align: left" title="Output AST">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -2163,6 +1417,30 @@ public class SurveyCustomizer extends CompilationCustomizer {
     slide.enter("Output for JSON in Groovy", showGroovyDuke, removeGroovyDuke);
     slide.enter("Build JSON in Scala", showScalaDuke, removeScalaDuke);
     slide.enter("Output for JSON in Scala", showScalaDuke, removeScalaDuke);
+
+    slide.enter("Command Chaining Groovy", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Out chaining Groovy", showGroovyDuke, removeGroovyDuke);
+
+    slide.enter("Odd Chaining", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Out odd chaining Groovy", showGroovyDuke, removeGroovyDuke);
+
+    slide.enter("Adding behavior to Integer", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Output Integer behaviour", showGroovyDuke, removeGroovyDuke);
+
+    slide.enter("TypeChecked", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Output TypeChecked", showGroovyDuke, removeGroovyDuke);
+
+    slide.enter("Franklin wants to turn around", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Turn around Groovy", showGroovyDuke, removeGroovyDuke);
+
+    slide.enter("Franklin wants to play with fire", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Fire in Groovy", showGroovyDuke, removeGroovyDuke);
+
+    slide.enter("Franklin wants to ask", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Ask in Groovy", showGroovyDuke, removeGroovyDuke);
+
+    slide.enter("AST Tranformation", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Output AST", showGroovyDuke, removeGroovyDuke);
 
 //    slide.enter("", showGroovyDuke, removeGroovyDuke);
 //    slide.enter("Output for JSON in Groovy", showGroovyDuke, removeGroovyDuke);
