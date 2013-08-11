@@ -85,7 +85,7 @@ function submitTurtleFormToScalaConsole(input, output, canvasId) {
 // step 3 replace shell by ScriptEngineMgr from jsr 223
 // step 4 replace by engine.eval
 //------------------------------------------------------------------->
-var content = "// Configure the GroovyShell.\n"
+var content1 = "// Configure the GroovyShell.\n"
     + "def shell = new GroovyShell()\n\n"
     + "///////////////////////\n"
     + "def gameDSL = \'\'\'\n"
@@ -95,10 +95,11 @@ var content = "// Configure the GroovyShell.\n"
     + "// Run DSL script.\n"
     + "def result = shell.evaluate gameDSL\n\n\n"
 
-var editorGroovy1 = new dslPrez.editor("editorGroovy1", content);
+var editorGroovy1 = new dslPrez.editor("editorGroovy1", content1);
+
 function editorGroovy1Key0() {
     editorGroovy1.currentPress(0, 4);
-    editorGroovy1.setValue(content);
+    editorGroovy1.setValue(content1);
 }
 
 function editorGroovy1Key1() {
@@ -158,7 +159,7 @@ function editorGroovy1Key5() {
     }
 }
 
-var keymap = {
+var keymap1 = {
     "0" : editorGroovy1Key0,
     "1" : editorGroovy1Key1,
     "2" : editorGroovy1Key2,
@@ -168,7 +169,7 @@ var keymap = {
     "Ctrl-S" : editorGroovy1Send,
     "Cmd-S" : editorGroovy1Send
 };
-editorGroovy1.addKeyMap(keymap);
+editorGroovy1.addKeyMap(keymap1);
 
 //------------------------------------------------------------------->
 // Scala1. Script
@@ -176,7 +177,7 @@ editorGroovy1.addKeyMap(keymap);
 // step 2 replace with ScriptEngineManager
 // step 3 replace engine.eval
 //------------------------------------------------------------------->
-var content = "import scala.tools.nsc._\n"
+var contentScala1 = "import scala.tools.nsc._\n"
     + "import scala.tools.nsc.interpreter._\n\n"
     + "// Two next steps necessary only inside Grails/Groovy\n"
     + "val env = new Settings()\n"
@@ -189,7 +190,7 @@ var content = "import scala.tools.nsc._\n"
     + "// Run DSL script.\n"
     + "val result = interpreter.eval(gameDSL)\n\n\n";
 
-var editorScala1 = new dslPrez.editor("editorScala1", content);
+var editorScala1 = new dslPrez.editor("editorScala1", contentScala1);
 
 function editorScala1Send() {
     var value = editorScala1.getValue();
@@ -198,7 +199,7 @@ function editorScala1Send() {
 
 function editorScala1Key0() {
     editorScala1.currentPress(0, 3);
-    editorScala1.setValue(content);
+    editorScala1.setValue(contentScala1);
 }
 
 function editorScala1Key1() {
@@ -254,7 +255,7 @@ function editorScala1Key4() {
     }
 }
 
-var keymap = {
+var keymapScala1 = {
     "0" : editorScala1Key0,
     "1" : editorScala1Key1,
     "2" : editorScala1Key2,
@@ -263,7 +264,7 @@ var keymap = {
     "Ctrl-S" : editorScala1Send,
     "Cmd-S" : editorScala1Send
 };
-editorScala1.addKeyMap(keymap);
+editorScala1.addKeyMap(keymapScala1);
 
 //------------------------------------------------------------------->
 // Groovy2. Base Class
@@ -273,7 +274,7 @@ editorScala1.addKeyMap(keymap);
 // step 4 introduce compilerConfiguration
 // step 5 inject it in groovy shell
 //------------------------------------------------------------------->
-var content = "// Configure the GroovyShell.\n"
+var content2 = "// Configure the GroovyShell.\n"
             + "def shell = new GroovyShell()\n\n"
             + "///////////////////////\n"
             + "def gameDSL = '''\n"
@@ -287,7 +288,12 @@ var content = "// Configure the GroovyShell.\n"
             + "// Run DSL script.\n"
             + "def result = shell.evaluate gameDSL\n";
 
-var editorGroovy2 = new dslPrez.editor("editorGroovy2", content);
+var editorGroovy2 = new dslPrez.editor("editorGroovy2", content2);
+
+function editorGroovy2Key0() {
+    editorGroovy2.currentPress(0, 5);
+    editorGroovy2.setValue(content2);
+}
 
 function editorGroovy2Key1() {
     if (editorGroovy2.currentPress(1, 5)) {
@@ -370,6 +376,7 @@ function editorGroovy2Send() {
 var keymap2 = {
     "Ctrl-S" :editorGroovy2Send,
     "Cmd-S" :editorGroovy2Send,
+    "0": editorGroovy2Key0,
     "1": editorGroovy2Key1,
     "2": editorGroovy2Key2,
     "3": editorGroovy2Key3,
@@ -386,7 +393,7 @@ editorGroovy2.addKeyMap(keymap2);
 // step 2 highlight val left="left"
 // step 3 remove line
 //------------------------------------------------------------------->
-var content = "import javax.script._\n"
+var contentScala2 = "import javax.script._\n"
             + "import scala.tools.nsc.interpreter._\n\n"
             + "val engine = new ScriptEngineManager().getEngineByName(\"scala\")\n"
             + "val settings = engine.asInstanceOf[IMain].settings\n"
@@ -404,7 +411,7 @@ var content = "import javax.script._\n"
             + "// Run DSL script.\n"
             + "engine.eval(gameDSL)\n\n\n";
 
-var editorScala2 = new dslPrez.editor("editorScala2", content);
+var editorScala2 = new dslPrez.editor("editorScala2", contentScala2);
 
 function editorScala2Send() {
     var value = editorScala2.getValue();
@@ -413,7 +420,7 @@ function editorScala2Send() {
 
 function editorScala2Key0() {
     editorScala2.currentPress(0, 3);
-    editorScala2.setValue(content);
+    editorScala2.setValue(contentScala2);
 }
 
 function editorScala2Key1() {
@@ -450,7 +457,7 @@ function editorScala2Key4() {
     }
 }
 
-var keymap = {
+var keymapScala2 = {
     "0" : editorScala2Key0,
     "1" : editorScala2Key1,
     "2" : editorScala2Key2,
@@ -459,14 +466,14 @@ var keymap = {
     "Ctrl-S" : editorScala2Send,
     "Cmd-S" : editorScala2Send
 };
-editorScala2.addKeyMap(keymap);
+editorScala2.addKeyMap(keymapScala2);
 
 //------------------------------------------------------------------->
 //Groovy3. Binding
 // step 1 introduce right in binding
 // step 2 ad move right command
 //------------------------------------------------------------------->
-var content = "// Configure the GroovyShell.\n"
+var content3 = "// Configure the GroovyShell.\n"
             + "abstract class GameScript extends Script {\n"
             + "    def move = {direction -> println \"moving $direction\" }\n"
             + "    def left = \"left\"\n"
@@ -485,7 +492,7 @@ var content = "// Configure the GroovyShell.\n"
             + "// Run DSL script.\n"
             + "def result = shell.evaluate gameDSL\n";
 
-var editorGroovy3 = new dslPrez.editor("editorGroovy3", content);
+var editorGroovy3 = new dslPrez.editor("editorGroovy3", content3);
 
 function editorGroovy3Send() {
     var value = editorGroovy3.getValue();
@@ -495,7 +502,7 @@ function editorGroovy3Send() {
 
 function editorGroovy3Key0() {
     editorGroovy3.currentPress(0, 2);
-    editorGroovy3.setValue(content);
+    editorGroovy3.setValue(content3);
 }
 
 function editorGroovy3Key1() {
@@ -539,7 +546,7 @@ editorGroovy3.addKeyMap(keymap3);
 // step 6 inject binding,
 // step 7 remove def left in GameScript
 //------------------------------------------------------------------->
-var content = "// Configure the GroovyShell.\n"
+var content4 = "// Configure the GroovyShell.\n"
     + "abstract class GameScript extends Script {\n"
     + "    def move = {direction -> println \"moving $direction\" }\n"
     + "    def left = \"left\"\n"
@@ -559,7 +566,7 @@ var content = "// Configure the GroovyShell.\n"
     + "// Run DSL script.\n"
     + "def result = shell.evaluate gameDSL\n";
 
-var editorGroovy4 = new dslPrez.editor("editorGroovy4", content);
+var editorGroovy4 = new dslPrez.editor("editorGroovy4", content4);
 
 function editorGroovy4Send() {
     var value = editorGroovy4.getValue();
@@ -569,7 +576,7 @@ function editorGroovy4Send() {
 
 function editorGroovy4Key0() {
     editorGroovy4.currentPress(0, 3);
-    editorGroovy4.setValue(content);
+    editorGroovy4.setValue(content4);
 }
 
 
@@ -712,7 +719,7 @@ editorGroovy4.addKeyMap(keymap4);
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
-var content = "sealed trait Direction\n"
+var contentScala4 = "sealed trait Direction\n"
             + "case object left extends Direction\n"
             + "case object right extends Direction\n"
             + "case object up extends Direction\n"
@@ -738,7 +745,7 @@ var content = "sealed trait Direction\n"
             + "val t = new Turtle(Position(1,1))\n\n"
             + "t move left\n";
 
-var editorScala4 = new dslPrez.editor("editorScala4", content);
+var editorScala4 = new dslPrez.editor("editorScala4", contentScala4);
 
 function editorScala4Send() {
     var value = editorScala4.getValue();
@@ -747,15 +754,15 @@ function editorScala4Send() {
 
 function editorScala4Key0() {
     editorScala4.currentPress(0, 2);
-    editorScala4.setValue(content);
+    editorScala4.setValue(contentScala4);
 }
 
-var keymap4 = {
+var keymapScala4 = {
     "Ctrl-S" :editorScala4Send,
     "Cmd-S" :editorScala4Send,
     "0": editorScala4Key0
 };
-editorScala4.addKeyMap(keymap4);
+editorScala4.addKeyMap(keymapScala4);
 
 //------------------------------------------------------------------->
 // Groovy5. Building JSON
@@ -767,7 +774,7 @@ editorScala4.addKeyMap(keymap4);
 //  step 6 highlight
 //  step 7 mix plain groovy + DSL 4.times {move left}
 //------------------------------------------------------------------->
-var content = "class Position {\n"
+var content5 = "class Position {\n"
             + "  int x\n"
             + "  int y\n"
             + "  Position left() {\n"
@@ -834,7 +841,7 @@ var content = "class Position {\n"
             + "shell.evaluate gameDSL\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
 
-var editorGroovy5 = new dslPrez.editor("editorGroovy5", content);
+var editorGroovy5 = new dslPrez.editor("editorGroovy5", content5);
 
 function editorGroovy5TurtleSend() {
     var value = editorGroovy5.getValue();
@@ -844,7 +851,7 @@ function editorGroovy5TurtleSend() {
 
 function editorGroovy5Key0() {
     editorGroovy5.currentPress(0, 7);
-    editorGroovy5.setValue(content);
+    editorGroovy5.setValue(content5);
 }
 
 
@@ -941,7 +948,7 @@ editorGroovy5.addKeyMap(keymap5);
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
-var content = "implicit class Times(i:Int) {\n"
+var contentScala5 = "implicit class Times(i:Int) {\n"
     + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
     + "}\n\n"
     + "sealed trait Direction\n"
@@ -975,21 +982,22 @@ var content = "implicit class Times(i:Int) {\n"
     + "implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n"
     + "val t = new Turtle(Position(1,1))\n\n"
     + "3.times {\n"
-    + "  t move left\n"
+    + "  t move up\n"
+    + "  t move right\n"
     + "}\n"
-    + "compact(render(t.steps))\n";
+    + "compact(render(\"steps\"->t.steps.reverse))\n";
 
 
-var editorScala5 = new dslPrez.editor("editorScala5", content);
+var editorScala5 = new dslPrez.editor("editorScala5", contentScala5);
 
 function editorScala5Send() {
     var value = editorScala5.getValue();
-    submitTurtleFormToScalaConsole(value, "#outputScala5");
+    submitTurtleFormToScalaConsole(value, "#outputScala5", "canvasScala5");
 }
 
 function editorScala5Key0() {
     editorScala5.currentPress(0, 2);
-    editorScala5.setValue(content);
+    editorScala5.setValue(contentScala5);
 }
 
 function editorScala5Key1() {
@@ -998,13 +1006,13 @@ function editorScala5Key1() {
     }
 }
 
-var keymap5 = {
+var keymapScala5 = {
     "Ctrl-S" :editorScala5Send,
     "Cmd-S" :editorScala5Send,
     "0": editorScala5Key0,
     "1": editorScala5Key1
 };
-editorScala5.addKeyMap(keymap5);
+editorScala5.addKeyMap(keymapScala5);
 
 //-------------------------------------------------------------------
 //Groovy6. Command chaining
@@ -1016,7 +1024,7 @@ editorScala5.addKeyMap(keymap5);
 //step 6: add steps.add to turtle by
 //step 7: change new Position to add direction
 //------------------------------------------------------------------->
-var content = "class Position {\n"
+var content6 = "class Position {\n"
             + "int x\n"
             + "int y\n"
             + "Direction direction\n"
@@ -1111,7 +1119,7 @@ var content = "class Position {\n"
             + "println builder\n"
             + "builder.toString()\n";
 
-var editorGroovy6 = new dslPrez.editor("editorGroovy6", content);
+var editorGroovy6 = new dslPrez.editor("editorGroovy6", content6);
 
 function editorGroovy6TurtleSend() {
     var value = editorGroovy6.getValue();
@@ -1121,7 +1129,7 @@ function editorGroovy6TurtleSend() {
 
 function editorGroovy6Key0() {
     editorGroovy6.currentPress(0, 2);
-    editorGroovy6.setValue(content);
+    editorGroovy6.setValue(content6);
 }
 
 function editorGroovy6Key1() {
@@ -1220,7 +1228,7 @@ editorGroovy6.addKeyMap(keymap6);
 //step 3: highlight by method
 //step 4: change by to return map with silent word: steps/step
 //------------------------------------------------------------------->
-var content = "class Position {\n"
+var content6b = "class Position {\n"
             + "int x\n"
             + "int y\n"
             + "Direction direction\n"
@@ -1320,7 +1328,7 @@ var content = "class Position {\n"
             + "println builder\n"
             + "builder.toString()\n";
 
-var editorGroovy6b = new dslPrez.editor("editorGroovy6b", content);
+var editorGroovy6b = new dslPrez.editor("editorGroovy6b", content6b);
 
 function editorGroovy6bTurtleSend() {
     var value = editorGroovy6b.getValue();
@@ -1330,7 +1338,7 @@ function editorGroovy6bTurtleSend() {
 
 function editorGroovy6bKey0() {
     editorGroovy6b.currentPress(0, 2);
-    editorGroovy6b.setValue(content);
+    editorGroovy6b.setValue(content6b);
 }
 
 function editorGroovy6bKey1() {
@@ -1413,7 +1421,7 @@ editorGroovy6b.addKeyMap(keymap6b);
 //step6: highlight class StepCategory
 //step7: replace with @Category annotation
 //------------------------------------------------------------------->
-var content = "class Position {\n"
+var content7 = "class Position {\n"
             + "int x\n"
             + "int y\n"
             + "Direction direction\n"
@@ -1514,7 +1522,7 @@ var content = "class Position {\n"
             + "builder.toString()\n"
             + "\n";
 
-var editorGroovy7 = new dslPrez.editor("editorGroovy7", content);
+var editorGroovy7 = new dslPrez.editor("editorGroovy7", content7);
 
 function editorGroovy7TurtleSend() {
     var value = editorGroovy7.getValue();
@@ -1524,7 +1532,7 @@ function editorGroovy7TurtleSend() {
 
 function editorGroovy7Key0() {
     editorGroovy7.currentPress(0, 2);
-    editorGroovy7.setValue(content);
+    editorGroovy7.setValue(content7);
 }
 
 function editorGroovy7Key1() {
@@ -1640,7 +1648,7 @@ editorGroovy7.addKeyMap(keymap7);
 // step 1: highlight compiler
 // step 2: add typechecked ext
 //------------------------------------------------------------------->
-var content = "class Position {\n"
+var content8 = "class Position {\n"
             + "int x\n"
             + "int y\n"
             + "Direction direction\n"
@@ -1746,7 +1754,7 @@ var content = "class Position {\n"
             + "\n"
             + "\n";
 
-var editorGroovy8 = new dslPrez.editor("editorGroovy8", content);
+var editorGroovy8 = new dslPrez.editor("editorGroovy8", content8);
 
 function editorGroovy8TurtleSend() {
     var value = editorGroovy8.getValue();
@@ -1757,7 +1765,7 @@ function editorGroovy8TurtleSend() {
 
 function editorGroovy8Key0() {
     editorGroovy8.currentPress(0, 2);
-    editorGroovy8.setValue(content);
+    editorGroovy8.setValue(content8);
 }
 
 function editorGroovy8Key1() {
@@ -1808,7 +1816,7 @@ editorGroovy8.scrollIntoView({line:80, ch:0});
 // step3: highlight ASTTransformationCustomizer
 // step4: add TimeInterrupt
 //------------------------------------------------------------------->
-var content = "class Position {\n"
+var content9 = "class Position {\n"
             + "int x\n"
             + "int y\n"
             + "Direction direction\n"
@@ -1919,7 +1927,7 @@ var content = "class Position {\n"
             + "builder.toString()\n"
             + "\n";
 
-var editorGroovy9 = new dslPrez.editor("editorGroovy9", content);
+var editorGroovy9 = new dslPrez.editor("editorGroovy9", content9);
 
 function editorGroovy9TurtleSend() {
     var value = editorGroovy9.getValue();
@@ -1931,7 +1939,7 @@ function editorGroovy9TurtleSend() {
 
 function editorGroovy9Key0() {
     editorGroovy9.currentPress(0, 2);
-    editorGroovy9.setValue(content);
+    editorGroovy9.setValue(content9);
 }
 
 function editorGroovy9Key1() {
@@ -2009,7 +2017,7 @@ editorGroovy9.addKeyMap(keymap9);
 // step 2: add system.exit
 // step 3: add SecureASTCustomizer
 //------------------------------------------------------------------->
-var content ="class Position {\n"
+var content10 ="class Position {\n"
             + "int x\n"
             + "int y\n"
             + "Direction direction\n"
@@ -2120,7 +2128,7 @@ var content ="class Position {\n"
             + "println builder\n"
             + "builder.toString()\n";
 
-var editorGroovy10 = new dslPrez.editor("editorGroovy10", content);
+var editorGroovy10 = new dslPrez.editor("editorGroovy10", content10);
 
 function editorGroovy10TurtleSend() {
     var value = editorGroovy10.getValue();
@@ -2132,7 +2140,7 @@ function editorGroovy10TurtleSend() {
 
 function editorGroovy10Key0() {
     editorGroovy10.currentPress(0, 2);
-    editorGroovy10.setValue(content);
+    editorGroovy10.setValue(content10);
 }
 
 function editorGroovy10Key1() {
@@ -2204,7 +2212,7 @@ editorGroovy10.addKeyMap(keymap10);
 //step4: add display map method
 //step5: add display map in DSL
 //------------------------------------------------------------------->
-var content ="abstract class GameScript extends Script {\n"
+var content11 ="abstract class GameScript extends Script {\n"
             + "\n"
             + "\n"
             + "}\n"
@@ -2223,7 +2231,7 @@ var content ="abstract class GameScript extends Script {\n"
             + "shell.evaluate surveyDSL\n"
             + "\n";
 
-var editorGroovy11 = new dslPrez.editor("editorGroovy11", content);
+var editorGroovy11 = new dslPrez.editor("editorGroovy11", content11);
 
 function editorGroovy11Send() {
     var value = editorGroovy11.getValue();
@@ -2233,7 +2241,7 @@ function editorGroovy11Send() {
 
 function editorGroovy11Key0() {
     editorGroovy11.currentPress(0, 2);
-    editorGroovy11.setValue(content);
+    editorGroovy11.setValue(content11);
 }
 
 function editorGroovy11Key1() {
@@ -2333,7 +2341,7 @@ editorGroovy11.addKeyMap(keymap11);
 //------------------------------------------------------------------->
 // Groovy12. ask AST
 //------------------------------------------------------------------->
-var content = "def getShell(binding) {\n"
+var content12 = "def getShell(binding) {\n"
             + "def config = new CompilerConfiguration()\n"
             + "config.addCompilationCustomizers(new SurveyCustomizer())\n"
             + "config.scriptBaseClass = SurveyScript.name\n"
@@ -2449,7 +2457,7 @@ var content = "def getShell(binding) {\n"
             + "}\n"
             + "\n";
 
-var editorGroovy12 = new dslPrez.editor("editorGroovy12", content);
+var editorGroovy12 = new dslPrez.editor("editorGroovy12", content12);
 
 function editorGroovy12Send() {
     var value = editorGroovy12.getValue();
@@ -2472,7 +2480,7 @@ function editorGroovy12Send() {
 
 function editorGroovy12Key0() {
     editorGroovy12.currentPress(0, 2);
-    editorGroovy12.setValue(content);
+    editorGroovy12.setValue(content12);
 }
 
 var keymap12 = {
