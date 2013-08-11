@@ -42,6 +42,6 @@ implicit def toJsonValue(p:Position) = ("x"->p.x)~("y"->p.y)
 
 val t = new Turtle(Position(1,1))
 
-3.times { t move left }
+3.times { t move right }
 
-compact(render(t.steps))
+compact(render("steps"->t.steps.reverse))

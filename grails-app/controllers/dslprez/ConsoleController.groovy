@@ -73,7 +73,7 @@ class ConsoleController {
     def evaluator
     try {
       evaluator = new Evaluator(printStream).withContinuations().withPluginsDir("lib/plugins")
-
+      //evaluator.withPluginOption("dslplugin:timerValue:12").withPluginOption("dslplugin:blacklistFile:toto.txt")
 
       // Example for the game use bind and import
       //def turtle = new Turtle(new Position(0,0,up as Direction))
