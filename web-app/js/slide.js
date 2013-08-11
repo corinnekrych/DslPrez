@@ -120,7 +120,11 @@ dslPrez.Slide = function () {
         var newNext = $(slides[next]).attr('title');
         $('#next-title').empty().append(newNext);
         $('#currentTitle').empty().append($(slides[index]).attr('title'));
-        $('#currentPress').empty().append($(slides[index]).attr('press'));
+        var text = "&nbsp;";
+        if($(slides[index]).attr('press')) {
+            text = $(slides[index]).attr('press')
+        }
+        $('#currentPress').empty().append(text);
     };
 
     that.enter = function(title, callback) {
@@ -160,9 +164,9 @@ dslPrez.Slide = function () {
 
                 var idealTime = $(slides[currentSlideIndex()]).attr('timing');
                 if (idealTime) {
-                    if (Math.abs(idealTime - diff) < (totalDuration*conf.progressPrecision)/100) {
+                    if (Math.abs(idealTime*1000 - diff) < (totalDuration*conf.progressPrecision)/100) {
                         $s.css("background", "green");
-                    } else if (idealTime > diff){
+                    } else if (idealTime*1000 > diff){
                         $s.css("background", "yellow");
                     } else {
                         $s.css("background", "red");
