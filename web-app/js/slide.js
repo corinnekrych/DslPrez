@@ -4,6 +4,9 @@ dslPrez.Slide = function () {
     var that = this;
     var slides = $('.slide');
     var callEnter = {};
+    var callExit = {};
+    var slideTime = 500;
+
 
     slides.each(function(index) {
         if (index != 0) {
@@ -41,18 +44,18 @@ dslPrez.Slide = function () {
             case 0:
                 hideSlide(indexSlide);
                 if (indexSlide == 0) {
-                    showSlide(slides.size()-1)
+                    showSlide(slides.size()-1, indexSlide)
                 } else {
-                    showSlide(indexSlide - 1)
+                    showSlide(indexSlide - 1, indexSlide)
                 }
                 break;
 
             case 1:
                 hideSlide(indexSlide);
                 if (indexSlide == slides.size()-1) {
-                    showSlide(0)
+                    showSlide(0, indexSlide)
                 } else {
-                    showSlide(indexSlide + 1)
+                    showSlide(indexSlide + 1, indexSlide)
                 }
                 break;
 
@@ -71,7 +74,7 @@ dslPrez.Slide = function () {
             index = 0;
         }
         hideSlide(0);
-        showSlide(index);
+        showSlide(index, -1);
     }
 
     $('#previous').click(function(e) {
@@ -85,19 +88,23 @@ dslPrez.Slide = function () {
     var hideSlide = function(index) {
         $(slides[index]).removeClass('showSlide');
         $(slides[index]).removeAttr('indexSlide');
-        $(slides[index]).slideUp(600);
+        $(slides[index]).slideUp(slideTime);
     };
 
-    var showSlide = function(index) {
+    var showSlide = function(index, comingFrom) {
         $('#count').empty().append("  " + index + "/" + (slides.length-1) + "  ");
         window.history.pushState("", "Title", "/DslPrez/#" + index);
 
         $(slides[index]).addClass('showSlide');
         $(slides[index]).attr('indexSlide', index);
-        $(slides[index]).slideDown(600, function(){
-            if (callEnter[$(slides[index]).attr('title')] != null) {
-                callEnter[$(slides[index]).attr('title')]();
-            } else if ($(slides[index]).children()[0].type === 'textarea') {
+        if (comingFrom >= 0 && callEnter[$(slides[comingFrom]).attr('title')] != null) {
+            callExit[$(slides[comingFrom]).attr('title')]();
+        }
+        if (callEnter[$(slides[index]).attr('title')] != null) {
+            callEnter[$(slides[index]).attr('title')]();
+        }
+        $(slides[index]).slideDown(slideTime, function(){
+            if ($(slides[index]).children()[0].type === 'textarea') {
                 window[$(slides[index]).children()[0].id].refresh();
                 window[$(slides[index]).children()[0].id].focus();
             }
@@ -127,8 +134,11 @@ dslPrez.Slide = function () {
         $('#currentPress').empty().append(text);
     };
 
-    that.enter = function(title, callback) {
-        callEnter[title] = callback;
+    that.enter = function(title, callbackEnter, callbackExit) {
+        callEnter[title] = callbackEnter;
+        if (callbackExit) {
+            callExit[title] = callbackExit;
+        }
     };
 
     var startProgress  = function (conf){

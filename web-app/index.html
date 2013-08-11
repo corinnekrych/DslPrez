@@ -626,7 +626,7 @@ def gameDSL = '''
 def result = shell.evaluate gameDSL</textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="">
+<li class="slide" style="text-align: left" title="Run Groovy Script">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -665,7 +665,7 @@ val dsl = """
 val result = interpreter.eval(dsl)</textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="">
+<li class="slide" style="text-align: left" title="Run Scala Script">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -2177,8 +2177,30 @@ public class SurveyCustomizer extends CompilationCustomizer {
         $("#wordcloud").jQCloud(word_array);
     };
 
+    var showGroovyDuke = function() {
+        $('.CodeMirror').addClass("groovyduke");
+        $(document.body).addClass("groovycolor");
+    }
+    var showScalaDuke = function() {
+        $('.CodeMirror').addClass("scaladuke");
+        $(document.body).addClass("scalacolor");
+    }
+    var removeGroovyDuke = function() {
+        $('.CodeMirror').removeClass("groovyduke");
+        $(document.body).removeClass("groovycolor");
+    }
+    var removeScalaDuke = function() {
+        $('.CodeMirror').removeClass("scaladuke");
+        $(document.body).removeClass("scalacolor");
+    }
     var slide = new dslPrez.Slide();
     slide.enter("Groovy", showCloud);
+
+    slide.enter("Groovy Script", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Run Groovy Script", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Scala Script", showScalaDuke, removeScalaDuke);
+    slide.enter("Run Scala Script", showScalaDuke, removeScalaDuke);
+
     slide.start({
         progressbar: true,
         duration: 10,

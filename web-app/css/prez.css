@@ -162,3 +162,22 @@ body {
     background:green;
     height:5px;
 }
+
+.groovyduke {
+    background: #FFFFFD url("..//images/groovydukemed.jpg") no-repeat top right ;
+    background-size: 100px;
+}
+
+.scaladuke {
+    background: #FFFFFD url("..//images/scala-duke.jpg") no-repeat top right ;
+    background-size: 50px;
+}
+
+.groovycolor {
+    background: #3483A1;
+}
+
+.scalacolor {
+    background: #AF1702;
+}
+
