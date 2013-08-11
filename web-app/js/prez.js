@@ -2491,6 +2491,6 @@ var keymap12 = {
 editorGroovy12.addKeyMap(keymap12);
 
 
-$("#technologies").airport([ 'Twitter Bootstrap', 'iScroll', 'jCloud', 'jQuery-airport', 'grails', 'Code Mirror', 'jQuery' ]);
+$("#technologies").airport([ 'Twitter Bootstrap', 'jCloud', 'jQuery-airport', 'Grails', 'Code Mirror', 'jQuery' ]);
 
 
