@@ -610,16 +610,7 @@ ask "What's is your name?" assign to name
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Groovy Script" press="1 2 3 4">
     <textarea id="editorGroovy1" name="editorGroovy1">
-// Configure the GroovyShell.
-def shell = new GroovyShell()
-
-///////////////////////
-def gameDSL = '''
-    println "I run a Groovy script"
-'''
-//////////////////////
-// Run DSL script.
-def result = shell.evaluate gameDSL</textarea>
+    </textarea>
 </li>
 
 <li class="slide" style="text-align: left" title="Run Groovy Script">
@@ -646,19 +637,7 @@ def result = shell.evaluate gameDSL</textarea>
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Scala Script" press="1 2 3">
     <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc._
-import scala.tools.nsc.interpreter._
-
-// Two next steps necessary only inside Grails/Groovy
-val env = new Settings()
-env.usejavacp.value = true
-
-val interpreter = new IMain(env)
-
-val dsl = """
-  println("I run a Scala script")
-"""
-
-val result = interpreter.eval(dsl)</textarea>
+    </textarea>
 </li>
 
 <li class="slide" style="text-align: left" title="Run Scala Script">
@@ -1442,13 +1421,9 @@ step5: add display map in DSL
     slide.enter("AST Tranformation", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output AST", showGroovyDuke, removeGroovyDuke);
 
-//    slide.enter("", showGroovyDuke, removeGroovyDuke);
-//    slide.enter("Output for JSON in Groovy", showGroovyDuke, removeGroovyDuke);
-//    slide.enter("", showScalaDuke, removeScalaDuke);
-//    slide.enter("", showScalaDuke, removeScalaDuke);
     slide.start({
         progressbar: true,
-        duration: 10,
+        duration: 100,
         progressPrecision: 5
     });
 </script>
