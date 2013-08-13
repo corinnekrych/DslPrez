@@ -59,9 +59,10 @@ class ConsoleController {
    def executeScala() {
    // Ugly search how to do better
    def cp = System.getProperty("java.class.path")
-   cp = "lib/scaladsl.jar:lib/scalainterpreter.jar:lib/scala-reflect.jar:lib/scala-compiler.jar:lib/scala-library.jar:lib/lift-json.jar:target/classes:"+cp
-
-   System.setProperty("java.class.path", cp)
+   if (!cp.contains("scala")) {
+    cp = "lib/scaladsl.jar:lib/scalainterpreter.jar:lib/scala-reflect.jar:lib/scala-compiler.jar:lib/scala-library.jar:lib/lift-json.jar:target/classes:"+cp
+    System.setProperty("java.class.path", cp)
+   }
      	
     def encoding = 'UTF-8'
     def stream = new ByteArrayOutputStream()
@@ -73,8 +74,16 @@ class ConsoleController {
     def evaluator
     try {
       evaluator = new Evaluator(printStream).withContinuations().withPluginsDir("lib/plugins")
-      //evaluator.withPluginOption("dslplugin:timerValue:12").withPluginOption("dslplugin:blacklistFile:toto.txt")
 
+      // Temporary solution
+      if (params.scalaTimer != null) {
+         dslprez.timer.MyTimer.reinit()
+         evaluator.withPluginOption("dslplugin:timerValue:"+params.scalaTimer)
+      }
+      if (params.scalaSecurity != null) {
+         evaluator.withPluginOption("dslplugin:blacklistFile:anyfile")
+      }
+      
       // Example for the game use bind and import
       //def turtle = new Turtle(new Position(0,0,up as Direction))
       //evaluator.addImport("dslprez._")      

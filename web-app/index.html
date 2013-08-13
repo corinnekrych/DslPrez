@@ -513,10 +513,17 @@
         </div>
     </div>
 </li>
+
 <li class="slide" style="display: inline-block; margin:0 auto;" title="Groovy" timing="7000">
     <div class="span8"  id="wordcloud">
     </div>
 </li>
+
+<li class="slide" style="display: inline-block; margin:0 auto;" title="Scala" timing="7000">
+    <div class="span8" id="scala_wordcloud">
+    </div>
+</li>
+
 
 <li class="slide" title="DSL & Game">
     <div class="container-narrow">
@@ -566,17 +573,16 @@ ask "What's is your name?" assign to name
 <pre class="code">def shell = new GroovyShell()
 </pre>
             </div>
-            <p>Each script is an object inheriting from Script base class</p>
+            <!--<p>Each script is an object inheriting from Script base class</p>-->
             <div class="span4">
-                <h3>Scala with Grails</h3>
-                <pre class="code">object HelloWorld2 extends Application {
-  println("Hello, world!")
-}
+                <h3>Scala</h3>
+                <pre class="code">new scala.tools.nsc.interpreter.IMain
 </pre>
-                <h3>Scala with Grails</h3>
-                <p>// Two next steps necessary only inside Grails/Groovy
+                <h3>Scala within Grails</h3>
+                <pre class="code">// Two next steps necessary only inside Grails/Groovy
+                   // to be able to find right classpath
                     val env = new Settings()
-                    env.usejavacp.value = true</p>
+                    env.usejavacp.value = true</pre>
             </div>
             <!-- http://scabl.blogspot.fr/2013/05/scripting-with-scala-and-sbt.html -->
             <div class="span2">
@@ -588,7 +594,7 @@ ask "What's is your name?" assign to name
             </div>
             <div class="span8">
                 <h3>JSR 223</h3>
-                <p>on its way tos td scripting usage.....</p>
+                <p>on its way to standard scripting usage.....</p>
             </div>
             <div class="span2">
             </div>
@@ -625,10 +631,15 @@ ask "What's is your name?" assign to name
 
 <!------------------------------------------------------------------->
 <!-- Scala1. Script
-<!-- step 1 define base class
-<!-- step 2 remove move definition in script
+<!-- step 0 define base class for interpretation
+<!-- step 1 basic moveObject
+<!-- step 2 enrich moveObject
+<!-- step 3 switch to JSR223
+<!-- step 4 use eval
+NOTE: JSR 223 simply wraps around the IMain so not very useful 
+especially with Classpath issues
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Scala Script" press="1 2 3">
+<li class="slide" style="text-align: left" title="Scala Script" press="1 2 3 4">
     <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc._
     </textarea>
 </li>
@@ -674,7 +685,16 @@ move left
             </div>
             <div class="span4">
                 <h3>Scala</h3>
-                <p>explain move.to(left) etc...</p>
+                <p>Objects are nouns, functions are verbs</p>
+                This why move as an object is not ideal and will be improved in the dsl
+                <p>
+                <pre class=code>move to left
+                move.to(left)</pre>
+                </p>
+                <p>
+                <pre class=code>move left
+                move.left()</pre>
+                </p>
                 <!-- interesting article
                 http://docs.codehaus.org/display/GroovyJSR/GEP+3+-+Command+Expression+based+DSL
                 -->
@@ -716,33 +736,18 @@ move left
 </li>
 
 <!-------------------------------------------------------------------
-Scala2. Binding for Scala
-step 1 add binding
-step 2 highlight val left="left"
-step 3 remove line
+Scala2. Base Classfor Scala
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Binding in Scala" press="1 2 3">
-    <textarea id="editorScala2" name="editorScala2">
-    </textarea>
+ <li class="slide" style="text-align: left" title="Base class in Scala">
+  <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+ There is No direct equivalence to baseclass
+There exists in the interpreter some wrapping mechanism where some code can be executed around
+not exactly identical. Most important equivalence is binding which is covered in next slides
+</div>
+</div>
 </li>
-
-<li class="slide" style="text-align: left" title="Output binding for Scala">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="code" id="outputScala2">
-                </pre>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
 
 <!-------------------------------------------------------------------
 Groovy3. Binding
@@ -770,6 +775,35 @@ step 2 ad move right command
         </div>
     </div>
 </li>
+
+<!-------------------------------------------------------------------
+Scala3. Binding for Scala
+step 1 add binding
+step 2 highlight val left="left"
+step 3 remove line
+------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="Binding in Scala" press="1 2 3">
+    <textarea id="editorScala3" name="editorScala3">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Output binding for Scala">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala3">
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
 
 <!------------------------------------------------------------------
 Groovy4. Structure my code
@@ -805,7 +839,9 @@ step 7 remove def left in GameScript
 
 <!------------------------------------------------------------------
 Scala4. Structure my code
-
+now ze go into the code!
+todo issue with bindings
+todo alternative with implicits verb/nouns
 ------------------------------------------------------------------>
 <li class="slide" style="text-align: left" title="Add Turtle in Scala" press="-">
     <textarea id="editorScala4" name="editorScala4">
@@ -949,17 +985,25 @@ step 7: change new Position to add direction
     </textarea>
 </li>
 
+<!-------------------------------------------------------------------
+Scala6. Command chaining odd number
+------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="Command Chaining Scala" press="1 2 3 4 5 6 7">
+    <textarea id="editorGroovy6" name="editorScala6">
+    </textarea>
+</li>
 
-<li class="slide" style="text-align: left" title="Out chaining Groovy">
+
+<li class="slide" style="text-align: left" title="Out chaining Scala">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="outputGroovy6">
+                <pre class="code" id="outputScala6">
                 </pre>
-                <canvas id="canvasGroovy6" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                <canvas id="canvasScala6" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1100,6 +1144,34 @@ step 2: add typechecked ext
 </li>
 
 <!-------------------------------------------------------------------
+Scala8. Dynamics
+<!------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="Dynamics" press="1 2">
+    <textarea id="editorScala8" name="editorScala8">
+    </textarea>
+</li>
+
+
+<li class="slide" style="text-align: left" title="Output Dynamics">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala8">
+                </pre>
+                <canvas id="canvasScala8" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+
+<!-------------------------------------------------------------------
 Groovy9. Turn around
 step1: highlight dsl
 step2: modify dsl with infinite loop
@@ -1122,6 +1194,34 @@ step4: add TimeInterrupt
                 <pre class="code" id="outputGroovy9">
                 </pre>
                 <canvas id="canvasGroovy9" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!-------------------------------------------------------------------
+Scala9. Turn around
+------------------------------------------------------------------->
+
+<li class="slide" style="text-align: left" title="Franklin wants to turn around in Scala" press="1 2 3 4">
+    <textarea id="editorScala9" name="editorScala9">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Turn around Scala">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala9">
+                </pre>
+                <canvas id="canvasScala9" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 </pre>
                 <hr>
             </div>
@@ -1154,6 +1254,34 @@ step 3: add SecureASTCustomizer
                 <pre class="code" id="outputGroovy10">
                 </pre>
                 <canvas id="canvasGroovy10" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!-------------------------------------------------------------------
+Scala10. Sneaky
+------------------------------------------------------------------->
+
+<li class="slide" style="text-align: left" title="Franklin wants to play with fire in Scala" press="1 2 3">
+    <textarea id="editorScala10" name="editorScala10">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Fire in Scala">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala10">
+                </pre>
+                <canvas id="canvasScala10" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 </pre>
                 <hr>
             </div>
@@ -1202,6 +1330,34 @@ step5: add display map in DSL
         </div>
     </div>
 </li>
+
+
+<!-------------------------------------------------------------------
+Scala11.ask
+------------------------------------------------------------------->
+
+<li class="slide" style="text-align: left" title="Franklin wants to ask - Scala" press="1 2 3 4 5">
+    <textarea id="editorScala11" name="editorScala11">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Ask in Scala">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="output" id="outputScala11">
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
 
 <!------------------------------------------------------------------->
 <!-- Groovy12. AST for user transform
@@ -1306,11 +1462,34 @@ step5: add display map in DSL
 <script src="js/jquery.airport-1.1.source.js"></script>
 <script src="js/jqcloud-1.0.4.min.js"></script>
 <script src="js/prez.js"></script>
+<script src="js/prez-scala.js"></script>
 <script src="js/ktDraw.js"></script>
 <script src="js/slide.js"></script>
 
 <script>
 
+     var scala_word_array = [
+            {text: "Strong Typing", weight: 9},
+            {text: "less punctuation", weight: 7},
+            {text: "scripting", weight: 5},
+            {text: "binding", weight: 7},
+            {text: "Type Inference", weight: 1},
+            {text: "Type classes", weight: 7},
+            {text: "case class", weight: 8},
+            {text: "Higher order functions", weight: 6},
+            {text: "macros", weight: 4},
+        ];
+   
+    var showCloudWithArgs = function(key,word_array) {
+      var height = screen.height;
+        var width = screen.width;
+        $("#"+key+"_wordcloud").empty();
+        $("#"+key+"_wordcloud").jQCloud(word_array,{
+            height: $(window).height()*0.7,
+            width: $(window).width()*0.8
+        });
+    };
+    
     var showCloud = function() {
         var height = screen.height;
         var width = screen.width;
@@ -1366,27 +1545,35 @@ step5: add display map in DSL
     }
     var slide = new dslPrez.Slide();
     slide.enter("Groovy", showCloud);
+    
+    slide.enter("Scala", showCloudWithArgs("scala", scala_word_array));
 
     slide.enter("Groovy Script", showGroovyDuke, removeGroovyDuke);
     slide.enter("Run Groovy Script", showGroovyDuke, removeGroovyDuke);
+    
     slide.enter("Scala Script", showScalaDuke, removeScalaDuke);
     slide.enter("Run Scala Script", showScalaDuke, removeScalaDuke);
 
     slide.enter("Base class", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output base class for Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Binding in Scala", showScalaDuke, removeScalaDuke);
-    slide.enter("Output binding for Scala", showScalaDuke, removeScalaDuke);
 
+    slide.enter("Base class in Scala", showScalaDuke, removeScalaDuke);
+    
     slide.enter("Binding in Groovy", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output binding for Groovy", showGroovyDuke, removeGroovyDuke);
 
+    slide.enter("Binding in Scala", showScalaDuke, removeScalaDuke);
+    slide.enter("Output binding for Scala", showScalaDuke, removeScalaDuke);
+
     slide.enter("Add Turtle in Groovy", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output turtle position for Groovy", showGroovyDuke, removeGroovyDuke);
+    
     slide.enter("Add Turtle in Scala", showScalaDuke, removeScalaDuke);
     slide.enter("Output turtle position for Scala", showScalaDuke, removeScalaDuke);
 
     slide.enter("Build JSON", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output for JSON in Groovy", showGroovyDuke, removeGroovyDuke);
+    
     slide.enter("Build JSON in Scala", showScalaDuke, removeScalaDuke);
     slide.enter("Output for JSON in Scala", showScalaDuke, removeScalaDuke);
 
@@ -1402,14 +1589,26 @@ step5: add display map in DSL
     slide.enter("TypeChecked", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output TypeChecked", showGroovyDuke, removeGroovyDuke);
 
+    slide.enter("Dynamics in Scala", showScalaDuke, removeScalaDuke);
+    slide.enter("Output Dynamics", showScalaDuke, removeScalaDuke);
+    
     slide.enter("Franklin wants to turn around", showGroovyDuke, removeGroovyDuke);
     slide.enter("Turn around Groovy", showGroovyDuke, removeGroovyDuke);
+
+    slide.enter("Franklin wants to turn around in Scala",showScalaDuke, removeScalaDuke);
+    slide.enter("Turn around Scala", showScalaDuke, removeScalaDuke);
 
     slide.enter("Franklin wants to play with fire", showGroovyDuke, removeGroovyDuke);
     slide.enter("Fire in Groovy", showGroovyDuke, removeGroovyDuke);
 
+    slide.enter("Franklin wants to play with fire in Scala", showScalaDuke, removeScalaDuke);
+    slide.enter("Fire in Scala", showScalaDuke, removeScalaDuke);
+
     slide.enter("Franklin wants to ask", showGroovyDuke, removeGroovyDuke);
     slide.enter("Ask in Groovy", showGroovyDuke, removeGroovyDuke);
+
+    slide.enter("Franklin wants to ask in Scala", showScalaDuke, removeScalaDuke);
+    slide.enter("Ask in Scala", showScalaDuke, removeScalaDuke);
 
     slide.enter("AST Tranformation", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output AST", showGroovyDuke, removeGroovyDuke);

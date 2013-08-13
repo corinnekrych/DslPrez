@@ -22,10 +22,6 @@ function submitFormToGroovyConsole(input, output) {
   submitForm(input, output, "groovy");
 }
 
-function submitFormToScalaConsole(input, output) {
-    submitForm(input, output, "scala");
-}
-
 function submitTurtleForm(input, output, canvasId, lang) {
     var url = serverUrl + "/console/execute?=";
     var draw;
@@ -72,10 +68,6 @@ function submitTurtleForm(input, output, canvasId, lang) {
 
 function submitTurtleFormToGroovyConsole(input, output, canvasId) {
     submitTurtleForm(input, output, canvasId, "groovy");
-}
-
-function submitTurtleFormToScalaConsole(input, output, canvasId) {
-    submitTurtleForm(input, output, canvasId, "scala");
 }
 
 //------------------------------------------------------------------->
@@ -170,101 +162,6 @@ var keymap1 = {
     "Cmd-S" : editorGroovy1Send
 };
 editorGroovy1.addKeyMap(keymap1);
-
-//------------------------------------------------------------------->
-// Scala1. Script
-// step 1 define move method and move to left
-// step 2 replace with ScriptEngineManager
-// step 3 replace engine.eval
-//------------------------------------------------------------------->
-var contentScala1 = "import scala.tools.nsc._\n"
-    + "import scala.tools.nsc.interpreter._\n\n"
-    + "// Two next steps necessary only inside Grails/Groovy\n"
-    + "val env = new Settings()\n"
-    + "env.usejavacp.value = true\n\n"
-    + "val interpreter = new IMain(env)\n\n"
-    + "val gameDSL = \"\"\"\n"
-    + "    println(\"I run a Scala script\")\n"
-    + "\"\"\"\n"
-    + "//////////////////////\n"
-    + "// Run DSL script.\n"
-    + "val result = interpreter.eval(gameDSL)\n\n\n";
-
-var editorScala1 = new dslPrez.editor("editorScala1", contentScala1);
-
-function editorScala1Send() {
-    var value = editorScala1.getValue();
-    submitFormToScalaConsole(value, "#outputScala1");
-}
-
-function editorScala1Key0() {
-    editorScala1.currentPress(0, 3);
-    editorScala1.setValue(contentScala1);
-}
-
-function editorScala1Key1() {
-    if (editorScala1.currentPress(1, 3)) {
-        var value = 'val gameDSL = """  \n'
-            + 'object move {\n'
-            + '   def to(direction:String) = {\n'
-            + '      println(s"Moving $direction")\n'
-            + '   }\n'
-            + '}\n'
-            + 'val left = "left"\n'
-            + 'move to left // Converts into move.to(left)\n'
-            + '""" ';
-
-        editorScala1.replaceRange(value, {line:9, ch:0}, {line:11});
-        for(var i = 9; i <18 ; i++) {
-            editorScala1.addLineClass(i, "background", "highlight");
-        }
-    }
-}
-
-function editorScala1Key2() {
-    if (editorScala1.currentPress(2, 3)) {
-        for(var i = 9; i <18 ; i++) {
-            editorScala1.removeLineClass(i, "background", "highlight");
-        }
-        editorScala1.replaceRange("import javax.script.ScriptEngineManager", {line:0, ch:0}, {line:0});
-        var value = "// Two next steps necessary only inside Grails/Groovy\n"
-                    + "val engine = new ScriptEngineManager().getEngineByName(\"scala\")\n"
-                    + "val settings = engine.asInstanceOf[IMain].settings\n"
-                    + "settings.usejavacp.value = true\n";
-        editorScala1.replaceRange(value, {line:3, ch:0}, {line:8});
-        for(var i = 3; i <8 ; i++) {
-            editorScala1.addLineClass(i, "background", "highlight");
-        }
-    }
-}
-
-function editorScala1Key3() {
-    if (editorScala1.currentPress(3, 3)) {
-        for(var i = 3; i <8 ; i++) {
-            editorScala1.removeLineClass(i, "background", "highlight");
-        }
-        editorScala1.replaceRange("import javax.script.ScriptEngineManager", {line:0, ch:0}, {line:0});
-        editorScala1.replaceRange("engine.eval(gameDSL)", {line:19, ch:0}, {line:19});
-        editorScala1.addLineClass(19, "background", "highlight");
-    }
-}
-
-function editorScala1Key4() {
-    if (editorScala1.currentPress(4, 3)) {
-        editorScala1.removeLineClass(19, "background", "highlight");
-    }
-}
-
-var keymapScala1 = {
-    "0" : editorScala1Key0,
-    "1" : editorScala1Key1,
-    "2" : editorScala1Key2,
-    "3" : editorScala1Key3,
-    "4" : editorScala1Key4,
-    "Ctrl-S" : editorScala1Send,
-    "Cmd-S" : editorScala1Send
-};
-editorScala1.addKeyMap(keymapScala1);
 
 //------------------------------------------------------------------->
 // Groovy2. Base Class
@@ -386,87 +283,6 @@ var keymap2 = {
 };
 
 editorGroovy2.addKeyMap(keymap2);
-
-//------------------------------------------------------------------->
-// Scala2. Binding for Scala
-// step 1 add binding
-// step 2 highlight val left="left"
-// step 3 remove line
-//------------------------------------------------------------------->
-var contentScala2 = "import javax.script._\n"
-            + "import scala.tools.nsc.interpreter._\n\n"
-            + "val engine = new ScriptEngineManager().getEngineByName(\"scala\")\n"
-            + "val settings = engine.asInstanceOf[IMain].settings\n"
-            + "settings.usejavacp.value = true \n\n"
-            + "val gameDSL = \"\"\"\n"
-            + "object move {\n"
-            + "    def to(direction:Object) = {\n"
-            + "        println(s\"Moving $direction\")\n"
-            + "    }\n"
-            + "}\n"
-            + "val left = \"left\"\n"
-            + "move to left // Converts into move.to(left)\n"
-            + "\"\"\"\n"
-            + "//////////////////////\n"
-            + "// Run DSL script.\n"
-            + "engine.eval(gameDSL)\n\n\n";
-
-var editorScala2 = new dslPrez.editor("editorScala2", contentScala2);
-
-function editorScala2Send() {
-    var value = editorScala2.getValue();
-    submitFormToScalaConsole(value, "#outputScala2");
-}
-
-function editorScala2Key0() {
-    editorScala2.currentPress(0, 3);
-    editorScala2.setValue(contentScala2);
-}
-
-function editorScala2Key1() {
-    if (editorScala2.currentPress(1, 3)) {
-        var value = '\nval binding = engine.getBindings(ScriptContext.ENGINE_SCOPE)\n'
-                    + 'binding.put("left", "left")\n';
-
-        editorScala2.replaceRange(value, {line:6, ch:0});
-        for(var i = 7; i <9 ; i++) {
-            editorScala2.addLineClass(i, "background", "highlight");
-        }
-    }
-}
-
-function editorScala2Key2() {
-    if (editorScala2.currentPress(2, 3)) {
-        for(var i = 7; i <9 ; i++) {
-            editorScala2.removeLineClass(i, "background", "highlight");
-        }
-        editorScala2.addLineClass(16, "background", "highlight");
-    }
-}
-
-function editorScala2Key3() {
-    if (editorScala2.currentPress(3, 3)) {
-        editorScala2.replaceRange("", {line:16, ch:0}, {line:16});
-        editorScala2.addLineClass(16, "background", "highlight");
-    }
-}
-
-function editorScala2Key4() {
-    if (editorScala2.currentPress(4, 3)) {
-        editorScala2.removeLineClass(16, "background", "highlight");
-    }
-}
-
-var keymapScala2 = {
-    "0" : editorScala2Key0,
-    "1" : editorScala2Key1,
-    "2" : editorScala2Key2,
-    "3" : editorScala2Key3,
-    "4" : editorScala2Key4,
-    "Ctrl-S" : editorScala2Send,
-    "Cmd-S" : editorScala2Send
-};
-editorScala2.addKeyMap(keymapScala2);
 
 //------------------------------------------------------------------->
 //Groovy3. Binding
@@ -715,56 +531,6 @@ var keymap4 = {
 editorGroovy4.addKeyMap(keymap4);
 
 //------------------------------------------------------------------->
-// Scala4. Structure my code
-// step 1 initial //TODO
-// step 2 final
-//------------------------------------------------------------------->
-var contentScala4 = "sealed trait Direction\n"
-            + "case object left extends Direction\n"
-            + "case object right extends Direction\n"
-            + "case object up extends Direction\n"
-            + "case object down extends Direction\n\n"
-            + "case class Position(x:Int, y:Int) {\n"
-            + "    def left  = Position(x-1,y)\n"
-            + "    def right = Position(x+1,y)\n"
-            + "    def up    = Position(x,y+1)\n"
-            + "    def down  = Position(x,y-1)\n"
-            + "}\n\n"
-            + "class Turtle(var p:Position) {\n"
-            + "    def move(d: Direction) = {\n"
-            + "        d match {\n"
-            + "    case `left` => p=p.left\n"
-            + "    case `right` => p=p.right\n"
-            + "    case `up` => p=p.up\n"
-            + "    case `down` => p=p.down\n"
-            + "    }\n"
-            + "    println(s\"x = ${p.x} and y = ${p.y}\")\n"
-            + "    this\n"
-            + "}\n"
-            + "}\n\n"
-            + "val t = new Turtle(Position(1,1))\n\n"
-            + "t move left\n";
-
-var editorScala4 = new dslPrez.editor("editorScala4", contentScala4);
-
-function editorScala4Send() {
-    var value = editorScala4.getValue();
-    submitFormToScalaConsole(value, "#outputScala4");
-}
-
-function editorScala4Key0() {
-    editorScala4.currentPress(0, 2);
-    editorScala4.setValue(contentScala4);
-}
-
-var keymapScala4 = {
-    "Ctrl-S" :editorScala4Send,
-    "Cmd-S" :editorScala4Send,
-    "0": editorScala4Key0
-};
-editorScala4.addKeyMap(keymapScala4);
-
-//------------------------------------------------------------------->
 // Groovy5. Building JSON
 //  step 1 def step= [] to use steps instead println
 //  step 2 steps.add(start) to store initial position steps after move
@@ -942,77 +708,6 @@ var keymap5 = {
     "8": editorGroovy5Key8
 };
 editorGroovy5.addKeyMap(keymap5);
-
-//------------------------------------------------------------------->
-// Scala5. Build JSON
-// step 1 initial //TODO
-// step 2 final
-//------------------------------------------------------------------->
-var contentScala5 = "implicit class Times(i:Int) {\n"
-    + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
-    + "}\n\n"
-    + "sealed trait Direction\n"
-    + "case object left extends Direction\n"
-    + "case object right extends Direction\n"
-    + "case object up extends Direction\n"
-    + "case object down extends Direction\n\n"
-    + "case class Position(x:Int, y:Int) {\n"
-    + "  def left  = Position(x-1,y)\n"
-    + "  def right = Position(x+1,y)\n"
-    + "  def up    = Position(x,y+1)\n"
-    + "  def down  = Position(x,y-1)\n"
-    + "}\n\n"
-    + "class Turtle(position:Position) {\n"
-    + "  var steps = position #:: Stream.empty\n"
-    + "  def move(d: Direction) = {\n"
-    + "    d match {\n"
-    + "      case `left` => steps = Stream(steps.head.left) ++ steps\n"
-    + "      case `right` => steps = Stream(steps.head.right) ++ steps\n"
-    + "      case `up` => steps = Stream(steps.head.up) ++ steps\n"
-    + "      case `down` => steps = Stream(steps.head.down) ++ steps\n"
-    + "    }\n"
-    + "    println(s\"x = ${steps.head.x} and y = ${steps.head.y}\")\n"
-    + "    this\n"
-    + "  }\n"
-    + "}\n\n"
-    + "import _root_.net.liftweb.json._\n"
-    + "import net.liftweb.json._\n"
-    + "import net.liftweb.json.JsonDSL._\n\n"
-    + "import scala.language.implicitConversions\n"
-    + "implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n"
-    + "val t = new Turtle(Position(1,1))\n\n"
-    + "3.times {\n"
-    + "  t move up\n"
-    + "  t move right\n"
-    + "}\n"
-    + "compact(render(\"steps\"->t.steps.reverse))\n";
-
-
-var editorScala5 = new dslPrez.editor("editorScala5", contentScala5);
-
-function editorScala5Send() {
-    var value = editorScala5.getValue();
-    submitTurtleFormToScalaConsole(value, "#outputScala5", "canvasScala5");
-}
-
-function editorScala5Key0() {
-    editorScala5.currentPress(0, 2);
-    editorScala5.setValue(contentScala5);
-}
-
-function editorScala5Key1() {
-    if (editorScala5.currentPress(1, 2)) {
-
-    }
-}
-
-var keymapScala5 = {
-    "Ctrl-S" :editorScala5Send,
-    "Cmd-S" :editorScala5Send,
-    "0": editorScala5Key0,
-    "1": editorScala5Key1
-};
-editorScala5.addKeyMap(keymapScala5);
 
 //-------------------------------------------------------------------
 //Groovy6. Command chaining
@@ -2492,5 +2187,3 @@ editorGroovy12.addKeyMap(keymap12);
 
 
 $("#technologies").airport([ 'Twitter Bootstrap', 'jCloud', 'jQuery-airport', 'Grails', 'Code Mirror', 'jQuery' ]);
-
-
