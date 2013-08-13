@@ -7,6 +7,10 @@ dslPrez.Slide = function () {
     var callExit = {};
     var slideTime = 500;
 
+    var isTouchDevice = function is_touch_device() {
+        return !!('ontouchstart' in window) // works on most browsers
+            || !!('onmsgesturechange' in window); // works on ie10
+    }();
 
     slides.each(function(index) {
         if (index != 0) {
@@ -104,9 +108,11 @@ dslPrez.Slide = function () {
             callEnter[$(slides[index]).attr('title')]();
         }
         $(slides[index]).slideDown(slideTime, function(){
-            if ($(slides[index]).children()[0].type === 'textarea') {
+            if ($(slides[index]).children()[0].type === 'textarea' ) {
                 window[$(slides[index]).children()[0].id].refresh();
-                window[$(slides[index]).children()[0].id].focus();
+                if(!isTouchDevice) {
+                    window[$(slides[index]).children()[0].id].focus();
+                }
             }
         });
         var previous;

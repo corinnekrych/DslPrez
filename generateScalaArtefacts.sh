@@ -4,7 +4,7 @@ cd ../scala-dsl
 
 cd ScalaDSL
 git pull
-sbt package
+sbt package publish-local
 cp target/scala-2.11/turtledsl_scala_2.11-1.0.jar ../../DslPrez/lib/scaladsl.jar
 
 cd ../ScalaInterpreter

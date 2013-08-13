@@ -2,7 +2,7 @@
 <html><head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Groovy DSL</title>
@@ -73,15 +73,23 @@
             <p style=""><img width="15%" src="img/j1.png"/></p>
         </div>
 
-        <canvas id="animationcanvas" width="1000" height="1000" ></canvas>
-        <code style="visibility: hidden;" id="animationcontent" class="language-javascript">var f = true;
-            function animate() { f = !f;
-            moveObject('franklin', {
-            role: 'turtle1', y: 9,
-            x: f ? 8 : 1,
-            rotation: 0
-            }, animate);
-
+        <canvas id="animationcanvas" style="width: 100%; position: absolute; left: 0; bottom: 5px;" width="1000" height="50" ></canvas>
+        <code style="visibility: hidden;" id="animationcontent" class="language-javascript">
+            var f = true;
+            function animate() {
+                f = !f;
+                moveObject('emily', {
+                    role: 'turtle2',
+                    y: 19,
+                    x: f ? 0 : 19,
+                    rotation: 0
+                }, function () {});
+                moveObject('franklin', {
+                    role: 'turtle1',
+                    y: 19,
+                    x: f ? 19 : 0,
+                    rotation: 0
+                }, animate);
             }
             animate();</pre></code>
 
@@ -89,24 +97,9 @@
             (function () {
                 var canvas = document.getElementById('animationcanvas');
                 var ctx = canvas.getContext('2d');
-                var grid = 10;
-                ctx.scale(canvas.width / grid, canvas.height / grid);
+                var grid = 20;
+                ctx.scale(canvas.width / grid, canvas.height);
                 ctx.translate(1/2, 1/2);
-
-                function drawGrid() {
-                    for (var i = 0; i < grid; i++) {
-                        for (var j = 0; j < grid; j++) {
-                            ctx.beginPath();
-                            ctx.lineWidth = 0.01;
-                            ctx.strokeStyle = 'green';
-                            ctx.moveTo(i, 0);
-                            ctx.lineTo(i, grid - 1);
-                            ctx.moveTo(0, j);
-                            ctx.lineTo(grid - 1, j);
-                            ctx.stroke();
-                        }
-                    }
-                }
 
                 var images = {};
                 function draw(place) {
@@ -610,16 +603,7 @@ ask "What's is your name?" assign to name
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Groovy Script" press="1 2 3 4">
     <textarea id="editorGroovy1" name="editorGroovy1">
-// Configure the GroovyShell.
-def shell = new GroovyShell()
-
-///////////////////////
-def gameDSL = '''
-    println "I run a Groovy script"
-'''
-//////////////////////
-// Run DSL script.
-def result = shell.evaluate gameDSL</textarea>
+    </textarea>
 </li>
 
 <li class="slide" style="text-align: left" title="Run Groovy Script">
@@ -646,19 +630,7 @@ def result = shell.evaluate gameDSL</textarea>
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Scala Script" press="1 2 3">
     <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc._
-import scala.tools.nsc.interpreter._
-
-// Two next steps necessary only inside Grails/Groovy
-val env = new Settings()
-env.usejavacp.value = true
-
-val interpreter = new IMain(env)
-
-val dsl = """
-  println("I run a Scala script")
-"""
-
-val result = interpreter.eval(dsl)</textarea>
+    </textarea>
 </li>
 
 <li class="slide" style="text-align: left" title="Run Scala Script">
@@ -1442,13 +1414,9 @@ step5: add display map in DSL
     slide.enter("AST Tranformation", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output AST", showGroovyDuke, removeGroovyDuke);
 
-//    slide.enter("", showGroovyDuke, removeGroovyDuke);
-//    slide.enter("Output for JSON in Groovy", showGroovyDuke, removeGroovyDuke);
-//    slide.enter("", showScalaDuke, removeScalaDuke);
-//    slide.enter("", showScalaDuke, removeScalaDuke);
     slide.start({
         progressbar: true,
-        duration: 10,
+        duration: 100,
         progressPrecision: 5
     });
 </script>
