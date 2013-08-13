@@ -73,15 +73,23 @@
             <p style=""><img width="15%" src="img/j1.png"/></p>
         </div>
 
-        <canvas id="animationcanvas" width="1000" height="1000" ></canvas>
-        <code style="visibility: hidden;" id="animationcontent" class="language-javascript">var f = true;
-            function animate() { f = !f;
-            moveObject('franklin', {
-            role: 'turtle1', y: 9,
-            x: f ? 8 : 1,
-            rotation: 0
-            }, animate);
-
+        <canvas id="animationcanvas" style="width: 100%; position: absolute; left: 0; bottom: 5px;" width="1000" height="50" ></canvas>
+        <code style="visibility: hidden;" id="animationcontent" class="language-javascript">
+            var f = true;
+            function animate() {
+                f = !f;
+                moveObject('emily', {
+                    role: 'turtle2',
+                    y: 19,
+                    x: f ? 0 : 19,
+                    rotation: 0
+                }, function () {});
+                moveObject('franklin', {
+                    role: 'turtle1',
+                    y: 19,
+                    x: f ? 19 : 0,
+                    rotation: 0
+                }, animate);
             }
             animate();</pre></code>
 
@@ -89,24 +97,9 @@
             (function () {
                 var canvas = document.getElementById('animationcanvas');
                 var ctx = canvas.getContext('2d');
-                var grid = 10;
-                ctx.scale(canvas.width / grid, canvas.height / grid);
+                var grid = 20;
+                ctx.scale(canvas.width / grid, canvas.height);
                 ctx.translate(1/2, 1/2);
-
-                function drawGrid() {
-                    for (var i = 0; i < grid; i++) {
-                        for (var j = 0; j < grid; j++) {
-                            ctx.beginPath();
-                            ctx.lineWidth = 0.01;
-                            ctx.strokeStyle = 'green';
-                            ctx.moveTo(i, 0);
-                            ctx.lineTo(i, grid - 1);
-                            ctx.moveTo(0, j);
-                            ctx.lineTo(grid - 1, j);
-                            ctx.stroke();
-                        }
-                    }
-                }
 
                 var images = {};
                 function draw(place) {
