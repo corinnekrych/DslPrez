@@ -97,7 +97,7 @@ dslPrez.Slide = function () {
 
     var showSlide = function(index, comingFrom) {
         $('#count').empty().append("  " + index + "/" + (slides.length-1) + "  ");
-        window.history.pushState("", "Title", "/DslPrez/#" + index);
+        window.history.pushState("", "Title", "#" + index);
 
         $(slides[index]).addClass('showSlide');
         $(slides[index]).attr('indexSlide', index);
@@ -206,6 +206,10 @@ dslPrez.Slide = function () {
         startSlide(val);
         startProgress(conf);
     };
+
+    $(window).bind('hashchange', function() {
+        location.reload();
+    });
 
     return that;
 };
