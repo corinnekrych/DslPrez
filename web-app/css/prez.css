@@ -31,7 +31,6 @@ body {
 }
 
 #header {
-    font-family: 'PT Serif', georgia, serif;
     position:absolute; z-index:2;
     top:0; left:0;
     width:100%;
@@ -62,7 +61,6 @@ body {
 
 
 #footer {
-    font-family: 'PT Serif', georgia, serif;
     position:absolute; z-index:2;
     bottom:0; left:0;
     width:100%;
@@ -131,12 +129,12 @@ body {
     border-radius: 999px;
     behavior: url(PIE.htc);
 
-    width: 20px;
-    height: 20px;
-    padding: 4px;
+    width: 18px;
+    height: 18px;
+    padding: 3px;
 
     background: #fff;
-    border: 2px solid #666;
+    /*border: 2px solid #666;*/
     color: #666;
     text-align: center;
 
