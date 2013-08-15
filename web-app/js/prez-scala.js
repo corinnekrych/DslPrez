@@ -392,6 +392,74 @@ var keymapScala5 = {
 editorScala5.addKeyMap(keymapScala5);
 
 //------------------------------------------------------------------->
+// Scala6.
+// step 1 initial //TODO
+// step 2 final
+//------------------------------------------------------------------->
+var contentScala6 = "";
+
+
+var editorScala6 = new dslPrez.editor("editorScala6", contentScala6);
+
+function editorScala6Send() {
+    var value = editorScala6.getValue();
+    submitTurtleFormToScalaConsole(value, "#outputScala6", "canvasScala6");
+}
+
+function editorScala6Key0() {
+    editorScala6.currentPress(0, 2);
+    editorScala6.setValue(contentScala6);
+}
+
+function editorScala6Key1() {
+    if (editorScala6.currentPress(1, 2)) {
+
+    }
+}
+
+var keymapScala6 = {
+    "Ctrl-S" :editorScala6Send,
+    "Cmd-S" :editorScala6Send,
+    "0": editorScala6Key0,
+    "1": editorScala6Key1
+};
+editorScala6.addKeyMap(keymapScala6);
+
+//------------------------------------------------------------------->
+// Scala8.
+// step 1 initial //TODO
+// step 2 final
+//------------------------------------------------------------------->
+var contentScala8 = "";
+
+
+var editorScala8 = new dslPrez.editor("editorScala8", contentScala8);
+
+function editorScala8Send() {
+    var value = editorScala8.getValue();
+    submitTurtleFormToScalaConsole(value, "#outputScala8", "canvasScala8");
+}
+
+function editorScala8Key0() {
+    editorScala8.currentPress(0, 2);
+    editorScala8.setValue(contentScala8);
+}
+
+function editorScala8Key1() {
+    if (editorScala8.currentPress(1, 2)) {
+
+    }
+}
+
+var keymapScala8 = {
+    "Ctrl-S" :editorScala8Send,
+    "Cmd-S" :editorScala8Send,
+    "0": editorScala8Key0,
+    "1": editorScala8Key1
+};
+editorScala8.addKeyMap(keymapScala8);
+
+//------------------------------------------------------------------->
 // Scala9. Turn around
 //------------------------------------------------------------------->
 
@@ -407,4 +475,72 @@ var keymapScala9 = {
     "Cmd-S": editorScala9TurtleSend
 };
 editorScala9.addKeyMap(keymapScala9);
+
+//------------------------------------------------------------------->
+// Scala10.
+// step 1 initial //TODO
+// step 2 final
+//------------------------------------------------------------------->
+var contentScala10 = "";
+
+
+var editorScala10 = new dslPrez.editor("editorScala10", contentScala10);
+
+function editorScala10Send() {
+    var value = editorScala10.getValue();
+    submitTurtleFormToScalaConsole(value, "#outputScala10", "canvasScala10");
+}
+
+function editorScala10Key0() {
+    editorScala10.currentPress(0, 2);
+    editorScala10.setValue(contentScala10);
+}
+
+function editorScala10Key1() {
+    if (editorScala10.currentPress(1, 2)) {
+
+    }
+}
+
+var keymapScala10 = {
+    "Ctrl-S" :editorScala10Send,
+    "Cmd-S" :editorScala10Send,
+    "0": editorScala10Key0,
+    "1": editorScala10Key1
+};
+editorScala10.addKeyMap(keymapScala10);
+
+//------------------------------------------------------------------->
+// Scala11.
+// step 1 initial //TODO
+// step 2 final
+//------------------------------------------------------------------->
+var contentScala11 = "";
+
+
+var editorScala11 = new dslPrez.editor("editorScala11", contentScala11);
+
+function editorScala11Send() {
+    var value = editorScala11.getValue();
+    submitTurtleFormToScalaConsole(value, "#outputScala11", "canvasScala11");
+}
+
+function editorScala11Key0() {
+    editorScala11.currentPress(0, 2);
+    editorScala11.setValue(contentScala11);
+}
+
+function editorScala11Key1() {
+    if (editorScala11.currentPress(1, 2)) {
+
+    }
+}
+
+var keymapScala11 = {
+    "Ctrl-S" :editorScala11Send,
+    "Cmd-S" :editorScala11Send,
+    "0": editorScala11Key0,
+    "1": editorScala11Key1
+};
+editorScala11.addKeyMap(keymapScala11);
 
