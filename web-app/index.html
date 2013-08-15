@@ -514,12 +514,12 @@
     </div>
 </li>
 
-<li class="slide" style="display: inline-block; margin:0 auto;" title="Groovy" timing="7000">
+<li class="slide" style="display: inline-block; margin:0 auto;" title="Groovy" timing="7">
     <div class="span8"  id="wordcloud">
     </div>
 </li>
 
-<li class="slide" style="display: inline-block; margin:0 auto;" title="Scala" timing="7000">
+<li class="slide" style="display: inline-block; margin:0 auto;" title="Scala" timing="9">
     <div class="span8" id="scala_wordcloud">
     </div>
 </li>
@@ -1481,7 +1481,7 @@ Scala11.ask
         ];
    
     var showCloudWithArgs = function(key,word_array) {
-      var height = screen.height;
+        var height = screen.height;
         var width = screen.width;
         $("#"+key+"_wordcloud").empty();
         $("#"+key+"_wordcloud").jQCloud(word_array,{
@@ -1546,7 +1546,9 @@ Scala11.ask
     var slide = new dslPrez.Slide();
     slide.enter("Groovy", showCloud);
     
-    slide.enter("Scala", showCloudWithArgs("scala", scala_word_array));
+    slide.enter("Scala", function() {
+        showCloudWithArgs("scala", scala_word_array)
+    });
 
     slide.enter("Groovy Script", showGroovyDuke, removeGroovyDuke);
     slide.enter("Run Groovy Script", showGroovyDuke, removeGroovyDuke);
