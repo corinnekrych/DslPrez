@@ -426,6 +426,40 @@ var keymapScala6 = {
 editorScala6.addKeyMap(keymapScala6);
 
 //------------------------------------------------------------------->
+// Scala7.
+// step 1 initial //TODO
+// step 2 final
+//------------------------------------------------------------------->
+var contentScala7 = "";
+
+
+var editorScala7 = new dslPrez.editor("editorScala7", contentScala7);
+
+function editorScala7Send() {
+    var value = editorScala7.getValue();
+    submitTurtleFormToScalaConsole(value, "#outputScala7", "canvasScala7");
+}
+
+function editorScala7Key0() {
+    editorScala7.currentPress(0, 2);
+    editorScala7.setValue(contentScala7);
+}
+
+function editorScala7Key1() {
+    if (editorScala7.currentPress(1, 2)) {
+
+    }
+}
+
+var keymapScala7 = {
+    "Ctrl-S" :editorScala7Send,
+    "Cmd-S" :editorScala7Send,
+    "0": editorScala7Key0,
+    "1": editorScala7Key1
+};
+editorScala7.addKeyMap(keymapScala7);
+
+//------------------------------------------------------------------->
 // Scala8.
 // step 1 initial //TODO
 // step 2 final

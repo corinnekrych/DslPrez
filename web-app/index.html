@@ -181,6 +181,25 @@
     </div>
 </li>
 
+<li class="slide" title="Agenda">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+        <ul>
+        <li>Objectives of this session</li>
+        <li>Some context</li>
+        <li>Short technical reminder on DSLs</li>
+        <li>Let's build the DSL step by step</li>
+        <li>Let's put everything together</li>
+        <li>Enlarging the scope</li>
+        <li>Testing, more features</li>
+        <li>Conclusion</li>
+        </ul>
+        </div>
+        But first ...
+    </div>
+</li>
+
 <li class="slide" title="Corinne">
     <div class="container-narrow">
         <hr>
@@ -633,15 +652,15 @@ ask "What's is your name?" assign to name
 <!------------------------------------------------------------------->
 <!-- Scala1. Script
 <!-- step 0 define base class for interpretation
-<!-- step 1 basic moveObject
-<!-- step 2 enrich moveObject
+<!-- step 1 basic move Object
+<!-- step 2 enrich move Object
 <!-- step 3 switch to JSR223
 <!-- step 4 use eval
 NOTE: JSR 223 simply wraps around the IMain so not very useful 
-especially with Classpath issues
+especially with Classpath issues - in the next slides we'll use IMain directly
 <!------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Scala Script" press="1 2 3 4">
-    <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc._
+    <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc.interpreter._
     </textarea>
 </li>
 
@@ -898,7 +917,7 @@ todo alternative with implicits verb/nouns
 </li>
 
 <!------------------------------------------------------------------
-Scala5. Structure my code
+Scala5. Building JSON
 
 ------------------------------------------------------------------>
 <li class="slide" style="text-align: left" title="Build JSON in Scala" press="-">
@@ -1004,32 +1023,6 @@ step 7: change new Position to add direction
     </div>
 </li>
 
-<!-------------------------------------------------------------------
-Scala6. Command chaining odd number
-------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Command Chaining Scala" press="1 2 3 4 5 6 7">
-    <textarea id="editorScala6" name="editorScala6">
-    </textarea>
-</li>
-
-
-<li class="slide" style="text-align: left" title="Out chaining Scala">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="code" id="outputScala6">
-                </pre>
-                <canvas id="canvasScala6" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
 <!------------------------------------------------------------------->
 <!-- slide Back to command chaining
 <!------------------------------------------------------------------->
@@ -1100,6 +1093,33 @@ step 4: change by method to return map
 </li>
 
 <!-------------------------------------------------------------------
+Scala6. Command chaining odd number
+------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="Command Chaining Scala" press="1 2 3 4 5 6 7">
+    <textarea id="editorScala6" name="editorScala6">
+    </textarea>
+</li>
+
+
+<li class="slide" style="text-align: left" title="Out chaining Scala">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala6">
+                </pre>
+                <canvas id="canvasScala6" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!-------------------------------------------------------------------
 Groovy7. Adding behavior to Integer
 step1: highlight dsl
 step2: move left by 2.steps
@@ -1125,6 +1145,33 @@ step7: replace with @Category annotation
                 <pre class="code" id="outputGroovy7">
                 </pre>
                 <canvas id="canvasGroovy7" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!-------------------------------------------------------------------
+Scala7. Adding behavior to Integer with implicits
+------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="Adding behavior to Integer in Scala" press="1 2 3 4 5 6 7">
+    <textarea id="editorScala7" name="editorScala7">
+    </textarea>
+</li>
+
+
+<li class="slide" style="text-align: left" title="Out Integer behavior in Scala">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala7">
+                </pre>
+                <canvas id="canvasScala7" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1351,33 +1398,6 @@ step5: add display map in DSL
 </li>
 
 
-<!-------------------------------------------------------------------
-Scala11.ask
-------------------------------------------------------------------->
-
-<li class="slide" style="text-align: left" title="Franklin wants to ask - Scala" press="1 2 3 4 5">
-    <textarea id="editorScala11" name="editorScala11">
-    </textarea>
-</li>
-
-<li class="slide" style="text-align: left" title="Ask in Scala">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="output" id="outputScala11">
-                </pre>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
-
 <!------------------------------------------------------------------->
 <!-- Groovy12. AST for user transform
 <!------------------------------------------------------------------->
@@ -1404,9 +1424,94 @@ Scala11.ask
     </div>
 </li>
 
+<!-------------------------------------------------------------------
+Scala11.ask
+------------------------------------------------------------------->
+
+<li class="slide" style="text-align: left" title="Franklin wants to ask in Scala" press="1 2 3 4 5">
+    <textarea id="editorScala11" name="editorScala11">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Ask in Scala">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="output" id="outputScala11">
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
 
 <!------------------------------------------------------------------->
-<!-- 12. References
+<!-- Let's play
+<!------------------------------------------------------------------->
+
+<li class="slide" title="Putting everything together">
+    <div class="container-narrow">
+        <hr>
+
+        <div style="text-align: center" class="jumbotron">
+Let's put everything together and let's play
+</div>
+        <hr>
+</div>
+</li>
+
+<!------------------------------------------------------------------->
+<!-- Going further
+<!------------------------------------------------------------------->
+
+<li class="slide" title="Enlarging the scope - Testing">
+    <div class="container-narrow">
+        <hr>
+
+        <div style="text-align: center" class="jumbotron">
+Testing the DSL
+</div>
+        <hr>
+</div>
+</li>
+
+<!------------------------------------------------------------------->
+<!-- Going further (2)
+<!------------------------------------------------------------------->
+
+<li class="slide" title="Enlarging the scope - Features">
+    <div class="container-narrow">
+        <hr>
+
+        <div style="text-align: center" class="jumbotron">
+        <ul>
+<li>
+Features not shown in this session in Scala
+<ul>
+<li>macros</li> 
+<li>LMS and Scala virtualization</li>
+<li>Type Classes</li>
+</ul>
+</li>
+<li>External DSLs with ANTLR, Parser Combinators, XText in Eclipse</li>
+<li>Visual DSLs</li>
+<li>DSL Internationalization</li>
+</li>
+</ul>
+</div>
+        <hr>
+</div>
+</li>
+
+
+<!------------------------------------------------------------------->
+<!-- References
 <!------------------------------------------------------------------->
 
 <li class="slide" title="References">
@@ -1436,13 +1541,31 @@ Scala11.ask
                 <div style="line-height: 150%;font-size:30px;font-weight:bold">Special Thanks</div>
                 <div style="line-height: 150%;font-size:20px;">Mathieu Bruyen, Sebastien Blanc, Fabrice Matrat</div>
                 <div style="line-height: 150%;font-size:30px;font-weight:bold">References</div>
-                <div style="line-height: 150%;font-size:20px;">Domain-Specific Languages</div>
-                <div style="line-height: 150%;font-size:20px;font-style:italic">Martin Fowler, with Rebecca Parsons</div>
-                <div style="line-height: 150%;font-size:20px;">Groovy for Domain-Specific Languages  </div>
-                <div style="line-height: 150%;font-size:20px;font-style:italic">Fergal Dearle</div>
-                <div style="line-height: 150%;font-size:20px;">Groovy in Action</div>
-                <div style="line-height: 150%;font-size:20px;font-style:italic">Guillaume Laforge, Paul King, Jon Skeet </div>
-            </div>
+                <table>
+                   <tr>
+                      <td>
+                         <div style="line-height: 150%;font-size:20px;">Domain-Specific Languages</div>
+                         <div style="line-height: 150%;font-size:20px;font-style:italic">Martin Fowler, with Rebecca Parsons</div>
+                         <div style="line-height: 150%;font-size:20px;">DSL in Action</div>
+                         <div style="line-height: 150%;font-size:20px;font-style:italic">Debasish Gosh</div>
+                      </td>
+                      <td>
+                        <div style="line-height: 150%;font-size:20px;">Groovy for Domain-Specific Languages  </div>
+                        <div style="line-height: 150%;font-size:20px;font-style:italic">Fergal Dearle</div>
+                        <div style="line-height: 150%;font-size:20px;">Groovy in Action</div>
+                        <div style="line-height: 150%;font-size:20px;font-style:italic">Guillaume Laforge, Paul King, Jon Skeet </div>
+                      </td>
+                      <td>
+                         <div style="line-height: 150%;font-size:20px;">Scala (rev2)</div>
+                         <div style="line-height: 150%;font-size:20px;font-style:italic">Martin Odersky, Bill Veners, Lex Spoon</div>
+                         <div style="line-height: 150%;font-size:20px;">Scala for the impatient</div>
+                         <div style="line-height: 150%;font-size:20px;font-style:italic">Name TODO</div>
+                         <div style="line-height: 150%;font-size:20px;">Scala in Depth</div>
+                         <div style="line-height: 150%;font-size:20px;font-style:italic">Josh Suereth</div>
+                      </td>
+                   </tr>
+           </table>
+           </div>
             <div class="span1">
             </div>
         </div>
@@ -1488,15 +1611,24 @@ Scala11.ask
 <script>
 
      var scala_word_array = [
-            {text: "Strong Typing", weight: 9},
-            {text: "less punctuation", weight: 7},
-            {text: "scripting", weight: 5},
-            {text: "binding", weight: 7},
-            {text: "Type Inference", weight: 1},
-            {text: "Type classes", weight: 7},
-            {text: "case class", weight: 8},
-            {text: "Higher order functions", weight: 6},
-            {text: "macros", weight: 4},
+            {text: "Syntactic sugar", weight: 6},
+            {text: "Traits mixin", weight: 4},
+            {text: "Extractor/Apply mechanism", weight: 6},
+            {text: "Pattern matching", weight: 8},
+            {text: "Partial functions", weight: 8},
+            {text: "Currying", weight: 7},
+            {text: "Strong Typing", weight: 6},
+            {text: "Implicit mechanisms", weight: 9},
+            {text: "Type Inference", weight: 3},
+            {text: "Type classes", weight: 4},
+            {text: "Abstract Types", weight: 5},
+            {text: "Case class", weight: 6},
+            {text: "Higher order functions", weight: 7},
+            {text: "Macros", weight: 2},
+            {text: "Parser Combinators", weight: 3},
+            {text: "Operators", weight: 4},
+            {text: "LMS, Scala virtualization", weight: 1},
+            {text: "Scripting support", weight: 6}
         ];
    
     var showCloudWithArgs = function(key,word_array) {
@@ -1610,6 +1742,9 @@ Scala11.ask
     slide.enter("Adding behavior to Integer", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output Integer behaviour", showGroovyDuke, removeGroovyDuke);
 
+    slide.enter("Adding behavior to Integer in Scala", showScalaDuke, removeScalaDuke);
+    slide.enter("Output Integer behaviour in Scala", showScalaDuke, removeScalaDuke);
+ 
     slide.enter("TypeChecked", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output TypeChecked", showGroovyDuke, removeGroovyDuke);
 
@@ -1631,11 +1766,11 @@ Scala11.ask
     slide.enter("Franklin wants to ask", showGroovyDuke, removeGroovyDuke);
     slide.enter("Ask in Groovy", showGroovyDuke, removeGroovyDuke);
 
-    slide.enter("Franklin wants to ask - Scala", showScalaDuke, removeScalaDuke);
-    slide.enter("Ask in Scala", showScalaDuke, removeScalaDuke);
-
     slide.enter("AST Tranformation", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output AST", showGroovyDuke, removeGroovyDuke);
+
+    slide.enter("Franklin wants to ask in Scala", showScalaDuke, removeScalaDuke);
+    slide.enter("Ask in Scala", showScalaDuke, removeScalaDuke);
 
     slide.start({
         progressbar: true,
