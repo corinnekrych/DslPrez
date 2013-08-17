@@ -1358,17 +1358,96 @@ editorScala8.addKeyMap(keymapScala8);
 // Scala9. Turn around - Timer set to 5 seconds
 //------------------------------------------------------------------->
 
-var editorScala9 = new dslPrez.editor("editorScala9","");
+var contentScala9 = "import _root_.net.liftweb.json._\n"
+                  + "import net.liftweb.json._\n"
+                  + "import net.liftweb.json.JsonDSL._\n"
+                  + "import scala.language.implicitConversions // to remove warnings caused by implicits\n"
+                  + "import scala.collection.mutable.ArrayBuffer\n\n"
+		  + "implicit class Times(i:Int) {\n"
+                  + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
+                  + "}\n\n"
+                  +"case class Step(i:Int) {\n"
+                  + "   def steps = this\n"
+	          + "   def step = this\n"
+                  +"}\n\n"
+	          +"implicit def toSteps(i:Int) = Step(i)\n\n"
+                  + "case class Position(x:Int, y:Int) {\n"
+                  + "   def left  = Position(x-1,y)\n"
+                  + "   def right = Position(x+1,y)\n"
+                  + "   def up    = Position(x,y+1)\n"
+                  + "   def down  = Position(x,y-1)\n"
+                  + "}\n\n"
+                  + "implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n\n"
+                  + "sealed trait Direction\n"
+                  + "case object left extends Direction\n"
+                  + "case object right extends Direction\n"
+                  + "case object up extends Direction\n"
+                  + "case object down extends Direction\n\n"
+                  + "class Turtle(var p:Position) {\n\n"
+                  + "   val turtleSteps = new ArrayBuffer[Position]\n"
+                  + "   turtleSteps += p\n\n"
+		  + "   var currentDirection:Option[Direction] = None\n\n"
+                  + "   def move(d: Direction) = {\n"
+                  + "      d match {\n"
+                  + "         case `left` => p=p.left\n"
+                  + "         case `right` => p=p.right\n"
+                  + "         case `up` => p=p.up\n"
+                  + "         case `down` => p=p.down\n"
+                  + "      }\n"
+                  + "      turtleSteps += p\n"
+		  + "      currentDirection = Some(d)\n"
+                  + "      this\n"
+                  + "   }\n\n"
+                  + "   def toJSon = compact(render(\"steps\"->turtleSteps))\n\n"
+		  + "   def by(step:Int) = {\n"
+                  + "      // We start at 1 because we already moved once\n" 
+                  + "      for (d <- currentDirection; i <- 1 until step) move(d)\n"
+                  + "      currentDirection = None // Will not work anymore after until next move call\n"
+		  + "      this\n"
+                  + "   }\n"
+                  + "}\n\n"
+                  + "val turtle = new Turtle(Position(1,1))\n\n"
+ 		  + "val I = turtle // emulate the binding\n\n"
+		  + "///////////////////\n"
+		  + "// Emulated DSL\n"
+		  + "///////////////////\n"
+		  + "I move right by 2\n"
+		  + "I move up by 3\n"
+		  + "////////////////////\n"
+		  + "// End DSL\n"
+		  + "////////////////////\n\n"
+                  + "val json = turtle.toJSon\n"
+		  + "println(json); json\n";
+
+var editorScala9 = new dslPrez.editor("editorScala9",contentScala9);
 
 function editorScala9TurtleSend() {
     var value = editorScala9.getValue();
-    //submitFormToScalaConsoleExtended(value, "#outputScala9", {scalaTimer:"5"});
     submitTurtleFormToScalaConsoleExtended(value, "#outputScala9", "canvasScala9", {scalaTimer:"5"});
+}
+
+function editorScala9Key0() {
+    editorScala9.currentPress(0, 1);
+    editorScala9.setValue(contentScala9);
+}
+
+function editorScala9Key1() {
+    if (editorScala9.currentPress(1, 1)) {
+       editorScala9.removeLine(68);
+       editorScala9.removeLine(68);
+       var value = "while(true) {\n"
+                 + "   I move right by 2\n"
+	         + "   I move left by 2\n"
+	         + "}\n";
+       editorScala9.replaceRange(value,{line:68,ch:0});
+   }
 }
 
 var keymapScala9 = {
     "Ctrl-S": editorScala9TurtleSend,
-    "Cmd-S": editorScala9TurtleSend
+    "Cmd-S": editorScala9TurtleSend,
+    "0": editorScala9Key0,
+    "1": editorScala9Key1
 };
 editorScala9.addKeyMap(keymapScala9);
 
@@ -1377,24 +1456,28 @@ editorScala9.addKeyMap(keymapScala9);
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
-var contentScala10 = "";
+var contentScala10 = contentScala9;
 
 
 var editorScala10 = new dslPrez.editor("editorScala10", contentScala10);
 
 function editorScala10Send() {
     var value = editorScala10.getValue();
-    submitTurtleFormToScalaConsoleExtended(value, "#outputScala10", "canvasScala10", "scalaSecurity:on");
+    submitTurtleFormToScalaConsoleExtended(value, "#outputScala10", "canvasScala10", {scalaSecurity:"on"});
 }
 
 function editorScala10Key0() {
-    editorScala10.currentPress(0, 2);
+    editorScala10.currentPress(0, 1);
     editorScala10.setValue(contentScala10);
 }
 
 function editorScala10Key1() {
-    if (editorScala10.currentPress(1, 2)) {
-
+    if (editorScala10.currentPress(1, 1)) {
+ editorScala10.removeLine(68);
+    editorScala10.removeLine(68);
+    var value = "I move right by 2\n"
+	      + "System.exit(0)\n";
+    editorScala10.replaceRange(value,{line:68,ch:0});
     }
 }
 
