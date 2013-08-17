@@ -4,7 +4,8 @@
 
 import scala.language.dynamics
 
-object MyObj extends Dynamic {
+//object MyObj extends Dynamic {
+class MyObj extends Dynamic {
 
   def applyDynamic(m: String)(args: Any*) = {
     println("applyDynamic "+m+" => "+args)

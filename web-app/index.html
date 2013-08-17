@@ -660,7 +660,7 @@ ask "What's is your name?" assign to name
 NOTE: JSR 223 simply wraps around the IMain so not very useful 
 especially with Classpath issues - in the next slides we'll use IMain directly
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Scala Script" press="1 2 3 4">
+<li class="slide" style="text-align: left" title="Scala Script" press="1 2 3 4 5">
     <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc.interpreter._
     </textarea>
 </li>
@@ -799,11 +799,12 @@ step 2 ad move right command
 
 <!-------------------------------------------------------------------
 Scala3. Binding for Scala
-step 1 add binding
-step 2 highlight val left="left"
-step 3 remove line
+step 1/2 add binding
+step 3/4 remove move object from script
+step 5/6/7 bind a function
+step 8 bind an instance/object - fail and explanations
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Binding in Scala" press="1 2 3">
+<li class="slide" style="text-align: left" title="Binding in Scala" press="1 2 3 4 5 6 7 8">
     <textarea id="editorScala3" name="editorScala3">
     </textarea>
 </li>
@@ -864,7 +865,7 @@ now ze go into the code!
 todo issue with bindings
 todo alternative with implicits verb/nouns
 ------------------------------------------------------------------>
-<li class="slide" style="text-align: left" title="Add Turtle in Scala" press="-">
+<li class="slide" style="text-align: left" title="Add Turtle in Scala" press="1 2 3 4 5 6 7 8">
     <textarea id="editorScala4" name="editorScala4">
     </textarea>
 </li>
@@ -1213,7 +1214,7 @@ step 2: add typechecked ext
 <!-------------------------------------------------------------------
 Scala8. Dynamics
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Dynamics in Scala" press="1 2">
+<li class="slide" style="text-align: left" title="Dynamics in Scala" press="1 2 3 4">
     <textarea id="editorScala8" name="editorScala8">
     </textarea>
 </li>
@@ -1228,7 +1229,6 @@ Scala8. Dynamics
                 <hr>
                 <pre class="code" id="outputScala8">
                 </pre>
-                <canvas id="canvasScala8" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 <hr>
             </div>
             <div class="span2">
@@ -1752,7 +1752,7 @@ Features not shown in this session in Scala
     slide.enter("TypeChecked in Groovy", showGroovyDuke, removeGroovyDuke);
     slide.enter("Output for TypeChecked in Groovy", showGroovyDuke, removeGroovyDuke);
 
-    slide.enter("Dynamics", showScalaDuke, removeScalaDuke);
+    slide.enter("Dynamics in Scala", showScalaDuke, removeScalaDuke);
     slide.enter("Output for Dynamics in Scala", showScalaDuke, removeScalaDuke);
     
     slide.enter("Franklin wants to turn around in Groovy", showGroovyDuke, removeGroovyDuke);

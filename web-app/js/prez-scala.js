@@ -83,8 +83,9 @@ function submitTurtleFormToScalaConsoleExtended(input, output, canvasId, additio
 //------------------------------------------------------------------->
 // Scala1. Script
 // step 1 define move method and move to left
-// step 2 replace with ScriptEngineManager
-// step 3 replace engine.eval
+// step 2 use left as a variable instead of String
+// step 2 replace IMain with ScriptEngineManager
+// step 3 replace interpreter.eval with engine.eval
 //------------------------------------------------------------------->
 var contentScala1 = "import scala.tools.nsc._\n"
     + "import scala.tools.nsc.interpreter._\n\n"
@@ -107,12 +108,12 @@ function editorScala1Send() {
 }
 
 function editorScala1Key0() {
-    editorScala1.currentPress(0, 4);
+    editorScala1.currentPress(0, 5);
     editorScala1.setValue(contentScala1);
 }
 
 function editorScala1Key1() {
-    if (editorScala1.currentPress(1, 4)) {
+    if (editorScala1.currentPress(1, 5)) {
         var value = 'val gameDSL = """  \n'
             + 'object move {\n'
             + '   def to(direction:String) = {\n'
@@ -129,7 +130,7 @@ function editorScala1Key1() {
 }
 
 function editorScala1Key2() {
-    if (editorScala1.currentPress(2, 4)) {
+    if (editorScala1.currentPress(2, 5)) {
 	for(var i = 9; i <17 ; i++) {
             editorScala1.removeLineClass(i, "background", "highlight");
         }
@@ -137,22 +138,20 @@ function editorScala1Key2() {
 
         var value = 'val left = "left"\nmove to left // Converts into move.to(left)\n'
         editorScala1.replaceRange(value, {line:15, ch:0});
-            editorScala1.addLineClass(15, "background", "highlight");
-editorScala1.addLineClass(16, "background", "highlight");
-
-	    
+        editorScala1.addLineClass(15, "background", "highlight");
+        editorScala1.addLineClass(16, "background", "highlight");
     }
 }
 function editorScala1Key3() {
-    if (editorScala1.currentPress(3, 4)) {
+    if (editorScala1.currentPress(3, 5)) {
         for(var i = 9; i <18 ; i++) {
             editorScala1.removeLineClass(i, "background", "highlight");
         }
         editorScala1.replaceRange("import javax.script.ScriptEngineManager", {line:0, ch:0}, {line:0});
-        var value = "// Two next steps necessary only inside Grails/Groovy\n"
-                    + "val engine = new ScriptEngineManager().getEngineByName(\"scala\")\n"
-                    + "val settings = engine.asInstanceOf[IMain].settings\n"
-                    + "settings.usejavacp.value = true\n";
+        var value = "val engine = new ScriptEngineManager().getEngineByName(\"scala\")\n"
+                  + "// Following steps necessary only inside Grails/Groovy\n"
+   	          + "val settings = engine.asInstanceOf[IMain].settings\n"
+                  + "settings.usejavacp.value = true\n";
         editorScala1.replaceRange(value, {line:3, ch:0}, {line:8});
         for(var i = 3; i <8 ; i++) {
             editorScala1.addLineClass(i, "background", "highlight");
@@ -161,7 +160,7 @@ function editorScala1Key3() {
 }
 
 function editorScala1Key4() {
-    if (editorScala1.currentPress(4, 4)) {
+    if (editorScala1.currentPress(4, 5)) {
         for(var i = 3; i <8 ; i++) {
             editorScala1.removeLineClass(i, "background", "highlight");
         }
@@ -172,9 +171,38 @@ function editorScala1Key4() {
 }
 
 function editorScala1Key5() {
-    if (editorScala1.currentPress(5, 4)) {
+    if (editorScala1.currentPress(5, 5)) {
         editorScala1.removeLineClass(19, "background", "highlight");
+        for (var i=9; i<16; i++) {
+	  editorScala1.removeLine(9);
+	}
+
+	var value = 'object move {\n'
+                  + '   def left = {\n'
+                  + '      println("Moving left")\n'
+                  + '   }\n'
+                  + '}\n'
+                  + 'move left // Converts into move.left()\n\n'
+		  + '// Generate a warning: to see it, add settings.feature.value = true\n\n'
+		  + '// warning: postfix operator left should be enabled\n'
+		  + '// by making the implicit value scala.language.postfixOps visible.\n'
+		  + '// This can be achieved by adding the import clause \'import scala.language.postfixOps\'\n'
+		  + '// or by setting the compiler option -language:postfixOps.\n'
+		  + '// See the Scala docs for value scala.language.postfixOps for a discussion\n'
+		  + '// why the feature should be explicitly enabled.\n';
+	    
+         editorScala1.replaceRange(value,{line:9, ch:0});
+         for (var i=9; i<15; i++) {
+	  editorScala1.addLineClass(i, "background", "highlight");
+	 }
     }
+}
+
+function editorScala1Key6() {
+    if (editorScala1.currentPress(6, 5)) {
+        for (var i=9; i<15; i++) {
+	  editorScala1.removeLineClass(i, "background", "highlight");
+	 }    }
 }
 
 var keymapScala1 = {
@@ -184,22 +212,24 @@ var keymapScala1 = {
     "3" : editorScala1Key3,
     "4" : editorScala1Key4,
     "5" : editorScala1Key5,
+    "6" : editorScala1Key6,
     "Ctrl-S" : editorScala1Send,
     "Cmd-S" : editorScala1Send
 };
 editorScala1.addKeyMap(keymapScala1);
 
 //------------------------------------------------------------------->
-// Scala2. Binding for Scala
+// Scala3. Binding for Scala
 // step 1 add binding
 // step 2 highlight val left="left"
 // step 3 remove line
+// Note: I use IMain because the ScripEngine has limitations with Bindings
 //------------------------------------------------------------------->
-var contentScala3 = "import javax.script._\n"
-            + "import scala.tools.nsc.interpreter._\n\n"
-            + "val engine = new ScriptEngineManager().getEngineByName(\"scala\")\n"
-            + "val settings = engine.asInstanceOf[IMain].settings\n"
+var contentScala3 = "import scala.tools.nsc.interpreter._\n"
+            + "import scala.tools.nsc._\n\n"
+            + "val settings = new Settings\n"
             + "settings.usejavacp.value = true \n\n"
+	    + "val engine = new IMain(settings)\n\n"
             + "val gameDSL = \"\"\"\n"
             + "object move {\n"
             + "    def to(direction:Object) = {\n"
@@ -221,43 +251,106 @@ function editorScala3Send() {
 }
 
 function editorScala3Key0() {
-    editorScala3.currentPress(0, 3);
+    editorScala3.currentPress(0, 8);
     editorScala3.setValue(contentScala3);
 }
 
 function editorScala3Key1() {
-    if (editorScala3.currentPress(1, 3)) {
-        var value = '\nval binding = engine.getBindings(ScriptContext.ENGINE_SCOPE)\n'
-                    + 'binding.put("left", "left")\n';
+    if (editorScala3.currentPress(1, 8)) {
+        var value = '\nengine.bind("left", "left")';
 
-        editorScala3.replaceRange(value, {line:6, ch:0});
-        for(var i = 7; i <9 ; i++) {
-            editorScala3.addLineClass(i, "background", "highlight");
-        }
+        editorScala3.replaceRange(value, {line:6});
+        editorScala3.addLineClass(7, "background", "highlight");
     }
 }
 
 function editorScala3Key2() {
-    if (editorScala3.currentPress(2, 3)) {
-        for(var i = 7; i <9 ; i++) {
-            editorScala3.removeLineClass(i, "background", "highlight");
-        }
-        editorScala3.addLineClass(16, "background", "highlight");
+    if (editorScala3.currentPress(2, 8)) {
+      editorScala3.removeLine(15)
     }
 }
 
 function editorScala3Key3() {
-    if (editorScala3.currentPress(3, 3)) {
-        editorScala3.replaceRange("", {line:16, ch:0}, {line:16});
-        editorScala3.addLineClass(16, "background", "highlight");
+    if (editorScala3.currentPress(3, 8)) {
+      editorScala3.removeLineClass(7, "background", "highlight");
+      var value ="\nobject move {\n"
+            + "    def to(direction:Object) = {\n"
+            + "        println(s\"Moving $direction\")\n"
+            + "    }\n"
+	    + "}\n";
+
+      editorScala3.replaceRange(value, {line:8});
+      for (var i=9; i<14 ;i++) {
+         editorScala3.addLineClass(i, "background", "highlight");
+      }
     }
 }
 
 function editorScala3Key4() {
-    if (editorScala3.currentPress(4, 3)) {
-        editorScala3.removeLineClass(16, "background", "highlight");
+    if (editorScala3.currentPress(4, 8)) {
+      for (var i=16; i<21; i++) {
+        editorScala3.removeLine(16)
+      }
     }
 }
+
+function editorScala3Key5() {
+    if (editorScala3.currentPress(5, 8)) {
+      for (var i=9; i<14 ;i++) {
+        editorScala3.removeLineClass(i, "background", "highlight");
+       }
+      editorScala3.replaceRange("\nengine.bind(\"move\",\"String=>Unit\",move.to _)\n", {line:14});
+      editorScala3.addLineClass(15, "background", "highlight");
+    }
+}
+
+function editorScala3Key6() {
+    if (editorScala3.currentPress(6, 8)) {
+         editorScala3.removeLineClass(15, "background", "highlight");
+      editorScala3.removeLine(18)
+	 editorScala3.replaceRange("move left //Fail because converted into move.left()\n", {line:18,ch:0});
+         editorScala3.addLineClass(18, "background", "highlight");   
+    }
+}
+
+function editorScala3Key7() {
+    if (editorScala3.currentPress(7, 8)) {
+         editorScala3.removeLineClass(15, "background", "highlight");
+         editorScala3.removeLine(18)
+	 editorScala3.replaceRange("move(left)\n", {line:18,ch:0});
+         editorScala3.addLineClass(18, "background", "highlight");
+   
+    }
+}
+
+
+function editorScala3Key8() {
+    if (editorScala3.currentPress(8, 8)) {
+      editorScala3.removeLineClass(18, "background", "highlight");
+      editorScala3.removeLine(15)       
+      editorScala3.replaceRange("\nengine.bind(\"move\",move)", {line:14});
+      editorScala3.addLineClass(15, "background", "highlight");
+
+         editorScala3.removeLine(18)
+	 var value = "move to left //Fail because of cp issues and some REPL limitations\n\n"
+	           + "//Working when binding done outside an interpreter.\n"
+		   + "//In following slides, we'll assume that we do the binding even if this is\n"
+		   + "//not shown in the code. It will be emulated and binding right mechanism will\n"
+		   + "//be displayed in comments";
+	 editorScala3.replaceRange(value, {line:18,ch:0});
+         editorScala3.addLineClass(18, "background", "highlight");
+      
+    }
+}
+
+
+function editorScala3Key9() {
+    if (editorScala3.currentPress(9, 8)) {
+   editorScala3.removeLineClass(15,"background", "highlight");
+      editorScala3.removeLineClass(18,"background", "highlight");
+    }
+}
+
 
 var keymapScala3 = {
     "0" : editorScala3Key0,
@@ -265,6 +358,11 @@ var keymapScala3 = {
     "2" : editorScala3Key2,
     "3" : editorScala3Key3,
     "4" : editorScala3Key4,
+    "5" : editorScala3Key5,
+    "6" : editorScala3Key6,
+    "7" : editorScala3Key7,
+    "8" : editorScala3Key8,
+    "9" : editorScala3Key9,
     "Ctrl-S" : editorScala3Send,
     "Cmd-S" : editorScala3Send
 };
@@ -275,31 +373,17 @@ editorScala3.addKeyMap(keymapScala3);
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
-var contentScala4 = "sealed trait Direction\n"
-            + "case object left extends Direction\n"
-            + "case object right extends Direction\n"
-            + "case object up extends Direction\n"
-            + "case object down extends Direction\n\n"
-            + "case class Position(x:Int, y:Int) {\n"
-            + "    def left  = Position(x-1,y)\n"
-            + "    def right = Position(x+1,y)\n"
-            + "    def up    = Position(x,y+1)\n"
-            + "    def down  = Position(x,y-1)\n"
-            + "}\n\n"
-            + "class Turtle(var p:Position) {\n"
-            + "    def move(d: Direction) = {\n"
-            + "        d match {\n"
-            + "    case `left` => p=p.left\n"
-            + "    case `right` => p=p.right\n"
-            + "    case `up` => p=p.up\n"
-            + "    case `down` => p=p.down\n"
-            + "    }\n"
-            + "    println(s\"x = ${p.x} and y = ${p.y}\")\n"
-            + "    this\n"
-            + "}\n"
-            + "}\n\n"
-            + "val t = new Turtle(Position(1,1))\n\n"
-            + "t move left\n";
+var contentScala4 = "import scala.tools.nsc.interpreter._\n\n"
+    + "val interpreter = new IMain()\n\n"
+    + "//////////////////////////\n"
+    + "// Here is the DSL script.\n"
+    + "val gameDSL = \"\"\"\n"
+    + "    move left\n"
+    + "    move right\n"
+    + "\"\"\"\n\n"
+    + "//////////////////////\n"
+    + "// Run DSL script.\n"
+    + "val result = interpreter.eval(gameDSL)\n";
 
 var editorScala4 = new dslPrez.editor("editorScala4", contentScala4);
 
@@ -309,14 +393,268 @@ function editorScala4Send() {
 }
 
 function editorScala4Key0() {
-    editorScala4.currentPress(0, 2);
-    editorScala4.setValue(contentScala4);
+    if (editorScala4.currentPress(0, 2)) {
+       editorScala4.setValue(contentScala4);
+    }
+}
+
+function editorScala4Key1() {
+    if (editorScala4.currentPress(1, 8)) {
+      var value = "case class Position(x:Int, y:Int) {\n"
+                + "   def left  = Position(x-1,y)\n"
+                + "   def right = Position(x+1,y)\n"
+                + "   def up    = Position(x,y+1)\n"
+                + "   def down  = Position(x,y-1)\n"
+                + "}\n\n";
+       editorScala4.replaceRange(value,{line:4,ch:0});
+       
+       for (var i=4;i<10;i++) {
+          editorScala4.addLineClass(i, "background", "highlight");   
+       }
+    }
+}
+
+function editorScala4Key2() {
+    if (editorScala4.currentPress(2, 8)) {
+      
+      for (var i=4;i<10;i++) {
+          editorScala4.removeLineClass(i, "background", "highlight");   
+       }
+
+       var value = "sealed trait Direction\n"
+                 + "case object left extends Direction\n"
+                 + "case object right extends Direction\n"
+                 + "case object up extends Direction\n"
+                 + "case object down extends Direction\n\n";
+       editorScala4.replaceRange(value,{line:11,ch:0});
+       
+       for (var i=11;i<16;i++) {
+          editorScala4.addLineClass(i, "background", "highlight");   
+       }
+    }
+}
+
+function editorScala4Key3() {
+    if(editorScala4.currentPress(3, 8)) {
+
+      for (var i=11;i<16;i++) {
+          editorScala4.removeLineClass(i, "background", "highlight");   
+       }
+
+      var value = "class Turtle(var p:Position) {\n"
+                 + "   def move(d: Direction) = {\n"
+                 + "      d match {\n"
+                 + "         case `left` => p=p.left\n"
+                 + "         case `right` => p=p.right\n"
+                 + "         case `up` => p=p.up\n"
+                 + "         case `down` => p=p.down\n"
+                 + "      }\n"
+                 + "      println(s\"x = ${p.x} and y = ${p.y}\")\n"
+                 + "      this\n"
+                 + "   }\n"
+                 + "}\n\n";
+           
+       editorScala4.replaceRange(value,{line:17,ch:0});
+       
+       for (var i=17;i<29;i++) {
+          editorScala4.addLineClass(i, "background", "highlight");   
+       }
+
+    }
+}
+
+function editorScala4Key4() {
+    if(editorScala4.currentPress(4, 8)) {
+       for (var i=17;i<29;i++) {
+          editorScala4.removeLineClass(i, "background", "highlight");   
+       }
+
+       var value="val turtle = new Turtle(Position(1,1))\n\n"
+       editorScala4.replaceRange(value,{line:30,ch:0});
+       editorScala4.addLineClass(30, "background", "highlight");
+    }
+}
+
+function editorScala4Key5() {
+    if(editorScala4.currentPress(5, 8)) {
+            editorScala4.removeLineClass(30, "background", "highlight");
+ 
+       var value="n.bind(\"turtle\",turtle)\n\n"
+       editorScala4.replaceRange(value,{line:32,ch:0});
+       
+       editorScala4.addLineClass(32, "background", "highlight");
+ 
+       var value2="turtle move left\n"
+                 +"turtle move right\n";
+		
+       editorScala4.removeLine(37);
+       editorScala4.removeLine(37);
+       editorScala4.replaceRange(value2,{line:37,ch:0});
+       
+       editorScala4.addLineClass(37, "background", "highlight");
+       editorScala4.addLineClass(38, "background", "highlight");
+
+    }
+}
+
+function editorScala4Key6() {
+    if(editorScala4.currentPress(6, 8)) {
+       editorScala4.removeLine(32);
+
+       var value="n.bind(\"I\",turtle)\n"
+       editorScala4.replaceRange(value,{line:32,ch:0});
+       
+       editorScala4.addLineClass(32, "background", "highlight");
+       
+       var value2="I move left\n"
+                 +"I move right\n";
+		
+       editorScala4.removeLine(37);
+       editorScala4.removeLine(37);
+       editorScala4.replaceRange(value2,{line:37,ch:0});
+       
+       editorScala4.addLineClass(37, "background", "highlight");
+       editorScala4.addLineClass(38, "background", "highlight");
+    }
+}
+
+function editorScala4Key7() {
+    if(editorScala4.currentPress(7, 8)) {
+      for (var i = 32; i<45; i++) {
+       editorScala4.removeLine(32);
+      }
+
+      var value= "val I = turtle\n\n"
+               + "// Here starts the DSL that is evaluated,\n"
+	       + "// the 'I' variable should be bound to turtle\n"
+  	       + "I move left\n"
+   	       + "I move right\n";
+	       
+       editorScala4.replaceRange(value,{line:32,ch:0});
+       
+       editorScala4.addLineClass(31, "background", "highlight");
+       editorScala4.addLineClass(35, "background", "highlight");
+       editorScala4.addLineClass(36, "background", "highlight");
+       
+    }
+}
+function editorScala4Key8() {
+    if(editorScala4.currentPress(8, 8)) {
+      var newContentScala4V0 = "import scala.tools.nsc.interpreter._\n\n"
+                           + "val interpreter = new IMain()\n\n"
+                           + "case class Position(x:Int, y:Int) {\n"
+                           + "   def left  = Position(x-1,y)\n"
+                           + "   def right = Position(x+1,y)\n"
+                           + "   def up    = Position(x,y+1)\n"
+                           + "   def down  = Position(x,y-1)\n"
+                           + "}\n\n"
+                           + "sealed trait Direction\n"
+                           + "case object left extends Direction\n"
+                           + "case object right extends Direction\n"
+                           + "case object up extends Direction\n"
+                           + "case object down extends Direction\n\n"
+                           + "class Turtle(var p:Position) {\n\n"
+                           + "   def move(d: Direction) = {\n"
+                           + "      d match {\n"
+                           + "         case `left` => p=p.left\n"
+                           + "         case `right` => p=p.right\n"
+                           + "         case `up` => p=p.up\n"
+                           + "         case `down` => p=p.down\n"
+                           + "      }\n"
+                           + "      println(s\"x = ${p.x} and y = ${p.y}\")\n"
+                           + "      this\n"
+                           + "   }\n"
+                           + "}\n\n"
+                           + "val turtle = new Turtle(Position(1,1))\n\n"
+			   + "interpreter.interpret(\"def move(d: Direction)(implicit t:Turtle) = t.move(d)\")\n\n"
+			   + "interpreter.bind(\"turtle\",turtle)\n\n"
+			   + "interpreter.eval(\"implicit val implicitTurtle = turtle\")\n\n"
+			   + "//////////////////////////\n"
+                           + "// Here is the DSL script.\n"
+                           + "val gameDSL = \"\"\"\n"
+                           + "    move(left)\n"
+                           + "    move (right)\n"
+                           + "\"\"\"\n\n"
+                           + "//////////////////////\n"
+                           + "// Run DSL script.\n"
+                           + "val result = interpreter.eval(gameDSL)\n";
+
+    var newContentScala4 = "val turtle = new Turtle(Position(1,1))\n\n"
+			   + "interpreter.interpret(\"def move(d: Direction)(implicit t:Turtle) = t.move(d)\")\n\n"
+			   + "interpreter.bind(\"turtle\",turtle)\n\n"
+			   + "interpreter.eval(\"implicit val implicitTurtle = turtle\")\n\n"
+			   + "//////////////////////////\n"
+                           + "// Here is the DSL script.\n"
+                           + "val gameDSL = \"\"\"\n"
+                           + "    move(left)   // Remember the move left translated in move.left()\n"
+                           + "    move (right) // Can also use the definition of a move object with left\n"
+			   + "                 // and right directions but very cumbersome\n"
+                           + "\"\"\"\n\n"
+                           + "//////////////////////\n"
+                           + "// Run DSL script.\n"
+                           + "val result = interpreter.eval(gameDSL)\n";
+     editorScala4.setValue(newContentScala4);
+    }
+}
+
+function editorScala4Key9() {
+    if(editorScala4.currentPress(9, 8)) {
+      var endContentScala4 = "//import scala.tools.nsc.interpreter._\n\n"
+                           + "//val interpreter = new IMain()\n\n"
+                           + "case class Position(x:Int, y:Int) {\n"
+                           + "   def left  = Position(x-1,y)\n"
+                           + "   def right = Position(x+1,y)\n"
+                           + "   def up    = Position(x,y+1)\n"
+                           + "   def down  = Position(x,y-1)\n"
+                           + "}\n\n"
+                           + "sealed trait Direction\n"
+                           + "case object left extends Direction\n"
+                           + "case object right extends Direction\n"
+                           + "case object up extends Direction\n"
+                           + "case object down extends Direction\n\n"
+                           + "class Turtle(var p:Position) {\n"
+                           + "   def move(d: Direction) = {\n"
+                           + "      d match {\n"
+                           + "         case `left` => p=p.left\n"
+                           + "         case `right` => p=p.right\n"
+                           + "         case `up` => p=p.up\n"
+                           + "         case `down` => p=p.down\n"
+                           + "      }\n"
+                           + "      println(s\"x = ${p.x} and y = ${p.y}\")\n"
+                           + "      this\n"
+                           + "   }\n"
+                           + "}\n\n"
+                           + "val turtle = new Turtle(Position(1,1))\n\n"
+			   + "//interpreter.bind(\"I\",turtle)\n\n"
+                           + "//////////////////////////\n"
+                           + "// Here is the DSL script.\n"
+                           + "//val gameDSL = \"\"\"\n"
+                           + "//   move left\n"
+                           + "//   move right\n"
+                           + "//\"\"\"\n\n"
+                           + "//////////////////////\n"
+                           + "// Run DSL script.\n"
+                           + "//val result = interpreter.eval(gameDSL)\n\n"
+			   + "val I = turtle\n\n"
+			   + "I move left\n"
+			   + "I move right\n";
+     editorScala4.setValue(endContentScala4);
+    }
 }
 
 var keymapScala4 = {
     "Ctrl-S" :editorScala4Send,
     "Cmd-S" :editorScala4Send,
-    "0": editorScala4Key0
+    "0": editorScala4Key0,
+    "1": editorScala4Key1,
+    "2": editorScala4Key2,
+    "3": editorScala4Key3,
+    "4": editorScala4Key4,
+    "5": editorScala4Key5,
+    "6": editorScala4Key6,    
+    "7": editorScala4Key7,
+    "8": editorScala4Key8,
+    "9": editorScala4Key9    
 };
 editorScala4.addKeyMap(keymapScala4);
 
@@ -325,7 +663,7 @@ editorScala4.addKeyMap(keymapScala4);
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
-var contentScala5 = "implicit class Times(i:Int) {\n"
+var OldcontentScala5 = "implicit class Times(i:Int) {\n"
     + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
     + "}\n\n"
     + "sealed trait Direction\n"
@@ -364,7 +702,46 @@ var contentScala5 = "implicit class Times(i:Int) {\n"
     + "}\n"
     + "compact(render(\"steps\"->t.steps.reverse))\n";
 
-
+var contentScala5 = "//import scala.tools.nsc.interpreter._\n\n"
+                        + "//val interpreter = new IMain()\n\n"
+                        + "case class Position(x:Int, y:Int) {\n"
+                        + "   def left  = Position(x-1,y)\n"
+                        + "   def right = Position(x+1,y)\n"
+                        + "   def up    = Position(x,y+1)\n"
+                        + "   def down  = Position(x,y-1)\n"
+                        + "}\n\n"
+                        + "sealed trait Direction\n"
+                        + "case object left extends Direction\n"
+                        + "case object right extends Direction\n"
+                        + "case object up extends Direction\n"
+                        + "case object down extends Direction\n\n"
+                        + "class Turtle(var p:Position) {\n"
+                        + "   def move(d: Direction) = {\n"
+                        + "      d match {\n"
+                        + "         case `left` => p=p.left\n"
+                        + "         case `right` => p=p.right\n"
+                        + "         case `up` => p=p.up\n"
+                        + "         case `down` => p=p.down\n"
+                        + "      }\n"
+                        + "      println(s\"x = ${p.x} and y = ${p.y}\")\n"
+                        + "      this\n"
+                        + "   }\n"
+                        + "}\n\n"
+                        + "val turtle = new Turtle(Position(1,1))\n\n"
+                        + "//interpreter.bind(\"I\",turtle)\n\n"
+                        + "//////////////////////////\n"
+                        + "// Here is the DSL script.\n"
+                        + "//val gameDSL = \"\"\"\n"
+                        + "//   move left\n"
+                        + "//   move right\n"
+                        + "//\"\"\"\n\n"
+                        + "//////////////////////\n"
+                        + "// Run DSL script.\n"
+                        + "//val result = interpreter.eval(gameDSL)\n\n"
+			+ "val I = turtle\n\n"
+			+ "I move left\n"
+                        + "I move right\n";
+    
 var editorScala5 = new dslPrez.editor("editorScala5", contentScala5);
 
 function editorScala5Send() {
@@ -426,7 +803,7 @@ var keymapScala6 = {
 editorScala6.addKeyMap(keymapScala6);
 
 //------------------------------------------------------------------->
-// Scala7.
+// Scala7. Add behaviour to Integer - Usage of implicits
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
@@ -464,44 +841,96 @@ editorScala7.addKeyMap(keymapScala7);
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
-var contentScala8 = "";
+var contentScala8 = "import scala.language.dynamics\n\n"
+                  + "object MyDynamicObject extends Dynamic {//works also with class\n\n"
+                  + "   def applyDynamic(m: String)(args: Any*) = {\n"
+                  + "     println(\"applyDynamic \"+m+\" => \"+args)\n"
+                  + "   }\n\n"
+                  + "   def applyDynamicNamed(m: String)(args: (String,Any)*) = {\n"
+                  + "     println(\"applyDynamicNamed \"+m+\" => \"+args)\n"
+                  + "   }\n\n"
+                  + "   def selectDynamic(m: String) = {\n"
+                  + "     println(\"selectDynamic \"+m)\n"
+                  + "   }\n\n"
+                  + "   def updateDynamic(m:String)(arg:Any) = {\n"
+                  + "     println(\"updateDynamic \"+m+\" => \"+arg)\n"
+                  + "   }\n"
+                  + "}\n\n";
 
 
 var editorScala8 = new dslPrez.editor("editorScala8", contentScala8);
 
 function editorScala8Send() {
     var value = editorScala8.getValue();
-    submitTurtleFormToScalaConsole(value, "#outputScala8", "canvasScala8");
+    submitFormToScalaConsole(value, "#outputScala8");
 }
 
 function editorScala8Key0() {
-    editorScala8.currentPress(0, 2);
+    editorScala8.currentPress(0, 4);
     editorScala8.setValue(contentScala8);
 }
 
 function editorScala8Key1() {
-    if (editorScala8.currentPress(1, 2)) {
-
+    if (editorScala8.currentPress(1,4)) {
+      editorScala8.replaceRange("\nMyDynamicObject.aProp //selectDynamic aProp",{line:22})
+      editorScala8.addLineClass(23, "background", "highlight");    
     }
 }
 
+function editorScala8Key2() {
+    if (editorScala8.currentPress(2,4)) {
+      editorScala8.removeLine(22)
+      editorScala8.replaceRange("\nMyDynamicObject.aProp=\"someValue\" //updateDynamic",{line:22})
+        editorScala8.addLineClass(23, "background", "highlight");    
+    }
+}
+
+function editorScala8Key3() {
+    if (editorScala8.currentPress(3,4)) {
+    editorScala8.removeLine(22)
+      editorScala8.replaceRange("\nMyDynamicObject.aMeth(\"someArgs\") //applyDynamic",{line:22})
+      editorScala8.addLineClass(23, "background", "highlight");    
+    }
+}
+
+function editorScala8Key4() {
+    if (editorScala8.currentPress(4,4)) {
+       editorScala8.removeLine(22)
+   editorScala8.replaceRange("\nMyDynamicObject.aMathod(myArg=\"an Arg\") //applyDynamicNamed",{line:22})
+     editorScala8.addLineClass(23, "background", "highlight");    
+    }
+}
+
+function editorScala8Key5() {
+    if (editorScala8.currentPress(5,4)) {
+      editorScala8.removeLine(22)
+      editorScala8.removeLineClass(23, "background", "highlight");    
+    }
+}
+                                                                                                                                                    
 var keymapScala8 = {
     "Ctrl-S" :editorScala8Send,
     "Cmd-S" :editorScala8Send,
     "0": editorScala8Key0,
-    "1": editorScala8Key1
+    "1": editorScala8Key1,
+    "2": editorScala8Key2,
+    "3": editorScala8Key3,
+    "4": editorScala8Key4,
+    "5": editorScala8Key5,
 };
+
 editorScala8.addKeyMap(keymapScala8);
 
 //------------------------------------------------------------------->
-// Scala9. Turn around
+// Scala9. Turn around - Timer set to 5 seconds
 //------------------------------------------------------------------->
 
 var editorScala9 = new dslPrez.editor("editorScala9","");
 
 function editorScala9TurtleSend() {
     var value = editorScala9.getValue();
-    submitFormToScalaConsoleExtended(value, "#outputScala9", {scalaTimer:"5"});
+    //submitFormToScalaConsoleExtended(value, "#outputScala9", {scalaTimer:"5"});
+    submitTurtleFormToScalaConsoleExtended(value, "#outputScala9", "canvasScala9", {scalaTimer:"5"});
 }
 
 var keymapScala9 = {
@@ -522,7 +951,7 @@ var editorScala10 = new dslPrez.editor("editorScala10", contentScala10);
 
 function editorScala10Send() {
     var value = editorScala10.getValue();
-    submitTurtleFormToScalaConsole(value, "#outputScala10", "canvasScala10");
+    submitTurtleFormToScalaConsoleExtended(value, "#outputScala10", "canvasScala10", "scalaSecurity:on");
 }
 
 function editorScala10Key0() {
