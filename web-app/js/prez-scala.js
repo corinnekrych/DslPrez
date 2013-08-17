@@ -1158,42 +1158,101 @@ function editorScala7Send() {
 }
 
 function editorScala7Key0() {
-    editorScala7.currentPress(0, 4);
+    editorScala7.currentPress(0, 5);
     editorScala7.setValue(contentScala7);
 }
 
 function editorScala7Key1() {
-    if (editorScala7.currentPress(1, 4)) {
-      value = "implicit class Times(i:Int) {\n"
-            + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
-            + "}\n\n";
-
+    if (editorScala7.currentPress(1, 5)) {
+       editorScala7.removeLine(57);
+       editorScala7.removeLine(57);
+       var value = "3.times {\n"
+	         + "   I move right by 2\n"
+		 + "   I move up\n"
+		 + "}\n";
+       editorScala7.replaceRange(value,{line:57,ch:0});
+       editorScala7.addLineClass(57, "background", "highlight");
+       editorScala7.addLineClass(58, "background", "highlight");
+       editorScala7.addLineClass(59, "background", "highlight");
+       editorScala7.addLineClass(60, "background", "highlight");
     }
 }
 
 function editorScala7Key2() {
-    if (editorScala7.currentPress(2, 4)) {
-// Ex times
+    if (editorScala7.currentPress(2, 5)) {
+      editorScala7.removeLineClass(57, "background", "highlight");
+       editorScala7.removeLineClass(58, "background", "highlight");
+       editorScala7.removeLineClass(59, "background", "highlight");
+       editorScala7.removeLineClass(60, "background", "highlight");
+      value = "implicit class Times(i:Int) {\n"
+            + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
+            + "}\n\n";
+      editorScala7.replaceRange(value,{line:6,ch:0});
+       editorScala7.addLineClass(7, "background", "highlight");
+       editorScala7.addLineClass(8, "background", "highlight");
+       editorScala7.addLineClass(6, "background", "highlight");
+
     }
 }
 
+
 function editorScala7Key3() {
-    if (editorScala7.currentPress(3, 4)) {
-      value2 = "implicit def toSteps(i:Int) = Step(i)"
-      value1 = "case class Step(i:Int) {\n"
-             + "   def steps = this\n"
-             +"}\n\n"
+    if (editorScala7.currentPress(3, 5)) {
+       editorScala7.removeLineClass(7, "background", "highlight");
+       editorScala7.removeLineClass(8, "background", "highlight");
+       editorScala7.removeLineClass(6, "background", "highlight");
+        editorScala7.removeLine(62);
+       editorScala7.removeLine(62);
+       var value = "   I move right by 2.steps\n"
+		 + "   I move up by 1.step\n";
+       editorScala7.replaceRange(value,{line:62,ch:0});
+       editorScala7.addLineClass(62, "background", "highlight");
+       editorScala7.addLineClass(63, "background", "highlight");
+     
     }
 }
 
 function editorScala7Key4() {
-    if (editorScala7.currentPress(4, 4)) {
-    // Ex steps/step
+    if (editorScala7.currentPress(4, 5)) {            
+       editorScala7.removeLineClass(62, "background", "highlight");
+       editorScala7.removeLineClass(63, "background", "highlight");
+
+      value = "\ncase class Step(i:Int) {\n"
+             + "   def steps = this\n"
+	     + "   def step = this\n"
+             +"}\n\n"
+	     +"implicit def toSteps(i:Int) = Step(i)\n\n";
+       editorScala7.replaceRange(value,{line:10,ch:0});
+ editorScala7.addLineClass(11, "background", "highlight");
+ editorScala7.addLineClass(12, "background", "highlight");
+ editorScala7.addLineClass(13, "background", "highlight");
+ editorScala7.addLineClass(14, "background", "highlight");
+  editorScala7.addLineClass(15, "background", "highlight");
+  editorScala7.addLineClass(16, "background", "highlight");
+     
     }
 }
 
 function editorScala7Key5() {
-    if (editorScala7.currentPress(5, 4)) {
+    if (editorScala7.currentPress(5, 5)) {
+      editorScala7.removeLineClass(11, "background", "highlight");
+ editorScala7.removeLineClass(12, "background", "highlight");
+ editorScala7.removeLineClass(13, "background", "highlight");
+ editorScala7.removeLineClass(14, "background", "highlight");
+  editorScala7.removeLineClass(15, "background", "highlight");
+  editorScala7.removeLineClass(16, "background", "highlight");
+  editorScala7.removeLine(54);
+  editorScala7.removeLine(54);
+editorScala7.removeLine(54);
+
+  value = "   def by(step:Step) = {\n"
+        + "      // We start at 1 because we already moved once\n"
+        + "      for (d <- currentDirection; i <- 1 until step.i) move(d)\n";
+       editorScala7.replaceRange(value,{line:54,ch:0});
+ editorScala7.addLineClass(54, "background", "highlight");
+ editorScala7.addLineClass(55, "background", "highlight");
+ editorScala7.addLineClass(56, "background", "highlight");
+
     }
 }
 
@@ -1204,7 +1263,9 @@ var keymapScala7 = {
     "1": editorScala7Key1,
     "2": editorScala7Key2,
     "3": editorScala7Key3,
-    "4": editorScala7Key4
+    "4": editorScala7Key4,
+    "5": editorScala7Key5
+  
 };
 editorScala7.addKeyMap(keymapScala7);
 
