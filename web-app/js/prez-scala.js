@@ -1440,6 +1440,10 @@ function editorScala9Key1() {
 	         + "   I move left by 2\n"
 	         + "}\n";
        editorScala9.replaceRange(value,{line:68,ch:0});
+       editorScala9.addLineClass(68, "background", "highlight");    
+       editorScala9.addLineClass(69, "background", "highlight");    
+       editorScala9.addLineClass(70, "background", "highlight");    
+       editorScala9.addLineClass(71, "background", "highlight");    
    }
 }
 
@@ -1473,11 +1477,13 @@ function editorScala10Key0() {
 
 function editorScala10Key1() {
     if (editorScala10.currentPress(1, 1)) {
- editorScala10.removeLine(68);
-    editorScala10.removeLine(68);
-    var value = "I move right by 2\n"
-	      + "System.exit(0)\n";
-    editorScala10.replaceRange(value,{line:68,ch:0});
+       editorScala10.removeLine(68);
+       editorScala10.removeLine(68);
+       var value = "I move right by 2\n"
+	         + "System.exit(0)\n";
+       editorScala10.replaceRange(value,{line:68,ch:0});
+       editorScala10.addLineClass(68, "background", "highlight");    
+       editorScala10.addLineClass(69, "background", "highlight");     
     }
 }
 
