@@ -219,7 +219,7 @@ var keymapScala1 = {
 editorScala1.addKeyMap(keymapScala1);
 
 //------------------------------------------------------------------->
-// Scala3. Binding for Scala
+// Scala3. Binding for Scala TODO Detail steps
 // step 1 add binding
 // step 2 highlight val left="left"
 // step 3 remove line
@@ -369,8 +369,8 @@ var keymapScala3 = {
 editorScala3.addKeyMap(keymapScala3);
 
 //------------------------------------------------------------------->
-// Scala4. Structure my code
-// step 1 initial //TODO
+// Scala4. Structure my code TODO Detail steps
+// step 1 initial 
 // step 2 final
 //------------------------------------------------------------------->
 var contentScala4 = "import scala.tools.nsc.interpreter._\n\n"
@@ -659,88 +659,50 @@ var keymapScala4 = {
 editorScala4.addKeyMap(keymapScala4);
 
 //------------------------------------------------------------------->
-// Scala5. Build JSON
-// step 1 initial //TODO
+// Scala5. Build JSON TODO Detail steps
+// step 1 initial
 // step 2 final
 //------------------------------------------------------------------->
-var OldcontentScala5 = "implicit class Times(i:Int) {\n"
-    + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
-    + "}\n\n"
-    + "sealed trait Direction\n"
-    + "case object left extends Direction\n"
-    + "case object right extends Direction\n"
-    + "case object up extends Direction\n"
-    + "case object down extends Direction\n\n"
-    + "case class Position(x:Int, y:Int) {\n"
-    + "  def left  = Position(x-1,y)\n"
-    + "  def right = Position(x+1,y)\n"
-    + "  def up    = Position(x,y+1)\n"
-    + "  def down  = Position(x,y-1)\n"
-    + "}\n\n"
-    + "class Turtle(position:Position) {\n"
-    + "  var steps = position #:: Stream.empty\n"
-    + "  def move(d: Direction) = {\n"
-    + "    d match {\n"
-    + "      case `left` => steps = Stream(steps.head.left) ++ steps\n"
-    + "      case `right` => steps = Stream(steps.head.right) ++ steps\n"
-    + "      case `up` => steps = Stream(steps.head.up) ++ steps\n"
-    + "      case `down` => steps = Stream(steps.head.down) ++ steps\n"
-    + "    }\n"
-    + "    println(s\"x = ${steps.head.x} and y = ${steps.head.y}\")\n"
-    + "    this\n"
-    + "  }\n"
-    + "}\n\n"
-    + "import _root_.net.liftweb.json._\n"
-    + "import net.liftweb.json._\n"
-    + "import net.liftweb.json.JsonDSL._\n\n"
-    + "import scala.language.implicitConversions\n"
-    + "implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n"
-    + "val t = new Turtle(Position(1,1))\n\n"
-    + "3.times {\n"
-    + "  t move up\n"
-    + "  t move right\n"
-    + "}\n"
-    + "compact(render(\"steps\"->t.steps.reverse))\n";
 
 var contentScala5 = "//import scala.tools.nsc.interpreter._\n\n"
-                        + "//val interpreter = new IMain()\n\n"
-                        + "case class Position(x:Int, y:Int) {\n"
-                        + "   def left  = Position(x-1,y)\n"
-                        + "   def right = Position(x+1,y)\n"
-                        + "   def up    = Position(x,y+1)\n"
-                        + "   def down  = Position(x,y-1)\n"
-                        + "}\n\n"
-                        + "sealed trait Direction\n"
-                        + "case object left extends Direction\n"
-                        + "case object right extends Direction\n"
-                        + "case object up extends Direction\n"
-                        + "case object down extends Direction\n\n"
-                        + "class Turtle(var p:Position) {\n"
-                        + "   def move(d: Direction) = {\n"
-                        + "      d match {\n"
-                        + "         case `left` => p=p.left\n"
-                        + "         case `right` => p=p.right\n"
-                        + "         case `up` => p=p.up\n"
-                        + "         case `down` => p=p.down\n"
-                        + "      }\n"
-                        + "      println(s\"x = ${p.x} and y = ${p.y}\")\n"
-                        + "      this\n"
-                        + "   }\n"
-                        + "}\n\n"
-                        + "val turtle = new Turtle(Position(1,1))\n\n"
-                        + "//interpreter.bind(\"I\",turtle)\n\n"
-                        + "//////////////////////////\n"
-                        + "// Here is the DSL script.\n"
-                        + "//val gameDSL = \"\"\"\n"
-                        + "//   move left\n"
-                        + "//   move right\n"
-                        + "//\"\"\"\n\n"
-                        + "//////////////////////\n"
-                        + "// Run DSL script.\n"
-                        + "//val result = interpreter.eval(gameDSL)\n\n"
-			+ "val I = turtle\n\n"
-			+ "I move left\n"
-                        + "I move right\n";
+                  + "//val interpreter = new IMain()\n\n"
+                  + "case class Position(x:Int, y:Int) {\n"
+                  + "   def left  = Position(x-1,y)\n"
+                  + "   def right = Position(x+1,y)\n"
+                  + "   def up    = Position(x,y+1)\n"
+                  + "   def down  = Position(x,y-1)\n"
+                  + "}\n\n"
+                  + "sealed trait Direction\n"
+                  + "case object left extends Direction\n"
+                  + "case object right extends Direction\n"
+                  + "case object up extends Direction\n"
+                  + "case object down extends Direction\n\n"
+                  + "class Turtle(var p:Position) {\n"
+                  + "   def move(d: Direction) = {\n"
+                  + "      d match {\n"
+                  + "         case `left` => p=p.left\n"
+                  + "         case `right` => p=p.right\n"
+                  + "         case `up` => p=p.up\n"
+                  + "         case `down` => p=p.down\n"
+                  + "      }\n"
+                  + "      println(s\"x = ${p.x} and y = ${p.y}\")\n"
+                  + "      this\n"
+                  + "   }\n"
+                  + "}\n\n"
+                  + "val turtle = new Turtle(Position(1,1))\n\n"
+                  + "//interpreter.bind(\"I\",turtle)\n\n"
+                  + "//////////////////////////\n"
+                  + "// Here is the DSL script.\n"
+                  + "//val gameDSL = \"\"\"\n"
+                  + "//   move left\n"
+                  + "//   move right\n"
+                  + "//\"\"\"\n\n"
+                  + "//////////////////////\n"
+                  + "// Run DSL script.\n"
+                  + "//val result = interpreter.eval(gameDSL)\n\n"
+		  + "val I = turtle\n\n"
+	          + "I move left\n"
+                  + "I move right\n";
     
 var editorScala5 = new dslPrez.editor("editorScala5", contentScala5);
 
@@ -750,13 +712,144 @@ function editorScala5Send() {
 }
 
 function editorScala5Key0() {
-    editorScala5.currentPress(0, 2);
+    editorScala5.currentPress(0, 7);
     editorScala5.setValue(contentScala5);
 }
 
 function editorScala5Key1() {
-    if (editorScala5.currentPress(1, 2)) {
+    if (editorScala5.currentPress(1, 7)) {
+      editorScala5.replaceRange("import scala.collection.mutable.ArrayBuffer\n\n",{line:0, ch:0});      
+      editorScala5.replaceRange("\n   val steps = new ArrayBuffer[Position]\n   steps += p\n\n",{line:20, ch:0});
 
+      editorScala5.addLineClass(0, "background", "highlight");
+      editorScala5.addLineClass(21, "background", "highlight");
+      editorScala5.addLineClass(22, "background", "highlight");
+    }
+}
+
+function editorScala5Key2() {
+    if (editorScala5.currentPress(2,7)) {
+            
+      editorScala5.removeLineClass(0, "background", "highlight");
+      editorScala5.removeLineClass(21, "background", "highlight");
+      editorScala5.removeLineClass(22, "background", "highlight");
+
+      editorScala5.addLineClass(31, "background", "highlight");
+    }
+}
+
+function editorScala5Key3() {
+    if (editorScala5.currentPress(3,7)) {
+        editorScala5.removeLine(31);
+        editorScala5.replaceRange("      steps += p\n",{line:31, ch:0});
+        editorScala5.addLineClass(31, "background", "highlight");
+    }
+}
+
+function editorScala5Key4() {
+    if (editorScala5.currentPress(4,7)) {
+      editorScala5.removeLineClass(31, "background", "highlight");
+
+      var value = "import _root_.net.liftweb.json._\n"
+                + "import net.liftweb.json._\n"
+                + "import net.liftweb.json.JsonDSL._\n\n"
+                + "import scala.language.implicitConversions // to remove warnings caused by implicits\n\n";
+
+      editorScala5.replaceRange(value,{line:0, ch:0});
+      editorScala5.addLineClass(0, "background", "highlight");
+      editorScala5.addLineClass(1, "background", "highlight");
+      editorScala5.addLineClass(2, "background", "highlight");
+      editorScala5.addLineClass(3, "background", "highlight");
+      editorScala5.addLineClass(4, "background", "highlight");
+    }
+}
+
+function editorScala5Key5() {
+    if (editorScala5.currentPress(5,7)) {
+      editorScala5.removeLineClass(0, "background", "highlight");
+      editorScala5.removeLineClass(1, "background", "highlight");
+      editorScala5.removeLineClass(2, "background", "highlight");
+      editorScala5.removeLineClass(3, "background", "highlight");
+      editorScala5.removeLineClass(4, "background", "highlight");
+      
+      editorScala5.replaceRange("\nimplicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n",{line:18, ch:0});
+
+      editorScala5.addLineClass(19, "background", "highlight");
+    }
+}
+
+function editorScala5Key6() {
+    if (editorScala5.currentPress(6, 7)) {
+        editorScala5.removeLineClass(19, "background", "highlight");
+        editorScala5.replaceRange("\n   def toJSon = compact(render(\"steps\"->steps))\n",{line:42, ch:0});
+	editorScala5.addLineClass(43, "background", "highlight");
+    }
+}
+
+function editorScala5Key7() {
+    if (editorScala5.currentPress(7, 7)) {
+        editorScala5.removeLineClass(43, "background", "highlight");
+        editorScala5.replaceRange("\nval result = I.toJSon\nprintln(result)\nresult",{line:65, ch:0});
+        editorScala5.addLineClass(66, "background", "highlight");   
+	editorScala5.addLineClass(67, "background", "highlight");
+	editorScala5.addLineClass(68, "background", "highlight");
+    }
+}
+
+
+function editorScala5Key8() {
+    if (editorScala5.currentPress(8,7)) {
+        editorScala5.removeLineClass(66, "background", "highlight");   
+	editorScala5.removeLineClass(67, "background", "highlight");
+	editorScala5.removeLineClass(68, "background", "highlight");
+
+var endContentScala5 = "import _root_.net.liftweb.json._\n"
+                     + "import net.liftweb.json._\n"
+                     + "import net.liftweb.json.JsonDSL._\n\n"
+                     + "import scala.language.implicitConversions // to remove warnings caused by implicits\n\n"
+                     + "import scala.collection.mutable.ArrayBuffer\n\n"
+                     + "import scala.tools.nsc.interpreter._\n\n"
+                     + "val interpreter = new IMain()\n\n"
+                     + "case class Position(x:Int, y:Int) {\n"
+                     + "   def left  = Position(x-1,y)\n"
+                     + "   def right = Position(x+1,y)\n"
+                     + "   def up    = Position(x,y+1)\n"
+                     + "   def down  = Position(x,y-1)\n"
+                     + "}\n\n"
+                     + "implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n\n"
+                     + "sealed trait Direction\n"
+                     + "case object left extends Direction\n"
+                     + "case object right extends Direction\n"
+                     + "case object up extends Direction\n"
+                     + "case object down extends Direction\n\n"
+                     + "class Turtle(var p:Position) {\n\n"
+                     + "   val steps = new ArrayBuffer[Position]\n"
+                     + "   steps += p\n\n"
+                     + "   def move(d: Direction) = {\n"
+                     + "      d match {\n"
+                     + "         case `left` => p=p.left\n"
+                     + "         case `right` => p=p.right\n"
+                     + "         case `up` => p=p.up\n"
+                     + "         case `down` => p=p.down\n"
+                     + "      }\n"
+                     + "      steps += p\n"
+                     + "      this\n"
+                     + "   }\n\n"
+                     + "   def toJSon = compact(render(\"steps\"->steps))\n"
+                     + "}\n\n"
+                     + "val turtle = new Turtle(Position(1,1))\n"
+                     + "interpreter.bind(\"I\",turtle)\n\n"
+                     + "//////////////////////////\n"
+                     + "// Here is the DSL script.\n"
+                     + "val gameDSL = \"\"\"\n"
+                     + "   I move left\n"
+                     + "   I move right\n"
+                     + "\"\"\"\n\n"
+                     + "//////////////////////\n"
+                     + "// Run DSL script.\n"
+                     + "val result = interpreter.eval(gameDSL)\n\n"
+                     + "turtle.toJSon";
+      editorScala5.setValue(endContentScala5);
     }
 }
 
@@ -764,7 +857,14 @@ var keymapScala5 = {
     "Ctrl-S" :editorScala5Send,
     "Cmd-S" :editorScala5Send,
     "0": editorScala5Key0,
-    "1": editorScala5Key1
+    "1": editorScala5Key1,
+    "2": editorScala5Key2,
+    "3": editorScala5Key3,
+    "4": editorScala5Key4,
+    "5": editorScala5Key5,
+    "6": editorScala5Key6,
+    "7": editorScala5Key7,
+    "8": editorScala5Key8
 };
 editorScala5.addKeyMap(keymapScala5);
 
@@ -773,7 +873,51 @@ editorScala5.addKeyMap(keymapScala5);
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
-var contentScala6 = "";
+
+var contentScala6 = "import _root_.net.liftweb.json._\n"
+                  + "import net.liftweb.json._\n"
+                  + "import net.liftweb.json.JsonDSL._\n"
+                  + "import scala.language.implicitConversions // to remove warnings caused by implicits\n"
+                  + "import scala.collection.mutable.ArrayBuffer\n\n"
+                  + "case class Position(x:Int, y:Int) {\n"
+                  + "   def left  = Position(x-1,y)\n"
+                  + "   def right = Position(x+1,y)\n"
+                  + "   def up    = Position(x,y+1)\n"
+                  + "   def down  = Position(x,y-1)\n"
+                  + "}\n\n"
+                  + "implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n\n"
+                  + "sealed trait Direction\n"
+                  + "case object left extends Direction\n"
+                  + "case object right extends Direction\n"
+                  + "case object up extends Direction\n"
+                  + "case object down extends Direction\n\n"
+                  + "class Turtle(var p:Position) {\n\n"
+                  + "   val turtleSteps = new ArrayBuffer[Position]\n"
+                  + "   turtleSteps += p\n\n"
+                  + "   def move(d: Direction) = {\n"
+                  + "      d match {\n"
+                  + "         case `left` => p=p.left\n"
+                  + "         case `right` => p=p.right\n"
+                  + "         case `up` => p=p.up\n"
+                  + "         case `down` => p=p.down\n"
+                  + "      }\n"
+                  + "      turtleSteps += p\n"
+                  + "      this\n"
+                  + "   }\n\n"
+                  + "   def toJSon = compact(render(\"steps\"->turtleSteps))\n"
+                  + "}\n\n"
+                  + "val turtle = new Turtle(Position(1,1))\n\n"
+ 		  + "val I = turtle // emulate the binding\n\n"
+		  + "///////////////////\n"
+		  + "// Emulated DSL\n"
+		  + "///////////////////\n"
+		  + "I move left\n"
+		  + "I move right\n"
+		  + "////////////////////\n"
+		  + "// End DSL\n"
+		  + "////////////////////\n\n"
+                  + "val json = turtle.toJSon\n"
+		  + "println(json); json\n"
 
 
 var editorScala6 = new dslPrez.editor("editorScala6", contentScala6);
@@ -784,21 +928,167 @@ function editorScala6Send() {
 }
 
 function editorScala6Key0() {
-    editorScala6.currentPress(0, 2);
+    editorScala6.currentPress(0, 6);
     editorScala6.setValue(contentScala6);
 }
 
 function editorScala6Key1() {
-    if (editorScala6.currentPress(1, 2)) {
-
+    if (editorScala6.currentPress(1, 6)) {
+       editorScala6.removeLine(47);
+       editorScala6.removeLine(47);
+       var value = "I move left by 2\n"
+		 + "I move right by 3\n";
+       editorScala6.replaceRange(value,{line:47,ch:0});
+       editorScala6.addLineClass(47, "background", "highlight");
+       editorScala6.addLineClass(48, "background", "highlight");
     }
 }
+
+function editorScala6Key2() {
+    if (editorScala6.currentPress(2,6)) {
+       editorScala6.removeLineClass(47, "background", "highlight");
+       editorScala6.removeLineClass(48, "background", "highlight");
+
+      var value = "\n   var currentDirection:Option[Direction] = None\n";
+      editorScala6.replaceRange(value,{line:25,ch:0});
+      editorScala6.addLineClass(26, "background", "highlight");
+    }
+}
+
+function editorScala6Key3() {
+    if (editorScala6.currentPress(3, 6)) {
+      editorScala6.removeLineClass(26, "background", "highlight");
+      var value = "      currentDirection = Some(d)\n";
+      editorScala6.replaceRange(value,{line:35,ch:0});
+      editorScala6.addLineClass(35, "background", "highlight");
+    }
+}
+
+function editorScala6Key4() {
+    if (editorScala6.currentPress(4,6)) {
+       editorScala6.removeLineClass(35, "background", "highlight");
+
+       var value = "\n   def by(step:Int) = {\n"
+                 + "      // We start at 1 because we already moved once\n" 
+                 + "      for (d <- currentDirection; i <- 1 until step) move(d)\n"
+                 + "      currentDirection = None // Will not work anymore after until next move call\n"
+		 + "      this\n"
+                 + "   }\n";
+      editorScala6.replaceRange(value,{line:41,ch:0});
+      editorScala6.addLineClass(42, "background", "highlight");
+      editorScala6.addLineClass(43, "background", "highlight");
+      editorScala6.addLineClass(44, "background", "highlight");
+      editorScala6.addLineClass(45, "background", "highlight");
+      editorScala6.addLineClass(46, "background", "highlight");
+      editorScala6.addLineClass(47, "background", "highlight");
+    }
+}
+
+function editorScala6Key5() {
+    if (editorScala6.currentPress(5,6)) {
+        editorScala6.removeLineClass(42, "background", "highlight");
+      editorScala6.removeLineClass(43, "background", "highlight");
+      editorScala6.removeLineClass(44, "background", "highlight");
+      editorScala6.removeLineClass(45, "background", "highlight");
+      editorScala6.removeLineClass(46, "background", "highlight");
+      editorScala6.removeLineClass(47, "background", "highlight");
+       editorScala6.removeLine(57);
+       editorScala6.removeLine(57);
+       var value = "I move right by 2 steps //\\n means stop chaining alternatively use ;\n\n"
+		 + "I move up by 1 step\n"
+       editorScala6.replaceRange(value,{line:57,ch:0});
+       editorScala6.addLineClass(57, "background", "highlight");
+       editorScala6.addLineClass(58, "background", "highlight");
+       editorScala6.addLineClass(59, "background", "highlight");
+    }
+}
+
+function editorScala6Key6() {
+    if (editorScala6.currentPress(6, 6)) {
+      editorScala6.removeLineClass(57, "background", "highlight");
+       editorScala6.removeLineClass(58, "background", "highlight");
+       editorScala6.removeLineClass(59, "background", "highlight");
+       var value = "\n   def step = () //do nothing - Return Unit to stop chaining\n"
+                 + "   def steps = () //do nothing - Return Unit to stop chaining\n";
+      editorScala6.replaceRange(value,{line:48,ch:0});
+      editorScala6.addLineClass(49, "background", "highlight");
+      editorScala6.addLineClass(50, "background", "highlight");
+    }
+}
+
+
+function editorScala6Key7() {
+    if (editorScala6.currentPress(7, 6)) {
+      editorScala6.removeLineClass(49, "background", "highlight");
+      editorScala6.removeLineClass(50, "background", "highlight");
+      var endContentScala6 = "import _root_.net.liftweb.json._\n"
+                  + "import net.liftweb.json._\n"
+                  + "import net.liftweb.json.JsonDSL._\n"
+                  + "import scala.language.implicitConversions // to remove warnings caused by implicits\n"
+                  + "import scala.collection.mutable.ArrayBuffer\n\n"
+                  + "case class Position(x:Int, y:Int) {\n"
+                  + "   def left  = Position(x-1,y)\n"
+                  + "   def right = Position(x+1,y)\n"
+                  + "   def up    = Position(x,y+1)\n"
+                  + "   def down  = Position(x,y-1)\n"
+                  + "}\n\n"
+                  + "implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n\n"
+                  + "sealed trait Direction\n"
+                  + "case object left extends Direction\n"
+                  + "case object right extends Direction\n"
+                  + "case object up extends Direction\n"
+                  + "case object down extends Direction\n\n"
+                  + "class Turtle(var p:Position) {\n\n"
+                  + "   val turtleSteps = new ArrayBuffer[Position]\n"
+                  + "   turtleSteps += p\n\n"
+		  + "   var currentDirection:Option[Direction] = None\n\n"
+                  + "   def move(d: Direction) = {\n"
+                  + "      d match {\n"
+                  + "         case `left` => p=p.left\n"
+                  + "         case `right` => p=p.right\n"
+                  + "         case `up` => p=p.up\n"
+                  + "         case `down` => p=p.down\n"
+                  + "      }\n"
+                  + "      turtleSteps += p\n"
+		  + "      currentDirection = Some(d)\n"
+                  + "      this\n"
+                  + "   }\n\n"
+                  + "   def toJSon = compact(render(\"steps\"->turtleSteps))\n\n"
+		  + "   def by(step:Int) = {\n"
+                  + "      // We start at 1 because we already moved once\n" 
+                  + "      for (d <- currentDirection; i <- 1 until step) move(d)\n"
+                  + "      currentDirection = None // Will not work anymore after until next move call\n"
+		  + "      this\n"
+                  + "   }\n"
+                  + "}\n\n"
+                  + "val turtle = new Turtle(Position(1,1))\n\n"
+ 		  + "val I = turtle // emulate the binding\n\n"
+		  + "///////////////////\n"
+		  + "// Emulated DSL\n"
+		  + "///////////////////\n"
+		  + "I move right by 2\n"
+		  + "I move up by 3\n"
+		  + "////////////////////\n"
+		  + "// End DSL\n"
+		  + "////////////////////\n\n"
+                  + "val json = turtle.toJSon\n"
+		  + "println(json); json\n";
+		  editorScala6.setValue(endContentScala6);
+    }
+}
+
 
 var keymapScala6 = {
     "Ctrl-S" :editorScala6Send,
     "Cmd-S" :editorScala6Send,
     "0": editorScala6Key0,
-    "1": editorScala6Key1
+    "1": editorScala6Key1,    
+    "2": editorScala6Key2,
+    "3": editorScala6Key3,
+    "4": editorScala6Key4,
+    "5": editorScala6Key5,
+    "6": editorScala6Key6,
+    "7": editorScala6Key7
 };
 editorScala6.addKeyMap(keymapScala6);
 
@@ -807,9 +1097,59 @@ editorScala6.addKeyMap(keymapScala6);
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
-var contentScala7 = "";
-
-
+var contentScala7 = "import _root_.net.liftweb.json._\n"
+                  + "import net.liftweb.json._\n"
+                  + "import net.liftweb.json.JsonDSL._\n"
+                  + "import scala.language.implicitConversions // to remove warnings caused by implicits\n"
+                  + "import scala.collection.mutable.ArrayBuffer\n\n"
+                  + "case class Position(x:Int, y:Int) {\n"
+                  + "   def left  = Position(x-1,y)\n"
+                  + "   def right = Position(x+1,y)\n"
+                  + "   def up    = Position(x,y+1)\n"
+                  + "   def down  = Position(x,y-1)\n"
+                  + "}\n\n"
+                  + "implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n\n"
+                  + "sealed trait Direction\n"
+                  + "case object left extends Direction\n"
+                  + "case object right extends Direction\n"
+                  + "case object up extends Direction\n"
+                  + "case object down extends Direction\n\n"
+                  + "class Turtle(var p:Position) {\n\n"
+                  + "   val turtleSteps = new ArrayBuffer[Position]\n"
+                  + "   turtleSteps += p\n\n"
+		  + "   var currentDirection:Option[Direction] = None\n\n"
+                  + "   def move(d: Direction) = {\n"
+                  + "      d match {\n"
+                  + "         case `left` => p=p.left\n"
+                  + "         case `right` => p=p.right\n"
+                  + "         case `up` => p=p.up\n"
+                  + "         case `down` => p=p.down\n"
+                  + "      }\n"
+                  + "      turtleSteps += p\n"
+		  + "      currentDirection = Some(d)\n"
+                  + "      this\n"
+                  + "   }\n\n"
+                  + "   def toJSon = compact(render(\"steps\"->turtleSteps))\n\n"
+		  + "   def by(step:Int) = {\n"
+                  + "      // We start at 1 because we already moved once\n" 
+                  + "      for (d <- currentDirection; i <- 1 until step) move(d)\n"
+                  + "      currentDirection = None // Will not work anymore after until next move call\n"
+		  + "      this\n"
+                  + "   }\n"
+                  + "}\n\n"
+                  + "val turtle = new Turtle(Position(1,1))\n\n"
+ 		  + "val I = turtle // emulate the binding\n\n"
+		  + "///////////////////\n"
+		  + "// Emulated DSL\n"
+		  + "///////////////////\n"
+		  + "I move right by 2\n"
+		  + "I move up by 3\n"
+		  + "////////////////////\n"
+		  + "// End DSL\n"
+		  + "////////////////////\n\n"
+                  + "val json = turtle.toJSon\n"
+		  + "println(json); json\n";
+    
 var editorScala7 = new dslPrez.editor("editorScala7", contentScala7);
 
 function editorScala7Send() {
@@ -818,13 +1158,42 @@ function editorScala7Send() {
 }
 
 function editorScala7Key0() {
-    editorScala7.currentPress(0, 2);
+    editorScala7.currentPress(0, 4);
     editorScala7.setValue(contentScala7);
 }
 
 function editorScala7Key1() {
-    if (editorScala7.currentPress(1, 2)) {
+    if (editorScala7.currentPress(1, 4)) {
+      value = "implicit class Times(i:Int) {\n"
+            + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
+            + "}\n\n";
 
+    }
+}
+
+function editorScala7Key2() {
+    if (editorScala7.currentPress(2, 4)) {
+// Ex times
+    }
+}
+
+function editorScala7Key3() {
+    if (editorScala7.currentPress(3, 4)) {
+      value2 = "implicit def toSteps(i:Int) = Step(i)"
+      value1 = "case class Step(i:Int) {\n"
+             + "   def steps = this\n"
+             +"}\n\n"
+    }
+}
+
+function editorScala7Key4() {
+    if (editorScala7.currentPress(4, 4)) {
+    // Ex steps/step
+    }
+}
+
+function editorScala7Key5() {
+    if (editorScala7.currentPress(5, 4)) {
     }
 }
 
@@ -832,12 +1201,15 @@ var keymapScala7 = {
     "Ctrl-S" :editorScala7Send,
     "Cmd-S" :editorScala7Send,
     "0": editorScala7Key0,
-    "1": editorScala7Key1
+    "1": editorScala7Key1,
+    "2": editorScala7Key2,
+    "3": editorScala7Key3,
+    "4": editorScala7Key4
 };
 editorScala7.addKeyMap(keymapScala7);
 
 //------------------------------------------------------------------->
-// Scala8.
+// Scala8. Dynamics
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
