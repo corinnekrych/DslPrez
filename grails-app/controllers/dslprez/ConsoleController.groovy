@@ -77,7 +77,7 @@ class ConsoleController {
 
       // Temporary solution
       if (params.scalaTimer != null) {
-         dslprez.timer.MyTimer.reinit()
+         dslprez.scala.timer.MyTimer.reinit()
          evaluator.withPluginOption("dslplugin:timerValue:"+params.scalaTimer)
       }
       if (params.scalaSecurity != null) {

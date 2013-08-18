@@ -84,8 +84,11 @@ function submitTurtleFormToScalaConsoleExtended(input, output, canvasId, additio
 // Scala1. Script
 // step 1 define move method and move to left
 // step 2 use left as a variable instead of String
-// step 2 replace IMain with ScriptEngineManager
-// step 3 replace interpreter.eval with engine.eval
+// step 3 replace IMain with ScriptEngineManager
+// step 4 replace interpreter.eval with engine.eval
+// step 5 alternative for move
+//NOTE: JSR 223 simply wraps around the IMain so not very useful 
+//especially with Classpath issues - in the next slides we'll use IMain directly
 //------------------------------------------------------------------->
 var contentScala1 = "import scala.tools.nsc._\n"
     + "import scala.tools.nsc.interpreter._\n\n"
@@ -219,10 +222,11 @@ var keymapScala1 = {
 editorScala1.addKeyMap(keymapScala1);
 
 //------------------------------------------------------------------->
-// Scala3. Binding for Scala TODO Detail steps
-// step 1 add binding
-// step 2 highlight val left="left"
-// step 3 remove line
+// Scala3. Binding for Scala
+// steps 1/2 add binding
+// steps 3/4/5 extract move
+// steps 5/6/7 Function binding
+// step  8 Object binding
 // Note: I use IMain because the ScripEngine has limitations with Bindings
 //------------------------------------------------------------------->
 var contentScala3 = "import scala.tools.nsc.interpreter._\n"
@@ -369,10 +373,15 @@ var keymapScala3 = {
 editorScala3.addKeyMap(keymapScala3);
 
 //------------------------------------------------------------------->
-// Scala4. Structure my code TODO Detail steps
-// step 1 initial 
-// step 2 final
+// Scala4. Now we start to code the game
+// step 1 Position 
+// step 2 Direction
+// step 3 Turtle
+// steps 4/5/6 create the DSL with the bindings - fail due to cp issues
+// step 7 workaround for the presentation
+// step 8 alternate solution with implicits
 //------------------------------------------------------------------->
+
 var contentScala4 = "import scala.tools.nsc.interpreter._\n\n"
     + "val interpreter = new IMain()\n\n"
     + "//////////////////////////\n"
@@ -659,9 +668,10 @@ var keymapScala4 = {
 editorScala4.addKeyMap(keymapScala4);
 
 //------------------------------------------------------------------->
-// Scala5. Build JSON TODO Detail steps
-// step 1 initial
-// step 2 final
+// Scala5. Build JSon
+// steps 1/2/3 creation of steps recording
+// steps 4/5/6 generation of JSon
+// step 7 display result
 //------------------------------------------------------------------->
 
 var contentScala5 = "//import scala.tools.nsc.interpreter._\n\n"
@@ -870,8 +880,8 @@ editorScala5.addKeyMap(keymapScala5);
 
 //------------------------------------------------------------------->
 // Scala6.
-// step 1 initial //TODO
-// step 2 final
+// steps 1/2/3/4 create by method with a lastDirection option variable
+// steps 5/6 add step/steps keyword
 //------------------------------------------------------------------->
 
 var contentScala6 = "import _root_.net.liftweb.json._\n"
@@ -1094,8 +1104,8 @@ editorScala6.addKeyMap(keymapScala6);
 
 //------------------------------------------------------------------->
 // Scala7. Add behaviour to Integer - Usage of implicits
-// step 1 initial //TODO
-// step 2 final
+// steps 1/2 add times to Integer
+// steps 3/4/5 create steps case class
 //------------------------------------------------------------------->
 var contentScala7 = "import _root_.net.liftweb.json._\n"
                   + "import net.liftweb.json._\n"
@@ -1271,8 +1281,10 @@ editorScala7.addKeyMap(keymapScala7);
 
 //------------------------------------------------------------------->
 // Scala8. Dynamics
-// step 1 initial //TODO
-// step 2 final
+// step 1 Test select dynamic
+// step 2 Test update dynamic
+// step 3 Test apply dynamic
+// step 4 Test apply dynamic named
 //------------------------------------------------------------------->
 var contentScala8 = "import scala.language.dynamics\n\n"
                   + "object MyDynamicObject extends Dynamic {//works also with class\n\n"
@@ -1456,10 +1468,9 @@ var keymapScala9 = {
 editorScala9.addKeyMap(keymapScala9);
 
 //------------------------------------------------------------------->
-// Scala10.
-// step 1 initial //TODO
-// step 2 final
+// Scala10. Sneaky - Franklin plays with fire
 //------------------------------------------------------------------->
+
 var contentScala10 = contentScala9;
 
 

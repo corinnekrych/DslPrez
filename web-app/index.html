@@ -652,14 +652,15 @@ ask "What's is your name?" assign to name
 
 <!------------------------------------------------------------------->
 <!-- Scala1. Script
-<!-- step 0 define base class for interpretation
-<!-- step 1 basic move Object
-<!-- step 2 enrich move Object
-<!-- step 3 switch to JSR223
-<!-- step 4 use eval
+<!-- step 1 define move method and move to left
+<!-- step 2 use left as a variable instead of String
+<!-- step 3 replace IMain with ScriptEngineManager
+<!-- step 4 replace interpreter.eval with engine.eval
+<!-- step 5 alternative for move
 NOTE: JSR 223 simply wraps around the IMain so not very useful 
 especially with Classpath issues - in the next slides we'll use IMain directly
 <!------------------------------------------------------------------->
+
 <li class="slide" style="text-align: left" title="Scala Script" press="1 2 3 4 5">
     <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc.interpreter._
     </textarea>
@@ -757,7 +758,8 @@ move left
 </li>
 
 <!-------------------------------------------------------------------
-Scala2. Base Classfor Scala
+<!-- Scala2. Base Classfor Scala 
+<!-- No equivalence
 ------------------------------------------------------------------->
  <li class="slide" style="text-align: left" title="Base class in Scala">
   <div class="container-narrow">
@@ -798,12 +800,14 @@ step 2 ad move right command
 </li>
 
 <!-------------------------------------------------------------------
-Scala3. Binding for Scala
-step 1/2 add binding
-step 3/4 remove move object from script
-step 5/6/7 bind a function
-step 8 bind an instance/object - fail and explanations
-------------------------------------------------------------------->
+<!-- Scala3. Binding for Scala
+<!-- steps 1/2 add binding
+<!-- steps 3/4/5 extract move
+<!-- steps 5/6/7 Function binding
+<!-- step  8 Object binding
+<!-- Note: I use IMain because the ScripEngine has limitations with Bindings
+<!--------------------------------------------------------------------->
+
 <li class="slide" style="text-align: left" title="Binding in Scala" press="1 2 3 4 5 6 7 8">
     <textarea id="editorScala3" name="editorScala3">
     </textarea>
@@ -860,11 +864,15 @@ step 7 remove def left in GameScript
 </li>
 
 <!------------------------------------------------------------------
-Scala4. Structure my code
-now ze go into the code!
-todo issue with bindings
-todo alternative with implicits verb/nouns
------------------------------------------------------------------->
+<!-- Scala4. Now we start to code the game
+<!-- step 1 Position 
+<!-- step 2 Direction
+<!-- step 3 Turtle
+<!-- steps 4/5/6 create the DSL with the bindings - fail due to cp issues
+<!-- step 7 workaround for the presentation
+<!-- step 8 alternate solution with implicits
+<!-------------------------------------------------------------------->
+
 <li class="slide" style="text-align: left" title="Add Turtle in Scala" press="1 2 3 4 5 6 7 8">
     <textarea id="editorScala4" name="editorScala4">
     </textarea>
@@ -895,6 +903,7 @@ todo alternative with implicits verb/nouns
 <!-- step 4 up the stairs
 <!-- cmd-S for text output cmd-D for canvas output
 <!------------------------------------------------------------------->
+
 <li class="slide" style="text-align: left" title="Build JSON in Groovy" press="1 2 3 4 5 6 7">
     <textarea id="editorGroovy5" name="editorGroovy5">
 </textarea>
@@ -919,9 +928,12 @@ todo alternative with implicits verb/nouns
 </li>
 
 <!------------------------------------------------------------------
-Scala5. Building JSON
+<!-- Scala5. Build JSon
+<!-- steps 1/2/3 creation of steps recording
+<!-- steps 4/5/6 generation of JSon
+<!-- step 7 display result
+<!-------------------------------------------------------------------->
 
------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Build JSON in Scala" press="1 2 3 4 5 6 7">
     <textarea id="editorScala5" name="editorScala5">
     </textarea>
@@ -1095,8 +1107,11 @@ step 4: change by method to return map
 </li>
 
 <!-------------------------------------------------------------------
-Scala6. Command chaining odd number
-------------------------------------------------------------------->
+<!-- Scala6. Command chaining odd number
+<!-- steps 1/2/3/4 create by method with a lastDirection option variable
+<!-- steps 5/6 add step/steps keyword
+<!--------------------------------------------------------------------->
+
 <li class="slide" style="text-align: left" title="Command Chaining in Scala" press="1 2 3 4 5 6">
     <textarea id="editorScala6" name="editorScala6">
     </textarea>
@@ -1156,8 +1171,11 @@ step7: replace with @Category annotation
 </li>
 
 <!-------------------------------------------------------------------
-Scala7. Adding behavior to Integer with implicits
-------------------------------------------------------------------->
+<!-- Scala7. Add behaviour to Integer - Usage of implicits
+<!-- steps 1/2 add times to Integer
+<!-- steps 3/4/5 create steps case class
+<!--------------------------------------------------------------------->
+
 <li class="slide" style="text-align: left" title="Adding behaviour to Integer in Scala" press="1 2 3 4 5">
     <textarea id="editorScala7" name="editorScala7">
     </textarea>
@@ -1212,8 +1230,13 @@ step 2: add typechecked ext
 </li>
 
 <!-------------------------------------------------------------------
-Scala8. Dynamics
+<!-- Scala8. Dynamics
+<!-- step 1 Test select dynamic
+<!-- step 2 Test update dynamic
+<!-- step 3 Test apply dynamic
+<!-- step 4 Test apply dynamic named
 <!------------------------------------------------------------------->
+
 <li class="slide" style="text-align: left" title="Dynamics in Scala" press="1 2 3 4">
     <textarea id="editorScala8" name="editorScala8">
     </textarea>
@@ -1239,12 +1262,8 @@ Scala8. Dynamics
 
 
 <!-------------------------------------------------------------------
-Groovy9. Turn around
-step1: highlight dsl
-step2: modify dsl with infinite loop
-step3: highlight ASTTransformationCustomizer
-step4: add TimeInterrupt
-------------------------------------------------------------------->
+<!-- Groovy9. Turn around - Timer set to 5s
+<!--------------------------------------------------------------------->
 
 <li class="slide" style="text-align: left" title="Franklin wants to turn around in Groovy" press="1 2 3 4">
     <textarea id="editorGroovy9" name="editorGroovy9">
@@ -1271,8 +1290,8 @@ step4: add TimeInterrupt
 </li>
 
 <!-------------------------------------------------------------------
-Scala9. Turn around
-------------------------------------------------------------------->
+<!-- Scala9. Turn around - Timer set to 5s
+<!--------------------------------------------------------------------->
 
 <li class="slide" style="text-align: left" title="Franklin wants to turn around in Scala" press="1">
     <textarea id="editorScala9" name="editorScala9">
@@ -1331,8 +1350,8 @@ step 3: add SecureASTCustomizer
 </li>
 
 <!-------------------------------------------------------------------
-Scala10. Sneaky
-------------------------------------------------------------------->
+<!-- Scala10. Sneaky - Franklin plays with fire
+<!--------------------------------------------------------------------->
 
 <li class="slide" style="text-align: left" title="Franklin wants to play with fire in Scala" press="1">
     <textarea id="editorScala10" name="editorScala10">
@@ -1427,7 +1446,7 @@ step5: add display map in DSL
 
 <!-------------------------------------------------------------------
 Scala11.ask
-------------------------------------------------------------------->
+<!--------------------------------------------------------------------->
 
 <li class="slide" style="text-align: left" title="Franklin wants to ask in Scala" press="1 2 3 4 5">
     <textarea id="editorScala11" name="editorScala11">
