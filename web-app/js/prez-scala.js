@@ -1511,7 +1511,33 @@ editorScala10.addKeyMap(keymapScala10);
 // step 1 initial //TODO
 // step 2 final
 //------------------------------------------------------------------->
-var contentScala11 = "";
+var contentScala11 = "import scala.util.continuations._\n\n"
+                   + "class Ask {\n\n"
+                   + "   // The continuation\n"
+                   + "   var cont: Option[String => Unit] = None\n\n"
+                   + "   def ask(query:String):String @cps[Unit] = {\n"
+                   + "      shift {\n"
+                   + "         k: (String => Unit) =>\n"
+                   + "            // Make the continuation available for call\n"
+                   + "            cont = Some(k)\n"
+                   + "            // Display the query and then quit the continuation\n"
+                   + "            println(query)\n"
+                   + "         }\n" 
+                   + "   }\n\n"
+                   + "   // Starts the DSL - basically a set of DSL rules\n"
+                   + "   // with ask and waiting for answer to continue\n"
+                   + "   def start(f: => Unit @cps[Unit])  = {\n"
+                   + "      reset {\n"
+                   + "         f\n"
+                   + "      }\n"
+                   + "   }\n\n"
+                   + "   // get back into the DSL flow by calling the stored continuation\n"
+                   + "   def answer(answer:String) = {\n"
+                   + "      if (!cont.isEmpty) cont.get(answer)\n" 
+                   + "      //cont=None\n"
+                   + "   }\n\n"
+                   + "   def end = cont=None\n"
+                   + "}";
 
 
 var editorScala11 = new dslPrez.editor("editorScala11", contentScala11);
@@ -1522,13 +1548,32 @@ function editorScala11Send() {
 }
 
 function editorScala11Key0() {
-    editorScala11.currentPress(0, 2);
+    editorScala11.currentPress(0, 1);
     editorScala11.setValue(contentScala11);
 }
 
-function editorScala11Key1() {
-    if (editorScala11.currentPress(1, 2)) {
+var contentScala11b = "import dslprez.scala.slides._\n"
+                    + "import dslprez.scala.slides.Turtle.end\n\n"
+                    + "implicit val I = new Turtle(Position(1,1,up))\n\n"
+	 	    + "Turtle startDsl {\n"
+	 	    + "   I move right by 2\n"
+		    + "   val name = I ask \"what is your name\"\n"
+		    + "   I move up\n"
+		    + "   println(\"Hi \"+name)\n"
+		    + "   val n = I ask \"how many times up\"\n"
+	  	    + "   I move up by n.toInt\n"
+		    + "   //println(\"Bye\")\n"
+		    + "   end\n"
+		    + "}\n\n"
+		    + "println(I print I.steps to JSon)\n"
+		    + "Turtle answer \"John\"\n"
+		    + "Turtle answer \"2\"\n"
+  		    + "println(I print I.steps to JSon)\n";
 
+
+function editorScala11Key1() {
+    if (editorScala11.currentPress(1, 1)) {
+    editorScala11.setValue(contentScala11b);
     }
 }
 
