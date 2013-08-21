@@ -20,6 +20,30 @@
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/jqcloud.css" rel="stylesheet">
     <link href="css/prez.css" media="all" rel="stylesheet">
+    <style type="text/css">
+        .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
+        .CodeMirror-foldmarker {
+            color: blue;
+            text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;
+            font-family: arial;
+            line-height: .3;
+            cursor: pointer;
+        }
+        .CodeMirror-foldgutter {
+            width: .7em;
+        }
+        .CodeMirror-foldgutter-open,
+        .CodeMirror-foldgutter-folded {
+            color: #555;
+            cursor: pointer;
+        }
+        .CodeMirror-foldgutter-open:after {
+            content: "\25BE";
+        }
+        .CodeMirror-foldgutter-folded:after {
+            content: "\25B8";
+        }
+    </style>
 </head>
 <body>
 <div id="header" >
@@ -1135,6 +1159,70 @@ step 4: change by method to return map
         </div>
     </div>
 </li>
+<!------------------------------------------------------------------->
+<!-- kiss
+<!------------------------------------------------------------------->
+<li class="slide" title="One command only">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>Command chaining</h1><br/>
+            <br/>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row-fluid marketing">
+        <div class="span1">
+        </div>
+        <div class="span5">
+            <hr>
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <div style="color:grey"> How to express</div>
+                <div>kiss()</div>
+            </div>
+            <hr>
+        </div>
+        <div class="span5">
+            <hr>
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <div style="color:grey"> invokeMethod vs propertyMissing/methodMissing</div>
+                <div>   MOP</div>
+            </div>
+            <hr>
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+</li>
+
+<!-------------------------------------------------------------------
+Groovy6c. One method without parameter
+------------------------------------------------------------------->
+<li class="slide" style="text-align: left" title="InvokeMethod" press="1 2 3 4">
+    <textarea id="editorGroovy6c" name="editorGroovy6c">
+    </textarea>
+</li>
+
+
+<li class="slide" style="text-align: left" title="Output for one command in Groovy">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputGroovy6c">
+                </pre>
+                <canvas id="canvasGroovy6c" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
 
 <!-------------------------------------------------------------------
 Groovy7. Adding behavior to Integer
@@ -1615,6 +1703,11 @@ Features not shown in this session in Scala
 
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/codemirror.js"></script>
+<script src="js/foldcode.js"></script>
+<script src="js/foldgutter.js"></script>
+<script src="js/brace-fold.js"></script>
+<script src="js/xml-fold.js"></script>
+<script src="js/comment-fold.js"></script>
 <script src="js/groovy.js"></script>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->

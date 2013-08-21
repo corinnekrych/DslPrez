@@ -20,7 +20,11 @@ dslPrez.editor = function (location, content) {
     var editor = CodeMirror.fromTextArea(document.getElementById(location), {
         lineNumbers: true,
         theme: "eclipse",
-        mode: "text/x-groovy"
+        mode: "text/x-groovy",
+        foldGutter: {
+            rangeFinder: new CodeMirror.fold.combine(CodeMirror.fold.brace, CodeMirror.fold.comment)
+        },
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
     });
     if (content) {
         editor.setValue(content);

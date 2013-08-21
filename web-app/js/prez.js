@@ -608,6 +608,8 @@ var content5 = "class Position {\n"
 
 
 var editorGroovy5 = new dslPrez.editor("editorGroovy5", content5);
+editorGroovy5.foldCode(CodeMirror.Pos(0, 0));
+editorGroovy5.foldCode(CodeMirror.Pos(46, 0));
 
 function editorGroovy5TurtleSend() {
     var value = editorGroovy5.getValue();
@@ -815,6 +817,12 @@ var content6 = "class Position {\n"
             + "builder.toString()\n";
 
 var editorGroovy6 = new dslPrez.editor("editorGroovy6", content6);
+editorGroovy6.foldCode(CodeMirror.Pos(0, 0));
+editorGroovy6.foldCode(CodeMirror.Pos(38, 0));
+editorGroovy6.foldCode(CodeMirror.Pos(43, 0));
+editorGroovy6.foldCode(CodeMirror.Pos(60, 0));
+editorGroovy6.foldCode(CodeMirror.Pos(67, 0));
+editorGroovy6.foldCode(CodeMirror.Pos(74, 0));
 
 function editorGroovy6TurtleSend() {
     var value = editorGroovy6.getValue();
@@ -823,7 +831,7 @@ function editorGroovy6TurtleSend() {
 }
 
 function editorGroovy6Key0() {
-    editorGroovy6.currentPress(0, 2);
+    editorGroovy6.currentPress(0, 7);
     editorGroovy6.setValue(content6);
 }
 
@@ -870,6 +878,7 @@ function editorGroovy6Key3() {
 }
 function editorGroovy6Key4() {
     if (editorGroovy6.currentPress(4, 7)) {
+        editorGroovy6.foldCode(CodeMirror.Pos(43, 0));
         for(var i = 59; i <65 ; i++) {
             editorGroovy6.removeLineClass(i, "background", "highlight");
         }
@@ -890,6 +899,7 @@ function editorGroovy6Key6() {
 }
 function editorGroovy6Key7() {
     if (editorGroovy6.currentPress(7, 7)) {
+        editorGroovy6.scrollIntoView(90);
         editorGroovy6.removeLineClass(63, "background", "highlight");
         editorGroovy6.replaceRange("def turtle = new Turtle(new Position(1, 1, Direction.left))", {line: 72, ch: 0}, {line:72});
         editorGroovy6.addLineClass(72, "background", "highlight");
@@ -1024,6 +1034,11 @@ var content6b = "class Position {\n"
             + "builder.toString()\n";
 
 var editorGroovy6b = new dslPrez.editor("editorGroovy6b", content6b);
+editorGroovy6b.foldCode(CodeMirror.Pos(0, 0));
+editorGroovy6b.foldCode(CodeMirror.Pos(38, 0));
+editorGroovy6b.foldCode(CodeMirror.Pos(43, 0));
+editorGroovy6b.foldCode(CodeMirror.Pos(66, 0));
+editorGroovy6b.foldCode(CodeMirror.Pos(74, 0));
 
 function editorGroovy6bTurtleSend() {
     var value = editorGroovy6b.getValue();
@@ -1032,7 +1047,7 @@ function editorGroovy6bTurtleSend() {
 }
 
 function editorGroovy6bKey0() {
-    editorGroovy6b.currentPress(0, 2);
+    editorGroovy6b.currentPress(0, 4);
     editorGroovy6b.setValue(content6b);
 }
 
@@ -1105,6 +1120,204 @@ var keymap6b = {
     "5": editorGroovy6bKey5
 };
 editorGroovy6b.addKeyMap(keymap6b);
+
+
+//-------------------------------------------------------------------
+//Groovy6c. Command chaining odd number
+//step 1: highlight dsl syntax
+//step 2: move left by 2 steps
+//step 3: highlight by method
+//step 4: change by to return map with silent word: steps/step
+//------------------------------------------------------------------->
+var content6c = "class Position {\n"
+    + "int x\n"
+    + "int y\n"
+    + "Direction direction\n"
+    + "Position left() {\n"
+    + "    new Position(x, y, Direction.left);\n"
+    + "}\n"
+    + "Position right() {\n"
+    + "    new Position(x, y, Direction.right);\n"
+    + "}\n"
+    + "Position up() {\n"
+    + "    new Position(x , y, Direction.up);\n"
+    + "}\n"
+    + "Position down() {\n"
+    + "    new Position(x , y, Direction.down);\n"
+    + "}\n"
+    + "def Position(moveX, moveY, myDirection) {\n"
+    + "    x = moveX\n"
+    + "    y = moveY\n"
+    + "    direction = myDirection\n"
+    + "}\n"
+    + "Position move(Integer step) {\n"
+    + "    Position newPosition\n"
+    + "    if(direction == Direction.left) {\n"
+    + "        newPosition = new Position(x - step, y, direction)\n"
+    + "    } else if(direction == Direction.right) {\n"
+    + "        newPosition = new Position(x + step, y, direction)\n"
+    + "    } else if(direction == Direction.up) {\n"
+    + "        newPosition = new Position(x, y + step, direction)\n"
+    + "    } else if(direction == Direction.down) {\n"
+    + "        newPosition = new Position(x, y - step, direction)\n"
+    + "    }\n"
+    + "}\n"
+    + "}\n"
+    + "\n"
+    + "class Turtle {\n"
+    + "    def currentPosition\n"
+    + "    def steps = []\n"
+    + "    Turtle(Position start) {\n"
+    + "        currentPosition = start\n"
+    + "        steps.add(start)\n"
+    + "    }\n"
+    + "\n"
+    + "    Turtle move(Direction dir) {\n"
+    + "        Position newPosition\n"
+    + "        if (dir == Direction.left) {\n"
+    + "            newPosition = currentPosition.left()\n"
+    + "        } else if (dir == Direction.right) {\n"
+    + "            newPosition = currentPosition.right()\n"
+    + "        } else if (dir == Direction.up) {\n"
+    + "            newPosition = currentPosition.up()\n"
+    + "        } else if (dir == Direction.down) {\n"
+    + "            newPosition = currentPosition.down()\n"
+    + "        }\n"
+    + "        currentPosition = newPosition\n"
+    + "        this\n"
+    + "    }\n"
+    + "\n"
+    + "    Turtle by (Integer step) {\n"
+    + "        Position newPosition = currentPosition.move(step)\n"
+    + "        steps.add(newPosition)\n"
+    + "        currentPosition = newPosition\n"
+    + "        steps.add(newPosition)\n"
+    + "        this\n"
+    + "    }\n"
+    + "}\n"
+    + "enum Direction {\n"
+    + "    left, right, up, down\n"
+    + "}\n"
+    + "\n"
+    + "def turtle = new Turtle(new Position(1, 1, Direction.left))\n"
+    + "def compilerConfig = new CompilerConfiguration()\n"
+    + "def binding = new Binding([turtle: turtle,\n"
+    + "    move: turtle.&move,\n"
+    + "    left: Direction.left,\n"
+    + "    right: Direction.right,\n"
+    + "    up: Direction.up,\n"
+    + "    down: Direction.down])\n"
+    + "def shell = new GroovyShell(this.class.classLoader,\n"
+    + "    binding,\n"
+    + "    compilerConfig)\n"
+    + "///////////////////////\n"
+    + "def gameDSL = '''\n"
+    + "2.times {\n"
+    + "    move right by 2\n"
+    + "    move up by 1\n"
+    + "}\n"
+    + "'''\n"
+    + "//////////////////////\n"
+    + "// Run DSL script.\n"
+    + "// result contains turtle object\n"
+    + "// with all steps\n"
+    + "shell.evaluate gameDSL\n"
+    + "def builder = new groovy.json.JsonBuilder()\n"
+    + "builder {\n"
+    + "    steps binding[\"turtle\"].steps\n"
+    + "}\n"
+    + "println builder\n"
+    + "builder.toString()\n";
+
+var editorGroovy6c = new dslPrez.editor("editorGroovy6c", content6c);
+editorGroovy6c.foldCode(CodeMirror.Pos(0, 0));
+editorGroovy6c.foldCode(CodeMirror.Pos(38, 0));
+editorGroovy6c.foldCode(CodeMirror.Pos(43, 0));
+editorGroovy6c.foldCode(CodeMirror.Pos(58, 0));
+editorGroovy6c.foldCode(CodeMirror.Pos(66, 0));
+editorGroovy6c.foldCode(CodeMirror.Pos(74, 0));
+
+function editorGroovy6cTurtleSend() {
+    var value = editorGroovy6c.getValue();
+    value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
+    submitTurtleFormToGroovyConsole(value, "#outputGroovy6c", 'canvasGroovy6c');
+}
+
+function editorGroovy6cKey0() {
+    editorGroovy6c.currentPress(0, 2);
+    editorGroovy6c.setValue(content6c);
+}
+
+function editorGroovy6cKey1() {
+    if (editorGroovy6c.currentPress(1, 4)) {
+        for(var i = 65; i <87 ; i++) {
+            editorGroovy6c.addLineClass(i, "background", "highlight");
+        }
+        editorGroovy6c.scrollIntoView(87);
+    }
+}
+function editorGroovy6cKey2() {
+    if (editorGroovy6c.currentPress(2, 4)) {
+        for(var i = 32; i <87 ; i++) {
+            editorGroovy6c.removeLineClass(i, "background", "highlight");
+        }
+        var value = "2.times {\n" +
+            "    move right by 2 steps\n" +
+            "    move up by 1 step\n" +
+            "}";
+        editorGroovy6c.replaceRange(value, {line: 83, ch: 0}, {line:86});
+        for(var i = 83; i <87 ; i++) {
+            editorGroovy6c.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+function editorGroovy6cKey3() {
+    if (editorGroovy6c.currentPress(3, 4)) {
+        for(var i = 83; i <87 ; i++) {
+            editorGroovy6c.removeLineClass(i, "background", "highlight");
+        }
+        for(var i = 58; i <65 ; i++) {
+            editorGroovy6c.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+function editorGroovy6cKey4() {
+    if (editorGroovy6c.currentPress(4, 4)) {
+        for(var i = 58; i <65 ; i++) {
+            editorGroovy6c.removeLineClass(i, "background", "highlight");
+        }
+        var value = "   Map by (Integer step) {\n" +
+            "     Position newPosition = currentPosition.move(step)\n" +
+            "     steps.add(newPosition) \n" +
+            "     currentPosition = newPosition\n" +
+            "     [steps:\"\", step:\"\"] \n\n" +
+            "   }";
+        editorGroovy6c.replaceRange(value, {line: 58, ch: 0}, {line:64});
+        for(var i = 58; i <64 ; i++) {
+            editorGroovy6c.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+function editorGroovy6cKey5() {
+    if (editorGroovy6c.currentPress(5, 4)) {
+        for(var i = 58; i <64 ; i++) {
+            editorGroovy6c.removeLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+var keymap6c = {
+    "Ctrl-S": editorGroovy6cTurtleSend,
+    "Cmd-S": editorGroovy6cTurtleSend,
+    "0": editorGroovy6cKey0,
+    "1": editorGroovy6cKey1,
+    "2": editorGroovy6cKey2,
+    "3": editorGroovy6cKey3,
+    "4": editorGroovy6cKey4,
+    "5": editorGroovy6cKey5
+};
+editorGroovy6c.addKeyMap(keymap6c);
+
 
 //-------------------------------------------------------------------
 //Groovy7. Adding behavior to Integer
