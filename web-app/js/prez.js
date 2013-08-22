@@ -1130,27 +1130,27 @@ editorGroovy6b.addKeyMap(keymap6b);
 //step 4: change by to return map with silent word: steps/step
 //------------------------------------------------------------------->
 var content6c = "class Position {\n"
-    + "int x\n"
-    + "int y\n"
-    + "Direction direction\n"
-    + "Position left() {\n"
+    + "  int x\n"
+    + "  int y\n"
+    + "  Direction direction\n"
+    + "  Position left() {\n"
     + "    new Position(x, y, Direction.left);\n"
-    + "}\n"
-    + "Position right() {\n"
+    + "  }  \n"
+    + "  Position right() {\n"
     + "    new Position(x, y, Direction.right);\n"
-    + "}\n"
-    + "Position up() {\n"
+    + "  }\n"
+    + "  Position up() {\n"
     + "    new Position(x , y, Direction.up);\n"
-    + "}\n"
-    + "Position down() {\n"
+    + "  }\n"
+    + "  Position down() {\n"
     + "    new Position(x , y, Direction.down);\n"
-    + "}\n"
-    + "def Position(moveX, moveY, myDirection) {\n"
+    + "  }\n"
+    + "  def Position(moveX, moveY, myDirection) {\n"
     + "    x = moveX\n"
     + "    y = moveY\n"
     + "    direction = myDirection\n"
-    + "}\n"
-    + "Position move(Integer step) {\n"
+    + "  }\n"
+    + "  Position move(Integer step) {\n"
     + "    Position newPosition\n"
     + "    if(direction == Direction.left) {\n"
     + "        newPosition = new Position(x - step, y, direction)\n"
@@ -1161,7 +1161,7 @@ var content6c = "class Position {\n"
     + "    } else if(direction == Direction.down) {\n"
     + "        newPosition = new Position(x, y - step, direction)\n"
     + "    }\n"
-    + "}\n"
+    + "  }\n"
     + "}\n"
     + "\n"
     + "class Turtle {\n"
@@ -1233,7 +1233,6 @@ var editorGroovy6c = new dslPrez.editor("editorGroovy6c", content6c);
 editorGroovy6c.foldCode(CodeMirror.Pos(0, 0));
 editorGroovy6c.foldCode(CodeMirror.Pos(38, 0));
 editorGroovy6c.foldCode(CodeMirror.Pos(43, 0));
-editorGroovy6c.foldCode(CodeMirror.Pos(58, 0));
 editorGroovy6c.foldCode(CodeMirror.Pos(66, 0));
 editorGroovy6c.foldCode(CodeMirror.Pos(74, 0));
 
@@ -1244,65 +1243,78 @@ function editorGroovy6cTurtleSend() {
 }
 
 function editorGroovy6cKey0() {
-    editorGroovy6c.currentPress(0, 2);
+    editorGroovy6c.currentPress(0, 4);
     editorGroovy6c.setValue(content6c);
+    editorGroovy6c.foldCode(CodeMirror.Pos(0, 0));
+    editorGroovy6c.foldCode(CodeMirror.Pos(38, 0));
+    editorGroovy6c.foldCode(CodeMirror.Pos(43, 0));
+    editorGroovy6c.foldCode(CodeMirror.Pos(66, 0));
+    editorGroovy6c.foldCode(CodeMirror.Pos(74, 0));
 }
 
 function editorGroovy6cKey1() {
     if (editorGroovy6c.currentPress(1, 4)) {
-        for(var i = 65; i <87 ; i++) {
-            editorGroovy6c.addLineClass(i, "background", "highlight");
+        editorGroovy6c.scrollIntoView(96);
+        for(var i = 83; i <87 ; i++) {
+            editorGroovy6c.removeLineClass(i, "background", "highlight");
         }
-        editorGroovy6c.scrollIntoView(87);
+        var value = "    kiss()\n";
+        editorGroovy6c.replaceRange(value, {line: 86, ch: 0});
+        editorGroovy6c.addLineClass(86, "background", "highlight");
     }
 }
+
 function editorGroovy6cKey2() {
     if (editorGroovy6c.currentPress(2, 4)) {
-        for(var i = 32; i <87 ; i++) {
-            editorGroovy6c.removeLineClass(i, "background", "highlight");
-        }
-        var value = "2.times {\n" +
-            "    move right by 2 steps\n" +
-            "    move up by 1 step\n" +
-            "}";
-        editorGroovy6c.replaceRange(value, {line: 83, ch: 0}, {line:86});
-        for(var i = 83; i <87 ; i++) {
+        editorGroovy6c.removeLineClass(86, "background", "highlight");
+        editorGroovy6c.scrollIntoView(44);
+        var value = "   def kiss() {\n" +
+            "     println \"<3 <3\" \n" +
+            "   }\n";
+        editorGroovy6c.replaceRange(value, {line: 65, ch: 0});
+        for(var i = 65; i <68 ; i++) {
             editorGroovy6c.addLineClass(i, "background", "highlight");
         }
     }
 }
+
 function editorGroovy6cKey3() {
     if (editorGroovy6c.currentPress(3, 4)) {
-        for(var i = 83; i <87 ; i++) {
+        for(var i = 65; i <68 ; i++) {
             editorGroovy6c.removeLineClass(i, "background", "highlight");
         }
-        for(var i = 58; i <65 ; i++) {
+        for(var i = 75; i <81 ; i++) {
             editorGroovy6c.addLineClass(i, "background", "highlight");
         }
     }
 }
+
 function editorGroovy6cKey4() {
     if (editorGroovy6c.currentPress(4, 4)) {
-        for(var i = 58; i <65 ; i++) {
+        for(var i = 75; i <81 ; i++) {
             editorGroovy6c.removeLineClass(i, "background", "highlight");
         }
-        var value = "   Map by (Integer step) {\n" +
-            "     Position newPosition = currentPosition.move(step)\n" +
-            "     steps.add(newPosition) \n" +
-            "     currentPosition = newPosition\n" +
-            "     [steps:\"\", step:\"\"] \n\n" +
-            "   }";
-        editorGroovy6c.replaceRange(value, {line: 58, ch: 0}, {line:64});
-        for(var i = 58; i <64 ; i++) {
-            editorGroovy6c.addLineClass(i, "background", "highlight");
-        }
+        var value = "    kiss: turtle.&kiss, \n";
+        editorGroovy6c.replaceRange(value, {line: 77, ch: 0});
+        editorGroovy6c.addLineClass(77, "background", "highlight");
     }
 }
+
 function editorGroovy6cKey5() {
     if (editorGroovy6c.currentPress(5, 4)) {
-        for(var i = 58; i <64 ; i++) {
-            editorGroovy6c.removeLineClass(i, "background", "highlight");
-        }
+        editorGroovy6c.removeLineClass(77, "background", "highlight");
+        var value = "     kiss\n";
+        editorGroovy6c.replaceRange(value, {line: 90, ch: 0}, {line:90});
+        editorGroovy6c.addLineClass(90, "background", "highlight");
+    }
+}
+
+function editorGroovy6cKey6() {
+    if (editorGroovy6c.currentPress(6, 4)) {
+        editorGroovy6c.removeLineClass(90, "background", "highlight");
+        var value = "    //kiss: turtle.&kiss, \n";
+        editorGroovy6c.replaceRange(value, {line: 77, ch: 0});
+        editorGroovy6c.addLineClass(77, "background", "highlight");
     }
 }
 
