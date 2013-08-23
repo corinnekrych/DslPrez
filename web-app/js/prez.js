@@ -1243,7 +1243,7 @@ function editorGroovy6cTurtleSend() {
 }
 
 function editorGroovy6cKey0() {
-    editorGroovy6c.currentPress(0, 4);
+    editorGroovy6c.currentPress(0, 8);
     editorGroovy6c.setValue(content6c);
     editorGroovy6c.foldCode(CodeMirror.Pos(0, 0));
     editorGroovy6c.foldCode(CodeMirror.Pos(38, 0));
@@ -1253,7 +1253,7 @@ function editorGroovy6cKey0() {
 }
 
 function editorGroovy6cKey1() {
-    if (editorGroovy6c.currentPress(1, 4)) {
+    if (editorGroovy6c.currentPress(1, 8)) {
         editorGroovy6c.scrollIntoView(96);
         for(var i = 83; i <87 ; i++) {
             editorGroovy6c.removeLineClass(i, "background", "highlight");
@@ -1265,7 +1265,7 @@ function editorGroovy6cKey1() {
 }
 
 function editorGroovy6cKey2() {
-    if (editorGroovy6c.currentPress(2, 4)) {
+    if (editorGroovy6c.currentPress(2, 8)) {
         editorGroovy6c.removeLineClass(86, "background", "highlight");
         editorGroovy6c.scrollIntoView(44);
         var value = "   def kiss() {\n" +
@@ -1279,7 +1279,7 @@ function editorGroovy6cKey2() {
 }
 
 function editorGroovy6cKey3() {
-    if (editorGroovy6c.currentPress(3, 4)) {
+    if (editorGroovy6c.currentPress(3, 8)) {
         for(var i = 65; i <68 ; i++) {
             editorGroovy6c.removeLineClass(i, "background", "highlight");
         }
@@ -1290,7 +1290,7 @@ function editorGroovy6cKey3() {
 }
 
 function editorGroovy6cKey4() {
-    if (editorGroovy6c.currentPress(4, 4)) {
+    if (editorGroovy6c.currentPress(4, 8)) {
         for(var i = 75; i <81 ; i++) {
             editorGroovy6c.removeLineClass(i, "background", "highlight");
         }
@@ -1301,22 +1301,66 @@ function editorGroovy6cKey4() {
 }
 
 function editorGroovy6cKey5() {
-    if (editorGroovy6c.currentPress(5, 4)) {
+    if (editorGroovy6c.currentPress(5, 8)) {
+        editorGroovy6c.scrollIntoView(95);
         editorGroovy6c.removeLineClass(77, "background", "highlight");
-        var value = "     kiss\n";
+        var value = "    kiss";
         editorGroovy6c.replaceRange(value, {line: 90, ch: 0}, {line:90});
         editorGroovy6c.addLineClass(90, "background", "highlight");
     }
 }
 
 function editorGroovy6cKey6() {
-    if (editorGroovy6c.currentPress(6, 4)) {
+    if (editorGroovy6c.currentPress(6, 8)) {
         editorGroovy6c.removeLineClass(90, "background", "highlight");
-        var value = "    //kiss: turtle.&kiss, \n";
-        editorGroovy6c.replaceRange(value, {line: 77, ch: 0});
+        var value = "    //kiss: turtle.&kiss,";
+        editorGroovy6c.replaceRange(value, {line: 77, ch: 0}, {line:77});
         editorGroovy6c.addLineClass(77, "background", "highlight");
     }
 }
+
+function editorGroovy6cKey7() {
+    if (editorGroovy6c.currentPress(7, 8)) {
+        editorGroovy6c.removeLineClass(77, "background", "highlight");
+        var value = "abstract class GameScript extends Script {\n"
+            + "    def propertyMissing(name, args) {\n"
+            + "        if(turtle.metaClass.respondsTo(this, name)) {\n"
+            + "            binding.turtle.\"$name\"()\n"
+            + "        }\n"
+            + "    }\n"
+            + "}";
+        editorGroovy6c.replaceRange(value, {line: 72, ch: 0});
+        for(var i = 72; i <79 ; i++) {
+            editorGroovy6c.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorGroovy6cKey8() {
+    if (editorGroovy6c.currentPress(8, 8)) {
+        for(var i = 72; i <79 ; i++) {
+            editorGroovy6c.removeLineClass(i, "background", "highlight");
+        }
+        editorGroovy6c.replaceRange("compilerConfig.scriptBaseClass = GameScript.class.name\n", {line: 81, ch: 0});
+        editorGroovy6c.addLineClass(81, "background", "highlight");
+    }
+}
+
+function editorGroovy6cKey9() {
+    if (editorGroovy6c.currentPress(9, 8)) {
+        editorGroovy6c.removeLineClass(81, "background", "highlight");
+    }
+}
+
+
+//abstract class GameScript extends Script {
+//    def propertyMissing(name, args) {
+//        if(name=="kiss") {
+//            binding.turtle."$name"()
+//        }
+//    }
+//}
+
 
 var keymap6c = {
     "Ctrl-S": editorGroovy6cTurtleSend,
@@ -1326,7 +1370,11 @@ var keymap6c = {
     "2": editorGroovy6cKey2,
     "3": editorGroovy6cKey3,
     "4": editorGroovy6cKey4,
-    "5": editorGroovy6cKey5
+    "5": editorGroovy6cKey5,
+    "6": editorGroovy6cKey6,
+    "7": editorGroovy6cKey7,
+    "8": editorGroovy6cKey8,
+    "9": editorGroovy6cKey9
 };
 editorGroovy6c.addKeyMap(keymap6c);
 

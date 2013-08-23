@@ -1005,25 +1005,31 @@ step 7 remove def left in GameScript
         </div>
     </div>
     <div class="row-fluid marketing">
-        <div class="span1">
+        <div class="span3">
         </div>
-        <div class="span5">
+        <div class="span3">
             <hr>
             <div style="line-height:150%;font-size:25px;text-align:left;">
+                <b>Groovy:</b>
                 <div style="color:grey"> move left</div>
                 <div>    => move(left)</div>
-            </div>
-            <hr>
-        </div>
-        <div class="span5">
-            <hr>
-            <div style="line-height:150%;font-size:25px;text-align:left;">
                 <div style="color:grey">move left by 2</div>
                 <div>    => move(left).by(2)</div>
             </div>
             <hr>
         </div>
-        <div class="span1">
+        <div class="span3">
+            <hr>
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <b>Scala:</b>
+                <div style="color:grey">I move left</div>
+                <div>    => I.move(left)</div>
+                <div style="color:grey">I move left by 2</div>
+                <div>    => I.move(left).by(2)</div>
+            </div>
+            <hr>
+        </div>
+        <div class="span3">
         </div>
     </div>
 </li>
@@ -1069,24 +1075,16 @@ step 7: change new Position to add direction
         <hr>
         <div class="jumbotron">
             <br/>
-            <h1>Command chaining</h1><br/>
+            <h1>How to deal with odd number in Groovy?</h1><br/>
             <br/>
         </div>
         <hr>
     </div>
 
     <div class="row-fluid marketing">
-        <div class="span1">
+        <div class="span4">
         </div>
-        <div class="span5">
-            <hr>
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                <div style="color:grey"> move left by 2</div>
-                <div>    => move(left).by(2)</div>
-            </div>
-            <hr>
-        </div>
-        <div class="span5">
+        <div class="span4">
             <hr>
             <div style="line-height:150%;font-size:25px;text-align:left;">
                 <div style="color:grey"> move left by 2 steps</div>
@@ -1094,7 +1092,7 @@ step 7: change new Position to add direction
             </div>
             <hr>
         </div>
-        <div class="span1">
+        <div class="span4">
         </div>
     </div>
 </li>
@@ -1130,6 +1128,39 @@ step 4: change by method to return map
     </div>
 </li>
 
+<!------------------------------------------------------------------->
+<!-- command chaining  in scala
+<!------------------------------------------------------------------->
+<li class="slide" title="Command in Scala">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>Command chaining in Scala</h1><br/>
+            <br/>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row-fluid marketing">
+        <div class="span4">
+        </div>
+        <div class="span4">
+            <hr>
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <div style="color:grey">move left</div>
+                <div>    => not easy</div>
+                <div style="color:grey">I move left</div>
+                <div>    => I.move(left)</div>
+                <div style="color:grey">I move left by 2 steps</div>
+                <div>    => I.move(left).by(2).steps</div>
+            </div>
+            <hr>
+        </div>
+        <div class="span4">
+        </div>
+    </div>
+</li>
 <!-------------------------------------------------------------------
 <!-- Scala6. Command chaining odd number
 <!-- steps 1/2/3/4 create by method with a lastDirection option variable
@@ -1164,35 +1195,34 @@ step 4: change by method to return map
 <!------------------------------------------------------------------->
 <li class="slide" title="One command only">
     <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>Command chaining</h1><br/>
-            <br/>
+        <br/><br/><br/><br/><hr>
+        <h1>What about if... </h1><br/>
+        <div class="span3">
         </div>
+        <div class="span6">
+
+            <div style="line-height:150%;font-size:25px;text-align:center;">
+                ...there is only one command in Groovy ?
+            </div>
+
+        </div>
+        <div class="span3">
+        </div> <br/>
         <hr>
     </div>
 
     <div class="row-fluid marketing">
-        <div class="span1">
+        <div class="span5">
+        </div>
+        <div class="span2">
+
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+
+                <div style="color:darkred;font-size: 55px">kiss</div>
+            </div>
+
         </div>
         <div class="span5">
-            <hr>
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                <div style="color:grey"> How to express</div>
-                <div>kiss()</div>
-            </div>
-            <hr>
-        </div>
-        <div class="span5">
-            <hr>
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                <div style="color:grey"> invokeMethod vs propertyMissing/methodMissing</div>
-                <div>   MOP</div>
-            </div>
-            <hr>
-        </div>
-        <div class="span1">
         </div>
     </div>
 </li>
@@ -1200,7 +1230,7 @@ step 4: change by method to return map
 <!-------------------------------------------------------------------
 Groovy6c. One method without parameter
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="kiss or kiss()" press="1 2 3 4">
+<li class="slide" style="text-align: left" title="kiss or kiss()" press="1 2 3 4 5 6 7 8">
     <textarea id="editorGroovy6c" name="editorGroovy6c">
     </textarea>
 </li>
@@ -1223,7 +1253,80 @@ Groovy6c. One method without parameter
         </div>
     </div>
 </li>
+<!------------------------------------------------------------------->
+<!-- invokeMethod vs MethodMissing
+<!------------------------------------------------------------------->
+<li class="slide" title="MOP">
+    <div class="container-narrow">
 
+            <h1>invokeMethod vs methodMissing</h1><br/>
+    </div><hr>
+
+    <div class="row-fluid marketing">
+        <div class="span1">
+        </div>
+        <div class="span5">
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <div style="color:grey">invokeMethod</div>
+                <div style="color:grey">getProperty</div>
+                <div>    => on GroovyObject</div>
+                <div>    => intercept every method call</div>
+            </div>
+        </div>
+        <div class="span5">
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <div style="color:grey">missingMethod</div>
+                <div style="color:grey">missingProperty</div>
+                <div>    => since Groovy 1.5</div>
+                <div>    => only occur on failed dispatch</div>
+                <div>    => use with dynamic method registration</div>
+            </div>
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+    <div class="row-fluid marketing">
+        <div class="span2">
+        </div>
+        <div class="span8">
+            <hr>
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                Dynamic finder in Grails
+                <pre>
+class GORM {
+
+   def dynamicMethods = [...] // an array of dynamic methods that use regex
+   def methodMissing(String name, args) {
+       def method = dynamicMethods.find { it.match(name) }
+       if(method) {
+          GORM.metaClass."$name" = { Object[] varArgs ->
+             method.invoke(delegate, name, varArgs)
+          }
+          return method.invoke(delegate,name, args)
+       }
+       else throw new MissingMethodException(name, delegate, args)
+   }
+}</pre>
+            </div>
+            <hr>
+        </div>
+        <div class="span2">
+        </div>
+    </div>
+</li>
+
+<!------------------------------------------------------------------->
+<!-- kiss in scala
+<!------------------------------------------------------------------->
+<li class="slide" title="Kiss">
+    <div class="container-narrow">
+        <br/><br/><br/><br/><hr>
+        <h1>Kiss in Scala </h1><br/>
+        <hr>
+    </div>
+
+</li>
+<!--TODO Pascal-->
 <!-------------------------------------------------------------------
 Groovy7. Adding behavior to Integer
 step1: highlight dsl
