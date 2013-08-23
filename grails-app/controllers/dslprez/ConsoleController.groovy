@@ -22,6 +22,7 @@ class ConsoleController {
   }
 
   def executeGroovy() {
+
     def console = new Console(content:params.content);
     
     def encoding = 'UTF-8'

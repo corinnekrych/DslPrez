@@ -1097,6 +1097,7 @@ step 7: change new Position to add direction
     </div>
 </li>
 
+
 <!-------------------------------------------------------------------
 Groovy6b. Command chaining odd number
 step 1: highlight dsl syntax
@@ -1678,6 +1679,142 @@ Let's put everything together and let's play
 </li>
 
 <!------------------------------------------------------------------->
+<!-- Builder in Groovy
+<!------------------------------------------------------------------->
+
+<li class="slide" title="Builder in Groovy">
+
+    <div class="container-narrow">
+
+        <h1>Builder pattern</h1>
+    </div><hr>
+
+    <div class="row-fluid marketing">
+        <div class="span2">
+        </div>
+        <div class="span3">
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <img src="img/bob.jpg"/>
+            </div>
+        </div>
+        <div class="span5">
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <b>Purpose of builder pattern:</b> separate the construction of a complex object from its representation to reuse construction process to create different representation.
+                <br/><b>Dynamic Groovy</b> with <span style="color:grey">invokeMethod</span>
+                and <b>scopes</b> <span style="color:grey">(this, owner, delegate, self)</span> to the rescue!
+            </div>
+        </div>
+        <div class="span2">
+        </div>
+    </div>
+    <div class="row-fluid marketing">
+        <div class="span2">
+        </div>
+        <div class="span8">
+            <hr>
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                Resolve strategy for Closure.
+                <pre>
+        • OWNER_FIRST (the default): followed by the delegate if not found.
+        • DELEGATE_FIRST: and then search the owner if not found.
+        • OWNER_ONLY: and don't search the delegate.
+        • DELEGATE_ONLY: with no search of the owner.
+        • TO_SELF: getProperty of the Closure itself to be overridden.</pre>
+            </div>
+            <hr>
+        </div>
+        <div class="span2">
+        </div>
+    </div>
+</li>
+
+<li class="slide" style="text-align: left" title="Groovy Builder" press="1">
+    <textarea id="editorGroovyBuilder" name="editorGroovyBuilder">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Output for Groovy Builder">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputGroovyBuilder">
+                </pre>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!------------------------------------------------------------------->
+<!-- TypeChecked Builder in Groovy
+http://www.jroller.com/melix/entry/static_builders_inception
+<!------------------------------------------------------------------->
+
+<li class="slide" title="Type checked Builder">
+
+    <div class="container-narrow">
+
+        <h1>Type checked builder?</h1>
+
+    </div><hr>
+
+    <div class="row-fluid marketing">
+        <div class="span2">
+        </div>
+        <div class="span2">
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <img src="img/cedric.jpg" width="70%"/><br/><span style="font-size: 18px">@CedricChampeau <span>
+            </div>
+        </div>
+        <div class="span6">
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                Builders are dynamic features?<br/><span style="font-size: 18px">Impossible is not french...</span><br/>
+                How to implementation a <b>statically compiled HTML builder</b>?<br/>Using <span style="color:grey">static compilation</span>,
+                <span style="color:grey">@DelegatesTo</span>, meta-annotations, custom <span style="color:grey">type checking extensions</span>
+                and  <span style="color:grey">AST transformations</span>
+                to the rescue!
+            </div>
+        </div>
+        <div class="span2">
+        </div>
+    </div>
+    <div class="row-fluid marketing">
+        <div class="span2">
+        </div>
+        <div class="span8">
+            <hr>
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <pre>
+@groovy.transform.CompileStatic
+String build() {
+    def builder = new HTMLBuilder()
+    builder.html {
+        body {
+            p {
+                out << "Hello, this is "
+                a(href:'http://groovy.codehaus.org') { out << 'Groovy' }
+            }
+        }
+    }
+}</pre>
+            </div>
+            <hr>
+        </div>
+        <div class="span2">
+        </div>
+    </div>
+</li>
+<!------------------------------------------------------------------->
+<!-- TypeChecked Builder in Groovy (2)
+http://www.jroller.com/melix/entry/static_builders_inception
+TODO editor or slide to explain
+<!------------------------------------------------------------------->
+
+<!------------------------------------------------------------------->
 <!-- Going further
 <!------------------------------------------------------------------->
 
@@ -1994,7 +2131,10 @@ Features not shown in this session in Scala
     slide.enter("Franklin wants to ask in Scala", showScalaDuke, removeScalaDuke);
     slide.enter("Output for Franklin wants to ask in Scala", showScalaDuke, removeScalaDuke);
 
-    slide.start({
+    slide.enter("Groovy Builder", showGroovyDuke, removeGroovyDuke);
+    slide.enter("Output for Groovy Builder", showGroovyDuke, removeGroovyDuke);
+
+     slide.start({
         progressbar: true,
         duration: 7200,
         progressPrecision: 5

@@ -266,8 +266,8 @@ function editorGroovy2Key6() {
 }
 
 function editorGroovy2Send() {
-    var value = editorGroovy2.getValue();
-    value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
+    var value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
+    value += editorGroovy2.getValue();
     submitFormToGroovyConsole(value, "#outputGroovy2");
 }
 var keymap2 = {
@@ -2457,6 +2457,58 @@ var keymap12 = {
     "Cmd-S": editorGroovy12Send
 };
 editorGroovy12.addKeyMap(keymap12);
+//------------------------------------------------------------------->
+// GroovyBuilder. Groovy builder
+// step
+//------------------------------------------------------------------->
+var contentBuilder = "class MyBuilder {\n"
+                    + "  int indent = 0\n"
+                    + "  Object invokeMethod(String name, Object args) {\n"
+                    + "    indent.times {print \"..\"}\n"
+                    + "    println \"<${name}>\"\n"
+                    + "    indent++\n"
+                    + "    args[0].delegate = this // Change delegate to the builder\n"
+                    + "    args[0].call()\n"
+                    + "    indent--\n"
+                    + "    indent.times {print \"..\"}\n"
+                    + "    println \"</${name}>\"\n"
+                    + "  }\n"
+                    + "}\n"
+                    + "def builder = new MyBuilder()\n"
+                    + "\n"
+                    + "def gameDSL = '''\n"
+                    + "builder.root {\n"
+                    + "    level1{\n"
+                    + "        level2 { }\n"
+                    + "    }\n"
+                    + "}\n"
+                    + "'''\n"
+                    + "def compilerConfig = new CompilerConfiguration()\n"
+                    + "def binding = new Binding([builder: builder])\n"
+                    + "def shell = new GroovyShell(this.class.classLoader,\n"
+                    + "                            binding,\n"
+                    + "                            compilerConfig)\n"
+                    + "def result = shell.evaluate gameDSL\n"
+                    + "\n";
+var editorGroovyBuilder = new dslPrez.editor("editorGroovyBuilder", contentBuilder);
 
+function editorGroovyBuilderKey0() {
+    editorGroovyBuilder.currentPress(0, 0);
+    editorGroovyBuilder.setValue(contentBuilder);
+}
+
+
+function editorGroovyBuilderSend() {
+    var value = editorGroovyBuilder.getValue();
+    value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
+    submitFormToGroovyConsole(value, "#outputGroovyBuilder");
+}
+var keymapBuilder = {
+    "Ctrl-S" :editorGroovyBuilderSend,
+    "Cmd-S" :editorGroovyBuilderSend,
+    "0": editorGroovyBuilderKey0
+};
+
+editorGroovyBuilder.addKeyMap(keymapBuilder);
 
 $("#technologies").airport([ 'Twitter Bootstrap', 'jCloud', 'jQuery-airport', 'Grails', 'Code Mirror', 'jQuery' ]);
