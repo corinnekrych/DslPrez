@@ -97,131 +97,177 @@
             <p style=""><img width="15%" src="img/j1.png"/></p>
         </div>
 
-        <canvas id="animationcanvas" style="width: 100%; position: absolute; left: 0; bottom: 5px;" width="1000" height="50" ></canvas>
-        <code style="visibility: hidden;" id="animationcontent" class="language-javascript">
-            var f = true;
-            function animate() {
-                f = !f;
-                moveObject('emily', {
-                    role: 'turtle2',
-                    y: 19,
-                    x: f ? 0 : 19,
-                    rotation: 0
-                }, function () {});
-                moveObject('franklin', {
-                    role: 'turtle1',
-                    y: 19,
-                    x: f ? 19 : 0,
-                    rotation: 0
-                }, animate);
-            }
-            animate();</pre></code>
+        <!--<canvas id="animationcanvas" style="width: 100%; position: absolute; left: 0; bottom: 5px;" width="1000" height="50" ></canvas>-->
+        <!--<code style="visibility: hidden;" id="animationcontent" class="language-javascript">-->
+            <!--var f = true;-->
+            <!--function animate() {-->
+                <!--f = !f;-->
+                <!--moveObject('emily', {-->
+                    <!--role: 'turtle2',-->
+                    <!--y: 19,-->
+                    <!--x: f ? 0 : 19,-->
+                    <!--rotation: 0-->
+                <!--}, function () {});-->
+                <!--moveObject('franklin', {-->
+                    <!--role: 'turtle1',-->
+                    <!--y: 19,-->
+                    <!--x: f ? 19 : 0,-->
+                    <!--rotation: 0-->
+                <!--}, animate);-->
+            <!--}-->
+            <!--animate();</pre></code>-->
 
-        <script>
-            (function () {
-                var canvas = document.getElementById('animationcanvas');
-                var ctx = canvas.getContext('2d');
-                var grid = 20;
-                ctx.scale(canvas.width / grid, canvas.height);
-                ctx.translate(1/2, 1/2);
+        <!--<script>-->
+            <!--(function () {-->
+                <!--var canvas = document.getElementById('animationcanvas');-->
+                <!--var ctx = canvas.getContext('2d');-->
+                <!--var grid = 20;-->
+                <!--ctx.scale(canvas.width / grid, canvas.height);-->
+                <!--ctx.translate(1/2, 1/2);-->
 
-                var images = {};
-                function draw(place) {
-                    if (!images[place.role]) {
-                        images[place.role] = new Image();
-                        images[place.role].src = 'img/' + place.role + '.png';
-                    }
-                    ctx.save();
-                    ctx.translate(place.x, grid - 1 - place.y);
-                    ctx.rotate(- place.rotation);
-                    ctx.drawImage(images[place.role], -1/2, -1/2, 1, 1);
-                    ctx.restore();
-                }
+                <!--var images = {};-->
+                <!--function draw(place) {-->
+                    <!--if (!images[place.role]) {-->
+                        <!--images[place.role] = new Image();-->
+                        <!--images[place.role].src = 'img/' + place.role + '.png';-->
+                    <!--}-->
+                    <!--ctx.save();-->
+                    <!--ctx.translate(place.x, grid - 1 - place.y);-->
+                    <!--ctx.rotate(- place.rotation);-->
+                    <!--ctx.drawImage(images[place.role], -1/2, -1/2, 1, 1);-->
+                    <!--ctx.restore();-->
+                <!--}-->
 
-                function average(from, to, progress) {
-                    return from + (to - from) * progress;
-                }
+                <!--function average(from, to, progress) {-->
+                    <!--return from + (to - from) * progress;-->
+                <!--}-->
 
-                var duration = 7000;
-                var current = {};
-                var animated = {};
-                function animate() {
-                    var name;
-                    var cont = false;
-                    ctx.clearRect(-1, -1, grid + 1, grid + 1);
-                    //drawGrid();
-                    for (name in animated) {
-                        if (animated.hasOwnProperty(name)) {
-                            var to = animated[name];
-                            var from = current[name];
-                            var progress = (Date.now() - to.startTime) / duration;
-                            if (progress > 1) {
-                                current[name] = {
-                                    role: to.role,
-                                    x: to.x,
-                                    y: to.y,
-                                    rotation: to.rotation
-                                };
-                                delete animated[name];
-                                if (to.cb) {
-                                    to.cb();
-                                }
-                            } else {
-                                cont = true;
-                                draw({
-                                    role: to.role,
-                                    x: average(from.x, to.x, progress),
-                                    y: average(from.y, to.y, progress),
-                                    rotation: average(from.rotation, to.rotation, progress)
-                                });
-                            }
-                        }
-                    }
-                    for (name in current) {
-                        if (current.hasOwnProperty(name) && !animated[name]) {
-                            draw(current[name]);
-                        }
-                    }
-                    if (cont) {
-                        setTimeout(animate, 1000 / 60);
-                    }
-                }
+                <!--var duration = 7000;-->
+                <!--var current = {};-->
+                <!--var animated = {};-->
+                <!--function animate() {-->
+                    <!--var name;-->
+                    <!--var cont = false;-->
+                    <!--ctx.clearRect(-1, -1, grid + 1, grid + 1);-->
+                    <!--//drawGrid();-->
+                    <!--for (name in animated) {-->
+                        <!--if (animated.hasOwnProperty(name)) {-->
+                            <!--var to = animated[name];-->
+                            <!--var from = current[name];-->
+                            <!--var progress = (Date.now() - to.startTime) / duration;-->
+                            <!--if (progress > 1) {-->
+                                <!--current[name] = {-->
+                                    <!--role: to.role,-->
+                                    <!--x: to.x,-->
+                                    <!--y: to.y,-->
+                                    <!--rotation: to.rotation-->
+                                <!--};-->
+                                <!--delete animated[name];-->
+                                <!--if (to.cb) {-->
+                                    <!--to.cb();-->
+                                <!--}-->
+                            <!--} else {-->
+                                <!--cont = true;-->
+                                <!--draw({-->
+                                    <!--role: to.role,-->
+                                    <!--x: average(from.x, to.x, progress),-->
+                                    <!--y: average(from.y, to.y, progress),-->
+                                    <!--rotation: average(from.rotation, to.rotation, progress)-->
+                                <!--});-->
+                            <!--}-->
+                        <!--}-->
+                    <!--}-->
+                    <!--for (name in current) {-->
+                        <!--if (current.hasOwnProperty(name) && !animated[name]) {-->
+                            <!--draw(current[name]);-->
+                        <!--}-->
+                    <!--}-->
+                    <!--if (cont) {-->
+                        <!--setTimeout(animate, 1000 / 60);-->
+                    <!--}-->
+                <!--}-->
 
-                function moveObject(name, object, callback) {
-                    if (!current[name]) {
-                        current[name] = object;
-                        animate();
-                        callback();
-                    } else {
-                        object.startTime = Date.now();
-                        object.cb = callback;
-                        animated[name] = object;
-                        animate();
-                    }
-                }
-                eval('(function() {' + document.getElementById('animationcontent').innerHTML + '}())');
-            })();
-        </script>
+                <!--function moveObject(name, object, callback) {-->
+                    <!--if (!current[name]) {-->
+                        <!--current[name] = object;-->
+                        <!--animate();-->
+                        <!--callback();-->
+                    <!--} else {-->
+                        <!--object.startTime = Date.now();-->
+                        <!--object.cb = callback;-->
+                        <!--animated[name] = object;-->
+                        <!--animate();-->
+                    <!--}-->
+                <!--}-->
+                <!--eval('(function() {' + document.getElementById('animationcontent').innerHTML + '}())');-->
+            <!--})();-->
+        <!--</script>-->
 
     </div>
 </li>
 
-<li class="slide" title="Agenda">
+<li class="slide" title="Embedded DSL: Groovy and Scala Fair Duel" style="font-size: 20px;">
     <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-        <ul>
-        <li>Objectives of this session</li>
-        <li>Some context</li>
-        <li>Short technical reminder on DSLs</li>
-        <li>Let's build the DSL step by step</li>
-        <li>Let's put everything together</li>
-        <li>Enlarging the scope</li>
-        <li>Testing, more features</li>
-        <li>Conclusion</li>
-        </ul>
+
+        <div class="row-fluid marketing" >
+            <div class="span2">
+                <img src="images/groovydukemed.jpg" width="200%"/>
+            </div>
+            <div class="span8" >
+                <div style="color: #003bb3;font-size: 35px;text-align: center">Introduction</div><br/>
+                <div>Some context</div>
+                <div>Short technical reminder on DSLs</div><hr>
+                <div style="color: #003bb3;font-size: 35px;text-align: center">Part I: Define DSL </div><br/>
+                <div>Some context</div>
+                <div>Short technical reminder on DSLs</div><hr>
+                <div style="color: #003bb3;font-size: 35px;text-align: center">Part II: Implementing KissingTurtles DSL</div><br/>
+            </div>
+            <div class="span2">
+                <img src="images/scala-duke.jpg" width="65%"/>
+            </div>
         </div>
-        But first ...
+        <div class="row-fluid marketing" >
+            <div class="span2">
+            </div>
+            <div class="span4" style="text-align: right">
+                <div>GroovyShell & JSR23</div>
+                <div>Base class, compile configuration</div>
+                <div>Command chaining odd, single command</div>
+                <div>JsonBuilder, MarkupBuilder</div>
+                <div>MOP, invokeMethod/methodMissing</div>
+                <div>Add behaviour to Integer, Category</div>
+                <div>TypeChecked in Groovy</div>
+                <div>Secure your script, SecureASTCustomizer</div>
+                <div>AST transform</div>
+            </div>
+            <div class="span4" style="text-align: left">
+                <div>JSR23 & tools.nsc.interpreter</div>
+                <div>...</div>
+                <div>Command chaining, two commands</div>
+                <div>Implicit???</div>
+                <div>TODO kiss???</div>
+                <div>Add behaviour to Integer, traits????</div>
+                <div>Dynamics in Scala</div>
+                <div>Secure your script</div>
+                <div>User interaction with Continuations</div>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+        <div class="row-fluid marketing" >
+            <div class="span2">
+            </div>
+            <div class="span8" >
+                <div>... time to play</div><hr>
+                <div style="color: #003bb3;font-size: 35px;text-align: center">Part III: Going further</div><br/>
+                <div>Test your DSL</div>
+                <div>Groovy on Static side</div>
+                <div>Workbench</div><hr>
+                <div style="color: #003bb3;font-size: 35px;text-align: center">Conclusion</div><br/>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
     </div>
 </li>
 
@@ -253,27 +299,27 @@
 
         <br/>
         <div style ="height: 2%">
-        <div style="float: left; font-size: 25px; text-align: left; display: inline-block; width: 16%">
-            <img src="img/rivierargug.png" width="100%"/>
-        </div>
-        <div style="float:left;text-align:left;display:inline-block;width: 16%">
-            <img src="img/3musket33rs.jpeg" width="100%"/>
-        </div>
-
-        <div style="float: left; font-size: 25px; text-align: left; display: inline-block; width: 16%">
-            <img src="img/js-sophia-small.png" width="100%"/>
-        </div>
-
-        <div style="float: right; font-size: 25px; text-align: left; display: inline-block; width: 16%">
-            <img src="img/logo_duchess_all_in_one_small.png" width="100%"/>
-        </div>
-        <div style="float:right;text-align:right;display:inline-block;width: 16%">
-            <img src="img/aerogear.png" width="100%"/>
-        </div>
-        <div style="float:right;text-align:right;display:inline-block;width: 16%">
-            <img src="img/redhat-logo-cloud.jpeg" width="90%"/>
-        </div>
+            <div style="float: left; font-size: 25px; text-align: left; display: inline-block; width: 16%">
+                <img src="img/rivierargug.png" width="100%"/>
             </div>
+            <div style="float:left;text-align:left;display:inline-block;width: 16%">
+                <img src="img/3musket33rs.jpeg" width="100%"/>
+            </div>
+
+            <div style="float: left; font-size: 25px; text-align: left; display: inline-block; width: 16%">
+                <img src="img/js-sophia-small.png" width="100%"/>
+            </div>
+
+            <div style="float: right; font-size: 25px; text-align: left; display: inline-block; width: 16%">
+                <img src="img/logo_duchess_all_in_one_small.png" width="100%"/>
+            </div>
+            <div style="float:right;text-align:right;display:inline-block;width: 16%">
+                <img src="img/aerogear.png" width="100%"/>
+            </div>
+            <div style="float:right;text-align:right;display:inline-block;width: 16%">
+                <img src="img/redhat-logo-cloud.jpeg" width="90%"/>
+            </div>
+        </div>
     </div>
 </li>
 
@@ -2034,7 +2080,19 @@ Features not shown in this session in Scala
         });
     };
 
-    var showGroovyDuke = function() {
+     var blackBackground = function() {
+         $(document.body).addClass("blackBackground");
+     }
+     var removeBlackBackground = function() {
+         $(document.body).addClass("blackBackground");
+     }
+     var whiteBackground = function() {
+         $(document.body).addClass("whiteBackground");
+     }
+     var removeWhiteBackground = function() {
+         $(document.body).removeClass("whiteBackground");
+     }
+     var showGroovyDuke = function() {
         $('.CodeMirror').addClass("groovyduke");
         $(document.body).addClass("groovycolor");
     }
@@ -2056,6 +2114,10 @@ Features not shown in this session in Scala
     slide.enter("Scala", function() {
         showCloudWithArgs("scala", scala_word_array)
     });
+
+
+    slide.enter("Embedded DSL: Groovy and Scala Fair Duel", whiteBackground, removeWhiteBackground);
+
 
     slide.enter("Groovy Script", showGroovyDuke, removeGroovyDuke);
     slide.enter("Run Groovy Script", showGroovyDuke, removeGroovyDuke);
