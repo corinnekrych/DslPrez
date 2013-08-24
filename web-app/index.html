@@ -2019,18 +2019,7 @@ TODO editor or slide to explain
         <hr>
 
         <div style="text-align: center" class="jumbotron">
-            Debugging
-        </div>
-        <hr>
-    </div>
-</li>
-
-<li class="slide" title="Versioning DSL">
-    <div class="container-narrow">
-        <hr>
-
-        <div style="text-align: center" class="jumbotron">
-Migrating DSL
+            Error handling & Debugging
         </div>
         <hr>
     </div>
@@ -2068,6 +2057,48 @@ Features not shown in this session in Scala
 <!------------------------------------------------------------------->
 <!-- References
 <!------------------------------------------------------------------->
+<li class="slide" title="Bibliography" style="line-height: 150%;font-size:20px;">
+    <div class="container-narrow">
+        <img src="img/groovy.png" style="float:left; margin-left: 6em;width:15%"/>
+        <img src="img/scala_logo.png" style="float:right; margin-right: 6em;width:15%"/><br/><br/>
+        <div class="row-fluid marketing" style="clear: both;">
+            <div class="span2" style="padding-left:2em">
+                <div><img src="img/Groovy_DSL.jpg" /></div>
+                <div>Fergal Dearle</div><br/>
+                <div><img src="img/programming_Groovy2.jpg" /></div>
+                <div>Dr Venkat Subramaniam</div><br/>
+            </div>
+            <div class="span2">
+                <div><img src="img/GroovyInAction.jpg" /></div>
+                <div>Groovy crew </div>
+                <div><img src="img/grovy_goodness.jpeg" /></div>
+                <div>MrHaki</div>
+            </div>
+
+            <div class="span2">
+                <div><img src="img/dsl.jpg" /></div>
+                <div>Martin Fowler, with Rebecca Parsons</div>
+            </div>
+            <div class="span2">
+                <div><img src="img/dsl_debashi.jpg" /></div>
+                <div>Debasish Gosh</div>
+            </div>
+            <div class="span2">
+                <div><img src="img/prog_scala.gif" /></div>
+                <div>Martin Odersky, Lex Spoon, and Bill Venners</div>
+                <div><img src="img/scala_impatient.jpg" /></div>
+                <div>Cay Horstmann</div>
+            </div>
+            <div class="span2">
+                <div><img src="img/scala_in_depth.jpg" /></div>
+                <div>Josh Suereth</div>
+                <div><img src="img/programminf_scala.jpg" /></div>
+                <div>Alex Payne</div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</li>
 
 <li class="slide" title="References">
     <div class="container-narrow">
@@ -2094,35 +2125,7 @@ Features not shown in this session in Scala
             </div>
             <div class="span5">
                 <div style="line-height: 150%;font-size:30px;font-weight:bold">Special Thanks</div>
-                <div style="line-height: 150%;font-size:20px;">Mathieu Bruyen, Sebastien Blanc, Fabrice Matrat</div>
-                <div style="line-height: 150%;font-size:30px;font-weight:bold">References</div>
-                <table>
-                   <tr>
-                      <td>
-                         <div style="line-height: 150%;font-size:20px;">Domain-Specific Languages</div>
-                         <div style="line-height: 150%;font-size:20px;font-style:italic">Martin Fowler, with Rebecca Parsons</div>
-                         <div style="line-height: 150%;font-size:20px;">DSL in Action</div>
-                         <div style="line-height: 150%;font-size:20px;font-style:italic">Debasish Gosh</div>
-                      </td>
-                      <td>
-                        <div style="line-height: 150%;font-size:20px;">Groovy for Domain-Specific Languages  </div>
-                        <div style="line-height: 150%;font-size:20px;font-style:italic">Fergal Dearle</div>
-                        <div style="line-height: 150%;font-size:20px;">Groovy in Action</div>
-                        <div style="line-height: 150%;font-size:20px;font-style:italic">Guillaume Laforge, Paul King, Jon Skeet </div>
-                      </td>
-                      <td>
-                         <div style="line-height: 150%;font-size:20px;">Programming in Scala (second Edition)</div>
-                         <div style="line-height: 150%;font-size:20px;font-style:italic">Martin Odersky, Lex Spoon, and Bill Venners</div>
-                         <div style="line-height: 150%;font-size:20px;">Scala for the impatient</div>
-                         <div style="line-height: 150%;font-size:20px;font-style:italic">Cay Horstmann</div>
-                         <div style="line-height: 150%;font-size:20px;">Scala in Depth</div>
-                         <div style="line-height: 150%;font-size:20px;font-style:italic">Josh Suereth</div>
-                         <div style="line-height: 150%;font-size:20px;">Programming Scala</div>
-                         <div style="line-height: 150%;font-size:20px;font-style:italic">Alex Payne</div>
-                         
-                      </td>
-                   </tr>
-           </table>
+                <img src="/img/fabrice.png"/>Mathieu Bruyen, Sebastien Blanc, Fabrice Matrat
            </div>
             <div class="span1">
             </div>
@@ -2156,12 +2159,6 @@ Features not shown in this session in Scala
 <script src="js/xml-fold.js"></script>
 <script src="js/comment-fold.js"></script>
 <script src="js/groovy.js"></script>
-
-<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-<script src="js/html5.js">
-</script>
-<![endif]-->
 <script src="js/bootstrap.js"></script>
 <script src="js/editor.js"></script>
 <script src="js/jquery.airport-1.1.source.js"></script>
@@ -2169,201 +2166,8 @@ Features not shown in this session in Scala
 <script src="js/prez.js"></script>
 <script src="js/prez-scala.js"></script>
 <script src="js/ktDraw.js"></script>
-<script src="js/slide.js"></script>
-
-<script>
-
-    var scala_word_array = [
-        {text: "Syntaxic sugar", weight: 6},
-        {text: "Traits mixin", weight: 4},
-        {text: "Extractor/Apply mechanism", weight: 6},
-        {text: "Pattern matching", weight: 8},
-        {text: "Partial functions", weight: 8},
-        {text: "Currying", weight: 7},
-        {text: "Strong Typing", weight: 6},
-        {text: "Implicit mechanisms", weight: 9},
-        {text: "Type Inference", weight: 3},
-        {text: "Type classes", weight: 4},
-        {text: "Abstract Types", weight: 5},
-        {text: "Case class", weight: 6},
-        {text: "Higher order functions", weight: 7},
-        {text: "Macros", weight: 2},
-        {text: "Parser Combinators", weight: 3},
-        {text: "Operators", weight: 4},
-        {text: "LMS, Scala virtualization", weight: 1},
-        {text: "Scripting support", weight: 6}
-    ];
-
-    var showCloudWithArgs = function(key,word_array) {
-        var height = screen.height;
-        var width = screen.width;
-        $("#"+key+"_wordcloud").empty();
-        $("#"+key+"_wordcloud").jQCloud(word_array,{
-            height: $(window).height()*0.7,
-            width: $(window).width()*0.8
-        });
-    };
-
-    var showCloud = function() {
-        var height = screen.height;
-        var width = screen.width;
-        var word_array = [
-            {text: "syntax sugar", weight: 9},
-            {text: "less punctuation", weight: 7},
-            {text: "scripting", weight: 5},
-            {text: "binding", weight: 7},
-            {text: "no getter setter", weight: 1},
-            {text: "map", weight: 7},
-            {text: "named parameters", weight: 8},
-            {text: "closure", weight: 6},
-            {text: "GString", weight: 4},
-            {text: "public visibility", weight: 2},
-            {text: "return statement optional", weight: 3},
-            {text: "groovy truth", weight: 7},
-            {text: "operator overloading", weight: 1},
-            {text: "GroovyMarkup", weight: 4},
-            {text: "method pointer", weight: 6},
-            {text: "runtime transformation", weight: 1},
-            {text: "MOP", weight: 9},
-            {text: "Expando", weight: 8},
-            {text: "Categories", weight: 7},
-            {text: "methodMissing", weight: 8},
-            {text: "command chaining", weight: 1},
-            {text: "compile time transformation", weight: 7},
-            {text: "AST transformation", weight: 10},
-            {text: "CST transformation", weight: 5},
-            {text: "TypeChecked DSL", weight: 10}
-        ];
-        $("#wordcloud").empty();
-        $("#wordcloud").jQCloud(word_array,{
-            height: $(window).height()*0.7,
-            width: $(window).width()*0.8
-        });
-    };
-
-    var blackBackground = function() {
-        $(document.body).addClass("blackBackground");
-    }
-    var removeBlackBackground = function() {
-        $(document.body).removeClass("blackBackground");
-    }
-    var whiteBackground = function() {
-        $(document.body).addClass("whiteBackground");
-    }
-    var removeWhiteBackground = function() {
-        $(document.body).removeClass("whiteBackground");
-    }
-    var showGroovyDuke = function() {
-        $('.CodeMirror').addClass("groovyduke");
-        $(document.body).addClass("groovycolor");
-    }
-    var showScalaDuke = function() {
-        $('.CodeMirror').addClass("scaladuke");
-        $(document.body).addClass("scalacolor");
-    }
-    var removeGroovyDuke = function() {
-        $('.CodeMirror').removeClass("groovyduke");
-        $(document.body).removeClass("groovycolor");
-    }
-    var removeScalaDuke = function() {
-        $('.CodeMirror').removeClass("scaladuke");
-        $(document.body).removeClass("scalacolor");
-    }
-    var slide = new dslPrez.Slide();
-
-
-    slide.enter("Embedded DSL: Groovy and Scala Fair Duel", whiteBackground, removeWhiteBackground);
-    slide.enter("Coming from...", whiteBackground, removeWhiteBackground);
-    slide.enter("Ext. vs int.", whiteBackground, removeWhiteBackground);
-    slide.enter("Corinne", whiteBackground, removeWhiteBackground);
-    slide.enter("Groovy", function() {showCloud();blackBackground()} , removeBlackBackground);
-    slide.enter("Scala", function() {blackBackground();showCloudWithArgs("scala", scala_word_array);}, removeBlackBackground);
-
-
-
-    slide.enter("Groovy Script", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Run Groovy Script", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Scala Script", showScalaDuke, removeScalaDuke);
-    slide.enter("Run Scala Script", showScalaDuke, removeScalaDuke);
-
-    slide.enter("Base class in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Base class in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Base class in Scala", showScalaDuke, removeScalaDuke);
-
-    slide.enter("Binding in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Binding in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Binding in Scala", showScalaDuke, removeScalaDuke);
-    slide.enter("Output for Binding in Scala", showScalaDuke, removeScalaDuke);
-
-    slide.enter("Add Turtle in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Add Turtle in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Add Turtle in Scala", showScalaDuke, removeScalaDuke);
-    slide.enter("Output for Add Turtle in Scala", showScalaDuke, removeScalaDuke);
-
-    slide.enter("Build JSON in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Build JSON in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Build JSON in Scala", showScalaDuke, removeScalaDuke);
-    slide.enter("Output for Build JSON in Scala", showScalaDuke, removeScalaDuke);
-
-    slide.enter("Command Chaining in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Command Chaining in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Command Chaining in Scala", showScalaDuke, removeScalaDuke);
-    slide.enter("Output for Command Chaining in Scala", showScalaDuke, removeScalaDuke);
-
-    slide.enter("Odd Chaining in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Odd Chaining in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("kiss or kiss()", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for kiss in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Adding behaviour to Integer in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Adding behaviour to Integer in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Adding behaviour to Integer in Scala", showScalaDuke, removeScalaDuke);
-    slide.enter("Output for Adding behaviour to Integer in Scala", showScalaDuke, removeScalaDuke);
-
-    slide.enter("TypeChecked in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for TypeChecked in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Dynamics in Scala", showScalaDuke, removeScalaDuke);
-    slide.enter("Output for Dynamics in Scala", showScalaDuke, removeScalaDuke);
-
-    slide.enter("Franklin wants to turn around in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Franklin wants to turn around in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Franklin wants to turn around in Scala",showScalaDuke, removeScalaDuke);
-    slide.enter("Output for Franklin wants to turn around in Scala", showScalaDuke, removeScalaDuke);
-
-    slide.enter("Franklin wants to play with fire in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Franklin wants to play with fire in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Franklin wants to play with fire in Scala", showScalaDuke, removeScalaDuke);
-    slide.enter("Output for Franklin wants to play with fire in Scala", showScalaDuke, removeScalaDuke);
-
-    slide.enter("Franklin wants to ask in Groovy", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Franklin wants to ask in Groovy", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("AST Tranformation", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output AST", showGroovyDuke, removeGroovyDuke);
-
-    slide.enter("Franklin wants to ask in Scala", showScalaDuke, removeScalaDuke);
-    slide.enter("Output for Franklin wants to ask in Scala", showScalaDuke, removeScalaDuke);
-
-    slide.enter("Groovy Builder", showGroovyDuke, removeGroovyDuke);
-    slide.enter("Output for Groovy Builder", showGroovyDuke, removeGroovyDuke);
-
-    slide.start({
-        progressbar: true,
-        duration: 7200,
-        progressPrecision: 5
-    });
-</script>
+<script src="js/slide-fwk.js"></script>
+<script src="js/slides.js"></script>
 
 </body>
 </html>
