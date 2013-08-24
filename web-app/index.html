@@ -583,12 +583,12 @@
     </div>
 </li>
 
-<li class="slide" title="DSL classification">
+<li class="slide" title="From Martin Fowler">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
             <br/>
-            <h1>Different types of DSL</h1><br/>
+            <h1>DSL classifications</h1>
             <br/>
         </div>
         <hr>
@@ -1912,16 +1912,128 @@ TODO editor or slide to explain
 <!-- Going further
 <!------------------------------------------------------------------->
 
-<li class="slide" title="Enlarging the scope - Testing">
+<li class="slide" title="Testing">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>Different testing layers</h1><br/>
+            <br/>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <div class="span4" style="padding-left: 0.8em">
+                <h1>Semantic model</h1>
+                <hr>
+                <div class="code">unit test in isolation</div>
+                <div class="code">without DSL</div>
+                <div class="code">ensure semantic model behave as expected</div>
+                <hr>
+            </div>
+            <div class="span4">
+                <h1>Syntax (parser)</h1>
+                <hr>
+                <div class="code">unit test in isolation</div>
+                <div class="code">ensure DSL populates semantics model</div>
+                <div class="code">test invalid inputs</div>
+                <hr>
+            </div>
+            <div class="span4" style="padding-right: 1.8em">
+                <h1>Script</h1>
+                <hr>
+                <div class="code">script are also <b>code!</b></div>
+                <div class="code">provide test environment</div>
+                <div class="code">closer to integration tests</div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</li>
+
+<li class="slide" title="Testing in Groovy">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>Testing with Spock</h1><br/>
+            <br/>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <div class="span4" style="padding-left: 0.8em">
+                <h1>Semantic model</h1>
+                <hr>
+                <pre class="code">TODO</pre>
+                <hr>
+            </div>
+            <div class="span4">
+                <h1>Syntax (parser)</h1>
+                <hr>
+                <pre class="code"></pre>
+                <hr>
+            </div>
+            <div class="span4" style="padding-right: 1.8em">
+                <h1>Script</h1>
+                <hr>
+                <pre class="code"></pre>
+                <hr>
+            </div>
+        </div>
+    </div>
+</li>
+
+<li class="slide" title="Testing in Scala">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>Testing with ....</h1><br/>
+            <br/>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <div class="span4" style="padding-left: 0.8em">
+                <h1>Semantic model</h1>
+                <hr>
+                <pre class="code">TODO</pre>
+                <hr>
+            </div>
+            <div class="span4">
+                <h1>Syntax (parser)</h1>
+                <hr>
+                <pre class="code"></pre>
+                <hr>
+            </div>
+            <div class="span4" style="padding-right: 1.8em">
+                <h1>Script</h1>
+                <hr>
+                <pre class="code"></pre>
+                <hr>
+            </div>
+        </div>
+    </div>
+</li>
+
+<li class="slide" title="Debugging">
     <div class="container-narrow">
         <hr>
 
         <div style="text-align: center" class="jumbotron">
-Testing the DSL
-Debugging
-</div>
+            Debugging
+        </div>
         <hr>
-</div>
+    </div>
+</li>
+
+<li class="slide" title="Versioning DSL">
+    <div class="container-narrow">
+        <hr>
+
+        <div style="text-align: center" class="jumbotron">
+Migrating DSL
+        </div>
+        <hr>
+    </div>
 </li>
 
 <!------------------------------------------------------------------->
