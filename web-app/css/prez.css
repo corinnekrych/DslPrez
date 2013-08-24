@@ -14,7 +14,7 @@ html, body { height: 100%; }
 }
 
 body,ul,li {
-    font-family: 'PT Serif', georgia, serif;
+    /*font-family: 'PT Serif', georgia, serif;*/
     padding:0;
     margin:0;
     border:0;
@@ -22,7 +22,7 @@ body,ul,li {
 }
 
 body {
-    font-family: 'PT Serif', georgia, serif;
+    /*font-family: 'PT Serif', georgia, serif;*/
     background: #ededeb url("../img/bg.png") repeat 0 0;
     font-size:12px;
     -webkit-user-select:none;
@@ -155,12 +155,12 @@ body {
 }
 
 .groovyduke {
-    background: #FFFFFD url("..//images/groovydukemed.jpg") no-repeat top right ;
+    background: #FFFFFD url("../images/groovydukemed.jpg") no-repeat top right ;
     background-size: 100px;
 }
 
 .scaladuke {
-    background: #FFFFFD url("..//images/scala-duke.jpg") no-repeat top right ;
+    background: #FFFFFD url("../images/scala-duke.jpg") no-repeat top right ;
     background-size: 50px;
 }
 
@@ -173,7 +173,7 @@ body {
 }
 
 .blackBackground {
-    background: #000000;
+    background: rgba(0, 0, 0, 0.79);
 }
 
 .whiteBackground {
