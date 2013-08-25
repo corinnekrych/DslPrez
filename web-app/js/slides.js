@@ -105,7 +105,7 @@ slide.enter("Corinne", whiteBackground, removeWhiteBackground);
 slide.enter("Bibliography", whiteBackground, removeWhiteBackground);
 slide.enter("Groovy", function() {showCloud();blackBackground()} , removeBlackBackground);
 slide.enter("Scala", function() {blackBackground();showCloudWithArgs("scala", scala_word_array);}, removeBlackBackground);
-
+slide.enter("References", whiteBackground, removeWhiteBackground);
 
 
 slide.enter("Groovy Script", showGroovyDuke, removeGroovyDuke);

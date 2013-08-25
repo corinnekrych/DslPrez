@@ -20,30 +20,6 @@
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/jqcloud.css" rel="stylesheet">
     <link href="css/prez.css" media="all" rel="stylesheet">
-    <style type="text/css">
-        .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
-        .CodeMirror-foldmarker {
-            color: blue;
-            text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;
-            font-family: arial;
-            line-height: .3;
-            cursor: pointer;
-        }
-        .CodeMirror-foldgutter {
-            width: .7em;
-        }
-        .CodeMirror-foldgutter-open,
-        .CodeMirror-foldgutter-folded {
-            color: #555;
-            cursor: pointer;
-        }
-        .CodeMirror-foldgutter-open:after {
-            content: "\25BE";
-        }
-        .CodeMirror-foldgutter-folded:after {
-            content: "\25B8";
-        }
-    </style>
 </head>
 <body>
 <div id="header" >
@@ -217,7 +193,7 @@
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Introduction</div><br/>
                 <div>Some context</div>
                 <div>Short technical reminder on DSLs</div><hr>
-                <div style="color: #003bb3;font-size: 35px;text-align: center">Part I: Define DSL </div><br/>
+                <div style="color: #003bb3;font-size: 35px;text-align: center">Part I: Define DSL</div><br/>
                 <div>Some context</div>
                 <div>Short technical reminder on DSLs</div><hr>
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Part II: Implementing KissingTurtles DSL</div><br/>
@@ -229,28 +205,36 @@
         <div class="row-fluid marketing" >
             <div class="span2">
             </div>
-            <div class="span4" style="text-align: right">
-                <div>GroovyShell & JSR23</div>
-                <div>Base class, compile configuration</div>
-                <div>Command chaining odd, single command</div>
-                <div>JsonBuilder, MarkupBuilder</div>
-                <div>MOP, invokeMethod/methodMissing</div>
-                <div>Add behaviour to Integer, Category</div>
-                <div>TypeChecked in Groovy</div>
-                <div>Secure your script, SecureASTCustomizer</div>
-                <div>AST transform</div>
+            <div class="span8" style="text-align: center">
+            1. Script<br/>
+            2. Binding & Compiler configuration<br/>
+            3. Semantic Model<br/>
+            4. Syntax<br/>
+            5. Error & Security<br/>
+            6. Web-based server side scripting<br/>
             </div>
-            <div class="span4" style="text-align: left">
-                <div>JSR23 & tools.nsc.interpreter</div>
-                <div>...</div>
-                <div>Command chaining, two commands</div>
-                <div>Implicit???</div>
-                <div>TODO kiss???</div>
-                <div>Add behaviour to Integer, traits????</div>
-                <div>Dynamics in Scala</div>
-                <div>Secure your script</div>
-                <div>User interaction with Continuations</div>
-            </div>
+            <!--<div class="span4" style="text-align: right">-->
+                <!--<div>GroovyShell & JSR23</div>-->
+                <!--<div>Base class, compile configuration</div>-->
+                <!--<div>Command chaining odd, single command</div>-->
+                <!--<div>JsonBuilder, MarkupBuilder</div>-->
+                <!--<div>MOP, invokeMethod/methodMissing</div>-->
+                <!--<div>Add behaviour to Integer, Category</div>-->
+                <!--<div>TypeChecked in Groovy</div>-->
+                <!--<div>Secure your script, SecureASTCustomizer</div>-->
+                <!--<div>AST transform</div>-->
+            <!--</div>-->
+            <!--<div class="span4" style="text-align: left">-->
+                <!--<div>JSR23 & tools.nsc.interpreter</div>-->
+                <!--<div>...</div>-->
+                <!--<div>Command chaining, two commands</div>-->
+                <!--<div>Implicit???</div>-->
+                <!--<div>TODO kiss???</div>-->
+                <!--<div>Add behaviour to Integer, traits????</div>-->
+                <!--<div>Dynamics in Scala</div>-->
+                <!--<div>Secure your script</div>-->
+                <!--<div>User interaction with Continuations</div>-->
+            <!--</div>-->
             <div class="span2">
             </div>
         </div>
@@ -264,6 +248,29 @@
                 <div>Groovy on Static side</div>
                 <div>Workbench</div><hr>
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Conclusion</div><br/>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!------------------------------------------------------------------->
+<!-- Introduction
+<!------------------------------------------------------------------->
+<!--TODO vertical align without br-->
+<li class="slide" title="Part-I">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>Introduction</h1><br/>
+                </div>
+                <hr>
             </div>
             <div class="span2">
             </div>
@@ -411,6 +418,29 @@
     </div>
 </li>
 
+<!------------------------------------------------------------------->
+<!-- Part I - DSL definition
+<!------------------------------------------------------------------->
+<!--TODO vertical align without br-->
+<li class="slide" title="Part-I">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>Part I: Define DSL</h1><br/>
+                </div>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
 <li class="slide" title="DSL Definition">
     <div class="container-narrow">
         <hr>
@@ -538,14 +568,14 @@
         <hr>
 
         <div class="row-fluid marketing">
-        <div class="span2">
-        </div>
-        <div class="span8">
-        <p style="line-height: 150%;font-size: 30px" >a language offering <strong>expressive power</strong> focused on a particular problem domain, such as a specific class of applications or application aspect</p>
-        <h3>- Czarnecki Krzysztof </h3>
-        </div>
-        <div class="span2">
-        </div>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <p style="line-height: 150%;font-size: 30px" >a language offering <strong>expressive power</strong> focused on a particular problem domain, such as a specific class of applications or application aspect</p>
+                <h3>- Czarnecki Krzysztof </h3>
+            </div>
+            <div class="span2">
+            </div>
         </div>
     </div>
 </li>
@@ -583,34 +613,104 @@
     </div>
 </li>
 
-<li class="slide" title="From Martin Fowler">
+<li class="slide" title="Pros and Cons" style="line-height: 150%;font-size: 25px;">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
             <br/>
-            <h1>DSL classifications</h1>
+            <h1>When to use a DSL</h1>
             <br/>
         </div>
         <hr>
+        <div class="row-fluid marketing" style="text-align: left">
+            <div class="span1"></div>
+            <div class="span5">
+                <h3>Advantages</h3>
+                Expressiveness -> Easy collaboration with domain expert<br/>
+                Conciseness
+                Holy Grail of Self-documenting code<br/>
+                Readable -> Maintainability<br>
+            </div>
+            <div class="span5">
+                <h3>Disadvantages</h3>
+                Language cacophony: yet-another-language-to-learn<br/>
+                Lack of adequate tool support<br/>
+                Cost of building: language designing is hard<br/>
+                efficiency costs<br/>
+                ghetto language syndrome<br/>
+            </div>
+            <div class="span1"></div>
+        </div>
+    </div>
+</li>
+
+<li class="slide" title="From Martin Fowler">
+    <div class="container-narrow" style="line-height: 150%;font-size: 25px">
+        <hr>
+        <div class="jumbotron">
+            <h1>DSL classifications</h1>
+            <h3>- Martin Fowler </h3>
+        </div>
+        <hr>
         <div class="row-fluid marketing">
-            <div class="span4" style="padding-left: 0.8em">
-                <h1>Mini Language</h1>
+            <div class="span4">
+                <h1>External</h1>
                 <hr>
-                <pre class="code">prepare cake for tea</pre>
+                <div>
+                    Custom syntactical rules<br/>
+                    Parsed by code running it<br/>
+                </div>
+                <hr>
+                <pre class="code">ANNCESFA22SEP
+TODO Pascal</pre>
                 <hr>
             </div>
-            <div class="span4">
-                <h1>Scripting</h1>
+            <div class="span4" style="padding-left: 0.8em">
+                <h1>Internal</h1>
                 <hr>
-                <div> </div>
-                <pre class="code">['cake', 'smoothie'].each{eat it}</pre>
+                <div>
+                    Subset of a general purpose<br/>
+                    But feel like a custom language<br/>
+                </div>
+                Very often used in BDD framework like Cucumber, Spock ...
+                <hr>
+                <pre style="text-align: left;white-space: pre;font-size: 16px">
+<b style="color:#AF956F;">class</b> HelloSpock <b style="color:#AF956F;">extends</b> Specification {
+ <b style="color:#AF956F;">def</b> <b style="color:#5D90CD;">"Spock's and his friends' names length"</b>() {
+  expect:
+   name.size() == length
+
+   where:
+    name     | length
+    <b style="color:#5D90CD;">"Spock"</b>  | <b style="color:#46A609;">5</b>
+    <b style="color:#5D90CD;">"Kirk"</b>   | <b style="color:#46A609;">4</b>
+    <b style="color:#5D90CD;">"Scotty"</b> | <b style="color:#46A609;">6</b>
+  }
+}
+                </pre>
                 <hr>
             </div>
             <div class="span4" style="padding-right: 1.8em">
-                <h1>Fluent API</h1>
+                <h1>Workbench</h1>
                 <hr>
-                <pre class="code">tea.willBe 45.minutes.from.now</pre>
+                <!--<pre class="code">tea.willBe 45.minutes.from.now</pre>-->
                 <hr>
+            </div>
+        </div>
+    </div>
+</li>
+
+<li class="slide" title="From Martin Fowler" style="line-height: 150%;font-size: 25px">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <h1>DSL classifications</h1>
+            <h3>- Debashi </h3>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <div class="span12">
+                fgfgf
             </div>
         </div>
     </div>
@@ -632,20 +732,29 @@
             </div>
             <div class="span6" style="padding-right: 0.8em">
                 <h1>Internal</h1>
-                <pre style="text-align: left;white-space: pre;font-size: 16px">
-<b style="color:#AF956F;">class</b> HelloSpock <b style="color:#AF956F;">extends</b> Specification {
- <b style="color:#AF956F;">def</b> <b style="color:#5D90CD;">"Spock's and his friends' names length"</b>() {
-  expect:
-   name.size() == length
 
-   where:
-    name     | length
-    <b style="color:#5D90CD;">"Spock"</b>  | <b style="color:#46A609;">5</b>
-    <b style="color:#5D90CD;">"Kirk"</b>   | <b style="color:#46A609;">4</b>
-    <b style="color:#5D90CD;">"Scotty"</b> | <b style="color:#46A609;">6</b>
-  }
-}
-                </pre>
+            </div>
+        </div>
+    </div>
+</li>
+
+<li class="slide" title="Internal DSL">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1 >Which host language?</h1><br/>
+            <br/>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <div class="span6">
+                <img width="25%" src="img/groovy.png">
+                <h1>Dynamic language</h1>
+            </div>
+            <div class="span6" style="padding-right: 0.8em">
+                <img width="25%" src="img/scala_logo.png">
+                <h1>Strongly typed language</h1>
             </div>
         </div>
     </div>
@@ -661,6 +770,24 @@
     </div>
 </li>
 
+<li class="slide" title="Part-II">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>Part II: Implementing KissingTurtles DSL</h1><br/>
+                </div>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
 
 <li class="slide" title="DSL & Game">
     <div class="container-narrow">
@@ -694,6 +821,27 @@ ask "What's is your name?" assign to name
     </div>
 </li>
 
+<!------------------------------------------------------------------->
+<!-- 1. Script
+<!------------------------------------------------------------------->
+<li class="slide" title="1. Script">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>1. Script</h1><br/>
+                </div>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
 
 <li class="slide" title="Script">
     <div class="container-narrow">
@@ -800,9 +948,7 @@ especially with Classpath issues - in the next slides we'll use IMain directly
 </li>
 
 
-<li class="slide" title="Syntaxic Sugar" style="background-image:url('img/sugar.jpg');
-background-repeat:no-repeat;background-attachment:fixed;
-background-position:center;"  >
+<li class="slide" title="Syntaxic Sugar" >
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -847,6 +993,28 @@ move left
 </li>
 
 <!------------------------------------------------------------------->
+<!--2. Binding & Compiler Configuration
+<!------------------------------------------------------------------->
+<li class="slide" title="2. Binding">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>2. Binding & Compiler Configuration</h1><br/>
+                </div>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!------------------------------------------------------------------->
 <!-- Groovy2. Base Class
 <!-- step 1 define base class
 <!-- step 2 remove move definition in script
@@ -873,21 +1041,6 @@ move left
             </div>
         </div>
     </div>
-</li>
-
-<!-------------------------------------------------------------------
-<!-- Scala2. Base Classfor Scala 
-<!-- No equivalence
-------------------------------------------------------------------->
- <li class="slide" style="text-align: left" title="Base class in Scala">
-  <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
- There is No direct equivalence to baseclass
-There exists in the interpreter some wrapping mechanism where some code can be executed around
-not exactly identical. Most important equivalence is binding which is covered in next slides
-</div>
-</div>
 </li>
 
 <!-------------------------------------------------------------------
@@ -948,6 +1101,27 @@ step 2 ad move right command
     </div>
 </li>
 
+<!------------------------------------------------------------------->
+<!-- 3. Semantic Model
+<!------------------------------------------------------------------->
+<li class="slide" title="3. Semantic Model">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>3. Semantic Model</h1><br/>
+                </div>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
 
 <!------------------------------------------------------------------
 Groovy4. Structure my code
@@ -1067,6 +1241,28 @@ step 7 remove def left in GameScript
                 <pre class="code" id="outputScala5">
                 </pre>
                 <canvas id="canvasScala5" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!------------------------------------------------------------------->
+<!-- 4. Syntax
+<!------------------------------------------------------------------->
+<li class="slide" title="4. Syntax">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>4. Syntax</h1><br/>
+                </div>
                 <hr>
             </div>
             <div class="span2">
@@ -1486,6 +1682,28 @@ step7: replace with @Category annotation
     </div>
 </li>
 
+<!------------------------------------------------------------------->
+<!-- 5. Error handling & Secure script
+<!------------------------------------------------------------------->
+<li class="slide" title="5. Error handling & Secure script">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>5. Error handling & Secure script</h1><br/>
+                </div>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
 <!-------------------------------------------------------------------
 Groovy8. TypeChecked
 step 1: highlight compiler
@@ -1663,7 +1881,28 @@ step 3: add SecureASTCustomizer
     </div>
 </li>
 
-
+<!------------------------------------------------------------------->
+<!-- 6. Web-based
+<!------------------------------------------------------------------->
+<li class="slide" title="6. web-based">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>6. Web-based server side scripting</h1><br/>
+                    TODO ask pascal
+                </div>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
 <!-------------------------------------------------------------------
 Groovy11.ask
 step1: insert DSL ask
@@ -1760,16 +1999,34 @@ Scala11.ask
 <!------------------------------------------------------------------->
 <!-- Let's play
 <!------------------------------------------------------------------->
-
 <li class="slide" title="Putting everything together">
     <div class="container-narrow">
         <hr>
 
         <div style="text-align: center" class="jumbotron">
-Let's put everything together and let's play
-</div>
+            Let's put everything together and let's play
+        </div>
         <hr>
-</div>
+    </div>
+</li>
+
+<li class="slide" title="Part-III">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>Part III: Going further</h1><br/>
+                </div>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
 </li>
 
 <!------------------------------------------------------------------->
@@ -1865,7 +2122,7 @@ http://www.jroller.com/melix/entry/static_builders_inception
             </div>
         </div>
         <div class="span6">
-            <div style="line-height:150%;font-size:25px;text-align:left;">
+            <div style="line-height:150%;font-size:20px;text-align:left;">
                 Builders are dynamic features?<br/><span style="font-size: 18px">Impossible is not french...</span><br/>
                 How to implementation a <b>statically compiled HTML builder</b>?<br/>Using <span style="color:grey">static compilation</span>,
                 <span style="color:grey">@DelegatesTo</span>, meta-annotations, custom <span style="color:grey">type checking extensions</span>
@@ -2025,34 +2282,106 @@ TODO editor or slide to explain
     </div>
 </li>
 
-<!------------------------------------------------------------------->
-<!-- Going further (2)
-<!------------------------------------------------------------------->
-
-<li class="slide" title="Enlarging the scope - Features">
+<li class="slide" title="Macro">
     <div class="container-narrow">
         <hr>
 
         <div style="text-align: center" class="jumbotron">
-        <ul>
-<li>
-Features not shown in this session in Scala
-<ul>
-<li>macros</li> 
-<li>LMS and Scala virtualization</li>
-<li>Type Classes</li>
-</ul>
-</li>
-<li>External DSLs with ANTLR, Parser Combinators, XText in Eclipse</li>
-<li>Visual DSLs</li>
-<li>DSL Internationalization</li>
-</li>
-</ul>
-</div>
+            what about macro?
+        </div>
         <hr>
-</div>
+    </div>
 </li>
 
+<li class="slide" title="DSL Internationalization">
+    <div class="container-narrow">
+        <hr>
+
+        <div style="text-align: center" class="jumbotron">
+            DSL Internationalization
+        </div>
+        <hr>
+    </div>
+</li>
+
+<li class="slide" title="External DSL">
+    <div class="container-narrow">
+        <hr>
+
+        <div style="text-align: center" class="jumbotron">
+            External DSLs with ANTLR, Parser Combinators, XText in Eclipse
+        </div>
+        <hr>
+    </div>
+</li>
+
+<li class="slide" title="Language workbench">
+    <div class="container-narrow">
+        <hr>
+
+        <div style="text-align: center" class="jumbotron">
+           Language workbench
+        </div>
+        <hr>
+    </div>
+</li>
+
+<li class="slide" title="LMS and Scala virtualization">
+    <div class="container-narrow">
+        <hr>
+
+        <div style="text-align: center" class="jumbotron">
+            LMS and Scala virtualization<br/>
+            Type Classes<br/>
+        </div>
+        <hr>
+    </div>
+</li>
+
+
+<!------------------------------------------------------------------->
+<!-- Conclusion
+<!------------------------------------------------------------------->
+<li class="slide" title="Conclusion">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <div class="jumbotron">
+                    <h1>Conclusion</h1><br/>
+                </div>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<li class="slide" title="Host language choice">
+    <div class="container-narrow">
+        <hr>
+
+        <div style="text-align: center" class="jumbotron">
+            Which host language is right for me? TODO
+        </div>
+        <hr>
+    </div>
+</li>
+
+<li class="slide" title="Polyglot">
+    <div class="container-narrow">
+        <hr>
+
+        <div style="text-align: center" class="jumbotron">
+            other DSL in Clojure, Ruby etc... TODO
+        </div>
+        <hr>
+    </div>
+</li>
 
 <!------------------------------------------------------------------->
 <!-- References
@@ -2100,12 +2429,12 @@ Features not shown in this session in Scala
     </div>
 </li>
 
-<li class="slide" title="References">
+<li class="slide" title="References" style="line-height: 150%;font-size:30px;font-weight:bold">
     <div class="container-narrow">
         <hr>
 
         <div style="text-align: center" class="jumbotron">
-            <img width="20%" src="img/rivierargug.png"/><br/>
+            <img width="20%" src="images/groovydukemed.jpg"/>Thank You!<img style="width:11%" src="images/scala-duke.jpg"/><br/>
         </div>
 
         <hr>
@@ -2115,17 +2444,21 @@ Features not shown in this session in Scala
             </div>
             <div class="span5">
                 <div style="line-height: 150%;font-size:30px;font-weight:bold">Like the presentation format?</div>
-                <div id="technologies" style="line-height: 150%;font-size:30px;"></div>
+                <div id="technologies" style="line-height: 150%;font-size:30px;font-weight: normal"></div>
 
                 <div style="line-height: 150%;font-size:30px;font-weight:bold">Curious about code?</div>
                 <a href="https://github.com/corinnekrych/DslPrez" style="line-height: 150%;font-size:20px;">https://github.com/corinnekrych/DslPrez</a>
 
-                <div style="line-height: 150%;font-size:30px;font-weight:bold">Want to play with it?</div>
+                <div style="line-height: 150%;font-size:30px;font-weight:bold">Want to play with KissingTurtles?</div>
+                <a href='http://kissingturtles.herokuapp.com' style="line-height: 150%;font-size:20px;">http://kissingturtles.herokuapp.com</a>
+
+                <div style="line-height: 150%;font-size:30px;font-weight:bold">Want to contribute?</div>
                 <a href='https://github.com/corinnekrych/KissingTurtles' style="line-height: 150%;font-size:20px;">https://github.com/corinnekrych/KissingTurtles</a>
             </div>
             <div class="span5">
-                <div style="line-height: 150%;font-size:30px;font-weight:bold">Special Thanks</div>
-                <img src="/img/fabrice.png"/>Mathieu Bruyen, Sebastien Blanc, Fabrice Matrat
+                <div >Special Thanks</div>
+                <img src="img/fabrice.png"/><br/><span style="font-size:20px;">Fabrice Matrat</span><br/>
+                <img src="img/mathieu.jpeg"/><br/><span style="font-size:20px;">Mathieu Bruyen</span>
            </div>
             <div class="span1">
             </div>

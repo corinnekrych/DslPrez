@@ -1,6 +1,6 @@
 var serverUrl = "http://localhost:8080/DslPrez";
 //var serverUrl = "http://dslprez.cloudfoundry.com";
-//var serverUrl = "http://vast-escarpment-3640.herokuapp.com";
+//var serverUrl = "http://dslprez.aws.af.cm";
 function submitForm(input, output, lang) {
     var url = serverUrl + "/console/execute?=";
     $.post(url, {

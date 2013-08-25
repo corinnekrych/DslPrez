@@ -19,18 +19,11 @@ grails.project.dependency.resolution = {
         mavenCentral()
     }
     dependencies {
-        runtime 'postgresql:postgresql:9.1-901-1.jdbc4'
-//        runtime 'org.scala-lang:scala-compiler:2.11.0-M4'
-//        runtime 'org.scala-lang:scala-library:2.11.0-M4'
-//        runtime 'scalainterpreter:scalainterpreter:1.0'
-//        runtime 'net.liftweb:lift-json_2.10:2.5.1'
-        runtime 'postgresql:postgresql:9.1-901-1.jdbc4'
+
     }
 
     plugins {
         runtime ":jquery:1.7.1"
-        compile ':heroku:1.0.1'
-        compile ':cloud-support:1.0.8'
         compile ':webxml:1.4.1'
         build ':tomcat:7.0.39'
         runtime ':hibernate:3.6.10.M3'
