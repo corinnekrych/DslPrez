@@ -402,7 +402,7 @@ function editorScala4Send() {
 }
 
 function editorScala4Key0() {
-    if (editorScala4.currentPress(0, 2)) {
+    if (editorScala4.currentPress(0, 8)) {
        editorScala4.setValue(contentScala4);
     }
 }
