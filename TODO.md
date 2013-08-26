@@ -35,6 +35,7 @@ DslPrez TODO list
 | Test editor spock|2| |
 | Test editor scala|2| |
 | Slide105: Going further debugging: explain Jim Diriscoll Oracle?|3||
+| Add button for cmd+s to make prez tablet browsable|3||
 | Slide106: Going further macro ??|4||
 | Slide107: Going further DSL internationalization: put french ex|4||
 | Slide108: Going further External DSL: antlr XText??|4||
