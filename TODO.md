@@ -3,6 +3,7 @@ DslPrez TODO list
 | Item        | Priority           | Status  |
 | ------------- |:-------------:| -----:|
 | Heroku support for Scala editor|1||
+| Sandbox Groovy.eval/Scal.eval|1||
 | PartII on agenda: shall we put ask into PartIII?|1||
 | Slide13: when to use a DSL: CSS|1||
 | Slide14: DSL classifications: CSS|1||
