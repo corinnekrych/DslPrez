@@ -1366,6 +1366,120 @@ var keymapScala8 = {
 
 editorScala8.addKeyMap(keymapScala8);
 
+
+
+
+
+//------------------------------------------------------------------->
+// Scala Franklin wants to Kiss
+//------------------------------------------------------------------->
+
+var contentScala_kiss =  "import _root_.net.liftweb.json._\n"
+                      + "import net.liftweb.json._\n"
+                      + "import net.liftweb.json.JsonDSL._\n"
+                      + "import scala.language.implicitConversions // to remove warnings caused by implicits\n"
+                      + "import scala.collection.mutable.ArrayBuffer\n\n"
+                      + "case class Position(x:Int, y:Int) {\n"
+                      + "   def left  = Position(x-1,y)\n"
+                      + "   def right = Position(x+1,y)\n"
+                      + "   def up    = Position(x,y+1)\n"
+                      + "   def down  = Position(x,y-1)\n"
+                      + "}\n\n"
+                      + "implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n\n"
+                      + "sealed trait Direction\n"
+                      + "case object left extends Direction\n"
+                      + "case object right extends Direction\n"
+                      + "case object up extends Direction\n"
+                      + "case object down extends Direction\n\n"
+                      + "class Turtle(var p:Position) {\n\n"
+                      + "   val turtleSteps = new ArrayBuffer[Position]\n"
+                      + "   turtleSteps += p\n\n"
+                      + "   var currentDirection:Option[Direction] = None\n\n"
+                      + "   def move(d: Direction) = {\n"
+                      + "      d match {\n"
+                      + "         case `left` => p=p.left\n"
+                      + "         case `right` => p=p.right\n"
+                      + "         case `up` => p=p.up\n"
+                      + "         case `down` => p=p.down\n"
+                      + "      }\n"
+                      + "      turtleSteps += p\n"
+                      + "      currentDirection = Some(d)\n"
+                      + "      this\n"
+                      + "   }\n\n"
+                      + "   def toJSon = compact(render(\"steps\"->turtleSteps))\n\n"
+                      + "   def by(step:Int) = {\n"
+                      + "      // We start at 1 because we already moved once\n" 
+                      + "      for (d <- currentDirection; i <- 1 until step) move(d)\n"
+                      + "      currentDirection = None // Will not work anymore after until next move call\n"
+                      + "      this\n"
+                      + "   }\n"
+                      + "}\n\n"
+                      + "val turtle = new Turtle(Position(1,1))\n\n"
+                      + "val I = turtle // emulate the binding\n\n"
+                      + "///////////////////\n"
+                      + "// Emulated DSL\n"
+                      + "///////////////////\n"
+                      + "I move right by 2\n"
+                      + "I move up by 3\n"
+                      + "////////////////////\n"
+                      + "// End DSL\n"
+                      + "////////////////////\n\n"
+                      + "val json = turtle.toJSon\n"
+                      + "println(json); json\n";
+
+var editorScala_kiss = new dslPrez.editor("editorScala_kiss", contentScala_kiss);
+
+function editorScalaKissSend() {
+    var value = editorScala_kiss.getValue();
+    submitTurtleFormToScalaConsole(value, "#outputScala_kiss", "canvasScala_kiss");
+}
+
+function editorScalaKissKey0() {
+    editorScala_kiss.currentPress(0, 4);
+    editorScala_kiss.setValue(contentScala_kiss);
+}
+
+function editorScalaKissKey1() {
+    if (editorScala_kiss.currentPress(1, 4)) {
+      var value = "   def kiss() = println(\"<3 <3\")"
+    }
+}
+
+function editorScalaKissKey2() {
+    if (editorScala_kiss.currentPress(2, 4)) {
+      var value = "I kiss"
+    }
+}
+
+function editorScalaKissKey3() {
+    if (editorScala_kiss.currentPress(3, 4)) {
+            var value = "   def kiss = println(\"<3 <3\")"
+
+    }
+}
+
+function editorScalaKissKey4() {
+    if (editorScala_kiss.currentPress(4, 4)) {
+      var value = " n.bindbind engine.bind(\"kiss\",\"Function0[Unit]\",t.kiss _)"
+    }
+}
+
+var keymapScala_kiss = {
+    "Ctrl-S" :editorScalaKissSend,
+    "Cmd-S" :editorScalaKissSend,
+    "0": editorScalaKissKey0,
+    "1": editorScalaKissKey1,
+    "2": editorScalaKissKey2,
+    "3": editorScalaKissKey3,
+    "4": editorScalaKissKey4
+};
+editorScala_kiss.addKeyMap(keymapScala_kiss);
+
+
+
+
+[
+
 //------------------------------------------------------------------->
 // Scala9. Turn around - Timer set to 5 seconds
 //------------------------------------------------------------------->

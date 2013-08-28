@@ -150,6 +150,9 @@ slide.enter("Output for Odd Chaining in Groovy", showGroovyDuke, removeGroovyDuk
 slide.enter("kiss or kiss()", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for kiss in Groovy", showGroovyDuke, removeGroovyDuke);
 
+slide.enter("Kiss in Scala", showScalaDuke, removeScalaDuke);
+slide.enter("Output for Kiss in Scala", showScalaDuke, removeScalaDuke);
+
 slide.enter("Adding behaviour to Integer in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Adding behaviour to Integer in Groovy", showGroovyDuke, removeGroovyDuke);
 
