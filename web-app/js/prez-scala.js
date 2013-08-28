@@ -1435,32 +1435,68 @@ function editorScalaKissSend() {
 }
 
 function editorScalaKissKey0() {
-    editorScala_kiss.currentPress(0, 4);
+    editorScala_kiss.currentPress(0, 5);
     editorScala_kiss.setValue(contentScala_kiss);
 }
 
 function editorScalaKissKey1() {
-    if (editorScala_kiss.currentPress(1, 4)) {
-      var value = "   def kiss() = println(\"<3 <3\")"
+    if (editorScala_kiss.currentPress(1, 5)) {
+      editorScala_kiss.removeLine(48)      
+      var value = "\n   def kiss() = println(\"<3 <3\")\n}\n";
+      editorScala_kiss.replaceRange(value,{line:48, ch:0});
+      editorScala_kiss.addLineClass(49, "background", "highlight");    
     }
 }
 
 function editorScalaKissKey2() {
-    if (editorScala_kiss.currentPress(2, 4)) {
-      var value = "I kiss"
+    if (editorScala_kiss.currentPress(2, 5)) {
+      editorScala_kiss.removeLineClass(49, "background", "highlight");    
+      var value = "\nI kiss";
+      editorScala_kiss.replaceRange(value,{line:60});
+      editorScala_kiss.addLineClass(61, "background", "highlight");    
+
     }
 }
 
 function editorScalaKissKey3() {
-    if (editorScala_kiss.currentPress(3, 4)) {
-            var value = "   def kiss = println(\"<3 <3\")"
-
+    if (editorScala_kiss.currentPress(3, 5)) {
+      editorScala_kiss.removeLineClass(61, "background", "highlight");    
+      editorScala_kiss.removeLine(49)      
+      var value = "   def kiss = println(\"<3 <3\")\n"
+      editorScala_kiss.replaceRange(value,{line:49, ch:0});
+      editorScala_kiss.addLineClass(49, "background", "highlight");    
     }
 }
 
 function editorScalaKissKey4() {
-    if (editorScala_kiss.currentPress(4, 4)) {
-      var value = " n.bindbind engine.bind(\"kiss\",\"Function0[Unit]\",t.kiss _)"
+    if (editorScala_kiss.currentPress(4, 5)) {
+      editorScala_kiss.removeLineClass(49, "background", "highlight");    
+      editorScala_kiss.removeLine(61)
+      var value = "\ndef kiss = I.kiss _\n"
+                + "kiss() // In DSL evaluation needs to use parenthesis\n\n"
+		+ "//engine.bind(\"kiss\",\"()=>Unit\",kiss) // either Function0[Unit]\n\n"
+
+      editorScala_kiss.replaceRange(value,{line:61, ch:0});
+      editorScala_kiss.addLineClass(62, "background", "highlight");    
+      editorScala_kiss.addLineClass(63, "background", "highlight");   
+      editorScala_kiss.addLineClass(65, "background", "highlight");   
+    }
+}
+
+function editorScalaKissKey5() {
+    if (editorScala_kiss.currentPress(5, 5)) {
+      editorScala_kiss.removeLineClass(62, "background", "highlight");    
+      editorScala_kiss.removeLineClass(63, "background", "highlight");   
+      editorScala_kiss.removeLineClass(65, "background", "highlight");   
+      editorScala_kiss.removeLine(62)
+      editorScala_kiss.removeLine(62)
+      editorScala_kiss.removeLine(62)
+      editorScala_kiss.removeLine(62)
+      var value = "def kiss = I.kiss\n"
+                + "kiss\n"
+      editorScala_kiss.replaceRange(value,{line:62, ch:0});
+      editorScala_kiss.addLineClass(62, "background", "highlight");    
+      editorScala_kiss.addLineClass(63, "background", "highlight");   
     }
 }
 
@@ -1471,7 +1507,9 @@ var keymapScala_kiss = {
     "1": editorScalaKissKey1,
     "2": editorScalaKissKey2,
     "3": editorScalaKissKey3,
-    "4": editorScalaKissKey4
+    "4": editorScalaKissKey4,
+    "5": editorScalaKissKey5,
+
 };
 editorScala_kiss.addKeyMap(keymapScala_kiss);
 
