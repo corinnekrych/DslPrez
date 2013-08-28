@@ -404,6 +404,7 @@ function editorScala4Send() {
 function editorScala4Key0() {
     if (editorScala4.currentPress(0, 8)) {
        editorScala4.setValue(contentScala4);
+       editorScala4.scrollIntoView(0);
     }
 }
 
@@ -486,7 +487,10 @@ function editorScala4Key4() {
 
 function editorScala4Key5() {
     if(editorScala4.currentPress(5, 8)) {
-            editorScala4.removeLineClass(30, "background", "highlight");
+     
+       editorScala4.scrollIntoView(41);
+ 
+       editorScala4.removeLineClass(30, "background", "highlight");
  
        var value="n.bind(\"turtle\",turtle)\n\n"
        editorScala4.replaceRange(value,{line:32,ch:0});
@@ -716,6 +720,8 @@ var contentScala5 = "//import scala.tools.nsc.interpreter._\n\n"
     
 var editorScala5 = new dslPrez.editor("editorScala5", contentScala5);
 
+editorScala5.foldCode(CodeMirror.Pos(4, 0));
+
 function editorScala5Send() {
     var value = editorScala5.getValue();
     submitTurtleFormToScalaConsole(value, "#outputScala5", "canvasScala5");
@@ -724,6 +730,8 @@ function editorScala5Send() {
 function editorScala5Key0() {
     editorScala5.currentPress(0, 7);
     editorScala5.setValue(contentScala5);
+    editorScala5.scrollIntoView(0);
+
 }
 
 function editorScala5Key1() {
@@ -790,6 +798,7 @@ function editorScala5Key5() {
 
 function editorScala5Key6() {
     if (editorScala5.currentPress(6, 7)) {
+        editorScala5.scrollIntoView(64);
         editorScala5.removeLineClass(19, "background", "highlight");
         editorScala5.replaceRange("\n   def toJSon = compact(render(\"steps\"->steps))\n",{line:42, ch:0});
 	editorScala5.addLineClass(43, "background", "highlight");
@@ -803,6 +812,7 @@ function editorScala5Key7() {
         editorScala5.addLineClass(66, "background", "highlight");   
 	editorScala5.addLineClass(67, "background", "highlight");
 	editorScala5.addLineClass(68, "background", "highlight");
+	editorScala5.scrollIntoView(68);
     }
 }
 
@@ -932,6 +942,8 @@ var contentScala6 = "import _root_.net.liftweb.json._\n"
 
 var editorScala6 = new dslPrez.editor("editorScala6", contentScala6);
 
+editorScala6.foldCode(CodeMirror.Pos(6, 0));
+
 function editorScala6Send() {
     var value = editorScala6.getValue();
     submitTurtleFormToScalaConsole(value, "#outputScala6", "canvasScala6");
@@ -940,6 +952,7 @@ function editorScala6Send() {
 function editorScala6Key0() {
     editorScala6.currentPress(0, 6);
     editorScala6.setValue(contentScala6);
+    editorScala6.scrollIntoView(0);
 }
 
 function editorScala6Key1() {
@@ -951,6 +964,7 @@ function editorScala6Key1() {
        editorScala6.replaceRange(value,{line:47,ch:0});
        editorScala6.addLineClass(47, "background", "highlight");
        editorScala6.addLineClass(48, "background", "highlight");
+       editorScala6.scrollIntoView(54);
     }
 }
 
@@ -1162,6 +1176,8 @@ var contentScala7 = "import _root_.net.liftweb.json._\n"
     
 var editorScala7 = new dslPrez.editor("editorScala7", contentScala7);
 
+editorScala7.foldCode(CodeMirror.Pos(6, 0));
+
 function editorScala7Send() {
     var value = editorScala7.getValue();
     submitTurtleFormToScalaConsole(value, "#outputScala7", "canvasScala7");
@@ -1170,6 +1186,7 @@ function editorScala7Send() {
 function editorScala7Key0() {
     editorScala7.currentPress(0, 5);
     editorScala7.setValue(contentScala7);
+    editorScala7.scrollIntoView(0);
 }
 
 function editorScala7Key1() {
@@ -1185,23 +1202,25 @@ function editorScala7Key1() {
        editorScala7.addLineClass(58, "background", "highlight");
        editorScala7.addLineClass(59, "background", "highlight");
        editorScala7.addLineClass(60, "background", "highlight");
+       editorScala7.scrollIntoView(62);
     }
 }
 
 function editorScala7Key2() {
     if (editorScala7.currentPress(2, 5)) {
-      editorScala7.removeLineClass(57, "background", "highlight");
+       editorScala7.removeLineClass(57, "background", "highlight");
        editorScala7.removeLineClass(58, "background", "highlight");
        editorScala7.removeLineClass(59, "background", "highlight");
        editorScala7.removeLineClass(60, "background", "highlight");
-      value = "implicit class Times(i:Int) {\n"
-            + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
-            + "}\n\n";
-      editorScala7.replaceRange(value,{line:6,ch:0});
+       value = "implicit class Times(i:Int) {\n"
+             + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
+             + "}\n\n";
+       editorScala7.replaceRange(value,{line:6,ch:0});
        editorScala7.addLineClass(7, "background", "highlight");
        editorScala7.addLineClass(8, "background", "highlight");
        editorScala7.addLineClass(6, "background", "highlight");
 
+       editorScala7.scrollIntoView(0);
     }
 }
 
@@ -1218,7 +1237,8 @@ function editorScala7Key3() {
        editorScala7.replaceRange(value,{line:62,ch:0});
        editorScala7.addLineClass(62, "background", "highlight");
        editorScala7.addLineClass(63, "background", "highlight");
-     
+    
+       editorScala7.scrollIntoView(70);
     }
 }
 
@@ -1227,42 +1247,42 @@ function editorScala7Key4() {
        editorScala7.removeLineClass(62, "background", "highlight");
        editorScala7.removeLineClass(63, "background", "highlight");
 
-      value = "\ncase class Step(i:Int) {\n"
+       value = "case class Step(i:Int) {\n"
              + "   def steps = this\n"
 	     + "   def step = this\n"
              +"}\n\n"
 	     +"implicit def toSteps(i:Int) = Step(i)\n\n";
        editorScala7.replaceRange(value,{line:10,ch:0});
- editorScala7.addLineClass(11, "background", "highlight");
- editorScala7.addLineClass(12, "background", "highlight");
- editorScala7.addLineClass(13, "background", "highlight");
- editorScala7.addLineClass(14, "background", "highlight");
-  editorScala7.addLineClass(15, "background", "highlight");
-  editorScala7.addLineClass(16, "background", "highlight");
-     
+       editorScala7.addLineClass(11, "background", "highlight");
+       editorScala7.addLineClass(12, "background", "highlight");
+       editorScala7.addLineClass(13, "background", "highlight");
+       editorScala7.addLineClass(14, "background", "highlight");
+       editorScala7.addLineClass(15, "background", "highlight");
+       editorScala7.addLineClass(10, "background", "highlight");
+       editorScala7.scrollIntoView(7);
     }
 }
 
 function editorScala7Key5() {
     if (editorScala7.currentPress(5, 5)) {
       editorScala7.removeLineClass(11, "background", "highlight");
- editorScala7.removeLineClass(12, "background", "highlight");
- editorScala7.removeLineClass(13, "background", "highlight");
- editorScala7.removeLineClass(14, "background", "highlight");
-  editorScala7.removeLineClass(15, "background", "highlight");
-  editorScala7.removeLineClass(16, "background", "highlight");
-  editorScala7.removeLine(54);
-  editorScala7.removeLine(54);
-editorScala7.removeLine(54);
+      editorScala7.removeLineClass(12, "background", "highlight");
+      editorScala7.removeLineClass(13, "background", "highlight");
+      editorScala7.removeLineClass(14, "background", "highlight");
+      editorScala7.removeLineClass(15, "background", "highlight");
+      editorScala7.removeLineClass(10, "background", "highlight");
+      editorScala7.removeLine(53);
+      editorScala7.removeLine(53);
+      editorScala7.removeLine(53);
 
-  value = "   def by(step:Step) = {\n"
-        + "      // We start at 1 because we already moved once\n"
-        + "      for (d <- currentDirection; i <- 1 until step.i) move(d)\n";
-       editorScala7.replaceRange(value,{line:54,ch:0});
- editorScala7.addLineClass(54, "background", "highlight");
- editorScala7.addLineClass(55, "background", "highlight");
- editorScala7.addLineClass(56, "background", "highlight");
-
+      value = "   def by(step:Step) = {\n"
+            + "      // We start at 1 because we already moved once\n"
+            + "      for (d <- currentDirection; i <- 1 until step.i) move(d)\n";
+      editorScala7.replaceRange(value,{line:53,ch:0});
+      editorScala7.addLineClass(53, "background", "highlight");
+      editorScala7.addLineClass(54, "background", "highlight");
+      editorScala7.addLineClass(55, "background", "highlight");
+      editorScala7.scrollIntoView(57);
     }
 }
 
@@ -1429,6 +1449,8 @@ var contentScala_kiss =  "import _root_.net.liftweb.json._\n"
 
 var editorScala_kiss = new dslPrez.editor("editorScala_kiss", contentScala_kiss);
 
+editorScala_kiss.foldCode(CodeMirror.Pos(6, 0));
+
 function editorScalaKissSend() {
     var value = editorScala_kiss.getValue();
     submitTurtleFormToScalaConsole(value, "#outputScala_kiss", "canvasScala_kiss");
@@ -1437,6 +1459,7 @@ function editorScalaKissSend() {
 function editorScalaKissKey0() {
     editorScala_kiss.currentPress(0, 5);
     editorScala_kiss.setValue(contentScala_kiss);
+    editorScala_kiss.scrollIntoView(65)
 }
 
 function editorScalaKissKey1() {
@@ -1473,13 +1496,14 @@ function editorScalaKissKey4() {
       editorScala_kiss.removeLineClass(49, "background", "highlight");    
       editorScala_kiss.removeLine(61)
       var value = "\ndef kiss = I.kiss _\n"
-                + "kiss() // In DSL evaluation needs to use parenthesis\n\n"
+                + "kiss() // Evaluation needs to use parenthesis\n\n"
 		+ "//engine.bind(\"kiss\",\"()=>Unit\",kiss) // either Function0[Unit]\n\n"
 
       editorScala_kiss.replaceRange(value,{line:61, ch:0});
       editorScala_kiss.addLineClass(62, "background", "highlight");    
       editorScala_kiss.addLineClass(63, "background", "highlight");   
       editorScala_kiss.addLineClass(65, "background", "highlight");   
+      editorScala_kiss.scrollIntoView(72);
     }
 }
 
@@ -1493,10 +1517,15 @@ function editorScalaKissKey5() {
       editorScala_kiss.removeLine(62)
       editorScala_kiss.removeLine(62)
       var value = "def kiss = I.kiss\n"
-                + "kiss\n"
+                + "kiss\n\n"
+		+ "//engine.bind(\"kissWithArity0\",\"()=>Unit\",kiss) // either Function0[Unit]\n"
+		+ "//engine.interpret(\"def kiss = kissWithArity0()\")\n"
+
       editorScala_kiss.replaceRange(value,{line:62, ch:0});
       editorScala_kiss.addLineClass(62, "background", "highlight");    
       editorScala_kiss.addLineClass(63, "background", "highlight");   
+      editorScala_kiss.addLineClass(65, "background", "highlight");
+      editorScala_kiss.addLineClass(66, "background", "highlight");   
     }
 }
 
@@ -1579,6 +1608,10 @@ var contentScala9 = "import _root_.net.liftweb.json._\n"
 		  + "println(json); json\n";
 
 var editorScala9 = new dslPrez.editor("editorScala9",contentScala9);
+editorScala9.foldCode(CodeMirror.Pos(10, 0));
+editorScala9.foldCode(CodeMirror.Pos(17, 0));
+editorScala9.foldCode(CodeMirror.Pos(32, 0));
+
 
 function editorScala9TurtleSend() {
     var value = editorScala9.getValue();
@@ -1622,6 +1655,10 @@ var contentScala10 = contentScala9;
 
 
 var editorScala10 = new dslPrez.editor("editorScala10", contentScala10);
+editorScala10.foldCode(CodeMirror.Pos(10, 0));
+editorScala10.foldCode(CodeMirror.Pos(17, 0));
+editorScala10.foldCode(CodeMirror.Pos(32, 0));
+
 
 function editorScala10Send() {
     var value = editorScala10.getValue();
@@ -1731,4 +1768,5 @@ var keymapScala11 = {
     "1": editorScala11Key1
 };
 editorScala11.addKeyMap(keymapScala11);
+
 
