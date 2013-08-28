@@ -101,10 +101,11 @@ var slide = new dslPrez.Slide();
 slide.enter("Embedded DSL: Groovy and Scala Fair Duel", whiteBackground, removeWhiteBackground);
 slide.enter("Coming from...", whiteBackground, removeWhiteBackground);
 slide.enter("Ext. vs int.", whiteBackground, removeWhiteBackground);
+slide.enter("Internal DSL", whiteBackground, removeWhiteBackground);
 slide.enter("Corinne", whiteBackground, removeWhiteBackground);
 slide.enter("Bibliography", whiteBackground, removeWhiteBackground);
-slide.enter("Groovy", function() {showCloud();blackBackground()} , removeBlackBackground);
-slide.enter("Scala", function() {blackBackground();showCloudWithArgs("scala", scala_word_array);}, removeBlackBackground);
+slide.enter("Groovy", function() {showCloud();});
+slide.enter("Scala", function() {showCloudWithArgs("scala", scala_word_array);});
 slide.enter("References", whiteBackground, removeWhiteBackground);
 
 
