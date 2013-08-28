@@ -623,6 +623,9 @@
             </div>
             <div class="span1"></div>
         </div>
+        <div>
+        <hr/>
+        </div>
     </div>
 </li>
 
@@ -1507,45 +1510,43 @@ step 4: change by method to return map
             <br/>
         </div>
         <hr>
-    </div>
-
-    <div class="row-fluid marketing">
-        <div class="span1">
-        </div>
-        <div class="span5">
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                <div style="color:grey">move left</div>
-                <div>&nbsp;&nbsp;&nbsp;=> possible but not ideal</div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mixing verbs and noun roles</div>
-                <br/>
-                <div style="color:grey">move left by 2 steps</div>
-                <div>&nbsp;&nbsp;&nbsp;move.left(by).2(steps) // Hmmm ...</div>
-                <br/>
-                <div style="color:grey">I move left</div>
-                <div>&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
-                <br/>
-                <div style="color:grey">I move left by 2 steps</div>
-                <div>&nbsp;&nbsp;&nbsp;=> I.move(left).by(2).steps</div>
-                <br/>
-                <div style="color:grey">I move left by 2.steps</div>
-                <div>&nbsp;&nbsp;&nbsp;=> I.move(left).by(2.steps)</div>
-            </div>
-            <hr>
-        </div>
-        <div class="span6">
-           <h3>Be careful with arity</h3>
-           <div style="line-height:150%;font-size:25px;text-align:left;">
-           Infix operator for function with a single parameter (arity 1)<br/>
-           <div style="color:grey">I move left</div>
-           <div>&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
-           <br/>
-           Suffix operator for function without parameter (arity 0)<br/>
-           <div style="color:grey">I jump</div>
-           <div>&nbsp;&nbsp;&nbsp;=> I.jump()</div>
-           <br/>
-           But might fail (and need an empty line or a ;)<br/>
-           <div style="color:grey">I jump<br/>
+       <div class="row-fluid marketing">
+           <div class="span1">
+           </div>
+           <div class="span5">
+               <div style="line-height:150%;font-size:25px;text-align:left;">
+                   <div style="color:grey">move left</div>
+                   <div>&nbsp;&nbsp;&nbsp;=> possible but not ideal</div>
+                   <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mixing verbs and noun roles</div>
+                   <br/>
+                   <div style="color:grey">move left by 2 steps</div>
+                   <div>&nbsp;&nbsp;&nbsp;move.left(by).2(steps) // Hmmm ...</div>
+                   <br/>
+                   <div style="color:grey">I move left</div>
+                   <div>&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
+                   <br/>
+                   <div style="color:grey">I move left by 2 steps</div>
+                   <div>&nbsp;&nbsp;&nbsp;=> I.move(left).by(2).steps</div>
+                   <br/>
+                   <div style="color:grey">I move left by 2.steps</div>
+                   <div>&nbsp;&nbsp;&nbsp;=> I.move(left).by(2.steps)</div>
+               </div> 
+           </div>
+           <div class="span6">
+              <h3>Be careful with arity</h3>
+              <div style="line-height:150%;font-size:25px;text-align:left;">
+              Infix operator for function with a single parameter (arity 1)<br/>
+              <div style="color:grey">I move left</div>
+              <div>&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
+              <br/>
+              Suffix operator for function without parameter (arity 0)<br/>
+              <div style="color:grey">I jump</div>
+              <div>&nbsp;&nbsp;&nbsp;=> I.jump()</div>
+              <br/>
+              But might fail (and need an empty line or a ;)<br/>
+              <div style="color:grey">I jump<br/>
               I move right //fail
+              </div>
            </div>
         </div>
     </div>
@@ -1717,13 +1718,31 @@ class GORM {
 <!------------------------------------------------------------------->
 <!-- kiss Editor in scala
 <!------------------------------------------------------------------->
-<li class="slide" title="Kiss in Scala">
+<li class="slide" title="Kiss in Scala" style="text-align: left" press="1 2 3 4">
+    <textarea id="editorScala_kiss" name="editorScala_kiss">
+    </textarea>
+</li>
+
+
+<li class="slide" style="text-align: left" title="Output for Kiss in Scala">
     <div class="container-narrow">
         <br/><br/><br/><br/><hr><br/>
         <h1>Kiss in Scala: editor place holder </h1><br/>
         <hr>
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala_kiss">
+                </pre>
+                <canvas id="canvasScala_kiss" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
     </div>
-
 </li>
 
 <li class="slide" title="Category and Implicit">
@@ -2410,10 +2429,10 @@ TODO editor or slide to explain
         <div class="row-fluid marketing" style="text-align: left">
         <div class="span1"></div>
         <div class="span5">
-            <h3>Scala Syntax features</h3>
+            <h3>Scala language features</h3>
             Macros<br/>
             Traits to mix behaviours<br/>
-            Abstract Types and types polymorphism
+            Abstract types and type polymorphism
         </div>
         <div class="span5">
             <h3>Scala new libraries</h3>
@@ -2625,14 +2644,13 @@ TODO editor or slide to explain
             </div>        
             <div class="span7" style="text-align: left">
             No one size fits them all<br/>
-            Chose the language that solves best your requirements<br/>
+            <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;Choose the language that solves best your requirements</div><br/>
             And don't fear polyglotism<br/>
-            Consider Clojure, JRuby, ...
+            <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;Consider Clojure, JRuby, ...</div>
             </div>
             <div class="span2">
             </div>        
         </div>
-        <hr>
     </div>
 </li>
 
