@@ -1475,11 +1475,6 @@ var keymapScala_kiss = {
 };
 editorScala_kiss.addKeyMap(keymapScala_kiss);
 
-
-
-
-[
-
 //------------------------------------------------------------------->
 // Scala9. Turn around - Timer set to 5 seconds
 //------------------------------------------------------------------->
