@@ -213,7 +213,7 @@
             3. Semantic Model<br/>
             4. Syntax<br/>
             5. Error & Security<br/>
-            6. Web-based server side scripting<br/>
+            6. Web-based Interaction<br/>
             </div>
             <!--<div class="span4" style="text-align: right">-->
                 <!--<div>GroovyShell & JSR23</div>-->
@@ -244,11 +244,11 @@
             <div class="span2">
             </div>
             <div class="span8" >
-                <div>... time to play</div><hr>
+                <div>... time to play ...</div><hr>
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Part III: Going further</div><br/>
-                <div>Test your DSL</div>
-                <div>Groovy on Static side</div>
-                <div>Workbench</div><hr>
+                <div>Groovy and Scala features</div>
+                <div>External DSLs</div>
+                <div>Development tooling</div><hr>
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Conclusion</div><br/>
             </div>
             <div class="span2">
@@ -433,7 +433,7 @@
             <div class="span8">
                 <hr>
                 <div class="jumbotron">
-                    <h1>Part I: What is a DSL?</h1><br/>
+                    <h1>Part I: DSL?</h1><br/>
                 </div>
                 <hr>
             </div>
@@ -974,7 +974,7 @@ especially with Classpath issues - in the next slides we'll use IMain directly
             <h3>Security</h3>
             Scripting evaluation raises security concerns:
             <div style="font-size: 18px">&nbsp;&nbsp;&nbsp;- Access to server running application and potentially undesired data</div>
-            <div style="font-size: 18px">&nbsp;&nbsp;&nbsp;- Capability to threat the server behavior</div>
+            <div style="font-size: 18px">&nbsp;&nbsp;&nbsp;- Capability to threat the server behaviour</div>
         </div>
         <div class="span1"></div>
         </div>
@@ -1508,8 +1508,11 @@ step 4: change by method to return map
         <div class="span5">
             <div style="line-height:150%;font-size:25px;text-align:left;">
                 <div style="color:grey">move left</div>
-                <div>&nbsp;&nbsp;&nbsp;=> not easy</div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and mixing verbs and noun roles</div>
+                <div>&nbsp;&nbsp;&nbsp;=> possible but not ideal</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mixing verbs and noun roles</div>
+                <br/>
+                <div style="color:grey">move left by 2 steps</div>
+                <div>&nbsp;&nbsp;&nbsp;move.left(by).2(steps) // Hmmm ...</div>
                 <br/>
                 <div style="color:grey">I move left</div>
                 <div>&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
@@ -1720,8 +1723,8 @@ class GORM {
 <li class="slide" title="Category and Implicit">
     <div class="container-narrow">
         <br/><br/><br/><br/><hr>
-        <h1>Category and Implicit </h1><br/>
-        Adding behavior to existing classes....
+        <h1>Category and Implicits </h1><br/>
+        <h3>Adding behavior to existing classes....</h3>
         <hr>
     </div>
 
@@ -1794,7 +1797,7 @@ step7: replace with @Category annotation
 <!------------------------------------------------------------------->
 <!-- 5. Error handling & Secure script
 <!------------------------------------------------------------------->
-<li class="slide" title="5. Error handling & Secure script">
+<li class="slide" title="5. Error handling & Securing scripts">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -1803,7 +1806,7 @@ step7: replace with @Category annotation
             <div class="span8">
                 <hr>
                 <div class="jumbotron">
-                    <h1>5. Error handling & Secure script</h1><br/>
+                    <h1>5. Error handling & Securing scripts</h1><br/>
                 </div>
                 <hr>
             </div>
@@ -2388,7 +2391,7 @@ TODO editor or slide to explain
         <div class="span5">
             <h3>Scala Syntax features</h3>
             Macros<br/>
-            Traits<br/>
+            Traits to mix behaviours<br/>
             Abstract Types and types polymorphism
         </div>
         <div class="span5">
