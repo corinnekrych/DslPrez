@@ -2426,7 +2426,16 @@ editorGroovy11.addKeyMap(keymap11);
 //            + "\n";
 
 
-var content12 =   "public class GameCustomizer extends CompilationCustomizer {\n"
+var content12 = "import org.codehaus.groovy.ast.ClassCodeVisitorSupport\n"
+    + "import org.codehaus.groovy.ast.ClassNode\n"
+    + "import org.codehaus.groovy.ast.expr.MethodCallExpression\n"
+    + "import org.codehaus.groovy.ast.stmt.BlockStatement\n"
+    + "import org.codehaus.groovy.classgen.GeneratorContext\n"
+    + "import org.codehaus.groovy.control.CompilationFailedException\n"
+    + "import org.codehaus.groovy.control.CompilePhase\n"
+    + "import org.codehaus.groovy.control.SourceUnit\n"
+    + "import org.codehaus.groovy.control.customizers.CompilationCustomizer\n"
+    + "public class GameCustomizer extends CompilationCustomizer {\n"
                 + "def step = 0\n"
                 + "\n"
                 + "public GameCustomizer() {\n"
@@ -2482,20 +2491,31 @@ var editorGroovy12 = new dslPrez.editor("editorGroovy12", content12);
 
 function editorGroovy12Send() {
     var value = editorGroovy12.getValue();
-    value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
-        +"import org.codehaus.groovy.ast.*\n"
-        +"import org.codehaus.groovy.ast.expr.*\n"
-        +"import org.codehaus.groovy.ast.stmt.*\n"
-        +"import org.codehaus.groovy.classgen.GeneratorContext\n"
-        +"import org.codehaus.groovy.control.CompilationFailedException\n"
-        +"import org.codehaus.groovy.control.CompilePhase\n"
-        +"import org.codehaus.groovy.control.CompilerConfiguration\n"
-        +"import org.codehaus.groovy.control.SourceUnit\n"
-        +"import org.codehaus.groovy.control.customizers.*\n"
-        +"import org.codehaus.groovy.ast.builder.AstBuilder\n"
-        +"import org.codehaus.groovy.syntax.Token\n"
-        +"import org.codehaus.groovy.syntax.Types\n"
-        +"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n" + value;
+//    value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
+//        +"import org.codehaus.groovy.ast.*\n"
+//        +"import org.codehaus.groovy.ast.expr.*\n"
+//        +"import org.codehaus.groovy.ast.stmt.*\n"
+//        +"import org.codehaus.groovy.classgen.GeneratorContext\n"
+//        +"import org.codehaus.groovy.control.CompilationFailedException\n"
+//        +"import org.codehaus.groovy.control.CompilePhase\n"
+//        +"import org.codehaus.groovy.control.CompilerConfiguration\n"
+//        +"import org.codehaus.groovy.control.SourceUnit\n"
+//        +"import org.codehaus.groovy.control.customizers.*\n"
+//        +"import org.codehaus.groovy.ast.builder.AstBuilder\n"
+//        +"import org.codehaus.groovy.syntax.Token\n"
+//        +"import org.codehaus.groovy.syntax.Types\n"
+//        +"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n"
+//        + value;
+    value = "import org.codehaus.groovy.ast.ClassCodeVisitorSupport\n"
+        + "import org.codehaus.groovy.ast.ClassNode\n"
+        + "import org.codehaus.groovy.ast.expr.MethodCallExpression\n"
+        + "import org.codehaus.groovy.ast.stmt.BlockStatement\n"
+        + "import org.codehaus.groovy.classgen.GeneratorContext\n"
+        + "import org.codehaus.groovy.control.CompilationFailedException\n"
+        + "import org.codehaus.groovy.control.CompilePhase\n"
+        + "import org.codehaus.groovy.control.SourceUnit\n"
+        + "import org.codehaus.groovy.control.customizers.CompilationCustomizer\n"
+        + value;
     submitFormToGroovyConsole(value, "#outputGroovy12");
 }
 
