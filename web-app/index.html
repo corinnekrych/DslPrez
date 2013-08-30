@@ -793,30 +793,30 @@ TTP/RT</pre>
 
 <li class="slide" title="DSL & Game">
     <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>Game rules & DSL</h1><br/>
-            <br/>
-        </div>
-        <hr>
+
         <div class="row-fluid marketing">
             <div class="span6">
-                <h1>User1: Franklin</h1>
-                <hr>
-                <pre class="code">move left by 2.steps
-move up by 3.steps
-</pre>
-                <hr>
+                <br/><img src="img/kissing.png"/>
             </div>
-            <div class="span6">
-                <h1>User2: Emily</h1>
-                <hr>
-                <div> </div>
-                <pre class="code">move left by 2.steps
-ask "What's is your name?" assign to name
+            <div class="span6" style="text-align:left;line-height: 150%;font-size: 20px; padding-left: 2em; padding-right: 1em">
+                <img src="img/speak.png"/>
+                <div>Collaborative game</div>
+                <div>Random position</div>
+                <div>Players have turn</div>
+                <div>Max of 3 actions</div>
+                <div>Interactive game</div><br/>
+
+                <pre class="code">move up
+ask "new meeting point?" assign to response
+if (response == "y")
+    meet x:13, y:13
 </pre>
-                <hr>
+
+<pre class="code">I move up
+val answer = ask "could you wait for me?"
+if (response == "y")
+    kiss
+</pre>
             </div>
 
         </div>

@@ -103,6 +103,7 @@ slide.enter("Coming from...", whiteBackground, removeWhiteBackground);
 slide.enter("Ext. vs int.", whiteBackground, removeWhiteBackground);
 slide.enter("Internal DSL", whiteBackground, removeWhiteBackground);
 slide.enter("From Debasish Gosh", whiteBackground, removeWhiteBackground);
+slide.enter("DSL & Game", whiteBackground, removeWhiteBackground);
 slide.enter("Corinne", whiteBackground, removeWhiteBackground);
 slide.enter("Bibliography", whiteBackground, removeWhiteBackground);
 slide.enter("Groovy", function() {showCloud();});
