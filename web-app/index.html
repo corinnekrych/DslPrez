@@ -861,8 +861,6 @@ if (response == "y")
 GroovyShell<br/> GroovyScriptEngine<br/> GroovyClassLoader<br/> <br/>
 <pre class="code">def shell = new GroovyShell()
 shell.evaluate(script)
-shell.parse(script)
-shell.run()
 </pre>
             </div>
             <!--<p>Each script is an object inheriting from Script base class</p>-->
@@ -1254,13 +1252,28 @@ step 7 remove def left in GameScript
         <hr>
         <div class="row-fluid marketing" style="text-align: left">
         <div class="span3"></div>
-        <div class="span8">
+        <div class="span6">
 
            Generate JSON<br/>
            No UI Logic inside the DSL<br/>
-           All presentation logic inside HTML5/CSS/JS on Client Side<br/>
+           All presentation logic in HTML5/CSS/JS on Client Side<br/><br/>
+            <pre>
+        {
+            positions:
+            {
+                emily: [[3,13],[5,13]]
+            },
+            grid:15,
+            stepDuration:1000,
+            asks:[],
+            win:false,
+            user1:"emily",
+            user2:"chrome",
+            id:2,
+            winningAnimation:[8,9]
+        }</pre>
         </div>
-        <div class="span1"></div>
+        <div class="span3"></div>
         </div>
         <hr>
     </div>
