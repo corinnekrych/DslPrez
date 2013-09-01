@@ -600,7 +600,7 @@ function editorScala4Key8() {
                            + "// Here is the DSL script.\n"
                            + "val gameDSL = \"\"\"\n"
                            + "    move(left)   // Remember the move left translated in move.left()\n"
-                           + "    move (right) // Can also use the definition of a move object with left\n"
+                           + "    move(right) // Can also use the definition of a move object with left\n"
 			   + "                 // and right directions but very cumbersome\n"
                            + "\"\"\"\n\n"
                            + "//////////////////////\n"
@@ -1695,31 +1695,160 @@ editorScala10.addKeyMap(keymapScala10);
 // Scala. Using traits to limit number of actions
 //------------------------------------------------------------------->
 
-var contentScala_limitActions = "";
+var contentScala_limitActions = "import _root_.net.liftweb.json._\n"
+                  + "import net.liftweb.json._\n"
+                  + "import net.liftweb.json.JsonDSL._\n"
+                  + "import scala.language.implicitConversions // to remove warnings caused by implicits\n"
+                  + "import scala.collection.mutable.ArrayBuffer\n\n"
+		  + "implicit class Times(i:Int) {\n"
+                  + "  def times(c: => Any) = for (_ <- 1 to i) c\n"
+                  + "}\n\n"
+                  +"case class Step(i:Int) {\n"
+                  + "   def steps = this\n"
+	          + "   def step = this\n"
+                  +"}\n\n"
+	          +"implicit def toSteps(i:Int) = Step(i)\n\n"
+                  + "case class Position(x:Int, y:Int) {\n"
+                  + "   def left  = Position(x-1,y)\n"
+                  + "   def right = Position(x+1,y)\n"
+                  + "   def up    = Position(x,y+1)\n"
+                  + "   def down  = Position(x,y-1)\n"
+                  + "}\n\n"
+                  + "implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n\n"
+                  + "sealed trait Direction\n"
+                  + "case object left extends Direction\n"
+                  + "case object right extends Direction\n"
+                  + "case object up extends Direction\n"
+                  + "case object down extends Direction\n\n"
+                  + "class Turtle(var p:Position) {\n\n"
+                  + "   val turtleSteps = new ArrayBuffer[Position]\n"
+                  + "   turtleSteps += p\n\n"
+		  + "   var currentDirection:Option[Direction] = None\n\n"
+                  + "   def move(d: Direction) = {\n"
+                  + "      d match {\n"
+                  + "         case `left` => p=p.left\n"
+                  + "         case `right` => p=p.right\n"
+                  + "         case `up` => p=p.up\n"
+                  + "         case `down` => p=p.down\n"
+                  + "      }\n"
+                  + "      turtleSteps += p\n"
+		  + "      currentDirection = Some(d)\n"
+                  + "      this\n"
+                  + "   }\n\n"
+                  + "   def toJSon = compact(render(\"steps\"->turtleSteps))\n\n"
+		  + "   def by(step:Int) = {\n"
+                  + "      // We start at 1 because we already moved once\n" 
+                  + "      for (d <- currentDirection; i <- 1 until step) move(d)\n"
+                  + "      currentDirection = None // Will not work anymore after until next move call\n"
+		  + "      this\n"
+                  + "   }\n"
+                  + "}\n\n"
+                  + "val turtle = new Turtle(Position(1,1))\n\n"
+ 		  + "val I = turtle // emulate the binding\n\n"
+		  + "///////////////////\n"
+		  + "// Emulated DSL\n"
+		  + "///////////////////\n"
+		  + "I move right\n"
+		  + "I move up\n"
+		  + "////////////////////\n"
+		  + "// End DSL\n"
+		  + "////////////////////\n\n"
+                  + "val json = turtle.toJSon\n"
+		  + "println(json); json\n";
 
-
+		  
 var editorScala_limitActions = new dslPrez.editor("editorScala_limitActions", contentScala_limitActions);
+editorScala_limitActions.foldCode(CodeMirror.Pos(6, 0));
+editorScala_limitActions.foldCode(CodeMirror.Pos(10, 0));
+editorScala_limitActions.foldCode(CodeMirror.Pos(17, 0));
 
 function editorScala_limitActionsSend() {
     var value = editorScala_limitActions.getValue();
-    submitFormToScalaConsole(value, "#outputScala_limitActions");
+    submitTurtleFormToScalaConsole(value, "#outputScala_limitActions","canvasScala_limitActions");
 }
 
 function editorScala_limitActionsKey0() {
-    editorScala_limitActions.currentPress(0, 1);
+    editorScala_limitActions.currentPress(0, 4);
     editorScala_limitActions.setValue(contentScala_limitActions);
+    editorScala_limitActions.scrollIntoView(77);
 }
 
 function editorScala_limitActionsKey1() {
-    if (editorScala_limitActions.currentPress(1, 1)) {
+    if (editorScala_limitActions.currentPress(1, 4)) {
+      var value = "\ntrait LimitAction extends Turtle {\n"
+                + "  var counter = 0\n"
+                + "  def reset() = counter = 0\n\n"
+                + "  override def move(d:Direction) = {\n"
+                + "    counter += 1\n"
+                + "    if (counter > 3) throw new Exception(\"too many actions\")\n"
+                + "    super.move(d)\n"
+                + "  }\n"
+                + "}\n";
+       editorScala_limitActions.replaceRange(value,{line:60,ch:0});
+       
+       editorScala_limitActions.addLineClass(61, "background", "highlight");    
+       editorScala_limitActions.addLineClass(62, "background", "highlight");     
+       editorScala_limitActions.addLineClass(63, "background", "highlight");    
+       editorScala_limitActions.addLineClass(64, "background", "highlight");     
+       editorScala_limitActions.addLineClass(65, "background", "highlight");    
+       editorScala_limitActions.addLineClass(66, "background", "highlight");     
+       editorScala_limitActions.addLineClass(67, "background", "highlight");     
+       editorScala_limitActions.addLineClass(68, "background", "highlight");    
+       editorScala_limitActions.addLineClass(69, "background", "highlight");     
+       editorScala_limitActions.addLineClass(70, "background", "highlight");     
+       editorScala_limitActions.scrollIntoView(80);
      }
 }
 
+function editorScala_limitActionsKey2() {
+    if (editorScala_limitActions.currentPress(2,4)) {
+       editorScala_limitActions.removeLineClass(61, "background", "highlight");
+       editorScala_limitActions.removeLineClass(62, "background", "highlight");
+       editorScala_limitActions.removeLineClass(63, "background", "highlight");
+       editorScala_limitActions.removeLineClass(64, "background", "highlight");
+       editorScala_limitActions.removeLineClass(65, "background", "highlight");
+       editorScala_limitActions.removeLineClass(66, "background", "highlight");
+       editorScala_limitActions.removeLineClass(67, "background", "highlight");
+       editorScala_limitActions.removeLineClass(68, "background", "highlight");
+       editorScala_limitActions.removeLineClass(69, "background", "highlight");
+       editorScala_limitActions.removeLineClass(70, "background", "highlight");
+       
+      editorScala_limitActions.removeLine(72)
+      var value = "val turtle = new Turtle(Position(1,1)) with LimitAction\n";
+      editorScala_limitActions.replaceRange(value,{line:72,ch:0});
+      editorScala_limitActions.addLineClass(72, "background", "highlight");     
+      
+      
+     }
+}
+
+function editorScala_limitActionsKey3() {
+    if (editorScala_limitActions.currentPress(3,4)) {
+      editorScala_limitActions.removeLineClass(72, "background", "highlight");
+      var value = "I.reset()\n\n";
+      editorScala_limitActions.replaceRange(value,{line:76,ch:0});
+     editorScala_limitActions.addLineClass(76, "background", "highlight");     
+
+     }
+}
+
+function editorScala_limitActionsKey4() {
+    if (editorScala_limitActions.currentPress(4,4)) {
+      editorScala_limitActions.removeLineClass(76, "background", "highlight");
+      var value = "// evaluator.eval(\"I.reset()\")\n";
+      editorScala_limitActions.replaceRange(value,{line:77,ch:0});
+       editorScala_limitActions.addLineClass(77, "background", "highlight");     
+
+     }
+}
 var keymapScala_limitActions = {
     "Ctrl-S" :editorScala_limitActionsSend,
     "Cmd-S" :editorScala_limitActionsSend,
     "0": editorScala_limitActionsKey0,
-    "1": editorScala_limitActionsKey1
+    "1": editorScala_limitActionsKey1,
+    "2": editorScala_limitActionsKey2,
+    "3": editorScala_limitActionsKey3,
+    "4": editorScala_limitActionsKey4
 };
 
 editorScala_limitActions.addKeyMap(keymapScala_limitActions);
@@ -1754,7 +1883,6 @@ var contentScala11 = "import scala.util.continuations._\n\n"
                    + "   // get back into the DSL flow by calling the stored continuation\n"
                    + "   def answer(answer:String) = {\n"
                    + "      if (!cont.isEmpty) cont.get(answer)\n" 
-                   + "      //cont=None\n"
                    + "   }\n\n"
                    + "   def end = cont=None\n"
                    + "}";
@@ -1764,7 +1892,7 @@ var editorScala11 = new dslPrez.editor("editorScala11", contentScala11);
 
 function editorScala11Send() {
     var value = editorScala11.getValue();
-    submitTurtleFormToScalaConsole(value, "#outputScala11", "canvasScala11");
+    submitFormToScalaConsole(value, "#outputScala11");
 }
 
 function editorScala11Key0() {
@@ -1777,15 +1905,16 @@ var contentScala11b = "import dslprez.scala.slides._\n"
                     + "implicit val I = new Turtle(Position(1,1,up))\n\n"
 	 	    + "Turtle startDsl {\n"
 	 	    + "   I move right by 2\n"
-		    + "   val name = I ask \"what is your name\"\n"
+		    + "   val name = I ask \"what is your name\\n\"\n"
 		    + "   I move up\n"
-		    + "   println(\"Hi \"+name)\n"
-		    + "   val n = I ask \"how many times up\"\n"
+		    + "   println(\"Hi \"+name+\"\\n\")\n"
+		    + "   val n = I ask \"how many times up\\n\"\n"
 	  	    + "   I move up by n.toInt\n"
 		    + "   //println(\"Bye\")\n"
 		    + "   end\n"
 		    + "}\n\n"
 		    + "println(I print I.steps to JSon)\n"
+		    + "println()\n"
 		    + "Turtle answer \"John\"\n"
 		    + "Turtle answer \"2\"\n"
   		    + "println(I print I.steps to JSon)\n";
