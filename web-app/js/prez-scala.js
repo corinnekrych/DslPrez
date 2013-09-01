@@ -1690,6 +1690,42 @@ var keymapScala10 = {
 };
 editorScala10.addKeyMap(keymapScala10);
 
+
+//------------------------------------------------------------------->
+// Scala. Using traits to limit number of actions
+//------------------------------------------------------------------->
+
+var contentScala_limitActions = "";
+
+
+var editorScala_limitActions = new dslPrez.editor("editorScala_limitActions", contentScala_limitActions);
+
+function editorScala_limitActionsSend() {
+    var value = editorScala_limitActions.getValue();
+    submitFormToScalaConsole(value, "#outputScala_limitActions");
+}
+
+function editorScala_limitActionsKey0() {
+    editorScala_limitActions.currentPress(0, 1);
+    editorScala_limitActions.setValue(contentScala_limitActions);
+}
+
+function editorScala_limitActionsKey1() {
+    if (editorScala_limitActions.currentPress(1, 1)) {
+     }
+}
+
+var keymapScala_limitActions = {
+    "Ctrl-S" :editorScala_limitActionsSend,
+    "Cmd-S" :editorScala_limitActionsSend,
+    "0": editorScala_limitActionsKey0,
+    "1": editorScala_limitActionsKey1
+};
+
+editorScala_limitActions.addKeyMap(keymapScala_limitActions);
+
+
+
 //------------------------------------------------------------------->
 // Scala11.
 // step 1 initial //TODO

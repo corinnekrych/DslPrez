@@ -1254,9 +1254,9 @@ step 7 remove def left in GameScript
         <div class="span3"></div>
         <div class="span6">
 
-           Generate JSON<br/>
-           No UI Logic inside the DSL<br/>
-           All presentation logic in HTML5/CSS/JS on Client Side<br/><br/>
+           - Generate JSON<br/>
+           - No UI Logic inside the DSL<br/>
+           - All presentation logic in HTML5/CSS/JS on Client Side<br/><br/>
             <pre>
         {
             positions:
@@ -2006,95 +2006,18 @@ extensionClasses = dsl.StepExtension
 </li>
 
 
-<li class="slide" title="infinite loop" style="font-size:25px;">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <div class="jumbotron">
-                    <h1>while(true)</h1><br/>
-                       <p>In Groovy: infinite loop managed by timeinterrupt</p><br/>
-                       <p>In Scala: Compiler plugin with AST transformation</p><br/>
-                </div>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
-<!-------------------------------------------------------------------
-<!-- Groovy9. Turn around - Timer set to 5s
-<!--------------------------------------------------------------------->
-
-<li class="slide" style="text-align: left" title="Franklin wants to turn around in Groovy" press="1 2 3 4">
-    <textarea id="editorGroovy9" name="editorGroovy9">
-    </textarea>
-</li>
-
-<li class="slide" style="text-align: left" title="Output for Franklin wants to turn around in Groovy">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="code" id="outputGroovy9">
-                </pre>
-                <canvas id="canvasGroovy9" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
-                </pre>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
-<!-------------------------------------------------------------------
-<!-- Scala9. Turn around - Timer set to 5s
-<!--------------------------------------------------------------------->
-
-<li class="slide" style="text-align: left" title="Franklin wants to turn around in Scala" press="1">
-    <textarea id="editorScala9" name="editorScala9">
-    </textarea>
-</li>
-
-<li class="slide" style="text-align: left" title="Output for Franklin wants to turn around in Scala">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="code" id="outputScala9">
-                </pre>
-                <canvas id="canvasScala9" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
-                </pre>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
 <li class="slide" title="hackers" style="line-height: 150%; font-size:25px;">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <h1>system.exit(0)</h1><br/>
-            <div class="span2">
+             <hr>
+            <div class="span4">
             </div>
-            <div class="span8" >
-                <hr>
-                <div class="jumbotron">
+            <div class="span6" >
+                <div class="jumbotron" style="text-align: left">
                 Compile time security checks<br/>
-                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;In Groovy: white list/ black list</div>
-                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;In scala: custom compiler plugin</div> 
+                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- In Groovy: white list/ black list</div>
+                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- In scala: custom compiler plugin</div> 
                 Runtime security issue in Groovy<br/>
                 </div>
             </div>
@@ -2103,6 +2026,7 @@ extensionClasses = dsl.StepExtension
         </div>
     </div>
 </li>
+
 
 <!-------------------------------------------------------------------
 Groovy10. Sneaky
@@ -2162,6 +2086,135 @@ step 3: add SecureASTCustomizer
         </div>
     </div>
 </li>
+
+<li class="slide" title="infinite loop" style="line-height: 150%; font-size:25px;">
+ <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <h1>while(true)</h1><br/>
+            <hr>
+            <div class="span4">
+            </div>
+            <div class="span6" >
+                <div class="jumbotron" style="text-align: left">
+                <br/>
+                - In Groovy:<br/>
+                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;infinite loop managed by timeinterrupt</div>
+                - In Scala:<br/>
+                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;Compiler plugin with AST transformation ...<br/>
+                &nbsp;&nbsp;&nbsp;or with traits</div>
+                </div>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+
+<!-------------------------------------------------------------------
+<!-- Groovy9. Turn around - Timer set to 5s
+<!--------------------------------------------------------------------->
+
+<li class="slide" style="text-align: left" title="Franklin wants to turn around in Groovy" press="1 2 3 4">
+    <textarea id="editorGroovy9" name="editorGroovy9">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Output for Franklin wants to turn around in Groovy">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputGroovy9">
+                </pre>
+                <canvas id="canvasGroovy9" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!-------------------------------------------------------------------
+<!-- Scala9. Turn around - Timer set to 5s
+<!--------------------------------------------------------------------->
+
+<li class="slide" style="text-align: left" title="Franklin wants to turn around in Scala" press="1">
+    <textarea id="editorScala9" name="editorScala9">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Output for Franklin wants to turn around in Scala">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala9">
+                </pre>
+                <canvas id="canvasScala9" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<!-------------------------------------------------------------------
+<!-- Scala Limit Actions. Limit number of actions with traits
+<!--------------------------------------------------------------------->
+
+<li class="slide" title="Using traits" style="line-height: 150%; font-size:25px;">
+ <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <h1>Shall we use traits instead</h1><br/>
+            <hr>
+            <div class="span2">
+            </div>
+            <div class="span8" >
+                <div class="jumbotron" style="text-align: left">
+                <br/>
+                Lets use traits instead of compiler plugin to decorate the application behavior
+                </div>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<li class="slide" style="text-align: left" title="Franklin has a limited number of actions" press="1 2 3 4">
+    <textarea id="editorScala_limitActions" name="editorScala_limitActions">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Output for Franklin has a limited number of actions">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="outputScala_limitedActions">
+                </pre>
+                <canvas id="canvasScala_limitedActions" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+
 
 <!------------------------------------------------------------------->
 <!-- 6. Web-based
@@ -2471,13 +2524,13 @@ TODO editor or slide to explain
         <div class="span1"></div>
         <div class="span5">
             <h3>Scala language features</h3>
-            Macros<br/>
-            Traits to mix behaviours<br/>
-            Abstract types and type polymorphism
+            - Macros<br/>
+            - Abstract types and type polymorphism
         </div>
         <div class="span5">
             <h3>Scala new libraries</h3>
-            Lightweight Modular Staging (LMS) and Scala Virtualization
+            - Lightweight Modular Staging (LMS)<br/>
+            - and Scala Virtualization<br/>
         </div>
         <div class="span1"></div>
         </div>
@@ -2500,9 +2553,9 @@ TODO editor or slide to explain
         <div class="span2"></div>
         <div class="span8">
         <h3>Many available options to manage External DSL:</h3>
-        ANTLR,<br/>
-        Parser Combinators in Scala,<br/>
-        XText with Visual Support in Eclipse<br/>
+        - ANTLR,<br/>
+        - Parser Combinators in Scala,<br/>
+        - XText with Visual Support in Eclipse<br/>
         </div>
         <div class="span2"></div>
         </div>
@@ -2639,11 +2692,11 @@ TODO editor or slide to explain
         <div style="text-align: center" class="jumbotron">
             <h1>Error handling & Debugging</h1>
                     <div class="row-fluid marketing">
-            <div class="span1">
+            <div class="span5">
             </div>        
-            <div class="span10">
-            Local Debugging<br/>
-            Remote Debugging
+            <div class="span6" style="text-align: left" >
+            - Local Debugging<br/>
+            - Remote Debugging
             </div>
             <div class="span1">
             </div>        
@@ -2684,9 +2737,9 @@ TODO editor or slide to explain
             <div class="span3">
             </div>        
             <div class="span7" style="text-align: left">
-            No one size fits them all<br/>
+            - No one size fits them all<br/>
             <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;Choose the language that solves best your requirements</div><br/>
-            And don't fear polyglotism<br/>
+            - And don't fear polyglotism<br/>
             <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;Consider Clojure, JRuby, ...</div>
             </div>
             <div class="span2">

@@ -179,6 +179,9 @@ slide.enter("Output for Franklin wants to play with fire in Groovy", showGroovyD
 slide.enter("Franklin wants to play with fire in Scala", showScalaDuke, removeScalaDuke);
 slide.enter("Output for Franklin wants to play with fire in Scala", showScalaDuke, removeScalaDuke);
 
+slide.enter("Franklin has a limited number of actions", showScalaDuke, removeScalaDuke);
+slide.enter("Output for Franklin has a limited number of actions", showScalaDuke, removeScalaDuke);
+
 slide.enter("Franklin wants to ask in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Franklin wants to ask in Groovy", showGroovyDuke, removeGroovyDuke);
 
