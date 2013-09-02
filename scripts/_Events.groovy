@@ -1,6 +1,6 @@
 eventSetClasspath = {
     rootLoader.addURL(new File("ext").toURI().toURL())
-
+    WebApplicationContext.getClassLoader().addURL(new File("ext").toURI().toURL())
 rootLoader.addURL(new File("lib/scala-reflect.jar").toURI().toURL())
 rootLoader.addURL(new File("lib/scala-compiler.jar").toURI().toURL())
 rootLoader.addURL(new File("lib/scala-library.jar").toURI().toURL())
@@ -20,6 +20,14 @@ eventCreateWarStart = { warName, stagingDir ->
             tofile: "${stagingDir}/js/kt.js")
     Ant.copy(file: "dist/css/kt.css",
             tofile: "${stagingDir}/css/kt.css")
+
+
+    Ant.copy(file: "ext/TurtleExtension.groovy",
+            tofile: "${stagingDir}/WEB-INF/ext/TurtleExtension.groovy")
+
+    Ant.copy(file: "ext/TurtleExtension.groovy",
+            tofile: "${stagingDir}/ext/TurtleExtension.groovy")
+
     println stagingDir
 }
 

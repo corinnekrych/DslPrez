@@ -850,7 +850,7 @@ if (response == "y")
         <hr>
         <div class="jumbotron">
             <h1>How to run Script?</h1>
-            <h3>Embedding Groovy/Scala in Java<h3>
+            <h3>Embedding Groovy/Scala in Java</h3>
         </div>
         <hr>
         <div class="row-fluid marketing" style="font-size:18px">
@@ -1063,28 +1063,6 @@ especially with Classpath issues - in the next slides we'll use IMain directly
     </div>
 </li>
 
-<!--<li class="slide" title="Compiler Configuration">-->
-    <!--<div class="container-narrow">-->
-        <!--<div class="row-fluid marketing">-->
-
-            <!--<div class="span2">-->
-            <!--</div>-->
-            <!--<div class="span8">-->
-                <!--<hr>-->
-                <!--<div class="jumbotron">-->
-                    <!--<h1>Binding</h1><br/>-->
-                <!--</div>-->
-                <!--<hr> <br/><br/>-->
-                <!--<div style="text-align:left;font-size: 25px;padding-left: 8em"><br/><br/></div>-->
-                <!--<div style="text-align:left;font-size: 25px;padding-left: 8em"><br/><br/></div>-->
-                <!--<div style="text-align:left;font-size: 25px;padding-left: 8em"><br/><br/></div>-->
-            <!--</div>-->
-
-            <!--<div class="span2">-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</li>-->
 
 <!-------------------------------------------------------------------
 Groovy3. Binding
@@ -1166,25 +1144,6 @@ step 2 ad move right command
     </div>
 </li>
 
-<!--
-<li class="slide" title="Turtle Model">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <div class="jumbotron">
-                    <h1>Turtle Semantic Model: short class diagram?</h1><br/>
-                </div>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
--->
 
 <!------------------------------------------------------------------
 Groovy4. Structure my code
@@ -1254,7 +1213,7 @@ step 7 remove def left in GameScript
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
-           <h1>Output to client</h1>
+           <h1>Semantic modl Output</h1>
         </div>
         <hr>
         <div class="row-fluid marketing" style="text-align: left">
@@ -1380,18 +1339,17 @@ step 7 remove def left in GameScript
         <div class="jumbotron">
             <br/>
             <h1>Command chaining</h1><br/>
-            <br/>
         </div>
         <hr>
     </div>
     <div class="row-fluid marketing">
-        <div class="span2">
+        <div class="span1">
         </div>
-        <div class="span8">
+        <div class="span10">
             <p style="line-height:150%; font-size:25px;font-style:italic"><strong>Method chaining</strong> is a common technique for invoking multiple method calls in object-oriented programming languages. Each method returns an object (possibly the current object itself), allowing the calls to be chained together in a single statement.</p>
             <div style="line-height:150%; font-size:20px;" class="general quote-author">- wikipedia</div>
         </div>
-        <div class="span2">
+        <div class="span1">
         </div>
     </div>
     <div class="row-fluid marketing">
@@ -1466,7 +1424,6 @@ step 7: change new Position to add direction
         <div class="jumbotron">
             <br/>
             <h1>Odd numbers?</h1><br/>
-            <br/>
         </div>
         <hr>
     </div>
@@ -1531,7 +1488,6 @@ step 4: change by method to return map
         <div class="jumbotron">
             <br/>
             <h1>Command chaining in Scala</h1><br/>
-            <br/>
         </div>
         <hr>
        <div class="row-fluid marketing">
@@ -1616,7 +1572,6 @@ step 4: change by method to return map
         <div class="jumbotron">
             <br/>
             <h1>What about if...</h1><br/>
-            <br/>
         </div>
         <hr>
     </div>
@@ -1627,14 +1582,14 @@ step 4: change by method to return map
         <div class="span4">
             <br/><img src="img/grenouille.png"/>
         </div>
-        <div class="span5">
+        <div class="span6">
             <div style="line-height:150%;font-size:25px;text-align:left;"><br/><br/>
-                <div> there is only one command in Groovy ? </div><br/><br/>
+                <div> there is only one command in Groovy? </div><br/>
                 <div style="color:grey"> kiss</div>
                 <div>    => kiss()</div>
             </div>
         </div>
-        <div class="span2">
+        <div class="span1">
         </div>
     </div>
 </li>
@@ -1789,7 +1744,7 @@ class GORM {
         <br/><br/><br/><br/><hr> <br/>
         <h1>Category and Implicits </h1><br/>
         <hr>
-        <h3>Adding behavior to existing classes</h3>
+        <div style="line-height:150%;font-size:25px;">Adding behavior to existing classes</div>
     </div>
 </li>
 
@@ -2541,14 +2496,15 @@ Scala11.ask
                 <img src="img/bob.jpg"/>
             </div>
         </div>
-        <div class="span5">
+        <div class="span6">
             <div style="line-height:150%;font-size:25px;text-align:left;">
                 <b>Purpose of builder pattern:</b> separate the construction of a complex object from its representation to reuse construction process to create different representation.
-                <br/><b>Dynamic Groovy</b> with <span style="color:grey">invokeMethod</span>
+                <br/> <br/>
+                <b>Dynamic Groovy</b> with <span style="color:grey">invokeMethod</span>
                 and <b>scopes</b> <span style="color:grey">(this, owner, delegate, self)</span> to the rescue!
             </div>
         </div>
-        <div class="span2">
+        <div class="span1">
         </div>
     </div>
     <div class="row-fluid marketing">
@@ -2715,21 +2671,41 @@ TODO editor or slide to explain
         <hr>
 
         <div style="text-align: center" class="jumbotron">
-           Language workbench
+           <h1>Scratch</h1>
         </div>
         <hr>
+        <img src="img/scratch.png" width="65%"/>
     </div>
 </li>
 
 <li class="slide" title="DSL Internationalization" style="line-height: 150%;font-size: 25px;">
     <div class="container-narrow">
         <hr>
-
-        <div style="text-align: center" class="jumbotron">
-            DSL Internationalization is a tricky challenge
+        <div class="jumbotron">
+            <br/>
+            <h1>Je parle français</h1>
+            <h1>Hablo español</h1><br/>
         </div>
         <hr>
     </div>
+
+    <div class="row-fluid marketing">
+        <div class="span1">
+        </div>
+        <div class="span3">
+            <img src="img/internationalization.png" width="80%"/>
+        </div>
+        <div class="span8">
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <br/>Tricky challenges:
+                <div>CST transform / regexp</div>
+                <div>Semantic / DSL Syntax decoupling</div>
+            </div>
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+
 </li>
 
 
@@ -2776,28 +2752,17 @@ TODO editor or slide to explain
         <hr>
         <div class="jumbotron">
             <br/>
-            <h1>Testing with Spock</h1><br/>
-            <br/>
+            <h1>Spock</h1><br/>
         </div>
         <hr>
         <div class="row-fluid marketing">
-            <div class="span4" style="padding-left: 0.8em">
-                <h1>Semantic model</h1>
-                <hr>
-                <pre class="code">TODO</pre>
-                <hr>
+            <div class="span2" style="padding-left: 0.8em">
             </div>
-            <div class="span4">
-                <h1>Syntax (parser)</h1>
-                <hr>
+            <div class="span8">
                 <pre class="code"></pre>
                 <hr>
             </div>
-            <div class="span4" style="padding-right: 1.8em">
-                <h1>Script</h1>
-                <hr>
-                <pre class="code"></pre>
-                <hr>
+            <div class="span2" style="padding-right: 1.8em">
             </div>
         </div>
     </div>
@@ -2837,18 +2802,19 @@ TODO editor or slide to explain
         <hr>
 
         <div style="text-align: center" class="jumbotron">
-            <h1>Error handling & Debugging</h1>
+            <h1>Developers tools</h1>
                     <div class="row-fluid marketing">
+                        <hr>
             <div class="span5">
             </div>        
             <div class="span6" style="text-align: left" >
-            - Local Debugging<br/>
-            - Remote Debugging
+            - Debugging<br/>
+            - IDE DSL support
             </div>
             <div class="span1">
             </div>        
         </div>
-        <hr>
+
     </div>
 </li>
 
@@ -2864,7 +2830,7 @@ TODO editor or slide to explain
             </div>
             <div class="span8">
                 <hr>
-                <div class="jumbotron">
+                <div class="jumbotron"><br/>
                     <h1>Conclusion</h1><br/>
                 </div>
                 <hr>
@@ -2895,10 +2861,9 @@ TODO editor or slide to explain
     </div>
 </li>
 
-<li class="slide" title="Fun">
-    <div class="container-narrow">
+<li class="slide" title="Final word">
+    <div class="container-narrow"><br/><br/><br/><br/><br/><br/>
         <hr>
-
         <div style="text-align: center" class="jumbotron">
             <h1>And have fun!</h1>
         </div>
@@ -2952,7 +2917,7 @@ TODO editor or slide to explain
     </div>
 </li>
 
-<li class="slide" title="References" style="line-height: 150%;font-size:30px;font-weight:bold">
+<li class="slide" title="References" style="line-height: 150%;font-size:30px;">
     <div class="container-narrow">
         <hr>
 
@@ -2965,20 +2930,20 @@ TODO editor or slide to explain
         <div  class="row-fluid marketing">
             <div class="span1">
             </div>
-            <div class="span5">
+            <div class="span6">
                 <div style="line-height: 150%;font-size:30px;font-weight:bold">Like the presentation format?</div>
                 <div id="technologies" style="line-height: 150%;font-size:30px;font-weight: normal"></div>
 
                 <div style="line-height: 150%;font-size:30px;font-weight:bold">Curious about code?</div>
                 <a href="https://github.com/corinnekrych/DslPrez" style="line-height: 150%;font-size:20px;">https://github.com/corinnekrych/DslPrez</a>
 
-                <div style="line-height: 150%;font-size:30px;font-weight:bold">Want to play with KissingTurtles?</div>
+                <div style="line-height: 150%;font-size:30px;font-weight:bold">Want to play?</div>
                 <a href='http://kissingturtles.herokuapp.com' style="line-height: 150%;font-size:20px;">http://kissingturtles.herokuapp.com</a>
 
                 <div style="line-height: 150%;font-size:30px;font-weight:bold">Want to contribute?</div>
                 <a href='https://github.com/corinnekrych/KissingTurtles' style="line-height: 150%;font-size:20px;">https://github.com/corinnekrych/KissingTurtles</a>
             </div>
-            <div class="span5">
+            <div class="span4">
                 <div >Special Thanks</div>
                 <img src="img/fabrice.png"/><br/><span style="font-size:20px;">Fabrice Matrat</span><br/>
                 <img src="img/mathieu.jpeg"/><br/><span style="font-size:20px;">Mathieu Bruyen</span>
