@@ -2285,13 +2285,41 @@ step4: add display map method
 step5: add display map in DSL
 ------------------------------------------------------------------->
 
-<li class="slide" title="DSL Sequence">
+<li class="slide" title="ask" style="line-height: 150%; font-size:25px;">
+
+
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>Fanklin wants to ask</h1><br/>
+        </div>
+        <hr>
+    </div>
+
     <div class="row-fluid marketing">
-        <div class="span12">
-            TODO
-            <!--<img src="img/ask and ast.png" width="80%"/>-->
+        <div class="span1">
+        </div>
+        <div class="span3">
+            <br/><img src="img/ask_change.png"/>
+        </div>
+        <div class="span8">
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <div style="color:grey"> ask "Shall we change our meeting point?" assign to response</div>
+                <br/>Techniques used:
+                <div>1. Command chaining</div>
+                <pre style="margin-right:15%;margin-left:5%">ask(question).assign(to).response</pre>
+                <div>2. Map.withDefault(closure)</div>
+                <pre style="margin-right:15%;margin-left:5%">def constMap = [:].withDefault { 42 }
+assert constMap.foo == 42
+assert constMap.size() == 1</pre>
+                <div>3. Semaphore on given game + Server Push (SSE)</div>
+            </div>
+        </div>
+        <div class="span1">
         </div>
     </div>
+
 </li>
 
 <li class="slide" style="text-align: left" title="Franklin wants to ask in Groovy" press="1 2 3 4 5">
@@ -2316,40 +2344,26 @@ step5: add display map in DSL
     </div>
 </li>
 
-<li class="slide" title="DSL Sequence">
-    <div class="row-fluid marketing">
-        <div class="span12">
-            TODO
-            <!--<img src="img/ask and ast.png" width="80%"/>-->
-        </div>
-    </div>
-</li>
-
-
-<!------------------------------------------------------------------->
-<!-- Groovy12. AST for user transform
-<!------------------------------------------------------------------->
-
-<li class="slide" style="text-align: left" title="AST Tranformation" press="">
-    <textarea id="editorGroovy12" name="editorGroovy12">
-    </textarea>
-</li>
-
-<li class="slide" style="text-align: left" title="Output AST">
+<li class="slide" title="ask sequence" style="line-height: 150%; font-size:25px;">
     <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="output" id="outputGroovy12">
-                </pre>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>Scala Continuations</h1><br/>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row-fluid marketing">
+        <div class="span1">
+        </div>
+        <div class="span10">
+            <br/><img src="img/ask_sequence.png" width="50%"/>
+        </div>
+        <div class="span1">
         </div>
     </div>
+
 </li>
 
 <!-------------------------------------------------------------------
@@ -2378,6 +2392,62 @@ Scala11.ask
     </div>
 </li>
 
+<li class="slide" title="Game rule" style="line-height: 150%; font-size:25px;">
+
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>No more than 3 moves</h1><br/>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row-fluid marketing">
+        <div class="span1">
+        </div>
+        <div class="span3">
+            <br/><img src="img/speed_limit.png"/>
+        </div>
+        <div class="span8">
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <br/><div style="color:grey">Compile time check to ensure no more than 3 moves</div>
+                <br/>
+                <div>AST transform</div>
+                <div>Visitor pattern</div>
+            </div>
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+
+</li>
+
+<!------------------------------------------------------------------->
+<!-- Groovy12. AST for user transform
+<!------------------------------------------------------------------->
+
+<li class="slide" style="text-align: left" title="AST Tranformation" press="">
+    <textarea id="editorGroovy12" name="editorGroovy12">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Output AST">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="output" id="outputGroovy12">
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
 
 <!------------------------------------------------------------------->
 <!-- Let's play
@@ -2387,18 +2457,14 @@ Scala11.ask
         <hr>
 
         <div style="text-align: center" class="jumbotron">
-            <h1>Let's put everything together and let's play</h1>
+            <h1>Play time!</h1>
             <hr>
         </div>
         <div class="row-fluid marketing">
         <div class="span1"></div>
-            <div class="span5">
+            <div class="span10">
             <br/><br/><br/><br/>
-                <img  src="img/turtleplay.gif" />
-            </div>
-            <div class="span5">
-            <br/><br/><br/>
-               <img  src="img/desplay.png" />
+                <img  src="img/playtime.png" width="50%"/>
             </div>
             <div class="span1"></div>
         </div>
@@ -2414,7 +2480,7 @@ Scala11.ask
             </div>
             <div class="span8">
                 <hr>
-                <div class="jumbotron">
+                <div class="jumbotron"><br/>
                     <h1>Part III: Going further</h1><br/>
                 </div>
                 <hr>
