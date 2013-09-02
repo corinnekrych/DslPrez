@@ -1024,6 +1024,8 @@ function editorScala6Key5() {
        editorScala6.addLineClass(57, "background", "highlight");
        editorScala6.addLineClass(58, "background", "highlight");
        editorScala6.addLineClass(59, "background", "highlight");
+       editorScala6.scrollIntoView(64);
+
     }
 }
 
@@ -1468,6 +1470,8 @@ function editorScalaKissKey1() {
       var value = "\n   def kiss() = println(\"<3 <3\")\n}\n";
       editorScala_kiss.replaceRange(value,{line:48, ch:0});
       editorScala_kiss.addLineClass(49, "background", "highlight");    
+      editorScala_kiss.scrollIntoView(65);
+
     }
 }
 
@@ -1636,6 +1640,7 @@ function editorScala9Key1() {
        editorScala9.addLineClass(69, "background", "highlight");    
        editorScala9.addLineClass(70, "background", "highlight");    
        editorScala9.addLineClass(71, "background", "highlight");    
+       editorScala9.scrollIntoView(75);
    }
 }
 
@@ -1679,6 +1684,7 @@ function editorScala10Key1() {
        editorScala10.replaceRange(value,{line:68,ch:0});
        editorScala10.addLineClass(68, "background", "highlight");    
        editorScala10.addLineClass(69, "background", "highlight");     
+       editorScala10.scrollIntoView(75);
     }
 }
 

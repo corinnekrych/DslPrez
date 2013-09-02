@@ -1538,7 +1538,7 @@ step 4: change by method to return map
            <div class="span1">
            </div>
            <div class="span5">
-               <div style="line-height:150%;font-size:25px;text-align:left;">
+               <div style="line-height:150%;font-size:20px;text-align:left;">
                    <div style="color:grey">move left</div>
                    <div>&nbsp;&nbsp;&nbsp;=> possible but not ideal</div>
                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mixing verbs and noun roles</div>
@@ -1554,11 +1554,14 @@ step 4: change by method to return map
                    <br/>
                    <div style="color:grey">I move left by 2.steps</div>
                    <div>&nbsp;&nbsp;&nbsp;=> I.move(left).by(2.steps)</div>
+                   <br/>
+                   <div style="color:grey">What about move to left by 2.steps</div>
+                   <div>&nbsp;&nbsp;&nbsp;=> move.to(left).by(2.steps)</div>
                </div> 
            </div>
            <div class="span6">
               <h3>Be careful with arity</h3>
-              <div style="line-height:150%;font-size:25px;text-align:left;">
+              <div style="line-height:150%;font-size:20px;text-align:left;">
               Infix operator for function with a single parameter (arity 1)<br/>
               <div style="color:grey">I move left</div>
               <div>&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
@@ -1974,7 +1977,8 @@ extensionClasses = dsl.StepExtension
                 </div>
                 <hr>
                 <p>Groovy has added TypeChecked ...</p><br/>
-                <p>Scala has added Dynamics</p>
+                <p>Scala has added Dynamics </p>
+                <p style="font-size:18px; color:grey">(in addition to already existing Structural typing feature)</p>
             </div>
             <div class="span2">
             </div>
@@ -2226,8 +2230,41 @@ step 3: add SecureASTCustomizer
         <div class="span2">
         </div>
     </div>
-
 </li>
+
+<li class="slide" title="Game rule" style="line-height: 150%; font-size:25px;">
+
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>No more than 3 moves</h1><br/>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row-fluid marketing">
+        <div class="span1">
+        </div>
+        <div class="span3">
+            <br/><img src="img/speed_limit.png"/>
+        </div>
+        <div class="span8">
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <br/><div>Compile time check to ensure no more than 3 moves</div>
+                <br/>
+                <div>Groovy:</div>
+                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- AST transform</div>
+                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- Visitor pattern</div>
+                <div>Scala:</div>
+                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- Using traits mixin</div>
+             </div>
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+</li>
+
 
 <li class="slide" style="text-align: left" title="Franklin has a limited number of actions" press="1 2 3 4">
     <textarea id="editorScala_limitActions" name="editorScala_limitActions">
@@ -2244,6 +2281,33 @@ step 3: add SecureASTCustomizer
                 <pre class="code" id="outputScala_limitedActions">
                 </pre>
                 <canvas id="canvasScala_limitActions" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+
+<!------------------------------------------------------------------->
+<!-- Groovy12. AST for user transform
+<!------------------------------------------------------------------->
+
+<li class="slide" style="text-align: left" title="AST Tranformation" press="1 2 3 4 5 6">
+    <textarea id="editorGroovy12" name="editorGroovy12">
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="Output AST">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="output" id="outputGroovy12">
                 </pre>
                 <hr>
             </div>
@@ -2383,63 +2447,6 @@ Scala11.ask
             <div class="span8">
                 <hr>
                 <pre class="output" id="outputScala11">
-                </pre>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
-<li class="slide" title="Game rule" style="line-height: 150%; font-size:25px;">
-
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>No more than 3 moves</h1><br/>
-        </div>
-        <hr>
-    </div>
-
-    <div class="row-fluid marketing">
-        <div class="span1">
-        </div>
-        <div class="span3">
-            <br/><img src="img/speed_limit.png"/>
-        </div>
-        <div class="span8">
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                <br/><div>Compile time check to ensure no more than 3 moves</div>
-                <br/>
-                <div>AST transform</div>
-                <div>Visitor pattern</div>
-            </div>
-        </div>
-        <div class="span1">
-        </div>
-    </div>
-
-</li>
-
-<!------------------------------------------------------------------->
-<!-- Groovy12. AST for user transform
-<!------------------------------------------------------------------->
-
-<li class="slide" style="text-align: left" title="AST Tranformation" press="1 2 3 4 5 6">
-    <textarea id="editorGroovy12" name="editorGroovy12">
-    </textarea>
-</li>
-
-<li class="slide" style="text-align: left" title="Output AST">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="output" id="outputGroovy12">
                 </pre>
                 <hr>
             </div>
@@ -2663,7 +2670,9 @@ TODO editor or slide to explain
         <div class="span5">
             <h3>Scala language features</h3>
             - Macros<br/>
-            - Abstract types and type polymorphism
+            - Abstract types and type polymorphism<br/><br/>
+            <div style="color:grey">- Traits mixin<br/>
+            - Structural typing</div>
         </div>
         <div class="span5">
             <h3>Scala new libraries</h3>
