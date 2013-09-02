@@ -1258,7 +1258,8 @@ step 7 remove def left in GameScript
         </div>
         <hr>
         <div class="row-fluid marketing" style="text-align: left">
-        <div class="span3"></div>
+        <div class="span1"></div>
+        <div class="span3" style="margin-top:10%"><img src="img/web-trifecta_html5_css3_js-strict.png"/></div>
         <div class="span6">
 
            - Generate JSON<br/>
@@ -1280,7 +1281,7 @@ step 7 remove def left in GameScript
             winningAnimation:[8,9]
         }</pre>
         </div>
-        <div class="span3"></div>
+        <div class="span2"></div>
         </div>
         <hr>
     </div>
@@ -2014,24 +2015,34 @@ extensionClasses = dsl.StepExtension
 
 
 <li class="slide" title="hackers" style="line-height: 150%; font-size:25px;">
+
     <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <h1>system.exit(0)</h1><br/>
-             <hr>
-            <div class="span4">
-            </div>
-            <div class="span6" >
-                <div class="jumbotron" style="text-align: left">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>System.exit(0)</h1><br/>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row-fluid marketing">
+        <div class="span1">
+        </div>
+        <div class="span4">
+            <br/><img src="img/exit.gif"/>
+        </div>
+        <div class="span5">
+            <div class="jumbotron" style="text-align: left">
                 Compile time security checks<br/>
                 <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- In Groovy: white list/ black list</div>
-                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- In scala: custom compiler plugin</div> 
+                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- In scala: custom compiler plugin</div>
                 Runtime security issue in Groovy<br/>
-                </div>
-            </div>
-            <div class="span2">
             </div>
         </div>
+        <div class="span2">
+        </div>
     </div>
+
 </li>
 
 
@@ -2095,26 +2106,37 @@ step 3: add SecureASTCustomizer
 </li>
 
 <li class="slide" title="infinite loop" style="line-height: 150%; font-size:25px;">
- <div class="container-narrow">
-        <div class="row-fluid marketing">
+
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
             <h1>while(true)</h1><br/>
-            <hr>
-            <div class="span4">
-            </div>
-            <div class="span6" >
-                <div class="jumbotron" style="text-align: left">
+        </div>
+        <hr>
+    </div>
+
+    <div class="row-fluid marketing">
+        <div class="span1">
+        </div>
+        <div class="span4">
+            <br/><img src="img/balance.jpg"/>
+        </div>
+        <div class="span5">
+            <div class="jumbotron" style="text-align: left">
                 <br/>
                 - In Groovy:<br/>
                 <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;infinite loop managed by timeinterrupt</div>
                 - In Scala:<br/>
                 <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;Compiler plugin with AST transformation ...<br/>
-                &nbsp;&nbsp;&nbsp;or with traits</div>
-                </div>
-            </div>
-            <div class="span2">
+                    &nbsp;&nbsp;&nbsp;or with traits</div>
             </div>
         </div>
+        <div class="span2">
+        </div>
     </div>
+
+
 </li>
 
 
@@ -2179,22 +2201,32 @@ step 3: add SecureASTCustomizer
 <!--------------------------------------------------------------------->
 
 <li class="slide" title="Using traits" style="line-height: 150%; font-size:25px;">
- <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <h1>Shall we use traits instead</h1><br/>
-            <hr>
-            <div class="span2">
-            </div>
-            <div class="span8" >
-                <div class="jumbotron" style="text-align: left">
+
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>Shall we use traits instead ?</h1><br/>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row-fluid marketing">
+        <div class="span1">
+        </div>
+        <div class="span4">
+            <br/><img src="img/trait.png"/>
+        </div>
+        <div class="span5">
+            <div class="jumbotron" style="text-align: left">
                 <br/>
-                Lets use traits instead of compiler plugin to decorate the application behavior
-                </div>
-            </div>
-            <div class="span2">
+                Let's use traits instead of compiler plugin<br> to decorate the application behavior<br/>
             </div>
         </div>
+        <div class="span2">
+        </div>
     </div>
+
 </li>
 
 <li class="slide" style="text-align: left" title="Franklin has a limited number of actions" press="1 2 3 4">
@@ -2234,7 +2266,7 @@ step 3: add SecureASTCustomizer
             </div>
             <div class="span8">
                 <hr>
-                <div class="jumbotron">
+                <div class="jumbotron"><br/>
                     <h1>6. Web-based Interaction</h1><br/>
                 </div>
                 <hr>
@@ -2252,6 +2284,15 @@ step3: add propertyMissingMethod
 step4: add display map method
 step5: add display map in DSL
 ------------------------------------------------------------------->
+
+<li class="slide" title="DSL Sequence">
+    <div class="row-fluid marketing">
+        <div class="span12">
+            TODO
+            <!--<img src="img/ask and ast.png" width="80%"/>-->
+        </div>
+    </div>
+</li>
 
 <li class="slide" style="text-align: left" title="Franklin wants to ask in Groovy" press="1 2 3 4 5">
     <textarea id="editorGroovy11" name="editorGroovy11">
