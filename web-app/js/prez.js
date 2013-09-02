@@ -2309,203 +2309,29 @@ editorGroovy11.addKeyMap(keymap11);
 //------------------------------------------------------------------->
 // Groovy12. ask AST
 //------------------------------------------------------------------->
-//var content12 = "def getShell(binding) {\n"
-//            + "def config = new CompilerConfiguration()\n"
-//            + "config.addCompilationCustomizers(new SurveyCustomizer())\n"
-//            + "config.scriptBaseClass = SurveyScript.name\n"
-//            + "new GroovyShell(this.class.classLoader,\n"
-//            + "    binding,\n"
-//            + "    config)\n"
-//            + "}\n"
-//            + "def binding = new Binding()\n"
-//            + "def inputs = [:]\n"
-//            + "binding.setVariable(\"inputs\", inputs)\n"
-//            + "def script = \"\"\"\n"
-//            + "ask \"what's your name?\" assign to name\n"
-//            + "ask \"what's your birthday?\" assign to date\n"
-//            + "\"\"\"\n"
-//            + "//first evaluate should run only the first ask\n"
-//            + "getShell(binding).evaluate script\n"
-//            + "//second evaluate should run only the second ask2\n"
-//            + "getShell(binding).evaluate script\n"
-//            + "\n"
-//            + "\n"
-//            + "abstract class SurveyScript extends Script {\n"
-//            + "    def ask(question) {\n"
-//            + "        [assign : { to ->\n"
-//            + "        [:].withDefault {assignment ->\n"
-//            + "            inputs.question = question\n"
-//            + "            inputs.lastAssignment = assignment\n"
-//            + "            println \"\\nask called\" +\n"
-//            + "                    \"--> counter: $inputs.counter\" + \n"
-//            + "                    \"\\n--> question: $question\" + \n"
-//            + "                    \"\\n__________________________________\"\n"
-//            + "            inputs.counter++\n"
-//            + "        }\n"
-//            + "        }]\n"
-//            + "    }\n"
-//            + "\n"
-//            + "    def propertyMissing(String name) {\n"
-//            + "        name\n"
-//            + "    }\n"
-//            + "\n"
-//            + "    //entry point method each time the script is called\n"
-//            + "    void dispatch() {\n"
-//            + "        if(!inputs.answerMap){\n"
-//            + "            inputs.answerMap = [:]\n"
-//            + "        }\n"
-//            + "        if(!inputs.counter){\n"
-//            + "            inputs.counter=0\n"
-//            + "        }\n"
-//            + "        inputs.answerMap[inputs.counter] =\n"
-//            + "            [variable:inputs.lastAssignment,\n"
-//            + "            question:inputs.question,\n"
-//            + "            answer:inputs.answer]\n"
-//            + "        invokeMethod()\n"
-//            + "    }\n"
-//            + "\n"
-//            + "    def invokeMethod() {\n"
-//            + "        try {\n"
-//            + "            def method =\n"
-//            + "                this.class.getMethod(\"doStep_${inputs.counter}\")\n"
-//            + "            method.invoke(this)\n"
-//            + "        }\n"
-//            + "        catch(NoSuchMethodException exp){\n"
-//            + "            inputs.finished = true\n"
-//            + "        }\n"
-//            + "    }\n"
-//            + "}\n"
-//            + "\n"
-//            + "public class SurveyCustomizer extends CompilationCustomizer {\n"
-//            + "    def step = 0\n"
-//            + "\n"
-//            + "    public SurveyCustomizer() {\n"
-//            + "        super(CompilePhase.CONVERSION);\n"
-//            + "    }\n"
-//            + "\n"
-//            + "    @Override\n"
-//            + "    public void call(final SourceUnit source,\n"
-//            + "        final GeneratorContext context,\n"
-//            + "        final ClassNode classNode)\n"
-//            + "    throws CompilationFailedException {\n"
-//            + "        def methodCalls = []\n"
-//            + "        def ast = source.getAST();\n"
-//            + "        ast.classes.each {\n"
-//            + "            def myClassNode = it\n"
-//            + "            it.methods.each {\n"
-//            + "                if (it.code instanceof BlockStatement\n"
-//            + "                    && it.name == \"run\") {\n"
-//            + "                    it.code.statements.each {\n"
-//            + "                        methodCalls << it\n"
-//            + "                    }\n"
-//            + "                    def result = new AstBuilder().buildFromCode {\n"
-//            + "                        this.dispatch()\n"
-//            + "                    }\n"
-//            + "                    it.code = result[0];\n"
-//            + "                }\n"
-//            + "            }\n"
-//            + "            methodCalls.each {\n"
-//            + "                addStatement(it, myClassNode)\n"
-//            + "            }\n"
-//            + "        }\n"
-//            + "    }\n"
-//            + "\n"
-//            + "    private def addStatement(ExpressionStatement exprStmt,\n"
-//            + "        myClassNode) {\n"
-//            + "        BlockStatement methodCodeBlock = new BlockStatement()\n"
-//            + "        methodCodeBlock.addStatement(exprStmt)\n"
-//            + "        myClassNode.addMethod(\"doStep_\" + step,\n"
-//            + "            1,\n"
-//            + "            null,\n"
-//            + "            [] as Parameter[],\n"
-//            + "            [] as ClassNode[],\n"
-//            + "            methodCodeBlock)\n"
-//            + "        step++\n"
-//            + "    }\n"
-//            + "}\n"
-//            + "\n";
-
-
-var content12 = "import org.codehaus.groovy.ast.ClassCodeVisitorSupport\n"
-    + "import org.codehaus.groovy.ast.ClassNode\n"
-    + "import org.codehaus.groovy.ast.expr.MethodCallExpression\n"
-    + "import org.codehaus.groovy.ast.stmt.BlockStatement\n"
-    + "import org.codehaus.groovy.classgen.GeneratorContext\n"
-    + "import org.codehaus.groovy.control.CompilationFailedException\n"
-    + "import org.codehaus.groovy.control.CompilePhase\n"
-    + "import org.codehaus.groovy.control.SourceUnit\n"
-    + "import org.codehaus.groovy.control.customizers.CompilationCustomizer\n"
-    + "public class GameCustomizer extends CompilationCustomizer {\n"
-                + "def step = 0\n"
-                + "\n"
-                + "public GameCustomizer() {\n"
-                + "    super(CompilePhase.CONVERSION);\n"
+var content12 = "abstract class GameScript extends Script {\n"
+                + "  def move(param) {println \">> move $param\"}\n"
                 + "}\n"
+                + "def config = new CompilerConfiguration()\n"
+                + "config.scriptBaseClass = GameScript.class.name\n"
                 + "\n"
-                + "@Override\n"
-                + "public void call(final SourceUnit source,\n"
-                + "    final GeneratorContext context,\n"
-                + "    final ClassNode classNode)\n"
-                + "throws CompilationFailedException {\n"
-                + "    def methodCalls = []\n"
-                + "    int i = 0;\n"
-                + "    def ast = source.getAST();\n"
-                + "    BlockStatement gameScript\n"
-                + "    ast.classes.each {\n"
-                + "        it.methods.each {\n"
-                + "            if (it.code instanceof BlockStatement\n"
-                + "                && it.name == \"run\") {\n"
-                + "                gameScript = it.code\n"
-                + "            }\n"
-                + "        }\n"
-                + "    }\n"
-                + "    def methodCallVisitor = new MethodCallVisitor()\n"
-                + "    methodCallVisitor.visitBlockStatement(gameScript)\n"
+                + "def binding = new Binding()\n"
+                + "def shell = new GroovyShell(this.class.classLoader,\n"
+                + "    binding,\n"
+                + "    config)\n"
                 + "\n"
-                + "    if (methodCallVisitor.i > 3) {\n"
-                + "        throw new Exception(\"Limit of allowed statements exceeded!\")\n"
-                + "    }\n"
-                + "}\n"
-                + "\n"
-                + "\n"
-                + "}\n"
-                + "\n"
-                + "class MethodCallVisitor extends ClassCodeVisitorSupport {\n"
-                + "    int i = 0;\n"
-                + "    @Override\n"
-                + "    protected SourceUnit getSourceUnit() {\n"
-                + "        return null\n"
-                + "    }\n"
-                + "\n"
-                + "    @Override\n"
-                + "    public void visitMethodCallExpression(MethodCallExpression expression) {\n"
-                + "        if(expression.getMethodAsString() in [\"move\", \"ask\", \"kiss\", \"meet\"] ) {\n"
-                + "            i++\n"
-                + "        }\n"
-                + "        super.visitMethodCallExpression(expression)\n"
-                + "    }\n"
-                + "\n"
-                + "}";
+                + "def dslScript = '''\n"
+                + "move 1\n"
+                + "move 2\n"
+                + "move 3\n"
+                + "move 4\n"
+                + "'''\n\n"
+                + "shell.evaluate dslScript";
 
 var editorGroovy12 = new dslPrez.editor("editorGroovy12", content12);
 
 function editorGroovy12Send() {
     var value = editorGroovy12.getValue();
-//    value = "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n"
-//        +"import org.codehaus.groovy.ast.*\n"
-//        +"import org.codehaus.groovy.ast.expr.*\n"
-//        +"import org.codehaus.groovy.ast.stmt.*\n"
-//        +"import org.codehaus.groovy.classgen.GeneratorContext\n"
-//        +"import org.codehaus.groovy.control.CompilationFailedException\n"
-//        +"import org.codehaus.groovy.control.CompilePhase\n"
-//        +"import org.codehaus.groovy.control.CompilerConfiguration\n"
-//        +"import org.codehaus.groovy.control.SourceUnit\n"
-//        +"import org.codehaus.groovy.control.customizers.*\n"
-//        +"import org.codehaus.groovy.ast.builder.AstBuilder\n"
-//        +"import org.codehaus.groovy.syntax.Token\n"
-//        +"import org.codehaus.groovy.syntax.Types\n"
-//        +"import static org.objectweb.asm.Opcodes.ACC_PUBLIC\n"
-//        + value;
     value = "import org.codehaus.groovy.ast.ClassCodeVisitorSupport\n"
         + "import org.codehaus.groovy.ast.ClassNode\n"
         + "import org.codehaus.groovy.ast.expr.MethodCallExpression\n"
@@ -2515,17 +2341,155 @@ function editorGroovy12Send() {
         + "import org.codehaus.groovy.control.CompilePhase\n"
         + "import org.codehaus.groovy.control.SourceUnit\n"
         + "import org.codehaus.groovy.control.customizers.CompilationCustomizer\n"
+        + "import org.codehaus.groovy.control.CompilerConfiguration\n"
         + value;
     submitFormToGroovyConsole(value, "#outputGroovy12");
 }
 
 function editorGroovy12Key0() {
-    editorGroovy12.currentPress(0, 2);
+    editorGroovy12.currentPress(0, 6);
     editorGroovy12.setValue(content12);
+}
+
+function editorGroovy12Key1() {
+    if (editorGroovy12.currentPress(1, 6)) {
+        editorGroovy12.scrollIntoView(0);
+        var value = "public class GameCustomizer extends CompilationCustomizer {\n"
+                    + "  def step = 0\n"
+                    + "\n"
+                    + "  public GameCustomizer() {\n"
+                    + "    super(CompilePhase.CONVERSION)\n"
+                    + "  }\n"
+                    + "\n"
+                    + "  @Override\n"
+                    + "  public void call(final SourceUnit source,\n"
+                    + "    final GeneratorContext context,\n"
+                    + "    final ClassNode classNode) throws CompilationFailedException {\n"
+                    + "  }\n"
+                    + "}\n\n";
+        editorGroovy12.replaceRange(value, {line:0, ch:0});
+        for(var i = 0; i <13 ; i++) {
+            editorGroovy12.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorGroovy12Key2() {
+    if (editorGroovy12.currentPress(2, 6)) {
+        editorGroovy12.scrollIntoView(0);
+        for(var i = 0; i <13 ; i++) {
+            editorGroovy12.removeLineClass(i, "background", "highlight");
+        }
+        var value = "config.addCompilationCustomizers(new GameCustomizer())\n";
+
+        editorGroovy12.replaceRange(value, {line:19, ch:0});
+        editorGroovy12.addLineClass(19, "background", "highlight");
+    }
+}
+
+function editorGroovy12Key3() {
+    if (editorGroovy12.currentPress(3, 6)) {
+        editorGroovy12.scrollIntoView(0);
+        editorGroovy12.removeLineClass(19, "background", "highlight");
+        var value = "    def methodCalls = []\n"
+                + "    int i = 0;\n"
+                + "    def ast = source.getAST();\n"
+                + "    BlockStatement gameScript\n"
+                + "    ast.classes.each {\n"
+                + "      it.methods.each {\n"
+                + "        if (it.code instanceof BlockStatement\n"
+                + "            && it.name == \"run\") {\n"
+                + "          gameScript = it.code\n"
+                + "        }\n"
+                + "      }\n"
+                + "    }\n";
+
+        editorGroovy12.replaceRange(value, {line:11, ch:0});
+        for(var i = 11; i <23 ; i++) {
+            editorGroovy12.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorGroovy12Key4() {
+    if (editorGroovy12.currentPress(4, 6)) {
+        editorGroovy12.scrollIntoView(33);
+        for(var i = 11; i <23 ; i++) {
+            editorGroovy12.removeLineClass(i, "background", "highlight");
+        }
+        var value = "    def methodCallVisitor = new MethodCallVisitor()\n"
+            + "    methodCallVisitor.visitBlockStatement(gameScript)\n"
+            + "\n"
+            + "    if (methodCallVisitor.i > 3) {\n"
+            + "      throw new Exception(\"Limit of allowed statements exceeded!\")\n"
+            + "    }\n";
+
+        editorGroovy12.replaceRange(value, {line:23, ch:0});
+        for(var i = 23; i <29 ; i++) {
+            editorGroovy12.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorGroovy12Key5() {
+    if (editorGroovy12.currentPress(5, 6)) {
+        for(var i = 23; i <29 ; i++) {
+            editorGroovy12.removeLineClass(i, "background", "highlight");
+        }
+        var value = "class MethodCallVisitor extends ClassCodeVisitorSupport {\n"
+        + "  int i = 0;\n"
+        + "  @Override\n"
+        + "  protected SourceUnit getSourceUnit() {\n"
+        + "    return null\n"
+        + "  }\n"
+        + "\n"
+        + "  @Override\n"
+        + "  public void visitMethodCallExpression(MethodCallExpression expression) {\n"
+        + "  }\n"
+        + "\n"
+        + "}\n";
+
+        editorGroovy12.replaceRange(value, {line:32, ch:0});
+        for(var i = 32; i <44 ; i++) {
+            editorGroovy12.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorGroovy12Key6() {
+    if (editorGroovy12.currentPress(6, 6)) {
+        for(var i = 32; i <44 ; i++) {
+            editorGroovy12.removeLineClass(i, "background", "highlight");
+        }
+        var value = "    if(expression.getMethodAsString() in [\"move\"] ) {\n"
+            + "      i++\n"
+            + "     }\n"
+            + "     super.visitMethodCallExpression(expression)\n";
+
+        editorGroovy12.replaceRange(value, {line:41, ch:0});
+        for(var i = 41; i <45 ; i++) {
+            editorGroovy12.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorGroovy12Key7() {
+    if (editorGroovy12.currentPress(7, 6)) {
+        for(var i = 41; i <45 ; i++) {
+            editorGroovy12.removeLineClass(i, "background", "highlight");
+        }
+    }
 }
 
 var keymap12 = {
     "0": editorGroovy12Key0,
+    "1": editorGroovy12Key1,
+    "2": editorGroovy12Key2,
+    "3": editorGroovy12Key3,
+    "4": editorGroovy12Key4,
+    "5": editorGroovy12Key5,
+    "6": editorGroovy12Key6,
+    "7": editorGroovy12Key7,
     "Ctrl-S": editorGroovy12Send,
     "Cmd-S": editorGroovy12Send
 };

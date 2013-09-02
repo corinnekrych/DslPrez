@@ -42,7 +42,10 @@ class ConsoleController {
     try {
       result = new GroovyShell(this.class.classLoader, aBinding).evaluate(params.content)
     } catch (Exception e) {
-	  stacktrace = e.message - 'startup failed:\nScript1.groovy: '
+        if (e.message.contains("Limit of allowed statements exceeded!"))
+            stacktrace = " Limit of allowed statements exceeded!"
+        else
+	        stacktrace = e.message - 'startup failed:\nScript1.groovy: '
     } finally {
 	  System.setOut(originalOut)
 	  System.setErr(originalErr)
