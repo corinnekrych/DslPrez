@@ -87,23 +87,10 @@ class ConsoleController {
       if (params.scalaSecurity != null) {
          evaluator.withPluginOption("dslplugin:blacklistFile:anyfile")
       }
-      
-      // Example for the game use bind and import
-      //def turtle = new Turtle(new Position(0,0,up as Direction))
-      //evaluator.addImport("dslprez._")      
-      //println("Turtle is $turtle ==========") 
-      //evaluator.bind("I","dslprez.Turtle",turtle)
-      //End
- 
-      // editor2
-      //def turtle = new Turtle()
-      //evaluator.bind("I","dslprez.steps.editor2.Turtle",turtle)
-      //evaluator.bind("left","String","left")
-      // End editor2
-      
+       
       result = evaluator.eval(params.content)
     } catch (Exception e) {
-      stacktrace = e.message
+      stacktrace = e.message+"\n\n"+stream.toString(encoding)
     } finally {
       if (evaluator != null) evaluator.close()
     }

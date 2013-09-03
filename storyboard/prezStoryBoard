@@ -1,0 +1,151 @@
+slide  #0         => Welcome page, waiting to start
+                     The guiding Theme of this presentation aims at focusing on a DSL to pilot characters on a grid and let them interact to 
+                     each others. 
+                     Title of the game refers to Logo which off course, was part of our inspiration.
+                     In our live session, we intend to show how we achieved this, the problems we met and how we solved them. 
+                     DSLs exist on various popular languages like Ruby, Clojure and of course the ones of interest here Groovy and Scala.
+                     In order to evaluate the differences that the underlying languages offer we picked two different languages that can be 
+                     seen as theoretically strongly opposed using very different paradigms.
+slide  #1         => Corinne starts the Agenda, up to part II
+                     Pascal finishes with part III and Conclusion
+Transition 1->2   => Pascal asks Corinne: but before maybe we can inroduce ourselves. Ladies first please
+slide  #2         => skip
+slide  #3         => Corinne introduces herself
+                     <TODO>
+slide  #4         => Pascal introduces himself
+                     Architect in e-commerce solutions at Amadeus with 12 years of experience in IT
+                     Like mountaineering and video games and when I have some free time left, 
+                     curious about programming languages,and storage solutions
+                     Recently converted to BSD (PC-BSD rocks)
+                     Regular participant to Scala and Clojure User Group
+Transition 4->5   => Pascal: You are here mainly to hear about DSLs. So first let's give you some Context
+slide  #5         => Pascal starts explaining inside Amadeus the Scripting engine role
+                     SSE in order to enable faster customers customization thanks to script
+                     Sandboxing, defining of APIs and we started to design DSL to simplify user Customization.
+                     Corinne continues <TODO>
+                     As part of Grails48, we initiated the idea of Kissing Turtles, a 2 players web based mobile app where Franklin 
+                     wants to meet Emily for a kiss. To navigate through the maze, kids (and older-kids) will write Groovy or Scala script. 
+                     As grown up kids, we had fun developing a DSL that provides same features with different languages.
+Transition 5->6   => Pascal interrupts Corinne to ask her if she would mind giving us an overview of how we can define DSLs
+slide  #6         => skip
+slides #7 - 11    => Corinne <TODO>
+                     DSL Definition
+                     DSL stands for Domain Specific language, but lets try to get clear grasp on it.
+                     From Martin Fowler:
+                     extract 3 key elements:
+                     computer language: something executable by a computer
+                     language: it should feel like a language where the syntax and the semantic put together offer a sense of fluency. 
+                     If you can read the SQL statement and understand the joke you get the idea of sense of fluency
+                     last but not least, focused on a particular domain. it is not a turing complete language as opposed to .
+
+                     One of the key advantage of using a DSL is to share a common metaphor (notion borrowed from Agile development). 
+                     The ultimate goal being: code that reads as natural language, code that a domain expert, without programming 
+                     experience can read, understand and even write. Code that a 6 years old kid can handle!
+                     If we take the ex of rubik cube, all we need is 6 letters for the 6 possible moves and the apostrophe is giving you 
+                     the rotation.
+
+                     Hal Abelson citation: Programs should be written for people to read, and only incidentally for machines to execute. 
+                     That makes a perfect fit for DSLs.
+                     
+                     Very often we distinguish 2 kinds of DSL
+                     An external DSL is a language separated from the main language of the application it works with.
+                     it usually has its own custom syntax
+                     it is usually parsed by the host application: use  parser generators like ANTLR to parse your grammar and the code to 
+                     generate code in the underlying language.
+                     External DSLs have their own custom syntax and you write a full parser to process them. There is a very strong tradition
+                     of doing this in the Unix community. Many XML configurations have ended up as external DSLs, although XML's syntax is 
+                     badly suited to this purpose.
+
+                     An internal DSL, also called an embedded DSL,  is a subset of a GPL. It is valid code that can be directly executed in 
+                     its host language.
+                     It is in this category that our Groovy and Scala embedded DSLs fall in.
+                     Can be more constrained by the embedding language syntax.
+                     Internal DSLs are particular ways of using a host language to give the host language the feel of a particular language. 
+                     Internal DSLs are also referred to as embedded DSLs or FluentInterfaces
+
+slides #12 - 13   => Pascal explains that boundaries are blurry. There is no clear distinction between a DSL and a good API.
+                     What is important in a DSL is its expressiveness to describe in a simple and human readable way a process flow.
+                     Pascal says: I can see many advantages to DSL though also drawbacks.
+slides #14 - 15   => Corinne <TODO>
+slide  #16        => Pascal explains that it is generally simpler to use an Internal DSL because it can take advantage
+                     of an enclosing existing language. Designing an External DSL is not so easy and it requires some grammar
+                     specifications. In this Tuto, we are going to mainly focus on Internal DSLs.
+Transition 16->17 => Pascal says: Now that we have chosen to use Embedded DSLs, which language should we choose.
+                     I recommend Scala for the following reasons:
+slide  #17        => Pascal and Corinne exchange on topics pro and against Scala and Groovy
+Transition 17->18 => Ok now let's stop any troll debate and lets try to build our DSL in both languages to see 
+                     convergence and divergence.
+slide  #18        => Corinne details Groovy features.
+slides #19        => Pascal details Scala features.
+Transition 19->20 => Pascal says that now we can start to dive into the DSL details
+slides #20 - 21   => Corinne introduces the game, the target the rules
+slides #22 - 23   => Pascal explains that first as players will submit DSL, we need to evaluate the DSL inside the running
+                     application. There exist different options. 
+                     Introduce Groovy, Scala, JSR
+                     And lets see how we can do in Groovy
+slide  #24 - 27   => Code /Separate dedicated file
+slide  #28        => Pascal explains the challenges of Scripting
+slide  #29        => Corinne explains that if we want to enrich script interaction, we need bindings
+slides #30 - 36   => Code /Separate dedicated file
+slide  #37        => Pascal explains that now we will enrich the DSL by creating Turtle and move
+slides #38 - 41   => Code /Separate dedicated file
+slide  #42        => Pascal explains then that the DSL in itself does not handle UI. Everything inside the UI on client side
+                     communicating thanks to JSON.
+slides #43 - 46   => Code /Separate dedicated file
+slides #47 - 48   => Corinne introduces Command chaining
+slides #49 - 50   => Code /Separate dedicated file
+slide  #51        => Pascal asks about odd numbers
+slides #52 - 53   => Code /Separate dedicated file
+slide  #54        => Pascal discusses DSL options and arity rules in Scala
+slides #55 - 56   => Code /Separate dedicated file
+slide  #57        => Corinne introduces the kiss
+slides #58 - 59   => Code /Separate dedicated file
+slide  #60        => Corinne explains MOP
+slide  #61        => Pascal says: Lets kiss in Scala
+slides #62 - 63   => Code /Separate dedicated file
+slide  #64        => Corinne explains that we might enrich classes behavior with Category or implicits
+slides #65 - 68   => Code /Separate dedicated file
+slide  #69        => Pascal reminds that it is important to secure the script because script writer could be malicious or distracted
+slide  #70        => Corinne says Groovy has typeChecked for distracted users
+slides #71 - 73   => Code /Separate dedicated file
+slide  #74        => Pascal explains we don't need that in Scala because it is naturally strongly typed. What is fun is that
+                     while Groovy is adding type checking, Scala has added Dynamics. It already had strcutural typing to safely
+                     mimic duck typing of dynamic languages.
+slides #75 - 76   => Code /Separate dedicated file
+slide  #77        => Pascal asks and for malicious users ?
+slides #78 - 81   => Code /Separate dedicated file
+slide  #82        => Corinne says that we nedd also to prevent users from creating infinite loops
+slides #83 - 86   => Code /Separate dedicated file
+slide  #87        => Pascal explains that traits mixin can be an alternative to decorate behavior and creating interceptors
+slide  #88        => But let's see that with the game rule that restrict the number of actions to 3
+slides #89 - 92   => Code /Separate dedicated file
+slide  #93        => Corinne suggests that now we have seen how to secure the script evaluation, we could try to add some interaction.
+slide  #94        => and explains how to deal with in Groovy
+slides #95 - 96   => Code /Separate dedicated file
+slide  #97        => Pascal suggests he wanted to take this opportunity to play with continuations.
+slides #98 - 99   => Code /Separate dedicated file
+slide  #100       => Corinne concludes: now that we have seen these different pieces of code. Let's put everything together 
+                     and let's play.   
+slide  #101       => Pascal explains that now, we just will enlarge the scope and talk about additional features.
+slides #102 - 106 => Corinne <TODO>
+slide  #107       => Pascal describes the Scala features that were not used in the game use cases
+slide  #108       => Pascal now explains that we have alternative with External DSL. There is various tooling.
+                     There are graphical tools (language is not the only way to reach expressiveness): they transformed UI behind the scenes 
+                     into a programming language implementation. 
+                     This graphical DSL has "simply" to fit into M. Fowler definition (DSL as a business focused language workbench)
+                     External DSLs offer more expressiveness at the cost of more complexity.
+
+slide  #109       => Corinne describes workbench
+slide  #110       => Corinne then talks about Internationalization
+Transition 110 - 111 => Pascal interrupts Corinne: Fine Corinne, anyway let's focus back on Internal DSL. And as a Developper, I have
+                        concerns. First I am a strong believer in TDD. How can I test my DSL.
+slide  #111       => Corinne covers main testing layers
+slide  #112       => and describes the Groovy testing.
+slide  #113       => Pascal then describes BDD testing with ScalaTest.
+scala  #114       => Pascal switches now to debugging. Talking about local debugging but also remote ones and the difficulties.
+slide  #115       => Pascal says: I think we covered all we wanted to show. It's time to conclude this duel.
+slide  #116       => Corinne starts saying no one language solves all the problem.
+                     Pascal continues that despite some issues, we were able to mix Scala and Groovy. So we should not fear polyglotism
+                     and consider other languages.
+slide  #117       => Together: and have fun!
+                     It has been a fair battle between Groovy and Scala. There is one single winner: the JVM. 

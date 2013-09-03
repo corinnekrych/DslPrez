@@ -1774,13 +1774,13 @@ function editorScala_limitActionsSend() {
 }
 
 function editorScala_limitActionsKey0() {
-    editorScala_limitActions.currentPress(0, 4);
+    editorScala_limitActions.currentPress(0, 5);
     editorScala_limitActions.setValue(contentScala_limitActions);
     editorScala_limitActions.scrollIntoView(77);
 }
 
 function editorScala_limitActionsKey1() {
-    if (editorScala_limitActions.currentPress(1, 4)) {
+    if (editorScala_limitActions.currentPress(1, 5)) {
       var value = "\ntrait LimitAction extends Turtle {\n"
                 + "  var counter = 0\n"
                 + "  def reset() = counter = 0\n\n"
@@ -1807,7 +1807,7 @@ function editorScala_limitActionsKey1() {
 }
 
 function editorScala_limitActionsKey2() {
-    if (editorScala_limitActions.currentPress(2,4)) {
+    if (editorScala_limitActions.currentPress(2,5)) {
        editorScala_limitActions.removeLineClass(61, "background", "highlight");
        editorScala_limitActions.removeLineClass(62, "background", "highlight");
        editorScala_limitActions.removeLineClass(63, "background", "highlight");
@@ -1822,31 +1822,42 @@ function editorScala_limitActionsKey2() {
       editorScala_limitActions.removeLine(72)
       var value = "val turtle = new Turtle(Position(1,1)) with LimitAction\n";
       editorScala_limitActions.replaceRange(value,{line:72,ch:0});
-      editorScala_limitActions.addLineClass(72, "background", "highlight");     
-      
-      
+      editorScala_limitActions.addLineClass(72, "background", "highlight");           
      }
 }
 
 function editorScala_limitActionsKey3() {
-    if (editorScala_limitActions.currentPress(3,4)) {
+    if (editorScala_limitActions.currentPress(3,5)) {
       editorScala_limitActions.removeLineClass(72, "background", "highlight");
       var value = "I.reset()\n\n";
       editorScala_limitActions.replaceRange(value,{line:76,ch:0});
-     editorScala_limitActions.addLineClass(76, "background", "highlight");     
-
+      editorScala_limitActions.addLineClass(76, "background", "highlight");     
+      editorScala_limitActions.scrollIntoView(85);
      }
 }
 
 function editorScala_limitActionsKey4() {
-    if (editorScala_limitActions.currentPress(4,4)) {
+    if (editorScala_limitActions.currentPress(4,5)) {
       editorScala_limitActions.removeLineClass(76, "background", "highlight");
       var value = "// evaluator.eval(\"I.reset()\")\n";
       editorScala_limitActions.replaceRange(value,{line:77,ch:0});
-       editorScala_limitActions.addLineClass(77, "background", "highlight");     
-
+      editorScala_limitActions.addLineClass(77, "background", "highlight");
+       editorScala_limitActions.scrollIntoView(91);
      }
 }
+
+function editorScala_limitActionsKey5() {
+    if (editorScala_limitActions.currentPress(5,5)) {
+       editorScala_limitActions.removeLineClass(77, "background", "highlight");     
+       var value = "I move left\nI move left\n\n";
+       editorScala_limitActions.replaceRange(value,{line:84,ch:0});
+       editorScala_limitActions.addLineClass(82, "background", "highlight");     
+       editorScala_limitActions.addLineClass(83, "background", "highlight");     
+       editorScala_limitActions.addLineClass(84, "background", "highlight");     
+       editorScala_limitActions.addLineClass(85, "background", "highlight");     
+     }
+}
+
 var keymapScala_limitActions = {
     "Ctrl-S" :editorScala_limitActionsSend,
     "Cmd-S" :editorScala_limitActionsSend,
@@ -1854,7 +1865,8 @@ var keymapScala_limitActions = {
     "1": editorScala_limitActionsKey1,
     "2": editorScala_limitActionsKey2,
     "3": editorScala_limitActionsKey3,
-    "4": editorScala_limitActionsKey4
+    "4": editorScala_limitActionsKey4,
+    "5": editorScala_limitActionsKey5  
 };
 
 editorScala_limitActions.addKeyMap(keymapScala_limitActions);
