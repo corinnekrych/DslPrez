@@ -1,10 +1,13 @@
 eventSetClasspath = {
-    rootLoader.addURL(new File("ext").toURI().toURL())
-    WebApplicationContext.getClassLoader().addURL(new File("ext").toURI().toURL())
-rootLoader.addURL(new File("lib/scala-reflect.jar").toURI().toURL())
-rootLoader.addURL(new File("lib/scala-compiler.jar").toURI().toURL())
-rootLoader.addURL(new File("lib/scala-library.jar").toURI().toURL())
-//rootLoader.addURL(new URL("/usr/home/pcohen/Dev/workspace/Gr8ConfUS/target/classes"))
+
+    def directory = java.lang.Class.forName("scala.tools.nsc.Interpreter").getProtectionDomain().getCodeSource().getLocation().getPath().toString() - 'lib/scala-compiler.jar'
+    println " >>>>>>>>> 2 >>" + directory
+
+    rootLoader.addURL(new File(directory + "ext").toURI().toURL())
+    WebApplicationContext.getClassLoader().addURL(new File(directory + "ext").toURI().toURL())
+    rootLoader.addURL(new File("lib/scala-reflect.jar").toURI().toURL())
+    rootLoader.addURL(new File("lib/scala-compiler.jar").toURI().toURL())
+    rootLoader.addURL(new File("lib/scala-library.jar").toURI().toURL())
     classpathSet = true //false
 }
 
@@ -24,9 +27,6 @@ eventCreateWarStart = { warName, stagingDir ->
 
     Ant.copy(file: "ext/TurtleExtension.groovy",
             tofile: "${stagingDir}/WEB-INF/ext/TurtleExtension.groovy")
-
-    Ant.copy(file: "ext/TurtleExtension.groovy",
-            tofile: "${stagingDir}/ext/TurtleExtension.groovy")
 
     println stagingDir
 }

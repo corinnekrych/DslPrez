@@ -12,41 +12,16 @@ methodNotFound { receiver, name, argList, argTypes, call ->
     }
 }
 
-// return value not type
-
-// return more error Type check string in method call
-
-setup {
-    context.pushErrorCollector()
-}
-
-finish {
-    def ec = context.popErrorCollector()
-    def oc = context.errorCollector
-    ec.errors.each {
-        oc.addError(new SimpleMessage('Boum', null)      )
-    }
-}
-
-
-
-//@groovy.transform.Field def var = "toto"
-//4.times {
-//
-//    ask toto assign to name
-//    when (name == "Franklin) {
+//setup {
+//    context.pushErrorCollector()
 //}
-//ask "what's your birthday?" assign to date
+//
+//finish {
+//    def ec = context.popErrorCollector()
+//    def oc = context.errorCollector
+//    ec.errors.each {
+//        oc.addError(new SimpleMessage('Boum', null)      )
+//    }
 //}
 
 
-//use future in AST transform
-//
-
-// ext module
-
-// a la scala home() -> home
-
-// delegate + @DelegateTo -> See guillaume
-
-// tests for DSL
