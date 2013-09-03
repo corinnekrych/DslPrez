@@ -871,7 +871,8 @@ shell.evaluate(script)
                 <h3>Scala within Grails</h3>
                 <pre class="code">
                     val env = new Settings()
-                    env.usejavacp.value = true</pre>
+                    env.usejavacp.value = true
+                    new scala.tools.nsc.interpreter.IMain(env)</pre>
             </div>
             <!-- http://scabl.blogspot.fr/2013/05/scripting-with-scala-and-sbt.html -->
             <div class="span1">
@@ -1994,7 +1995,7 @@ extensionClasses = dsl.StepExtension
             <div class="jumbotron" style="text-align: left">
                 Compile time security checks<br/>
                 <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- In Groovy: white list/ black list</div>
-                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- In scala: custom compiler plugin</div>
+                <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- In Scala: custom compiler plugin</div>
                 Runtime security issue in Groovy<br/>
             </div>
         </div>
@@ -2221,7 +2222,7 @@ step 3: add SecureASTCustomizer
 </li>
 
 
-<li class="slide" style="text-align: left" title="Franklin has a limited number of actions" press="1 2 3 4">
+<li class="slide" style="text-align: left" title="Franklin has a limited number of actions" press="1 2 3 4 5">
     <textarea id="editorScala_limitActions" name="editorScala_limitActions">
     </textarea>
 </li>
@@ -2233,7 +2234,7 @@ step 3: add SecureASTCustomizer
             </div>
             <div class="span8">
                 <hr>
-                <pre class="code" id="outputScala_limitedActions">
+                <pre class="code" id="outputScala_limitActions">
                 </pre>
                 <canvas id="canvasScala_limitActions" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
                 </pre>
@@ -2654,13 +2655,16 @@ TODO editor or slide to explain
         <hr>
         <div class="row-fluid marketing" style="text-align: left">
         <div class="span2"></div>
-        <div class="span8">
+        <div class="span6">
         <h3>Many available options to manage External DSL:</h3>
         - ANTLR,<br/>
         - Parser Combinators in Scala,<br/>
         - XText with Visual Support in Eclipse<br/>
         </div>
-        <div class="span2"></div>
+        <div class="span4">
+        <br/>
+        <img src="img/xtext.png" width="65%"/>
+        </div>
         </div>
         <hr>
     </div>
@@ -2809,6 +2813,7 @@ TODO editor or slide to explain
             </div>        
             <div class="span6" style="text-align: left" >
             - Debugging<br/>
+            <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- local/remote</div>
             - IDE DSL support
             </div>
             <div class="span1">
