@@ -21,6 +21,9 @@ target-eclipse
 .DS_Store
 */.DS_Store
 
-lib
+lib/lift-json.jar
+lib/plugins
+lib/scala*.jar
+
 /node_modules
 /dist
