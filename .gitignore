@@ -24,6 +24,7 @@ target-eclipse
 lib/lift-json.jar
 lib/plugins
 lib/scala*.jar
+lib/continuation*.jar
 
 /node_modules
 /dist
