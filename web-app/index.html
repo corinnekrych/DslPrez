@@ -1189,7 +1189,7 @@ step 7 remove def left in GameScript
 <!-- step 8 alternate solution with implicits
 <!-------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Add Turtle in Scala" press="1 2 3 4 5 6 7 8">
+<li class="slide" style="text-align: left" title="Add Turtle in Scala" press="1 2 3 4 5 6 7">
     <textarea id="editorScala4" name="editorScala4">
     </textarea>
 </li>
@@ -1211,11 +1211,50 @@ step 7 remove def left in GameScript
     </div>
 </li>
 
+<li class="slide" title="Alternative with implicits" style="line-height: 150%;font-size: 25px;">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+           <h1>Alternative with implicits</h1>
+        </div>
+        <hr>
+        <div class="span3">
+        </div>
+        <div class="span8" style="text-align: left">
+<pre>
+    val turtle = new Turtle(Position(1,1))
+    
+    interpreter.interpret("def move(d: Direction)(implicit t:Turtle) = t.move(d)")
+    interpreter.bind("turtle",turtle)
+    interpreter.eval("implicit val implicitTurtle = turtle")
+    
+    //////////////////////////
+    // Here is the DSL script.
+    //////////////////////////
+    
+    val gameDSL = """
+        move(left)   // Remember the move left translated in move.left()
+        move(right)  // Can also use the definition of a move object with left
+                     // and right directions but very cumbersome
+        """
+        
+    //////////////////////
+    // Run DSL script.
+    //////////////////////
+        
+    val result = interpreter.eval(gameDSL)
+</pre>
+        </div>
+        <div class="span1"></div>
+        <hr>
+    </div>
+</li>
+
 <li class="slide" title="Output Turtle Model" style="line-height: 150%;font-size: 25px;">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
-           <h1>Semantic modl Output</h1>
+           <h1>Semantic model Output</h1>
         </div>
         <hr>
         <div class="row-fluid marketing" style="text-align: left">
@@ -1935,7 +1974,9 @@ extensionClasses = dsl.StepExtension
                 <hr>
                 <p>Groovy has added TypeChecked ...</p><br/>
                 <p>Scala has added Dynamics </p>
-                <p style="font-size:18px; color:grey">(in addition to already existing Structural typing feature)</p>
+                <br/><br/>
+                <p style="font-size:18px; color:grey">in addition to already existing Structural typing feature:</p>
+                <pre>def talkLikeADuck(duck: { def quack():String }) = duck.quack()</pre>
             </div>
             <div class="span2">
             </div>

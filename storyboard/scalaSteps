@@ -78,8 +78,9 @@ Steps
 #7: In the following code snippet, I'll emulate the DSL by creating a value I and executing directly the commands.
     Drawback not so bad: It does not change the principles and will reduce the noise in the screen
     => Run
-#8: This is another binding proposal using implicit of turtle and binding a method to be closer to initial DSL. But we still need some 
-    parenthesis, and finally I'll keep the other proposal
+    
+In following slide: This is another binding proposal using implicit of turtle and binding a method to be closer to initial DSL. 
+But we still need some parenthesis, and finally I'll stay with the previous proposal.
 
 #Final comments: 
 Ok now we have some basic structure. Let's start to display the turtle moves.

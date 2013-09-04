@@ -402,14 +402,14 @@ function editorScala4Send() {
 }
 
 function editorScala4Key0() {
-    if (editorScala4.currentPress(0, 8)) {
+    if (editorScala4.currentPress(0, 7)) {
        editorScala4.setValue(contentScala4);
        editorScala4.scrollIntoView(0);
     }
 }
 
 function editorScala4Key1() {
-    if (editorScala4.currentPress(1, 8)) {
+    if (editorScala4.currentPress(1, 7)) {
       var value = "case class Position(x:Int, y:Int) {\n"
                 + "   def left  = Position(x-1,y)\n"
                 + "   def right = Position(x+1,y)\n"
@@ -425,7 +425,7 @@ function editorScala4Key1() {
 }
 
 function editorScala4Key2() {
-    if (editorScala4.currentPress(2, 8)) {
+    if (editorScala4.currentPress(2, 7)) {
       
       for (var i=4;i<10;i++) {
           editorScala4.removeLineClass(i, "background", "highlight");   
@@ -445,7 +445,7 @@ function editorScala4Key2() {
 }
 
 function editorScala4Key3() {
-    if(editorScala4.currentPress(3, 8)) {
+    if(editorScala4.currentPress(3, 7)) {
 
       for (var i=11;i<16;i++) {
           editorScala4.removeLineClass(i, "background", "highlight");   
@@ -474,7 +474,7 @@ function editorScala4Key3() {
 }
 
 function editorScala4Key4() {
-    if(editorScala4.currentPress(4, 8)) {
+    if(editorScala4.currentPress(4, 7)) {
        for (var i=17;i<29;i++) {
           editorScala4.removeLineClass(i, "background", "highlight");   
        }
@@ -486,7 +486,7 @@ function editorScala4Key4() {
 }
 
 function editorScala4Key5() {
-    if(editorScala4.currentPress(5, 8)) {
+    if(editorScala4.currentPress(5, 7)) {
      
        editorScala4.scrollIntoView(41);
  
@@ -511,7 +511,7 @@ function editorScala4Key5() {
 }
 
 function editorScala4Key6() {
-    if(editorScala4.currentPress(6, 8)) {
+    if(editorScala4.currentPress(6, 7)) {
        editorScala4.removeLine(32);
 
        var value="n.bind(\"I\",turtle)\n"
@@ -532,7 +532,7 @@ function editorScala4Key6() {
 }
 
 function editorScala4Key7() {
-    if(editorScala4.currentPress(7, 8)) {
+    if(editorScala4.currentPress(7, 7)) {
       for (var i = 32; i<45; i++) {
        editorScala4.removeLine(32);
       }
@@ -551,109 +551,6 @@ function editorScala4Key7() {
        
     }
 }
-function editorScala4Key8() {
-    if(editorScala4.currentPress(8, 8)) {
-      var newContentScala4V0 = "import scala.tools.nsc.interpreter._\n\n"
-                           + "val interpreter = new IMain()\n\n"
-                           + "case class Position(x:Int, y:Int) {\n"
-                           + "   def left  = Position(x-1,y)\n"
-                           + "   def right = Position(x+1,y)\n"
-                           + "   def up    = Position(x,y+1)\n"
-                           + "   def down  = Position(x,y-1)\n"
-                           + "}\n\n"
-                           + "sealed trait Direction\n"
-                           + "case object left extends Direction\n"
-                           + "case object right extends Direction\n"
-                           + "case object up extends Direction\n"
-                           + "case object down extends Direction\n\n"
-                           + "class Turtle(var p:Position) {\n\n"
-                           + "   def move(d: Direction) = {\n"
-                           + "      d match {\n"
-                           + "         case `left` => p=p.left\n"
-                           + "         case `right` => p=p.right\n"
-                           + "         case `up` => p=p.up\n"
-                           + "         case `down` => p=p.down\n"
-                           + "      }\n"
-                           + "      println(s\"x = ${p.x} and y = ${p.y}\")\n"
-                           + "      this\n"
-                           + "   }\n"
-                           + "}\n\n"
-                           + "val turtle = new Turtle(Position(1,1))\n\n"
-			   + "interpreter.interpret(\"def move(d: Direction)(implicit t:Turtle) = t.move(d)\")\n\n"
-			   + "interpreter.bind(\"turtle\",turtle)\n\n"
-			   + "interpreter.eval(\"implicit val implicitTurtle = turtle\")\n\n"
-			   + "//////////////////////////\n"
-                           + "// Here is the DSL script.\n"
-                           + "val gameDSL = \"\"\"\n"
-                           + "    move(left)\n"
-                           + "    move (right)\n"
-                           + "\"\"\"\n\n"
-                           + "//////////////////////\n"
-                           + "// Run DSL script.\n"
-                           + "val result = interpreter.eval(gameDSL)\n";
-
-    var newContentScala4 = "val turtle = new Turtle(Position(1,1))\n\n"
-			   + "interpreter.interpret(\"def move(d: Direction)(implicit t:Turtle) = t.move(d)\")\n\n"
-			   + "interpreter.bind(\"turtle\",turtle)\n\n"
-			   + "interpreter.eval(\"implicit val implicitTurtle = turtle\")\n\n"
-			   + "//////////////////////////\n"
-                           + "// Here is the DSL script.\n"
-                           + "val gameDSL = \"\"\"\n"
-                           + "    move(left)   // Remember the move left translated in move.left()\n"
-                           + "    move(right) // Can also use the definition of a move object with left\n"
-			   + "                 // and right directions but very cumbersome\n"
-                           + "\"\"\"\n\n"
-                           + "//////////////////////\n"
-                           + "// Run DSL script.\n"
-                           + "val result = interpreter.eval(gameDSL)\n";
-     editorScala4.setValue(newContentScala4);
-    }
-}
-
-function editorScala4Key9() {
-    if(editorScala4.currentPress(9, 8)) {
-      var endContentScala4 = "//import scala.tools.nsc.interpreter._\n\n"
-                           + "//val interpreter = new IMain()\n\n"
-                           + "case class Position(x:Int, y:Int) {\n"
-                           + "   def left  = Position(x-1,y)\n"
-                           + "   def right = Position(x+1,y)\n"
-                           + "   def up    = Position(x,y+1)\n"
-                           + "   def down  = Position(x,y-1)\n"
-                           + "}\n\n"
-                           + "sealed trait Direction\n"
-                           + "case object left extends Direction\n"
-                           + "case object right extends Direction\n"
-                           + "case object up extends Direction\n"
-                           + "case object down extends Direction\n\n"
-                           + "class Turtle(var p:Position) {\n"
-                           + "   def move(d: Direction) = {\n"
-                           + "      d match {\n"
-                           + "         case `left` => p=p.left\n"
-                           + "         case `right` => p=p.right\n"
-                           + "         case `up` => p=p.up\n"
-                           + "         case `down` => p=p.down\n"
-                           + "      }\n"
-                           + "      println(s\"x = ${p.x} and y = ${p.y}\")\n"
-                           + "      this\n"
-                           + "   }\n"
-                           + "}\n\n"
-                           + "val turtle = new Turtle(Position(1,1))\n\n"
-			   + "//interpreter.bind(\"I\",turtle)\n\n"
-                           + "//////////////////////////\n"
-                           + "// Here is the DSL script.\n"
-                           + "//val gameDSL = \"\"\"\n"
-                           + "//   move left\n"
-                           + "//   move right\n"
-                           + "//\"\"\"\n\n"
-                           + "//////////////////////\n"
-                           + "// Run DSL script.\n"
-                           + "//val result = interpreter.eval(gameDSL)\n\n"
-			   + "val I = turtle\n\n"
-			   + "I move left\n"
-			   + "I move right\n";
-     editorScala4.setValue(endContentScala4);
-    }
-}
 
 var keymapScala4 = {
     "Ctrl-S" :editorScala4Send,
@@ -665,9 +562,7 @@ var keymapScala4 = {
     "4": editorScala4Key4,
     "5": editorScala4Key5,
     "6": editorScala4Key6,    
-    "7": editorScala4Key7,
-    "8": editorScala4Key8,
-    "9": editorScala4Key9    
+    "7": editorScala4Key7
 };
 editorScala4.addKeyMap(keymapScala4);
 
