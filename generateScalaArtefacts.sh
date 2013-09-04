@@ -15,7 +15,7 @@ cp target/scala-2.11/scalainterpreter_2.11-1.0.jar ../../DslPrez/lib/scalainterp
 cd ../ScalaCompilerPlugin
 git pull
 sbt  package
-cp target/scala-2.11/scalacompilerplugin_2.11-1.0.jar ../../DslPrez/lib/plugins/scalacompilerplugin.jar
+cp target/scala-2.11/scalacompilerplugin_2.11-1.0.jar ../../DslPrez/lib/scalacompilerplugin.jar
 
 cd ../../DslPrez
 
