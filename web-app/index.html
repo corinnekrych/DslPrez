@@ -1220,8 +1220,8 @@ step 7 remove def left in GameScript
         <hr>
         <div class="span3">
         </div>
-        <div class="span8" style="text-align: left">
-<pre>
+        <div class="span9" style="text-align: left">
+<pre style="font-size:17px;">
     val turtle = new Turtle(Position(1,1))
     
     interpreter.interpret("def move(d: Direction)(implicit t:Turtle) = t.move(d)")
@@ -1245,7 +1245,6 @@ step 7 remove def left in GameScript
     val result = interpreter.eval(gameDSL)
 </pre>
         </div>
-        <div class="span1"></div>
         <hr>
     </div>
 </li>
@@ -1523,58 +1522,104 @@ step 4: change by method to return map
 <!------------------------------------------------------------------->
 <!-- command chaining  in scala
 <!------------------------------------------------------------------->
-<li class="slide" title="Command in Scala">
+<li class="slide" title="Command Chaining in Scala (1)">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
             <br/>
-            <h1>Command chaining in Scala</h1><br/>
+            <h1>Be Careful with Arity</h1><br/>
         </div>
         <hr>
-       <div class="row-fluid marketing">
+       <div class="row-fluid marketing" style="line-height:150%;font-size:25px;text-align:left;">
            <div class="span1">
            </div>
            <div class="span5">
-               <div style="line-height:150%;font-size:20px;text-align:left;">
-                   <div style="color:grey">move left</div>
-                   <div>&nbsp;&nbsp;&nbsp;=> possible but not ideal</div>
-                   <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mixing verbs and noun roles</div>
-                   <br/>
-                   <div style="color:grey">move left by 2 steps</div>
-                   <div>&nbsp;&nbsp;&nbsp;move.left(by).2(steps) // Hmmm ...</div>
-                   <br/>
-                   <div style="color:grey">I move left</div>
-                   <div>&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
-                   <br/>
-                   <div style="color:grey">I move left by 2 steps</div>
-                   <div>&nbsp;&nbsp;&nbsp;=> I.move(left).by(2).steps</div>
-                   <br/>
-                   <div style="color:grey">I move left by 2.steps</div>
-                   <div>&nbsp;&nbsp;&nbsp;=> I.move(left).by(2.steps)</div>
-                   <br/>
-                   <div style="color:grey">What about move to left by 2.steps</div>
-                   <div>&nbsp;&nbsp;&nbsp;=> move.to(left).by(2.steps)</div>
-               </div> 
-           </div>
-           <div class="span6">
-              <h3>Be careful with arity</h3>
-              <div style="line-height:150%;font-size:20px;text-align:left;">
-              Infix operator for function with a single parameter (arity 1)<br/>
+              <h3>Arity-1 functions</h3>
+              Functions with a single parameter: Infix operator<br/>
               <div style="color:grey">I move left</div>
-              <div>&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
-              <br/>
-              Suffix operator for function without parameter (arity 0)<br/>
+              <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left)</div>              
+           </div>
+           <div class="span5">
+              <h3>Arity-0 functions</h3>
+              Functions without parameter: Suffix (or Postfix) operator<br/>
               <div style="color:grey">I jump</div>
-              <div>&nbsp;&nbsp;&nbsp;=> I.jump()</div>
+              <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.jump()</div>
               <br/>
-              But might fail (and need an empty line or a ;)<br/>
+              But might generate issues<br/>
               <div style="color:grey">I jump<br/>
               I move right //fail
               </div>
+              <div>It fails and need a clear separator: empty line or ";"</div>
            </div>
+            <div class="span1">
+           </div>
+           <hr>
         </div>
     </div>
 </li>
+
+
+<li class="slide" title="Command chaining in Scala (2)">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h3>What about:</h3>
+            <br/>
+        </div>
+        <hr>
+       <div class="row-fluid marketing">
+           <div class="span2">
+           </div>
+           <div class="span8" style="line-height:150%;font-size:25px;text-align:left;">
+                   <div style="color:grey">move left</div>
+                   <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=>  move.left()</div>
+                   <div style="font-size:20px; font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;possible but not ideal, mixing verbs and noun roles</div>
+                   <br/>
+                   <div style="color:grey">move left by 2 steps</div>
+                   <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> move.left(by).2(steps)</div>
+                   <div style="font-size:20px; font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hmmm ... failing</div>
+                   <br/>
+                   <div>Perhaps:</div>
+                   <div style="color:grey">move to left by 2.steps</div>
+                   <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> move.to(left).by(2.steps)</div> 
+           </div>
+           <div class="span2">
+           </div>
+           <hr>
+        </div>
+    </div>
+</li>
+
+<li class="slide" title="Command Chaining in Scala (3)">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h3>Or Maybe</h3><br/>
+        </div>
+        <hr>
+       <div class="row-fluid marketing">
+           <div class="span2">
+           </div>
+           <div class="span8" style="line-height:150%;font-size:25px;text-align:left;">
+                   <div style="color:grey">I move left</div>
+                   <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
+                   <br/>
+                   <div style="color:grey">I move left by 2 steps</div>
+                   <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left).by(2).steps</div>
+                   <br/>
+                   <div style="color:grey">I move left by 2.steps</div>
+                   <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left).by(2.steps)</div>
+           </div>
+           <div class="span2">
+           </div>
+           <hr/>
+        </div>
+    </div>
+</li>
+
+
 <!-------------------------------------------------------------------
 <!-- Scala6. Command chaining odd number
 <!-- steps 1/2/3/4 create by method with a lastDirection option variable
