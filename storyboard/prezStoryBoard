@@ -29,6 +29,7 @@ slide  #4         => Pascal introduces himself
                      curious about programming languages,and storage solutions
                      Recently converted to BSD (PC-BSD rocks)
                      Regular participant to Scala and Clojure User Group
+                     Proposal: joke: not a big fan of cat therefore there won't be any cat in this prez.
 Transition 4->5   => Pascal: You are here mainly to hear about DSLs. So first let's give you some Context
 slide  #5         => Pascal starts explaining inside Amadeus the Scripting engine role
                      SSE in order to enable faster customers customization thanks to script
@@ -165,56 +166,59 @@ slides #48 - 49   => Corinne introduces Syntax/Command chaining
 slides #50 - 51   => Code /Separate dedicated file
 slide  #52        => Pascal asks about odd numbers
 slides #53 - 54   => Code /Separate dedicated file
-slide  #55        => Pascal discusses DSL options and arity rules in Scala
-slides #56 - 57   => Code /Separate dedicated file
-slide  #58        => Corinne introduces the kiss
-slides #59 - 60   => Code /Separate dedicated file
-slide  #61        => Corinne explains MOP
-slide  #62        => Pascal says: Lets kiss in Scala
-slides #63 - 64   => Code /Separate dedicated file
-slide  #65        => Corinne explains that we might enrich classes behavior with Category or implicits
-slides #66 - 69   => Code /Separate dedicated file
-slide  #70        => Pascal reminds that it is important to secure the script because script writer could be malicious or distracted
-slide  #71        => Corinne says Groovy has typeChecked for distracted users
-slides #72 - 74   => Code /Separate dedicated file
-slide  #75        => Pascal explains we don't need that in Scala because it is naturally strongly typed. What is fun is that
+slide  #55        => Pascal discusses Scala Syntax in order to chain command
+slides #56 - 57   => And evaluates DSL options. At the end the last proposal is chosen.
+slides #58 - 59   => Code /Separate dedicated file
+slide  #60        => Corinne introduces the kiss
+slides #61 - 62   => Code /Separate dedicated file
+slide  #63        => Corinne explains MOP
+slide  #64        => Pascal says: Lets kiss in Scala
+slides #65 - 66   => Code /Separate dedicated file
+slide  #67        => Corinne explains that we might enrich classes behavior with Category or implicits
+slides #68 - 71   => Code /Separate dedicated file
+slide  #72        => Pascal reminds that it is important to secure the script because script writer could be malicious or distracted
+slide  #73        => Corinne says Groovy has typeChecked for distracted users
+slides #74 - 76   => Code /Separate dedicated file
+slide  #77        => Pascal explains we don't need that in Scala because it is naturally strongly typed. What is fun is that
                      while Groovy is adding type checking, Scala has added Dynamics. It already had strcutural typing to safely
                      mimic duck typing of dynamic languages.
-slides #76 - 77   => Code /Separate dedicated file
-slide  #78        => Pascal asks and for malicious users ?
-slides #79 - 82   => Code /Separate dedicated file
-slide  #83        => Corinne says that we nedd also to prevent users from creating infinite loops
-slides #84 - 87   => Code /Separate dedicated file
-slide  #88        => Pascal explains that traits mixin can be an alternative to decorate behavior and creating interceptors
-slide  #89        => But let's see that with the game rule that restrict the number of actions to 3
-slides #90 - 93   => Code /Separate dedicated file
-slide  #94        => Corinne suggests that now we have seen how to secure the script evaluation, we could try to add some interaction.
-slide  #95        => and explains how to deal with in Groovy
-slides #96 - 97   => Code /Separate dedicated file
-slide  #98        => Pascal suggests he wanted to take this opportunity to play with continuations.
-slides #99 - 100  => Code /Separate dedicated file
-slide  #101       => Corinne concludes: now that we have seen these different pieces of code. Let's put everything together 
+slides #78 - 79   => Code /Separate dedicated file
+slide  #80        => Pascal asks and for malicious users ?
+slides #81 - 84   => Code /Separate dedicated file
+slide  #85        => Corinne says that we nedd also to prevent users from creating infinite loops
+slides #86 - 89   => Code /Separate dedicated file
+slide  #90        => Pascal explains that traits mixin can be an alternative to decorate behavior and creating interceptors
+slide  #91        => But let's see that with the game rule that restrict the number of actions to 3
+slides #92 - 95   => Code /Separate dedicated file
+slide  #96        => Corinne suggests that now we have seen how to secure the script evaluation, we could try to add some interaction.
+slide  #97        => and explains how to deal with in Groovy
+slides #98 - 99   => Code /Separate dedicated file
+slide  #100       => Pascal talks about Continuation as a complicated beast. 
+                     Example are generally not very explicit.
+                     Pascal suggests he wanted to take this opportunity to play with continuations.
+slides #101 - 102 => Code /Separate dedicated file
+slide  #103       => Corinne concludes: now that we have seen these different pieces of code. Let's put everything together 
                      and let's play.   
-slide  #102       => Pascal explains that now, we just will enlarge the scope and talk about additional features.
-slides #103 - 107 => Corinne <TODO>
-slide  #108       => Pascal describes the Scala features that were not used in the game use cases
-slide  #109       => Pascal now explains that we have alternative with External DSL. There is various tooling.
+slide  #104       => Pascal explains that now, we just will enlarge the scope and talk about additional features.
+slides #105 - 109 => Corinne <TODO>
+slide  #110       => Pascal describes the Scala features that were not used in the game use cases
+slide  #111       => Pascal now explains that we have alternative with External DSL. There is various tooling.
                      There are graphical tools (language is not the only way to reach expressiveness): they transformed UI behind the scenes 
                      into a programming language implementation. 
                      This graphical DSL has "simply" to fit into M. Fowler definition (DSL as a business focused language workbench)
                      External DSLs offer more expressiveness at the cost of more complexity.
 
-slide  #110       => Corinne describes workbench
-slide  #111       => Corinne then talks about Internationalization
-Transition 111 - 112 => Pascal interrupts Corinne: Fine Corinne, anyway let's focus back on Internal DSL. And as a Developper, I have
+slide  #112       => Corinne describes workbench
+slide  #113       => Corinne then talks about Internationalization
+Transition 113 - 114 => Pascal interrupts Corinne: Fine Corinne, anyway let's focus back on Internal DSL. And as a Developper, I have
                         concerns. First I am a strong believer in TDD. How can I test my DSL.
-slide  #112       => Corinne covers main testing layers
-slide  #113       => and describes the Groovy testing.
-slide  #114       => Pascal then describes BDD testing with ScalaTest.
-scala  #115       => Pascal switches now to debugging. Talking about local debugging but also remote ones and the difficulties.
-slide  #116       => Pascal says: I think we covered all we wanted to show. It's time to conclude this duel.
-slide  #117       => Corinne starts saying no one language solves all the problem.
+slide  #114       => Corinne covers main testing layers
+slide  #115       => and describes the Groovy testing.
+slide  #116       => Pascal then describes BDD testing with ScalaTest.
+scala  #117       => Pascal switches now to debugging. Talking about local debugging but also remote ones and the difficulties.
+slide  #118       => Pascal says: I think we covered all we wanted to show. It's time to conclude this duel.
+slide  #119       => Corinne starts saying no one language solves all the problem.
                      Pascal continues that despite some issues, we were able to mix Scala and Groovy. So we should not fear polyglotism
                      and consider other languages.
-slide  #118       => Together: and have fun!
+slide  #120       => Together: and have fun!
                      It has been a fair battle between Groovy and Scala. There is one single winner: the JVM. 
