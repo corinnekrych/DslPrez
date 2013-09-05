@@ -1,0 +1,347 @@
+#####################################
+#####################################
+#                                   #
+#         Slide #26 Script          #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+Lets see how we can embed and evaluate Scala script. 
+Users will submit piece of code that will be evaluated and interact on the DSL
+Let's see how we can handle that
+
+Steps
+=====
+#0: Basic mode: We just need to add the usejavacp mode and the Scala interpreter
+#1: Lets add some logic with a move object
+#2: Lets add some variables in the script => Run
+#3: What if we want to use the JSR 223 Scripting Engine - unfortunately we still need the usejavacp
+#4: Call the eval on the engine => Run
+#5: Lets start to play with arity and create a left postfix method instead of a parameter for moving
+
+#Final comments: 
+Not very complicated so far. All in all, we'll stay with scala interpreter instead of JSR one. Because it makes settings 
+configuration easier to manage.
+
+#####################################
+#####################################
+#                                   #
+#         Slide #35 Binding         #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+Lets see how we can now binding runtime value and make script interact with embedding application.
+
+Steps
+=====
+#0: Lets restart from a previous step
+#1: Lets use bind to bind left parameter with "left" value
+#2: And now we can remove the local value and rely on the binding => Run (note that the binding is printed)
+#3: Now lets put move object out of the DSL code that is going to be evaluated
+#4: And now lets remove it from DSL
+#5: We first bound a variable, now lets bind a function
+#6: Unfortunately move left fails
+#7: We need to write move(left) => Run
+#8: Ideally we would bind the move object and call move to left. Unfortunately using such binding inside the interpreter is harder because
+    the object move is created inside the enclosing interpreter instance. If someone has a suggestion to improve it.
+
+#Final comments: 
+Again it is not very complicated but we start hitting some problems especially when embedding an interpreter inside another one.
+
+#####################################
+#####################################
+#                                   #
+#         Slide #40 Turtle          #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+Now we are going to create a more elaborate move mechanism
+
+Steps
+=====
+#0: Lets start with a potential DSL proposal to express move of a turtle
+#1: Firts lets inroduce a Position. The case class choice is mainly to facilitate object creation and pattern matching
+#2: Now lets defined directions as a sealed set of classes (instead of enum)
+#3: Lets introduce the Turtle that move. We use ` because we match on objects and not instances
+#4: and create a turtle instance
+#5: and lets start moving it. Theoretically, it would work but there is here a binding limitation as explained previously
+    in the game, this is exactly what we are going to do.
+#6: I dont like turtle, I think I makes more sense. Designing a DSL is not obvious. Here it was easy as I was almost alone in this design
+#7: In the following code snippet, I'll emulate the DSL by creating a value I and executing directly the commands.
+    Drawback not so bad: It does not change the principles and will reduce the noise in the screen
+    => Run
+    
+In following slide: This is another binding proposal using implicit of turtle and binding a method to be closer to initial DSL. 
+But we still need some parenthesis, and finally I'll stay with the previous proposal.
+
+#Final comments: 
+Ok now we have some basic structure. Let's start to display the turtle moves.
+
+#####################################
+#####################################
+#                                   #
+#         Slide #45 JSon            #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+Instead of printing the moves, now lets generate JSon structure of the moves that will be consumed and displayed on UI Side
+
+Steps
+=====
+#0: Lets restore our previous code
+#1: And create a mutable array to store moves, and we just add the initial position
+#2: lets get rid of the println
+#3: and record the new step
+#4: Time to transform the steps into a JSon structure. I made the choice of Lift JSon
+#5: To make conversion simpler, I do an implicit conversion from a Position to a JSon Value {x:xposition,y:yposition}
+#6: And now we add a toJson method to Turtle that converts the array to JSon. It takes advantage of implicit to convert implicitly
+    all Positions into JSon value
+#7: Lets call the JSon generation and return it => Run
+
+#Final comments: 
+We made good progress. We start to see our turtle moving Cool
+
+#####################################
+#####################################
+#                                   #
+#    Slide #55 Command chaining     #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+Now we are going to enrich the DSL with command chaining like I move by ...
+
+Steps
+=====
+#0: Ok here is our code
+#1: and here is what I would like to have
+#2: I want to create an Option to retain the direction. Basically a by can occur only after a move so I will retain the direction
+    with the move and reuse it in the by.
+#3: move will retain the current Direction
+#4: then the by move by 1 step less in the retained direction. At the end, we unset the option so that a by called without a move is
+    simply pointless
+#5: Now we would like to have some readability by adding steps) at the end of the move command. But be careful with the 0 arity of 
+    steps methods we want to define - space of ;
+#6: And we just define step and steps that do simply nothing
+
+#Final comments:
+
+#####################################
+#####################################
+#                                   #
+#          Slide #62 Kiss           #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+Lets implement a kiss method. By default as we saw Scala supports 0 arity for postfix methods but only on instances 
+I kiss will work, kiss either can work but needs to be defined in the REPL. lets have a look.
+
+Steps
+=====
+#0: Once again the reference code
+#1: Lets create a kiss method with 0 parameter
+#2: and lets call it - we dont need parenthesis
+#3: So lets change method signature  but now I.kiss() would fail whenever we need it
+#4: Now if we want to bind kiss as a method inside the DSL, we face the fact that we define a 0 arity function 
+    and need to call it with parameters
+#5: If we want to get rid of parenthesis the following trick can work by doing an eval before running the script. Locally
+    doing I.kiss instead of I.kiss _ does the trick.
+
+#Final comments:
+
+#####################################
+#####################################
+#                                   #
+#       Slide #67 implicits         #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+We just want to take advantage of implicit conversions to enrich (by keeping typesafety) objects behavior
+
+Steps
+=====
+#0: Once again lets take previous code
+#1: Here is what we would like to have
+#2: We provide an implicit conversion to a class that provides a times method => Run
+#3: Now I want also to be able to enrich integer with steps suffix to make it more readable
+#4: We create a Step class that has step and steps idempotent methods and an implicit conversion (just to show implicit methods 
+    and implicit classes)
+#5: We need to fix the by method => Run
+
+#Final comments:
+Implicits are very powerful and they are scoped. But be careful with its usage.
+
+#####################################
+#####################################
+#                                   #
+#         Slide #75 Dynamics        #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+Scala is naturally TypeChecked. What is interesting is to see Groovy adding TypeChecking and at the opposite Dynamics. In fact 
+Scala has structural typing that tends to mimic duck typing of dynamic languages. You just provide an anonymous trait defining the 
+methods that the passed object must have. But lets have a quick look at Dynamics.
+
+Steps
+=====
+#0: Ok here it is how it looks like
+#1: property access
+#2: property setter
+#3: function call
+#4: function call with named parameters 
+
+#Final comments:
+
+#####################################
+#####################################
+#                                   #
+#       Slide #80 System.exit       #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+A plugin compiler is provided that analyzes AST and stops
+if it meets a System.exit call
+
+Steps
+=====
+#0: Reference code
+#1: Now we add a System.exit => Run
+
+#Final comments:
+Compiler plugins offer powerful way to alter code structure
+but this is definitely not obvious.
+
+#####################################
+#####################################
+#                                   #
+#        Slide #85 while(true)      #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+Again lets enhance script security to limi time allowed to a script execution.
+Here the code is modified again thanks to a compiler plugin that tracjs the elapsed time since the 
+script has started and raises an exception if time is over.
+
+Steps
+=====
+#0: Reference code
+#1: Now we add a while(true) => Run
+
+#Final comments:
+Same as previously. Powerful but complex
+
+#####################################
+#####################################
+#                                   #
+#         Slide #89 traits          #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+Intercepting the application behavior can be done without compiler plugins
+with traits. Here we just intercept move calls and add a counter that raises
+an exception after 3 moves.
+
+Steps
+=====
+#0: Back to our reference code
+#1: First lets create a trait with a counter and an override of the move method - an interceptor. In that case a standard class extending
+    Turtle would be enough. Advantage of traits compared to class is that we can combine more than one in a kind of multiple inheritance.
+    Ideally we would create a Move trait and a LimitedMove extending first trait. By default Turtle would extend Move and we would create
+    a mixed in Turtle instance as we will see just now
+#2: we add limited actions
+#3: Before the true DSL evaluation, I reset the counter
+#4: This is how it would look like in the interpreter
+#5: If I have too many steps ... It fails => Run
+
+#Final comments:
+Traits are very powerful way to mix behavior. I think we can see objects as structure to which we add behavior thanks to traits
+Mixin of traits can help composing very various behaviors with a limited number of classes/traits.
+
+#####################################
+#####################################
+#                                   #
+#         Slide #98 CPS Style       #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+Instead of suspending Threads, we could play with continuations in order to create potentially complex flows, suspending execution
+when a question needs to be asked to other participants and rebranching in the flow when the answer arrives.
+
+Steps
+=====
+#0: Here is how an Ask class could look like
+    The start takes a DSL and encloses it in a reset section. This is the continuation delimitation.
+    Then if a ask occurs in the DSL, the questin is printed, and the execution is suspended. In fact to be able to rebranch, 
+    we store the continuation as an instance variable.
+    When the answer arrives, we call cont and the process flow goes on.
+#1: And here how we could use it. This is more fun in interactive mode as we might see it in the game
+
+#Final comments:
+CPS is a very interesting and powerful way to control execution flow. It is definitely hard to grasp and 
+read. Anyway I thought it was an interesting idea to play with it in that kind of context.
+
+==========================================================
+==========================================================
+==========================================================
+==========================================================
+
+Template
+#####################################
+#####################################
+#                                   #
+#         Slide #xx xxxxxx          #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+--
+
+Steps
+=====
+#0:
+#1:
+#2:
+#3:
+#4:
+#5:
+#6:
+#7:
+#8:
+
+#Final comments:

@@ -1,17 +1,28 @@
 slide  #0         => Welcome page, waiting to start
-                     The guiding Theme of this presentation aims at focusing on a DSL to pilot characters on a grid and let them interact to 
+                     Hello, we're here today for a tutorial session to see in action how to build an embedded DSL
+                     To make it fun : the guiding Theme of this presentation aims at focusing on a DSL to pilot characters on a grid and let them interact to
                      each others. 
                      Title of the game refers to Logo which off course, was part of our inspiration.
                      In our live session, we intend to show how we achieved this, the problems we met and how we solved them. 
                      DSLs exist on various popular languages like Ruby, Clojure and of course the ones of interest here Groovy and Scala.
                      In order to evaluate the differences that the underlying languages offer we picked two different languages that can be 
                      seen as theoretically strongly opposed using very different paradigms.
+1:30
 slide  #1         => Corinne starts the Agenda, up to part II
                      Pascal finishes with part III and Conclusion
-Transition 1->2   => Pascal asks Corinne: but before maybe we can inroduce ourselves. Ladies first please
+
+Transition 1->2   => Pascal asks Corinne: but before maybe we can introduce ourselves. Ladies first please
 slide  #2         => skip
 slide  #3         => Corinne introduces herself
-                     <TODO>
+                     over 15 years of experience in IT,
+                     co-founder of French Riviera GUG,
+                     part of 3must33rs writing mobile plugins for Grails
+                     active member of JS Sophia
+                     joined Red Hat
+                     work for AeroGear mobile platform.
+                     female geek and supporter Duchess France
+                     use to be freelance consultant for Amadeus in Sophia Antipolis where I met my geek friend
+
 slide  #4         => Pascal introduces himself
                      Architect in e-commerce solutions at Amadeus with 12 years of experience in IT
                      Like mountaineering and video games and when I have some free time left, 
@@ -22,13 +33,20 @@ Transition 4->5   => Pascal: You are here mainly to hear about DSLs. So first le
 slide  #5         => Pascal starts explaining inside Amadeus the Scripting engine role
                      SSE in order to enable faster customers customization thanks to script
                      Sandboxing, defining of APIs and we started to design DSL to simplify user Customization.
-                     Corinne continues <TODO>
-                     As part of Grails48, we initiated the idea of Kissing Turtles, a 2 players web based mobile app where Franklin 
+                     Corinne continues
+                     When Pascal was working in SSE, I was part of the business team writing Selling platform connect for TA
+                     we had a use case of writing a DSL for TA to improve efficiency:
+                     do a booking in a minute
+                     At the same time I was building a team to participate at Grails48 hackathon with RivieraGUG
+                     we wanted to have fun: DSL for kids and older kids
+                     We initiated the idea of Kissing Turtles, a 2 players web based mobile app where Franklin
                      wants to meet Emily for a kiss. To navigate through the maze, kids (and older-kids) will write Groovy or Scala script. 
-                     As grown up kids, we had fun developing a DSL that provides same features with different languages.
+                     Kissing Turtles is a mobile game using 3musket33rs Grails plugins
+                     Obviously, we were lucky to have testers on board. Kids can participate in hackathon :)
+                     that was the genesis of KT.
 Transition 5->6   => Pascal interrupts Corinne to ask her if she would mind giving us an overview of how we can define DSLs
 slide  #6         => skip
-slides #7 - 11    => Corinne <TODO>
+slides #7 - 11    => Corinne
                      DSL Definition
                      DSL stands for Domain Specific language, but lets try to get clear grasp on it.
                      From Martin Fowler:
@@ -36,13 +54,15 @@ slides #7 - 11    => Corinne <TODO>
                      computer language: something executable by a computer
                      language: it should feel like a language where the syntax and the semantic put together offer a sense of fluency. 
                      If you can read the SQL statement and understand the joke you get the idea of sense of fluency
-                     last but not least, focused on a particular domain. it is not a turing complete language as opposed to .
-
+                     last but not least, focused on a particular domain.
+                     It is not a turing complete language as opposed to GPL.
+                     If we take the ex of rubik cube, all we need is 6 letters for the 6 possible moves
+                     and the apostrophe is giving you the rotation.
+                     Last time I gave Riviera Scala and Clojure meetup,
                      One of the key advantage of using a DSL is to share a common metaphor (notion borrowed from Agile development). 
                      The ultimate goal being: code that reads as natural language, code that a domain expert, without programming 
                      experience can read, understand and even write. Code that a 6 years old kid can handle!
-                     If we take the ex of rubik cube, all we need is 6 letters for the 6 possible moves and the apostrophe is giving you 
-                     the rotation.
+
 
                      Hal Abelson citation: Programs should be written for people to read, and only incidentally for machines to execute. 
                      That makes a perfect fit for DSLs.
