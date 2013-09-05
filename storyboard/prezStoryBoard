@@ -52,42 +52,59 @@ slides #7 - 11    => Corinne
                      DSL stands for Domain Specific language, but lets try to get clear grasp on it.
                      From Martin Fowler:
                      extract 3 key elements:
+
                      computer language: something executable by a computer
-                     language: it should feel like a language where the syntax and the semantic put together offer a sense of fluency. 
+
+                     language: it should feel like a language where the syntax and the semantic put together offer a sense of fluency.
                      If you can read the SQL statement and understand the joke you get the idea of sense of fluency
+
                      last but not least, focused on a particular domain.
                      It is not a turing complete language as opposed to GPL.
                      If we take the ex of rubik cube, all we need is 6 letters for the 6 possible moves
                      and the apostrophe is giving you the rotation.
-                     Last time I gave Riviera Scala and Clojure meetup,
-                     One of the key advantage of using a DSL is to share a common metaphor (notion borrowed from Agile development). 
-                     The ultimate goal being: code that reads as natural language, code that a domain expert, without programming 
-                     experience can read, understand and even write. Code that a 6 years old kid can handle!
 
-
-                     Hal Abelson citation: Programs should be written for people to read, and only incidentally for machines to execute. 
-                     That makes a perfect fit for DSLs.
-                     
-                     Very often we distinguish 2 kinds of DSL
-                     An external DSL is a language separated from the main language of the application it works with.
-                     it usually has its own custom syntax
-                     it is usually parsed by the host application: use  parser generators like ANTLR to parse your grammar and the code to 
-                     generate code in the underlying language.
-                     External DSLs have their own custom syntax and you write a full parser to process them. There is a very strong tradition
-                     of doing this in the Unix community. Many XML configurations have ended up as external DSLs, although XML's syntax is 
-                     badly suited to this purpose.
-
-                     An internal DSL, also called an embedded DSL,  is a subset of a GPL. It is valid code that can be directly executed in 
-                     its host language.
-                     It is in this category that our Groovy and Scala embedded DSLs fall in.
-                     Can be more constrained by the embedding language syntax.
-                     Internal DSLs are particular ways of using a host language to give the host language the feel of a particular language. 
-                     Internal DSLs are also referred to as embedded DSLs or FluentInterfaces
-
+                     Last time I gave Riviera user groups meetup, one guy telling me
+                     don't like M. fowler definition because it focus too much limited aspect of a DSL
+                     prefer to focus on the expressive part of DSL
+                     some DSL can be turing complete and shine by their expressiveness
+                     Corinne says: I can see many advantages to DSL, but Pascal can you tell us when to use a DSL and
+                     what are the pro and cons.
 slides #12 - 13   => Pascal explains that boundaries are blurry. There is no clear distinction between a DSL and a good API.
                      What is important in a DSL is its expressiveness to describe in a simple and human readable way a process flow.
-                     Pascal says: I can see many advantages to DSL though also drawbacks.
-slides #14 - 15   => Corinne <TODO>
+                     One of the key advantage of using a DSL is to share a common metaphor (notion borrowed from Agile development).
+                     The ultimate goal being: code that reads as natural language, code that a domain expert, without programming
+                     experience can read, understand and even write. Code that a 6 years old kid can handle!
+
+                     Hal Abelson citation: Programs should be written for people to read, and only incidentally for machines to execute.
+                     That makes a perfect fit for DSLs.
+
+                     On the other hand, be aware of the disadvantages:
+                     - lg cacophony
+                     - On the other side of the spectrum is the Ghetto lg syndrom: in-house lg not used anywhere else.
+                     Difficult to get new staff onboard. Usually happen when lg are not limited (wont fit Folwer definition)
+                     - lack of support for IDE (some suport on Eclipe/intellij) but not so much for web based editor
+                     - cost of building
+                     Pascal says: Our presentation is about embedded DSL, what does that mean?
+slides #14        => Corinne
+                     DSl comes in different varieties.
+                     Very often we distinguish 2 kinds of DSL, we also talked about the third type
+                     - An external DSL is a language separated from the main language of the application it works with.
+                     - It usually has its own custom syntax
+                     - it is usually parsed by the host application:
+                     use parser generators like ANTLR to parse your grammar and generate code in the underlying language.
+
+                     - An internal DSL, also called an embedded DSL, is a subset of a GPL.
+                     - It is valid code that can be directly executed in its host language.
+                     It is in this category that our Groovy and Scala embedded DSLs fall in.
+                     Can be more constrained by the embedding language syntax.
+
+                     Those 2 kinds of DSl are traditional ways of thinking about DSL.
+                     The lg workbench go beyond the textual representation of a DSL
+                     Language users manipulate a DSL through a projectional editor.
+                     lg workbench allows you to define a parser and a IDE at the same time
+                     support for diagrammatic lgs.
+slides #15        => Corinne
+                     To go deeper on embedded DSL
 slide  #16        => Pascal explains that it is generally simpler to use an Internal DSL because it can take advantage
                      of an enclosing existing language. Designing an External DSL is not so easy and it requires some grammar
                      specifications. In this Tuto, we are going to mainly focus on Internal DSLs.
