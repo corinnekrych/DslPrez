@@ -895,11 +895,13 @@ engine.eval(script);</pre>
     </div>
 </li>
 
-<!------------------------------------------------------------------->
-<!-- Groovy1. Script
-<!-- step 1 define base class
-<!-- step 2 remove move definition in script
-<!------------------------------------------------------------------->
+<!------------------------------------------------------------------
+Groovy1. Script
+step 1 define move method
+step 2 define left
+step 3 replace shell by ScriptEngineMgr from jsr 223
+step 4 replace by engine.eval
+--------------------------------------------------------------------->
 <li class="slide" style="text-align: left" title="Groovy Script" press="1 2 3 4">
     <textarea id="editorGroovy1" name="editorGroovy1">
     </textarea>
@@ -1157,7 +1159,7 @@ step 5 highlight compilerconf + binding
 step 6 inject binding,
 step 7 remove def left in GameScript
 ------------------------------------------------------------------>
-<li class="slide" style="text-align: left" title="Add Turtle in Groovy" press="1 2 3 4 5 6 7">
+<li class="slide" style="text-align: left" title="Add Turtle in Groovy" press="1 2 3 4 5 6 7 8">
     <textarea id="editorGroovy4" name="editorGroovy4">
     </textarea>
 </li>

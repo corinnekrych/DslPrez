@@ -103,19 +103,40 @@ slides #14        => Corinne
                      lg workbench allows you to define a parser and a IDE at the same time
                      support for diagrammatic lgs.
 slides #15        => Corinne
-                     To go deeper on embedded DSL
+                     To go deeper on embedded DSL, Debasish Ghosh, we can differentiate between
+                     purely embedded DSL where you write explicitly the DSL.
+                     and the generative category where code is generated either runtime or compile time
+                     In this embedded category, there is different techniques you use
+                     - fluent API with command chaining
+                     - AST transform like we'll see with Groovy
+                     - or Type embedding we'll explore in Scala
+                     - on dynamic side, reflective metaprogramming with the MOP usage in Groovy
+                     so we talked about Ext vs Int, what's th epro and con of those 2 types?
 slide  #16        => Pascal explains that it is generally simpler to use an Internal DSL because it can take advantage
                      of an enclosing existing language. Designing an External DSL is not so easy and it requires some grammar
                      specifications. In this Tuto, we are going to mainly focus on Internal DSLs.
 Transition 16->17 => Pascal says: Now that we have chosen to use Embedded DSLs, which language should we choose.
-                     I recommend Scala for the following reasons:
+                     This is our pure one minute trolling Pascal
+                     Fire up
+                     //I recommend Scala for the following reasons:
 slide  #17        => Pascal and Corinne exchange on topics pro and against Scala and Groovy
-Transition 17->18 => Ok now let's stop any troll debate and lets try to build our DSL in both languages to see 
+Transition 17->18 => Time out! Ok now let's stop any troll debate and lets try to build our DSL in both languages to see
                      convergence and divergence.
 slide  #18        => Corinne details Groovy features.
+                     Groovy is particularly suited for DSL writting thks to:
+                     syntax sugar: less ponctuation ; () optional
+                     return statement optional
+                     no getter setter for properties access
+                     named parameters: pass a map to a constructor, omitting the map bracket
+                     command chaining to write sentence
+                     closure and closure delegate scope
+                     runtime transformation MOP
+                     compile time compilation AST
 slides #19        => Pascal details Scala features.
 Transition 19->20 => Pascal says that now we can start to dive into the DSL details
 slides #20 - 21   => Corinne introduces the game, the target the rules
+                     this is how the gameboard looks like: ramdom pisition for F and E. Meeting pt is ramdom too.
+                     Each player takes turn and have a max of 3 moves.
 slides #22 - 23   => Pascal explains that first as players will submit DSL, we need to evaluate the DSL inside the running
                      application. There exist different options. 
                      Introduce Groovy, Scala, JSR
@@ -123,13 +144,24 @@ slides #22 - 23   => Pascal explains that first as players will submit DSL, we n
 slide  #24 - 27   => Code /Separate dedicated file
 slide  #28        => Pascal explains the challenges of Scripting
 slide  #29        => Corinne explains that if we want to enrich script interaction, we need bindings
-slides #30 - 36   => Code /Separate dedicated file
+                     But Pascal, in our script we define the move method and left variable each time,
+                     I obviously want to extract those from my script
+                     we need binding & compiler configuration
+slide  #30        => In groovy, one way to extract the move method from the script is to use BaseClass
+                     To define a new Baseclass we use Compiler configuration
+                     also can be used to imports/static import for our script
+                     and we'll see later how to use compil conf to define AST customizer
+slides #31 - 36   => Code /Separate dedicated file
 slide  #37        => Pascal explains that now we will enrich the DSL by creating Turtle and move
+                     It's always a good ide to decouple Semantic model vs Syntax of the DSL
+                     to evolve the model and the lg separately
 slides #38 - 42   => Code /Separate dedicated file
 slide  #43        => Pascal explains then that the DSL in itself does not handle UI. Everything inside the UI on client side
                      communicating thanks to JSON.
 slides #44 - 47   => Code /Separate dedicated file
-slides #48 - 49   => Corinne introduces Command chaining
+slides #48 - 49   => Corinne introduces Syntax/Command chaining
+                     now that we have the semantic for the move, lets focus on
+                     how we can enhance the syntax to sound like plain english
 slides #50 - 51   => Code /Separate dedicated file
 slide  #52        => Pascal asks about odd numbers
 slides #53 - 54   => Code /Separate dedicated file

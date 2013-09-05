@@ -1,62 +1,87 @@
 #####################################
 #####################################
 #                                   #
-#         Slide #26 Script          #
+#         Slide #24 Script          #
 #                                   #
 #####################################
 #####################################
 
+A few words on the format of our tutorial
+Grails app, controller on server to evaluate Groovy and Scala Script
+Client side we use code mirror to show you step by step how to achieve
+
 Purpose
 =======
-Lets see how we can embed and evaluate Scala script. 
+Lets see how we can embed and evaluate Groovy script.
+
 Users will submit piece of code that will be evaluated and interact on the DSL
 Let's see how we can handle that
 
 Steps
 =====
-#0: Basic mode: We just need to add the usejavacp mode and the Scala interpreter
-#1: Lets add some logic with a move object
-#2: Lets add some variables in the script => Run
-#3: What if we want to use the JSR 223 Scripting Engine - unfortunately we still need the usejavacp
-#4: Call the eval on the engine => Run
-#5: Lets start to play with arity and create a left postfix method instead of a parameter for moving
+step 0 here I instantiate groovyShell, my script do a prinltn statement
+step 1 let's define move method - to set up the base of our dsl, i'm a fast typer
+step 2 define left
+step 3 replace shell by ScriptEngineMgr from jsr 223
+step 4 replace by engine.eval
 
-#Final comments: 
-Not very complicated so far. All in all, we'll stay with scala interpreter instead of JSR one. Because it makes settings 
-configuration easier to manage.
+Final comments
+==============
+Easy peasy no far.
 
 #####################################
 #####################################
 #                                   #
-#         Slide #35 Binding         #
+#         Slide #31 Script          #
+#         Base class                #
 #                                   #
 #####################################
 #####################################
-
-Purpose
-=======
-Lets see how we can now binding runtime value and make script interact with embedding application.
 
 Steps
 =====
-#0: Lets restart from a previous step
-#1: Lets use bind to bind left parameter with "left" value
-#2: And now we can remove the local value and rely on the binding => Run (note that the binding is printed)
-#3: Now lets put move object out of the DSL code that is going to be evaluated
-#4: And now lets remove it from DSL
-#5: We first bound a variable, now lets bind a function
-#6: Unfortunately move left fails
-#7: We need to write move(left) => Run
-#8: Ideally we would bind the move object and call move to left. Unfortunately using such binding inside the interpreter is harder because
-    the object move is created inside the enclosing interpreter instance. If someone has a suggestion to improve it.
+step 0 Lets restart from a previous step, I want ot m
+step 1 define base class 2
+step 2 highlight move method
+step 3 remove move definition in script
+step 4 introduce compilerConfiguration:
+       - I create compile conf,
+       - set the baseclass
+step 5 inject it in groovy shell
 
-#Final comments: 
-Again it is not very complicated but we start hitting some problems especially when embedding an interpreter inside another one.
+Final comments
+==============
+not very complicated
+but already our script looks much cleaner
+we already have a sense of fluency
+Lets carry on with binding
 
 #####################################
 #####################################
 #                                   #
-#         Slide #40 Turtle          #
+#         Slide #33 Binding         #
+#                                   #
+#####################################
+#####################################
+
+Steps
+=====
+step 0 in order to define compiler configuration i had
+       - to instantiate an empty binding
+       - lets add move right
+step 1 introduce right in binding
+step 2 ad move right command
+
+Final comments
+==============
+Different way of achieveing the same result either by
+- for left: we define a property of a script base class
+- for right it's a binding. a map of variable
+
+#####################################
+#####################################
+#                                   #
+#         Slide #38 Turtle          #
 #                                   #
 #####################################
 #####################################
@@ -67,28 +92,33 @@ Now we are going to create a more elaborate move mechanism
 
 Steps
 =====
-#0: Lets start with a potential DSL proposal to express move of a turtle
-#1: Firts lets inroduce a Position. The case class choice is mainly to facilitate object creation and pattern matching
-#2: Now lets defined directions as a sealed set of classes (instead of enum)
-#3: Lets introduce the Turtle that move. We use ` because we match on objects and not instances
-#4: and create a turtle instance
-#5: and lets start moving it. Theoretically, it would work but there is here a binding limitation as explained previously
-    in the game, this is exactly what we are going to do.
-#6: I dont like turtle, I think I makes more sense. Designing a DSL is not obvious. Here it was easy as I was almost alone in this design
-#7: In the following code snippet, I'll emulate the DSL by creating a value I and executing directly the commands.
-    Drawback not so bad: It does not change the principles and will reduce the noise in the screen
-    => Run
-    
-In following slide: This is another binding proposal using implicit of turtle and binding a method to be closer to initial DSL. 
-But we still need some parenthesis, and finally I'll stay with the previous proposal.
+step 0 back to your Groovy script
+step 1 Firts lets inroduce a Position.
+       - x/y
+       - define for ex left/right
+step 2 add Direction enums
+step 3 add turtle class
+       - with current position
+       - and a move method that will change the current position
+       - for now we just print x/y
+step 4 new Turtle()
+step 5 highlight compilerconf + binding
+step 6 I wan to change my binding to inject
+       - direction: left, right
+       - move is an alias, a pointer to a turtle's move method
+step 7 highlight
+step 8 remove GameScript base class, here I use binding only
 
-#Final comments: 
-Ok now we have some basic structure. Let's start to display the turtle moves.
+Final comments
+==============
+Here we are with our a turtle that can move.
+//decouple??
+What about in Scala?
 
 #####################################
 #####################################
 #                                   #
-#         Slide #45 JSon            #
+#         Slide #44 JSon            #
 #                                   #
 #####################################
 #####################################
@@ -96,20 +126,20 @@ Ok now we have some basic structure. Let's start to display the turtle moves.
 Purpose
 =======
 Instead of printing the moves, now lets generate JSon structure of the moves that will be consumed and displayed on UI Side
+As Pascal explained in our json, we want to have a list of steps to describe all my turtle moves
 
 Steps
 =====
-#0: Lets restore our previous code
-#1: And create a mutable array to store moves, and we just add the initial position
-#2: lets get rid of the println
-#3: and record the new step
-#4: Time to transform the steps into a JSon structure. I made the choice of Lift JSon
-#5: To make conversion simpler, I do an implicit conversion from a Position to a JSon Value {x:xposition,y:yposition}
-#6: And now we add a toJson method to Turtle that converts the array to JSon. It takes advantage of implicit to convert implicitly
-    all Positions into JSon value
-#7: Lets call the JSon generation and return it => Run
+step 1 def step = [] to use steps instead println
+step 2 steps.add(start) to store initial position steps after move
+step 3 highlight
+step 4 steps.add(newPosition) to store position after move
+step 5 add json builder
+step 6 highlight: going back to our dsl
+step 7 mix plain groovy + DSL 4.times {move left} to have a nice upstairs effect
 
-#Final comments: 
+Final comments
+==============
 We made good progress. We start to see our turtle moving Cool
 
 #####################################

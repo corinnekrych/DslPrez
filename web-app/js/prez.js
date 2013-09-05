@@ -392,13 +392,13 @@ function editorGroovy4Send() {
 }
 
 function editorGroovy4Key0() {
-    editorGroovy4.currentPress(0, 3);
+    editorGroovy4.currentPress(0, 8);
     editorGroovy4.setValue(content4);
 }
 
 
 function editorGroovy4Key1() {
-    if (editorGroovy4.currentPress(1, 7)) {
+    if (editorGroovy4.currentPress(1, 8)) {
         var value = "class Position {\n" +
             "    int x\n" +
             "    int y\n" +
@@ -421,7 +421,7 @@ function editorGroovy4Key1() {
 }
 
 function editorGroovy4Key2() {
-    if (editorGroovy4.currentPress(2, 7)) {
+    if (editorGroovy4.currentPress(2, 8)) {
         for(var i = 0; i <14 ; i++) {
             editorGroovy4.removeLineClass(i, "background", "highlight");
         }
@@ -436,7 +436,7 @@ function editorGroovy4Key2() {
 }
 
 function editorGroovy4Key3() {
-    if (editorGroovy4.currentPress(3, 7)) {
+    if (editorGroovy4.currentPress(3, 8)) {
         for(var i = 14; i <17 ; i++) {
             editorGroovy4.removeLineClass(i, "background", "highlight");
         }
@@ -466,7 +466,7 @@ function editorGroovy4Key3() {
     }
 }
 function editorGroovy4Key4() {
-    if (editorGroovy4.currentPress(4, 7)) {
+    if (editorGroovy4.currentPress(4, 8)) {
         editorGroovy4.scrollIntoView(58);
         for(var i = 17; i <37 ; i++) {
             editorGroovy4.removeLineClass(i, "background", "highlight");
@@ -477,14 +477,14 @@ function editorGroovy4Key4() {
     }
 }
 function editorGroovy4Key5() {
-    if (editorGroovy4.currentPress(5, 7)) {
+    if (editorGroovy4.currentPress(5, 8)) {
         editorGroovy4.removeLineClass(37, "background", "highlight");
         editorGroovy4.addLineClass(45, "background", "highlight");
         editorGroovy4.scrollIntoView(58);
     }
 }
 function editorGroovy4Key6() {
-    if (editorGroovy4.currentPress(6, 7)) {
+    if (editorGroovy4.currentPress(6, 8)) {
         editorGroovy4.removeLineClass(45, "background", "highlight");
 
         var value = "def compilerConfig = new CompilerConfiguration()\n" +
@@ -498,7 +498,7 @@ function editorGroovy4Key6() {
     }
 }
 function editorGroovy4Key7() {
-    if (editorGroovy4.currentPress(7, 7)) {
+    if (editorGroovy4.currentPress(7, 8)) {
         for(var i = 44; i <47 ; i++) {
             editorGroovy4.removeLineClass(i, "background", "highlight");
         }
@@ -508,13 +508,14 @@ function editorGroovy4Key7() {
     }
 }
 function editorGroovy4Key8() {
-    if (editorGroovy4.currentPress(8, 7)) {
+    if (editorGroovy4.currentPress(8, 8)) {
         for(var i = 39; i <43 ; i++) {
             editorGroovy4.removeLineClass(i, "background", "highlight");
         }
         editorGroovy4.replaceRange("", {line: 39, ch: 0}, {line:42});
     }
 }
+
 
 var keymap4 = {
     "Ctrl-S" :editorGroovy4Send,
