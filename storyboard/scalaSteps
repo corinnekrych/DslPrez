@@ -184,7 +184,7 @@ Steps
 #2: We provide an implicit conversion to a class that provides a times method => Run
 #3: Now I want also to be able to enrich integer with steps suffix to make it more readable
 #4: We create a Step class that has step and steps idempotent methods and an implicit conversion (just to show implicit methods 
-    and implicit classes)
+    and implicit classes, we could have used a implicit Step class instead)
 #5: We need to fix the by method => Run
 
 #Final comments:
@@ -300,6 +300,7 @@ Purpose
 =======
 Instead of suspending Threads, we could play with continuations in order to create potentially complex flows, suspending execution
 when a question needs to be asked to other participants and rebranching in the flow when the answer arrives.
+Cps is a weird beast.
 
 Steps
 =====

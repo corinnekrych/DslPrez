@@ -122,7 +122,7 @@ slide  #16        => Pascal explains that it is generally simpler to use an Inte
 Transition 16->17 => Pascal says: Now that we have chosen to use Embedded DSLs, which language should we choose.
                      This is our pure one minute trolling Pascal
                      Fire up
-                     //I recommend Scala for the following reasons:
+                     At the end lets make peace and shake our hands
 slide  #17        => Pascal and Corinne exchange on topics pro and against Scala and Groovy
 Transition 17->18 => Time out! Ok now let's stop any troll debate and lets try to build our DSL in both languages to see
                      convergence and divergence.
