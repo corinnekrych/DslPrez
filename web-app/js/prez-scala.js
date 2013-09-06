@@ -491,66 +491,71 @@ function editorScala4Key5() {
        editorScala4.scrollIntoView(41);
  
        editorScala4.removeLineClass(30, "background", "highlight");
- 
-       var value="n.bind(\"turtle\",turtle)\n\n"
-       editorScala4.replaceRange(value,{line:32,ch:0});
+
+       var value="interpreter.bind(\"turtle\",turtle)\n"
+       editorScala4.replaceRange(value,{line:31,ch:0});
+       editorScala4.addLineClass(31, "background", "highlight");
        
-       editorScala4.addLineClass(32, "background", "highlight");
- 
        var value2="turtle move left\n"
                  +"turtle move right\n";
 		
-       editorScala4.removeLine(37);
-       editorScala4.removeLine(37);
-       editorScala4.replaceRange(value2,{line:37,ch:0});
+       editorScala4.removeLine(36);
+       editorScala4.removeLine(36);
+       editorScala4.replaceRange(value2,{line:36,ch:0});
        
+       editorScala4.addLineClass(36, "background", "highlight");
        editorScala4.addLineClass(37, "background", "highlight");
-       editorScala4.addLineClass(38, "background", "highlight");
 
     }
 }
 
 function editorScala4Key6() {
     if(editorScala4.currentPress(6, 7)) {
-       editorScala4.removeLine(32);
-
-       var value="n.bind(\"I\",turtle)\n"
-       editorScala4.replaceRange(value,{line:32,ch:0});
-       
-       editorScala4.addLineClass(32, "background", "highlight");
+      
+       var value="interpreter.bind(\"I\",turtle)\n"
+       editorScala4.removeLine(31);
+       editorScala4.replaceRange(value,{line:31,ch:0});
+       editorScala4.addLineClass(31, "background", "highlight");
        
        var value2="I move left\n"
                  +"I move right\n";
 		
-       editorScala4.removeLine(37);
-       editorScala4.removeLine(37);
-       editorScala4.replaceRange(value2,{line:37,ch:0});
-       
-       editorScala4.addLineClass(37, "background", "highlight");
-       editorScala4.addLineClass(38, "background", "highlight");
+       editorScala4.removeLine(36);
+       editorScala4.removeLine(36);
+       editorScala4.replaceRange(value2,{line:36,ch:0});
+       editorScala4.addLineClass(36, "background", "highlight");
+       editorScala4.addLineClass(37, "background", "highlight");      
     }
 }
 
 function editorScala4Key7() {
     if(editorScala4.currentPress(7, 7)) {
-      for (var i = 32; i<45; i++) {
-       editorScala4.removeLine(32);
-      }
+       editorScala4.removeLine(31);
 
-      var value= "val I = turtle\n\n"
-               + "// Here starts the DSL that is evaluated,\n"
-	       + "// the 'I' variable should be bound to turtle\n"
-  	       + "I move left\n"
-   	       + "I move right\n";
-	       
-       editorScala4.replaceRange(value,{line:32,ch:0});
+       var value="val I = turtle\n"
+       editorScala4.replaceRange(value,{line:31,ch:0});
        
        editorScala4.addLineClass(31, "background", "highlight");
+       
+       var value2="I move left\n"
+                 +"I move right\n";
+		
+       editorScala4.removeLine(35);
+       editorScala4.removeLine(35);
+       editorScala4.removeLine(35);
+       editorScala4.removeLine(35);
+       editorScala4.removeLine(35);
+       editorScala4.removeLine(35);
+       editorScala4.removeLine(35);
+       editorScala4.removeLine(35);
+
+       editorScala4.replaceRange(value2,{line:35,ch:0});
+       
        editorScala4.addLineClass(35, "background", "highlight");
        editorScala4.addLineClass(36, "background", "highlight");
-       
     }
 }
+
 
 var keymapScala4 = {
     "Ctrl-S" :editorScala4Send,
@@ -1058,7 +1063,7 @@ var contentScala7 = "import _root_.net.liftweb.json._\n"
 		  + "      this\n"
                   + "   }\n"
                   + "}\n\n"
-                  + "val turtle = new Turtle(Position(1,1))\n\n"
+                  + "val turtle = new Turtle(Position(0,0))\n\n"
  		  + "val I = turtle // emulate the binding\n\n"
 		  + "///////////////////\n"
 		  + "// Emulated DSL\n"
@@ -1234,7 +1239,7 @@ function editorScala8Key0() {
 
 function editorScala8Key1() {
     if (editorScala8.currentPress(1,4)) {
-      editorScala8.replaceRange("\nMyDynamicObject.aProp //selectDynamic aProp",{line:22})
+      editorScala8.replaceRange("\nMyDynamicObject.aProperty //selectDynamic aProperty",{line:22})
       editorScala8.addLineClass(23, "background", "highlight");    
     }
 }
@@ -1242,7 +1247,7 @@ function editorScala8Key1() {
 function editorScala8Key2() {
     if (editorScala8.currentPress(2,4)) {
       editorScala8.removeLine(22)
-      editorScala8.replaceRange("\nMyDynamicObject.aProp=\"someValue\" //updateDynamic",{line:22})
+      editorScala8.replaceRange("\nMyDynamicObject.anotherProperty=\"someValue\" //updateDynamic",{line:22})
         editorScala8.addLineClass(23, "background", "highlight");    
     }
 }
@@ -1250,7 +1255,7 @@ function editorScala8Key2() {
 function editorScala8Key3() {
     if (editorScala8.currentPress(3,4)) {
     editorScala8.removeLine(22)
-      editorScala8.replaceRange("\nMyDynamicObject.aMeth(\"someArgs\") //applyDynamic",{line:22})
+      editorScala8.replaceRange("\nMyDynamicObject.aMethod(\"someArgs\") //applyDynamic",{line:22})
       editorScala8.addLineClass(23, "background", "highlight");    
     }
 }
@@ -1258,7 +1263,7 @@ function editorScala8Key3() {
 function editorScala8Key4() {
     if (editorScala8.currentPress(4,4)) {
        editorScala8.removeLine(22)
-   editorScala8.replaceRange("\nMyDynamicObject.aMethod(myArg=\"an Arg\") //applyDynamicNamed",{line:22})
+   editorScala8.replaceRange("\nMyDynamicObject.anotherMethod(myArg=\"an Arg\") //applyDynamicNamed",{line:22})
      editorScala8.addLineClass(23, "background", "highlight");    
     }
 }
@@ -1396,7 +1401,7 @@ function editorScalaKissKey4() {
       editorScala_kiss.removeLine(61)
       var value = "\ndef kiss = I.kiss _\n"
                 + "kiss() // Evaluation needs to use parenthesis\n\n"
-		+ "//engine.bind(\"kiss\",\"()=>Unit\",kiss) // either Function0[Unit]\n\n"
+		+ "//engine.bind(\"kiss\",\"()=>Unit\",turtle.kiss _) // either Function0[Unit]\n\n"
 
       editorScala_kiss.replaceRange(value,{line:61, ch:0});
       editorScala_kiss.addLineClass(62, "background", "highlight");    
@@ -1815,7 +1820,8 @@ function editorScala11Key0() {
 
 var contentScala11b = "import dslprez.scala.slides._\n"
                     + "import dslprez.scala.slides.Turtle.end\n\n"
-                    + "implicit val I = new Turtle(Position(1,1,up))\n\n"
+		    + "import scala.language.postfixOps\n\n"
+                    + "implicit val I = new Turtle(Position(1,1))\n\n"
 	 	    + "Turtle startDsl {\n"
 	 	    + "   I move right by 2\n"
 		    + "   val name = I ask \"what is your name\\n\"\n"
@@ -1823,27 +1829,70 @@ var contentScala11b = "import dslprez.scala.slides._\n"
 		    + "   println(\"Hi \"+name+\"\\n\")\n"
 		    + "   val n = I ask \"how many times up\\n\"\n"
 	  	    + "   I move up by n.toInt\n"
-		    + "   //println(\"Bye\")\n"
+		    + "   println(\"Bye\")\n"
 		    + "   end\n"
-		    + "}\n\n"
-		    + "println(I print I.steps to JSon)\n"
-		    + "println()\n"
-		    + "Turtle answer \"John\"\n"
-		    + "Turtle answer \"2\"\n"
-  		    + "println(I print I.steps to JSon)\n";
+		    + "}\n";
 
 
 function editorScala11Key1() {
-    if (editorScala11.currentPress(1, 1)) {
-    editorScala11.setValue(contentScala11b);
+    if (editorScala11.currentPress(1, 5)) {
+      editorScala11.setValue(contentScala11b);
     }
 }
+
+function editorScala11Key2() {
+    if (editorScala11.currentPress(2, 5)) {
+       editorScala11.replaceRange("/*\n",{line:5,ch:0})
+       editorScala11.replaceRange("*/\n\n",{line:18,ch:0})
+       
+       editorScala11.replaceRange("Turtle print",{line:21,ch:0});
+       editorScala11.addLineClass(21, "background", "highlight");    
+
+    }
+}
+
+
+function editorScala11Key3() {
+    if (editorScala11.currentPress(3, 5)) {
+ 
+      editorScala11.removeLineClass(20, "background", "highlight");    
+      editorScala11.removeLine(20)
+      editorScala11.replaceRange("\n//Turtle print\nTurtle move up\nTurtle print\n",{line:20,ch:0});
+      editorScala11.addLineClass(21, "background", "highlight");    
+      editorScala11.addLineClass(22, "background", "highlight");   
+    }
+}
+
+function editorScala11Key4() {
+    if (editorScala11.currentPress(4, 5)) {
+        editorScala11.removeLine(21)
+      editorScala11.removeLine(21)
+      editorScala11.replaceRange("//Turtle move up\n//Turtle print\nTurtle answer \"John\"\nTurtle print\n",{line:21,ch:0});
+      editorScala11.addLineClass(23, "background", "highlight");    
+      editorScala11.addLineClass(24, "background", "highlight");       
+    }
+}
+
+function editorScala11Key5() {
+    if (editorScala11.currentPress(5, 5)) {
+      editorScala11.removeLine(23)
+      editorScala11.removeLine(23)
+      editorScala11.replaceRange("//Turtle answer \"John\"\n//Turtle print\nTurtle answer \"3\"\nTurtle print",{line:23,ch:0});
+      editorScala11.addLineClass(25, "background", "highlight");    
+      editorScala11.addLineClass(26, "background", "highlight");       
+    }
+}
+
 
 var keymapScala11 = {
     "Ctrl-S" :editorScala11Send,
     "Cmd-S" :editorScala11Send,
     "0": editorScala11Key0,
-    "1": editorScala11Key1
+    "1": editorScala11Key1,
+    "2": editorScala11Key2,
+    "3": editorScala11Key3,
+    "4": editorScala11Key4,
+    "5": editorScala11Key5  
 };
 editorScala11.addKeyMap(keymapScala11);
 

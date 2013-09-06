@@ -1541,7 +1541,10 @@ step 4: change by method to return map
               <h3>Arity-1 functions</h3>
               Functions with a single parameter: Infix operator<br/>
               <div style="color:grey">I move left</div>
-              <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left)</div>              
+              <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left)</div> 
+              <br/>
+              <div style="color:grey">I move left by 4</div>
+              <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left).by(4)</div>              
            </div>
            <div class="span5">
               <h3>Arity-0 functions</h3>
@@ -1549,11 +1552,11 @@ step 4: change by method to return map
               <div style="color:grey">I jump</div>
               <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.jump()</div>
               <br/>
-              But might generate issues<br/>
+              Can cause trouble in chaining<br/>
               <div style="color:grey">I jump<br/>
               I move right //fail
               </div>
-              <div>It fails and need a clear separator: empty line or ";"</div>
+              <div>It fails and need a clear separator: (), empty line or ";"</div>
            </div>
             <div class="span1">
            </div>
@@ -1579,6 +1582,7 @@ step 4: change by method to return map
                    <div style="color:grey">move left</div>
                    <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=>  move.left()</div>
                    <div style="font-size:20px; font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;possible but not ideal, mixing verbs and noun roles</div>
+                   <div style="font-size:20px; font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and be careful with 0-arity</div>
                    <br/>
                    <div style="color:grey">move left by 2 steps</div>
                    <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> move.left(by).2(steps)</div>
