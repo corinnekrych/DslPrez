@@ -29,6 +29,7 @@ Final comments
 ==============
 Easy peasy no far.
 
+29:291
 #####################################
 #####################################
 #                                   #
@@ -145,153 +146,169 @@ We made good progress. We start to see our turtle moving Cool
 #####################################
 #####################################
 #                                   #
-#    Slide #55 Command chaining     #
+#    Slide #50 Command chaining     #
 #                                   #
 #####################################
 #####################################
 
 Purpose
 =======
-Now we are going to enrich the DSL with command chaining like I move by ...
+Now we are going to enrich the DSL with command chaining
+we want to express we can move more than on step at a time
+like move left by 2
 
 Steps
 =====
-#0: Ok here is our code
-#1: and here is what I would like to have
-#2: I want to create an Option to retain the direction. Basically a by can occur only after a move so I will retain the direction
-    with the move and reuse it in the by.
-#3: move will retain the current Direction
-#4: then the by move by 1 step less in the retained direction. At the end, we unset the option so that a by called without a move is
-    simply pointless
-#5: Now we would like to have some readability by adding steps) at the end of the move command. But be careful with the 0 arity of 
-    steps methods we want to define - space of ;
-#6: And we just define step and steps that do simply nothing
+step 1: highlight dsl syntax
+step 2: move left by 2
+step 3: add by method
+step 4: highlight steps.add from turtle move
+step 5: remove steps.add from turtle move
+step 6: add steps.add to turtle by
+step 7: change new Position to add direction
 
-#Final comments:
+Final comments
+==============
 
 #####################################
 #####################################
 #                                   #
-#          Slide #62 Kiss           #
+#          Slide #53 odd chaining   #
 #                                   #
 #####################################
 #####################################
 
 Purpose
 =======
-Lets implement a kiss method. By default as we saw Scala supports 0 arity for postfix methods but only on instances 
-I kiss will work, kiss either can work but needs to be defined in the REPL. lets have a look.
+
 
 Steps
 =====
-#0: Once again the reference code
-#1: Lets create a kiss method with 0 parameter
-#2: and lets call it - we dont need parenthesis
-#3: So lets change method signature  but now I.kiss() would fail whenever we need it
-#4: Now if we want to bind kiss as a method inside the DSL, we face the fact that we define a 0 arity function 
-    and need to call it with parameters
-#5: If we want to get rid of parenthesis the following trick can work by doing an eval before running the script. Locally
-    doing I.kiss instead of I.kiss _ does the trick.
+step 1: highlight dsl syntax
+step 2: move left by 2 steps
+step 3: highlight by method
+step 4: change by to return map with silent word: steps/step
 
-#Final comments:
+Final comments
+==============
 
 #####################################
 #####################################
 #                                   #
-#       Slide #67 implicits         #
+#          Slide #61 kiss           #
 #                                   #
 #####################################
 #####################################
 
 Purpose
 =======
-We just want to take advantage of implicit conversions to enrich (by keeping typesafety) objects behavior
+
 
 Steps
 =====
-#0: Once again lets take previous code
-#1: Here is what we would like to have
-#2: We provide an implicit conversion to a class that provides a times method => Run
-#3: Now I want also to be able to enrich integer with steps suffix to make it more readable
-#4: We create a Step class that has step and steps idempotent methods and an implicit conversion (just to show implicit methods 
-    and implicit classes)
-#5: We need to fix the by method => Run
+step 1 add kiss() to dsl
+step 2 define kiss
+step 3 highlight binding
+step 4 add kiss to binding
+step 5 replace kiss() by kiss
+step 6 comment binding
+step 7 define property missing: I treat kiss as porperty and then do a method call
+step 8 add baseclass into compiler configuration
 
-#Final comments:
-Implicits are very powerful and they are scoped. But be careful with its usage.
+Final comments
+==============
 
 #####################################
 #####################################
 #                                   #
-#         Slide #75 Dynamics        #
+#       Slide #68 Category          #
 #                                   #
 #####################################
 #####################################
 
 Purpose
 =======
-Scala is naturally TypeChecked. What is interesting is to see Groovy adding TypeChecking and at the opposite Dynamics. In fact 
-Scala has structural typing that tends to mimic duck typing of dynamic languages. You just provide an anonymous trait defining the 
-methods that the passed object must have. But lets have a quick look at Dynamics.
+We just want to add dynamicall some method to integer
 
 Steps
 =====
-#0: Ok here it is how it looks like
-#1: property access
-#2: property setter
-#3: function call
-#4: function call with named parameters 
+step1: highlight dsl
+step2: move left by 2.steps
+step3: add class StepCategory
+step4: highlight shell.eval
+step5: modify shell.eval with use()
+step6: highlight class StepCategory
+step7: replace with @Category annotation
 
-#Final comments:
+Final comments
+==============
+we've seen how to dynamically enhance integer we can also do it statically with extension introduce in Groovy 2
+we'll see later how to type check our DSL and how to use extension
 
 #####################################
 #####################################
 #                                   #
-#       Slide #80 System.exit       #
+#         Slide #74 TypeCheck       #
 #                                   #
 #####################################
 #####################################
 
 Purpose
 =======
-A plugin compiler is provided that analyzes AST and stops
-if it meets a System.exit call
 
 Steps
 =====
-#0: Reference code
-#1: Now we add a System.exit => Run
+step 1: highlight compiler
+step 2: add typechecked ext
 
 #Final comments:
-Compiler plugins offer powerful way to alter code structure
-but this is definitely not obvious.
 
 #####################################
 #####################################
 #                                   #
-#        Slide #85 while(true)      #
+#       Slide #81 System.exit       #
 #                                   #
 #####################################
 #####################################
 
 Purpose
 =======
-Again lets enhance script security to limi time allowed to a script execution.
-Here the code is modified again thanks to a compiler plugin that tracjs the elapsed time since the 
-script has started and raises an exception if time is over.
+snikey hacker
 
 Steps
 =====
-#0: Reference code
-#1: Now we add a while(true) => Run
+step 1: highlight dsl
+step 2: add system.exit
+step 3: add SecureASTCustomizer
 
-#Final comments:
-Same as previously. Powerful but complex
+Final comments
+==============
 
 #####################################
 #####################################
 #                                   #
-#         Slide #89 traits          #
+#        Slide #86 while(true)      #
+#                                   #
+#####################################
+#####################################
+
+Purpose
+=======
+
+Steps
+=====
+step1: highlight dsl
+step2: modify dsl with infinite loop
+step3: highlight ASTTransformationCustomizer
+step4: add TimeInterrupt
+
+Final comments
+==============
+
+#####################################
+#####################################
+#                                   #
+#         Slide #94 AST transform   #
 #                                   #
 #####################################
 #####################################
@@ -304,19 +321,10 @@ an exception after 3 moves.
 
 Steps
 =====
-#0: Back to our reference code
-#1: First lets create a trait with a counter and an override of the move method - an interceptor. In that case a standard class extending
-    Turtle would be enough. Advantage of traits compared to class is that we can combine more than one in a kind of multiple inheritance.
-    Ideally we would create a Move trait and a LimitedMove extending first trait. By default Turtle would extend Move and we would create
-    a mixed in Turtle instance as we will see just now
-#2: we add limited actions
-#3: Before the true DSL evaluation, I reset the counter
-#4: This is how it would look like in the interpreter
-#5: If I have too many steps ... It fails => Run
 
-#Final comments:
-Traits are very powerful way to mix behavior. I think we can see objects as structure to which we add behavior thanks to traits
-Mixin of traits can help composing very various behaviors with a limited number of classes/traits.
+Final comments
+==============
+
 
 #####################################
 #####################################

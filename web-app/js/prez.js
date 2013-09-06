@@ -1125,11 +1125,15 @@ editorGroovy6b.addKeyMap(keymap6b);
 
 
 //-------------------------------------------------------------------
-//Groovy6c. Command chaining odd number
-//step 1: highlight dsl syntax
-//step 2: move left by 2 steps
-//step 3: highlight by method
-//step 4: change by to return map with silent word: steps/step
+//Groovy6c. kiss
+//step 1 add kiss() to dsl
+//step 2 define kiss
+//step 3 highlight binding
+//step 4 add kiss to binding
+//step 5 replace kiss() by kiss
+//step 6 comment binding
+//step 7 define property missing: I treat kiss as porperty and then do a method call
+//step 8 add baseclass into compiler configuration
 //------------------------------------------------------------------->
 var content6c = "class Position {\n"
     + "  int x\n"
@@ -2310,6 +2314,7 @@ editorGroovy11.addKeyMap(keymap11);
 
 //------------------------------------------------------------------->
 // Groovy12. ask AST
+
 //------------------------------------------------------------------->
 var content12 = "abstract class GameScript extends Script {\n"
                 + "  def move(param) {println \">> move $param\"}\n"

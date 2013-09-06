@@ -1258,7 +1258,7 @@ function editorScala8Key3() {
 function editorScala8Key4() {
     if (editorScala8.currentPress(4,4)) {
        editorScala8.removeLine(22)
-   editorScala8.replaceRange("\nMyDynamicObject.aMathod(myArg=\"an Arg\") //applyDynamicNamed",{line:22})
+   editorScala8.replaceRange("\nMyDynamicObject.aMethod(myArg=\"an Arg\") //applyDynamicNamed",{line:22})
      editorScala8.addLineClass(23, "background", "highlight");    
     }
 }
