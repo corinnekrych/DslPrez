@@ -21,6 +21,7 @@
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/jqcloud.css" rel="stylesheet">
     <link href="css/prez.css" media="all" rel="stylesheet">
+    <link href="css/prism.css" media="all" rel ="stylesheet">
     <!-- endbuild -->
 </head>
 <body>
@@ -807,17 +808,17 @@ TTP/RT</pre>
                 <div>Max of 3 actions</div>
                 <div>Interactive game</div><br/>
 
-                <pre class="code">move up
+                 <pre><code style="font-size: 14px" class="language-groovy">move up
 ask "new meeting point?" assign to response
 if (response == "y")
     meet x:13, y:13
-</pre>
+</code></pre>
 
-<pre class="code">I move up
+ <pre><code style="font-size: 14px" class="language-groovy">I move up
 val answer = ask "could you wait for me?"
 if (response == "y")
     kiss
-</pre>
+</code></pre>
             </div>
 
         </div>
@@ -860,20 +861,20 @@ if (response == "y")
             <div class="span5">
                 <h3>Groovy</h3>
 GroovyShell<br/> GroovyScriptEngine<br/> GroovyClassLoader<br/> <br/>
-<pre class="code">def shell = new GroovyShell()
+ <pre><code style="font-size: 14px" class="language-groovy">def shell = new GroovyShell()
 shell.evaluate(script)
-</pre>
+</code></pre>
             </div>
             <!--<p>Each script is an object inheriting from Script base class</p>-->
             <div class="span5">
                 <h3>Scala</h3>
-                <pre class="code">new scala.tools.nsc.interpreter.IMain
-</pre>
+                 <pre><code style="font-size: 14px" class="language-groovy">new scala.tools.nsc.interpreter.IMain
+</code></pre>
                 <h3>Scala within Grails</h3>
-                <pre class="code">
+                 <pre><code style="font-size: 14px" class="language-groovy">
                     val env = new Settings()
                     env.usejavacp.value = true
-                    new scala.tools.nsc.interpreter.IMain(env)</pre>
+                    new scala.tools.nsc.interpreter.IMain(env)</code></pre>
             </div>
             <!-- http://scabl.blogspot.fr/2013/05/scripting-with-scala-and-sbt.html -->
             <div class="span1">
@@ -885,9 +886,9 @@ shell.evaluate(script)
             </div>
             <div class="span8">
                 <h3>JSR 223</h3>
-                <pre class="code">ScriptEngineManager = new ScriptEngineManage();
-ScriptEngine engine = manager.getEngineByName("...");
-engine.eval(script);</pre>
+                 <pre><code style="font-size: 14px" class="language-groovy">ScriptEngineManager = new ScriptEngineManage();
+ScriptEngine engine = manager.getEngineByName("groovy"); //or "scala"
+engine.eval(script);</code></pre>
             </div>
             <div class="span2">
             </div>
@@ -1223,7 +1224,7 @@ step 7 remove def left in GameScript
         <div class="span1">
         </div>
         <div class="span10" style="text-align: left">
-<pre style="font-size:17px;">
+ <pre><code style="font-size: 14px" class="language-groovy">
     val turtle = new Turtle(Position(1,1))
     
     interpreter.interpret("def move(d: Direction)(implicit t:Turtle) = t.move(d)")
@@ -1245,7 +1246,7 @@ step 7 remove def left in GameScript
     //////////////////////
         
     val result = interpreter.eval(gameDSL)
-</pre>   <hr/>
+</code></pre>   <hr/>
         </div>
         <div class="span1">
         </div>
@@ -1268,8 +1269,7 @@ step 7 remove def left in GameScript
            - Generate JSON<br/>
            - No UI Logic inside the DSL<br/>
            - All presentation logic in HTML5/CSS/JS on Client Side<br/><br/>
-            <pre>
-        {
+             <pre><code style="font-size: 14px" class="language-javascript">         {
             positions:
             {
                 emily: [[3,13],[5,13]]
@@ -1278,11 +1278,11 @@ step 7 remove def left in GameScript
             stepDuration:1000,
             asks:[],
             win:false,
-            user1:"emily",
-            user2:"chrome",
+            user1:"corinne",
+            user2:"pascal",
             id:2,
             winningAnimation:[8,9]
-        }</pre>
+        }</code></pre>
         </div>
         <div class="span2"></div>
         </div>
@@ -1753,8 +1753,7 @@ Groovy6c. One method without parameter
             <hr>
             <div style="line-height:150%;font-size:25px;text-align:left;">
                 Dynamic finder in Grails
-                <pre>
-class GORM {
+                 <pre><code style="font-size: 14px" class="language-groovy">class GORM {
    def dynamicMethods = [...] // an array of dynamic methods that use regex
    def methodMissing(String name, args) {
        def method = dynamicMethods.find { it.match(name) }
@@ -1766,7 +1765,7 @@ class GORM {
        }
        else throw new MissingMethodException(name, delegate, args)
    }
-}</pre>
+}</code></pre>
             </div>
             <hr>
         </div>
@@ -1992,20 +1991,20 @@ step 2: add typechecked ext
         </div>
         <div class="span10" style="text-align: left">
             <hr>
-<pre>
+ <pre><code style="font-size: 14px" class="language-groovy">
 class StepExtension {
   static Integer getSteps(Integer self) {
     self
   }
 }
-</pre>
+</code></pre>
             <hr>
-<pre>
+ <pre><code style="font-size: 14px" class="language-groovy">
 File: src/main/resources/META-INF/services/org.codehaus.groovy.runtime.ExtensionModule
 moduleName = steps-module
 moduleVersion = 1.0
 extensionClasses = dsl.StepExtension
-</pre>
+</code></pre>
             <hr>
         </div>
         <div class="span1">
@@ -2029,7 +2028,7 @@ extensionClasses = dsl.StepExtension
                 <p>Scala has added Dynamics </p>
                 <br/><br/>
                 <p style="font-size:18px; color:grey">in addition to already existing Structural typing feature:</p>
-                <pre>def talkLikeADuck(duck: { def quack():String }) = duck.quack()</pre>
+                <pre><code style="font-size: 14px" class="language-groovy">def talkLikeADuck(duck: { def quack():String }) = duck.quack()</code></pre>
             </div>
             <div class="span2">
             </div>
@@ -2423,11 +2422,11 @@ step5: add display map in DSL
                 <div style="color:grey"> ask "Shall we change our meeting point?" assign to response</div>
                 <br/>Techniques used:
                 <div>1. Command chaining</div>
-                <pre style="margin-right:15%;margin-left:5%">ask(question).assign(to).response</pre>
+                <pre><code style="font-size: 14px" class="language-groovy">ask(question).assign(to).response</code></pre>
                 <div>2. Map.withDefault(closure)</div>
-                <pre style="margin-right:15%;margin-left:5%">def constMap = [:].withDefault { 42 }
+                 <pre><code style="font-size: 14px" class="language-groovy">def constMap = [:].withDefault { 42 }
 assert constMap.foo == 42
-assert constMap.size() == 1</pre>
+assert constMap.size() == 1</code></pre>
                 <div>3. Semaphore on given game + Server Push (SSE)</div>
             </div>
         </div>
@@ -2684,8 +2683,7 @@ http://www.jroller.com/melix/entry/static_builders_inception
         <div class="span8">
             <hr>
             <div style="line-height:150%;font-size:25px;text-align:left;">
-                <pre>
-@groovy.transform.CompileStatic
+                 <pre><code style="font-size: 14px" class="language-groovy">@groovy.transform.CompileStatic
 String build() {
     def builder = new HTMLBuilder()
     builder.html {
@@ -2696,7 +2694,7 @@ String build() {
             }
         }
     }
-}</pre>
+}</code></pre>
             </div>
             <hr>
         </div>
@@ -2858,13 +2856,29 @@ TODO editor or slide to explain
             <div class="span2" style="padding-left: 0.8em">
             </div>
             <div class="span8">
-                <pre class="code"></pre>
-                <hr>
+               <pre><code style="font-size: 14px" class="language-groovy">class TurtleSpec extends spock.lang.Specification {
+  def turtle
+  void 'turtle moves right by 5, current position is x + 5'() {
+    given:
+        Position position = new Position()
+        position.x = 1
+        position.y = 1
+        turtle = new Turtle(position)
+
+        when:
+        turtle = turtle.move(Direction.right).by(5)
+
+        then:
+        turtle.currentPosition.x == 6
+        turtle.currentPosition.y == 1
+    }
+}</code></pre>
             </div>
             <div class="span2" style="padding-right: 1.8em">
             </div>
         </div>
     </div>
+    <hr>
 </li>
 
 <li class="slide" title="Testing in Scala">
@@ -2878,22 +2892,22 @@ TODO editor or slide to explain
         </div>
         <hr>
         <div class="row-fluid marketing">
-            <div class="span1">
+            <div class="span2">
             </div>        
-            <div class="span10" style="padding-left: 0.8em">
-             <pre class="code">"A turtle" should "move up" in {
+            <div class="span8" style="padding-left: 0.8em">
+              <pre><code style="font-size: 14px" class="language-groovy">"A turtle" should "move up" in {
       &nbsp;&nbsp;&nbsp;val t = new Turtle(Position(0,0,up))
       &nbsp;&nbsp;&nbsp;t move up
       &nbsp;&nbsp;&nbsp;assert(t.lastPosition.x == 0)
       &nbsp;&nbsp;&nbsp;assert(t.lastPosition.y == 1)
    }
-</pre>
-                <hr>
+</code></pre>
             </div>
-            <div class="span1">
+            <div class="span2">
             </div>
         </div>
     </div>
+    <hr>
 </li>
 
 <li class="slide" title="Debugging" style="line-height: 150%;font-size: 25px;">
@@ -3089,6 +3103,7 @@ TODO editor or slide to explain
 <script src="js/ktDraw.js"></script>
 <script src="js/slide-fwk.js"></script>
 <script src="js/slides.js"></script>
+<script src="js/prism.js"></script>
 <!-- endbuild -->
 </body>
 </html>
