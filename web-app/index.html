@@ -1976,6 +1976,38 @@ step 2: add typechecked ext
     </div>
 </li>
 
+<li class="slide" title="Type check extension">
+    <div class="container-narrow"> <hr>
+
+        <h1>TurtleExtension.groovy</h1>
+    </div><hr>
+
+    <div class="row-fluid marketing">
+        <div class="span2">
+        </div>
+        <div class="span8">
+            <hr>
+            <div style="line-height:150%;font-size:25px;text-align:left;">
+                <pre><code style="font-size: 14px" class="language-groovy">unresolvedVariable { var ->
+  if (var.name in ['left', 'right', 'up', 'down']) {
+    storeType(var, classNodeFor(dslprez.Direction))
+    handled = true
+  }
+}
+
+methodNotFound { receiver, name, argList, argTypes, call ->
+  if (name in ['by', 'move']) {
+    return newMethod(name, classNodeFor(dslprez.Turtle))
+  }
+}</code></pre>
+            </div>
+            <hr>
+        </div>
+        <div class="span2">
+        </div>
+    </div>
+</li>
+
 <li class="slide" title="Extension">
     <div class="container-narrow">
         <hr>
