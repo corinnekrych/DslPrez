@@ -140,8 +140,14 @@ slides #19        => Pascal details Scala features.
 24
 Transition 19->20 => Pascal says that now we can start to dive into the DSL details
 slides #20 - 21   => Corinne introduces the game, the target the rules
-                     this is how the gameboard looks like: ramdom pisition for F and E. Meeting pt is ramdom too.
+                     this is how the gameboard looks like:
+                     random position for F, E, Birdy.
+                     Meeting pt is ramdom too.
+                     goal of the game is to meet at the heart place before Birdy
                      Each player takes turn and have a max of 3 moves.
+                     Birdy go faster as he move for each turns and he can do up to 11 steps at a time.
+                     Use meet to deplace meeting point f Birdy is too close.
+                     F and e can interact with each other using 'ask' an elaborate a strategy
 slides #22 - 23   => Pascal explains that first as players will submit DSL, we need to evaluate the DSL inside the running
                      application. There exist different options. 
                      Introduce Groovy, Scala, JSR

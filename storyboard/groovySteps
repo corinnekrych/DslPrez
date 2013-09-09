@@ -9,6 +9,7 @@
 A few words on the format of our tutorial
 Grails app, controller on server to evaluate Groovy and Scala Script
 Client side we use code mirror to show you step by step how to achieve
+Be carefull using 1..2 key but othe than that you can enter you own code and test it
 
 Purpose
 =======
@@ -20,6 +21,7 @@ Let's see how we can handle that
 Steps
 =====
 step 0 here I instantiate groovyShell, my script do a prinltn statement
+       I can change the text and just run the script
 step 1 let's define move method - to set up the base of our dsl, i'm a fast typer
 step 2 define left
 step 3 replace shell by ScriptEngineMgr from jsr 223
