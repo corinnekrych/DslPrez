@@ -197,5 +197,5 @@ slide.enter("Output for Groovy Builder", showGroovyDuke, removeGroovyDuke);
 slide.start({
     progressbar: true,
     duration: 7200,
-    progressPrecision: 5
+    progressPrecision: 2
 });
