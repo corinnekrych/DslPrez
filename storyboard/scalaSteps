@@ -68,9 +68,12 @@ Now we are going to create a more elaborate move mechanism
 Steps
 =====
 #0: Lets start with a potential DSL proposal to express move of a turtle
-#1: Firts lets inroduce a Position. The case class choice is mainly to facilitate object creation and pattern matching
+#1: First lets inroduce a Position. The case class choice is mainly to facilitate object creation and pattern matching
+    Case class are class on steroids, equals, hashcode, extractors for free. 
+    Very useful for PatternMatching which can be seen as a super if/switch statement.
 #2: Now lets defined directions as a sealed set of classes (instead of enum)
-#3: Lets introduce the Turtle that move. We use ` because we match on objects and not instances
+#3: Lets introduce the Turtle that move. We use ` because we match on objects and not instances: it helps Scala make the diff
+    between a variable and a constant. Alternative fully qualified name or capital letter.
 #4: and create a turtle instance
 #5: and lets start moving it. Theoretically, it would work but there is here a binding limitation as explained previously
     in the game, this is exactly what we are going to do.
@@ -301,6 +304,9 @@ Purpose
 Instead of suspending Threads, we could play with continuations in order to create potentially complex flows, suspending execution
 when a question needs to be asked to other participants and rebranching in the flow when the answer arrives.
 Cps is a weird beast.
+The @Cps annotation stands for Continuation passing style and informs compiler on some part of code which can be handled by
+continuations.
+The reset block defines the suspendable block. it has limitations like for example for loops.
 
 Steps
 =====
@@ -346,3 +352,10 @@ Steps
 #8:
 
 #Final comments:
+
+
+Words:
+; semi colon
+[ brackets
+{ curly braces
+: colon

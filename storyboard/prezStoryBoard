@@ -1,7 +1,7 @@
 slide  #0         => Welcome page, waiting to start
                      Hello, we're here today for a tutorial session to see in action how to build an embedded DSL
-                     To make it fun : the guiding Theme of this presentation aims at focusing on a DSL to pilot characters on a grid and let them interact to
-                     each others. 
+                     To make it fun : the guiding Theme of this presentation aims at focusing on a DSL to pilot characters on a grid and let 
+                     them interact with each others. 
                      Title of the game refers to Logo which off course, was part of our inspiration.
                      In our live session, we intend to show how we achieved this, the problems we met and how we solved them. 
                      DSLs exist on various popular languages like Ruby, Clojure and of course the ones of interest here Groovy and Scala.
@@ -33,7 +33,9 @@ slide  #4         => Pascal introduces himself
 5:22
 Transition 4->5   => Pascal: You are here mainly to hear about DSLs. So first let's give you some Context
 slide  #5         => Pascal starts explaining inside Amadeus the Scripting engine role
-                     SSE in order to enable faster customers customization thanks to script
+                     Amadeus is a leading provider of IT solutions for travel and leisure. It targets both
+                     B2B and B2C: TA, Airlines, End Users.
+                     SSE in order to enable faster customers customization thanks to scripts
                      Sandboxing, defining of APIs and we started to design DSL to simplify user Customization.
                      Corinne continues
                      When Pascal was working in SSE, I was part of the business team writing Selling platform connect for TA
