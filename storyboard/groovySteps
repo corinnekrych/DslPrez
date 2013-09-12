@@ -23,10 +23,11 @@ Steps
 step 0 here I instantiate groovyShell, my script do a prinltn statement
        I can change the text and just run the script
 step 1 let's define move method - to set up the base of our dsl, i'm a fast typer
-step 2 define left
+step 2 define left to not have the quote surrounding it
 step 3 replace shell by ScriptEngineMgr from jsr 223
+       Remember Pascal talking bout jsr223 javax.script package
 step 4 replace by engine.eval
-
+       and evaluate get replaced by eavl, very similar concept
 Final comments
 ==============
 Easy peasy no far.
@@ -69,17 +70,21 @@ Lets carry on with binding
 
 Steps
 =====
-step 0 in order to define compiler configuration i had
-       - to instantiate an empty binding
-       - lets add move right
+step 0 We saw how to use BaseClass, another way of doing it is to go through binding
+       Let's see how binding work with a very simple ex
+       Lets add move right
 step 1 introduce right in binding
-step 2 ad move right command
+       Remember in order to define compiler configuration we had
+       - to instantiate an empty binding
+step 2 add move right command
+       right is just available
 
 Final comments
 ==============
-Different way of achieveing the same result either by
+Different way of achieving the same result either by
 - for left: we define a property of a script base class
-- for right it's a binding. a map of variable
+- for right it's a binding. a map of variable. we will see later we could also put int the binding a
+Groovy object, a method
 
 #####################################
 #####################################
@@ -91,7 +96,8 @@ Different way of achieveing the same result either by
 
 Purpose
 =======
-Now we are going to create a more elaborate move mechanism
+As Pascal said it's better to deciple your semantic from your syntax.
+What is our semantic model here ? we need a turtle that move on different position
 
 Steps
 =====
@@ -115,7 +121,6 @@ step 8 remove GameScript base class, here I use binding only
 Final comments
 ==============
 Here we are with our a turtle that can move.
-//decouple??
 What about in Scala?
 
 #####################################
@@ -128,22 +133,27 @@ What about in Scala?
 
 Purpose
 =======
-Instead of printing the moves, now lets generate JSon structure of the moves that will be consumed and displayed on UI Side
+Instead of printing the moves, now lets generate JSon structure of the moves that will be
+consumed and displayed on UI Side.
 As Pascal explained in our json, we want to have a list of steps to describe all my turtle moves
 
 Steps
 =====
 step 1 def step = [] to use steps instead println
+       let's use an array to store all the steps done by F
 step 2 steps.add(start) to store initial position steps after move
 step 3 highlight
 step 4 steps.add(newPosition) to store position after move
 step 5 add json builder
+       in this ex very easy builder because we just provide an array of step
+       notice the use of JsonBuilder a markup builder
+       we'll see later on how to build such a builder in just a few lines
 step 6 highlight: going back to our dsl
 step 7 mix plain groovy + DSL 4.times {move left} to have a nice upstairs effect
 
 Final comments
 ==============
-We made good progress. We start to see our turtle moving Cool
+We made good progress. We start to see our turtle moving. Isn't it Cool Pascal. show us the turtle goove in Scala :)
 
 #####################################
 #####################################

@@ -1,12 +1,11 @@
-slide  #0         => Welcome page, waiting to start
-                     Hello, we're here today for a tutorial session to see in action how to build an embedded DSL
-                     To make it fun : the guiding Theme of this presentation aims at focusing on a DSL to pilot characters on a grid and let them interact to
-                     each others. 
-                     Title of the game refers to Logo which off course, was part of our inspiration.
-                     In our live session, we intend to show how we achieved this, the problems we met and how we solved them. 
-                     DSLs exist on various popular languages like Ruby, Clojure and of course the ones of interest here Groovy and Scala.
-                     In order to evaluate the differences that the underlying languages offer we picked two different languages that can be 
-                     seen as theoretically strongly opposed using very different paradigms.
+slide  #0         => - Hello, we're here today for a tutorial session to see in action how to build an embedded DSL
+                     - To make it fun : the guiding theme of this presentation focus on building a DSL to pilot
+                     characters on a grid and let them interact to each others.
+                     - title of the game refers to Logo which off course, was part of our inspiration.
+                     - DSLs exist on various popular languages like Ruby, Clojure and of course the ones of interest
+                     here Groovy and Scala.
+                     In order to evaluate the differences that the underlying languages offer we picked two different
+                     languages that can be seen as theoretically strongly opposed using very different paradigms.
 1:30
 slide  #1         => Corinne starts the Agenda, up to part II
                      Pascal finishes with part III and Conclusion
@@ -154,17 +153,18 @@ slides #22 - 23   => Pascal explains that first as players will submit DSL, we n
                      And lets see how we can do in Groovy
 slide  #24 - 27   => Code /Separate dedicated file
 slide  #28        => Pascal explains the challenges of Scripting
-slide  #29        => Corinne explains that if we want to enrich script interaction, we need bindings
-                     But Pascal, in our script we define the move method and left variable each time,
+slide  #29        => Corinne: But Pascal, in our script we define the move method and left variable each time,
                      I obviously want to extract those from my script
-                     we need binding & compiler configuration
+                     I want to define the move method in a separate class and then use it in my script
+                     so my script should only contain "move left"
+                     How can we do it? it brings us to the topic of binding and Shell config
 slide  #30        => In groovy, one way to extract the move method from the script is to use BaseClass
                      To define a new Baseclass we use Compiler configuration
                      also can be used to imports/static import for our script
                      and we'll see later how to use compil conf to define AST customizer
 slides #31 - 36   => Code /Separate dedicated file
 slide  #37        => Pascal explains that now we will enrich the DSL by creating Turtle and move
-                     It's always a good ide to decouple Semantic model vs Syntax of the DSL
+                     It's always a good idea to decouple Semantic model vs Syntax of the DSL
                      to evolve the model and the lg separately
 slides #38 - 42   => Code /Separate dedicated file
 48
@@ -172,9 +172,11 @@ slide  #43        => Pascal explains then that the DSL in itself does not handle
                      communicating thanks to JSON.
 slides #44 - 47   => Code /Separate dedicated file
 55
-slides #48 - 49   => Corinne introduces Syntax/Command chaining
-                     now that we have the semantic for the move, lets focus on
-                     how we can enhance the syntax to sound like plain english
+slides #48 - 49   => Corinne: now that we have the semantic for the move, lets focus on the syntax
+                     command chaining is a the key pattern to
+                     enhance the syntax to to sound like plain english
+                     Method chaining is a design pattern where each method return itself allowing method call chaining
+                     As we saw earlier (part I), heavily used for fluent API
 slides #50 - 51   => Code /Separate dedicated file
 slide  #52        => Pascal asks about odd numbers
 slides #53 - 54   => Code /Separate dedicated file
