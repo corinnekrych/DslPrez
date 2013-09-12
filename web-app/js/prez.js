@@ -1505,7 +1505,7 @@ function editorGroovy7TurtleSend() {
 }
 
 function editorGroovy7Key0() {
-    editorGroovy7.currentPress(0, 2);
+    editorGroovy7.currentPress(0, 7);
     editorGroovy7.setValue(content7);
 }
 
@@ -1912,7 +1912,7 @@ function editorGroovy9TurtleSend() {
 }
 
 function editorGroovy9Key0() {
-    editorGroovy9.currentPress(0, 2);
+    editorGroovy9.currentPress(0, 4);
     editorGroovy9.setValue(content9);
 }
 
@@ -2113,7 +2113,7 @@ function editorGroovy10TurtleSend() {
 }
 
 function editorGroovy10Key0() {
-    editorGroovy10.currentPress(0, 2);
+    editorGroovy10.currentPress(0, 3);
     editorGroovy10.setValue(content10);
 }
 
@@ -2128,7 +2128,7 @@ function editorGroovy10Key1() {
 
 function editorGroovy10Key2() {
     if (editorGroovy10.currentPress(2, 3)) {
-        var value = "    System.exit(-1)";
+        var value = "System.exit(-1)";
         editorGroovy10.replaceRange(value, {line:96, ch:0});
         editorGroovy10.addLineClass(96, "background", "highlight");
     }
@@ -2314,7 +2314,17 @@ editorGroovy11.addKeyMap(keymap11);
 
 //------------------------------------------------------------------->
 // Groovy12. ask AST
-
+//step1: add your class extending CompilationCustomizer
+//step2: add it to compilerconfig
+//step3: add some body contnet inside overriden call method
+//       get the AST
+//       find thw run method of my script
+//       collect all block statement inside the run mrthod
+//step4: add visit call
+//       I want to visit all those block st to count the usage of move
+//step5: Add MethodCallVisitor
+//       we need to wite our custom visitor and overload  visitMthodCallExpression
+//step6: Add body to visitMethodCallExpr
 //------------------------------------------------------------------->
 var content12 = "abstract class GameScript extends Script {\n"
                 + "  def move(param) {println \">> move $param\"}\n"
