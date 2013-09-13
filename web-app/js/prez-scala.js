@@ -80,6 +80,15 @@ function submitTurtleFormToScalaConsoleExtended(input, output, canvasId, additio
     submitTurtleFormExtended(input, output, canvasId, "scala",additionalParams);
 }
 
+function setStep(i,size) {
+   currentStep=i;
+   currentSize=size;
+}
+
+function resetSteps() {
+   currentStep=undefined;
+   currentSize=undefined;
+}
 //------------------------------------------------------------------->
 // Scala1. Script
 // step 1 define move method and move to left
@@ -112,12 +121,15 @@ function editorScala1Send() {
 
 function editorScala1Key0() {
     editorScala1.currentPress(0, 5);
+    currentSend = editorScala1Send;
+    setStep(0,5);
     editorScala1.setValue(contentScala1);
 }
 
 function editorScala1Key1() {
     if (editorScala1.currentPress(1, 5)) {
-        var value = 'val gameDSL = """  \n'
+         setStep(1,5);
+         var value = 'val gameDSL = """  \n'
             + 'object move {\n'
             + '   def to(direction:String) = {\n'
             + '      println(s"Moving $direction")\n'
@@ -134,6 +146,7 @@ function editorScala1Key1() {
 
 function editorScala1Key2() {
     if (editorScala1.currentPress(2, 5)) {
+      setStep(2,5);
 	for(var i = 9; i <17 ; i++) {
             editorScala1.removeLineClass(i, "background", "highlight");
         }
@@ -147,6 +160,7 @@ function editorScala1Key2() {
 }
 function editorScala1Key3() {
     if (editorScala1.currentPress(3, 5)) {
+      setStep(3,5);
         for(var i = 9; i <18 ; i++) {
             editorScala1.removeLineClass(i, "background", "highlight");
         }
@@ -164,6 +178,7 @@ function editorScala1Key3() {
 
 function editorScala1Key4() {
     if (editorScala1.currentPress(4, 5)) {
+      setStep(4,5);
         for(var i = 3; i <8 ; i++) {
             editorScala1.removeLineClass(i, "background", "highlight");
         }
@@ -175,6 +190,7 @@ function editorScala1Key4() {
 
 function editorScala1Key5() {
     if (editorScala1.currentPress(5, 5)) {
+      setStep(5,5);
         editorScala1.removeLineClass(19, "background", "highlight");
         for (var i=9; i<16; i++) {
 	  editorScala1.removeLine(9);
@@ -256,11 +272,14 @@ function editorScala3Send() {
 
 function editorScala3Key0() {
     editorScala3.currentPress(0, 8);
+    currentSend = editorScala3Send;
+    setStep(0,8);
     editorScala3.setValue(contentScala3);
 }
 
 function editorScala3Key1() {
     if (editorScala3.currentPress(1, 8)) {
+       setStep(1,8);
         var value = '\nengine.bind("left", "left")';
 
         editorScala3.replaceRange(value, {line:6});
@@ -270,12 +289,14 @@ function editorScala3Key1() {
 
 function editorScala3Key2() {
     if (editorScala3.currentPress(2, 8)) {
+      setStep(2,8);
       editorScala3.removeLine(15)
     }
 }
 
 function editorScala3Key3() {
     if (editorScala3.currentPress(3, 8)) {
+          setStep(3,8);
       editorScala3.removeLineClass(7, "background", "highlight");
       var value ="\nobject move {\n"
             + "    def to(direction:Object) = {\n"
@@ -292,6 +313,7 @@ function editorScala3Key3() {
 
 function editorScala3Key4() {
     if (editorScala3.currentPress(4, 8)) {
+       setStep(4,8);
       for (var i=16; i<21; i++) {
         editorScala3.removeLine(16)
       }
@@ -300,6 +322,7 @@ function editorScala3Key4() {
 
 function editorScala3Key5() {
     if (editorScala3.currentPress(5, 8)) {
+    setStep(5,8);
       for (var i=9; i<14 ;i++) {
         editorScala3.removeLineClass(i, "background", "highlight");
        }
@@ -310,7 +333,8 @@ function editorScala3Key5() {
 
 function editorScala3Key6() {
     if (editorScala3.currentPress(6, 8)) {
-         editorScala3.removeLineClass(15, "background", "highlight");
+      setStep(6,8); 
+      editorScala3.removeLineClass(15, "background", "highlight");
       editorScala3.removeLine(18)
 	 editorScala3.replaceRange("move left //Fail because converted into move.left()\n", {line:18,ch:0});
          editorScala3.addLineClass(18, "background", "highlight");   
@@ -319,6 +343,7 @@ function editorScala3Key6() {
 
 function editorScala3Key7() {
     if (editorScala3.currentPress(7, 8)) {
+        setStep(7,8);
          editorScala3.removeLineClass(15, "background", "highlight");
          editorScala3.removeLine(18)
 	 editorScala3.replaceRange("move(left)\n", {line:18,ch:0});
@@ -330,6 +355,7 @@ function editorScala3Key7() {
 
 function editorScala3Key8() {
     if (editorScala3.currentPress(8, 8)) {
+      setStep(7,8);
       editorScala3.removeLineClass(18, "background", "highlight");
       editorScala3.removeLine(15)       
       editorScala3.replaceRange("\nengine.bind(\"move\",move)", {line:14});
@@ -403,6 +429,9 @@ function editorScala4Send() {
 
 function editorScala4Key0() {
     if (editorScala4.currentPress(0, 7)) {
+       currentSend = editorScala4Send;
+       setStep(0,7);
+
        editorScala4.setValue(contentScala4);
        editorScala4.scrollIntoView(0);
     }
@@ -410,6 +439,7 @@ function editorScala4Key0() {
 
 function editorScala4Key1() {
     if (editorScala4.currentPress(1, 7)) {
+      setStep(1,7);
       var value = "case class Position(x:Int, y:Int) {\n"
                 + "   def left  = Position(x-1,y)\n"
                 + "   def right = Position(x+1,y)\n"
@@ -426,7 +456,7 @@ function editorScala4Key1() {
 
 function editorScala4Key2() {
     if (editorScala4.currentPress(2, 7)) {
-      
+      setStep(2,7);
       for (var i=4;i<10;i++) {
           editorScala4.removeLineClass(i, "background", "highlight");   
        }
@@ -446,7 +476,7 @@ function editorScala4Key2() {
 
 function editorScala4Key3() {
     if(editorScala4.currentPress(3, 7)) {
-
+      setStep(3,7);
       for (var i=11;i<16;i++) {
           editorScala4.removeLineClass(i, "background", "highlight");   
        }
@@ -475,6 +505,7 @@ function editorScala4Key3() {
 
 function editorScala4Key4() {
     if(editorScala4.currentPress(4, 7)) {
+      setStep(4,7);
        for (var i=17;i<29;i++) {
           editorScala4.removeLineClass(i, "background", "highlight");   
        }
@@ -487,7 +518,7 @@ function editorScala4Key4() {
 
 function editorScala4Key5() {
     if(editorScala4.currentPress(5, 7)) {
-     
+     setStep(5,7);
        editorScala4.scrollIntoView(41);
  
        editorScala4.removeLineClass(30, "background", "highlight");
@@ -511,7 +542,7 @@ function editorScala4Key5() {
 
 function editorScala4Key6() {
     if(editorScala4.currentPress(6, 7)) {
-      
+      setStep(6,7);
        var value="interpreter.bind(\"I\",turtle)\n"
        editorScala4.removeLine(31);
        editorScala4.replaceRange(value,{line:31,ch:0});
@@ -530,7 +561,8 @@ function editorScala4Key6() {
 
 function editorScala4Key7() {
     if(editorScala4.currentPress(7, 7)) {
-       editorScala4.removeLine(31);
+      setStep(7,7); 
+      editorScala4.removeLine(31);
 
        var value="val I = turtle\n"
        editorScala4.replaceRange(value,{line:31,ch:0});
@@ -629,6 +661,9 @@ function editorScala5Send() {
 
 function editorScala5Key0() {
     editorScala5.currentPress(0, 7);
+    currentSend = editorScala5Send;
+    setStep(0,7);
+
     editorScala5.setValue(contentScala5);
     editorScala5.scrollIntoView(0);
 
@@ -636,6 +671,7 @@ function editorScala5Key0() {
 
 function editorScala5Key1() {
     if (editorScala5.currentPress(1, 7)) {
+      setStep(1,7);
       editorScala5.replaceRange("import scala.collection.mutable.ArrayBuffer\n\n",{line:0, ch:0});      
       editorScala5.replaceRange("\n   val steps = new ArrayBuffer[Position]\n   steps += p\n\n",{line:20, ch:0});
 
@@ -647,7 +683,7 @@ function editorScala5Key1() {
 
 function editorScala5Key2() {
     if (editorScala5.currentPress(2,7)) {
-            
+            setStep(2,7);
       editorScala5.removeLineClass(0, "background", "highlight");
       editorScala5.removeLineClass(21, "background", "highlight");
       editorScala5.removeLineClass(22, "background", "highlight");
@@ -658,6 +694,7 @@ function editorScala5Key2() {
 
 function editorScala5Key3() {
     if (editorScala5.currentPress(3,7)) {
+      setStep(3,7);
         editorScala5.removeLine(31);
         editorScala5.replaceRange("      steps += p\n",{line:31, ch:0});
         editorScala5.addLineClass(31, "background", "highlight");
@@ -666,6 +703,7 @@ function editorScala5Key3() {
 
 function editorScala5Key4() {
     if (editorScala5.currentPress(4,7)) {
+      setStep(4,7);
       editorScala5.removeLineClass(31, "background", "highlight");
 
       var value = "import _root_.net.liftweb.json._\n"
@@ -684,6 +722,7 @@ function editorScala5Key4() {
 
 function editorScala5Key5() {
     if (editorScala5.currentPress(5,7)) {
+      setStep(5,7);
       editorScala5.removeLineClass(0, "background", "highlight");
       editorScala5.removeLineClass(1, "background", "highlight");
       editorScala5.removeLineClass(2, "background", "highlight");
@@ -698,6 +737,7 @@ function editorScala5Key5() {
 
 function editorScala5Key6() {
     if (editorScala5.currentPress(6, 7)) {
+      setStep(6,7);
         editorScala5.scrollIntoView(64);
         editorScala5.removeLineClass(19, "background", "highlight");
         editorScala5.replaceRange("\n   def toJSon = compact(render(\"steps\"->steps))  //{steps: [{x:1,y:1}, ...]}\n",{line:42, ch:0});
@@ -707,6 +747,7 @@ function editorScala5Key6() {
 
 function editorScala5Key7() {
     if (editorScala5.currentPress(7, 7)) {
+      setStep(7,7);
         editorScala5.removeLineClass(43, "background", "highlight");
         editorScala5.replaceRange("\nval result = I.toJSon\nprintln(result)\nresult",{line:65, ch:0});
         editorScala5.addLineClass(66, "background", "highlight");   
@@ -851,12 +892,16 @@ function editorScala6Send() {
 
 function editorScala6Key0() {
     editorScala6.currentPress(0, 6);
+    currentSend = editorScala6Send;
+    setStep(0,6);
+
     editorScala6.setValue(contentScala6);
     editorScala6.scrollIntoView(0);
 }
 
 function editorScala6Key1() {
     if (editorScala6.currentPress(1, 6)) {
+      setStep(1,6);
        editorScala6.removeLine(47);
        editorScala6.removeLine(47);
        var value = "I move left by 2\n"
@@ -870,6 +915,7 @@ function editorScala6Key1() {
 
 function editorScala6Key2() {
     if (editorScala6.currentPress(2,6)) {
+      setStep(2,6);
        editorScala6.removeLineClass(47, "background", "highlight");
        editorScala6.removeLineClass(48, "background", "highlight");
 
@@ -881,6 +927,7 @@ function editorScala6Key2() {
 
 function editorScala6Key3() {
     if (editorScala6.currentPress(3, 6)) {
+      setStep(3,6);
       editorScala6.removeLineClass(26, "background", "highlight");
       var value = "      currentDirection = Some(d)\n";
       editorScala6.replaceRange(value,{line:35,ch:0});
@@ -890,6 +937,7 @@ function editorScala6Key3() {
 
 function editorScala6Key4() {
     if (editorScala6.currentPress(4,6)) {
+      setStep(4,6);
        editorScala6.removeLineClass(35, "background", "highlight");
 
        var value = "\n   def by(step:Int) = {\n"
@@ -910,6 +958,7 @@ function editorScala6Key4() {
 
 function editorScala6Key5() {
     if (editorScala6.currentPress(5,6)) {
+      setStep(5,6);
         editorScala6.removeLineClass(42, "background", "highlight");
       editorScala6.removeLineClass(43, "background", "highlight");
       editorScala6.removeLineClass(44, "background", "highlight");
@@ -931,6 +980,7 @@ function editorScala6Key5() {
 
 function editorScala6Key6() {
     if (editorScala6.currentPress(6, 6)) {
+      setStep(6,6);
       editorScala6.removeLineClass(57, "background", "highlight");
        editorScala6.removeLineClass(58, "background", "highlight");
        editorScala6.removeLineClass(59, "background", "highlight");
@@ -1087,12 +1137,16 @@ function editorScala7Send() {
 
 function editorScala7Key0() {
     editorScala7.currentPress(0, 5);
+    currentSend = editorScala7Send;
+    setStep(0,5);
+
     editorScala7.setValue(contentScala7);
     editorScala7.scrollIntoView(0);
 }
 
 function editorScala7Key1() {
     if (editorScala7.currentPress(1, 5)) {
+      setStep(1,5);
        editorScala7.removeLine(57);
        editorScala7.removeLine(57);
        var value = "3.times {\n"
@@ -1110,6 +1164,7 @@ function editorScala7Key1() {
 
 function editorScala7Key2() {
     if (editorScala7.currentPress(2, 5)) {
+      setStep(2,5);
        editorScala7.removeLineClass(57, "background", "highlight");
        editorScala7.removeLineClass(58, "background", "highlight");
        editorScala7.removeLineClass(59, "background", "highlight");
@@ -1129,6 +1184,7 @@ function editorScala7Key2() {
 
 function editorScala7Key3() {
     if (editorScala7.currentPress(3, 5)) {
+      setStep(3,5);
        editorScala7.removeLineClass(7, "background", "highlight");
        editorScala7.removeLineClass(8, "background", "highlight");
        editorScala7.removeLineClass(6, "background", "highlight");
@@ -1145,7 +1201,8 @@ function editorScala7Key3() {
 }
 
 function editorScala7Key4() {
-    if (editorScala7.currentPress(4, 5)) {            
+    if (editorScala7.currentPress(4, 5)) {       
+      setStep(4,5);
        editorScala7.removeLineClass(62, "background", "highlight");
        editorScala7.removeLineClass(63, "background", "highlight");
 
@@ -1167,6 +1224,7 @@ function editorScala7Key4() {
 
 function editorScala7Key5() {
     if (editorScala7.currentPress(5, 5)) {
+      setStep(5,5);
       editorScala7.removeLineClass(11, "background", "highlight");
       editorScala7.removeLineClass(12, "background", "highlight");
       editorScala7.removeLineClass(13, "background", "highlight");
@@ -1234,11 +1292,14 @@ function editorScala8Send() {
 
 function editorScala8Key0() {
     editorScala8.currentPress(0, 4);
+        currentSend = editorScala8Send;
+    setStep(0,4);
     editorScala8.setValue(contentScala8);
 }
 
 function editorScala8Key1() {
     if (editorScala8.currentPress(1,4)) {
+      setStep(1,4);
       editorScala8.replaceRange("\nMyDynamicObject.aProperty //selectDynamic aProperty",{line:22})
       editorScala8.addLineClass(23, "background", "highlight");    
     }
@@ -1246,6 +1307,7 @@ function editorScala8Key1() {
 
 function editorScala8Key2() {
     if (editorScala8.currentPress(2,4)) {
+      setStep(2,4);
       editorScala8.removeLine(22)
       editorScala8.replaceRange("\nMyDynamicObject.anotherProperty=\"someValue\" //updateDynamic",{line:22})
         editorScala8.addLineClass(23, "background", "highlight");    
@@ -1254,6 +1316,7 @@ function editorScala8Key2() {
 
 function editorScala8Key3() {
     if (editorScala8.currentPress(3,4)) {
+      setStep(3,4);
     editorScala8.removeLine(22)
       editorScala8.replaceRange("\nMyDynamicObject.aMethod(\"someArgs\") //applyDynamic",{line:22})
       editorScala8.addLineClass(23, "background", "highlight");    
@@ -1262,6 +1325,7 @@ function editorScala8Key3() {
 
 function editorScala8Key4() {
     if (editorScala8.currentPress(4,4)) {
+      setStep(4,4);
        editorScala8.removeLine(22)
    editorScala8.replaceRange("\nMyDynamicObject.anotherMethod(myArg=\"an Arg\") //applyDynamicNamed",{line:22})
      editorScala8.addLineClass(23, "background", "highlight");    
@@ -1360,12 +1424,15 @@ function editorScalaKissSend() {
 
 function editorScalaKissKey0() {
     editorScala_kiss.currentPress(0, 5);
+        currentSend = editorScalaKissSend;
+    setStep(0,5);
     editorScala_kiss.setValue(contentScala_kiss);
     editorScala_kiss.scrollIntoView(65)
 }
 
 function editorScalaKissKey1() {
     if (editorScala_kiss.currentPress(1, 5)) {
+      setStep(1,5);
       editorScala_kiss.removeLine(48)      
       var value = "\n   def kiss() = println(\"<3 <3\")\n}\n";
       editorScala_kiss.replaceRange(value,{line:48, ch:0});
@@ -1377,6 +1444,7 @@ function editorScalaKissKey1() {
 
 function editorScalaKissKey2() {
     if (editorScala_kiss.currentPress(2, 5)) {
+      setStep(2,5);
       editorScala_kiss.removeLineClass(49, "background", "highlight");    
       var value = "\nI kiss";
       editorScala_kiss.replaceRange(value,{line:60});
@@ -1387,6 +1455,7 @@ function editorScalaKissKey2() {
 
 function editorScalaKissKey3() {
     if (editorScala_kiss.currentPress(3, 5)) {
+      setStep(3,5);
       editorScala_kiss.removeLineClass(61, "background", "highlight");    
       editorScala_kiss.removeLine(49)      
       var value = "   def kiss = println(\"<3 <3\")\n"
@@ -1397,6 +1466,7 @@ function editorScalaKissKey3() {
 
 function editorScalaKissKey4() {
     if (editorScala_kiss.currentPress(4, 5)) {
+      setStep(4,5);
       editorScala_kiss.removeLineClass(49, "background", "highlight");    
       editorScala_kiss.removeLine(61)
       var value = "\ndef kiss = I.kiss _\n"
@@ -1413,6 +1483,7 @@ function editorScalaKissKey4() {
 
 function editorScalaKissKey5() {
     if (editorScala_kiss.currentPress(5, 5)) {
+      setStep(5,5);
       editorScala_kiss.removeLineClass(62, "background", "highlight");    
       editorScala_kiss.removeLineClass(63, "background", "highlight");   
       editorScala_kiss.removeLineClass(65, "background", "highlight");   
@@ -1524,11 +1595,14 @@ function editorScala9TurtleSend() {
 
 function editorScala9Key0() {
     editorScala9.currentPress(0, 1);
+        currentSend = editorScala9Send;
+    setStep(0,1);
     editorScala9.setValue(contentScala9);
 }
 
 function editorScala9Key1() {
     if (editorScala9.currentPress(1, 1)) {
+       setStep(1,1);
        editorScala9.removeLine(68);
        editorScala9.removeLine(68);
        var value = "while(true) {\n"
@@ -1572,11 +1646,14 @@ function editorScala10Send() {
 
 function editorScala10Key0() {
     editorScala10.currentPress(0, 1);
+        currentSend = editorScala10Send;
+    setStep(0,1);
     editorScala10.setValue(contentScala10);
 }
 
 function editorScala10Key1() {
     if (editorScala10.currentPress(1, 1)) {
+       setStep(1,1);
        editorScala10.removeLine(68);
        editorScala10.removeLine(68);
        var value = "I move right by 2\n"
@@ -1675,12 +1752,15 @@ function editorScala_limitActionsSend() {
 
 function editorScala_limitActionsKey0() {
     editorScala_limitActions.currentPress(0, 5);
+        currentSend = editorScala_limitActions;
+    setStep(0,5);
     editorScala_limitActions.setValue(contentScala_limitActions);
     editorScala_limitActions.scrollIntoView(77);
 }
 
 function editorScala_limitActionsKey1() {
     if (editorScala_limitActions.currentPress(1, 5)) {
+      setStep(1,5);
       var value = "\ntrait LimitAction extends Turtle {\n"
                 + "  var counter = 0\n"
                 + "  def reset() = counter = 0\n\n"
@@ -1708,6 +1788,7 @@ function editorScala_limitActionsKey1() {
 
 function editorScala_limitActionsKey2() {
     if (editorScala_limitActions.currentPress(2,5)) {
+      setStep(2,5);
        editorScala_limitActions.removeLineClass(61, "background", "highlight");
        editorScala_limitActions.removeLineClass(62, "background", "highlight");
        editorScala_limitActions.removeLineClass(63, "background", "highlight");
@@ -1728,6 +1809,7 @@ function editorScala_limitActionsKey2() {
 
 function editorScala_limitActionsKey3() {
     if (editorScala_limitActions.currentPress(3,5)) {
+      setStep(3,5);
       editorScala_limitActions.removeLineClass(72, "background", "highlight");
       var value = "I.reset()\n\n";
       editorScala_limitActions.replaceRange(value,{line:76,ch:0});
@@ -1738,6 +1820,7 @@ function editorScala_limitActionsKey3() {
 
 function editorScala_limitActionsKey4() {
     if (editorScala_limitActions.currentPress(4,5)) {
+      setStep(4,5);
       editorScala_limitActions.removeLineClass(76, "background", "highlight");
       var value = "// evaluator.eval(\"I.reset()\")\n";
       editorScala_limitActions.replaceRange(value,{line:77,ch:0});
@@ -1748,6 +1831,7 @@ function editorScala_limitActionsKey4() {
 
 function editorScala_limitActionsKey5() {
     if (editorScala_limitActions.currentPress(5,5)) {
+       setStep(5,5);
        editorScala_limitActions.removeLineClass(77, "background", "highlight");     
        var value = "I move left\nI move left\n\n";
        editorScala_limitActions.replaceRange(value,{line:84,ch:0});
@@ -1814,7 +1898,9 @@ function editorScala11Send() {
 }
 
 function editorScala11Key0() {
-    editorScala11.currentPress(0, 1);
+    editorScala11.currentPress(0, 5);
+        currentSend = editorScala11Send;
+    setStep(0,5);
     editorScala11.setValue(contentScala11);
 }
 
@@ -1836,12 +1922,14 @@ var contentScala11b = "import dslprez.scala.slides._\n"
 
 function editorScala11Key1() {
     if (editorScala11.currentPress(1, 5)) {
+      setStep(1,5);
       editorScala11.setValue(contentScala11b);
     }
 }
 
 function editorScala11Key2() {
     if (editorScala11.currentPress(2, 5)) {
+       setStep(2,5);
        editorScala11.replaceRange("/*\n",{line:5,ch:0})
        editorScala11.replaceRange("*/\n\n",{line:18,ch:0})
        
@@ -1854,7 +1942,7 @@ function editorScala11Key2() {
 
 function editorScala11Key3() {
     if (editorScala11.currentPress(3, 5)) {
- 
+      setStep(3,5);
       editorScala11.removeLineClass(20, "background", "highlight");    
       editorScala11.removeLine(20)
       editorScala11.replaceRange("\n//Turtle print\nTurtle move up\nTurtle print\n",{line:20,ch:0});
@@ -1865,7 +1953,8 @@ function editorScala11Key3() {
 
 function editorScala11Key4() {
     if (editorScala11.currentPress(4, 5)) {
-        editorScala11.removeLine(21)
+      setStep(4,5);  
+      editorScala11.removeLine(21)
       editorScala11.removeLine(21)
       editorScala11.replaceRange("//Turtle move up\n//Turtle print\nTurtle answer \"John\"\nTurtle print\n",{line:21,ch:0});
       editorScala11.addLineClass(23, "background", "highlight");    
@@ -1875,6 +1964,7 @@ function editorScala11Key4() {
 
 function editorScala11Key5() {
     if (editorScala11.currentPress(5, 5)) {
+      setStep(5,5);
       editorScala11.removeLine(23)
       editorScala11.removeLine(23)
       editorScala11.replaceRange("//Turtle answer \"John\"\n//Turtle print\nTurtle answer \"3\"\nTurtle print",{line:23,ch:0});
@@ -1895,5 +1985,3 @@ var keymapScala11 = {
     "5": editorScala11Key5  
 };
 editorScala11.addKeyMap(keymapScala11);
-
-

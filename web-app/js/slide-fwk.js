@@ -1,5 +1,10 @@
 var dslPrez = dslPrez || {};
 
+var currentStep;
+var currentSize;
+var currentSend;
+
+
 dslPrez.Slide = function () {
     var that = this;
     var slides = $('.slide');
@@ -160,7 +165,22 @@ dslPrez.Slide = function () {
         $('#currentTitle').empty().append($(slides[index]).attr('title'));
         var text = "&nbsp;";
         if($(slides[index]).attr('press')) {
-            text = $(slides[index]).attr('press')
+	  if(!currentStep) {
+            text = $(slides[index]).attr('press')+"&nbsp;&nbsp;&nbsp;<span onClick=\"currentSend()\">Submit</span>"
+	  } else {
+	      text = '';
+              for (var i = 1; i <= currentSize ; i++) {
+                 if (i==currentStep) {
+                   text += '<span class="round">';
+                 } else {
+                    text += '<span> ';
+                }
+              text += i;
+               text += '</span>';
+            };
+	    text+="&nbsp;&nbsp;&nbsp;<span onClick=\"currentSend()\">Submit</span>"
+      
+	  }
         }
         $('#currentPress').empty().append(text);
     };
