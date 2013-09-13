@@ -730,7 +730,7 @@ TTP/RT</pre>
     </div>
 </li>
 
-<li class="slide" title="Internal DSL" data-speaker='Pascal'>
+<li class="slide" title="Groovy ... Or Scala" data-speaker='Pascal'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -868,13 +868,11 @@ shell.evaluate(script)
             <!--<p>Each script is an object inheriting from Script base class</p>-->
             <div class="span5">
                 <h3>Scala</h3>
-                 <pre><code style="font-size: 14px" class="language-groovy">new scala.tools.nsc.interpreter.IMain
-</code></pre>
-                <h3>Scala within Grails</h3>
-                 <pre><code style="font-size: 14px" class="language-groovy">
-                    val env = new Settings()
-                    env.usejavacp.value = true
-                    new scala.tools.nsc.interpreter.IMain(env)</code></pre>
+                 <pre><code style="font-size: 14px" class="language-groovy">new scala.tools.nsc.interpreter.IMain</code></pre>
+                 <h3>Scala within Grails</h3>
+                 <pre><code style="font-size: 14px" class="language-groovy">val env = new Settings()
+env.usejavacp.value = true
+new scala.tools.nsc.interpreter.IMain(env)</code></pre>
             </div>
             <!-- http://scabl.blogspot.fr/2013/05/scripting-with-scala-and-sbt.html -->
             <div class="span1">
@@ -970,7 +968,7 @@ especially with Classpath issues - in the next slides we'll use IMain directly
         <div class="span1"></div>
         <div class="span5">
             <h3>Performance</h3>
-            Scala compiler slow<br/>(efficient but slow)<br/>
+            Scala compiler is slow<br/>(efficient but slow)<br/>
             <div style="font-size: 18px">&nbsp;&nbsp;&nbsp;- Does not help in case of script evaluation</div>
             Groovy interpretation is faster<br/>
             <div style="font-size: 18px">&nbsp;&nbsp;&nbsp;- in counterpart less type inference and checking</div>
@@ -1546,7 +1544,8 @@ step 4: change by method to return map
            </div>
            <div class="span5">
               <h3>Arity-1 functions</h3>
-              Functions with a single parameter: Infix operator<br/>
+              Single parameter functions:
+              <div style="font-style:italic">&nbsp;&nbsp;&nbsp;Infix operator</div><br/>
               <div style="color:grey">I move left</div>
               <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left)</div> 
               <br/>
@@ -1555,7 +1554,8 @@ step 4: change by method to return map
            </div>
            <div class="span5">
               <h3>Arity-0 functions</h3>
-              Functions without parameter: Suffix (or Postfix) operator<br/>
+              Without parameter functions:
+              <div style="font-style:italic">&nbsp;&nbsp;&nbsp;Suffix (or Postfix) operator</div><br/>
               <div style="color:grey">I jump</div>
               <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.jump()</div>
               <br/>
@@ -1563,7 +1563,9 @@ step 4: change by method to return map
               <div style="color:grey">I jump<br/>
               I move right //fail
               </div>
-              <div>It fails and need a clear separator: (), empty line or ";"</div>
+              <br/>
+              <div>It fails and need a clear separator:</div>
+              <div style="font-style:italic">&nbsp;&nbsp;&nbsp;(), empty line or ";"</div>
            </div>
             <div class="span1">
            </div>
@@ -1583,9 +1585,13 @@ step 4: change by method to return map
         </div>
         <hr>
        <div class="row-fluid marketing">
-           <div class="span2">
+           <div class="span1">
            </div>
-           <div class="span8" style="line-height:150%;font-size:25px;text-align:left;">
+            <div class="span4">
+            <br/><br/><br/><br/><br/>
+               <img src="img/work.png"/>
+           </div>
+           <div class="span5" style="line-height:150%;font-size:25px;text-align:left;">
                    <div style="color:grey">move left</div>
                    <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=>  move.left()</div>
                    <div style="font-size:20px; font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;possible but not ideal, mixing verbs and noun roles</div>
@@ -1615,9 +1621,13 @@ step 4: change by method to return map
         </div>
         <hr>
        <div class="row-fluid marketing">
-           <div class="span2">
+           <div class="span1">
            </div>
-           <div class="span8" style="line-height:150%;font-size:25px;text-align:left;">
+           <div class="span4">
+            <br/><br/>
+               <img src="img/question.jpg"/>
+           </div>
+           <div class="span5" style="line-height:150%;font-size:25px;text-align:left;">
                    <div style="color:grey">I move left</div>
                    <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
                    <br/>
@@ -2523,7 +2533,7 @@ assert constMap.size() == 1</code></pre>
 Scala11.ask
 <!--------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Franklin wants to ask in Scala" press="1" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Franklin wants to ask in Scala" press="1 2 3 4 5" data-speaker='Pascal'>
     <textarea id="editorScala11" name="editorScala11">
     </textarea>
 </li>
@@ -2845,7 +2855,7 @@ TODO editor or slide to explain
 </li>
 
 
-<li class="slide" title="Testing" data-speaker='Corinne' timing="6750">
+<!--li class="slide" title="Testing" data-speaker='Corinne' timing="6750">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -2881,7 +2891,7 @@ TODO editor or slide to explain
             </div>
         </div>
     </div>
-</li>
+</li-->
 
 <li class="slide" title="Testing in Groovy" data-speaker='Corinne'>
     <div class="container-narrow">

@@ -690,7 +690,7 @@ function editorScala5Key5() {
       editorScala5.removeLineClass(3, "background", "highlight");
       editorScala5.removeLineClass(4, "background", "highlight");
       
-      editorScala5.replaceRange("\nimplicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y)\n",{line:18, ch:0});
+      editorScala5.replaceRange("\nimplicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y) //{x:1,y:1}\n",{line:18, ch:0});
 
       editorScala5.addLineClass(19, "background", "highlight");
     }
@@ -700,7 +700,7 @@ function editorScala5Key6() {
     if (editorScala5.currentPress(6, 7)) {
         editorScala5.scrollIntoView(64);
         editorScala5.removeLineClass(19, "background", "highlight");
-        editorScala5.replaceRange("\n   def toJSon = compact(render(\"steps\"->steps))\n",{line:42, ch:0});
+        editorScala5.replaceRange("\n   def toJSon = compact(render(\"steps\"->steps))  //{steps: [{x:1,y:1}, ...]}\n",{line:42, ch:0});
 	editorScala5.addLineClass(43, "background", "highlight");
     }
 }
@@ -1824,10 +1824,10 @@ var contentScala11b = "import dslprez.scala.slides._\n"
                     + "implicit val I = new Turtle(Position(1,1))\n\n"
 	 	    + "Turtle startDsl {\n"
 	 	    + "   I move right by 2\n"
-		    + "   val name = I ask \"what is your name\\n\"\n"
+		    + "   val name = I ask \"what is your name ?\\n\"\n"
 		    + "   I move up\n"
 		    + "   println(\"Hi \"+name+\"\\n\")\n"
-		    + "   val n = I ask \"how many times up\\n\"\n"
+		    + "   val n = I ask \"how many times up ?\\n\"\n"
 	  	    + "   I move up by n.toInt\n"
 		    + "   println(\"Bye\")\n"
 		    + "   end\n"

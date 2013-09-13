@@ -35,6 +35,9 @@ configuration easier to manage.
 
 Purpose
 =======
+We don't have BaseClass in Scala. Anyway we can mimic that by calling the interpreter interpret
+or eval commands before evaluating the dsl/script itself.
+We'll see few examples later.
 Lets see how we can now binding runtime value and make script interact with embedding application.
 
 Steps
