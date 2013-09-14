@@ -3,17 +3,14 @@ var dslPrez = dslPrez || {};
 /*
  * record current code step
  * */
-var currentStep;
-var currentSize;
+var currentStep=[];
+var currentSize=[];
 
 function setStep(i,size) {
-   currentStep=i;
-   currentSize=size;
-}
-
-function resetSteps() {
-   currentStep=undefined;
-   currentSize=undefined;
+   var selectedSlide = $('.showSlide')[0];
+   var myindex = parseInt($(selectedSlide).attr('indexSlide'));
+   currentStep[myindex]=i;
+   currentSize[myindex]=size;
 }
 
 /*  End record */
@@ -23,7 +20,6 @@ dslPrez.Slide = function () {
     var slides = $('.slide');
     var callEnter = { };
     var callExit = { };
-    var callType = { };
     var slideTime = 500;
 
     var isTouchDevice = function is_touch_device() {
@@ -122,17 +118,10 @@ dslPrez.Slide = function () {
         $(slides[index]).attr('indexSlide', index);
         if (comingFrom >= 0 && callExit[$(slides[comingFrom]).attr('title')] != undefined) {
             callExit[$(slides[comingFrom]).attr('title')]();
-	    if (callType[$(slides[comingFrom]).attr('title')] != callType[$(slides[index]).attr('title')]) {
-	      resetSteps();
-	    }
-        } else {
-           resetSteps();
-	}
+        }
         if (callEnter[$(slides[index]).attr('title')] != null) {
             callEnter[$(slides[index]).attr('title')]();
-        } else {	
-             resetSteps();
-	}
+        } 
         $(slides[index]).slideDown(slideTime, function(){
             if ($(slides[index]).children()[0].type === 'textarea' ) {
                 window[$(slides[index]).children()[0].id].refresh();
@@ -186,12 +175,12 @@ dslPrez.Slide = function () {
         $('#currentTitle').empty().append($(slides[index]).attr('title'));
         var text = "&nbsp;";
         if($(slides[index]).attr('press')) {
-	  if(!currentStep) {
+	  if(!currentStep[index]) {
             text = $(slides[index]).attr('press')
 	  } else {
 	      text = '';
-              for (var i = 1; i <= currentSize ; i++) {
-                 if (i==currentStep) {
+              for (var i = 1; i <= currentSize[index] ; i++) {
+                 if (i==currentStep[index]) {
                    text += '<span class="round">';
                  } else {
                     text += '<span> ';
@@ -204,14 +193,11 @@ dslPrez.Slide = function () {
         $('#currentPress').empty().append(text);
     };
 
-    that.enter = function(title, callbackEnter, callbackExit, type) {
+    that.enter = function(title, callbackEnter, callbackExit) {
         callEnter[title] = callbackEnter;
         if (callbackExit) {
             callExit[title] = callbackExit;
         }
-        if (type) {
-	  callType[title] = type;
-	}
     };
 
     var startProgress  = function (conf){
