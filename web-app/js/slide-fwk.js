@@ -1,15 +1,28 @@
 var dslPrez = dslPrez || {};
 
+/*
+ * record current code step
+ * */
 var currentStep;
 var currentSize;
-var currentSend;
 
+function setStep(i,size) {
+   currentStep=i;
+   currentSize=size;
+}
+
+function resetSteps() {
+   currentStep=undefined;
+   currentSize=undefined;
+}
+
+/*  End record */
 
 dslPrez.Slide = function () {
     var that = this;
     var slides = $('.slide');
-    var callEnter = {};
-    var callExit = {};
+    var callEnter = { };
+    var callExit = { };
     var slideTime = 500;
 
     var isTouchDevice = function is_touch_device() {
@@ -108,10 +121,14 @@ dslPrez.Slide = function () {
         $(slides[index]).attr('indexSlide', index);
         if (comingFrom >= 0 && callExit[$(slides[comingFrom]).attr('title')] != undefined) {
             callExit[$(slides[comingFrom]).attr('title')]();
-        }
+        } else {
+           resetSteps();
+	}
         if (callEnter[$(slides[index]).attr('title')] != null) {
             callEnter[$(slides[index]).attr('title')]();
-        }
+        } else {	
+             resetSteps();
+	}
         $(slides[index]).slideDown(slideTime, function(){
             if ($(slides[index]).children()[0].type === 'textarea' ) {
                 window[$(slides[index]).children()[0].id].refresh();
@@ -166,7 +183,7 @@ dslPrez.Slide = function () {
         var text = "&nbsp;";
         if($(slides[index]).attr('press')) {
 	  if(!currentStep) {
-            text = $(slides[index]).attr('press')+"&nbsp;&nbsp;&nbsp;<span onClick=\"currentSend()\">Submit</span>"
+            text = $(slides[index]).attr('press')
 	  } else {
 	      text = '';
               for (var i = 1; i <= currentSize ; i++) {
@@ -178,8 +195,6 @@ dslPrez.Slide = function () {
               text += i;
                text += '</span>';
             };
-	    text+="&nbsp;&nbsp;&nbsp;<span onClick=\"currentSend()\">Submit</span>"
-      
 	  }
         }
         $('#currentPress').empty().append(text);

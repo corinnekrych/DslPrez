@@ -80,15 +80,6 @@ function submitTurtleFormToScalaConsoleExtended(input, output, canvasId, additio
     submitTurtleFormExtended(input, output, canvasId, "scala",additionalParams);
 }
 
-function setStep(i,size) {
-   currentStep=i;
-   currentSize=size;
-}
-
-function resetSteps() {
-   currentStep=undefined;
-   currentSize=undefined;
-}
 //------------------------------------------------------------------->
 // Scala1. Script
 // step 1 define move method and move to left
@@ -121,7 +112,6 @@ function editorScala1Send() {
 
 function editorScala1Key0() {
     editorScala1.currentPress(0, 5);
-    currentSend = editorScala1Send;
     setStep(0,5);
     editorScala1.setValue(contentScala1);
 }
@@ -272,7 +262,6 @@ function editorScala3Send() {
 
 function editorScala3Key0() {
     editorScala3.currentPress(0, 8);
-    currentSend = editorScala3Send;
     setStep(0,8);
     editorScala3.setValue(contentScala3);
 }
@@ -429,7 +418,6 @@ function editorScala4Send() {
 
 function editorScala4Key0() {
     if (editorScala4.currentPress(0, 7)) {
-       currentSend = editorScala4Send;
        setStep(0,7);
 
        editorScala4.setValue(contentScala4);
@@ -661,7 +649,6 @@ function editorScala5Send() {
 
 function editorScala5Key0() {
     editorScala5.currentPress(0, 7);
-    currentSend = editorScala5Send;
     setStep(0,7);
 
     editorScala5.setValue(contentScala5);
@@ -892,7 +879,6 @@ function editorScala6Send() {
 
 function editorScala6Key0() {
     editorScala6.currentPress(0, 6);
-    currentSend = editorScala6Send;
     setStep(0,6);
 
     editorScala6.setValue(contentScala6);
@@ -1137,7 +1123,6 @@ function editorScala7Send() {
 
 function editorScala7Key0() {
     editorScala7.currentPress(0, 5);
-    currentSend = editorScala7Send;
     setStep(0,5);
 
     editorScala7.setValue(contentScala7);
@@ -1292,7 +1277,6 @@ function editorScala8Send() {
 
 function editorScala8Key0() {
     editorScala8.currentPress(0, 4);
-        currentSend = editorScala8Send;
     setStep(0,4);
     editorScala8.setValue(contentScala8);
 }
@@ -1424,7 +1408,6 @@ function editorScalaKissSend() {
 
 function editorScalaKissKey0() {
     editorScala_kiss.currentPress(0, 5);
-        currentSend = editorScalaKissSend;
     setStep(0,5);
     editorScala_kiss.setValue(contentScala_kiss);
     editorScala_kiss.scrollIntoView(65)
@@ -1595,7 +1578,6 @@ function editorScala9TurtleSend() {
 
 function editorScala9Key0() {
     editorScala9.currentPress(0, 1);
-        currentSend = editorScala9Send;
     setStep(0,1);
     editorScala9.setValue(contentScala9);
 }
@@ -1646,7 +1628,6 @@ function editorScala10Send() {
 
 function editorScala10Key0() {
     editorScala10.currentPress(0, 1);
-        currentSend = editorScala10Send;
     setStep(0,1);
     editorScala10.setValue(contentScala10);
 }
@@ -1752,7 +1733,6 @@ function editorScala_limitActionsSend() {
 
 function editorScala_limitActionsKey0() {
     editorScala_limitActions.currentPress(0, 5);
-        currentSend = editorScala_limitActions;
     setStep(0,5);
     editorScala_limitActions.setValue(contentScala_limitActions);
     editorScala_limitActions.scrollIntoView(77);
@@ -1899,7 +1879,6 @@ function editorScala11Send() {
 
 function editorScala11Key0() {
     editorScala11.currentPress(0, 5);
-        currentSend = editorScala11Send;
     setStep(0,5);
     editorScala11.setValue(contentScala11);
 }

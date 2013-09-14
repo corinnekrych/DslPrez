@@ -66,8 +66,6 @@ dslPrez.editor = function (location, content) {
             content += '</span>';
         };
 	
-	content+="&nbsp;&nbsp;&nbsp;<span onClick=\"currentSend()\">Submit</span>"
-        
 	$('#currentPress').empty().append(content);
 
         return true;

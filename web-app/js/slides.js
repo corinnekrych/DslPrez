@@ -84,12 +84,6 @@ var showGroovyDuke = function() {
     $(document.body).addClass("groovycolor");
 }
 
-var showScalaDukeReset = function() {
-    resetSteps();
-    $('.CodeMirror').addClass("scaladuke");
-    $(document.body).addClass("scalacolor");
-}
-
 var showScalaDuke = function() {
     $('.CodeMirror').addClass("scaladuke");
     $(document.body).addClass("scalacolor");
@@ -97,12 +91,6 @@ var showScalaDuke = function() {
 var removeGroovyDuke = function() {
     $('.CodeMirror').removeClass("groovyduke");
     $(document.body).removeClass("groovycolor");
-}
-
-var removeScalaDukeReset = function() {
-    resetSteps();
-    $('.CodeMirror').removeClass("scaladuke");
-    $(document.body).removeClass("scalacolor");
 }
 
 var removeScalaDuke = function() {
@@ -129,7 +117,7 @@ slide.enter("Groovy Script", showGroovyDuke, removeGroovyDuke);
 slide.enter("Run Groovy Script", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Scala Script", showScalaDuke, removeScalaDuke);
-slide.enter("Run Scala Script", showScalaDuke, removeScalaDukeReset);
+slide.enter("Run Scala Script", showScalaDuke, removeScalaDuke);
 
 slide.enter("Base class in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Base class in Groovy", showGroovyDuke, removeGroovyDuke);
@@ -140,25 +128,25 @@ slide.enter("Binding in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Binding in Groovy", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Binding in Scala", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Binding in Scala", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Binding in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Add Turtle in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Add Turtle in Groovy", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Add Turtle in Scala", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Add Turtle in Scala", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Add Turtle in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Build JSON in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Build JSON in Groovy", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Build JSON in Scala", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Build JSON in Scala", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Build JSON in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Command Chaining in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Command Chaining in Groovy", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Command Chaining in Scala", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Command Chaining in Scala", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Command Chaining in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Odd Chaining in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Odd Chaining in Groovy", showGroovyDuke, removeGroovyDuke);
@@ -167,34 +155,34 @@ slide.enter("kiss or kiss()", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for kiss in Groovy", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Kiss in Scala", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Kiss in Scala", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Kiss in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Adding behaviour to Integer in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Adding behaviour to Integer in Groovy", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Adding behaviour to Integer in Scala", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Adding behaviour to Integer in Scala", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Adding behaviour to Integer in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("TypeChecked in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for TypeChecked in Groovy", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Dynamics in Scala", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Dynamics in Scala", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Dynamics in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Franklin wants to turn around in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Franklin wants to turn around in Groovy", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Franklin wants to turn around in Scala",showScalaDuke, removeScalaDuke);
-slide.enter("Output for Franklin wants to turn around in Scala", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Franklin wants to turn around in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Franklin wants to play with fire in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Franklin wants to play with fire in Groovy", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Franklin wants to play with fire in Scala", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Franklin wants to play with fire in Scala", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Franklin wants to play with fire in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Franklin has a limited number of actions", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Franklin has a limited number of actions", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Franklin has a limited number of actions", showScalaDuke, removeScalaDuke);
 
 slide.enter("Franklin wants to ask in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Franklin wants to ask in Groovy", showGroovyDuke, removeGroovyDuke);
@@ -203,7 +191,7 @@ slide.enter("AST Tranformation", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output AST", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Franklin wants to ask in Scala", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Franklin wants to ask in Scala", showScalaDuke, removeScalaDukeReset);
+slide.enter("Output for Franklin wants to ask in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Groovy Builder", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Groovy Builder", showGroovyDuke, removeGroovyDuke);
