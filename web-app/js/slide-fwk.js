@@ -23,6 +23,7 @@ dslPrez.Slide = function () {
     var slides = $('.slide');
     var callEnter = { };
     var callExit = { };
+    var callType = { };
     var slideTime = 500;
 
     var isTouchDevice = function is_touch_device() {
@@ -121,6 +122,9 @@ dslPrez.Slide = function () {
         $(slides[index]).attr('indexSlide', index);
         if (comingFrom >= 0 && callExit[$(slides[comingFrom]).attr('title')] != undefined) {
             callExit[$(slides[comingFrom]).attr('title')]();
+	    if (callType[$(slides[comingFrom]).attr('title')] != callType[$(slides[index]).attr('title')]) {
+	      resetSteps();
+	    }
         } else {
            resetSteps();
 	}
@@ -200,11 +204,14 @@ dslPrez.Slide = function () {
         $('#currentPress').empty().append(text);
     };
 
-    that.enter = function(title, callbackEnter, callbackExit) {
+    that.enter = function(title, callbackEnter, callbackExit, type) {
         callEnter[title] = callbackEnter;
         if (callbackExit) {
             callExit[title] = callbackExit;
         }
+        if (type) {
+	  callType[title] = type;
+	}
     };
 
     var startProgress  = function (conf){
