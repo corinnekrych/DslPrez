@@ -1,22 +1,11 @@
-#####################################
-#####################################
-#                                   #
-#         Slide #24 Script          #
-#                                   #
-#####################################
-#####################################
+#### Script Editor24 3##################################################################################################
 
 A few words on the format of our tutorial
 Grails app, controller on server to evaluate Groovy and Scala Script
 Client side we use code mirror to show you step by step how to achieve
 Be carefull using 1..2 key but othe than that you can enter you own code and test it
 
-Purpose
-=======
 Lets see how we can embed and evaluate Groovy script.
-
-Users will submit piece of code that will be evaluated and interact on the DSL
-Let's see how we can handle that
 
 Steps
 =====
@@ -28,45 +17,23 @@ step 3 replace shell by ScriptEngineMgr from jsr 223
        Remember Pascal talking bout jsr223 javax.script package
 step 4 replace by engine.eval
        and evaluate get replaced by eavl, very similar concept
-Final comments
-==============
+
 Easy peasy no far.
 
-29:291
-#####################################
-#####################################
-#                                   #
-#         Slide #31 Script          #
-#         Base class                #
-#                                   #
-#####################################
-#####################################
+#### compil conf Slide ########################################################33333####################################
 
-Steps
-=====
-step 0 Lets restart from a previous step, I want ot m
-step 1 define base class 2
-step 2 highlight move method
-step 3 remove move definition in script
-step 4 introduce compilerConfiguration:
-       - I create compile conf,
-       - set the baseclass
-step 5 inject it in groovy shell
+slide  #28        => Pascal explains the challenges of Scripting
+slide  #29        => Corinne: But Pascal, in our script we define the move method and left variable each time,
+                     I obviously want to extract those from my script
+                     I want to define the move method in a separate class and then use it in my script
+                     so my script should only contain "move left"
+                     How can we do it? it brings us to the topic of binding and Shell config
+slide  #30        => In groovy, one way to extract the move method from the script is to use BaseClass
+                     To define a new Baseclass we use Compiler configuration
+                     also can be used to imports/static import for our script
+                     and we'll see later how to use compil conf to define AST customizer
 
-Final comments
-==============
-not very complicated
-but already our script looks much cleaner
-we already have a sense of fluency
-Lets carry on with binding
-
-#####################################
-#####################################
-#                                   #
-#         Slide #33 Binding         #
-#                                   #
-#####################################
-#####################################
+#### Binding Editor33 ##################################################################################################
 
 Steps
 =====
@@ -79,23 +46,19 @@ step 1 introduce right in binding
 step 2 add move right command
        right is just available
 
-Final comments
-==============
 Different way of achieving the same result either by
 - for left: we define a property of a script base class
 - for right it's a binding. a map of variable. we will see later we could also put int the binding a
 Groovy object, a method
 
-#####################################
-#####################################
-#                                   #
-#         Slide #38 Turtle          #
-#                                   #
-#####################################
-#####################################
+#### Semantic Slide 333#################################################################################################
 
-Purpose
-=======
+slide  #37        => Pascal explains that now we will enrich the DSL by creating Turtle and move
+                     It's always a good idea to decouple Semantic model vs Syntax of the DSL
+                     to evolve the model and the lg separately
+
+#### Turtle Editor 38 3#################################################################################################
+
 As Pascal said it's better to deciple your semantic from your syntax.
 What is our semantic model here ? we need a turtle that move on different position
 
@@ -118,21 +81,15 @@ step 6 I wan to change my binding to inject
 step 7 highlight
 step 8 remove GameScript base class, here I use binding only
 
-Final comments
-==============
-Here we are with our a turtle that can move.
-What about in Scala?
+Here we are with our a turtle that can move. What about in Scala?
 
-#####################################
-#####################################
-#                                   #
-#         Slide #44 JSon            #
-#                                   #
-#####################################
-#####################################
+#### Json Slide ########################################################################################################
 
-Purpose
-=======
+slide  #43        => Pascal explains then that the DSL in itself does not handle UI. Everything inside the UI on client
+                     side communicating thanks to JSON.
+
+#### Json Editor 44 ####################################################################################################
+
 Instead of printing the moves, now lets generate JSon structure of the moves that will be
 consumed and displayed on UI Side.
 As Pascal explained in our json, we want to have a list of steps to describe all my turtle moves
@@ -151,20 +108,22 @@ step 5 add json builder
 step 6 highlight: going back to our dsl
 step 7 mix plain groovy + DSL 4.times {move left} to have a nice upstairs effect
 
-Final comments
-==============
 We made good progress. We start to see our turtle moving. Isn't it Cool Pascal. show us the turtle goove in Scala :)
 
-#####################################
-#####################################
-#                                   #
-#    Slide #50 Command chaining     #
-#                                   #
-#####################################
-#####################################
+#### Syntax Slide ######################################################################################################
 
-Purpose
-=======
+slides #48 - 49   => Corinne: now that we have the semantic for the move, lets focus on the syntax
+                     command chaining is a the key pattern to
+                     enhance the syntax to to sound like plain english
+                     Method chaining is a design pattern where each method return itself allowing method call chaining
+                     As we saw earlier (part I), heavily used for fluent API
+                     So if we take wht we've seen earlier
+                     move left
+                     we'll add
+                     move left by 2
+
+#### Cmd Chaining Editor 50 ############################################################################################
+
 Now we are going to enrich the DSL with command chaining
 we want to express we can move more than on step at a time
 like move left by 2
@@ -179,24 +138,20 @@ step 5: remove steps.add from turtle move
 step 6: add steps.add to turtle by
 step 7: change new Position to add direction
 
-Final comments
-==============
-cool we're seen how to chain methods call with its argument, how would you do it with odd numbers
+Cool we're seen how to chain methods call with its argument, how would you do it with odd numbers
 
-#####################################
-#####################################
-#                                   #
-#          Slide #53 odd chaining   #
-#                                   #
-#####################################
-#####################################
+#### Odd Number Slide ##################################################################################################
+
+slide  #52        => Pascal asks about odd numbers
+
+#### Odd Number Editor 53 ##############################################################################################
 
 Purpose
 =======
 Several options:
-->use categories->se in moredetails later
-->named parameters, you can't skip the comma
-->using map return
+-> use categories->se in more details later
+-> named parameters, you can't skip the comma
+-> using map return
 
 Steps
 =====
@@ -205,20 +160,20 @@ step 2: into that: move left by 2 steps
 step 3: highlight by method : the by method instead of returning a Turtle will return a Map
 step 4: change by to return map with silent word: steps/step
 
-Final comments
-==============
+slide  #55        => Pascal discusses Scala Syntax in order to chain command
+slides #56 - 57   => And evaluates DSL options. At the end the last proposal is chosen.
 
-#####################################
-#####################################
-#                                   #
-#          Slide #61 kiss           #
-#                                   #
-#####################################
-#####################################
+#### Kiss Slide ########################################################################################################
 
-Purpose
-=======
+slide  #60        => Corinne introduces the kiss;
+                     coming back to syntax tweak:
+                     in Groovy your can have kiss refere to kiss() methos call.
+                     without parameters you cn not omit parenthesis
+                     but there is ways around that
+                     let me show you first I explain afterwards
 
+
+#### Kiss Editor 61 ####################################################################################################
 
 Steps
 =====
@@ -231,49 +186,60 @@ step 6 comment binding
 step 7 define property missing: I treat kiss as porperty and then do a method call
 step 8 add baseclass into compiler configuration
 
-Final comments
-==============
+#### MOP Slide #########################################################################################################
 
-#####################################
-#####################################
-#                                   #
-#       Slide #68 Category          #
-#                                   #
-#####################################
-#####################################
+slide  #63        => In the kiss ex I've used the dynamic nature of Groovy
+                     - All Groovy class inherits from GroovyObject which defines an invokeMethod
+                     - Since 1.5, Groovy supports the concept of "methodMissing".
+                     This differs from invokeMethod in that it is only invoked in the case of failed method dispatch.
+                     - show you an ex of using methodMissing with dynamic method registration with dynamic finders in G
+                     . in MethodMissing interceptor we register on the fly the method (with ExpandoMetaClass)
+                     if within a list of valid method
+                     . and then we actually call it
+                     . so the next time we invoke the method we wont go int Method Missing
+                     Dynamic Finders in grails are like findAllByTitleAndAuthor
+                     how would you deal with Kissing in Scala?
 
-Purpose
-=======
+#### Category & Implicits Slide ########################################################################################
+
+slide  #67        => Corinne: we might enrich classes behavior with Category or implicits
+                     we show you how to do it in a dynamic way with category for Groovy
+                     and with implicits in Scala
+
+#### Category Editor 68 ################################################################################################
+
 We just want to add dynamically some method to integer
 
 Steps
 =====
 step1: highlight dsl : we want to change from
 step2: move left by 2.steps  : to 2.steps, 2 is int and doesn't have steps attributes
-step3: add class StepCategory : the static method have one argumetns which an internal arg to speciafy which
+step3: add class StepCategory : the static method have one arguments which an internal arg to specify which
        class we want to extend
        we add step method and we don't do much, like silent word
 step4: highlight shell.eval
 step5: modify shell.eval with use() : to scope where the category apply you have to surround it with use (StepCategory)
-       we do it jsut before eval not inside the script to keep lean
+       we do it just before eval not inside the script to keep lean
 step6: highlight class StepCategory  : another way to do it with annotation
 step7: replace with @Category annotation
 
-Final comments
-==============
 we've seen how to dynamically enhance integer we can also do it statically with extension introduce in Groovy 2
 we'll see later how to type check our DSL and how to use extension
 
-#####################################
-#####################################
-#                                   #
-#         Slide #74 TypeCheck       #
-#                                   #
-#####################################
-#####################################
+#### TypeCheck Slide  ##################################################################################################
 
-Purpose
-=======
+slide  #72        => Pascal reminds that it is important to secure the script because script writer could be malicious
+                     or distracted
+slide  #73        => Corinne
+                     - for our script users ie: kids, spelling it right is a challenge by itself.
+                     let's be kind and give them some help, type checking their DSL scripts
+                     - Since Groovy 2.0, you can use @TypeChecked annotation to activate type checking.
+                     at different level of granularity: class, method.. or script
+                     - Type checking extensions from Groovy 2.1 allow developers of a DSL engine to
+                     type checking their DSL. Fail fast principle,
+                     and  provide feedback to the user (including nice error messages).
+
+#### TypeCheck Editor 74 ###############################################################################################
 
 Steps
 =====
@@ -292,18 +258,17 @@ Told you it's easy to build DSL
 In a TC ext you can access AST tree to query etc... Do not modify AST
 - it's a groovy file that should be present in the cp, more used as a resource
 
+slides 77         => Corinne: a more general not on ext, remember we talk about category to dynamically add behaviour to
+                     existing class? we can do it using ext, as for TC ext, you add them in your cp
+                     preferred technique when working on TC DSL.
+slide  #78        => Pascal explains we don't need that in Scala because it is naturally strongly typed. What is fun is
+                     that while Groovy is adding type checking, Scala has added Dynamics. It already had structural
+                     typing to safely mimic duck typing of dynamic languages.
+slides #79 - 80   => Code /Separate dedicated file
 
-#####################################
-#####################################
-#                                   #
-#       Slide #81 System.exit       #
-#                                   #
-#####################################
-#####################################
+#### Exit Editor 81 ####################################################################################################
 
-Purpose
-=======
-snikey hacker
+sneaky hacker
 
 Steps
 =====
@@ -311,19 +276,7 @@ step 1: highlight dsl
 step 2: add system.exit
 step 3: add SecureASTCustomizer
 
-Final comments
-==============
-
-#####################################
-#####################################
-#                                   #
-#        Slide #86 while(true)      #
-#                                   #
-#####################################
-#####################################
-
-Purpose
-=======
+#### Infinite Loop Editor 86  ##########################################################################################
 
 Steps
 =====
@@ -332,30 +285,25 @@ step2: modify dsl with infinite loop
 step3: highlight ASTTransformationCustomizer
 step4: add TimeInterrupt : for 5 sec ... and now we have to count
 
-Final comments
-==============
-Very easy with predenined ASTtransformation customizers
+Very easy with predenfined ASTtransformation customizers
 you just use them
 
-#####################################
-#####################################
-#                                   #
-#         Slide #95 AST transform   #
-#                                   #
-#####################################
-#####################################
+#### Game Rule Slide  ##################################################################################################
 
-Purpose
-=======
-We saw how to use predefines AST transform customizer
+slide  #91        => Pascal explains that traits mixin can be an alternative to decorate behavior and creating interceptors
+slide  #92        => But let's see that with the game rule that restrict the number of actions to 3
+
+#### Game Rule Editor 95  ##################################################################################################
+
+We saw how to use predefined AST transform customizer
 How would you feel about writing your own?
 it's not that difficult.
 
 Steps
 =====
 step1: add your class extending CompilationCustomizer
-step2: add it to compilerconfig
-step3: add some body contnet inside overriden call method
+step2: add it to compiler config
+step3: add some body content inside overriden call method
        get the AST
        find thw run method of my script
        collect all block statement inside the run mrthod
@@ -365,24 +313,19 @@ step5: Add MathodCallVisitor
        we need to write our custom visitor and overload  visitMthodCallExpression
 step6: Add body to visitMethodCallExpr
 
-Final comments
-==============
 Here I show you how to count I don't really move nodes and block sturture, but you can
 With Great power came great responsabilities
 Don't over abuse transformation
 
-#####################################
-#####################################
-#                                   #
-#         Slide #99 Ask             #
-#                                   #
-#####################################
-#####################################
+#### Ask Slide  ########################################################################################################
 
-Purpose
-=======
+slide  #97        => Corinne:
+                     we could try to add some interaction.
+                     fun part of the game
+                     elaborate strategy to move the meeting point
+slide  #98        => and explains how to deal with in Groovy
 
-
+#### Ask Editor 99  ####################################################################################################
 Steps
 =====
 step1: insert DSL ask
@@ -396,7 +339,14 @@ step3: add propertyMissingMethod for the silent word 'to'
 step4: add display map method
 step5: add display map in DSL
 
-Final comments
-==============
+
+#### Play Slide   ######################################################################################################
+slide  #101       => Pascal talks about Continuation as a complicated beast.
+                     Example are generally not very explicit.
+                     Pascal suggests he wanted to take this opportunity to play with continuations.
+slides #102 - 103 => Code /Separate dedicated file
+slide  #104       => Corinne concludes: now that we have seen these different pieces of code.
+                     Let's put everything together and let's play.
+
 
 

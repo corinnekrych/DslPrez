@@ -7,12 +7,10 @@ slide  #0         => - Goal:Hello, we're here today for a tutorial session to se
                      - In order to evaluate the differences that the underlying languages offer we picked two different
                      languages that can be seen as theoretically strongly opposed using very different paradigms.
                      Lets see our detailed agenda
-1:30
 slide  #1         => Corinne starts the Agenda, up to part II
                      Pascal finishes with part III and Conclusion
-3
 Transition 1->2   => Pascal asks Corinne: but before maybe we can introduce ourselves. Ladies first please
-slide  #2         => skip
+### Introduction ################################################################################################
 slide  #3         => Corinne introduces herself
                      over 15 years of experience in IT,
                      notice from accent lived South of France
@@ -23,15 +21,12 @@ slide  #3         => Corinne introduces herself
                      work for AeroGear mobile enterprise suite for RH.
                      female geek and supporter Duchess France
                      use to be freelance consultant for Amadeus in Sophia Antipolis where I met my geek friend
-4:20
 slide  #4         => Pascal introduces himself
                      Architect in e-commerce solutions at Amadeus with 12 years of experience in IT
                      Like mountaineering and video games and when I have some free time left, 
                      curious about programming languages,and storage solutions
                      Recently converted to BSD (PC-BSD rocks)
                      Regular participant to Scala and Clojure User Group
-                     Proposal: joke: not a big fan of cat therefore there won't be any cat in this prez.
-5:22
 Transition 4->5   => Pascal: You are here mainly to hear about DSLs. So first let's give you some Context
 slide  #5         => Pascal starts explaining inside Amadeus the Scripting engine role
                      Amadeus is a leading provider of IT solutions for travel and leisure. It targets both
@@ -49,9 +44,8 @@ slide  #5         => Pascal starts explaining inside Amadeus the Scripting engin
                      Kissing Turtles is a mobile game using 3musket33rs Grails plugins
                      - Obviously, we were lucky to have testers on board. Kids can participate in hackathon :)
                      => that was the genesis of KT.
-
 Transition 5->6   => Pascal interrupts Corinne to ask her if she would mind giving us an overview of how we can define DSLs
-slide  #6         => skip
+### Part I ######################################################################################################
 slides #7 - 11    => Corinne:
                      - DSL stands for Domain Specific language, but lets try to get clear grasp on it.
                      - From Martin Fowler: a computer programming ld of limited expressiveness focused on a particular domain
@@ -73,7 +67,6 @@ slides #7 - 11    => Corinne:
                      you may say it's a group  of several DSLs or it's an expressive DSL.
                      wdyt Pascal?
                      Pascal: So, we've got definition (actually 2), great! But you know what Corinne:
-12:09
 slides #12 - 13   => "boundaries are blurry". There is no clear distinction between a DSL and a good API.
                      What is important in a DSL is its expressiveness to describe in a simple and human readable way a process flow.
                      One of the key advantage of using a DSL is to share a common metaphor (notion borrowed from Agile development).
@@ -90,7 +83,6 @@ slides #12 - 13   => "boundaries are blurry". There is no clear distinction betw
                      - lack of support for IDE (some suport on Eclipe/intellij) but not so much for web based editor
                      - cost of building
                      Pascal says: Our presentation is about embedded DSL, what does that mean?
-15
 slides #14        => Corinne
                      DSl comes in different varieties.
                      Very often we distinguish 2 kinds of DSL, we also talked about the third type
@@ -112,8 +104,7 @@ slides #14        => Corinne
                      Language users manipulate a DSL through a projectional editor.
                      lg workbench allows you to define a parser and a IDE at the same time
                      support for diagrammatic lgs.
-slides #15        => Corinne
-                     To go deeper on embedded DSL, Debasish Ghosh, we can differentiate between
+slides #15        => Corinne : oo go deeper on internal DSL, Debasish Ghosh, we can differentiate between
                      purely embedded DSL where you write explicitly the DSL.
                      and the generative category where code is generated either runtime or compile time
                      In this embedded category, there is different techniques you use
@@ -122,7 +113,6 @@ slides #15        => Corinne
                      - or Type embedding we'll explore in Scala
                      - on dynamic side, reflective metaprogramming with the MOP usage in Groovy
                      so we talked about Ext vs Int, what's our choices?
-19:30
 slide  #16        => Pascal explains that it is generally simpler to use an Internal DSL because it can take advantage
                      of an enclosing existing language. Designing an External DSL is not so easy and it requires some grammar
                      specifications. In this Tuto, we are going to mainly focus on Internal DSLs.
@@ -144,7 +134,7 @@ slide  #18        => Corinne details Groovy features.
                      runtime transformation MOP
                      compile time compilation AST
 slides #19        => Pascal details Scala features.
-24
+#### Part II ######################################################################################################
 Transition 19->20 => Pascal says that now we can start to dive into the DSL details
 slides #20 - 21   => Corinne introduces the game, the target the rules
                      - this is how the gameboard looks like:
@@ -162,119 +152,18 @@ slides #20 - 21   => Corinne introduces the game, the target the rules
 slides #22 - 23   => Pascal explains that first as players will submit DSL, we need to evaluate the DSL inside the running
                      application. There exist different options. 
                      Introduce Groovy, Scala, JSR
-                     And lets see how we can do in Groovy
-slide  #24 - 27   => Code /Separate dedicated file
-slide  #28        => Pascal explains the challenges of Scripting
-slide  #29        => Corinne: But Pascal, in our script we define the move method and left variable each time,
-                     I obviously want to extract those from my script
-                     I want to define the move method in a separate class and then use it in my script
-                     so my script should only contain "move left"
-                     How can we do it? it brings us to the topic of binding and Shell config
-slide  #30        => In groovy, one way to extract the move method from the script is to use BaseClass
-                     To define a new Baseclass we use Compiler configuration
-                     also can be used to imports/static import for our script
-                     and we'll see later how to use compil conf to define AST customizer
-slides #31 - 36   => Code /Separate dedicated file
-slide  #37        => Pascal explains that now we will enrich the DSL by creating Turtle and move
-                     It's always a good idea to decouple Semantic model vs Syntax of the DSL
-                     to evolve the model and the lg separately
-slides #38 - 42   => Code /Separate dedicated file
-48
-slide  #43        => Pascal explains then that the DSL in itself does not handle UI. Everything inside the UI on client side
-                     communicating thanks to JSON.
-slides #44 - 47   => Code /Separate dedicated file
-55
-slides #48 - 49   => Corinne: now that we have the semantic for the move, lets focus on the syntax
-                     command chaining is a the key pattern to
-                     enhance the syntax to to sound like plain english
-                     Method chaining is a design pattern where each method return itself allowing method call chaining
-                     As we saw earlier (part I), heavily used for fluent API
-                     So if we take wht we've seen earlier
-                     move left
-                     we'll add
-                     move left by 2
-slides #50 - 51   => Code /Separate dedicated file
-slide  #52        => Pascal asks about odd numbers
-slides #53 - 54   => Code /Separate dedicated file
-slide  #55        => Pascal discusses Scala Syntax in order to chain command
-slides #56 - 57   => And evaluates DSL options. At the end the last proposal is chosen.
-slides #58 - 59   => Code /Separate dedicated file
-slide  #60        => Corinne introduces the kiss;
-                     coming back to syntax tweak:
-                     in Groovy your can have kiss refere to kiss() methos call.
-                     without parameters you cn not omit parenthesis
-                     but there is ways around that
-                     let me show you first I explain afterwards
-slides #61 - 62   => Code /Separate dedicated file
-slide  #63        => Corinne explains MOP
-                     In the kiss ex I've used the dynamic nature of Groovy
-                     - Each Goovy class inherits from GroovyObject which define an invokeMethod
-                     - Since 1.5, Groovy supports the concept of "methodMissing".
-                     This differs from invokeMethod in that it is only invoked in the case of failed method dispatch.
-                     - show you an ex of using methodMissing with dynamic method registration with dynamic finders in G
-                     . in MethodMissing interceptor we register on the fly the method (withExpandometaclass)
-                     if within a list of valid method
-                     . and then we actually call it
-                     . so the next time we invoke the method we wont go int Method Missing
-                     Dynamic Finders in grails are like findAllByTitleAndAuthor
-                     how would you deal with Kising in Scala?
-slide  #64        => Pascal says: Lets kiss in Scala
-slides #65 - 66   => Code /Separate dedicated file
-slide  #67        => Corinne: we might enrich classes behavior with Category or implicits
-                     we show you how to do it in a dynamic way with category for Groovy
-                     and with implits in Scala
-slides #68 - 71   => Code /Separate dedicated file
-1:20
-slide  #72        => Pascal reminds that it is important to secure the script because script writer could be malicious or distracted
-slide  #73        => Corinne
-                     - for our script users ie: kids, spelling it right is a challenge by itself.
-                     let's be kind and give them some help, type checking their DSL scripts
-                     - Since Groovy 2.0, you can use @TypeChecked annotation to activate type checking.
-                     at different level of granularity: class, method.. or script
-                    - Type checking extensions from Groovy 2.1 allow developers of a DSL engine to
-                    type checking their DSL. Fail fast principle,
-                    and  provide feedback to the user (including nice error messages).
-slides #74 - 76   => Code /Separate dedicated file
-slides 77         => Corinne: a more general not on ext, remember we talk about category to dynamically add behaviour to
-                     existing class? we can do it using ext, as for TC ext, you add them in your cp
-                     preferred technique when working on TC DSL.
-1:24
-slide  #78        => Pascal explains we don't need that in Scala because it is naturally strongly typed. What is fun is that
-                     while Groovy is adding type checking, Scala has added Dynamics. It already had structural typing to safely
-                     mimic duck typing of dynamic languages.
-slides #79 - 80   => Code /Separate dedicated file
-slide  #81        => Pascal asks and for malicious users ?
-slides #82 - 85   => Code /Separate dedicated file
-slide  #86        => Pascal says that we need also to prevent users from creating infinite loops
-slides #87 - 90   => Code /Separate dedicated file
-slide  #91        => Pascal explains that traits mixin can be an alternative to decorate behavior and creating interceptors
-1:30
-slide  #92        => But let's see that with the game rule that restrict the number of actions to 3
-slides #93 - 96   => Code /Separate dedicated file
-1:35
-slide  #97        => Corinne:
-                     we could try to add some interaction.
-                     fun part of the game
-                     elaborate strategy to move the meeting point
-slide  #98        => and explains how to deal with in Groovy
-slides #99 - 100  => Code /Separate dedicated file
-slide  #101       => Pascal talks about Continuation as a complicated beast.
-                     Example are generally not very explicit.
-                     Pascal suggests he wanted to take this opportunity to play with continuations.
-slides #102 - 103 => Code /Separate dedicated file
-slide  #104       => Corinne concludes: now that we have seen these different pieces of code.
-                     Let's put everything together and let's play.
+                     And lets see how we can do in Groovy .............
+#### Part III #####################################################################################################
 slide  #105       => Pascal explains that now, we just will enlarge the scope and talk about additional features.
-1:44
 slides #106 - 110 => Corinne:
                      to be complete we have to talk a  markup builder
-                     we've seen the usage of JsonBuilder and I told you it's very easy to build your own MArkupBuilder
-                     what are they for? separate cosntruction from representation
+                     we've seen the usage of JsonBuilder and I told you it's very easy to build your own MarkupBuilder
+                     what are they for? separate construction from representation
                      reuse construction
-                     easely implement it with invokeMethod and delegate scope
+                     easily implement it with invokeMethod and delegate scope
                      I'll show you
                      in the dsl, the first arg of my method is the next closure
-                     in invoke method, I just change the delegate of the nect closure to be the builder
+                     in invoke method, I just change the delegate of the next closure to be the builder
                      What about Type checking a markup builder? Mixing dynamic features with static TC?
                      => Possible but... AST transform to the rescue
 slide  #111       => Pascal describes the Scala features that were not used in the game use cases
@@ -287,12 +176,12 @@ slide  #112       => Pascal now explains that we have alternative with External 
 
 slide  #113       => Corinne describes workbench
                      We've already talked about it
-                     want to show you an ex in the Kid programminf filed, Scartch
+                     want to show you an ex in the Kid programming field, Scratch
                      where you use shape combined with textual information like the repeat block
 slide  #114       => Corinne then talks about Internationalization
                      Je parle francais / Hablo espanol: not the same number of words!
                      Internationalization brings challenges
-                     - either with early ASt tranfrom at syntax level (CST) and the repace a word or goup of words
+                     - either with early ASt transfrom at syntax level (CST) and the replace a word or group of words
                      - or having your semantic and dsl syntax decoupled
 Transition 114 - 115 => Pascal interrupts Corinne: Fine Corinne, anyway let's focus back on Internal DSL. And as a Developper, I have
                         concerns. First I am a strong believer in TDD. How can I test my DSL.
@@ -307,9 +196,3 @@ slide  #120       => Corinne starts saying no one language solves all the proble
                      and consider other languages.
 slide  #121       => Together: and have fun!
                      It has been a fair battle between Groovy and Scala. There is one single winner: the JVM.
-
-
-                   val d = I ask "direction"
-                   val n = I ask "how much"
-
-                   I move d by n.toInt.steps
