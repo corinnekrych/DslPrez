@@ -1,10 +1,25 @@
 var dslPrez = dslPrez || {};
 
+/*
+ * record current code step
+ * */
+var currentStep=[];
+var currentSize=[];
+
+function setStep(i,size) {
+   var selectedSlide = $('.showSlide')[0];
+   var myindex = parseInt($(selectedSlide).attr('indexSlide'));
+   currentStep[myindex]=i;
+   currentSize[myindex]=size;
+}
+
+/*  End record */
+
 dslPrez.Slide = function () {
     var that = this;
     var slides = $('.slide');
-    var callEnter = {};
-    var callExit = {};
+    var callEnter = { };
+    var callExit = { };
     var slideTime = 500;
 
     var isTouchDevice = function is_touch_device() {
@@ -106,7 +121,7 @@ dslPrez.Slide = function () {
         }
         if (callEnter[$(slides[index]).attr('title')] != null) {
             callEnter[$(slides[index]).attr('title')]();
-        }
+        } 
         $(slides[index]).slideDown(slideTime, function(){
             if ($(slides[index]).children()[0].type === 'textarea' ) {
                 window[$(slides[index]).children()[0].id].refresh();
@@ -160,7 +175,20 @@ dslPrez.Slide = function () {
         $('#currentTitle').empty().append($(slides[index]).attr('title'));
         var text = "&nbsp;";
         if($(slides[index]).attr('press')) {
+	  if(!currentStep[index]) {
             text = $(slides[index]).attr('press')
+	  } else {
+	      text = '';
+              for (var i = 1; i <= currentSize[index] ; i++) {
+                 if (i==currentStep[index]) {
+                   text += '<span class="round">';
+                 } else {
+                    text += '<span> ';
+                }
+              text += i;
+               text += '</span>';
+            };
+	  }
         }
         $('#currentPress').empty().append(text);
     };

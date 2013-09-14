@@ -65,7 +65,8 @@ dslPrez.editor = function (location, content) {
             content += i;
             content += '</span>';
         };
-        $('#currentPress').empty().append(content);
+	
+	$('#currentPress').empty().append(content);
 
         return true;
     }

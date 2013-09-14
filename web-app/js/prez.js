@@ -92,11 +92,13 @@ var editorGroovy1 = new dslPrez.editor("editorGroovy1", content1);
 
 function editorGroovy1Key0() {
     editorGroovy1.currentPress(0, 4);
+    setStep(0,4);
     editorGroovy1.setValue(content1);
 }
 
 function editorGroovy1Key1() {
     if (editorGroovy1.currentPress(1, 4)) {
+      setStep(1,4);
         var value = "def move(direction) {\n"
             + "    println \"moving $direction\"\n"
             + "}\n"
@@ -116,6 +118,7 @@ function editorGroovy1Send() {
 
 function editorGroovy1Key2() {
     if (editorGroovy1.currentPress(2, 4)) {
+        setStep(2,4);
         editorGroovy1.removeLineClass(5, "background", "highlight");
         editorGroovy1.removeLineClass(6, "background", "highlight");
         editorGroovy1.removeLineClass(7, "background", "highlight");
@@ -130,6 +133,7 @@ function editorGroovy1Key2() {
 }
 function editorGroovy1Key3() {
     if (editorGroovy1.currentPress(3, 4)) {
+        setStep(3,4);
         editorGroovy1.removeLineClass(8, "background", "highlight");
         var value = "def engine = new javax.script.ScriptEngineManager()\n                 .getEngineByName(\"groovy\")"
         editorGroovy1.replaceRange(value, {line:1, ch:0}, {line:1}) ;
@@ -139,6 +143,7 @@ function editorGroovy1Key3() {
 
 function editorGroovy1Key4() {
     if (editorGroovy1.currentPress(4, 4)) {
+        setStep(4,4);
         editorGroovy1.removeLineClass(1, "background", "highlight");
         var value = "def result = engine.eval gameDSL"
         editorGroovy1.replaceRange(value, {line:14, ch:0}, {line: 14}) ;
@@ -190,11 +195,13 @@ var editorGroovy2 = new dslPrez.editor("editorGroovy2", content2);
 
 function editorGroovy2Key0() {
     editorGroovy2.currentPress(0, 5);
+    setStep(0,5);
     editorGroovy2.setValue(content2);
 }
 
 function editorGroovy2Key1() {
     if (editorGroovy2.currentPress(1, 5)) {
+        setStep(1,5);
         var value = "abstract class GameScript extends Script {\n"
             + "  def move = {direction -> println \"moving $direction\" }\n"
             + "  def left = \"left\"\n"
@@ -208,6 +215,7 @@ function editorGroovy2Key1() {
 }
 function editorGroovy2Key2() {
     if (editorGroovy2.currentPress(2, 5)) {
+        setStep(2,5);
         editorGroovy2.removeLineClass(1, "background", "highlight");
         editorGroovy2.removeLineClass(2, "background", "highlight");
         editorGroovy2.removeLineClass(3, "background", "highlight");
@@ -220,6 +228,7 @@ function editorGroovy2Key2() {
 }
 function editorGroovy2Key3() {
     if (editorGroovy2.currentPress(3, 5)) {
+        setStep(3,5);
         editorGroovy2.removeLineClass(9, "background", "highlight");
         editorGroovy2.removeLineClass(10, "background", "highlight");
         editorGroovy2.removeLineClass(11, "background", "highlight");
@@ -232,6 +241,7 @@ function editorGroovy2Key3() {
 }
 function editorGroovy2Key4() {
     if (editorGroovy2.currentPress(4, 5)) {
+        setStep(4,5);
         var value = "def compilerConfig = new CompilerConfiguration()\n"
             + "compilerConfig.scriptBaseClass = GameScript.class.name\n"
             + "def binding = new Binding()\n";
@@ -244,6 +254,7 @@ function editorGroovy2Key4() {
 }
 function editorGroovy2Key5() {
     if (editorGroovy2.currentPress(5, 5)) {
+        setStep(5,5);
         editorGroovy2.removeLineClass(5, "background", "highlight");
         editorGroovy2.removeLineClass(6, "background", "highlight");
         editorGroovy2.removeLineClass(7, "background", "highlight");
@@ -319,11 +330,13 @@ function editorGroovy3Send() {
 
 function editorGroovy3Key0() {
     editorGroovy3.currentPress(0, 2);
+    setStep(0,2);
     editorGroovy3.setValue(content3);
 }
 
 function editorGroovy3Key1() {
     if (editorGroovy3.currentPress(1, 2)) {
+        setStep(1,2);
         var value = 'def binding = new Binding([right: "right"])';
         editorGroovy3.replaceRange(value, {line: 7, ch: 0}, {line: 7});
         editorGroovy3.addLineClass(7, "background", "highlight");
@@ -331,6 +344,7 @@ function editorGroovy3Key1() {
 }
 function editorGroovy3Key2() {
     if (editorGroovy3.currentPress(2, 2)) {
+        setStep(2,2);
         var value = 'move right\n';
         editorGroovy3.replaceRange(value, {line: 14, ch: 0});
         editorGroovy3.removeLineClass(7, "background", "highlight");
@@ -393,12 +407,14 @@ function editorGroovy4Send() {
 
 function editorGroovy4Key0() {
     editorGroovy4.currentPress(0, 8);
+    setStep(0,8);
     editorGroovy4.setValue(content4);
 }
 
 
 function editorGroovy4Key1() {
     if (editorGroovy4.currentPress(1, 8)) {
+        setStep(1,8);
         var value = "class Position {\n" +
             "    int x\n" +
             "    int y\n" +
@@ -422,6 +438,7 @@ function editorGroovy4Key1() {
 
 function editorGroovy4Key2() {
     if (editorGroovy4.currentPress(2, 8)) {
+        setStep(2,8);
         for(var i = 0; i <14 ; i++) {
             editorGroovy4.removeLineClass(i, "background", "highlight");
         }
@@ -437,6 +454,7 @@ function editorGroovy4Key2() {
 
 function editorGroovy4Key3() {
     if (editorGroovy4.currentPress(3, 8)) {
+        setStep(3,8);
         for(var i = 14; i <17 ; i++) {
             editorGroovy4.removeLineClass(i, "background", "highlight");
         }
@@ -467,6 +485,7 @@ function editorGroovy4Key3() {
 }
 function editorGroovy4Key4() {
     if (editorGroovy4.currentPress(4, 8)) {
+        setStep(4,8);
         editorGroovy4.scrollIntoView(58);
         for(var i = 17; i <37 ; i++) {
             editorGroovy4.removeLineClass(i, "background", "highlight");
@@ -478,6 +497,7 @@ function editorGroovy4Key4() {
 }
 function editorGroovy4Key5() {
     if (editorGroovy4.currentPress(5, 8)) {
+        setStep(5,8);
         editorGroovy4.removeLineClass(37, "background", "highlight");
         editorGroovy4.addLineClass(45, "background", "highlight");
         editorGroovy4.scrollIntoView(58);
@@ -485,6 +505,7 @@ function editorGroovy4Key5() {
 }
 function editorGroovy4Key6() {
     if (editorGroovy4.currentPress(6, 8)) {
+        setStep(6,8);
         editorGroovy4.removeLineClass(45, "background", "highlight");
 
         var value = "def compilerConfig = new CompilerConfiguration()\n" +
@@ -499,6 +520,7 @@ function editorGroovy4Key6() {
 }
 function editorGroovy4Key7() {
     if (editorGroovy4.currentPress(7, 8)) {
+        setStep(7,8);
         for(var i = 44; i <47 ; i++) {
             editorGroovy4.removeLineClass(i, "background", "highlight");
         }
@@ -509,6 +531,7 @@ function editorGroovy4Key7() {
 }
 function editorGroovy4Key8() {
     if (editorGroovy4.currentPress(8, 8)) {
+        setStep(8,8);
         for(var i = 39; i <43 ; i++) {
             editorGroovy4.removeLineClass(i, "background", "highlight");
         }
@@ -621,12 +644,14 @@ function editorGroovy5TurtleSend() {
 
 function editorGroovy5Key0() {
     editorGroovy5.currentPress(0, 7);
+    setStep(0,7);
     editorGroovy5.setValue(content5);
 }
 
 
 function editorGroovy5Key1() {
     if (editorGroovy5.currentPress(1, 7)) {
+        setStep(1,7);
         editorGroovy5.scrollIntoView(0);
         var value = "  def steps = []";
         editorGroovy5.replaceRange(value, {line: 23, ch: 0}, {line:23});
@@ -635,6 +660,7 @@ function editorGroovy5Key1() {
 }
 function editorGroovy5Key2() {
     if (editorGroovy5.currentPress(2, 7)) {
+        setStep(2,7);
         editorGroovy5.removeLineClass(23, "background", "highlight");
         var value = "    steps.add(start)";
         editorGroovy5.replaceRange(value, {line: 26, ch: 0}, {line:26});
@@ -643,6 +669,7 @@ function editorGroovy5Key2() {
 }
 function editorGroovy5Key3() {
     if (editorGroovy5.currentPress(3, 7)) {
+        setStep(3,7);
         editorGroovy5.scrollIntoView(57);
         editorGroovy5.removeLineClass(26, "background", "highlight");
         editorGroovy5.addLineClass(41, "background", "highlight");
@@ -650,12 +677,14 @@ function editorGroovy5Key3() {
 }
 function editorGroovy5Key4() {
     if (editorGroovy5.currentPress(4, 7)) {
+        setStep(4,7);
         var value = "    steps.add(newPosition)";
         editorGroovy5.replaceRange(value, {line: 41, ch: 0}, {line:41});
     }
 }
 function editorGroovy5Key5() {
     if (editorGroovy5.currentPress(5, 7)) {
+        setStep(5,7);
         editorGroovy5.scrollIntoView(82);
         editorGroovy5.removeLineClass(41, "background", "highlight");
         var value = "def builder = new groovy.json.JsonBuilder()\n" +
@@ -672,6 +701,7 @@ function editorGroovy5Key5() {
 }
 function editorGroovy5Key6() {
     if (editorGroovy5.currentPress(6, 7)) {
+        setStep(6,7);
         for(var i = 74; i <80 ; i++) {
             editorGroovy5.removeLineClass(i, "background", "highlight");
         }
@@ -683,6 +713,7 @@ function editorGroovy5Key6() {
 }
 function editorGroovy5Key7() {
     if (editorGroovy5.currentPress(7, 7)) {
+        setStep(7,7);
         var value = "4.times {\n" +
             "  move right\n" +
             "  move up\n" +
@@ -834,11 +865,13 @@ function editorGroovy6TurtleSend() {
 
 function editorGroovy6Key0() {
     editorGroovy6.currentPress(0, 7);
+    setStep(0,7);
     editorGroovy6.setValue(content6);
 }
 
 function editorGroovy6Key1() {
     if (editorGroovy6.currentPress(1, 7)) {
+        setStep(1,7);
         for(var i = 78; i <82 ; i++) {
             editorGroovy6.addLineClass(i, "background", "highlight");
         }
@@ -847,6 +880,7 @@ function editorGroovy6Key1() {
 }
 function editorGroovy6Key2() {
     if (editorGroovy6.currentPress(2, 7)) {
+        setStep(2,7);
         for(var i = 78; i <82 ; i++) {
             editorGroovy6.removeLineClass(i, "background", "highlight");
         }
@@ -862,6 +896,7 @@ function editorGroovy6Key2() {
 }
 function editorGroovy6Key3() {
     if (editorGroovy6.currentPress(3, 7)) {
+        setStep(3,7);
         editorGroovy6.scrollIntoView(77);
         for(var i = 78; i <82 ; i++) {
             editorGroovy6.removeLineClass(i, "background", "highlight");
@@ -880,6 +915,7 @@ function editorGroovy6Key3() {
 }
 function editorGroovy6Key4() {
     if (editorGroovy6.currentPress(4, 7)) {
+        setStep(4,7);
         editorGroovy6.foldCode(CodeMirror.Pos(43, 0));
         for(var i = 59; i <65 ; i++) {
             editorGroovy6.removeLineClass(i, "background", "highlight");
@@ -889,18 +925,21 @@ function editorGroovy6Key4() {
 }
 function editorGroovy6Key5() {
     if (editorGroovy6.currentPress(5, 7)) {
+        setStep(5,7);
         editorGroovy6.removeLineClass(55, "background", "highlight");
         editorGroovy6.replaceRange("", {line: 55, ch: 0}, {line:55});
     }
 }
 function editorGroovy6Key6() {
     if (editorGroovy6.currentPress(6, 7)) {
+        setStep(6,7);
         editorGroovy6.replaceRange("    steps.add(newPosition)\n", {line: 63, ch: 0});
         editorGroovy6.addLineClass(63, "background", "highlight");
     }
 }
 function editorGroovy6Key7() {
     if (editorGroovy6.currentPress(7, 7)) {
+        setStep(7,7);
         editorGroovy6.scrollIntoView(90);
         editorGroovy6.removeLineClass(63, "background", "highlight");
         editorGroovy6.replaceRange("def turtle = new Turtle(new Position(1, 1, Direction.left))", {line: 72, ch: 0}, {line:72});
@@ -1050,11 +1089,13 @@ function editorGroovy6bTurtleSend() {
 
 function editorGroovy6bKey0() {
     editorGroovy6b.currentPress(0, 4);
+    setStep(0,4);
     editorGroovy6b.setValue(content6b);
 }
 
 function editorGroovy6bKey1() {
     if (editorGroovy6b.currentPress(1, 4)) {
+        setStep(1,4);
         for(var i = 83; i <87 ; i++) {
             editorGroovy6b.addLineClass(i, "background", "highlight");
         }
@@ -1063,6 +1104,7 @@ function editorGroovy6bKey1() {
 }
 function editorGroovy6bKey2() {
     if (editorGroovy6b.currentPress(2, 4)) {
+        setStep(2,4);
         for(var i = 32; i <87 ; i++) {
             editorGroovy6b.removeLineClass(i, "background", "highlight");
         }
@@ -1078,6 +1120,7 @@ function editorGroovy6bKey2() {
 }
 function editorGroovy6bKey3() {
     if (editorGroovy6b.currentPress(3, 4)) {
+        setStep(3,4);
         for(var i = 83; i <87 ; i++) {
             editorGroovy6b.removeLineClass(i, "background", "highlight");
         }
@@ -1088,6 +1131,7 @@ function editorGroovy6bKey3() {
 }
 function editorGroovy6bKey4() {
     if (editorGroovy6b.currentPress(4, 4)) {
+        setStep(4,4);
         for(var i = 58; i <65 ; i++) {
             editorGroovy6b.removeLineClass(i, "background", "highlight");
         }
@@ -1250,6 +1294,7 @@ function editorGroovy6cTurtleSend() {
 
 function editorGroovy6cKey0() {
     editorGroovy6c.currentPress(0, 8);
+    setStep(0,8);
     editorGroovy6c.setValue(content6c);
     editorGroovy6c.foldCode(CodeMirror.Pos(0, 0));
     editorGroovy6c.foldCode(CodeMirror.Pos(38, 0));
@@ -1260,6 +1305,7 @@ function editorGroovy6cKey0() {
 
 function editorGroovy6cKey1() {
     if (editorGroovy6c.currentPress(1, 8)) {
+        setStep(1,8);
         editorGroovy6c.scrollIntoView(96);
         for(var i = 83; i <87 ; i++) {
             editorGroovy6c.removeLineClass(i, "background", "highlight");
@@ -1272,6 +1318,7 @@ function editorGroovy6cKey1() {
 
 function editorGroovy6cKey2() {
     if (editorGroovy6c.currentPress(2, 8)) {
+        setStep(2,8);
         editorGroovy6c.removeLineClass(86, "background", "highlight");
         editorGroovy6c.scrollIntoView(44);
         var value = "   def kiss() {\n" +
@@ -1286,6 +1333,7 @@ function editorGroovy6cKey2() {
 
 function editorGroovy6cKey3() {
     if (editorGroovy6c.currentPress(3, 8)) {
+        setStep(3,8);
         for(var i = 65; i <68 ; i++) {
             editorGroovy6c.removeLineClass(i, "background", "highlight");
         }
@@ -1297,6 +1345,7 @@ function editorGroovy6cKey3() {
 
 function editorGroovy6cKey4() {
     if (editorGroovy6c.currentPress(4, 8)) {
+        setStep(4,8);
         for(var i = 75; i <81 ; i++) {
             editorGroovy6c.removeLineClass(i, "background", "highlight");
         }
@@ -1308,6 +1357,7 @@ function editorGroovy6cKey4() {
 
 function editorGroovy6cKey5() {
     if (editorGroovy6c.currentPress(5, 8)) {
+        setStep(5,8);
         editorGroovy6c.scrollIntoView(95);
         editorGroovy6c.removeLineClass(77, "background", "highlight");
         var value = "    kiss";
@@ -1318,6 +1368,7 @@ function editorGroovy6cKey5() {
 
 function editorGroovy6cKey6() {
     if (editorGroovy6c.currentPress(6, 8)) {
+        setStep(6,8);
         editorGroovy6c.removeLineClass(90, "background", "highlight");
         var value = "    //kiss: turtle.&kiss,";
         editorGroovy6c.replaceRange(value, {line: 77, ch: 0}, {line:77});
@@ -1327,6 +1378,7 @@ function editorGroovy6cKey6() {
 
 function editorGroovy6cKey7() {
     if (editorGroovy6c.currentPress(7, 8)) {
+        setStep(7,8);
         editorGroovy6c.removeLineClass(77, "background", "highlight");
         var value = "abstract class GameScript extends Script {\n"
             + "    def propertyMissing(name, args) {\n"
@@ -1344,6 +1396,7 @@ function editorGroovy6cKey7() {
 
 function editorGroovy6cKey8() {
     if (editorGroovy6c.currentPress(8, 8)) {
+        setStep(8,8);
         for(var i = 72; i <79 ; i++) {
             editorGroovy6c.removeLineClass(i, "background", "highlight");
         }
@@ -1506,11 +1559,13 @@ function editorGroovy7TurtleSend() {
 
 function editorGroovy7Key0() {
     editorGroovy7.currentPress(0, 7);
+    setStep(0,7);
     editorGroovy7.setValue(content7);
 }
 
 function editorGroovy7Key1() {
     if (editorGroovy7.currentPress(1, 7)) {
+        setStep(1,7);
         for(var i = 83; i <87 ; i++) {
             editorGroovy7.addLineClass(i, "background", "highlight");
         }
@@ -1519,6 +1574,7 @@ function editorGroovy7Key1() {
 }
 function editorGroovy7Key2() {
     if (editorGroovy7.currentPress(2, 7)) {
+        setStep(2,7);
         var value = "2.times {\n" +
             "  move right by 2.steps\n" +
             "  move up by 1.steps\n" +
@@ -1532,6 +1588,7 @@ function editorGroovy7Key2() {
 
 function editorGroovy7Key3() {
     if (editorGroovy7.currentPress(3, 7)) {
+        setStep(3,7);
         editorGroovy7.scrollIntoView(55);
         for(var i = 83; i <87 ; i++) {
             editorGroovy7.removeLineClass(i, "background", "highlight");
@@ -1550,6 +1607,7 @@ function editorGroovy7Key3() {
 
 function editorGroovy7Key4() {
     if (editorGroovy7.currentPress(4, 7)) {
+        setStep(4,7);
         for(var i = 65; i <70 ; i++) {
             editorGroovy7.removeLineClass(i, "background", "highlight");
         }
@@ -1560,6 +1618,7 @@ function editorGroovy7Key4() {
 
 function editorGroovy7Key5() {
     if (editorGroovy7.currentPress(5, 7)) {
+        setStep(5,7);
         var value = "shell.evaluate \"use(StepCategory) {\" + gameDSL + \"}\"";
         editorGroovy7.replaceRange(value, {line: 98, ch: 0}, {line:98});
         editorGroovy7.addLineClass(98, "background", "highlight");
@@ -1568,6 +1627,7 @@ function editorGroovy7Key5() {
 
 function editorGroovy7Key6() {
     if (editorGroovy7.currentPress(6, 7)) {
+        setStep(6,7);
         editorGroovy7.scrollIntoView(50);
         editorGroovy7.removeLineClass(98, "background", "highlight");
         for(var i = 65; i <70 ; i++) {
@@ -1578,6 +1638,7 @@ function editorGroovy7Key6() {
 
 function editorGroovy7Key7() {
     if (editorGroovy7.currentPress(7, 7)) {
+        setStep(7,7);
         for(var i = 65; i <70 ; i++) {
             editorGroovy7.removeLineClass(i, "background", "highlight");
         }
@@ -1739,11 +1800,13 @@ function editorGroovy8TurtleSend() {
 
 function editorGroovy8Key0() {
     editorGroovy8.currentPress(0, 2);
+    setStep(0,2);
     editorGroovy8.setValue(content8);
 }
 
 function editorGroovy8Key1() {
     if (editorGroovy8.currentPress(1, 2)) {
+        setStep(1,2);
         editorGroovy8.addLineClass(80, "background", "highlight");
         editorGroovy8.addLineClass(81, "background", "highlight");
         editorGroovy8.scrollIntoView(105);
@@ -1751,6 +1814,7 @@ function editorGroovy8Key1() {
 }
 function editorGroovy8Key2() {
     if (editorGroovy8.currentPress(2, 2)) {
+        setStep(2,2);
         var value = "compilerConfig.addCompilationCustomizers(\n" +
             "    new ASTTransformationCustomizer(TypeChecked,\n"+
             "        extensions:['TurtleExtension.groovy']))\n\n";
@@ -1913,11 +1977,13 @@ function editorGroovy9TurtleSend() {
 
 function editorGroovy9Key0() {
     editorGroovy9.currentPress(0, 4);
+    setStep(0,4);
     editorGroovy9.setValue(content9);
 }
 
 function editorGroovy9Key1() {
     if (editorGroovy9.currentPress(1, 4)) {
+        setStep(1,4);
         for(var i = 90; i <96 ; i++) {
             editorGroovy9.addLineClass(i, "background", "highlight");
         }
@@ -1926,6 +1992,7 @@ function editorGroovy9Key1() {
 }
 function editorGroovy9Key2() {
     if (editorGroovy9.currentPress(2, 4)) {
+        setStep(2,4);
         for(var i = 90; i <96 ; i++) {
             editorGroovy9.removeLineClass(i, "background", "highlight");
         }
@@ -1944,6 +2011,7 @@ function editorGroovy9Key2() {
 }
 function editorGroovy9Key3() {
     if (editorGroovy9.currentPress(3, 4)) {
+        setStep(3,4);
         for(var i = 90; i <96 ; i++) {
             editorGroovy9.removeLineClass(i, "background", "highlight");
         }
@@ -1953,6 +2021,7 @@ function editorGroovy9Key3() {
 }
 function editorGroovy9Key4() {
     if (editorGroovy9.currentPress(4, 4)) {
+        setStep(4,4);
         for(var i = 82; i <85 ; i++) {
             editorGroovy9.removeLineClass(i, "background", "highlight");
         }
@@ -2114,11 +2183,13 @@ function editorGroovy10TurtleSend() {
 
 function editorGroovy10Key0() {
     editorGroovy10.currentPress(0, 3);
+    setStep(0,3);
     editorGroovy10.setValue(content10);
 }
 
 function editorGroovy10Key1() {
     if (editorGroovy10.currentPress(1, 3)) {
+        setStep(1,3);
         for(var i = 92; i <97 ; i++) {
             editorGroovy10.addLineClass(i, "background", "highlight");
         }
@@ -2128,6 +2199,7 @@ function editorGroovy10Key1() {
 
 function editorGroovy10Key2() {
     if (editorGroovy10.currentPress(2, 3)) {
+        setStep(2,3);
         var value = "System.exit(-1)";
         editorGroovy10.replaceRange(value, {line:96, ch:0});
         editorGroovy10.addLineClass(96, "background", "highlight");
@@ -2136,6 +2208,7 @@ function editorGroovy10Key2() {
 
 function editorGroovy10Key3() {
     if (editorGroovy10.currentPress(3, 3)) {
+        setStep(3,3);
         for(var i = 92; i <97 ; i++) {
             editorGroovy10.removeLineClass(i, "background", "highlight");
         }
@@ -2214,12 +2287,14 @@ function editorGroovy11Send() {
 }
 
 function editorGroovy11Key0() {
-    editorGroovy11.currentPress(0, 2);
+    editorGroovy11.currentPress(0, 5);
+    setStep(0,5);
     editorGroovy11.setValue(content11);
 }
 
 function editorGroovy11Key1() {
     if (editorGroovy11.currentPress(1, 5)) {
+        setStep(1,5);
         editorGroovy11.replaceRange("ask \"Where do you wan to meet\" assign to meeting", {line:12, ch:0}, {line:12});
         editorGroovy11.addLineClass(12, "background", "highlight");
     }
@@ -2227,6 +2302,7 @@ function editorGroovy11Key1() {
 
 function editorGroovy11Key2() {
     if (editorGroovy11.currentPress(2, 5)) {
+        setStep(2,5);
         editorGroovy11.removeLineClass(12, "background", "highlight");
         var value = "  def i = 1;\n" +
             "  def map = [:]\n" +
@@ -2249,7 +2325,8 @@ function editorGroovy11Key2() {
 
 function editorGroovy11Key3() {
     if (editorGroovy11.currentPress(3, 5)) {
-        for(var i = 2; i <14 ; i++) {
+       setStep(3,5);
+       for(var i = 2; i <14 ; i++) {
             editorGroovy11.removeLineClass(i, "background", "highlight");
         }
         var value = "  def propertyMissing(def propertyName) {\n" +
@@ -2264,6 +2341,7 @@ function editorGroovy11Key3() {
 
 function editorGroovy11Key4() {
     if (editorGroovy11.currentPress(4, 5)) {
+        setStep(4,5);
         for(var i = 14; i <17 ; i++) {
             editorGroovy11.removeLineClass(i, "background", "highlight");
         }
@@ -2284,6 +2362,7 @@ function editorGroovy11Key4() {
 
 function editorGroovy11Key5() {
     if (editorGroovy11.currentPress(5, 5)) {
+        setStep(5,5);
         for(var i = 17; i <25 ; i++) {
             editorGroovy11.removeLineClass(i, "background", "highlight");
         }
@@ -2365,11 +2444,13 @@ function editorGroovy12Send() {
 
 function editorGroovy12Key0() {
     editorGroovy12.currentPress(0, 6);
+    setStep(0,6);
     editorGroovy12.setValue(content12);
 }
 
 function editorGroovy12Key1() {
     if (editorGroovy12.currentPress(1, 6)) {
+        setStep(1,6);
         editorGroovy12.scrollIntoView(0);
         var value = "public class GameCustomizer extends CompilationCustomizer {\n"
                     + "  def step = 0\n"
@@ -2393,6 +2474,7 @@ function editorGroovy12Key1() {
 
 function editorGroovy12Key2() {
     if (editorGroovy12.currentPress(2, 6)) {
+        setStep(2,6);
         editorGroovy12.scrollIntoView(0);
         for(var i = 0; i <13 ; i++) {
             editorGroovy12.removeLineClass(i, "background", "highlight");
@@ -2406,6 +2488,7 @@ function editorGroovy12Key2() {
 
 function editorGroovy12Key3() {
     if (editorGroovy12.currentPress(3, 6)) {
+        setStep(3,6);
         editorGroovy12.scrollIntoView(0);
         editorGroovy12.removeLineClass(19, "background", "highlight");
         var value = "    def methodCalls = []\n"
@@ -2430,6 +2513,7 @@ function editorGroovy12Key3() {
 
 function editorGroovy12Key4() {
     if (editorGroovy12.currentPress(4, 6)) {
+        setStep(4,6);
         editorGroovy12.scrollIntoView(33);
         for(var i = 11; i <23 ; i++) {
             editorGroovy12.removeLineClass(i, "background", "highlight");
@@ -2450,6 +2534,7 @@ function editorGroovy12Key4() {
 
 function editorGroovy12Key5() {
     if (editorGroovy12.currentPress(5, 6)) {
+        setStep(5,6);
         for(var i = 23; i <29 ; i++) {
             editorGroovy12.removeLineClass(i, "background", "highlight");
         }
@@ -2475,6 +2560,7 @@ function editorGroovy12Key5() {
 
 function editorGroovy12Key6() {
     if (editorGroovy12.currentPress(6, 6)) {
+        setStep(6,6);
         for(var i = 32; i <44 ; i++) {
             editorGroovy12.removeLineClass(i, "background", "highlight");
         }

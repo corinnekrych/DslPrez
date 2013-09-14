@@ -83,6 +83,7 @@ var showGroovyDuke = function() {
     $('.CodeMirror').addClass("groovyduke");
     $(document.body).addClass("groovycolor");
 }
+
 var showScalaDuke = function() {
     $('.CodeMirror').addClass("scaladuke");
     $(document.body).addClass("scalacolor");
@@ -91,6 +92,7 @@ var removeGroovyDuke = function() {
     $('.CodeMirror').removeClass("groovyduke");
     $(document.body).removeClass("groovycolor");
 }
+
 var removeScalaDuke = function() {
     $('.CodeMirror').removeClass("scaladuke");
     $(document.body).removeClass("scalacolor");
@@ -119,8 +121,6 @@ slide.enter("Run Scala Script", showScalaDuke, removeScalaDuke);
 
 slide.enter("Base class in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Base class in Groovy", showGroovyDuke, removeGroovyDuke);
-
-slide.enter("Base class in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Binding in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Binding in Groovy", showGroovyDuke, removeGroovyDuke);
