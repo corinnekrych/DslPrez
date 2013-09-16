@@ -736,11 +736,11 @@ function editorScala5Key7() {
     if (editorScala5.currentPress(7, 7)) {
       setStep(7,7);
         editorScala5.removeLineClass(43, "background", "highlight");
-        editorScala5.replaceRange("\nval result = I.toJSon\nprintln(result)\nresult",{line:65, ch:0});
+        editorScala5.replaceRange("\nval result = I.toJSon\nprintln(result)\nresult\n\n\n\n\n\n\n",{line:65, ch:0});
         editorScala5.addLineClass(66, "background", "highlight");   
 	editorScala5.addLineClass(67, "background", "highlight");
 	editorScala5.addLineClass(68, "background", "highlight");
-	editorScala5.scrollIntoView(68);
+	editorScala5.scrollIntoView(76);
     }
 }
 
@@ -895,7 +895,7 @@ function editorScala6Key1() {
        editorScala6.replaceRange(value,{line:47,ch:0});
        editorScala6.addLineClass(47, "background", "highlight");
        editorScala6.addLineClass(48, "background", "highlight");
-       editorScala6.scrollIntoView(54);
+       editorScala6.scrollIntoView(55);
     }
 }
 
@@ -959,7 +959,7 @@ function editorScala6Key5() {
        editorScala6.addLineClass(57, "background", "highlight");
        editorScala6.addLineClass(58, "background", "highlight");
        editorScala6.addLineClass(59, "background", "highlight");
-       editorScala6.scrollIntoView(64);
+       editorScala6.scrollIntoView(66);
 
     }
 }
@@ -1143,7 +1143,7 @@ function editorScala7Key1() {
        editorScala7.addLineClass(58, "background", "highlight");
        editorScala7.addLineClass(59, "background", "highlight");
        editorScala7.addLineClass(60, "background", "highlight");
-       editorScala7.scrollIntoView(62);
+       editorScala7.scrollIntoView(67);
     }
 }
 
@@ -1181,7 +1181,7 @@ function editorScala7Key3() {
        editorScala7.addLineClass(62, "background", "highlight");
        editorScala7.addLineClass(63, "background", "highlight");
     
-       editorScala7.scrollIntoView(70);
+       editorScala7.scrollIntoView(71);
     }
 }
 
@@ -1227,7 +1227,7 @@ function editorScala7Key5() {
       editorScala7.addLineClass(53, "background", "highlight");
       editorScala7.addLineClass(54, "background", "highlight");
       editorScala7.addLineClass(55, "background", "highlight");
-      editorScala7.scrollIntoView(57);
+      editorScala7.scrollIntoView(78);
     }
 }
 
@@ -1410,7 +1410,7 @@ function editorScalaKissKey0() {
     editorScala_kiss.currentPress(0, 5);
     setStep(0,5);
     editorScala_kiss.setValue(contentScala_kiss);
-    editorScala_kiss.scrollIntoView(65)
+    editorScala_kiss.scrollIntoView(68)
 }
 
 function editorScalaKissKey1() {
@@ -1420,7 +1420,7 @@ function editorScalaKissKey1() {
       var value = "\n   def kiss() = println(\"<3 <3\")\n}\n";
       editorScala_kiss.replaceRange(value,{line:48, ch:0});
       editorScala_kiss.addLineClass(49, "background", "highlight");    
-      editorScala_kiss.scrollIntoView(65);
+      editorScala_kiss.scrollIntoView(68);
 
     }
 }
@@ -1460,7 +1460,7 @@ function editorScalaKissKey4() {
       editorScala_kiss.addLineClass(62, "background", "highlight");    
       editorScala_kiss.addLineClass(63, "background", "highlight");   
       editorScala_kiss.addLineClass(65, "background", "highlight");   
-      editorScala_kiss.scrollIntoView(72);
+      editorScala_kiss.scrollIntoView(73);
     }
 }
 
@@ -1483,7 +1483,8 @@ function editorScalaKissKey5() {
       editorScala_kiss.addLineClass(62, "background", "highlight");    
       editorScala_kiss.addLineClass(63, "background", "highlight");   
       editorScala_kiss.addLineClass(65, "background", "highlight");
-      editorScala_kiss.addLineClass(66, "background", "highlight");   
+      editorScala_kiss.addLineClass(66, "background", "highlight"); 
+      editorScala_kiss.scrollIntoView(74);
     }
 }
 

@@ -620,7 +620,6 @@
                 - Lack of adequate tool support<br/>
                 - Cost of building<br/>
                 <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;->language designing is hard</div>
-                - Efficiency costs<br/>
                 - Ghetto language syndrome<br/>
             </div>
             <div class="span1"></div>
@@ -815,8 +814,8 @@ if (response == "y")
 </code></pre>
 
  <pre><code style="font-size: 14px" class="language-groovy">I move up
-val answer = ask "could you wait for me?"
-if (response == "y")
+val answer = I ask "could you wait for me?"
+if (answer == "y")
     kiss
 </code></pre>
             </div>
@@ -1457,7 +1456,7 @@ step 7: change new Position to add direction
 <!------------------------------------------------------------------->
 <!-- slide Back to command chaining
 <!------------------------------------------------------------------->
-<li class="slide" title="Back to Command Chaining" data-speaker='Pascal'>
+<li class="slide" title="Odd numbers" data-speaker='Pascal'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -1546,26 +1545,22 @@ step 4: change by method to return map
               <h3>Arity-1 functions</h3>
               Single parameter functions:
               <div style="font-style:italic">&nbsp;&nbsp;&nbsp;Infix operator</div><br/>
-              <div style="color:grey">I move left</div>
-              <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left)</div> 
+              <div><span style="color:grey">I move left</span> <span style="font-size:20px">=> I.move(left)</span></div> 
               <br/>
-              <div style="color:grey">I move left by 4</div>
-              <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left).by(4)</div>              
+              <div><span style="color:grey">I move left by 4</span> <span style="font-size:20px">=> I.move(left).by(4)</span></div>              
            </div>
            <div class="span5">
               <h3>Arity-0 functions</h3>
               Without parameter functions:
               <div style="font-style:italic">&nbsp;&nbsp;&nbsp;Suffix (or Postfix) operator</div><br/>
-              <div style="color:grey">I jump</div>
-              <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.jump()</div>
+              <div><span style="color:grey">I jump</span> <span style="font-size:20px">=> I.jump()</span></div>
               <br/>
               Can cause trouble in chaining<br/>
               <div style="color:grey">I jump<br/>
               I move right //fail
               </div>
               <br/>
-              <div>It fails and need a clear separator:</div>
-              <div style="font-style:italic">&nbsp;&nbsp;&nbsp;(), empty line or ";"</div>
+              <div>Fail, need a clear separator: <span style="font-style:italic"> (), empty line or ";"</span></div>
            </div>
             <div class="span1">
            </div>
@@ -1601,8 +1596,7 @@ step 4: change by method to return map
                    <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> move.left(by).2(steps)</div>
                    <div style="font-size:20px; font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hmmm ... failing</div>
                    <br/>
-                   <div>Perhaps:</div>
-                   <div style="color:grey">move to left by 2.steps</div>
+                   <div>Perhaps: <span style="color:grey">move to left by 2.steps</span></div>
                    <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> move.to(left).by(2.steps)</div> 
            </div>
            <div class="span2">
@@ -1628,14 +1622,11 @@ step 4: change by method to return map
                <img src="img/question.jpg"/>
            </div>
            <div class="span5" style="line-height:150%;font-size:25px;text-align:left;">
-                   <div style="color:grey">I move left</div>
-                   <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left)</div>
+                   <div><span style="color:grey">I move left</span> <span style="font-size:20px">=> I.move(left)</span></div>
                    <br/>
-                   <div style="color:grey">I move left by 2 steps</div>
-                   <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left).by(2).steps</div>
+                   <div><span style="color:grey">I move left by 2 steps</span> <span style="font-size:20px">=> I.move(left).by(2).steps</span></div>
                    <br/>
-                   <div style="color:grey">I move left by 2.steps</div>
-                   <div style="font-size:20px">&nbsp;&nbsp;&nbsp;=> I.move(left).by(2.steps)</div>
+                   <div><span style="color:grey">I move left by 2.steps</span> <span style="font-size:20px">=> I.move(left).by(2.steps)</span></div>
            </div>
            <div class="span2">
            </div>
@@ -1696,8 +1687,7 @@ step 4: change by method to return map
         <div class="span6">
             <div style="line-height:150%;font-size:25px;text-align:left;"><br/><br/>
                 <div> there is only one command in Groovy? </div><br/>
-                <div style="color:grey"> kiss</div>
-                <div>    => kiss()</div>
+                <div><span style="color:grey"> kiss</span> => kiss()</div>
             </div>
         </div>
         <div class="span1">
@@ -1815,9 +1805,7 @@ results = Book.findAllByReleaseDateGreaterThanEquals(firstDate)</code></pre>
         </div>
         <div class="span5">
             <div style="line-height:150%;font-size:25px;text-align:left;"><br/><br/>
-                <div style="color:grey"> kiss</div>
-                <div style="color:grey"> I kiss</div>
-                <div>    => kiss()</div>
+                <div><span style="color:grey">kiss</span> => kiss()</div>
             </div>
         </div>
         <div class="span2">
@@ -2027,7 +2015,7 @@ methodNotFound { receiver, name, argList, argTypes, call ->
     </div>
 </li>
 
-<li class="slide" title="Extension">
+<li class="slide" title="Extension" data-speaker='Corinne'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -2067,9 +2055,9 @@ extensionClasses = dsl.StepExtension
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/>
-            <div class="span2">
+            <div class="span3">
             </div>
-            <div class="span8">
+            <div class="span5" style="text-align: left">
                 <hr>
                 <div class="jumbotron"><br/>
                     <h1>Dynamics</h1><br/>
@@ -2079,7 +2067,7 @@ extensionClasses = dsl.StepExtension
                 <p>Scala has added Dynamics </p>
                 <br/><br/>
                 <p style="font-size:18px; color:grey">in addition to already existing Structural typing feature:</p>
-                <pre><code style="font-size: 14px" class="language-groovy">def talkLikeADuck(duck: { def quack():String }) = duck.quack()</code></pre>
+                <pre width="70%" ><code style="font-size: 14px;" class="language-groovy">def talkLikeADuck(duck: { def quack():String }) = duck.quack()</code></pre>
             </div>
             <div class="span2">
             </div>
@@ -2185,6 +2173,68 @@ step 3: add SecureASTCustomizer
 <!-------------------------------------------------------------------
 <!-- Scala10. Sneaky - Franklin plays with fire
 <!--------------------------------------------------------------------->
+
+<li class="slide" title="Scala Compiler plugins (1)" style="font-size:25px;" data-speaker='Pascal'>
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <h3>Scala compiler plugin overview</h3>
+                <pre><code style="font-size: 14px" class="language-groovy">class DSLPluginCompiler(val global: Global) extends Plugin {
+
+  val name = "dslplugin"
+  val components = List[PluginComponent](DSLBlackListComponent)
+
+  override def processOptions(options: List[String], error: String => Unit) {
+    /* ... */
+  }
+
+  private object DSLBlackListComponent extends PluginComponent {
+    
+    val runsAfter = List[String]("refchecks");
+
+    val phaseName = "dslblacklist"
+    def newPhase(prev: Phase): Phase = new DSLBlackListPhase(prev)
+
+    class DSLBlackListPhase(prev: Phase) extends StdPhase(prev) {
+    /* ... */
+    }
+  }
+}</code></pre>
+<h3>scalac-plugin.xml</h3>
+<pre style="text-align: left"><code style="font-size: 14px;">&lt;plugin&gt;
+  &lt;name&gt;dslplugin&lt;/name&gt;
+  &lt;classname&gt;dslprez.scala.plugins.DSLPluginCompiler&lt;/classname&gt;
+&lt;/plugin&gt;</code></pre>
+                </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+<li class="slide" title="Scala Compiler plugins (2)" style="font-size:25px;" data-speaker='Pascal'>
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <br/>
+            <div class="span2">
+            </div>
+            <div class="span8">
+            <h3>Enabling compiler plugins and options</h3>
+                <pre><code style="font-size: 14px" class="language-groovy">val settings = new Settings
+settings.pluginsDir.value = xxx
+settings.pluginOptions.appendToValue("yyy")
+                
+val interpreter = new IMain(settings)</code></pre>
+                </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
 
 <li class="slide" style="text-align: left" title="Franklin wants to play with fire in Scala" press="1" data-speaker='Pascal'>
     <textarea id="editorScala10" name="editorScala10">
@@ -2959,7 +3009,7 @@ TODO editor or slide to explain
     <hr>
 </li>
 
-<li class="slide" title="Debugging" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal'>
+<!--li class="slide" title="Debugging" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal'>
     <div class="container-narrow">
         <hr>
 
@@ -2979,7 +3029,7 @@ TODO editor or slide to explain
         </div>
 
     </div>
-</li>
+</li-->
 
 
 <!------------------------------------------------------------------->
@@ -3016,7 +3066,7 @@ TODO editor or slide to explain
             - No one size fits them all<br/>
             <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;Choose the language that solves best your requirements</div><br/>
             - And don't fear polyglotism<br/>
-            <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;Consider Clojure, JRuby, ...</div>
+            <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;Consider Clojure, JRuby, Ceylon, ...</div>
             </div>
             <div class="span2">
             </div>        
