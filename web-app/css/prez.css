@@ -180,5 +180,7 @@ body {
     background: #ffffff;
 }
 
-
+a.jone:link {color: #AFAFAF }
+a.jone:visited {color: #AFAFAF }
+a.jone:hover {color: #2F2F2F }
 
