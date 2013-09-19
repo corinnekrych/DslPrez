@@ -715,27 +715,28 @@ function editorScala5Key5() {
       editorScala5.removeLineClass(2, "background", "highlight");
       editorScala5.removeLineClass(3, "background", "highlight");
       editorScala5.removeLineClass(4, "background", "highlight");
-      
-      editorScala5.replaceRange("\nimplicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y) //{x:1,y:1}\n",{line:18, ch:0});
-
-      editorScala5.addLineClass(19, "background", "highlight");
-    }
+  
+      editorScala5.replaceRange("\n   def toJSon = compact(render(\"steps\"->steps))  //{steps: [{x:1,y:1}, ...]}\n",{line:40, ch:0});
+      editorScala5.addLineClass(41, "background", "highlight");
+      editorScala5.scrollIntoView(64);
+  
+      }
 }
 
 function editorScala5Key6() {
     if (editorScala5.currentPress(6, 7)) {
       setStep(6,7);
-        editorScala5.scrollIntoView(64);
-        editorScala5.removeLineClass(19, "background", "highlight");
-        editorScala5.replaceRange("\n   def toJSon = compact(render(\"steps\"->steps))  //{steps: [{x:1,y:1}, ...]}\n",{line:42, ch:0});
-	editorScala5.addLineClass(43, "background", "highlight");
+      editorScala5.removeLineClass(41, "background", "highlight");
+      editorScala5.replaceRange("\n   implicit def toJsonValue(p:Position) = (\"x\"->p.x)~(\"y\"->p.y) //{x:1,y:1}\n",{line:40, ch:0});  
+      editorScala5.addLineClass(41, "background", "highlight");
+      editorScala5.scrollIntoView(64);
     }
 }
 
 function editorScala5Key7() {
     if (editorScala5.currentPress(7, 7)) {
       setStep(7,7);
-        editorScala5.removeLineClass(43, "background", "highlight");
+        editorScala5.removeLineClass(41, "background", "highlight");
         editorScala5.replaceRange("\nval result = I.toJSon\nprintln(result)\nresult\n\n\n\n\n\n\n",{line:65, ch:0});
         editorScala5.addLineClass(66, "background", "highlight");   
 	editorScala5.addLineClass(67, "background", "highlight");
@@ -1452,14 +1453,16 @@ function editorScalaKissKey4() {
       setStep(4,5);
       editorScala_kiss.removeLineClass(49, "background", "highlight");    
       editorScala_kiss.removeLine(61)
-      var value = "\ndef kiss = I.kiss _\n"
-                + "kiss() // Evaluation needs to use parenthesis\n\n"
-		+ "//engine.bind(\"kiss\",\"()=>Unit\",turtle.kiss _) // either Function0[Unit]\n\n"
+      var value1 = "def kiss = I.kiss _\n"
+                 + "//engine.bind(\"kiss\",\"()=>Unit\",turtle.kiss _) // either Function0[Unit]\n\n";       
+      var value2 = "kiss() // Evaluation needs to use parenthesis\n";
 
-      editorScala_kiss.replaceRange(value,{line:61, ch:0});
-      editorScala_kiss.addLineClass(62, "background", "highlight");    
-      editorScala_kiss.addLineClass(63, "background", "highlight");   
-      editorScala_kiss.addLineClass(65, "background", "highlight");   
+      editorScala_kiss.replaceRange(value1,{line:56, ch:0});
+      editorScala_kiss.replaceRange(value2,{line:64, ch:0});
+
+      editorScala_kiss.addLineClass(56, "background", "highlight");    
+      editorScala_kiss.addLineClass(57, "background", "highlight");   
+      editorScala_kiss.addLineClass(64, "background", "highlight");   
       editorScala_kiss.scrollIntoView(73);
     }
 }
@@ -1467,23 +1470,25 @@ function editorScalaKissKey4() {
 function editorScalaKissKey5() {
     if (editorScala_kiss.currentPress(5, 5)) {
       setStep(5,5);
-      editorScala_kiss.removeLineClass(62, "background", "highlight");    
-      editorScala_kiss.removeLineClass(63, "background", "highlight");   
-      editorScala_kiss.removeLineClass(65, "background", "highlight");   
+      editorScala_kiss.removeLineClass(56, "background", "highlight");    
+      editorScala_kiss.removeLineClass(57, "background", "highlight");   
+      editorScala_kiss.removeLineClass(64, "background", "highlight");   
+      editorScala_kiss.removeLine(56)
+      editorScala_kiss.removeLine(56)
       editorScala_kiss.removeLine(62)
-      editorScala_kiss.removeLine(62)
-      editorScala_kiss.removeLine(62)
-      editorScala_kiss.removeLine(62)
-      var value = "def kiss = I.kiss\n"
-                + "kiss\n\n"
+      
+      var value1 = "def kiss = I.kiss\n"
 		+ "//engine.bind(\"kissWithArity0\",\"()=>Unit\",kiss) // either Function0[Unit]\n"
-		+ "//engine.interpret(\"def kiss = kissWithArity0()\")\n"
+		+ "//engine.interpret(\"def kiss = kissWithArity0()\")\n";
+      var value2 = "kiss\n";
 
-      editorScala_kiss.replaceRange(value,{line:62, ch:0});
-      editorScala_kiss.addLineClass(62, "background", "highlight");    
-      editorScala_kiss.addLineClass(63, "background", "highlight");   
-      editorScala_kiss.addLineClass(65, "background", "highlight");
-      editorScala_kiss.addLineClass(66, "background", "highlight"); 
+      editorScala_kiss.replaceRange(value1,{line:56, ch:0});
+      editorScala_kiss.replaceRange(value2,{line:65, ch:0});
+
+      editorScala_kiss.addLineClass(56, "background", "highlight");    
+      editorScala_kiss.addLineClass(57, "background", "highlight");   
+      editorScala_kiss.addLineClass(58, "background", "highlight");
+      editorScala_kiss.addLineClass(65, "background", "highlight"); 
       editorScala_kiss.scrollIntoView(74);
     }
 }
