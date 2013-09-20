@@ -2605,6 +2605,47 @@ Scala11.ask
     </div>
 </li>
 
+
+<li class="slide" title="Alternative syntax" data-speaker='Pascal'>
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h3>What if you don't like the syntax ....</h3><br/>
+        </div>
+        <hr>
+       <div class="row-fluid marketing">
+           <div class="span1">
+           </div>
+           <div class="span2">
+            <br/><br/><br/><br/><br/><br/>
+               <img src="img/tools.gif"/>
+           </div>
+           <div class="span7" style="line-height:150%;font-size:25px;text-align:left;">
+                   <div>+ Use a map or a Dynamic instance container</div>
+                   <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- store the answers</div>
+                   <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- syntax can also be awkward</div>
+                   <pre><code style="font-size: 14px" class="language-groovy">ask("question") assign_to("variableName")
+                   
+// access the answer:
+answerMap("variableName")
+
+//We can replace Strings with Symbols
+answerMap('variableName)
+
+//or
+dynamicContainer.variableName</code>
+                   </pre>
+                   <div>+ Use macro annotations from Macro Paradise</div>
+                   <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- experimental</div>
+                   </div>
+           <div class="span2">
+           </div>
+           <hr/>
+        </div>
+    </div>
+</li>
+
 <!------------------------------------------------------------------->
 <!-- Let's play
 <!------------------------------------------------------------------->
