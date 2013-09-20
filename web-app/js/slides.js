@@ -111,7 +111,7 @@ slide.enter("Bibliography", whiteBackground, removeWhiteBackground);
 slide.enter("Groovy", function() {showCloud();});
 slide.enter("Scala", function() {showCloudWithArgs("scala", scala_word_array);});
 slide.enter("References", whiteBackground, removeWhiteBackground);
-
+slide.enter("AST", whiteBackground, removeWhiteBackground);
 
 slide.enter("Groovy Script", showGroovyDuke, removeGroovyDuke);
 slide.enter("Run Groovy Script", showGroovyDuke, removeGroovyDuke);

@@ -1,0 +1,1 @@
+grails clean;grails -Dgrails.server.port.http=8080 --offline run-app

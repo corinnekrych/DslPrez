@@ -1036,7 +1036,7 @@ var content6b = "class Position {\n"
             + "        Position newPosition = currentPosition.move(step)\n"
             + "        steps.add(newPosition)\n"
             + "        currentPosition = newPosition\n"
-            + "        steps.add(newPosition)\n"
+            + "        \n"
             + "        this\n"
             + "    }\n"
             + "}\n"
@@ -1241,7 +1241,7 @@ var content6c = "class Position {\n"
     + "        Position newPosition = currentPosition.move(step)\n"
     + "        steps.add(newPosition)\n"
     + "        currentPosition = newPosition\n"
-    + "        steps.add(newPosition)\n"
+    + "        \n"
     + "        this\n"
     + "    }\n"
     + "}\n"
@@ -2295,7 +2295,7 @@ function editorGroovy11Key0() {
 function editorGroovy11Key1() {
     if (editorGroovy11.currentPress(1, 5)) {
         setStep(1,5);
-        editorGroovy11.replaceRange("ask \"Where do you wan to meet\" assign to meeting", {line:12, ch:0}, {line:12});
+        editorGroovy11.replaceRange("ask \"Where do you want to meet\" assign to meeting", {line:12, ch:0}, {line:12});
         editorGroovy11.addLineClass(12, "background", "highlight");
     }
 }
@@ -2348,13 +2348,10 @@ function editorGroovy11Key4() {
         var value = "  def display(Map mapToDisplay) {\n" +
             "    mapToDisplay.eachWithIndex { key, value, index ->\n" +
             "      println \"$key: $value\"\n" +
-            "      if (index % 2) {\n" +
-            "        println \"______________________________________\\n\"\n" +
-            "      }\n" +
             "    }\n" +
             " }";
         editorGroovy11.replaceRange(value, {line:17, ch:0});
-        for(var i = 17; i <25 ; i++) {
+        for(var i = 17; i <22 ; i++) {
             editorGroovy11.addLineClass(i, "background", "highlight");
         }
     }
@@ -2363,17 +2360,17 @@ function editorGroovy11Key4() {
 function editorGroovy11Key5() {
     if (editorGroovy11.currentPress(5, 5)) {
         setStep(5,5);
-        for(var i = 17; i <25 ; i++) {
+        for(var i = 17; i <22 ; i++) {
             editorGroovy11.removeLineClass(i, "background", "highlight");
         }
-        editorGroovy11.replaceRange("display map\n", {line:35, ch:0});
-        editorGroovy11.addLineClass(35, "background", "highlight");
+        editorGroovy11.replaceRange("display map\n", {line:32, ch:0});
+        editorGroovy11.addLineClass(32, "background", "highlight");
     }
 }
 
 function editorGroovy11Key6() {
     if (editorGroovy11.currentPress(6, 5)) {
-        editorGroovy11.removeLineClass(35, "background", "highlight");
+        editorGroovy11.removeLineClass(32, "background", "highlight");
     }
 }
 
