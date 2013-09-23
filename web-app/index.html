@@ -2140,6 +2140,32 @@ extensionClasses = dsl.StepExtension
 
 </li>
 
+<li class="slide" title="AST" style="line-height: 150%; font-size:25px;" data-speaker='Corinne'>
+
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/>
+            <h1>AST: How does it look like?</h1><br/>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row-fluid marketing">
+        <div class="span1">
+        </div>
+        <div class="span5">
+            <br/><img src="img/abstract_syntax_tree.png"/>
+        </div>
+        <div class="span5">
+            <br/><img src="img/groovyConsole.png"/>
+        </div>
+        <div class="span1">
+        </div>
+    </div>
+</li>
+
+<!--http://www.slideshare.net/ZeroTurnaround/andres-almirayasttransformationsgroovysbestkeptsecret-24613143-->
 
 <!-------------------------------------------------------------------
 Groovy10. Sneaky
@@ -2445,32 +2471,7 @@ val interpreter = new IMain(settings)</code></pre>
 <!------------------------------------------------------------------->
 <!-- Groovy12. AST for user transform
 <!------------------------------------------------------------------->
-<li class="slide" title="AST" style="line-height: 150%; font-size:25px;" data-speaker='Corinne'>
 
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>AST: How does it look like?</h1><br/>
-        </div>
-        <hr>
-    </div>
-
-    <div class="row-fluid marketing">
-        <div class="span1">
-        </div>
-        <div class="span5">
-            <br/><img src="img/abstract_syntax_tree.png"/>
-        </div>
-        <div class="span5">
-            <br/><img src="img/groovyConsole.png"/>
-        </div>
-        <div class="span1">
-        </div>
-    </div>
-</li>
-
-<!--http://www.slideshare.net/ZeroTurnaround/andres-almirayasttransformationsgroovysbestkeptsecret-24613143-->
 
 <li class="slide" style="text-align: left" title="AST Tranformation" press="1 2 3 4 5 6" data-speaker='Corinne'>
     <textarea id="editorGroovy12" name="editorGroovy12">
@@ -2666,7 +2667,8 @@ dynamicContainer.variableName</code>
                    </pre>
                    <div>+ Use macro annotations from Macro Paradise</div>
                    <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- experimental</div>
-                   </div>
+                   <div>+ Or once again use Scala Compiler Plugin</div>
+           </div>
            <div class="span2">
            </div>
            <hr/>
@@ -3134,7 +3136,7 @@ TODO editor or slide to explain
             <div class="span3">
             </div>        
             <div class="span7" style="text-align: left">
-            - No one size fits them all<br/>
+            - One size doesn't fit all<br/>
             <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;Choose the language that solves best your requirements</div><br/>
             - And don't fear polyglotism<br/>
             <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;Consider Clojure, JRuby, Ceylon, ...</div>
