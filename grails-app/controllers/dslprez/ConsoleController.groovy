@@ -4,15 +4,6 @@ import grails.converters.JSON
 import dslprez.Result
 import dslprez.scala.eval.Evaluator
 
-// editor2
-//import dslprez.steps.editor2.Turtle
-
-//import dslprez.Turtle
-//import dslprez.up
-//import dslprez.Direction
-//import dslprez.Position
-
-
 class ConsoleController {
 
     def directory
@@ -65,13 +56,19 @@ class ConsoleController {
 
     def executeScala() {
         def cp = System.getProperty("java.class.path")
+        def absprefix = "/home/pcohen/workspace/scala211/JavaOne/DslPrez/"
         if (!cp.contains("scala")) {
-            cp = "lib/scaladsl.jar:lib/scalainterpreter.jar:lib/scala-reflect.jar:lib/scala-compiler.jar:lib/scala-library.jar:lib/lift-json.jar:" + cp
+            cp = absprefix+"lib/scaladsl.jar:"+
+            absprefix+"lib/scalainterpreter.jar:"+
+            absprefix+"lib/scala-reflect.jar:"+
+            absprefix+"lib/scala-compiler.jar:"+
+            absprefix+"lib/scala-library.jar:"+
+            absprefix+"lib/lift-json.jar:"+ cp
             System.setProperty("java.class.path", cp)
             System.getProperty("java.class.path", ".").tokenize(File.pathSeparator).each {
                 println it
             }
-
+            /*
             def compilerPath = java.lang.Class.forName("scala.tools.nsc.Interpreter").getProtectionDomain().getCodeSource().getLocation().getPath()
             //println " >>>>>>>>> " + compilerPath
             def evaluatorPath = java.lang.Class.forName("dslprez.scala.eval.Evaluator").getProtectionDomain().getCodeSource().getLocation().getPath()
@@ -82,6 +79,7 @@ class ConsoleController {
             System.setProperty("java.class.path", evaluatorPath + ":" + libraryPath + ":" + compilerPath + ":" + reflectPath + ":" + jsonPath + ":" + dslPath + ":" + cp)
 
             //println ">>>>>>> $directory"
+            */
         }
         def encoding = 'UTF-8'
         def stream = new ByteArrayOutputStream()
@@ -92,12 +90,13 @@ class ConsoleController {
 
         def evaluator
         try {
-            if (directory ==null) {
-                def compilerPath = java.lang.Class.forName("scala.tools.nsc.Interpreter").getProtectionDomain().getCodeSource().getLocation().getPath()
-                directory = compilerPath.toString() - "lib/scala-compiler.jar"
-            }
+           // if (directory ==null) {
+             //   def compilerPath = java.lang.Class.forName("scala.tools.nsc.Interpreter").getProtectionDomain().getCodeSource().getLocation().getPath()
+             //   directory = compilerPath.toString() - "lib/scala-compiler.jar"
+            //}
             //println ">>>>>>++++++++++++++++      Plug in Dir      ++++++++++>>>>>>>>>>>>>>>>>>> $directory" + "lib"
-            evaluator = new Evaluator(printStream).withContinuations().withPluginsDir(directory + "lib")
+            
+            evaluator = new Evaluator(printStream).withContinuations().withPluginsDir(absprefix+"lib")
 
             // Temporary solution
             if (params.scalaTimer != null) {
