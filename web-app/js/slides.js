@@ -102,11 +102,11 @@ var slide = new dslPrez.Slide();
 
 slide.enter("Embedded DSL: Groovy and Scala Fair Duel", whiteBackground, removeWhiteBackground);
 slide.enter("Coming from...", whiteBackground, removeWhiteBackground);
-slide.enter("Ext. vs int.", whiteBackground, removeWhiteBackground);
-slide.enter("Internal DSL", whiteBackground, removeWhiteBackground);
-slide.enter("From Debasish Gosh", whiteBackground, removeWhiteBackground);
+//slide.enter("Ext. vs int.", whiteBackground, removeWhiteBackground);
+//slide.enter("Internal DSL", whiteBackground, removeWhiteBackground);
+//slide.enter("From Debasish Gosh", whiteBackground, removeWhiteBackground);
 slide.enter("DSL & Game", whiteBackground, removeWhiteBackground);
-slide.enter("Corinne", whiteBackground, removeWhiteBackground);
+slide.enter("Fabrice", whiteBackground, removeWhiteBackground);
 slide.enter("Bibliography", whiteBackground, removeWhiteBackground);
 slide.enter("Groovy", function() {showCloud();});
 slide.enter("Scala", function() {showCloudWithArgs("scala", scala_word_array);});
@@ -149,11 +149,11 @@ slide.enter("Output for Command Chaining in Scala", showScalaDuke, removeScalaDu
 slide.enter("Odd Chaining in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Odd Chaining in Groovy", showGroovyDuke, removeGroovyDuke);
 
-slide.enter("kiss or kiss()", showGroovyDuke, removeGroovyDuke);
-slide.enter("Output for kiss in Groovy", showGroovyDuke, removeGroovyDuke);
+//slide.enter("kiss or kiss()", showGroovyDuke, removeGroovyDuke);
+//slide.enter("Output for kiss in Groovy", showGroovyDuke, removeGroovyDuke);
 
-slide.enter("Kiss in Scala", showScalaDuke, removeScalaDuke);
-slide.enter("Output for Kiss in Scala", showScalaDuke, removeScalaDuke);
+//slide.enter("Kiss in Scala", showScalaDuke, removeScalaDuke);
+//slide.enter("Output for Kiss in Scala", showScalaDuke, removeScalaDuke);
 
 slide.enter("Adding behaviour to Integer in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Adding behaviour to Integer in Groovy", showGroovyDuke, removeGroovyDuke);

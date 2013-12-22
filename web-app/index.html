@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Embedded DSL</title>
     <meta name="description" content="The power of Groovy for DSL and User Interaction in this presentation">
-    <meta name="author" content="Corinne Krych, Sebastien Blanc, Fabrice Matrat">
+    <meta name="author" content="Corinne Krych, Sebastien Blanc, Fabrice Matrat,Pascal Cohen">
     <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/grails.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/grails.png">
@@ -42,7 +42,7 @@
 </div>
 <div  id="wrapper">
 <ul>
-<li class="slide"  title="Welcome" data-speaker='Corinne' >
+<li class="slide"  title="Welcome" data-speaker='Fabrice' >
 
     <div class="container-narrow">
         <hr>
@@ -55,8 +55,8 @@
         <div class="row-fluid marketing">
             <div class="span2">&nbsp;</div>
             <div class="span4">
-                <p><img width="35%" src="img/corinne_krych.png"/></p>
-                <h4>Corinne Krych</h4>
+                <p><img width="35%" src="img/fabrice.png"/></p>
+                <h4>Fabrice Matrat</h4>
             </div>
 
             <div class="span4">
@@ -73,119 +73,12 @@
         </div>
         <hr>
         <div>
-            <p style=""><img width="15%" src="img/j1.png"/></p>
+            <p style=""><img width="10%" src="img/marsjug.png"/></p>
         <div style="background: #436e90; color: #EDEDEB"><h2>Follow the presentation on <a class="jone" href="http://dslprez.herokuapp.com">http://dslprez.herokuapp.com</a></h2></div>
-
-        <!--<canvas id="animationcanvas" style="width: 100%; position: absolute; left: 0; bottom: 5px;" width="1000" height="50" ></canvas>-->
-        <!--<code style="visibility: hidden;" id="animationcontent" class="language-javascript">-->
-            <!--var f = true;-->
-            <!--function animate() {-->
-                <!--f = !f;-->
-                <!--moveObject('emily', {-->
-                    <!--role: 'turtle2',-->
-                    <!--y: 19,-->
-                    <!--x: f ? 0 : 19,-->
-                    <!--rotation: 0-->
-                <!--}, function () {});-->
-                <!--moveObject('franklin', {-->
-                    <!--role: 'turtle1',-->
-                    <!--y: 19,-->
-                    <!--x: f ? 19 : 0,-->
-                    <!--rotation: 0-->
-                <!--}, animate);-->
-            <!--}-->
-            <!--animate();</pre></code>-->
-
-        <!--<script>-->
-            <!--(function () {-->
-                <!--var canvas = document.getElementById('animationcanvas');-->
-                <!--var ctx = canvas.getContext('2d');-->
-                <!--var grid = 20;-->
-                <!--ctx.scale(canvas.width / grid, canvas.height);-->
-                <!--ctx.translate(1/2, 1/2);-->
-
-                <!--var images = {};-->
-                <!--function draw(place) {-->
-                    <!--if (!images[place.role]) {-->
-                        <!--images[place.role] = new Image();-->
-                        <!--images[place.role].src = 'img/' + place.role + '.png';-->
-                    <!--}-->
-                    <!--ctx.save();-->
-                    <!--ctx.translate(place.x, grid - 1 - place.y);-->
-                    <!--ctx.rotate(- place.rotation);-->
-                    <!--ctx.drawImage(images[place.role], -1/2, -1/2, 1, 1);-->
-                    <!--ctx.restore();-->
-                <!--}-->
-
-                <!--function average(from, to, progress) {-->
-                    <!--return from + (to - from) * progress;-->
-                <!--}-->
-
-                <!--var duration = 7000;-->
-                <!--var current = {};-->
-                <!--var animated = {};-->
-                <!--function animate() {-->
-                    <!--var name;-->
-                    <!--var cont = false;-->
-                    <!--ctx.clearRect(-1, -1, grid + 1, grid + 1);-->
-                    <!--//drawGrid();-->
-                    <!--for (name in animated) {-->
-                        <!--if (animated.hasOwnProperty(name)) {-->
-                            <!--var to = animated[name];-->
-                            <!--var from = current[name];-->
-                            <!--var progress = (Date.now() - to.startTime) / duration;-->
-                            <!--if (progress > 1) {-->
-                                <!--current[name] = {-->
-                                    <!--role: to.role,-->
-                                    <!--x: to.x,-->
-                                    <!--y: to.y,-->
-                                    <!--rotation: to.rotation-->
-                                <!--};-->
-                                <!--delete animated[name];-->
-                                <!--if (to.cb) {-->
-                                    <!--to.cb();-->
-                                <!--}-->
-                            <!--} else {-->
-                                <!--cont = true;-->
-                                <!--draw({-->
-                                    <!--role: to.role,-->
-                                    <!--x: average(from.x, to.x, progress),-->
-                                    <!--y: average(from.y, to.y, progress),-->
-                                    <!--rotation: average(from.rotation, to.rotation, progress)-->
-                                <!--});-->
-                            <!--}-->
-                        <!--}-->
-                    <!--}-->
-                    <!--for (name in current) {-->
-                        <!--if (current.hasOwnProperty(name) && !animated[name]) {-->
-                            <!--draw(current[name]);-->
-                        <!--}-->
-                    <!--}-->
-                    <!--if (cont) {-->
-                        <!--setTimeout(animate, 1000 / 60);-->
-                    <!--}-->
-                <!--}-->
-
-                <!--function moveObject(name, object, callback) {-->
-                    <!--if (!current[name]) {-->
-                        <!--current[name] = object;-->
-                        <!--animate();-->
-                        <!--callback();-->
-                    <!--} else {-->
-                        <!--object.startTime = Date.now();-->
-                        <!--object.cb = callback;-->
-                        <!--animated[name] = object;-->
-                        <!--animate();-->
-                    <!--}-->
-                <!--}-->
-                <!--eval('(function() {' + document.getElementById('animationcontent').innerHTML + '}())');-->
-            <!--})();-->
-        <!--</script>-->
-
     </div>
 </li>
 
-<li class="slide" title="Embedded DSL: Groovy and Scala Fair Duel" style="font-size: 20px;" timing="120" data-speaker='Corinne'>
+<li class="slide" title="Embedded DSL: Groovy and Scala Fair Duel" style="font-size: 20px;" timing="120" data-speaker='Fabrice' >
     <div class="container-narrow">
 
         <div class="row-fluid marketing" >
@@ -195,11 +88,9 @@
             <div class="span8" >
                 <hr>
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Introduction</div><br/>
-                 <div>Some context</div>
+                 <div>Refresher/Some context</div>
                 <hr>
-                <div style="color: #003bb3;font-size: 35px;text-align: center">Part I: What is a DSL?</div><br/>
-                <div>Short technical reminder on DSLs</div><hr>
-                <div style="color: #003bb3;font-size: 35px;text-align: center">Part II: Implementing KissingTurtles DSL</div><br/>
+                <div style="color: #003bb3;font-size: 35px;text-align: center">Implementing KissingTurtles DSL</div><br/>
             </div>
             <div class="span2">
                 <img src="images/scala-duke.jpg" width="65%"/>
@@ -224,11 +115,7 @@
             </div>
             <div class="span8" >
                 <div>... time to play ...</div><hr>
-                <div style="color: #003bb3;font-size: 35px;text-align: center">Part III: Going further</div><br/>
-                <div>Groovy and Scala features</div>
-                <div>External DSLs</div>
-                <div>Development tooling</div><hr>
-                <div style="color: #003bb3;font-size: 35px;text-align: center">Conclusion</div><br/>
+                <div style="color: #003bb3;font-size: 35px;text-align: center">Conclusion</div>
             </div>
             <div class="span2">
             </div>
@@ -239,7 +126,7 @@
 <!------------------------------------------------------------------->
 <!-- Introduction
 <!------------------------------------------------------------------->
-<li class="slide" title="Part-I" data-speaker='Corinne'>
+<li class="slide" title="Part-I"  data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -258,11 +145,11 @@
     </div>
 </li>
 
-<li class="slide" title="Corinne" data-speaker='Corinne' timing="200">
+<li class="slide" title="Fabrice"  timing="200" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="jumbotron">
             <h1>Ladies first : Corinne</h1><br/>
-            <img width="20%" src="img/corinne_krych.png"/><br/>
+            <img width="20%" src="img/fabrice_matrat.png"/><br/>
         </div>
 
         <hr>
@@ -401,7 +288,7 @@
 <!------------------------------------------------------------------->
 <!-- Part I - DSL definition
 <!------------------------------------------------------------------->
-<li class="slide" title="Part-I" data-speaker='Pascal'>
+<!--li class="slide" title="Part-I" data-speaker='Pascal'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -420,7 +307,7 @@
     </div>
 </li>
 
-<li class="slide" title="DSL Definition" data-speaker='Corinne'>
+<li class="slide" title="DSL Definition" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">  <br/>
@@ -441,7 +328,7 @@
     </div>
 </li>
 
-<li class="slide" title="Computer Language" data-speaker='Corinne'>
+<li class="slide" title="Computer Language" data-speaker='Fabrice'>
 
 
     <div class="container-narrow">
@@ -451,26 +338,6 @@
                 <hr>
                 <div class="jumbotron">
                     <img src="img/Binary.jpg" width="50%"/>
-            <!--<pre style="font-size:16px;text-align:justify">-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-            <!--</pre>-->
                 </div>
                 <hr>
             </div>
@@ -479,7 +346,7 @@
     </div>
 </li>
 
-<li class="slide" title="Computer Programming Language" data-speaker='Corinne'>
+<li class="slide" title="Computer Programming Language" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -509,7 +376,7 @@
     </div>
 </li>
 
-<li class="slide" title="Rubik Cube" data-speaker='Corinne'>
+<li class="slide" title="Rubik Cube" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -539,7 +406,7 @@
     </div>
 </li>
 
-<li class="slide" title="Limited vs Expressiveness" data-speaker='Corinne'>
+<li class="slide" title="Limited vs Expressiveness" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron"><br/>
@@ -630,7 +497,7 @@
     </div>
 </li>
 
-<li class="slide" title="From Martin Fowler" data-speaker='Corinne' timing="620">
+<li class="slide" title="From Martin Fowler" data-speaker='Fabrice' timing="620">
     <div class="container-narrow" style="line-height: 150%;font-size: 20px">
         <hr>
         <div class="jumbotron">
@@ -691,7 +558,7 @@ TTP/RT</pre>
     </div>
 </li>
 
-<li class="slide" title="From Debasish Gosh" style="line-height: 150%;font-size: 25px" data-speaker='Corinne'>
+<li class="slide" title="From Debasish Gosh" style="line-height: 150%;font-size: 25px" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -763,7 +630,7 @@ TTP/RT</pre>
     </div>
 </li>
 
-<li class="slide" style="display: inline-block; margin:0 auto;" title="Groovy" timing="910" data-speaker='Corinne'>
+<li class="slide" style="display: inline-block; margin:0 auto;" title="Groovy" timing="910" data-speaker='Fabrice'>
     <div class="span8"  id="wordcloud">
     </div>
 </li>
@@ -771,7 +638,7 @@ TTP/RT</pre>
 <li class="slide" style="display: inline-block; margin:0 auto;" title="Scala" data-speaker='Pascal'>
     <div class="span8" id="scala_wordcloud">
     </div>
-</li>
+</li-->
 
 <li class="slide" title="Part-II" data-speaker='Pascal' timing="1000">
     <div class="container-narrow">
@@ -792,7 +659,7 @@ TTP/RT</pre>
     </div>
 </li>
 
-<li class="slide" title="DSL & Game" data-speaker='Corinne'>
+<li class="slide" title="DSL & Game" data-speaker='Fabrice'>
     <div class="container-narrow">
 
         <div class="row-fluid marketing">
@@ -900,12 +767,12 @@ step 2 define left
 step 3 replace shell by ScriptEngineMgr from jsr 223
 step 4 replace by engine.eval
 --------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Groovy Script" press="1 2 3 4" data-speaker='Corinne' timing="1450">
+<li class="slide" style="text-align: left" title="Groovy Script" press="1 2 3 4" data-speaker='Fabrice' timing="1450">
     <textarea id="editorGroovy1" name="editorGroovy1">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Run Groovy Script" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Run Groovy Script" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -987,7 +854,7 @@ especially with Classpath issues - in the next slides we'll use IMain directly
 <!------------------------------------------------------------------->
 <!--2. Binding & Compiler Configuration
 <!------------------------------------------------------------------->
-<li class="slide" title="2. Binding" data-speaker='Corinne'>
+<li class="slide" title="2. Binding" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -1006,7 +873,7 @@ especially with Classpath issues - in the next slides we'll use IMain directly
     </div>
 </li>
 
-<li class="slide" title="Compiler Configuration" data-speaker='Corinne'>
+<li class="slide" title="Compiler Configuration" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron"><br/>
@@ -1040,12 +907,12 @@ especially with Classpath issues - in the next slides we'll use IMain directly
 <!-- step 3 introduce compilerConfiguration
 <!-- step 4 inject it in groovy shell
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Base class in Groovy" press="1 2 3 4 5" data-speaker='Corinne' timing="2100">
+<li class="slide" style="text-align: left" title="Base class in Groovy" press="1 2 3 4 5" data-speaker='Fabrice' timing="2100">
     <textarea id="editorGroovy2" name="editorGroovy2">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Base class in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Base class in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1068,12 +935,12 @@ Groovy3. Binding
 step 1 introduce right in binding
 step 2 ad move right command
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Binding in Groovy" press="1 2" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Binding in Groovy" press="1 2" data-speaker='Fabrice'>
     <textarea id="editorGroovy3" name="editorGroovy3">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Binding in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Binding in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1124,7 +991,7 @@ step 2 ad move right command
 <!------------------------------------------------------------------->
 <!-- 3. Semantic Model
 <!------------------------------------------------------------------->
-<li class="slide" title="3. Semantic Model" data-speaker='Corinne' timing="2500">
+<li class="slide" title="3. Semantic Model" data-speaker='Fabrice' timing="2500">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -1154,12 +1021,12 @@ step 5 highlight compilerconf + binding
 step 6 inject binding,
 step 7 remove def left in GameScript
 ------------------------------------------------------------------>
-<li class="slide" style="text-align: left" title="Add Turtle in Groovy" press="1 2 3 4 5 6 7 8" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Add Turtle in Groovy" press="1 2 3 4 5 6 7 8" data-speaker='Fabrice'>
     <textarea id="editorGroovy4" name="editorGroovy4">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Add Turtle in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Add Turtle in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1208,7 +1075,7 @@ step 7 remove def left in GameScript
     </div>
 </li>
 
-<li class="slide" title="Alternative with implicits" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal'>
+<!--li class="slide" title="Alternative with implicits" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -1246,7 +1113,7 @@ step 7 remove def left in GameScript
         </div>
 
     </div>
-</li>
+</li-->
 
 <li class="slide" title="Output Turtle Model" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal' timing="3000">
     <div class="container-narrow">
@@ -1293,12 +1160,12 @@ step 7 remove def left in GameScript
 <!-- cmd-S for text output cmd-D for canvas output
 <!------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Build JSON in Groovy" press="1 2 3 4 5 6 7" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Build JSON in Groovy" press="1 2 3 4 5 6 7" data-speaker='Fabrice'>
     <textarea id="editorGroovy5" name="editorGroovy5">
 </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Build JSON in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Build JSON in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1349,7 +1216,7 @@ step 7 remove def left in GameScript
 <!------------------------------------------------------------------->
 <!-- 4. Syntax
 <!------------------------------------------------------------------->
-<li class="slide" title="4. Syntax" data-speaker='Corinne' timing="3300">
+<li class="slide" title="4. Syntax" data-speaker='Fabrice' timing="3300">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -1371,7 +1238,7 @@ step 7 remove def left in GameScript
 <!------------------------------------------------------------------->
 <!-- slide command chaining
 <!------------------------------------------------------------------->
-<li class="slide" title="Command Chaining" data-speaker='Corinne'>
+<li class="slide" title="Command Chaining" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -1430,12 +1297,12 @@ step 5: remove steps.add from turtle mve
 step 6: add steps.add to turtle by
 step 7: change new Position to add direction
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Command Chaining in Groovy" press="1 2 3 4 5 6 7" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Command Chaining in Groovy" press="1 2 3 4 5 6 7" data-speaker='Fabrice'>
     <textarea id="editorGroovy6" name="editorGroovy6">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Command Chaining in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Command Chaining in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1503,13 +1370,13 @@ step 2: move left by 2 steps
 step 3: highlight by method
 step 4: change by method to return map
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Odd Chaining in Groovy" press="1 2 3 4" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Odd Chaining in Groovy" press="1 2 3 4" data-speaker='Fabrice'>
     <textarea id="editorGroovy6b" name="editorGroovy6b">
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="Output for Odd Chaining in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Odd Chaining in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1668,7 +1535,7 @@ step 4: change by method to return map
 <!------------------------------------------------------------------->
 <!-- kiss
 <!------------------------------------------------------------------->
-<li class="slide" title="One command only" data-speaker='Corinne' timing="3900">
+<!--li class="slide" title="One command only" data-speaker='Fabrice' timing="3900">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -1693,18 +1560,18 @@ step 4: change by method to return map
         <div class="span1">
         </div>
     </div>
-</li>
+</li-->
 
 <!-------------------------------------------------------------------
 Groovy6c. One method without parameter
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="kiss or kiss()" press="1 2 3 4 5 6 7 8" data-speaker='Corinne'>
+<!--li class="slide" style="text-align: left" title="kiss or kiss()" press="1 2 3 4 5 6 7 8" data-speaker='Fabrice'>
     <textarea id="editorGroovy6c" name="editorGroovy6c">
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="Output for kiss in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for kiss in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1720,11 +1587,11 @@ Groovy6c. One method without parameter
             </div>
         </div>
     </div>
-</li>
+</li-->
 <!------------------------------------------------------------------->
 <!-- invokeMethod vs MethodMissing
 <!------------------------------------------------------------------->
-<li class="slide" title="MOP" data-speaker='Corinne'>
+<li class="slide" title="MOP" data-speaker='Fabrice'>
     <div class="container-narrow"> <hr>
 
             <h1>invokeMethod vs methodMissing</h1>
@@ -1786,7 +1653,7 @@ results = Book.findAllByReleaseDateGreaterThanEquals(firstDate)</code></pre>
 <!------------------------------------------------------------------->
 <!-- kiss in scala
 <!------------------------------------------------------------------->
-<li class="slide" title="Kiss" data-speaker='Pascal'>
+<!--li class="slide" title="Kiss" data-speaker='Pascal'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -1811,11 +1678,11 @@ results = Book.findAllByReleaseDateGreaterThanEquals(firstDate)</code></pre>
         <div class="span2">
         </div>
     </div>
-</li>
+</li-->
 <!------------------------------------------------------------------->
 <!-- kiss Editor in scala
 <!------------------------------------------------------------------->
-<li class="slide" title="Kiss in Scala" style="text-align: left" press="1 2 3 4 5" data-speaker='Pascal'>
+<!--li class="slide" title="Kiss in Scala" style="text-align: left" press="1 2 3 4 5" data-speaker='Pascal'>
     <textarea id="editorScala_kiss" name="editorScala_kiss">
     </textarea>
 </li>
@@ -1837,9 +1704,9 @@ results = Book.findAllByReleaseDateGreaterThanEquals(firstDate)</code></pre>
             </div>
         </div>
     </div>
-</li>
+</li-->
 
-<li class="slide" title="Category and Implicit" data-speaker='Corinne' timing="4200">
+<li class="slide" title="Category and Implicit" data-speaker='Fabrice' timing="4200">
     <div class="container-narrow">
         <br/><br/><br/><br/><hr> <br/>
         <h1>Category and Implicits </h1><br/>
@@ -1858,13 +1725,13 @@ step5: modify shell.eval with use()
 step6: highlight class StepCategory
 step7: replace with @Category annotation
 ------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="Adding behaviour to Integer in Groovy" press="1 2 3 4 5 6 7" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Adding behaviour to Integer in Groovy" press="1 2 3 4 5 6 7" data-speaker='Fabrice'>
     <textarea id="editorGroovy7" name="editorGroovy7">
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="Output for Adding behaviour to Integer in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Adding behaviour to Integer in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1934,7 +1801,7 @@ step7: replace with @Category annotation
     </div>
 </li>
 
-<li class="slide" title="TypeCheck in Groovy" data-speaker='Corinne'>
+<li class="slide" title="TypeCheck in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/>
@@ -1959,13 +1826,13 @@ Groovy8. TypeChecked
 step 1: highlight compiler
 step 2: add typechecked ext
 <!------------------------------------------------------------------->
-<li class="slide" style="text-align: left" title="TypeChecked in Groovy" press="1 2" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="TypeChecked in Groovy" press="1 2" data-speaker='Fabrice'>
     <textarea id="editorGroovy8" name="editorGroovy8">
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="Output for TypeChecked in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for TypeChecked in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1983,7 +1850,7 @@ step 2: add typechecked ext
     </div>
 </li>
 
-<li class="slide" title="Type check extension" data-speaker='Corinne'>
+<li class="slide" title="Type check extension" data-speaker='Fabrice'>
     <div class="container-narrow"> <hr>
 
         <h1>TurtleExtension.groovy</h1>
@@ -2015,7 +1882,7 @@ methodNotFound { receiver, name, argList, argTypes, call ->
     </div>
 </li>
 
-<li class="slide" title="Extension" data-speaker='Corinne'>
+<li class="slide" title="Extension" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -2085,7 +1952,7 @@ extensionClasses = dsl.StepExtension
 <!-- step 4 Test apply dynamic named
 <!------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Dynamics in Scala" press="1 2 3 4" data-speaker='Pascal'>
+<!--li class="slide" style="text-align: left" title="Dynamics in Scala" press="1 2 3 4" data-speaker='Pascal'>
     <textarea id="editorScala8" name="editorScala8">
     </textarea>
 </li>
@@ -2106,10 +1973,10 @@ extensionClasses = dsl.StepExtension
             </div>
         </div>
     </div>
-</li>
+</li-->
 
 
-<li class="slide" title="hackers" style="line-height: 150%; font-size:25px;" data-speaker='Corinne'>
+<li class="slide" title="hackers" style="line-height: 150%; font-size:25px;" data-speaker='Fabrice'>
 
     <div class="container-narrow">
         <hr>
@@ -2140,7 +2007,7 @@ extensionClasses = dsl.StepExtension
 
 </li>
 
-<li class="slide" title="AST" style="line-height: 150%; font-size:25px;" data-speaker='Corinne'>
+<li class="slide" title="AST" style="line-height: 150%; font-size:25px;" data-speaker='Fabrice'>
 
     <div class="container-narrow">
         <hr>
@@ -2174,12 +2041,12 @@ step 2: add system.exit
 step 3: add SecureASTCustomizer
 ------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Franklin wants to play with fire in Groovy" press="1 2 3" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Franklin wants to play with fire in Groovy" press="1 2 3" data-speaker='Fabrice'>
     <textarea id="editorGroovy10" name="editorGroovy10">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Franklin wants to play with fire in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Franklin wants to play with fire in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -2325,12 +2192,12 @@ val interpreter = new IMain(settings)</code></pre>
 <!-- Groovy9. Turn around - Timer set to 5s
 <!--------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Franklin wants to turn around in Groovy" press="1 2 3 4" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Franklin wants to turn around in Groovy" press="1 2 3 4" data-speaker='Fabrice'>
     <textarea id="editorGroovy9" name="editorGroovy9">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Franklin wants to turn around in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Franklin wants to turn around in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -2473,12 +2340,12 @@ val interpreter = new IMain(settings)</code></pre>
 <!------------------------------------------------------------------->
 
 
-<li class="slide" style="text-align: left" title="AST Tranformation" press="1 2 3 4 5 6" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="AST Tranformation" press="1 2 3 4 5 6" data-speaker='Fabrice'>
     <textarea id="editorGroovy12" name="editorGroovy12">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output AST" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output AST" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -2500,7 +2367,7 @@ val interpreter = new IMain(settings)</code></pre>
 <!------------------------------------------------------------------->
 <!-- 6. Web-based
 <!------------------------------------------------------------------->
-<li class="slide" title="6. web-based interaction" data-speaker='Corinne' timing="5850">
+<li class="slide" title="6. web-based interaction" data-speaker='Fabrice' timing="5850">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -2527,7 +2394,7 @@ step4: add display map method
 step5: add display map in DSL
 ------------------------------------------------------------------->
 
-<li class="slide" title="ask" style="line-height: 150%; font-size:25px;" data-speaker='Corinne'>
+<li class="slide" title="ask" style="line-height: 150%; font-size:25px;" data-speaker='Fabrice'>
 
 
     <div class="container-narrow">
@@ -2564,12 +2431,12 @@ assert constMap.size() == 1</code></pre>
 
 </li>
 
-<li class="slide" style="text-align: left" title="Franklin wants to ask in Groovy" press="1 2 3 4 5" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Franklin wants to ask in Groovy" press="1 2 3 4 5" data-speaker='Fabrice'>
     <textarea id="editorGroovy11" name="editorGroovy11">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Franklin wants to ask in Groovy" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Franklin wants to ask in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -2679,7 +2546,7 @@ dynamicContainer.variableName</code>
 <!------------------------------------------------------------------->
 <!-- Let's play
 <!------------------------------------------------------------------->
-<li class="slide" title="Let's Play" data-speaker='Corinne' timing="6100">
+<li class="slide" title="Let's Play" data-speaker='Fabrice' timing="6100">
     <div class="container-narrow">
         <hr>
 
@@ -2720,7 +2587,7 @@ dynamicContainer.variableName</code>
     </div>
 </li>
 
-<li class="slide" title="more on Groovy DSL" style="line-height: 150%; font-size:25px;" data-speaker='Corinne'>
+<li class="slide" title="more on Groovy DSL" style="line-height: 150%; font-size:25px;" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -2748,7 +2615,7 @@ dynamicContainer.variableName</code>
 <!-- Builder in Groovy
 <!------------------------------------------------------------------->
 
-<li class="slide" title="Builder in Groovy" data-speaker='Corinne'>
+<!--li class="slide" title="Builder in Groovy" data-speaker='Fabrice'>
 
     <div class="container-narrow">
         <hr><br/>
@@ -2779,28 +2646,18 @@ dynamicContainer.variableName</code>
         </div>
         <div class="span8">
             <hr>
-            <!--<div style="line-height:150%;font-size:25px;text-align:left;">-->
-                <!--Resolve strategy for Closure.-->
-                <!--<pre>-->
-        <!--• OWNER_FIRST (the default): followed by the delegate if not found.-->
-        <!--• DELEGATE_FIRST: and then search the owner if not found.-->
-        <!--• OWNER_ONLY: and don't search the delegate.-->
-        <!--• DELEGATE_ONLY: with no search of the owner.-->
-        <!--• TO_SELF: getProperty of the Closure itself to be overridden.</pre>-->
-            <!--</div>-->
-            <!--<hr>-->
         </div>
         <div class="span2">
         </div>
     </div>
 </li>
 
-<li class="slide" style="text-align: left" title="Groovy Builder" press="1" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Groovy Builder" press="1" data-speaker='Fabrice'>
     <textarea id="editorGroovyBuilder" name="editorGroovyBuilder">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Groovy Builder" data-speaker='Corinne'>
+<li class="slide" style="text-align: left" title="Output for Groovy Builder" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -2814,14 +2671,14 @@ dynamicContainer.variableName</code>
             </div>
         </div>
     </div>
-</li>
+</li-->
 
 <!------------------------------------------------------------------->
 <!-- TypeChecked Builder in Groovy
 http://www.jroller.com/melix/entry/static_builders_inception
 <!------------------------------------------------------------------->
 
-<li class="slide" title="Type checked Builder" data-speaker='Corinne'>
+<!--li class="slide" title="Type checked Builder" data-speaker='Fabrice'>
 
     <div class="container-narrow">
          <hr/><br/>
@@ -2873,14 +2730,14 @@ String build() {
         <div class="span2">
         </div>
     </div>
-</li>
+</li-->
 <!------------------------------------------------------------------->
 <!-- TypeChecked Builder in Groovy (2)
 http://www.jroller.com/melix/entry/static_builders_inception
 TODO editor or slide to explain
 <!------------------------------------------------------------------->
 
-<li class="slide" title="Scala not covered features" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal' timing="6600">
+<!--li class="slide" title="Scala not covered features" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal' timing="6600">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron"><br/>
@@ -2905,13 +2762,13 @@ TODO editor or slide to explain
         </div>
         <hr>
     </div>
-</li>
+</li-->
 
 <!------------------------------------------------------------------->
 <!-- Going further
 <!------------------------------------------------------------------->
 
-<li class="slide" title="External DSL" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal'>
+<!--li class="slide" title="External DSL" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -2935,7 +2792,7 @@ TODO editor or slide to explain
     </div>
 </li>
 
-<li class="slide" title="Language workbench" data-speaker='Corinne'>
+<li class="slide" title="Language workbench" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
 
@@ -2947,7 +2804,7 @@ TODO editor or slide to explain
     </div>
 </li>
 
-<li class="slide" title="DSL Internationalization" style="line-height: 150%;font-size: 25px;" data-speaker='Corinne'>
+<li class="slide" title="DSL Internationalization" style="line-height: 150%;font-size: 25px;" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -2975,10 +2832,10 @@ TODO editor or slide to explain
         </div>
     </div>
 
-</li>
+</li-->
 
 
-<!--li class="slide" title="Testing" data-speaker='Corinne' timing="6750">
+<!--li class="slide" title="Testing" data-speaker='Fabrice' timing="6750">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -3016,7 +2873,7 @@ TODO editor or slide to explain
     </div>
 </li-->
 
-<li class="slide" title="Testing in Groovy" data-speaker='Corinne'>
+<li class="slide" title="Testing in Groovy" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -3108,7 +2965,7 @@ TODO editor or slide to explain
 <!------------------------------------------------------------------->
 <!-- Conclusion
 <!------------------------------------------------------------------->
-<li class="slide" title="Conclusion" data-speaker='Corinne' timing="6900">
+<li class="slide" title="Conclusion" data-speaker='Fabrice' timing="6900">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -3127,7 +2984,7 @@ TODO editor or slide to explain
     </div>
 </li>
 
-<li class="slide" title="Host language choice" style="line-height: 150%;font-size: 25px;" data-speaker='Corinne'>
+<li class="slide" title="Host language choice" style="line-height: 150%;font-size: 25px;" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <h1>Which host language is right for me?</h1>
