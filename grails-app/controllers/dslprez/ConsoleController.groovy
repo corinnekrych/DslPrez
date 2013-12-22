@@ -68,6 +68,7 @@ class ConsoleController {
             System.getProperty("java.class.path", ".").tokenize(File.pathSeparator).each {
                 println it
             }
+
             /*
             def compilerPath = java.lang.Class.forName("scala.tools.nsc.Interpreter").getProtectionDomain().getCodeSource().getLocation().getPath()
             //println " >>>>>>>>> " + compilerPath
