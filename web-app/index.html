@@ -74,7 +74,7 @@
         <hr>
         <div>
             <p style=""><img width="10%" src="img/marsjug.png"/></p>
-        <div style="background: #436e90; color: #EDEDEB"><h2>Follow the presentation on <a class="jone" href="http://dslprez.herokuapp.com">http://dslprez.herokuapp.com</a></h2></div>
+        <!--div style="background: #436e90; color: #EDEDEB"><h2>Follow the presentation on <a class="jone" href="http://dslprez.herokuapp.com">http://dslprez.herokuapp.com</a></h2></div-->
     </div>
 </li>
 
@@ -91,33 +91,17 @@
                  <div>Refresher/Some context</div>
                 <hr>
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Implementing KissingTurtles DSL</div><br/>
-            </div>
-            <div class="span2">
-                <img src="images/scala-duke.jpg" width="65%"/>
-            </div>
-        </div>
-        <div class="row-fluid marketing" >
-            <div class="span2">
-            </div>
-            <div class="span8" style="text-align: center">
-            1. Script<br/>
-            2. Binding & Compiler configuration<br/>
-            3. Semantic Model<br/>
-            4. Syntax<br/>
-            5. Error & Security<br/>
-            6. Web-based Interaction<br/>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-        <div class="row-fluid marketing" >
-            <div class="span2">
-            </div>
-            <div class="span8" >
+                1. Script<br/>
+                2. Binding & Compiler configuration<br/>
+                3. Semantic Model<br/>
+                4. Syntax<br/>
+                5. Error & Security<br/>
+                6. Web-based Interaction<br/>
                 <div>... time to play ...</div><hr>
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Conclusion</div>
             </div>
             <div class="span2">
+                <img src="images/scala-duke.jpg" width="65%"/>
             </div>
         </div>
     </div>
@@ -126,7 +110,7 @@
 <!------------------------------------------------------------------->
 <!-- Introduction
 <!------------------------------------------------------------------->
-<li class="slide" title="Part-I"  data-speaker='Fabrice'>
+<li class="slide" title=""  data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -148,7 +132,7 @@
 <li class="slide" title="Fabrice"  timing="200" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="jumbotron">
-            <h1>Ladies first : Corinne</h1><br/>
+            <h1>Beardy first : Fabrice</h1><br/>
             <img width="20%" src="img/fabrice_matrat.png"/><br/>
         </div>
 
@@ -198,7 +182,7 @@
 <li class="slide" title="Pascal" data-speaker='Pascal' timing="280">
     <div class="container-narrow">
         <div class="jumbotron">
-            <h1>Pascal : my geek friend</h1><br/>
+            <h1>Then nerdies: Pascal</h1><br/>
             <img width="20%" src="img/freeBSD.png"/><br/>
         </div>
 
@@ -284,6 +268,8 @@
         </div>
     </div>
 </li>
+
+<!-- TODO Refreshr on Scala Groovy ? -->
 
 <!------------------------------------------------------------------->
 <!-- Part I - DSL definition
@@ -640,7 +626,7 @@ TTP/RT</pre>
     </div>
 </li-->
 
-<li class="slide" title="Part-II" data-speaker='Pascal' timing="1000">
+<li class="slide" title="Code time" data-speaker='Pascal' timing="1000">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -649,7 +635,7 @@ TTP/RT</pre>
             <div class="span8">
                 <hr>
                 <div class="jumbotron"><br/>
-                    <h1>Part II: Implementing<br/><br/> KissingTurtles DSL</h1><br/>
+                    <h1>Implementing<br/><br/> KissingTurtles DSL</h1><br/>
                 </div>
                 <hr>
             </div>
@@ -1565,7 +1551,7 @@ step 4: change by method to return map
 <!-------------------------------------------------------------------
 Groovy6c. One method without parameter
 ------------------------------------------------------------------->
-<!--li class="slide" style="text-align: left" title="kiss or kiss()" press="1 2 3 4 5 6 7 8" data-speaker='Fabrice'>
+<li class="slide" style="text-align: left" title="kiss or kiss()" press="1 2 3 4 5 6 7 8" data-speaker='Fabrice'>
     <textarea id="editorGroovy6c" name="editorGroovy6c">
     </textarea>
 </li>
@@ -1587,7 +1573,7 @@ Groovy6c. One method without parameter
             </div>
         </div>
     </div>
-</li-->
+</li>
 <!------------------------------------------------------------------->
 <!-- invokeMethod vs MethodMissing
 <!------------------------------------------------------------------->
@@ -2501,48 +2487,6 @@ Scala11.ask
     </div>
 </li>
 
-
-<li class="slide" title="Alternative syntax" data-speaker='Pascal'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h3>What if you don't like the syntax ....</h3><br/>
-        </div>
-        <hr>
-       <div class="row-fluid marketing">
-           <div class="span1">
-           </div>
-           <div class="span2">
-            <br/><br/><br/><br/><br/><br/>
-               <img src="img/tools.gif"/>
-           </div>
-           <div class="span7" style="line-height:150%;font-size:25px;text-align:left;">
-                   <div>+ Use a map or a Dynamic instance container</div>
-                   <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- store the answers</div>
-                   <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- syntax can also be awkward</div>
-                   <pre><code style="font-size: 14px" class="language-groovy">ask("question") assign_to("variableName")
-                   
-// access the answer:
-answerMap("variableName")
-
-//We can replace Strings with Symbols
-answerMap('variableName)
-
-//or
-dynamicContainer.variableName</code>
-                   </pre>
-                   <div>+ Use macro annotations from Macro Paradise</div>
-                   <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- experimental</div>
-                   <div>+ Or once again use Scala Compiler Plugin</div>
-           </div>
-           <div class="span2">
-           </div>
-           <hr/>
-        </div>
-    </div>
-</li>
-
 <!------------------------------------------------------------------->
 <!-- Let's play
 <!------------------------------------------------------------------->
@@ -2568,7 +2512,7 @@ dynamicContainer.variableName</code>
 
 </li>
 
-<li class="slide" title="Part-III" data-speaker='Pascal' timing="6300" >
+<li class="slide" title="Conclusion" data-speaker='Pascal' timing="6300" >
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -2577,7 +2521,7 @@ dynamicContainer.variableName</code>
             <div class="span8">
                 <hr>
                 <div class="jumbotron"><br/>
-                    <h1>Part III: Going further</h1><br/>
+                    <h1>Going further</h1><br/>
                 </div>
                 <hr>
             </div>
@@ -2587,7 +2531,7 @@ dynamicContainer.variableName</code>
     </div>
 </li>
 
-<li class="slide" title="more on Groovy DSL" style="line-height: 150%; font-size:25px;" data-speaker='Fabrice'>
+<!--li class="slide" title="more on Groovy DSL" style="line-height: 150%; font-size:25px;" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -2610,7 +2554,7 @@ dynamicContainer.variableName</code>
         </div>
     </div>
 
-</li>
+</li-->
 <!------------------------------------------------------------------->
 <!-- Builder in Groovy
 <!------------------------------------------------------------------->
@@ -3004,7 +2948,7 @@ TODO editor or slide to explain
     </div>
 </li>
 
-<li class="slide" title="Final word">
+<li class="slide" title="Final word" data-speaker='Pascal'>
     <div class="container-narrow"><br/><br/><br/><br/><br/><br/>
         <hr>
         <div style="text-align: center" class="jumbotron">
@@ -3017,7 +2961,7 @@ TODO editor or slide to explain
 <!------------------------------------------------------------------->
 <!-- References
 <!------------------------------------------------------------------->
-<li class="slide" title="Bibliography" style="line-height: 150%;font-size:20px;">
+<li class="slide" title="Bibliography" style="line-height: 150%;font-size:20px;" data-speaker='Pascal'>
     <div class="container-narrow">
         <img src="img/groovy.png" style="float:left; margin-left: 6em;width:15%"/>
         <img src="img/scala_logo.png" style="float:right; margin-right: 6em;width:15%"/><br/><br/>
@@ -3060,7 +3004,7 @@ TODO editor or slide to explain
     </div>
 </li>
 
-<li class="slide" title="References" style="line-height: 150%;font-size:30px;">
+<li class="slide" title="References" style="line-height: 150%;font-size:30px;" data-speaker='Pascal'>
     <div class="container-narrow">
         <hr>
 
