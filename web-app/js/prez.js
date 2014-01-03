@@ -1179,7 +1179,7 @@ editorGroovy6b.addKeyMap(keymap6b);
 //step 7 define property missing: I treat kiss as porperty and then do a method call
 //step 8 add baseclass into compiler configuration
 //------------------------------------------------------------------->
-var content6c = "class Position {\n"
+/*var content6c = "class Position {\n"
     + "  int x\n"
     + "  int y\n"
     + "  Direction direction\n"
@@ -1435,7 +1435,7 @@ var keymap6c = {
     "8": editorGroovy6cKey8,
     "9": editorGroovy6cKey9
 };
-editorGroovy6c.addKeyMap(keymap6c);
+editorGroovy6c.addKeyMap(keymap6c);*/
 
 
 //-------------------------------------------------------------------
@@ -2598,7 +2598,7 @@ editorGroovy12.addKeyMap(keymap12);
 // GroovyBuilder. Groovy builder
 // step
 //------------------------------------------------------------------->
-var contentBuilder = "class MyBuilder {\n"
+/*var contentBuilder = "class MyBuilder {\n"
                     + "  int indent = 0\n"
                     + "  Object invokeMethod(String name, Object args) {\n"
                     + "    indent.times {print \"..\"}\n"
@@ -2646,6 +2646,6 @@ var keymapBuilder = {
     "0": editorGroovyBuilderKey0
 };
 
-editorGroovyBuilder.addKeyMap(keymapBuilder);
+editorGroovyBuilder.addKeyMap(keymapBuilder);*/
 
 $("#technologies").airport([ 'Twitter Bootstrap', 'jCloud', 'jQuery-airport', 'Grails', 'Code Mirror', 'jQuery' ]);

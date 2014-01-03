@@ -1252,7 +1252,7 @@ editorScala7.addKeyMap(keymapScala7);
 // step 3 Test apply dynamic
 // step 4 Test apply dynamic named
 //------------------------------------------------------------------->
-var contentScala8 = "import scala.language.dynamics\n\n"
+/*var contentScala8 = "import scala.language.dynamics\n\n"
                   + "object MyDynamicObject extends Dynamic {//works also with class\n\n"
                   + "   def applyDynamic(m: String)(args: Any*) = {\n"
                   + "     println(\"applyDynamic \"+m+\" => \"+args)\n"
@@ -1335,7 +1335,7 @@ var keymapScala8 = {
     "5": editorScala8Key5,
 };
 
-editorScala8.addKeyMap(keymapScala8);
+editorScala8.addKeyMap(keymapScala8);*/
 
 
 
@@ -1344,7 +1344,7 @@ editorScala8.addKeyMap(keymapScala8);
 //------------------------------------------------------------------->
 // Scala Franklin wants to Kiss
 //------------------------------------------------------------------->
-
+/*
 var contentScala_kiss =  "import _root_.net.liftweb.json._\n"
                       + "import net.liftweb.json._\n"
                       + "import net.liftweb.json.JsonDSL._\n"
@@ -1504,7 +1504,7 @@ var keymapScala_kiss = {
     "5": editorScalaKissKey5,
 
 };
-editorScala_kiss.addKeyMap(keymapScala_kiss);
+editorScala_kiss.addKeyMap(keymapScala_kiss);*/
 
 //------------------------------------------------------------------->
 // Scala9. Turn around - Timer set to 5 seconds
@@ -1570,6 +1570,7 @@ var contentScala9 = "import _root_.net.liftweb.json._\n"
 		  + "////////////////////\n\n"
                   + "val json = turtle.toJSon\n"
 		  + "println(json); json\n";
+
 
 var editorScala9 = new dslPrez.editor("editorScala9",contentScala9);
 editorScala9.foldCode(CodeMirror.Pos(10, 0));
