@@ -80,6 +80,42 @@ function submitTurtleFormToScalaConsoleExtended(input, output, canvasId, additio
     submitTurtleFormExtended(input, output, canvasId, "scala",additionalParams);
 }
 
+// Scala0 Scala Cheat Seat
+
+var contentScala0 = "import scala.tools.nsc._\n"
+    + "import scala.tools.nsc.interpreter._\n\n"
+    + "// Two next steps necessary only inside Grails/Groovy\n"
+    + "val env = new Settings()\n"
+    + "env.usejavacp.value = true\n\n"
+    + "val interpreter = new IMain(env)\n\n"
+    + "val gameDSL = \"\"\"\n"
+    + "    println(\"I run a Scala script\")\n"
+    + "\"\"\"\n"
+    + "//////////////////////\n"
+    + "// Run DSL script.\n"
+    + "val result = interpreter.eval(gameDSL)\n\n\n";
+
+var editorScala0 = new dslPrez.editor("editorScala0", contentScala0);
+
+function editorScala0Send() {
+    var value = editorScala0.getValue();
+    submitFormToScalaConsole(value, "#outputScala0");
+}
+
+function editorScala0Key0() {
+    editorScala0.currentPress(0, 1);
+    setStep(0,1);
+    editorScala0.setValue(contentScala0);
+}
+
+var keymapScala0 = {
+    "0" : editorScala0Key0,
+    "Ctrl-S" : editorScala0Send,
+    "Cmd-S" : editorScala0Send
+};
+editorScala0.addKeyMap(keymapScala0);
+
+
 //------------------------------------------------------------------->
 // Scala1. Script
 // step 1 define move method and move to left
@@ -598,6 +634,7 @@ editorScala4.addKeyMap(keymapScala4);
 // step 7 display result
 //------------------------------------------------------------------->
 
+/*
 var contentScala5 = "//import scala.tools.nsc.interpreter._\n\n"
                   + "//val interpreter = new IMain()\n\n"
                   + "case class Position(x:Int, y:Int) {\n"
@@ -816,6 +853,7 @@ var keymapScala5 = {
     "8": editorScala5Key8
 };
 editorScala5.addKeyMap(keymapScala5);
+*/
 
 //------------------------------------------------------------------->
 // Scala6.
@@ -1252,7 +1290,7 @@ editorScala7.addKeyMap(keymapScala7);
 // step 3 Test apply dynamic
 // step 4 Test apply dynamic named
 //------------------------------------------------------------------->
-var contentScala8 = "import scala.language.dynamics\n\n"
+/*var contentScala8 = "import scala.language.dynamics\n\n"
                   + "object MyDynamicObject extends Dynamic {//works also with class\n\n"
                   + "   def applyDynamic(m: String)(args: Any*) = {\n"
                   + "     println(\"applyDynamic \"+m+\" => \"+args)\n"
@@ -1335,7 +1373,7 @@ var keymapScala8 = {
     "5": editorScala8Key5,
 };
 
-editorScala8.addKeyMap(keymapScala8);
+editorScala8.addKeyMap(keymapScala8);*/
 
 
 
@@ -1344,7 +1382,7 @@ editorScala8.addKeyMap(keymapScala8);
 //------------------------------------------------------------------->
 // Scala Franklin wants to Kiss
 //------------------------------------------------------------------->
-
+/*
 var contentScala_kiss =  "import _root_.net.liftweb.json._\n"
                       + "import net.liftweb.json._\n"
                       + "import net.liftweb.json.JsonDSL._\n"
@@ -1504,11 +1542,12 @@ var keymapScala_kiss = {
     "5": editorScalaKissKey5,
 
 };
-editorScala_kiss.addKeyMap(keymapScala_kiss);
+editorScala_kiss.addKeyMap(keymapScala_kiss);*/
 
 //------------------------------------------------------------------->
 // Scala9. Turn around - Timer set to 5 seconds
 //------------------------------------------------------------------->
+
 
 var contentScala9 = "import _root_.net.liftweb.json._\n"
                   + "import net.liftweb.json._\n"
@@ -1571,6 +1610,8 @@ var contentScala9 = "import _root_.net.liftweb.json._\n"
                   + "val json = turtle.toJSon\n"
 		  + "println(json); json\n";
 
+/*
+
 var editorScala9 = new dslPrez.editor("editorScala9",contentScala9);
 editorScala9.foldCode(CodeMirror.Pos(10, 0));
 editorScala9.foldCode(CodeMirror.Pos(17, 0));
@@ -1613,6 +1654,7 @@ var keymapScala9 = {
     "1": editorScala9Key1
 };
 editorScala9.addKeyMap(keymapScala9);
+*/
 
 //------------------------------------------------------------------->
 // Scala10. Sneaky - Franklin plays with fire

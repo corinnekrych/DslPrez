@@ -71,6 +71,62 @@ function submitTurtleFormToGroovyConsole(input, output, canvasId) {
     submitTurtleForm(input, output, canvasId, "groovy");
 }
 
+
+// Groovy Cheat Seat
+
+var content0 = "public class Person {\n"
+    + "   private String name;\n"
+    + "   private int age;\n"
+    + "   public Person() {\n"
+    + "   }\n"
+    + "   public Person(String name, int age) {\n"
+    + "       this.name = name;\n"
+    + "       this.age = age;\n"
+    + "   }\n"
+    + "   public String toString() {\n"
+    + "       return \"Hello I'm \" + name + \" and I'm \" + age + \" years old\";\n"
+    + "   }\n"
+    + "   public int getAge() {\n"
+    + "       return age;\n"
+    + "   }\n"
+    + "   public void setAge(int age) {\n"
+    + "       this.age = age;\n"
+    + "   }\n"
+    + "   public String getName() {\n"
+    + "       return name;\n"
+    + "   }\n"
+    + "   public void setName(String name) {\n"
+    + "       this.name = name;\n"
+    + "   }\n"
+    + "}\n\n"
+    + "// In your main method\n"
+    + "Person sebastien = new Person();\n"
+    + "sebastien.setName(\"Sebi\");\n"
+    + "sebastien.setAge(34);\n"
+    + "System.out.println(sebastien);\n"
+
+var editorGroovy0 = new dslPrez.editor("editorGroovy0", content0);
+
+function editorGroovy0Key0() {
+    editorGroovy0.currentPress(0, 1);
+    setStep(0,0);
+    editorGroovy0.setValue(content0);
+}
+
+function editorGroovy0Send() {
+    var value = editorGroovy0.getValue();
+    submitFormToGroovyConsole(value, "#outputGroovy0");
+}
+
+var keymap0 = {
+    "0" : editorGroovy0Key0,
+    "Ctrl-S" : editorGroovy0Send,
+    "Cmd-S" : editorGroovy0Send
+};
+
+editorGroovy0.addKeyMap(keymap0);
+
+
 //------------------------------------------------------------------->
 // Groovy1. Script
 // step 1 define move method
@@ -565,6 +621,7 @@ editorGroovy4.addKeyMap(keymap4);
 //  step 6 highlight
 //  step 7 mix plain groovy + DSL 4.times {move left}
 //------------------------------------------------------------------->
+/*
 var content5 = "class Position {\n"
             + "  int x\n"
             + "  int y\n"
@@ -743,6 +800,7 @@ var keymap5 = {
     "8": editorGroovy5Key8
 };
 editorGroovy5.addKeyMap(keymap5);
+*/
 
 //-------------------------------------------------------------------
 //Groovy6. Command chaining
@@ -1179,7 +1237,7 @@ editorGroovy6b.addKeyMap(keymap6b);
 //step 7 define property missing: I treat kiss as porperty and then do a method call
 //step 8 add baseclass into compiler configuration
 //------------------------------------------------------------------->
-var content6c = "class Position {\n"
+/*var content6c = "class Position {\n"
     + "  int x\n"
     + "  int y\n"
     + "  Direction direction\n"
@@ -1435,7 +1493,7 @@ var keymap6c = {
     "8": editorGroovy6cKey8,
     "9": editorGroovy6cKey9
 };
-editorGroovy6c.addKeyMap(keymap6c);
+editorGroovy6c.addKeyMap(keymap6c);*/
 
 
 //-------------------------------------------------------------------
@@ -1854,6 +1912,7 @@ editorGroovy8.scrollIntoView({line:80, ch:0});
 // step3: highlight ASTTransformationCustomizer
 // step4: add TimeInterrupt
 //------------------------------------------------------------------->
+/*
 var content9 = "class Position {\n"
             + "int x\n"
             + "int y\n"
@@ -2053,6 +2112,7 @@ var keymap9 = {
     "Cmd-S": editorGroovy9TurtleSend
 };
 editorGroovy9.addKeyMap(keymap9);
+*/
 
 //------------------------------------------------------------------->
 // Groovy10. Sneaky
@@ -2598,7 +2658,7 @@ editorGroovy12.addKeyMap(keymap12);
 // GroovyBuilder. Groovy builder
 // step
 //------------------------------------------------------------------->
-var contentBuilder = "class MyBuilder {\n"
+/*var contentBuilder = "class MyBuilder {\n"
                     + "  int indent = 0\n"
                     + "  Object invokeMethod(String name, Object args) {\n"
                     + "    indent.times {print \"..\"}\n"
@@ -2646,6 +2706,6 @@ var keymapBuilder = {
     "0": editorGroovyBuilderKey0
 };
 
-editorGroovyBuilder.addKeyMap(keymapBuilder);
+editorGroovyBuilder.addKeyMap(keymapBuilder);*/
 
 $("#technologies").airport([ 'Twitter Bootstrap', 'jCloud', 'jQuery-airport', 'Grails', 'Code Mirror', 'jQuery' ]);
