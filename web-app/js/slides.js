@@ -116,14 +116,14 @@ slide.enter("AST", whiteBackground, removeWhiteBackground);
 slide.enter("Groovy Script", showGroovyDuke, removeGroovyDuke);
 slide.enter("Run Groovy Script", showGroovyDuke, removeGroovyDuke);
 
-slide.enter("Groovy Cheat Seat Script", showGroovyDuke, removeGroovyDuke);
-slide.enter("Run Groovy Cheat Seat Script", showGroovyDuke, removeGroovyDuke);
+slide.enter("Groovy Cheat Sheet Script", showGroovyDuke, removeGroovyDuke);
+slide.enter("Run Groovy Cheat Sheet Script", showGroovyDuke, removeGroovyDuke);
 
 slide.enter("Scala Script", showScalaDuke, removeScalaDuke);
 slide.enter("Run Scala Script", showScalaDuke, removeScalaDuke);
 
-slide.enter("Scala Cheat Seat Script", showScalaDuke, removeScalaDuke);
-slide.enter("Run Scala Cheat Seat Script", showScalaDuke, removeScalaDuke);
+slide.enter("Scala Cheat Sheet Script", showScalaDuke, removeScalaDuke);
+slide.enter("Run Scala Cheat Sheet Script", showScalaDuke, removeScalaDuke);
 
 slide.enter("Base class in Groovy", showGroovyDuke, removeGroovyDuke);
 slide.enter("Output for Base class in Groovy", showGroovyDuke, removeGroovyDuke);
