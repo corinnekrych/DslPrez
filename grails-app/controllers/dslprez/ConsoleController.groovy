@@ -55,21 +55,21 @@ class ConsoleController {
     }
 
     def executeScala() {
-        def cp = System.getProperty("java.class.path")
-        def absprefix = "/home/pcohen/workspace/scala211/JavaOne/DslPrez/"
+       def cp = System.getProperty("java.class.path")
+        def absprefix = "D:\\JavaOne\\DslPrez\\"
         if (!cp.contains("scala")) {
-            cp = absprefix+"lib/scaladsl.jar:"+
-            absprefix+"lib/scalainterpreter.jar:"+
-            absprefix+"lib/scala-reflect.jar:"+
-            absprefix+"lib/scala-compiler.jar:"+
-            absprefix+"lib/scala-library.jar:"+
-            absprefix+"lib/lift-json.jar:"+ cp
+/*            cp = absprefix+"lib\\scaladsl.jar;"+
+            absprefix+"lib\\scalainterpreter.jar;"+
+            absprefix+"lib\\scala-reflect.jar;"+
+            absprefix+"lib\\scala-compiler.jar;"+
+            absprefix+"lib\\scala-library.jar;"+
+            absprefix+"lib\\lift-json.jar;"+ cp
             System.setProperty("java.class.path", cp)
-            System.getProperty("java.class.path", ".").tokenize(File.pathSeparator).each {
-                println it
-            }
-
-            /*
+            //System.getProperty("java.class.path", ".").tokenize(File.pathSeparator).each {
+            //   println it
+            //}
+*/
+    
             def compilerPath = java.lang.Class.forName("scala.tools.nsc.Interpreter").getProtectionDomain().getCodeSource().getLocation().getPath()
             //println " >>>>>>>>> " + compilerPath
             def evaluatorPath = java.lang.Class.forName("dslprez.scala.eval.Evaluator").getProtectionDomain().getCodeSource().getLocation().getPath()
@@ -77,10 +77,10 @@ class ConsoleController {
             def reflectPath = java.lang.Class.forName("scala.reflect.api.Annotations").getProtectionDomain().getCodeSource().getLocation().getPath()
             def jsonPath = java.lang.Class.forName("net.liftweb.json.JsonParser").getProtectionDomain().getCodeSource().getLocation().getPath()
             def dslPath = java.lang.Class.forName("dslprez.scala.slides.Position").getProtectionDomain().getCodeSource().getLocation().getPath()
-            System.setProperty("java.class.path", evaluatorPath + ":" + libraryPath + ":" + compilerPath + ":" + reflectPath + ":" + jsonPath + ":" + dslPath + ":" + cp)
+            System.setProperty("java.class.path", evaluatorPath + ";" + libraryPath + ";" + compilerPath + ";" + reflectPath + ";" + jsonPath + ";" + dslPath + ";" + cp)
 
             //println ">>>>>>> $directory"
-            */
+            
         }
         def encoding = 'UTF-8'
         def stream = new ByteArrayOutputStream()
