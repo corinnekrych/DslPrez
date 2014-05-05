@@ -14,3 +14,5 @@ This presentation was given in:
 
 - [JavaOne](https://oracleus.activeevents.com/2013/connect/sessionDetail.ww?SESSION_ID=4524) September 2013 with the title "Embedded DSL: a Groovy and Scala fair duel." starring [Corinne Krych](http://corinnekrych.github.io/) and [Pascal Cohen](http://fr.linkedin.com/pub/pascal-cohen/1/105/1a8)
 
+- [Scotch on the rocks](http://www.sotr.eu/) June 2014 with the title "Embedded DSL: a Groovy and Scala fair duel." starring [Corinne Krych](http://corinnekrych.github.io/) and [Fabrice Matrat](http://fabricematrat.github.io/)    
+
