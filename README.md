@@ -2,9 +2,9 @@ DslPrez
 =======
 
 ### This presentation was given at:
-- Gr8Conf EU June 2012 with [Corinne Krych](http://corinnekrych.github.io/) and [Sebastien Blanc](https://github.com/sebastienblanc) 
+- [Gr8Conf EU June 2012](http://lanyrd.com/2012/gr8conf-europe/) with [Corinne Krych](http://corinnekrych.github.io/) and [Sebastien Blanc](https://github.com/sebastienblanc) 
 
-- GGX in London December 2012 with [Corinne Krych](http://corinnekrych.github.io/) and [Fabrice Matrat](http://fabricematrat.github.io/)    
+- [GGX in London December 2012](https://skillsmatter.com/legacy_profile/fabrice-matrat) with [Corinne Krych](http://corinnekrych.github.io/) and [Fabrice Matrat](http://fabricematrat.github.io/)    
 
 - Greach in Madrid January 2013 with [Corinne Krych](http://corinnekrych.github.io/) and [Sebastien Blanc](https://github.com/sebastienblanc) 
 
