@@ -60,8 +60,8 @@
             </div>
 
             <div class="span4">
-                <p><img width="35%" src="img/freeBSD.png"/></p>
-                <h4>Pascal Cohen</h4>
+                <p><img width="35%" src="img/fabrice.png"/></p>
+                <h4>Fabrice Matrat</h4>
             </div>
             <div class="span2">&nbsp;</div>
         </div>
@@ -73,115 +73,7 @@
         </div>
         <hr>
         <div>
-            <p style=""><img width="15%" src="img/j1.png"/></p>
-        <div style="background: #436e90; color: #EDEDEB"><h2>Follow the presentation on <a class="jone" href="http://dslprez.herokuapp.com">http://dslprez.herokuapp.com</a></h2></div>
-
-        <!--<canvas id="animationcanvas" style="width: 100%; position: absolute; left: 0; bottom: 5px;" width="1000" height="50" ></canvas>-->
-        <!--<code style="visibility: hidden;" id="animationcontent" class="language-javascript">-->
-            <!--var f = true;-->
-            <!--function animate() {-->
-                <!--f = !f;-->
-                <!--moveObject('emily', {-->
-                    <!--role: 'turtle2',-->
-                    <!--y: 19,-->
-                    <!--x: f ? 0 : 19,-->
-                    <!--rotation: 0-->
-                <!--}, function () {});-->
-                <!--moveObject('franklin', {-->
-                    <!--role: 'turtle1',-->
-                    <!--y: 19,-->
-                    <!--x: f ? 19 : 0,-->
-                    <!--rotation: 0-->
-                <!--}, animate);-->
-            <!--}-->
-            <!--animate();</pre></code>-->
-
-        <!--<script>-->
-            <!--(function () {-->
-                <!--var canvas = document.getElementById('animationcanvas');-->
-                <!--var ctx = canvas.getContext('2d');-->
-                <!--var grid = 20;-->
-                <!--ctx.scale(canvas.width / grid, canvas.height);-->
-                <!--ctx.translate(1/2, 1/2);-->
-
-                <!--var images = {};-->
-                <!--function draw(place) {-->
-                    <!--if (!images[place.role]) {-->
-                        <!--images[place.role] = new Image();-->
-                        <!--images[place.role].src = 'img/' + place.role + '.png';-->
-                    <!--}-->
-                    <!--ctx.save();-->
-                    <!--ctx.translate(place.x, grid - 1 - place.y);-->
-                    <!--ctx.rotate(- place.rotation);-->
-                    <!--ctx.drawImage(images[place.role], -1/2, -1/2, 1, 1);-->
-                    <!--ctx.restore();-->
-                <!--}-->
-
-                <!--function average(from, to, progress) {-->
-                    <!--return from + (to - from) * progress;-->
-                <!--}-->
-
-                <!--var duration = 7000;-->
-                <!--var current = {};-->
-                <!--var animated = {};-->
-                <!--function animate() {-->
-                    <!--var name;-->
-                    <!--var cont = false;-->
-                    <!--ctx.clearRect(-1, -1, grid + 1, grid + 1);-->
-                    <!--//drawGrid();-->
-                    <!--for (name in animated) {-->
-                        <!--if (animated.hasOwnProperty(name)) {-->
-                            <!--var to = animated[name];-->
-                            <!--var from = current[name];-->
-                            <!--var progress = (Date.now() - to.startTime) / duration;-->
-                            <!--if (progress > 1) {-->
-                                <!--current[name] = {-->
-                                    <!--role: to.role,-->
-                                    <!--x: to.x,-->
-                                    <!--y: to.y,-->
-                                    <!--rotation: to.rotation-->
-                                <!--};-->
-                                <!--delete animated[name];-->
-                                <!--if (to.cb) {-->
-                                    <!--to.cb();-->
-                                <!--}-->
-                            <!--} else {-->
-                                <!--cont = true;-->
-                                <!--draw({-->
-                                    <!--role: to.role,-->
-                                    <!--x: average(from.x, to.x, progress),-->
-                                    <!--y: average(from.y, to.y, progress),-->
-                                    <!--rotation: average(from.rotation, to.rotation, progress)-->
-                                <!--});-->
-                            <!--}-->
-                        <!--}-->
-                    <!--}-->
-                    <!--for (name in current) {-->
-                        <!--if (current.hasOwnProperty(name) && !animated[name]) {-->
-                            <!--draw(current[name]);-->
-                        <!--}-->
-                    <!--}-->
-                    <!--if (cont) {-->
-                        <!--setTimeout(animate, 1000 / 60);-->
-                    <!--}-->
-                <!--}-->
-
-                <!--function moveObject(name, object, callback) {-->
-                    <!--if (!current[name]) {-->
-                        <!--current[name] = object;-->
-                        <!--animate();-->
-                        <!--callback();-->
-                    <!--} else {-->
-                        <!--object.startTime = Date.now();-->
-                        <!--object.cb = callback;-->
-                        <!--animated[name] = object;-->
-                        <!--animate();-->
-                    <!--}-->
-                <!--}-->
-                <!--eval('(function() {' + document.getElementById('animationcontent').innerHTML + '}())');-->
-            <!--})();-->
-        <!--</script>-->
-
+            <p style=""><img width="35%" src="img/logo_change_grey.png"/></p>
     </div>
 </li>
 
@@ -308,46 +200,50 @@
     </div>
 </li>
 
-<li class="slide" title="Pascal" data-speaker='Pascal' timing="280">
+
+<li class="slide" title="Fabrice"  timing="120" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="jumbotron">
-            <h1>Pascal : my geek friend</h1><br/>
-            <img width="20%" src="img/freeBSD.png"/><br/>
+            <h1>Fabrice</h1><br/>
+            <img width="20%" src="img/fabrice.png"/><br/>
         </div>
 
         <hr>
 
         <div class="row-fluid marketing">
             <div class="span4">
-                <a href="https://twitter.com/PascalCohen"><img src="img/twitter.png" /></a>
-                <h4>@PascalCohen</h4>
+                <a href="https://twitter.com/fabricematrat"><img src="img/twitter.png" /></a>
+                <h4>@fabricematrat</h4>
             </div>
             <div class="span4">
-                <a href="https://github.com/pascohent"><img src="img/github.png"/></a>
-                <h4>https://github.com/pascohen</h4>
+                <a href="https://github.com/fabricematrat"><img src="img/github.png"/></a>
+                <h4>https://github.com/fabricematrat</h4>
             </div>
             <div class="span4">
-                <a href="mailto:pascohen@gmail.com"><img width="24px" src="img/gmail.png" ></a>
-                <h4>pascohen@gmail.com</h4>
+                <a href="mailto:fabricematrat@gmail.com"><img width="24px" src="img/gmail.png" ></a>
+                <h4>fabricematrat@gmail.com</h4>
             </div>
         </div>
+
         <br/>
-        <div style="width: 100%">
-            <div style="float:left;text-align:right;display:inline-block;width: 30%">
-                <img src="img/a.png" width="50%"/>
-            </div>
-            <div style="float:left;text-align:right;display:inline-block;width: 10%">
-                &nbsp;
-            </div>
-            <div style="float: left; font-size: 25px; text-align: left; display: inline-block; width: 30%">
+        <div style ="height: 2%">
+            <div style="float: left; font-size: 25px; text-align: right; display: inline-block; width: 25%">
                 <img src="img/rivierargug.png" width="50%"/>
             </div>
-            <div style="float: left; font-size: 25px; text-align: left; display: inline-block; width: 30%">
-                <img src="img/Lambda.svg" width="50%"/>
+            <div style="float:left;text-align:center;display:inline-block;width: 25%">
+                <img src="img/3musket33rs.jpeg" width="50%"/>
+            </div>
+
+            <div style="float: left; font-size: 25px; text-align: center; display: inline-block; width: 25%">
+                <img src="img/js-sophia-small.png" width="50%"/>
+            </div>
+            <div style="float: left; font-size: 25px; text-align: center; display: inline-block; width: 25%">
+                <img src="img/cujo.png" width="50%"/>
             </div>
         </div>
     </div>
 </li>
+
 
 <li class="slide" title="Coming from..." style="font-family: courier" data-speaker='Pascal' timing="320">
     <div class="container-narrow">
@@ -451,26 +347,6 @@
                 <hr>
                 <div class="jumbotron">
                     <img src="img/Binary.jpg" width="50%"/>
-            <!--<pre style="font-size:16px;text-align:justify">-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-        <!--10000110 10000000 11000000 00000101 10000110 10000000 11000000 00000101-->
-        <!--11000000 00000101 10000110 10000000 11000000 00000101 00000000 00000000-->
-        <!--00000000 00000000 00000000 00010100 10000110 10000000 11000000 00000101-->
-            <!--</pre>-->
                 </div>
                 <hr>
             </div>
@@ -539,26 +415,6 @@
     </div>
 </li>
 
-<li class="slide" title="Limited vs Expressiveness" data-speaker='Corinne'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron"><br/>
-            <h1>Limited or expressive?</h1><br/>
-        </div>
-        <hr>
-
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <p style="line-height: 150%;font-size: 30px" >a language offering <strong>expressive power</strong> focused on a particular problem domain, such as a specific class of applications or application aspect</p>
-                <h3>- Czarnecki Krzysztof </h3>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
 
 <li class="slide" title="Boundaries" data-speaker='Pascal' timing="520">
     <div class="container-narrow">
@@ -588,120 +444,6 @@
                 <hr>
                 <pre class="code">tea.willBe 45.minutes.from.now</pre>
                 <hr>
-            </div>
-        </div>
-    </div>
-</li>
-
-<li class="slide" title="Pros and Cons" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>When to use a DSL</h1>
-            <br/>
-        </div>
-        <hr>
-        <div class="row-fluid marketing" style="text-align: left">
-            <div class="span1"></div>
-            <div class="span5">
-                <h3>Advantages</h3>
-                + Expressiveness<br/>
-                <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;-> Easy collaboration with domain expert</div>
-                + Conciseness<br/>
-                + Holy Grail of Self-documenting code<br/>
-                + Readable<br/>
-                <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;-> Maintainability</div>
-            </div>
-            <div class="span5">
-                <h3>Disadvantages</h3>
-                - Language cacophony<br/>
-                <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;->yet-another-language-to-learn</div>
-                - Lack of adequate tool support<br/>
-                - Cost of building<br/>
-                <div style="font-size: 20px">&nbsp;&nbsp;&nbsp;->language designing is hard</div>
-                - Ghetto language syndrome<br/>
-            </div>
-            <div class="span1"></div>
-        </div>
-        <div>
-        <hr/>
-        </div>
-    </div>
-</li>
-
-<li class="slide" title="From Martin Fowler" data-speaker='Corinne' timing="620">
-    <div class="container-narrow" style="line-height: 150%;font-size: 20px">
-        <hr>
-        <div class="jumbotron">
-            <h1>DSL classifications</h1>
-            <h3>- Martin Fowler </h3>
-        </div>
-        <hr>
-        <div class="row-fluid marketing">
-            <div class="span4"  style="text-align:left;padding-left: 0.8em">
-                <h1>External</h1>
-                <hr>
-                <div>
-                    Custom syntactical rules<br/>
-                    Parsed by code running it<br/><br/>
-                </div>
-                <hr>
-                <pre class="code">NM1COHEN/PASCAL
-SSBA343Y13DECNCELON1
-AP;TKOK
-FPCASH;FXP
-TTP/RT</pre>
-            </div>
-            <div class="span4" style="text-align:left;padding-left: 0.8em">
-                <h1>Internal</h1>
-                <hr>
-                <div>
-                    Subset of a general purpose<br/>
-                    But feel like a custom language<br/>
-                </div>
-                Very often used in BDD framework
-                <hr>
-                <pre style="text-align: left;white-space: pre;font-size: 16px">
-<b style="color:#AF956F;">class</b> HelloSpock
-<b style="color:#AF956F;">extends</b> Specification {
- <b style="color:#AF956F;">def</b> <b style="color:#5D90CD;">"Spock friends"</b>() {
-  expect:
-   name.size() == length
-   where:
-    name     | length
-    <b style="color:#5D90CD;">"Kirk"</b>   | <b style="color:#46A609;">4</b>
-    <b style="color:#5D90CD;">"Scotty"</b> | <b style="color:#46A609;">6</b>
-  }
-}
-                </pre>
-            </div>
-            <div class="span4" style="text-align:left;padding-left: 0.8em">
-                <h1>Workbench</h1>
-                <hr>
-                <div>
-                    Graphic representation<br/>
-                    Parsed
-                    Multiple views<br/><br/>
-                </div>
-                <hr>
-                <img src="img/MySQL_Workbench.png"/>
-            </div>
-        </div>
-    </div>
-</li>
-
-<li class="slide" title="From Debasish Gosh" style="line-height: 150%;font-size: 25px" data-speaker='Corinne'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <h1>Internal DSL classifications</h1>
-            <h3>- Debasish Ghosh </h3>
-        </div>
-        <hr>
-        <div class="row-fluid marketing">
-            <div class="span12">
-                <img src="img/debasish.png"/>
             </div>
         </div>
     </div>
@@ -760,16 +502,6 @@ TTP/RT</pre>
                 <img src="img/groovy.png">
             </div>
         </div>
-    </div>
-</li>
-
-<li class="slide" style="display: inline-block; margin:0 auto;" title="Groovy" timing="910" data-speaker='Corinne'>
-    <div class="span8"  id="wordcloud">
-    </div>
-</li>
-
-<li class="slide" style="display: inline-block; margin:0 auto;" title="Scala" data-speaker='Pascal'>
-    <div class="span8" id="scala_wordcloud">
     </div>
 </li>
 
@@ -955,35 +687,6 @@ especially with Classpath issues - in the next slides we'll use IMain directly
     </div>
 </li>
 
-
-<li class="slide" title="Script challenges" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal' timing="1800">
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron"><br/>
-            <h1>Script challenges</h1><br/>
-        </div>
-        <hr>
-        <div class="row-fluid marketing" style="text-align: left">
-        <div class="span1"></div>
-        <div class="span5">
-            <h3>Performance</h3>
-            Scala compiler is slow<br/>(efficient but slow)<br/>
-            <div style="font-size: 18px">&nbsp;&nbsp;&nbsp;- Does not help in case of script evaluation</div>
-            Groovy interpretation is faster<br/>
-            <div style="font-size: 18px">&nbsp;&nbsp;&nbsp;- in counterpart less type inference and checking</div>
-        </div>
-        <div class="span5">
-            <h3>Security</h3>
-            Scripting evaluation raises security concerns:
-            <div style="font-size: 18px">&nbsp;&nbsp;&nbsp;- Access to server running application and potentially undesired data</div>
-            <div style="font-size: 18px">&nbsp;&nbsp;&nbsp;- Capability to threat the server behaviour</div>
-        </div>
-        <div class="span1"></div>
-        </div>
-        <hr>
-    </div>
-</li>
-
 <!------------------------------------------------------------------->
 <!--2. Binding & Compiler Configuration
 <!------------------------------------------------------------------->
@@ -1002,33 +705,6 @@ especially with Classpath issues - in the next slides we'll use IMain directly
             </div>
             <div class="span2">
             </div>
-        </div>
-    </div>
-</li>
-
-<li class="slide" title="Compiler Configuration" data-speaker='Corinne'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron"><br/>
-            <h1>Compiler Configuration</h1><br/>
-        </div>
-        <hr> <br/><br/>
-    </div>
-
-    <div class="row-fluid marketing">
-        <div class="span1">
-        </div>
-        <div class="span3">
-            <br/><img src="img/groovy_transparent.png"/>
-        </div>
-        <div class="span6">
-            <div style="font-size:25px;text-align:left;"><br/><br/>
-                <div>- Import customizer<br/><br/></div>
-                <div>- Define base class<br/><br/></div>
-                <div>- AST transform customizer<br/><br/></div>
-            </div>
-        </div>
-        <div class="span2">
         </div>
     </div>
 </li>
@@ -1212,7 +888,11 @@ step 7 remove def left in GameScript
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
-           <h1>Alternative with implicits</h1>
+           <h1>BaseScript vs implicits</h1>
+            implicit this.move in groovy, implicits in scala turtle.move
+
+            slide with turtle.&move
+
         </div>
         <hr>
         <div class="span1">
@@ -1248,103 +928,103 @@ step 7 remove def left in GameScript
     </div>
 </li>
 
-<li class="slide" title="Output Turtle Model" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal' timing="3000">
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-           <h1>Semantic model Output</h1>
-        </div>
-        <hr>
-        <div class="row-fluid marketing" style="text-align: left">
-        <div class="span1"></div>
-        <div class="span3" style="margin-top:10%"><img src="img/web-trifecta_html5_css3_js-strict.png"/></div>
-        <div class="span6">
+<!--<li class="slide" title="Output Turtle Model" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal' timing="3000">-->
+    <!--<div class="container-narrow">-->
+        <!--<hr>-->
+        <!--<div class="jumbotron">-->
+           <!--<h1>Semantic model Output</h1>-->
+        <!--</div>-->
+        <!--<hr>-->
+        <!--<div class="row-fluid marketing" style="text-align: left">-->
+        <!--<div class="span1"></div>-->
+        <!--<div class="span3" style="margin-top:10%"><img src="img/web-trifecta_html5_css3_js-strict.png"/></div>-->
+        <!--<div class="span6">-->
 
-           - Generate JSON<br/>
-           - No UI Logic inside the DSL<br/>
-           - All presentation logic in HTML5/CSS/JS on Client Side<br/><br/>
-             <pre><code style="font-size: 14px" class="language-javascript">         {
-            positions:
-            {
-                emily: [[3,13],[5,13]]
-            },
-            grid:15,
-            stepDuration:1000,
-            asks:[],
-            win:false,
-            user1:"corinne",
-            user2:"pascal",
-            id:2,
-            winningAnimation:[8,9]
-        }</code></pre>
-        </div>
-        <div class="span2"></div>
-        </div>
-        <hr>
-    </div>
-</li>
+           <!--- Generate JSON<br/>-->
+           <!--- No UI Logic inside the DSL<br/>-->
+           <!--- All presentation logic in HTML5/CSS/JS on Client Side<br/><br/>-->
+             <!--<pre><code style="font-size: 14px" class="language-javascript">         {-->
+            <!--positions:-->
+            <!--{-->
+                <!--emily: [[3,13],[5,13]]-->
+            <!--},-->
+            <!--grid:15,-->
+            <!--stepDuration:1000,-->
+            <!--asks:[],-->
+            <!--win:false,-->
+            <!--user1:"corinne",-->
+            <!--user2:"pascal",-->
+            <!--id:2,-->
+            <!--winningAnimation:[8,9]-->
+        <!--}</code></pre>-->
+        <!--</div>-->
+        <!--<div class="span2"></div>-->
+        <!--</div>-->
+        <!--<hr>-->
+    <!--</div>-->
+<!--</li>-->
 
-<!------------------------------------------------------------------->
-<!-- Groovy5. Building JSON
-<!-- step 1 use steps instead println
-<!-- step 2 after eval get value of steps
-<!-- step 3 jsonbuilder
-<!-- step 4 up the stairs
-<!-- cmd-S for text output cmd-D for canvas output
-<!------------------------------------------------------------------->
+<!--&lt;!&ndash;---------------------------------------------------------------&ndash;&gt;-->
+<!--&lt;!&ndash; Groovy5. Building JSON-->
+<!--&lt;!&ndash; step 1 use steps instead println-->
+<!--&lt;!&ndash; step 2 after eval get value of steps-->
+<!--&lt;!&ndash; step 3 jsonbuilder-->
+<!--&lt;!&ndash; step 4 up the stairs-->
+<!--&lt;!&ndash; cmd-S for text output cmd-D for canvas output-->
+<!--&lt;!&ndash;---------------------------------------------------------------&ndash;&gt;-->
 
-<li class="slide" style="text-align: left" title="Build JSON in Groovy" press="1 2 3 4 5 6 7" data-speaker='Corinne'>
-    <textarea id="editorGroovy5" name="editorGroovy5">
-</textarea>
-</li>
+<!--<li class="slide" style="text-align: left" title="Build JSON in Groovy" press="1 2 3 4 5 6 7" data-speaker='Corinne'>-->
+    <!--<textarea id="editorGroovy5" name="editorGroovy5">-->
+<!--</textarea>-->
+<!--</li>-->
 
-<li class="slide" style="text-align: left" title="Output for Build JSON in Groovy" data-speaker='Corinne'>
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="code" id="outputGroovy5">
-                </pre>
-                <canvas id="canvasGroovy5" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
+<!--<li class="slide" style="text-align: left" title="Output for Build JSON in Groovy" data-speaker='Corinne'>-->
+    <!--<div class="container-narrow">-->
+        <!--<div class="row-fluid marketing">-->
+            <!--<div class="span2">-->
+            <!--</div>-->
+            <!--<div class="span8">-->
+                <!--<hr>-->
+                <!--<pre class="code" id="outputGroovy5">-->
+                <!--</pre>-->
+                <!--<canvas id="canvasGroovy5" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>-->
+                <!--<hr>-->
+            <!--</div>-->
+            <!--<div class="span2">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</li>-->
 
-<!------------------------------------------------------------------
-<!-- Scala5. Build JSon
-<!-- steps 1/2/3 creation of steps recording
-<!-- steps 4/5/6 generation of JSon
-<!-- step 7 display result
-<!-------------------------------------------------------------------->
+<!--&lt;!&ndash;------------------------------------------------------------------>
+<!--&lt;!&ndash; Scala5. Build JSon-->
+<!--&lt;!&ndash; steps 1/2/3 creation of steps recording-->
+<!--&lt;!&ndash; steps 4/5/6 generation of JSon-->
+<!--&lt;!&ndash; step 7 display result-->
+<!--&lt;!&ndash;----------------------------------------------------------------&ndash;&gt;-->
 
-<li class="slide" style="text-align: left" title="Build JSON in Scala" press="1 2 3 4 5 6 7" data-speaker='Pascal'>
-    <textarea id="editorScala5" name="editorScala5">
-    </textarea>
-</li>
+<!--<li class="slide" style="text-align: left" title="Build JSON in Scala" press="1 2 3 4 5 6 7" data-speaker='Pascal'>-->
+    <!--<textarea id="editorScala5" name="editorScala5">-->
+    <!--</textarea>-->
+<!--</li>-->
 
-<li class="slide" style="text-align: left" title="Output for Build JSON in Scala" data-speaker='Pascal'>
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="code" id="outputScala5">
-                </pre>
-                <canvas id="canvasScala5" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
+<!--<li class="slide" style="text-align: left" title="Output for Build JSON in Scala" data-speaker='Pascal'>-->
+    <!--<div class="container-narrow">-->
+        <!--<div class="row-fluid marketing">-->
+            <!--<div class="span2">-->
+            <!--</div>-->
+            <!--<div class="span8">-->
+                <!--<hr>-->
+                <!--<pre class="code" id="outputScala5">-->
+                <!--</pre>-->
+                <!--<canvas id="canvasScala5" width="1000" height="1000" style="background-color: #f5f5f5;max-width: 500px; width: 100%;"></canvas>-->
+                <!--<hr>-->
+            <!--</div>-->
+            <!--<div class="span2">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</li>-->
 
 <!------------------------------------------------------------------->
 <!-- 4. Syntax
@@ -2077,38 +1757,6 @@ extensionClasses = dsl.StepExtension
     </div>
 </li>
 
-<!-------------------------------------------------------------------
-<!-- Scala8. Dynamics
-<!-- step 1 Test select dynamic
-<!-- step 2 Test update dynamic
-<!-- step 3 Test apply dynamic
-<!-- step 4 Test apply dynamic named
-<!------------------------------------------------------------------->
-
-<li class="slide" style="text-align: left" title="Dynamics in Scala" press="1 2 3 4" data-speaker='Pascal'>
-    <textarea id="editorScala8" name="editorScala8">
-    </textarea>
-</li>
-
-
-<li class="slide" style="text-align: left" title="Output for Dynamics in Scala" data-speaker='Pascal'>
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="code" id="outputScala8">
-                </pre>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
-
 <li class="slide" title="hackers" style="line-height: 150%; font-size:25px;" data-speaker='Corinne'>
 
     <div class="container-narrow">
@@ -2496,186 +2144,6 @@ val interpreter = new IMain(settings)</code></pre>
 </li>
 
 
-
-<!------------------------------------------------------------------->
-<!-- 6. Web-based
-<!------------------------------------------------------------------->
-<li class="slide" title="6. web-based interaction" data-speaker='Corinne' timing="5850">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <div class="jumbotron"><br/>
-                    <h1>6. Web-based Interaction</h1><br/>
-                </div>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-<!-------------------------------------------------------------------
-Groovy11.ask
-step1: insert DSL ask
-step2: add ask method
-step3: add propertyMissingMethod
-step4: add display map method
-step5: add display map in DSL
-------------------------------------------------------------------->
-
-<li class="slide" title="ask" style="line-height: 150%; font-size:25px;" data-speaker='Corinne'>
-
-
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>Fanklin wants to ask</h1><br/>
-        </div>
-        <hr>
-    </div>
-
-    <div class="row-fluid marketing">
-        <div class="span1">
-        </div>
-        <div class="span3">
-            <br/><img src="img/ask_change.png"/>
-        </div>
-        <div class="span8">
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                <div style="color:grey"> ask "Shall we change our meeting point?" assign to response</div>
-                <br/>Syntax techniques used:
-                <div>1. Command chaining</div>
-                <pre><code style="font-size: 14px" class="language-groovy">ask(question).assign(to).response</code></pre>
-                <div>2. Map.withDefault(closure)</div>
-                 <pre><code style="font-size: 14px" class="language-groovy">def constMap = [:].withDefault { 42 }
-assert constMap.foo == 42
-assert constMap.size() == 1</code></pre>
-                <div>Semaphore to stop script execution and wait for partner answer</div>
-            </div>
-        </div>
-        <div class="span1">
-        </div>
-    </div>
-
-</li>
-
-<li class="slide" style="text-align: left" title="Franklin wants to ask in Groovy" press="1 2 3 4 5" data-speaker='Corinne'>
-    <textarea id="editorGroovy11" name="editorGroovy11">
-    </textarea>
-</li>
-
-<li class="slide" style="text-align: left" title="Output for Franklin wants to ask in Groovy" data-speaker='Corinne'>
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="output" id="outputGroovy11">
-                </pre>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
-<li class="slide" title="ask sequence" style="line-height: 150%; font-size:25px;" data-speaker='Pascal'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>Scala Continuations</h1><br/>
-        </div>
-        <hr>
-    </div>
-
-    <div class="row-fluid marketing">
-        <div class="span1">
-        </div>
-        <div class="span10">
-            <br/><img src="img/ask_sequence.png" width="50%"/>
-        </div>
-        <div class="span1">
-        </div>
-    </div>
-
-</li>
-
-<!-------------------------------------------------------------------
-Scala11.ask
-<!--------------------------------------------------------------------->
-
-<li class="slide" style="text-align: left" title="Franklin wants to ask in Scala" press="1 2 3 4 5" data-speaker='Pascal'>
-    <textarea id="editorScala11" name="editorScala11">
-    </textarea>
-</li>
-
-<li class="slide" style="text-align: left" title="Output for Franklin wants to ask in Scala" data-speaker='Pascal'>
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="output" id="outputScala11">
-                </pre>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
-
-<li class="slide" title="Alternative syntax" data-speaker='Pascal'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h3>What if you don't like the syntax ....</h3><br/>
-        </div>
-        <hr>
-       <div class="row-fluid marketing">
-           <div class="span1">
-           </div>
-           <div class="span2">
-            <br/><br/><br/><br/><br/><br/>
-               <img src="img/tools.gif"/>
-           </div>
-           <div class="span7" style="line-height:150%;font-size:25px;text-align:left;">
-                   <div>+ Use a map or a Dynamic instance container</div>
-                   <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- store the answers</div>
-                   <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- syntax can also be awkward</div>
-                   <pre><code style="font-size: 14px" class="language-groovy">ask("question") assign_to("variableName")
-                   
-// access the answer:
-answerMap("variableName")
-
-//We can replace Strings with Symbols
-answerMap('variableName)
-
-//or
-dynamicContainer.variableName</code>
-                   </pre>
-                   <div>+ Use macro annotations from Macro Paradise</div>
-                   <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;- experimental</div>
-                   <div>+ Or once again use Scala Compiler Plugin</div>
-           </div>
-           <div class="span2">
-           </div>
-           <hr/>
-        </div>
-    </div>
-</li>
-
 <!------------------------------------------------------------------->
 <!-- Let's play
 <!------------------------------------------------------------------->
@@ -2697,412 +2165,8 @@ dynamicContainer.variableName</code>
         </div>
         <hr>
     </div>
-    <div style="background: #436e90; color: #EDEDEB"><h2>Join other players on <a class="jone" href="http://kts.herokuapp.com">http://kts.herokuapp.com</a></h2></div>
 
 </li>
-
-<li class="slide" title="Part-III" data-speaker='Pascal' timing="6300" >
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <div class="jumbotron"><br/>
-                    <h1>Part III: Going further</h1><br/>
-                </div>
-                <hr>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
-<li class="slide" title="more on Groovy DSL" style="line-height: 150%; font-size:25px;" data-speaker='Corinne'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>Everything You Always Wanted to Know </h1>About Groovy DSL<br/>
-        </div>
-        <hr>
-    </div>
-
-    <div class="row-fluid marketing">
-        <div class="span2">
-        </div>
-        <div class="span8">
-            <div style="line-height:150%;font-size:25px;">
-
-               To be complete let's talk about...
-            </div>
-        </div>
-        <div class="span2">
-        </div>
-    </div>
-
-</li>
-<!------------------------------------------------------------------->
-<!-- Builder in Groovy
-<!------------------------------------------------------------------->
-
-<li class="slide" title="Builder in Groovy" data-speaker='Corinne'>
-
-    <div class="container-narrow">
-        <hr><br/>
-        <h1>Builder pattern</h1> <br/>
-    </div><hr>
-
-    <div class="row-fluid marketing">
-        <div class="span2">
-        </div>
-        <div class="span3">
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                <img src="img/bob.jpg"/>
-            </div>
-        </div>
-        <div class="span6">
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                <b>Purpose of builder pattern:</b> separate the construction of a complex object from its representation to reuse construction process to create different representation.
-                <br/> <br/>
-                <b>Dynamic Groovy</b> with <span style="color:grey">invokeMethod</span>
-                and <b>scopes</b> <span style="color:grey">(this, owner, delegate, self)</span> to the rescue!
-            </div>
-        </div>
-        <div class="span1">
-        </div>
-    </div>
-    <div class="row-fluid marketing">
-        <div class="span2">
-        </div>
-        <div class="span8">
-            <hr>
-            <!--<div style="line-height:150%;font-size:25px;text-align:left;">-->
-                <!--Resolve strategy for Closure.-->
-                <!--<pre>-->
-        <!--• OWNER_FIRST (the default): followed by the delegate if not found.-->
-        <!--• DELEGATE_FIRST: and then search the owner if not found.-->
-        <!--• OWNER_ONLY: and don't search the delegate.-->
-        <!--• DELEGATE_ONLY: with no search of the owner.-->
-        <!--• TO_SELF: getProperty of the Closure itself to be overridden.</pre>-->
-            <!--</div>-->
-            <!--<hr>-->
-        </div>
-        <div class="span2">
-        </div>
-    </div>
-</li>
-
-<li class="slide" style="text-align: left" title="Groovy Builder" press="1" data-speaker='Corinne'>
-    <textarea id="editorGroovyBuilder" name="editorGroovyBuilder">
-    </textarea>
-</li>
-
-<li class="slide" style="text-align: left" title="Output for Groovy Builder" data-speaker='Corinne'>
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <hr>
-                <pre class="code" id="outputGroovyBuilder">
-                </pre>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</li>
-
-<!------------------------------------------------------------------->
-<!-- TypeChecked Builder in Groovy
-http://www.jroller.com/melix/entry/static_builders_inception
-<!------------------------------------------------------------------->
-
-<li class="slide" title="Type checked Builder" data-speaker='Corinne'>
-
-    <div class="container-narrow">
-         <hr/><br/>
-        <h1>Type checked builder?</h1><br/>
-
-    </div><hr>
-
-    <div class="row-fluid marketing">
-        <div class="span2">
-        </div>
-        <div class="span2">
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                <img src="img/cedric.jpg" width="70%"/><br/><span style="font-size: 18px">@CedricChampeau </span>
-            </div>
-        </div>
-        <div class="span6">
-            <div style="line-height:150%;font-size:20px;text-align:left;">
-                Builders are dynamic features?<br/><span style="font-size: 18px">Impossible is not french...</span><br/>
-                How to implementation a <b>statically compiled HTML builder</b>?<br/>Using <span style="color:grey">static compilation</span>,
-                <span style="color:grey">@DelegatesTo</span>, meta-annotations, custom <span style="color:grey">type checking extensions</span>
-                and  <span style="color:grey">AST transformations</span>
-                to the rescue!
-            </div>
-        </div>
-        <div class="span2">
-        </div>
-    </div>
-    <div class="row-fluid marketing">
-        <div class="span2">
-        </div>
-        <div class="span8">
-            <hr>
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                 <pre><code style="font-size: 14px" class="language-groovy">@groovy.transform.CompileStatic
-String build() {
-    def builder = new HTMLBuilder()
-    builder.html {
-        body {
-            p {
-                out << "Hello, this is "
-                a(href:'http://groovy.codehaus.org') { out << 'Groovy' }
-            }
-        }
-    }
-}</code></pre>
-            </div>
-            <hr>
-        </div>
-        <div class="span2">
-        </div>
-    </div>
-</li>
-<!------------------------------------------------------------------->
-<!-- TypeChecked Builder in Groovy (2)
-http://www.jroller.com/melix/entry/static_builders_inception
-TODO editor or slide to explain
-<!------------------------------------------------------------------->
-
-<li class="slide" title="Scala not covered features" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal' timing="6600">
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron"><br/>
-            <h1>Scala features not covered</h1> by the DSL game use case
-        </div>
-        <hr>
-        <div class="row-fluid marketing" style="text-align: left">
-        <div class="span1"></div>
-        <div class="span5">
-            <h3>Scala language features</h3>
-            - Macros<br/>
-            - Abstract types and type polymorphism<br/><br/>
-            <div style="color:grey">- Traits mixin<br/>
-            - Structural typing</div>
-        </div>
-        <div class="span5">
-            <h3>Scala new libraries</h3>
-            - Lightweight Modular Staging (LMS)<br/>
-            - and Scala Virtualization<br/>
-        </div>
-        <div class="span1"></div>
-        </div>
-        <hr>
-    </div>
-</li>
-
-<!------------------------------------------------------------------->
-<!-- Going further
-<!------------------------------------------------------------------->
-
-<li class="slide" title="External DSL" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <h1>External DSLs as an alternative</h1><br/>
-        </div>
-        <hr>
-        <div class="row-fluid marketing" style="text-align: left">
-        <div class="span2"></div>
-        <div class="span6">
-        <h3>Many available options to manage External DSL:</h3>
-        - ANTLR,<br/>
-        - Parser Combinators in Scala,<br/>
-        - XText with Visual Support in Eclipse<br/>
-        </div>
-        <div class="span4">
-        <br/>
-        <img src="img/xtext.png" width="65%"/>
-        </div>
-        </div>
-        <hr>
-    </div>
-</li>
-
-<li class="slide" title="Language workbench" data-speaker='Corinne'>
-    <div class="container-narrow">
-        <hr>
-
-        <div style="text-align: center" class="jumbotron">
-           <h1>Scratch</h1>
-        </div>
-        <hr>
-        <img src="img/scratch.png" width="65%"/>
-    </div>
-</li>
-
-<li class="slide" title="DSL Internationalization" style="line-height: 150%;font-size: 25px;" data-speaker='Corinne'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>Je parle français</h1>
-            <h1>Hablo español</h1><br/>
-        </div>
-        <hr>
-    </div>
-
-    <div class="row-fluid marketing">
-        <div class="span1">
-        </div>
-        <div class="span3">
-            <img src="img/internationalization.png" width="80%"/>
-        </div>
-        <div class="span8">
-            <div style="line-height:150%;font-size:25px;text-align:left;">
-                <br/>Tricky challenges:
-                <div>CST transform / regexp</div>
-                <div>Semantic / DSL Syntax decoupling</div>
-            </div>
-        </div>
-        <div class="span1">
-        </div>
-    </div>
-
-</li>
-
-
-<!--li class="slide" title="Testing" data-speaker='Corinne' timing="6750">
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>Different testing layers</h1><br/>
-            <br/>
-        </div>
-        <hr>
-        <div class="row-fluid marketing">
-            <div class="span4" style="padding-left: 0.8em">
-                <h1>Semantic model</h1>
-                <hr>
-                <div class="code">unit test in isolation</div>
-                <div class="code">without DSL</div>
-                <div class="code">ensure semantic model behave as expected</div>
-                <hr>
-            </div>
-            <div class="span4">
-                <h1>Syntax (parser)</h1>
-                <hr>
-                <div class="code">unit test in isolation</div>
-                <div class="code">ensure DSL populates semantics model</div>
-                <div class="code">test invalid inputs</div>
-                <hr>
-            </div>
-            <div class="span4" style="padding-right: 1.8em">
-                <h1>Script</h1>
-                <hr>
-                <div class="code">script are also <b>code!</b></div>
-                <div class="code">provide test environment</div>
-                <div class="code">closer to integration tests</div>
-                <hr>
-            </div>
-        </div>
-    </div>
-</li-->
-
-<li class="slide" title="Testing in Groovy" data-speaker='Corinne'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>Spock</h1><br/>
-        </div>
-        <hr>
-        <div class="row-fluid marketing">
-            <div class="span2" style="padding-left: 0.8em">
-            </div>
-            <div class="span8">
-               <pre><code style="font-size: 14px" class="language-groovy">class TurtleSpec extends spock.lang.Specification {
-  def turtle
-  void 'turtle moves right by 5, current position is x + 5'() {
-    given:
-        Position position = new Position()
-        position.x = 1
-        position.y = 1
-        turtle = new Turtle(position)
-
-        when:
-        turtle = turtle.move(Direction.right).by(5)
-
-        then:
-        turtle.currentPosition.x == 6
-        turtle.currentPosition.y == 1
-    }
-}</code></pre>
-            </div>
-            <div class="span2" style="padding-right: 1.8em">
-            </div>
-        </div>
-    </div>
-    <hr>
-</li>
-
-<li class="slide" title="Testing in Scala" data-speaker='Pascal' timing="6820">
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-            <br/>
-            <h1>Testing with ScalaTest and FlatSpec</h1>
-            <h3>A soft way to start with BDD</h3>
-            <br/>
-        </div>
-        <hr>
-        <div class="row-fluid marketing">
-            <div class="span2">
-            </div>        
-            <div class="span8" style="padding-left: 0.8em">
-              <pre><code style="font-size: 14px" class="language-groovy">"A turtle" should "move up" in {
-      &nbsp;&nbsp;&nbsp;val t = new Turtle(Position(0,0,up))
-      &nbsp;&nbsp;&nbsp;t move up
-      &nbsp;&nbsp;&nbsp;assert(t.lastPosition.x == 0)
-      &nbsp;&nbsp;&nbsp;assert(t.lastPosition.y == 1)
-   }
-</code></pre>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-    <hr>
-</li>
-
-<!--li class="slide" title="Debugging" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal'>
-    <div class="container-narrow">
-        <hr>
-
-        <div style="text-align: center" class="jumbotron">
-            <h1>Developers tools</h1>
-                    <div class="row-fluid marketing">
-                        <hr>
-            <div class="span5">
-            </div>        
-            <div class="span6" style="text-align: left" >
-            - Debugging<br/>
-            <div style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- local/remote</div>
-            - IDE DSL support
-            </div>
-            <div class="span1">
-            </div>        
-        </div>
-
-    </div>
-</li-->
 
 
 <!------------------------------------------------------------------->
