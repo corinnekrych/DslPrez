@@ -152,7 +152,7 @@ dslPrez.Slide = function () {
 	var speaker = $(slides[previous]).data('speaker')
 	if (speaker == 'Corinne') {
 	    $('#previous-title').css('color',blue);
-	} else if (speaker == 'Pascal') {
+	} else if (speaker == 'Fabrice') {
 	    $('#previous-title').css('color',red);
 	} else {
 	    $('#previous-title').css('color','white');
@@ -164,7 +164,7 @@ dslPrez.Slide = function () {
         if (speaker == 'Corinne') {
 	    $('#next-title').css('color',blue);
 	    $('#count').css('color',blue);
-        } else if (speaker == 'Pascal') {
+        } else if (speaker == 'Fabrice') {
 	    $('#next-title').css('color',red);
 	    $('#count').css('color',red);
 	  } else {

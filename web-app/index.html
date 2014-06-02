@@ -90,7 +90,7 @@
                  <div>Some context</div>
                 <hr>
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Part I: What is a DSL?</div><br/>
-                <div>Short technical reminder on DSLs</div><hr>
+                <div>Back to school: some definition on DSLs</div><hr>
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Part II: Implementing KissingTurtles DSL</div><br/>
             </div>
             <div class="span2">
@@ -106,7 +106,6 @@
             3. Semantic Model<br/>
             4. Syntax<br/>
             5. Error & Security<br/>
-            6. Web-based Interaction<br/>
             </div>
             <div class="span2">
             </div>
@@ -116,10 +115,6 @@
             </div>
             <div class="span8" >
                 <div>... time to play ...</div><hr>
-                <div style="color: #003bb3;font-size: 35px;text-align: center">Part III: Going further</div><br/>
-                <div>Groovy and Scala features</div>
-                <div>External DSLs</div>
-                <div>Development tooling</div><hr>
                 <div style="color: #003bb3;font-size: 35px;text-align: center">Conclusion</div><br/>
             </div>
             <div class="span2">
@@ -245,7 +240,7 @@
 </li>
 
 
-<li class="slide" title="Coming from..." style="font-family: courier" data-speaker='Pascal' timing="320">
+<li class="slide" title="Coming from..." style="font-family: courier" data-speaker='Fabrice' timing="320">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span7" style="padding-left: 15px">
@@ -297,7 +292,7 @@
 <!------------------------------------------------------------------->
 <!-- Part I - DSL definition
 <!------------------------------------------------------------------->
-<li class="slide" title="Part-I" data-speaker='Pascal'>
+<li class="slide" title="Part-I" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -416,7 +411,7 @@
 </li>
 
 
-<li class="slide" title="Boundaries" data-speaker='Pascal' timing="520">
+<li class="slide" title="Boundaries" data-speaker='Fabrice' timing="520">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -449,7 +444,7 @@
     </div>
 </li>
 
-<li class="slide" title="Ext. vs int." data-speaker='Pascal' timing="700">
+<li class="slide" title="Ext. vs int." data-speaker='Fabrice' timing="700">
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -471,7 +466,7 @@
     </div>
 </li>
 
-<li class="slide" title="Groovy ... Or Scala" data-speaker='Pascal'>
+<li class="slide" title="Groovy ... Or Scala" data-speaker='Fabrice, Corinne'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -505,7 +500,7 @@
     </div>
 </li>
 
-<li class="slide" title="Part-II" data-speaker='Pascal' timing="1000">
+<li class="slide" title="Part-II" data-speaker='Fabrice' timing="1000">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -559,7 +554,7 @@ if (answer == "y")
 <!------------------------------------------------------------------->
 <!-- 1. Script
 <!------------------------------------------------------------------->
-<li class="slide" title="1. Script" data-speaker='Pascal' timing="1100">
+<li class="slide" title="1. Script" data-speaker='Fabrice' timing="1100">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -578,7 +573,7 @@ if (answer == "y")
     </div>
 </li>
 
-<li class="slide" title="Script" data-speaker='Pascal'>
+<li class="slide" title="Script" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -665,12 +660,12 @@ NOTE: JSR 223 simply wraps around the IMain so not very useful
 especially with Classpath issues - in the next slides we'll use IMain directly
 <!------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Scala Script" press="1 2 3 4 5" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Scala Script" press="1 2 3 4 5" data-speaker='Fabrice'>
     <textarea id="editorScala1" name="editorScala1">import scala.tools.nsc.interpreter._
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Run Scala Script" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Run Scala Script" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -775,12 +770,12 @@ step 2 ad move right command
 <!-- Note: I use IMain because the ScripEngine has limitations with Bindings
 <!--------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Binding in Scala" press="1 2 3 4 5 6 7 8" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Binding in Scala" press="1 2 3 4 5 6 7 8" data-speaker='Fabrice'>
     <textarea id="editorScala3" name="editorScala3">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Binding in Scala" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Output for Binding in Scala" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -862,12 +857,12 @@ step 7 remove def left in GameScript
 <!-- step 8 alternate solution with implicits
 <!-------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Add Turtle in Scala" press="1 2 3 4 5 6 7" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Add Turtle in Scala" press="1 2 3 4 5 6 7" data-speaker='Fabrice'>
     <textarea id="editorScala4" name="editorScala4">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Add Turtle in Scala" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Output for Add Turtle in Scala" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -884,51 +879,51 @@ step 7 remove def left in GameScript
     </div>
 </li>
 
-<li class="slide" title="Alternative with implicits" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal'>
-    <div class="container-narrow">
-        <hr>
-        <div class="jumbotron">
-           <h1>BaseScript vs implicits</h1>
-            implicit this.move in groovy, implicits in scala turtle.move
+<!--<li class="slide" title="Alternative with implicits" style="line-height: 150%;font-size: 25px;" data-speaker='Fabrice'>-->
+    <!--<div class="container-narrow">-->
+        <!--<hr>-->
+        <!--<div class="jumbotron">-->
+           <!--<h1>BaseScript vs implicits</h1>-->
+            <!--implicit this.move in groovy, implicits in scala turtle.move-->
 
-            slide with turtle.&move
+            <!--slide with turtle.&move-->
 
-        </div>
-        <hr>
-        <div class="span1">
-        </div>
-        <div class="span10" style="text-align: left">
- <pre><code style="font-size: 14px" class="language-groovy">
-    val turtle = new Turtle(Position(1,1))
-    
-    interpreter.interpret("def move(d: Direction)(implicit t:Turtle) = t.move(d)")
-    interpreter.bind("turtle",turtle)
-    interpreter.eval("implicit val implicitTurtle = turtle")
-    
-    //////////////////////////
-    // Here is the DSL script.
-    //////////////////////////
-    
-    val gameDSL = """
-        move(left)   // Remember the move left translated in move.left()
-        move(right)  // Can also use the definition of a move object with left
-                     // and right directions but very cumbersome
-        """
-        
-    //////////////////////
-    // Run DSL script.
-    //////////////////////
-        
-    val result = interpreter.eval(gameDSL)
-</code></pre>   <hr/>
-        </div>
-        <div class="span1">
-        </div>
+        <!--</div>-->
+        <!--<hr>-->
+        <!--<div class="span1">-->
+        <!--</div>-->
+        <!--<div class="span10" style="text-align: left">-->
+ <!--<pre><code style="font-size: 14px" class="language-groovy">-->
+    <!--val turtle = new Turtle(Position(1,1))-->
+    <!---->
+    <!--interpreter.interpret("def move(d: Direction)(implicit t:Turtle) = t.move(d)")-->
+    <!--interpreter.bind("turtle",turtle)-->
+    <!--interpreter.eval("implicit val implicitTurtle = turtle")-->
+    <!---->
+    <!--//////////////////////////-->
+    <!--// Here is the DSL script.-->
+    <!--//////////////////////////-->
+    <!---->
+    <!--val gameDSL = """-->
+        <!--move(left)   // Remember the move left translated in move.left()-->
+        <!--move(right)  // Can also use the definition of a move object with left-->
+                     <!--// and right directions but very cumbersome-->
+        <!--"""-->
+        <!---->
+    <!--//////////////////////-->
+    <!--// Run DSL script.-->
+    <!--//////////////////////-->
+        <!---->
+    <!--val result = interpreter.eval(gameDSL)-->
+<!--</code></pre>   <hr/>-->
+        <!--</div>-->
+        <!--<div class="span1">-->
+        <!--</div>-->
 
-    </div>
-</li>
+    <!--</div>-->
+<!--</li>-->
 
-<!--<li class="slide" title="Output Turtle Model" style="line-height: 150%;font-size: 25px;" data-speaker='Pascal' timing="3000">-->
+<!--<li class="slide" title="Output Turtle Model" style="line-height: 150%;font-size: 25px;" data-speaker='Fabrice' timing="3000">-->
     <!--<div class="container-narrow">-->
         <!--<hr>-->
         <!--<div class="jumbotron">-->
@@ -1003,12 +998,12 @@ step 7 remove def left in GameScript
 <!--&lt;!&ndash; step 7 display result-->
 <!--&lt;!&ndash;----------------------------------------------------------------&ndash;&gt;-->
 
-<!--<li class="slide" style="text-align: left" title="Build JSON in Scala" press="1 2 3 4 5 6 7" data-speaker='Pascal'>-->
+<!--<li class="slide" style="text-align: left" title="Build JSON in Scala" press="1 2 3 4 5 6 7" data-speaker='Fabrice'>-->
     <!--<textarea id="editorScala5" name="editorScala5">-->
     <!--</textarea>-->
 <!--</li>-->
 
-<!--<li class="slide" style="text-align: left" title="Output for Build JSON in Scala" data-speaker='Pascal'>-->
+<!--<li class="slide" style="text-align: left" title="Output for Build JSON in Scala" data-speaker='Fabrice'>-->
     <!--<div class="container-narrow">-->
         <!--<div class="row-fluid marketing">-->
             <!--<div class="span2">-->
@@ -1136,7 +1131,7 @@ step 7: change new Position to add direction
 <!------------------------------------------------------------------->
 <!-- slide Back to command chaining
 <!------------------------------------------------------------------->
-<li class="slide" title="Odd numbers" data-speaker='Pascal'>
+<li class="slide" title="Odd numbers" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -1210,7 +1205,7 @@ step 4: change by method to return map
 <!------------------------------------------------------------------->
 <!-- command chaining  in scala
 <!------------------------------------------------------------------->
-<li class="slide" title="Command Chaining in Scala (1)" data-speaker='Pascal'>
+<li class="slide" title="Command Chaining in Scala (1)" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -1250,7 +1245,7 @@ step 4: change by method to return map
 </li>
 
 
-<li class="slide" title="Command chaining in Scala (2)" data-speaker='Pascal'>
+<li class="slide" title="Command chaining in Scala (2)" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -1286,7 +1281,7 @@ step 4: change by method to return map
     </div>
 </li>
 
-<li class="slide" title="Command Chaining in Scala (3)" data-speaker='Pascal'>
+<li class="slide" title="Command Chaining in Scala (3)" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -1322,13 +1317,13 @@ step 4: change by method to return map
 <!-- steps 5/6 add step/steps keyword
 <!--------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Command Chaining in Scala" press="1 2 3 4 5 6" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Command Chaining in Scala" press="1 2 3 4 5 6" data-speaker='Fabrice'>
     <textarea id="editorScala6" name="editorScala6">
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="Output for Command Chaining in Scala" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Output for Command Chaining in Scala" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1466,7 +1461,7 @@ results = Book.findAllByReleaseDateGreaterThanEquals(firstDate)</code></pre>
 <!------------------------------------------------------------------->
 <!-- kiss in scala
 <!------------------------------------------------------------------->
-<li class="slide" title="Kiss" data-speaker='Pascal'>
+<li class="slide" title="Kiss" data-speaker='Fabrice'>
     <div class="container-narrow">
         <hr>
         <div class="jumbotron">
@@ -1495,13 +1490,13 @@ results = Book.findAllByReleaseDateGreaterThanEquals(firstDate)</code></pre>
 <!------------------------------------------------------------------->
 <!-- kiss Editor in scala
 <!------------------------------------------------------------------->
-<li class="slide" title="Kiss in Scala" style="text-align: left" press="1 2 3 4 5" data-speaker='Pascal'>
+<li class="slide" title="Kiss in Scala" style="text-align: left" press="1 2 3 4 5" data-speaker='Fabrice'>
     <textarea id="editorScala_kiss" name="editorScala_kiss">
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="Output for Kiss in Scala" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Output for Kiss in Scala" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1568,13 +1563,13 @@ step7: replace with @Category annotation
 <!-- steps 3/4/5 create steps case class
 <!--------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Adding behaviour to Integer in Scala" press="1 2 3 4 5" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Adding behaviour to Integer in Scala" press="1 2 3 4 5" data-speaker='Fabrice'>
     <textarea id="editorScala7" name="editorScala7">
     </textarea>
 </li>
 
 
-<li class="slide" style="text-align: left" title="Output for Adding behaviour to Integer in Scala" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Output for Adding behaviour to Integer in Scala" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1595,7 +1590,7 @@ step7: replace with @Category annotation
 <!------------------------------------------------------------------->
 <!-- 5. Error handling & Secure script
 <!------------------------------------------------------------------->
-<li class="slide" title="5. Error handling & Securing scripts" data-speaker='Pascal' timing="4500">
+<li class="slide" title="5. Error handling & Securing scripts" data-speaker='Fabrice' timing="4500">
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -1731,32 +1726,6 @@ extensionClasses = dsl.StepExtension
     </div>
 </li>
 
-<li class="slide" title="Dynamics" style="font-size:25px;" data-speaker='Pascal' timing="4900">
-    <div class="container-narrow">
-        <div class="row-fluid marketing">
-            <br/>
-             <hr>
-                <div class="jumbotron"><br/>
-                    <h1>Dynamics</h1><br/>
-                </div>
-                <hr>
-                <br/>
-                <br/>
-            <div class="span3">
-            </div>
-            <div class="span5" style="text-align: left">
-                <p>Groovy has added TypeChecked ...</p><br/>
-                <p>Scala has added Dynamics </p>
-                <br/><br/>
-                <p style="font-size:18px; color:grey">in addition to already existing Structural typing feature:</p>
-                <pre width="70%" ><code style="font-size: 14px;" class="language-groovy">def talkLikeADuck(duck: { def quack():String }) = duck.quack()</code></pre>
-            </div>
-            <div class="span4">
-            </div>
-        </div>
-    </div>
-</li>
-
 <li class="slide" title="hackers" style="line-height: 150%; font-size:25px;" data-speaker='Corinne'>
 
     <div class="container-narrow">
@@ -1850,7 +1819,7 @@ step 3: add SecureASTCustomizer
 <!-- Scala10. Sneaky - Franklin plays with fire
 <!--------------------------------------------------------------------->
 
-<li class="slide" title="Scala Compiler plugins (1)" style="font-size:25px;" data-speaker='Pascal'>
+<li class="slide" title="Scala Compiler plugins (1)" style="font-size:25px;" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/>
@@ -1891,7 +1860,7 @@ step 3: add SecureASTCustomizer
     </div>
 </li>
 
-<li class="slide" title="Scala Compiler plugins (2)" style="font-size:25px;" data-speaker='Pascal'>
+<li class="slide" title="Scala Compiler plugins (2)" style="font-size:25px;" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <br/>
@@ -1912,12 +1881,12 @@ val interpreter = new IMain(settings)</code></pre>
 </li>
 
 
-<li class="slide" style="text-align: left" title="Franklin wants to play with fire in Scala" press="1" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Franklin wants to play with fire in Scala" press="1" data-speaker='Fabrice'>
     <textarea id="editorScala10" name="editorScala10">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Franklin wants to play with fire in Scala" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Output for Franklin wants to play with fire in Scala" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -1936,7 +1905,7 @@ val interpreter = new IMain(settings)</code></pre>
     </div>
 </li>
 
-<li class="slide" title="infinite loop" style="line-height: 150%; font-size:25px;" data-speaker='Pascal' timing="5250">
+<li class="slide" title="infinite loop" style="line-height: 150%; font-size:25px;" data-speaker='Fabrice' timing="5250">
 
     <div class="container-narrow">
         <hr>
@@ -2001,12 +1970,12 @@ val interpreter = new IMain(settings)</code></pre>
 <!-- Scala9. Turn around - Timer set to 5s
 <!--------------------------------------------------------------------->
 
-<li class="slide" style="text-align: left" title="Franklin wants to turn around in Scala" press="1" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Franklin wants to turn around in Scala" press="1" data-speaker='Fabrice'>
     <textarea id="editorScala9" name="editorScala9">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Franklin wants to turn around in Scala" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Output for Franklin wants to turn around in Scala" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">
@@ -2029,7 +1998,7 @@ val interpreter = new IMain(settings)</code></pre>
 <!-- Scala Limit Actions. Limit number of actions with traits
 <!--------------------------------------------------------------------->
 
-<li class="slide" title="Using traits" style="line-height: 150%; font-size:25px;" data-speaker='Pascal' timing="5500">
+<li class="slide" title="Using traits" style="line-height: 150%; font-size:25px;" data-speaker='Fabrice' timing="5500">
 
     <div class="container-narrow">
         <hr>
@@ -2057,7 +2026,7 @@ val interpreter = new IMain(settings)</code></pre>
     </div>
 </li>
 
-<li class="slide" title="Game rule" style="line-height: 150%; font-size:25px;" data-speaker='Pascal'>
+<li class="slide" title="Game rule" style="line-height: 150%; font-size:25px;" data-speaker='Fabrice'>
 
     <div class="container-narrow">
         <hr>
@@ -2091,12 +2060,12 @@ val interpreter = new IMain(settings)</code></pre>
 </li>
 
 
-<li class="slide" style="text-align: left" title="Franklin has a limited number of actions" press="1 2 3 4 5" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Franklin has a limited number of actions" press="1 2 3 4 5" data-speaker='Fabrice'>
     <textarea id="editorScala_limitActions" name="editorScala_limitActions">
     </textarea>
 </li>
 
-<li class="slide" style="text-align: left" title="Output for Franklin has a limited number of actions" data-speaker='Pascal'>
+<li class="slide" style="text-align: left" title="Output for Franklin has a limited number of actions" data-speaker='Fabrice'>
     <div class="container-narrow">
         <div class="row-fluid marketing">
             <div class="span2">

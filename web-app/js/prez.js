@@ -2250,5 +2250,140 @@ var keymap10 = {
 };
 editorGroovy10.addKeyMap(keymap10);
 
+//------------------------------------------------------------------->
+// Groovy11. ask: dynamic interception
+//step1: insert DSL ask
+//step2: add ask method
+//step3: add propertyMissingMethod
+//step4: add display map method
+//step5: add display map in DSL
+//------------------------------------------------------------------->
+var content11 ="abstract class GameScript extends Script {\n"
+    + "\n"
+    + "\n"
+    + "}\n"
+    + "def compilerConfig = new CompilerConfiguration()\n"
+    + "compilerConfig.scriptBaseClass = GameScript.class.name\n"
+    + "def binding = new Binding()\n"
+    + "def shell = new GroovyShell(this.class.classLoader,\n"
+    + "    binding,\n"
+    + "    compilerConfig)\n"
+    + "///////////////////////\n"
+    + "def surveyDSL = '''\n"
+    + "\n"
+    + "'''\n"
+    + "//////////////////////\n"
+    + "// Run DSL script.\n"
+    + "shell.evaluate surveyDSL\n"
+    + "\n";
+
+var editorGroovy11 = new dslPrez.editor("editorGroovy11", content11);
+
+function editorGroovy11Send() {
+    var value = editorGroovy11.getValue();
+    value += "import groovy.lang.Script;\nimport org.codehaus.groovy.control.CompilerConfiguration\n";
+    submitFormToGroovyConsole(value, "#outputGroovy11");
+}
+
+function editorGroovy11Key0() {
+    editorGroovy11.currentPress(0, 5);
+    setStep(0,5);
+    editorGroovy11.setValue(content11);
+}
+
+function editorGroovy11Key1() {
+    if (editorGroovy11.currentPress(1, 5)) {
+        setStep(1,5);
+        editorGroovy11.replaceRange("ask \"Where do you want to meet\" assign to meeting", {line:12, ch:0}, {line:12});
+        editorGroovy11.addLineClass(12, "background", "highlight");
+    }
+}
+
+function editorGroovy11Key2() {
+    if (editorGroovy11.currentPress(2, 5)) {
+        setStep(2,5);
+        editorGroovy11.removeLineClass(12, "background", "highlight");
+        var value = "  def i = 1;\n" +
+            "  def map = [:]\n" +
+            "\n" +
+            "  def ask(question) {\n" +
+            "    [assign : { to -> \n" +
+            "      [:].withDefault {variable ->\n" +
+            "        map[\"question$i\"] = question\n" +
+            "        map[\"variable$i\"] = variable\n" +
+            "        i++\n" +
+            "      }\n" +
+            "    }]\n" +
+            "  }\n";
+        editorGroovy11.replaceRange(value, {line:2, ch:0});
+        for(var i = 2; i <14 ; i++) {
+            editorGroovy11.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorGroovy11Key3() {
+    if (editorGroovy11.currentPress(3, 5)) {
+        setStep(3,5);
+        for(var i = 2; i <14 ; i++) {
+            editorGroovy11.removeLineClass(i, "background", "highlight");
+        }
+        var value = "  def propertyMissing(def propertyName) {\n" +
+            "    propertyName\n" +
+            "  }\n";
+        editorGroovy11.replaceRange(value, {line:14, ch:0});
+        for(var i = 14; i <17 ; i++) {
+            editorGroovy11.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorGroovy11Key4() {
+    if (editorGroovy11.currentPress(4, 5)) {
+        setStep(4,5);
+        for(var i = 14; i <17 ; i++) {
+            editorGroovy11.removeLineClass(i, "background", "highlight");
+        }
+        var value = "  def display(Map mapToDisplay) {\n" +
+            "    mapToDisplay.eachWithIndex { key, value, index ->\n" +
+            "      println \"$key: $value\"\n" +
+            "    }\n" +
+            " }";
+        editorGroovy11.replaceRange(value, {line:17, ch:0});
+        for(var i = 17; i <22 ; i++) {
+            editorGroovy11.addLineClass(i, "background", "highlight");
+        }
+    }
+}
+
+function editorGroovy11Key5() {
+    if (editorGroovy11.currentPress(5, 5)) {
+        setStep(5,5);
+        for(var i = 17; i <22 ; i++) {
+            editorGroovy11.removeLineClass(i, "background", "highlight");
+        }
+        editorGroovy11.replaceRange("display map\n", {line:32, ch:0});
+        editorGroovy11.addLineClass(32, "background", "highlight");
+    }
+}
+
+function editorGroovy11Key6() {
+    if (editorGroovy11.currentPress(6, 5)) {
+        editorGroovy11.removeLineClass(32, "background", "highlight");
+    }
+}
+
+var keymap11 = {
+    "0":editorGroovy11Key0,
+    "1":editorGroovy11Key1,
+    "2":editorGroovy11Key2,
+    "3":editorGroovy11Key3,
+    "4":editorGroovy11Key4,
+    "5":editorGroovy11Key5,
+    "6":editorGroovy11Key6,
+    "Ctrl-S": editorGroovy11Send,
+    "Cmd-S": editorGroovy11Send
+};
+editorGroovy11.addKeyMap(keymap11);
 
 $("#technologies").airport([ 'Twitter Bootstrap', 'jCloud', 'jQuery-airport', 'Grails', 'Code Mirror', 'jQuery' ]);

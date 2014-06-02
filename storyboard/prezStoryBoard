@@ -1,4 +1,4 @@
-slide  #0         => - Goal:Hello, we're here today for a tutorial session to see in action how to build an embedded DSL
+slide  #0         => - Goal:Hello, we're here today for a step by step session to see in action how to build an embedded DSL
                      - How: To make it fun : the guiding theme of this presentation focus on building a DSL to pilot
                      characters on a grid and let them interact to each others.
                      - title of the game refers to Logo which off course, was part of our inspiration.
@@ -7,9 +7,10 @@ slide  #0         => - Goal:Hello, we're here today for a tutorial session to se
                      - In order to evaluate the differences that the underlying languages offer we picked two different
                      languages that can be seen as theoretically strongly opposed using very different paradigms.
                      Lets see our detailed agenda
-slide  #1         => Corinne starts the Agenda, up to part II
-                     Pascal finishes with part III and Conclusion
-Transition 1->2   => Pascal asks Corinne: but before maybe we can introduce ourselves. Ladies first please
+slide  #1         => We start with a short intro to give you the context of why we created the game
+                     We have to go through theory and definition but that woul be short and then we delve into
+                     the implementation of KT
+Transition 1->2   => Fabrice asks Corinne: but before maybe we can introduce ourselves. Ladies first please
 ### Introduction ################################################################################################
 slide  #3         => Corinne introduces herself
                      over 15 years of experience in IT,
@@ -21,20 +22,16 @@ slide  #3         => Corinne introduces herself
                      work for AeroGear mobile enterprise suite for RH.
                      female geek and supporter Duchess France
                      use to be freelance consultant for Amadeus in Sophia Antipolis where I met my geek friend
-slide  #4         => Pascal introduces himself
+slide  #4         => Fabrice introduces himself
                      Architect in e-commerce solutions at Amadeus with 12 years of experience in IT
-                     Like mountaineering and video games and when I have some free time left, 
-                     curious about programming languages,and storage solutions
-                     Recently converted to BSD (PC-BSD rocks)
-                     Regular participant to Scala and Clojure User Group
-Transition 4->5   => Pascal: You are here mainly to hear about DSLs. So first let's give you some Context
-slide  #5         => Pascal starts explaining inside Amadeus the Scripting engine role
+Transition 4->5   => Fabrice: You are here mainly to hear about DSLs. So first let's give you some Context
+slide  #5         => Fabrice starts explaining inside Amadeus the Scripting engine role
                      Amadeus is a leading provider of IT solutions for travel and leisure. It targets both
                      B2B and B2C: TA, Airlines, End Users.
                      SSE in order to enable faster customers customization thanks to scripts
                      Sandboxing, defining of APIs and we started to design DSL to simplify user Customization.
                      Corinne:
-                     - When Pascal was working in SSE, I was part of the business team writing Selling platform connect for TA
+                     - When Fabrice was working in SSE, I was part of the business team writing Selling platform connect for TA
                      we had a use case of writing a DSL for TA to improve efficiency:
                      do a booking in a minute
                      - At the same time I was building a team to participate at Grails48 hackathon with RivieraGUG
@@ -44,9 +41,9 @@ slide  #5         => Pascal starts explaining inside Amadeus the Scripting engin
                      Kissing Turtles is a mobile game using 3musket33rs Grails plugins
                      - Obviously, we were lucky to have testers on board. Kids can participate in hackathon :)
                      => that was the genesis of KT.
-Transition 5->6   => Pascal interrupts Corinne to ask her if she would mind giving us an overview of how we can define DSLs
+Transition 5->6   => Fabrice interrupts Corinne to ask her if she would mind giving us an overview of how we can define DSLs
 ### Part I ######################################################################################################
-slides #7 - 11    => Corinne:
+slides #7 - 10    => Corinne:
                      - DSL stands for Domain Specific language, but lets try to get clear grasp on it.
                      - From Martin Fowler: a computer programming ld of limited expressiveness focused on a particular domain
                      Out of this definition, we can extract 3 key elements:
@@ -57,35 +54,16 @@ slides #7 - 11    => Corinne:
                      It is not a turing complete language as opposed to GPL.
                      If we take the ex of rubik cube, all we need is 6 letters for the 6 possible moves
                      and the apostrophe is giving you the rotation.
-
-                     - Last time I gave Riviera user groups meetup, one guy telling me
-                     don't like M. fowler definition because it focus too much limited aspect of a DSL
-                     prefer to focus on the expressive part of DSL.
-                     - See definition from  Kristof: a lf offering expressive power focused on a particular pb domain
-                     valid argument, some DSL can be turing complete and shine by their expressiveness
-                     if we take the ex of a platform like Grails, you can't say it's limited,
-                     you may say it's a group  of several DSLs or it's an expressive DSL.
-                     wdyt Pascal?
-                     Pascal: So, we've got definition (actually 2), great! But you know what Corinne:
-slides #12 - 13   => "boundaries are blurry". There is no clear distinction between a DSL and a good API.
+                     Fabrice: So, we've got definition, great! But you know what Corinne:
+slides #11        => "boundaries are blurry". There is no clear distinction between a DSL and a good API.
                      What is important in a DSL is its expressiveness to describe in a simple and human readable way a process flow.
                      One of the key advantage of using a DSL is to share a common metaphor (notion borrowed from Agile development).
                      The ultimate goal being: code that reads as natural language, code that a domain expert, without programming
                      experience can read, understand and even write. Code that a 6 years old kid can handle!
-
-                     Hal Abelson citation: Programs should be written for people to read, and only incidentally for machines to execute.
-                     That makes a perfect fit for DSLs.
-
-                     On the other hand, be aware of the disadvantages:
-                     - lg cacophony
-                     - On the other side of the spectrum is the Ghetto lg syndrom: in-house lg not used anywhere else.
-                     Difficult to get new staff onboard. Usually happen when lg are not limited (wont fit Folwer definition)
-                     - lack of support for IDE (some suport on Eclipe/intellij) but not so much for web based editor
-                     - cost of building
-                     Pascal says: Our presentation is about embedded DSL, what does that mean?
-slides #14        => Corinne
+                     Fabrice says: Our presentation is about embedded DSL, what does that mean?
+slides #12        => Corinne
                      DSl comes in different varieties.
-                     Very often we distinguish 2 kinds of DSL, we also talked about the third type
+                     Very often we distinguish 2 kinds of DSL
                      - An external DSL is a language separated from the main language of the application it works with.
                      - It usually has its own custom syntax
                      - it is usually parsed by the host application:
@@ -99,44 +77,22 @@ slides #14        => Corinne
                      => that's the all fun of witting embedding DSL
                      Can be more constrained by the embedding language syntax.
 
-                     Those 2 kinds of DSl are traditional ways of thinking about DSL.
-                     The lg workbench go beyond the textual representation of a DSL
-                     Language users manipulate a DSL through a projectional editor.
-                     lg workbench allows you to define a parser and a IDE at the same time
-                     support for diagrammatic lgs.
-slides #15        => Corinne : oo go deeper on internal DSL, Debasish Ghosh, we can differentiate between
-                     purely embedded DSL where you write explicitly the DSL.
-                     and the generative category where code is generated either runtime or compile time
-                     In this embedded category, there is different techniques you use
-                     - fluent API with command chaining
-                     - AST transform like we'll see with Groovy
-                     - or Type embedding we'll explore in Scala
-                     - on dynamic side, reflective metaprogramming with the MOP usage in Groovy
-                     so we talked about Ext vs Int, what's our choices?
-slide  #16        => Pascal explains that it is generally simpler to use an Internal DSL because it can take advantage
-                     of an enclosing existing language. Designing an External DSL is not so easy and it requires some grammar
-                     specifications. In this Tuto, we are going to mainly focus on Internal DSLs.
-Transition 16->17 => Pascal says: Now that we have chosen to use Embedded DSLs, which language should we choose.
-                     This is our pure one minute trolling Pascal
+Transition 12->13 => Fabrice says: Now that we have chosen to use Embedded DSLs, which language should we choose.
+                     This is our pure one minute trolling Fabrice
                      Fire up
                      At the end lets make peace and shake our hands
-slide  #17        => Pascal and Corinne exchange on topics pro and against Scala and Groovy
-Transition 17->18 => Time out! Ok now let's stop any troll debate and lets try to build our DSL in both languages to see
-                     convergence and divergence.
-slide  #18        => Corinne details Groovy features.
-                     Groovy is particularly suited for DSL writting thks to:
-                     syntax sugar: less ponctuation ; () optional
-                     return statement optional
-                     no getter setter for properties access
-                     named parameters: pass a map to a constructor, omitting the map bracket
-                     command chaining to write sentence
-                     closure and especially closure delegate scope that can be overriden
-                     runtime transformation MOP
-                     compile time compilation AST
-slides #19        => Pascal details Scala features.
+slide  #13        => Fabrice and Corinne exchange on topics pro and against Scala and Groovy
+                     Fabrice: "I trust the static typing to make sure my team writes good code."
+                     Corinne: "The compiler doesn't stop you from writing bad code."
+                     Fabrice: "Compiler bugs happen at midmorning in my office; runtime bugs happen at midnight for my customers."
+                     Corinne: "There's no replacement for testing, and unit tests find more issues than the compiler ever could."
+                     Fabrice: "Static languages are easier to read because they're more explicit about what the code does."
+                     Corinne: "Dynamic languages are easier to read because you write less code." although to be honest
+                     Scala is quite compact
+Transition 13->14 => Time out! Ok now let's stop any troll debate and lets see it in action
 #### Part II ######################################################################################################
-Transition 19->20 => Pascal says that now we can start to dive into the DSL details
-slides #20 - 21   => Corinne introduces the game, the target the rules
+Transition 19->20 => Fabrice says that now we can start to dive into the DSL details
+slides #15        => Corinne introduces the game, the target the rules
                      - this is how the gameboard looks like:
                      random position for F, E, Birdy.
                      Meeting pt is ramdom too.
@@ -149,50 +105,450 @@ slides #20 - 21   => Corinne introduces the game, the target the rules
                      -> Use meet to move meeting point if Birdy is too close.
                      -> F and e can interact with each other using 'ask' an elaborate a strategy
                      -> and you can mix plain groovy/scala code in your script
-slides #22 - 23   => Pascal explains that first as players will submit DSL, we need to evaluate the DSL inside the running
+slides #16 - 17   => Fabrice explains that first as players will submit DSL, we need to evaluate the DSL inside the running
                      application. There exist different options. 
                      Introduce Groovy, Scala, JSR
                      And lets see how we can do in Groovy .............
-#### Part III #####################################################################################################
-slide  #105       => Pascal explains that now, we just will enlarge the scope and talk about additional features.
-slides #106 - 110 => Corinne:
-                     to be complete we have to talk a  markup builder
-                     we've seen the usage of JsonBuilder and I told you it's very easy to build your own MarkupBuilder
-                     what are they for? separate construction from representation
-                     reuse construction
-                     easily implement it with invokeMethod and delegate scope
-                     I'll show you
-                     in the dsl, the first arg of my method is the next closure
-                     in invoke method, I just change the delegate of the next closure to be the builder
-                     What about Type checking a markup builder? Mixing dynamic features with static TC?
-                     => Possible but... AST transform to the rescue
-slide  #111       => Pascal describes the Scala features that were not used in the game use cases
-1:47
-slide  #112       => Pascal now explains that we have alternative with External DSL. There is various tooling.
-                     There are graphical tools (language is not the only way to reach expressiveness): they transformed UI behind the scenes 
-                     into a programming language implementation. 
-                     This graphical DSL has "simply" to fit into M. Fowler definition (DSL as a business focused language workbench)
-                     External DSLs offer more expressiveness at the cost of more complexity.
+slide #18 - 19 Groovy##################################################################################################
+                     A few words on the format of our tutorial
+                     Grails app, controller on server to evaluate Groovy and Scala Script
+                     Client side we use code mirror to show you step by step how to achieve
+                     Be carefull using 1..2 key but other than that you can enter you own code and test it
 
-slide  #113       => Corinne describes workbench
-                     We've already talked about it
-                     want to show you an ex in the Kid programming field, Scratch
-                     where you use shape combined with textual information like the repeat block
-slide  #114       => Corinne then talks about Internationalization
-                     Je parle francais / Hablo espanol: not the same number of words!
-                     Internationalization brings challenges
-                     - either with early ASt transfrom at syntax level (CST) and the replace a word or group of words
-                     - or having your semantic and dsl syntax decoupled
-Transition 114 - 115 => Pascal interrupts Corinne: Fine Corinne, anyway let's focus back on Internal DSL. And as a Developper, I have
-                        concerns. First I am a strong believer in TDD. How can I test my DSL.
-slide  #115       => Corinne covers main testing layers
-slide  #116       => and describes the Groovy testing.
-slide  #117       => Pascal then describes BDD testing with ScalaTest.
-scala  #118       => Pascal switches now to debugging. Talking about local debugging but also remote ones and the difficulties.
-slide  #119       => Pascal says: I think we covered all we wanted to show. It's time to conclude this duel.
-1:54
-slide  #120       => Corinne starts saying no one language solves all the problem.
-                     Pascal continues that despite some issues, we were able to mix Scala and Groovy. So we should not fear polyglotism
+                     Lets see how we can embed and evaluate Groovy script.
+
+                     Steps
+                     =====
+                     step 0 here I instantiate groovyShell, my script do a prinltn statement
+                            I can change the text and just run the script
+                     step 1 let's define move method - to set up the base of our dsl, i'm a fast typer
+                     step 2 define left to not have the quote surrounding it
+                     step 3 replace shell by ScriptEngineMgr from jsr 223
+                            Remember Pascal talking bout jsr223 javax.script package
+                     step 4 replace by engine.eval
+                            and evaluate get replaced by eavl, very similar concept
+
+                     Easy peasy no far.
+slide #20 - 21 Scala ##################################################################################################
+
+                    Purpose
+                    =======
+                    Lets see how we can embed and evaluate Scala script.
+                    Users will submit piece of code that will be evaluated and interact on the DSL
+                    Let's see how we can handle that
+
+                    Steps
+                    =====
+                    #0: Basic mode: We just need to add the usejavacp mode and the Scala interpreter
+                    #1: Lets add some logic with a move object
+                    #2: Lets add some variables in the script => Run
+                    #3: What if we want to use the JSR 223 Scripting Engine - unfortunately we still need the usejavacp
+                    #4: Call the eval on the engine => Run
+                    #5: Lets start to play with arity and create a left postfix method instead of a parameter for moving
+
+                    #Final comments:
+                    Not very complicated so far. All in all, we'll stay with scala interpreter instead of JSR one. Because it makes settings
+                    configuration easier to manage.
+slide #22 - 24 Groovy##################################################################################################
+slide 23          => Corinne: But Pascal, in our script we define the move method and left variable each time,
+                     I obviously want to extract those from my script
+                     I want to define the move method in a separate class and then use it in my script
+                     so my script should only contain "move left"
+                     How can we do it? it brings us to the topic of binding and Shell config
+
+slide #25 - 26 Groovy##################################################################################################
+                    Purpose
+                    =======
+                    How can you pass data to the script
+                    Give contextual information
+
+                    Steps
+                    =====
+                    step 0 We saw how to use BaseClass, another way of doing it is to go through binding
+                           Let's see how binding work with a very simple ex
+                           Lets add move right
+                    step 1 introduce right in binding
+                           Remember in order to define compiler configuration we had
+                           - to instantiate an empty binding
+                    step 2 add move right command
+                           right is just available
+
+                    Different way of achieving the same result either by
+                    - for left: we define a property of a script base class
+                    - for right it's a binding. a map of variable. we will see later we could also put int the binding a
+                    Groovy object, a method
+slide #27 - 28 Scala ##################################################################################################
+                    Purpose
+                    =======
+                    We don't have BaseClass in Scala. Anyway we can mimic that by calling the interpreter interpret
+                    or eval commands before evaluating the dsl/script itself.
+                    We'll see few examples later.
+                    Lets see how we can now binding runtime value and make script interact with embedding application.
+
+                    Steps
+                    =====
+                    #0: Lets restart from a previous step
+                    #1: Lets use bind to bind left parameter with "left" value
+                    #2: And now we can remove the local value and rely on the binding => Run (note that the binding is printed)
+                    #3: Now lets put move object out of the DSL code that is going to be evaluated
+                    #4: And now lets remove it from DSL
+                    #5: We first bound a variable, now lets bind a function
+                    #6: Unfortunately move left fails
+                    #7: We need to write move(left) => Run
+                    #8: Ideally we would bind the move object and call move to left. Unfortunately using such binding i
+                    nside the interpreter is harder because the object move is created inside the enclosing interpreter
+                    instance. If someone has a suggestion to improve it.
+
+                    #Final comments:
+                    Again it is not very complicated but we start hitting some problems especially when embedding an
+                    interpreter inside another one.
+slide  #29        => Fabrice explains that now we will enrich the DSL by creating Turtle and move
+                     It's always a good idea to decouple Semantic model vs Syntax of the DSL
+                     to evolve the model and the lg separately
+
+slide  #30 - 31 G   #################################################################################################
+
+                    As Fabrice said it's better to deciple your semantic from your syntax.
+                    What is our semantic model here ? we need a turtle that move on different position
+
+                    Steps
+                    =====
+                    step 0 back to your Groovy script
+                    step 1 Firts lets inroduce a Position.
+                           - x/y
+                           - define for ex left/right
+                    step 2 add Direction enums
+                    step 3 add turtle class
+                           - with current position
+                           - and a move method that will change the current position
+                           - for now we just print x/y
+                    step 4 new Turtle()
+                    step 5 highlight compilerconf + binding
+                    step 6 I wan to change my binding to inject
+                           - direction: left, right
+                           - move is an alias, a pointer to a turtle's move method
+                    step 7 highlight
+                    step 8 remove GameScript base class, here I use binding only
+
+                    Here we are with our a turtle that can move. What about in Scala?
+slide #32 - 33 Scala ##################################################################################################
+
+                    Purpose
+                    =======
+                    Now we are going to create a more elaborate move mechanism
+
+                    Steps
+                    =====
+                    #0: Lets start with a potential DSL proposal to express move of a turtle
+                    #1: First lets inroduce a Position. The case class choice is mainly to facilitate object creation
+                        and pattern matching
+                        Case class are class on steroids, equals, hashcode, extractors for free.
+                        Very useful for PatternMatching which can be seen as a super if/switch statement.
+                    #2: Now lets defined directions as a sealed set of classes (instead of enum)
+                    #3: Lets introduce the Turtle that move. We use ` because we match on objects and not instances:
+                        it helps Scala make the diff between a variable and a constant. Alternative fully qualified
+                        name or capital letter.
+                    #4: and create a turtle instance
+                    #5: and lets start moving it. Theoretically, it would work but there is here a binding limitation
+                        as explained previously in the game, this is exactly what we are going to do.
+                    #6: I dont like turtle, I think I makes more sense. Designing a DSL is not obvious. Here it was easy
+                        as I was almost alone in this design
+                    #7: In the following code snippet, I'll emulate the DSL by creating a value I and executing directly
+                        the commands. Drawback not so bad: It does not change the principles and will reduce the noise
+                        in the screen => Run
+
+                    In following slide: This is another binding proposal using implicit of turtle and binding a method
+                    to be closer to initial DSL. But we still need some parenthesis, and finally I'll stay with the
+                    previous proposal.
+
+                    #Final comments:
+                    Ok now we have some basic structure. Let's start to display the turtle moves.
+slides #34 - 35   => Corinne: now that we have the semantic for the move, lets focus on the syntax
+                     command chaining is a the key pattern to
+                     enhance the syntax to to sound like plain english
+                     Method chaining is a design pattern where each method return itself allowing method call chaining
+                     As we saw earlier (part I), heavily used for fluent API
+                     So if we take what we've seen earlier
+                     move left
+                     we'll add
+                     move left by 2
+
+slide  #36 - 37 G   #################################################################################################
+                    Now we are going to enrich the DSL with command chaining
+                    we want to express we can move more than on step at a time
+                    like move left by 2
+
+                    Steps
+                    =====
+                    step 1: highlight dsl syntax
+                    step 2: move left by 2
+                    step 3: add by method
+                    step 4: highlight steps.add from turtle move
+                    step 5: remove steps.add from turtle move
+                    step 6: add steps.add to turtle by
+                    step 7: change new Position to add direction
+
+                    Cool we're seen how to chain methods call with its argument, how would you do it with odd numbers
+slide  #38        => Pascal asks about odd number
+slide  #39 - 40 G   #################################################################################################
+                    Purpose
+                    =======
+                    Several options:
+                    -> use categories->se in more details later
+                    -> named parameters, you can't skip the comma
+                    -> using map return
+
+                    Steps
+                    =====
+                    step 1: highlight dsl syntax : we want totranform that
+                    step 2: into that: move left by 2 steps
+                    step 3: highlight by method : the by method instead of returning a Turtle will return a Map
+                    step 4: change by to return map with silent word: steps/step
+
+                    slide  #55        => Pascal discusses Scala Syntax in order to chain command
+                    slides #56 - 57   => And evaluates DSL options. At the end the last proposal is chosen.
+slide 41 - 42 - 43 TODO
+slide #44 - 45 Scala ################################################################################################
+                    Purpose
+                    =======
+                    Now we are going to enrich the DSL with command chaining like I move by ...
+
+                    Steps
+                    =====
+                    #0: Ok here is our code
+                    #1: and here is what I would like to have
+                    #2: I want to create an Option to retain the direction. Basically a by can occur only after a move
+                    so I will retain the direction with the move and reuse it in the by.
+                    #3: move will retain the current Direction
+                    #4: then the by move by 1 step less in the retained direction. At the end, we unset the option so
+                    that a by called without a move is simply pointless
+                    #5: Now we would like to have some readability by adding steps) at the end of the move command.
+                    But be careful with the 0 arity of steps methods we want to define - space of ;
+                    #6: And we just define step and steps that do simply nothing
+
+                    #Final comments:
+slide #46           Corinne introduces the kiss;coming back to syntax tweak:in Groovy your can have kiss refere to
+                    kiss() methos call. without parameters you cn not omit parenthesis but there is ways around that
+                     let me show you first I explain afterwards
+slide #47-48
+                    Steps
+                    =====
+                    step 1 add kiss() to dsl : first lets add kiss call in our DSL with parenthasis syntax
+                    step 2 define kiss
+                    step 3 highlight binding
+                    step 4 add kiss to binding : we add a binding => that should work
+                    step 5 BUT that's not what we want replace kiss() by kiss
+                    step 6 comment binding
+                    step 7 define property missing: I treat kiss as porperty and then do a method call
+                    step 8 add baseclass into compiler configuration
+slide  #49        => In the kiss ex I've used the dynamic nature of Groovy
+                     - All Groovy class inherits from GroovyObject which defines an invokeMethod
+                     - Since 1.5, Groovy supports the concept of "methodMissing".
+                     This differs from invokeMethod in that it is only invoked in the case of failed method dispatch.
+                     - show you an ex of using methodMissing with dynamic method registration with dynamic finders in G
+                     . in MethodMissing interceptor we register on the fly the method (with ExpandoMetaClass)
+                     if within a list of valid method
+                     . and then we actually call it
+                     . so the next time we invoke the method we wont go int Method Missing
+                     Dynamic Finders in grails are like findAllByTitleAndAuthor
+                     how would you deal with Kissing in Scala?
+slide #50 - 52
+                    Purpose
+                    =======
+                    Lets implement a kiss method. By default as we saw Scala supports 0 arity for postfix methods but
+                    only on instances
+                    I kiss will work, kiss either can work but needs to be defined in the REPL. lets have a look.
+
+                    Steps
+                    =====
+                    #0: Once again the reference code
+                    #1: Lets create a kiss method with 0 parameter
+                    #2: and lets call it - we dont need parenthesis
+                    #3: So lets change method signature  but now I.kiss() would fail whenever we need it
+                    #4: Now if we want to bind kiss as a method inside the DSL, we face the fact that we define a 0
+                    arity function and need to call it with parameters
+                    #5: If we want to get rid of parenthesis the following trick can work by doing an eval before
+                    running the script. Locally doing I.kiss instead of I.kiss _ does the trick.
+slide  #53        => Corinne: we might enrich classes behavior with Category or implicits
+                     we show you how to do it in a dynamic way with category for Groovy and with implicits in Scala
+slide #54-55        We just want to add dynamically some method to integer
+
+                    Steps
+                    =====
+                    step1: highlight dsl : we want to change from
+                    step2: move left by 2.steps  : to 2.steps, 2 is int and doesn't have steps attributes
+                    step3: add class StepCategory : the static method have one arguments which an internal arg to specify
+                    which class we want to extend we add step method and we don't do much, like silent word
+                    step4: highlight shell.eval
+                    step5: modify shell.eval with use() : to scope where the category apply you have to surround it with
+                    use (StepCategory)we do it just before eval not inside the script to keep lean
+                    step6: highlight class StepCategory  : another way to do it with annotation
+                    step7: replace with @Category annotation
+
+                    we've seen how to dynamically enhance integer we can also do it statically with extension introduce
+                    in Groovy 2
+                    we'll see later how to type check our DSL and how to use extension
+slide #56-57
+                    Purpose
+                    =======
+                    We just want to take advantage of implicit conversions to enrich (by keeping typesafety) objects behavior
+
+                    Steps
+                    =====
+                    #0: Once again lets take previous code
+                    #1: Here is what we would like to have
+                    #2: We provide an implicit conversion to a class that provides a times method => Run
+                    #3: Now I want also to be able to enrich integer with steps suffix to make it more readable
+                    #4: We create a Step class that has step and steps idempotent methods and an implicit conversion (just to show implicit methods
+                        and implicit classes, we could have used a implicit Step class instead)
+                    #5: We need to fix the by method => Run
+
+                    #Final comments:
+                    Implicits are very powerful and they are scoped. But be careful with its usage.
+slide #58-63
+
+#### TypeCheck Slide  ##################################################################################################
+
+                    => it is important to secure the script because script writer could be malicious
+                     or distracted
+                    => Corinne
+                     - for our script users ie: kids, spelling it right is a challenge by itself.
+                     let's be kind and give them some help, type checking their DSL scripts
+                     - Since Groovy 2.0, you can use @TypeChecked annotation to activate type checking.
+                     at different level of granularity: class, method.. or script
+                     - Type checking extensions from Groovy 2.1 allow developers of a DSL engine to
+                     type checking their DSL. Fail fast principle,
+                     and  provide feedback to the user (including nice error messages).
+
+#### TypeCheck Editor 74 ###############################################################################################
+
+                    Steps
+                    =====
+                    step 1: highlight compiler
+                    step 2: add typechecked ext
+
+                    #Final comments:
+                    You've got this erro rmessage it's possible to customize the error with whatever you want
+                    but where is the TurtleExtension defined.
+
+                    it's there:
+                    - to TC your DSL you can use the Typechecking DSL.
+                    Told you it's easy to build DSL
+                    - this DSL allow you to hook into the compilation process
+                    - several predefined hook method you can use here: unresolvedVariable and methodNotFound
+                    In a TC ext you can access AST tree to query etc... Do not modify AST
+                    - it's a groovy file that should be present in the cp, more used as a resource
+
+                    Corinne: a more general not on ext, remember we talk about category to dynamically add behaviour to
+                    existing class? we can do it using ext, as for TC ext, you add them in your cp
+                    preferred technique when working on TC DSL.
+#### AST explain    ####################################################################################################
+   TODO
+#### Exit Editor 81 ####################################################################################################
+
+                    sneaky hacker
+
+                    Steps
+                    =====
+                    step 1: highlight dsl
+                    step 2: add system.exit
+                    step 3: add SecureASTCustomizer
+#### slide #68-69Scala compiler plugin #################################################################################
+  TODO
+slide #70-71
+                    Purpose
+                    =======
+                    A plugin compiler is provided that analyzes AST and stops
+                    if it meets a System.exit call
+
+                    Steps
+                    =====
+                    #0: Reference code
+                    #1: Now we add a System.exit => Run
+                    #Final comments:
+                    Compiler plugins offer powerful way to alter code structure
+                    but this is definitely not obvious.
+
+#### slide #72-74 Infinite Loop Editor     #############################################################################
+
+                    Steps
+                    =====
+                    step1: highlight dsl
+                    step2: modify dsl with infinite loop
+                    step3: highlight ASTTransformationCustomizer
+                    step4: add TimeInterrupt : for 5 sec ... and now we have to count
+
+                    Very easy with predenfined ASTtransformation customizers
+                    you just use them
+
+#### slide #72-74 while true scala  #############################################################################
+                    Purpose
+                    =======
+                    Again lets enhance script security to limi time allowed to a script execution.
+                    Here the code is modified again thanks to a compiler plugin that tracjs the elapsed time since the
+                    script has started and raises an exception if time is over.
+
+                    Steps
+                    =====
+                    #0: Reference code
+                    #1: Now we add a while(true) => Run
+
+                    #Final comments:
+                    Same as previously. Powerful but complex
+#### slide #77-74 while true scala  #############################################################################
+                     Let's use trait instead of compiler plugin
+                     No more than 3 moves!!!!!
+                     Purpose
+                     =======
+                     Intercepting the application behavior can be done without compiler plugins
+                     with traits. Here we just intercept move calls and add a counter that raises
+                     an exception after 3 moves.
+
+                     Steps
+                     =====
+                     #0: Back to our reference code
+                     #1: First lets create a trait with a counter and an override of the move method - an interceptor.
+                     In that case a standard class extending Turtle would be enough. Advantage of traits compared to
+                     class is that we can combine more than one in a kind of multiple inheritance. Ideally we would
+                     create a Move trait and a LimitedMove extending first trait. By default Turtle would extend Move
+                     and we would create a mixed in Turtle instance as we will see just now
+                     #2: we add limited actions
+                     #3: Before the true DSL evaluation, I reset the counter
+                     #4: This is how it would look like in the interpreter
+                     #5: If I have too many steps ... It fails => Run
+
+                     #Final comments:
+                     Traits are very powerful way to mix behavior. I think we can see objects as structure to which we
+                     add behavior thanks to traits
+                     Mixin of traits can help composing very various behaviors with a limited number of classes/traits.
+#### slide #80-81 Game Rule Editor  ##################################################################################################
+
+                    We saw how to use predefined AST transform customizer
+                    How would you feel about writing your own?
+                    it's not that difficult.
+
+                    Steps
+                    =====
+                    step1: add your class extending CompilationCustomizer
+                    step2: add it to compiler config
+                    step3: add some body content inside overriden call method
+                           get the AST
+                           find thw run method of my script
+                           collect all block statement inside the run mrthod
+                    step4: add visit call
+                           I want to visit all those block st to count the usage of move
+                    step5: Add MathodCallVisitor
+                           we need to write our custom visitor and overload  visitMthodCallExpression
+                    step6: Add body to visitMethodCallExpr
+
+                    Here I show you how to count I don't really move nodes and block sturture, but you can
+                    With Great power came great responsabilities
+                    Don't over abuse transformation
+
+
+slide  #84       => Fabrice says: I think we covered all we wanted to show. It's time to conclude this duel.
+slide  #85       => Corinne starts saying no one language solves all the problem.
+                     Fabrice continues that despite some issues, we were able to mix Scala and Groovy. So we should not fear polyglotism
                      and consider other languages.
-slide  #121       => Together: and have fun!
+slide  #86       => Together: and have fun!
                      It has been a fair battle between Groovy and Scala. There is one single winner: the JVM.
